@@ -15,24 +15,15 @@
         <fieldset class="govuk-fieldset" role="group" aria-describedby="dob-hint">
           <legend class="govuk-fieldset__legend govuk-fieldset__legend--xl">
             <h1 class="govuk-fieldset__heading">
-              What is your address?
+              What is your occupation?
             </h1>
           </legend>
-
-          <h3 class="govuk-heading-m">Postcode</h3>
-          <h3 class="govuk-heading-m">SW1A 1AA</h3><a href="">Change</a>
-
-          <h3 class="govuk-heading-m">Select an address</h3>
+          <span id="changed-name-hint" class="govuk-hint">
+            Some helpful help text.
+          </span>
 
           <div class="govuk-form-group">
-            <select class="govuk-select" id="sort" name="sort">
-              <option value="published">1 address found </option>
-              <option value="updated">Buckingham Palace, LONDON SW1A 1AA</option>
-            </select>
-          </div>
-
-          <div class="govuk-form-group">
-          <p><a href="#">I can’t find my address in the list</a></p>
+            <input class="govuk-input" id="full-name" name="full-name" type="text" autocomplete="name" spellcheck="false">
           </div>
 
           <div class="govuk-form-group">
