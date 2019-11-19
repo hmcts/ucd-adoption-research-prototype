@@ -1,8 +1,7 @@
-
 {% extends "layout-signed-in.html" %}
 
 {% block pageTitle %}
-  Apply to adopt a child
+Apply to adopt a child
 {% endblock %}
 
 {% block content %}
@@ -22,13 +21,15 @@
 
           <div class="govuk-radios govuk-radios--conditional" data-module="govuk-radios">
             <div class="govuk-radios__item">
-              <input class="govuk-radios__input" id="how-contacted-conditional" name="how-contacted" type="radio" value="email" data-aria-controls="conditional-how-contacted-conditional">
+              <input class="govuk-radios__input" id="how-contacted-conditional" name="how-contacted" type="radio"
+                value="email" data-aria-controls="conditional-how-contacted-conditional">
               <label class="govuk-label govuk-radios__label" for="how-contacted-conditional">
                 Yes
               </label>
             </div>
             <div class="govuk-radios__item">
-              <input class="govuk-radios__input" id="how-contacted-conditional-2" name="how-contacted" type="radio" value="phone" data-aria-controls="conditional-how-contacted-conditional-2">
+              <input class="govuk-radios__input" id="how-contacted-conditional-2" name="how-contacted" type="radio"
+                value="phone" data-aria-controls="conditional-how-contacted-conditional-2">
               <label class="govuk-label govuk-radios__label" for="how-contacted-conditional-2">
                 No
               </label>
@@ -38,7 +39,14 @@
         </fieldset>
       </div>
 
-      <a href="../task-list" class="govuk-button">Save</a>
+      <a href="../task-list" class="govuk-button">Save and continue</a>
+
+
+      <p>I know we talked this through, but having doubts now I see it on screen.
+        <p>If a user is adopting 2 children, it could be confusing/worrying that the first thing they see is 'name
+          of child'. "Panic! Which child do I put? How do I apply for the other child?"
+          <p> If they're just applying for 1 child, it's an unnecessary step.
+
 
     </div>
   </div>

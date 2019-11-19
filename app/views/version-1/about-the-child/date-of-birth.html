@@ -1,8 +1,7 @@
-
 {% extends "layout-signed-in.html" %}
 
 {% block pageTitle %}
-  Apply to adopt a child
+Apply to adopt a child
 {% endblock %}
 
 {% block content %}
@@ -20,7 +19,7 @@
             </h1>
           </legend>
           <span id="dob-hint" class="govuk-hint">
-            For example, 31 3 1980
+            For example, 31 3 2007
           </span>
           <div class="govuk-date-input" id="dob">
             <div class="govuk-date-input__item">
@@ -28,7 +27,8 @@
                 <label class="govuk-label govuk-date-input__label" for="dob-day">
                   Day
                 </label>
-                <input class="govuk-input govuk-date-input__input govuk-input--width-2" id="dob-day" name="dob-day" type="number" autocomplete="bday-day" pattern="[0-9]*">
+                <input class="govuk-input govuk-date-input__input govuk-input--width-2" id="dob-day" name="dob-day"
+                  type="number" autocomplete="bday-day" pattern="[0-9]*">
               </div>
             </div>
             <div class="govuk-date-input__item">
@@ -36,7 +36,8 @@
                 <label class="govuk-label govuk-date-input__label" for="dob-month">
                   Month
                 </label>
-                <input class="govuk-input govuk-date-input__input govuk-input--width-2" id="dob-month" name="dob-month" type="number" autocomplete="bday-month" pattern="[0-9]*">
+                <input class="govuk-input govuk-date-input__input govuk-input--width-2" id="dob-month" name="dob-month"
+                  type="number" autocomplete="bday-month" pattern="[0-9]*">
               </div>
             </div>
             <div class="govuk-date-input__item">
@@ -44,14 +45,17 @@
                 <label class="govuk-label govuk-date-input__label" for="dob-year">
                   Year
                 </label>
-                <input class="govuk-input govuk-date-input__input govuk-input--width-4" id="dob-year" name="dob-year" type="number" autocomplete="bday-year" pattern="[0-9]*">
+                <input class="govuk-input govuk-date-input__input govuk-input--width-4" id="dob-year" name="dob-year"
+                  type="number" autocomplete="bday-year" pattern="[0-9]*">
               </div>
             </div>
           </div>
         </fieldset>
       </div>
 
-      <a href="../task-list" class="govuk-button">Save</a>
+      <a href="../task-list" class="govuk-button">Save and continue</a>
+
+      <p>Questions to explore: ever a case where DoB not known?</p>
 
     </div>
   </div>
