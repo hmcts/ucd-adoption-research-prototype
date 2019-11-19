@@ -16,7 +16,12 @@ $govuk-assets-path: '/govuk/assets/';
 @import "components/cookie-banner";
 
 // Add extra styles here, or re-organise the Sass files in whichever way makes most sense to you
-
+.govuk-radios__conditional--applicants {
+  border-left: 0;
+  padding-left: 0;
+  margin-left: 0;
+  margin-top: 40px;
+}
 
 .sign-out-link {
   float: right !important;
