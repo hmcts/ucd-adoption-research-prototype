@@ -1,8 +1,7 @@
-
 {% extends "layout-signed-in.html" %}
 
 {% block pageTitle %}
-  Apply to adopt a child
+Apply to adopt a child
 {% endblock %}
 
 {% block content %}
@@ -15,16 +14,18 @@
         <fieldset class="govuk-fieldset" role="group" aria-describedby="dob-hint">
           <legend class="govuk-fieldset__legend govuk-fieldset__legend--xl">
             <h1 class="govuk-fieldset__heading">
-              What is the child's full name?
+              What's the child's full name?
             </h1>
           </legend>
+          <span class="govuk-hint">Enter what's written on their birth certificate</span>
 
           <input class="govuk-input" id="full-name" name="full-name" type="text" autocomplete="name" spellcheck="false">
 
         </fieldset>
       </div>
 
-      <a href="../task-list" class="govuk-button">Save</a>
+      <a href="../task-list" class="govuk-button">Save and continue</a>
+      <p>Questions to explore: who would have the birth certificate?</p>
 
     </div>
   </div>

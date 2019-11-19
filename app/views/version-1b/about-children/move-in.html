@@ -1,0 +1,77 @@
+{% extends "layout-signed-in.html" %}
+
+{% block pageTitle %}
+Apply to adopt a child
+{% endblock %}
+
+{% block content %}
+<div class="govuk-width-container">
+  <a href="#" class="govuk-back-link">Back</a>
+  <div class="govuk-grid-row">
+    <div class="govuk-grid-column-two-thirds">
+      <span class="govuk-caption-xl">2. Add the children's details</span>
+
+
+      <div class="govuk-form-group">
+        <fieldset class="govuk-fieldset" role="group" aria-describedby="dob-hint">
+          <legend class="govuk-fieldset__legend govuk-fieldset__legend--xl">
+            <h1 class="govuk-fieldset__heading">
+              When did the child move in?
+            </h1>
+          </legend>
+          <span id="dob-hint" class="govuk-hint">
+            For example, 21 4 2019
+          </span>
+          <div class="govuk-date-input" id="dob">
+            <div class="govuk-date-input__item">
+              <div class="govuk-form-group">
+                <label class="govuk-label govuk-date-input__label" for="dob-day">
+                  Day
+                </label>
+                <input class="govuk-input govuk-date-input__input govuk-input--width-2" id="dob-day" name="dob-day"
+                  type="number" autocomplete="bday-day" pattern="[0-9]*">
+              </div>
+            </div>
+            <div class="govuk-date-input__item">
+              <div class="govuk-form-group">
+                <label class="govuk-label govuk-date-input__label" for="dob-month">
+                  Month
+                </label>
+                <input class="govuk-input govuk-date-input__input govuk-input--width-2" id="dob-month" name="dob-month"
+                  type="number" autocomplete="bday-month" pattern="[0-9]*">
+              </div>
+            </div>
+            <div class="govuk-date-input__item">
+              <div class="govuk-form-group">
+                <label class="govuk-label govuk-date-input__label" for="dob-year">
+                  Year
+                </label>
+                <input class="govuk-input govuk-date-input__input govuk-input--width-4" id="dob-year" name="dob-year"
+                  type="number" autocomplete="bday-year" pattern="[0-9]*">
+              </div>
+            </div>
+          </div>
+        </fieldset>
+      </div>
+
+      <details class="govuk-details" data-module="govuk-details">
+        <summary class="govuk-details__summary">
+          <span class="govuk-details__summary-text">
+            Why we're asking this question
+          </span>
+        </summary>
+        <div class="govuk-details__text">
+          The courts cannot consider your adoption application unless the child has lived with you for at least 10
+          weeks.
+          You can
+          still send your application form before this time, to start the process.
+        </div>
+      </details>
+
+      <a href="../task-list" class="govuk-button">Save and continue</a>
+
+    </div>
+  </div>
+</div>
+
+{% endblock %}
