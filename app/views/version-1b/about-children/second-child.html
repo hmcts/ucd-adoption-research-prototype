@@ -13,7 +13,6 @@ Apply to adopt a child
 
 
       <div class="govuk-form-group">
-
         <fieldset class="govuk-fieldset" role="group" aria-describedby="dob-hint">
           <legend class="govuk-fieldset__legend govuk-fieldset__legend--xl">
             <h1 class="govuk-fieldset__heading">
@@ -39,13 +38,14 @@ Apply to adopt a child
             TBC
           </div>
         </details>
+      </div>
 
 
-
+      <div class="govuk-form-group">
         <fieldset class="govuk-fieldset" role="group" aria-describedby="dob-hint">
-          <legend class="govuk-fieldset__legend govuk-fieldset__legend--m">
+          <label class="govuk-label govuk-label--m" for="passport-number">
             Date of birth
-          </legend>
+          </label>
           <span id="expiry-hint" class="govuk-hint">
             For example, 31 3 2011
           </span>
@@ -76,79 +76,79 @@ Apply to adopt a child
                 name="expiry-year" type="number" pattern="[0-9]*">
             </div>
           </div>
-      </div>
-      </fieldset>
 
-      <fieldset class="govuk-fieldset" role="group" aria-describedby="dob-hint">
-        <legend class="govuk-fieldset__legend govuk-fieldset__legend--m">
-          When did they move in with you?
-        </legend>
-        <span id="passport-issued-hint" class="govuk-hint">
-          For example, 27 6 2019
-        </span>
-        <div class="govuk-date-input" id="passport-issued">
-          <div class="govuk-date-input__item">
-            <div class="govuk-form-group">
-              <label class="govuk-label govuk-date-input__label" for="passport-issued-day">
-                Day
-              </label>
-              <input class="govuk-input govuk-date-input__input govuk-input--width-2" id="passport-issued-day"
-                name="passport-issued-day" type="number" pattern="[0-9]*">
+        </fieldset>
+      </div>
+
+      <div class="govuk-form-group">
+        <fieldset class="govuk-fieldset" role="group" aria-describedby="dob-hint">
+          <label class="govuk-label govuk-label--m" for="passport-number">
+            When did they move in with you?
+          </label>
+          <span id="passport-issued-hint" class="govuk-hint">
+            For example, 27 6 2019
+          </span>
+          <div class="govuk-date-input" id="passport-issued">
+            <div class="govuk-date-input__item">
+              <div class="govuk-form-group">
+                <label class="govuk-label govuk-date-input__label" for="passport-issued-day">
+                  Day
+                </label>
+                <input class="govuk-input govuk-date-input__input govuk-input--width-2" id="passport-issued-day"
+                  name="passport-issued-day" type="number" pattern="[0-9]*">
+              </div>
             </div>
-          </div>
-          <div class="govuk-date-input__item">
-            <div class="govuk-form-group">
-              <label class="govuk-label govuk-date-input__label" for="passport-issued-month">
-                Month
-              </label>
-              <input class="govuk-input govuk-date-input__input govuk-input--width-2" id="passport-issued-month"
-                name="passport-issued-month" type="number" pattern="[0-9]*">
+            <div class="govuk-date-input__item">
+              <div class="govuk-form-group">
+                <label class="govuk-label govuk-date-input__label" for="passport-issued-month">
+                  Month
+                </label>
+                <input class="govuk-input govuk-date-input__input govuk-input--width-2" id="passport-issued-month"
+                  name="passport-issued-month" type="number" pattern="[0-9]*">
+              </div>
             </div>
-          </div>
-          <div class="govuk-date-input__item">
-            <div class="govuk-form-group">
-              <label class="govuk-label govuk-date-input__label" for="passport-issued-year">
-                Year
-              </label>
-              <input class="govuk-input govuk-date-input__input govuk-input--width-4" id="passport-issued-year"
-                name="passport-issued-year" type="number" pattern="[0-9]*">
-            </div>
-          </div>
-      </fieldset>
+            <div class="govuk-date-input__item">
+              <div class="govuk-form-group">
+                <label class="govuk-label govuk-date-input__label" for="passport-issued-year">
+                  Year
+                </label>
+                <input class="govuk-input govuk-date-input__input govuk-input--width-4" id="passport-issued-year"
+                  name="passport-issued-year" type="number" pattern="[0-9]*">
+              </div>
+        </fieldset>
+      </div>
 
       <div class="govuk-form-group">
         <fieldset class="govuk-fieldset" role="group" aria-describedby="dob-hint">
 
-          <legend class="govuk-fieldset__legend govuk-fieldset__legend--m">
+          <label class="govuk-label govuk-label--m" for="passport-number">
             Upload a photo (optional)
-          </legend>
+          </label>
           <span id="passport-issued-hint" class="govuk-hint">
             This can help the judge xxxxxxxxxx
 
           </span>
           <input class="govuk-file-upload" id="file-upload-1" name="file-upload-1" type="file">
+
+
+
+
+        </fieldset>
       </div>
 
 
 
-      </fieldset>
+
+      </form>
+      <a href="../task-list" class="govuk-button">Save and continue</a>
+
+
+
     </div>
-  </div>
-  </fieldset>
-</div>
-
-
-
-</form>
-<a href="../task-list" class="govuk-button">Save and continue</a>
-
-</div>
-</div>
-</div>
-</main>
+    </main>
 
 
 
 
 
-{% endblock %}
+    {% endblock %}
