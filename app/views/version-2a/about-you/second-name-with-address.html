@@ -1,0 +1,122 @@
+
+{% extends "layout-signed-in.html" %}
+
+{% block pageTitle %}
+  Apply to adopt a child
+{% endblock %}
+
+{% block content %}
+<div class="govuk-width-container">
+  <a href="#" class="govuk-back-link">Back</a>
+  <div class="govuk-grid-row">
+    <div class="govuk-grid-column-two-thirds">
+
+      <div class="govuk-form-group">
+        <fieldset class="govuk-fieldset" role="group" aria-describedby="dob-hint">
+          <legend class="govuk-fieldset__legend govuk-fieldset__legend--xl">
+            <span class="govuk-caption-xl">3.Add your details</span>
+            <h1 class="govuk-fieldset__heading">
+              Second applicant
+            </h1>
+          </legend>
+
+          <br>
+
+          <label class="govuk-label govuk-label--m" for="passport-number">
+            Full name
+          </label>
+          <input class="govuk-input" id="full-name" name="full-name" type="text" autocomplete="name" spellcheck="false">
+
+        </fieldset>
+      </div>
+
+      <br>
+
+
+      <div class="govuk-form-group">
+        <fieldset class="govuk-fieldset" role="group" aria-describedby="dob-hint">
+          <label class="govuk-label govuk-label--m" for="passport-number">
+            Date of birth
+          </label>
+          <span id="dob-hint" class="govuk-hint">
+            For example, 31 3 2007
+          </span>
+          <div class="govuk-date-input" id="dob">
+            <div class="govuk-date-input__item">
+              <div class="govuk-form-group">
+                <label class="govuk-label govuk-date-input__label" for="dob-day">
+                  Day
+                </label>
+                <input class="govuk-input govuk-date-input__input govuk-input--width-2" id="dob-day" name="dob-day"
+                  type="number" autocomplete="bday-day" pattern="[0-9]*">
+              </div>
+            </div>
+            <div class="govuk-date-input__item">
+              <div class="govuk-form-group">
+                <label class="govuk-label govuk-date-input__label" for="dob-month">
+                  Month
+                </label>
+                <input class="govuk-input govuk-date-input__input govuk-input--width-2" id="dob-month" name="dob-month"
+                  type="number" autocomplete="bday-month" pattern="[0-9]*">
+              </div>
+            </div>
+            <div class="govuk-date-input__item">
+              <div class="govuk-form-group">
+                <label class="govuk-label govuk-date-input__label" for="dob-year">
+                  Year
+                </label>
+                <input class="govuk-input govuk-date-input__input govuk-input--width-4" id="dob-year" name="dob-year"
+                  type="number" autocomplete="bday-year" pattern="[0-9]*">
+              </div>
+            </div>
+          </div>
+        </fieldset>
+      </div>
+
+      <br>
+
+      <div class="govuk-form-group">
+        <fieldset class="govuk-fieldset" role="group" aria-describedby="dob-hint">
+          <label class="govuk-label govuk-label--m" for="passport-number">
+            Address
+          </label>
+            <h4 class="govuk-heading-s">Postcode</h4>
+            <div class="govuk-form-group float-left">
+              <p class="">SW1A 1AA</p><p><a href="name">Change</a></p>
+            </div>
+
+            <div class="govuk-form-group">
+              <select class="govuk-select" id="sort" name="sort">
+                <option value="published">1 address found </option>
+                <option value="updated">Buckingham Palace, LONDON SW1A 1AA</option>
+              </select>
+            </div>
+
+            <div class="govuk-form-group">
+            <p><a href="#">I can’t find my address in the list</a></p>
+            </div>
+
+        </fieldset>
+      </div>
+
+      <div class="govuk-form-group">
+        <fieldset class="govuk-fieldset" role="group" aria-describedby="dob-hint">
+          <label class="govuk-label govuk-label--m" for="passport-number">
+            Occupation
+          </label>
+          <span id="changed-name-hint" class="govuk-hint">
+            Some helpful help text.
+          </span>
+          <div class="govuk-form-group">
+            <input class="govuk-input" id="full-name" name="full-name" type="text" autocomplete="name" spellcheck="false">
+          </div>
+        </fieldset>
+      </div>
+
+      <a href="../task-list" class="govuk-button">Save and continue</a>
+
+    </div>
+  </div>
+</div>
+
+{% endblock %}

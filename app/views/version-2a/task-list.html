@@ -1,0 +1,198 @@
+{% extends "layout-signed-in.html" %}
+
+{% block pageTitle %}
+Task list
+{% endblock %}
+
+{% block content %}
+<div class="govuk-grid-column-full">
+
+  <div style="text-align:right;">
+    <a href="#" class="govuk-button govuk-button--secondary">
+      Sign out
+    </a>
+  </div>
+</div>
+<div class="govuk-grid-row">
+  <div class="govuk-grid-column-two-thirds">
+    <h1 class="govuk-heading-xl">
+      Apply to adopt a child placed in your care
+    </h1>
+
+    <ol class="app-task-list">
+      <li>
+        <h2 class="app-task-list__section">
+          <span class="app-task-list__section-number">1. </span> Add application details
+        </h2>
+        <ul class="app-task-list__items">
+          <li class="app-task-list__item">
+            <span class="app-task-list__task-name">
+
+              <a href="./about-application/number-of-children-saved.html">
+                Number of children you're applying to adopt
+              </a>
+            </span>
+            <strong class="govuk-tag app-task-list__task-completed" id="eligibility-completed">Completed</strong>
+
+          </li>
+          <li class="app-task-list__item">
+            <span class="app-task-list__task-name">
+
+              <a href="./about-application/number-of-applicants-saved.html">
+                Who's applying to adopt
+              </a>
+            </span>
+            <strong class="govuk-tag app-task-list__task-completed" id="eligibility-completed">Completed</strong>
+          </li>
+        </ul>
+      </li>
+      <li>
+        <h2 class="app-task-list__section">
+          <span class="app-task-list__section-number">2. </span> Add the children's details
+        </h2>
+        <ul class="app-task-list__items">
+
+          <li class="app-task-list__item">
+            <span class="app-task-list__task-name">
+              <a href="./about-children/first-child.html" aria-describedby="eligibility-completed">
+                First child
+              </a>
+            </span>
+          </li>
+          <li class="app-task-list__item">
+            <span class="app-task-list__task-name">
+              <a href="./about-children/second-child.html" aria-describedby="eligibility-completed">
+                Second child
+              </a>
+            </span>
+          </li>
+        </ul>
+      </li>
+      <li>
+        <h2 class="app-task-list__section">
+          <span class="app-task-list__section-number">3. </span> Add your details
+        </h2>
+        <ul class="app-task-list__items">
+            <li class="app-task-list__item">
+                <span class="app-task-list__task-name">
+                  <a href="#" aria-describedby="eligibility-completed"> 
+                    Your relationship  
+                  </a>
+                </span>
+              </li>
+        </ul>
+        <ul class="app-task-list__items">
+
+            <p><strong>First applicant</p></strong>
+        
+            <li class="app-task-list__item">
+            <span class="app-task-list__task-name">
+              <a href="about-you/name" aria-describedby="eligibility-completed"> 
+                Your details  
+              </a>
+            </span>
+          </li>
+           
+          <li class="app-task-list__item">
+              <span class="app-task-list__task-name">
+                <a href="about-you/first-doc-upload" aria-describedby="eligibility-completed">
+                  Upload your documents
+                </a>
+              </span>
+            </li>
+        </ul>
+        
+        <ul class="app-task-list__items">
+
+    
+            <p><strong>Second applicant</p></strong>
+            <li class="app-task-list__item">
+            <span class="app-task-list__task-name">
+              <a href="about-you/name" aria-describedby="eligibility-completed">
+                Your details  
+              </a>
+            </span>
+          </li>
+          <li class="app-task-list__item">
+              <span class="app-task-list__task-name">
+                <a href="about-you/second-doc-upload.html" aria-describedby="eligibility-completed">
+                  Upload your documents
+                </a>
+              </span>
+            </li>
+        </ul>
+            
+          
+                
+            
+        <h2 class="app-task-list__section">
+          <span class="app-task-list__section-number">4. </span> Add your adoption contacts
+        </h2>
+        <ul class="app-task-list__items">
+          <li class="app-task-list__item">
+            <span class="app-task-list__task-name">
+              <a href="about-your-prof-help/social-worker" aria-describedby="eligibility-completed">
+                Your social worker's details
+              </a>
+            </span>
+          </li>
+          <li class="app-task-list__item">
+            <span class="app-task-list__task-name">
+              <a href="about-your-prof-help/childs-social-worker" aria-describedby="eligibility-completed">
+                The children's social worker's details
+              </a>
+            </span>
+          </li>
+          <li class="app-task-list__item">
+            <span class="app-task-list__task-name">
+              <a href="about-your-prof-help/representation" aria-describedby="eligibility-completed">
+                Your legal representative's details (optional)
+              </a>
+            </span>
+          </li>
+        </ul>
+      </li>
+
+      <li>
+        <h2 class="app-task-list__section">
+          <span class="app-task-list__section-number">5. </span> Financial payments
+        </h2>
+        <ul class="app-task-list__items">
+          <li class="app-task-list__item">
+            <span class="app-task-list__task-name">
+              <a href="./about-your-prof-help/financial-aid.html">
+                Financial aid
+              </a>
+            </span>
+          </li>
+
+        </ul>
+      </li>
+
+      <li>
+        <h2 class="app-task-list__section">
+          <span class="app-task-list__section-number">5. </span> Review application, pay and send
+        </h2>
+        <ul class="app-task-list__items">
+          <li class="app-task-list__item">
+            <span class="app-task-list__task-name">
+              <a href="check-your-answers">
+                Review your application
+              </a>
+            </span>
+          </li>
+          <li class="app-task-list__item">
+            <span class="app-task-list__task-name">
+              <a href="payment.html">
+                Pay and send
+              </a>
+            </span>
+          </li>
+        </ul>
+      </li>
+    </ol>
+
+  </div>
+</div>
+
+{% endblock %}

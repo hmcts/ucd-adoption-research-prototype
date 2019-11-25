@@ -1,0 +1,44 @@
+{% extends "layout-signed-in.html" %}
+
+{% block pageTitle %}
+Apply to adopt a child
+{% endblock %}
+
+{% block content %}
+<div class="govuk-width-container">
+  <a href="#" class="govuk-back-link">Back</a>
+  <div class="govuk-grid-row">
+    <div class="govuk-grid-column-two-thirds">
+      <span class="govuk-caption-xl">2. Add the children's details</span>
+
+
+      <div class="govuk-form-group">
+        <fieldset class="govuk-fieldset" role="group" aria-describedby="dob-hint">
+          <legend class="govuk-fieldset__legend govuk-fieldset__legend--xl">
+            <span class="govuk-caption-xl">About the child</span>
+            <h1 class="govuk-fieldset__heading">
+              Photo upload of the first child
+            </h1>
+          </legend>
+
+          <div class="govuk-form-group">
+            <label class="govuk-label" for="file-upload-1">
+              Upload a file
+            </label>
+            <input class="govuk-file-upload" id="file-upload-1" name="file-upload-1" type="file">
+          </div>
+
+
+
+        </fieldset>
+      </div>
+
+      <p>collette to find site where they talked about this</p>
+
+      <a href="../task-list" class="govuk-button">Save and continue</a>
+
+    </div>
+  </div>
+</div>
+
+{% endblock %}
