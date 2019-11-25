@@ -1,0 +1,88 @@
+{% extends "layout-signed-in.html" %}
+
+{% block pageTitle %}
+Apply to adopt a child
+{% endblock %}
+
+{% block content %}
+<div class="govuk-width-container">
+  <a href="#" class="govuk-back-link">Back</a>
+  <div class="govuk-grid-row">
+    <div class="govuk-grid-column-two-thirds">
+      <span class="govuk-caption-xl">2. Add the children's details</span>
+
+
+      <div class="govuk-form-group">
+        <fieldset class="govuk-fieldset" role="group" aria-describedby="dob-hint">
+          <legend class="govuk-fieldset__legend govuk-fieldset__legend--xl">
+            <h1 class="govuk-fieldset__heading">
+              About the first child
+            </h1>
+          </legend>
+
+      <div class="govuk-form-group">
+        <fieldset class="govuk-fieldset" role="group" aria-describedby="dob-hint">
+          <label class="govuk-label govuk-label--m" for="passport-number">
+            Date of birth
+          </label>
+          <span id="expiry-hint" class="govuk-hint">
+            For example, 31 3 2011
+          </span>
+          <div class="govuk-date-input__item">
+            <div class="govuk-form-group">
+              <label class="govuk-label govuk-date-input__label" for="expiry-day">
+                Day
+              </label>
+              <input class="govuk-input govuk-date-input__input govuk-input--width-2" id="expiry-day" name="expiry-day"
+                type="number" pattern="[0-9]*">
+            </div>
+          </div>
+          <div class="govuk-date-input__item">
+            <div class="govuk-form-group">
+              <label class="govuk-label govuk-date-input__label" for="expiry-month">
+                Month
+              </label>
+              <input class="govuk-input govuk-date-input__input govuk-input--width-2" id="expiry-month"
+                name="expiry-month" type="number" pattern="[0-9]*">
+            </div>
+          </div>
+          <div class="govuk-date-input__item">
+            <div class="govuk-form-group">
+              <label class="govuk-label govuk-date-input__label" for="expiry-year">
+                Year
+              </label>
+              <input class="govuk-input govuk-date-input__input govuk-input--width-4" id="expiry-year"
+                name="expiry-year" type="number" pattern="[0-9]*">
+            </div>
+          </div>
+
+        </fieldset>
+
+      </div>
+
+      <div class="govuk-form-group">
+        <details class="govuk-details" data-module="govuk-details">
+            <summary class="govuk-details__summary">
+              <span class="govuk-details__summary-text">
+                I do not know their date of birth
+              </span>
+            </summary>
+            <div class="govuk-details__text">
+              TBC
+            </div>
+          </details>
+        </div>
+
+      <div class="govuk-form-group">
+        <a href="move-in" class="govuk-button">Save and continue</a>
+        <p><a href="../task-list">Save and return</a></p>
+      </div>
+
+    </div>
+</main>
+
+
+
+
+
+    {% endblock %}
