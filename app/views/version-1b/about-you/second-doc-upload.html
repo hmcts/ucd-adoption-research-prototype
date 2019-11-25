@@ -1,0 +1,45 @@
+{% extends "layout-signed-in.html" %}
+
+{% block pageTitle %}
+Apply to adopt a child
+{% endblock %}
+
+{% block content %}
+<div class="govuk-width-container">
+  <a href="#" class="govuk-back-link">Back</a>
+  <div class="govuk-grid-row">
+    <div class="govuk-grid-column-two-thirds">
+      <span class="govuk-caption-xl">3. Add your details</span>
+
+
+      
+      <h1 class="govuk-heading-xl">      Upload second applicant's documents
+          </h1>
+        
+          <div class="govuk-form-group">
+          <fieldset class="govuk-fieldset" role="group" aria-describedby="dob-hint">
+            <label class="govuk-label govuk-label--m" for="passport-number">
+              DBS certificate
+            </label>
+            <input class="govuk-file-upload" id="file-upload-1" name="file-upload-1" type="file">
+          </fieldset>
+        </div>
+        <div class="govuk-form-group">
+            <fieldset class="govuk-fieldset" role="group" aria-describedby="dob-hint">
+              <label class="govuk-label govuk-label--m" for="passport-number">
+Health assessment?????              </label>
+              <input class="govuk-file-upload" id="file-upload-1" name="file-upload-1" type="file">
+            </fieldset>
+          </div>
+    
+
+
+
+
+      <a href="../task-list" class="govuk-button">Save and continue</a>
+
+    </div>
+  </div>
+</div>
+
+{% endblock %}
