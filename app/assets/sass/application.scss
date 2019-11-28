@@ -39,6 +39,13 @@ $govuk-assets-path: '/govuk/assets/';
   }
 }
 
+.sign-out-link {
+  a:link {
+    text-decoration: underline;
+    font-size: 19px;
+  }
+}
+
 .started-tag {
   background-color: #b1b4b6 !important;
 }
