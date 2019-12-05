@@ -1,0 +1,126 @@
+{% extends "layout-signed-in.html" %}
+
+{% block pageTitle %}
+Task list
+{% endblock %}
+
+{% block content %}
+<div class="govuk-grid-column-full">
+
+</div>
+<div class="govuk-grid-row">
+  <div class="govuk-grid-column-two-thirds">
+    <h1 class="govuk-heading-xl">
+      Apply to adopt a child placed in your care
+    </h1>
+
+    <ol class="app-task-list">
+      <li>
+        <h2 class="app-task-list__section">
+          <span class="app-task-list__section-number">1. </span>Add application details
+        </h2>
+        <ul class="app-task-list__items">
+          <li class="app-task-list__item">
+            <span class="app-task-list__task-name">
+
+              <a href="./about-application/number-of-children-saved.html">
+                Number of children you're applying to adopt
+              </a>
+            </span>
+
+
+          </li>
+          <li class="app-task-list__item">
+            <span class="app-task-list__task-name">
+
+              <a href="./about-application/number-of-applicants-saved.html">
+                Who's applying to adopt
+              </a>
+            </span>
+
+          </li>
+        </ul>
+      </li>
+
+      <li>
+        <h2 class="app-task-list__section">
+          <span class="app-task-list__section-number">1. </span>Add application details (following probates example)
+        </h2>
+        <ul class="app-task-list__items task-list-start-button">
+          <li class="app-task-list__item start-item">
+            <a href="about-application/number-of-children" class="govuk-button">Start now</a>
+          </li>
+        </ul>
+      </li>
+
+      <hr>
+
+
+      <li>
+        <li class="app-task-list__item">
+          <span class="app-task-list__task-name">
+            <h2 class="app-task-list__section">
+              <span class="app-task-list__section-number">2. </span>Add the children's details
+            </h2>
+          </span>
+          <strong class="govuk-tag app-task-list__task-completed cant-start-tag" id="eligibility-completed">Can't start yet</strong>
+        </li>
+      </li>
+
+      <br>
+
+      <li>
+        <li class="app-task-list__item">
+          <span class="app-task-list__task-name">
+            <h2 class="app-task-list__section">
+              <span class="app-task-list__section-number">3. </span>Add your details
+            </h2>
+          </span>
+          <strong class="govuk-tag app-task-list__task-completed cant-start-tag" id="eligibility-completed">Can't start yet</strong>
+        </li>
+      </li>
+
+      <br>
+
+      <li>
+        <li class="app-task-list__item">
+          <span class="app-task-list__task-name">
+            <h2 class="app-task-list__section">
+              <span class="app-task-list__section-number">4. </span>Add your adoption contacts
+            </h2>
+          </span>
+          <strong class="govuk-tag app-task-list__task-completed cant-start-tag" id="eligibility-completed">Can't start yet</strong>
+        </li>
+      </li>
+
+      <br>
+
+      <li>
+        <li class="app-task-list__item">
+          <span class="app-task-list__task-name">
+            <h2 class="app-task-list__section">
+              <span class="app-task-list__section-number">5. </span>Financial payments
+            </h2>
+          </span>
+          <strong class="govuk-tag app-task-list__task-completed cant-start-tag" id="eligibility-completed">Can't start yet</strong>
+        </li>
+      </li>
+
+      <br>
+
+      <li>
+        <li class="app-task-list__item remove-bottom-line">
+          <span class="app-task-list__task-name">
+            <h2 class="app-task-list__section">
+              <span class="app-task-list__section-number">6. </span>Review application, pay and send
+            </h2>
+          </span>
+          <strong class="govuk-tag app-task-list__task-completed cant-start-tag" id="eligibility-completed">Can't start yet</strong>
+        </li>
+      </li>
+    </ol>
+
+  </div>
+</div>
+
+{% endblock %}

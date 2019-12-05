@@ -39,6 +39,10 @@ $govuk-assets-path: '/govuk/assets/';
   }
 }
 
+.float-right {
+  float: right !important;
+}
+
 .sign-out-link {
   a:link {
     text-decoration: underline;
@@ -48,4 +52,22 @@ $govuk-assets-path: '/govuk/assets/';
 
 .started-tag {
   background-color: #b1b4b6 !important;
+  color: black;
+}
+
+.cant-start-tag {
+  background-color: #b1b4b6 !important;
+  margin-top: 20px;
+  color: black;
+}
+
+.task-list-start-button {
+  margin-bottom: unset;
+}
+.start-item {
+  border: none !important;
+}
+
+.remove-bottom-line {
+  border-bottom: none !important;
 }
