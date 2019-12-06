@@ -1,0 +1,43 @@
+{% extends "layout-signed-in.html" %}
+
+{% block pageTitle %}
+Apply to adopt a child
+{% endblock %}
+
+{% block content %}
+<div class="govuk-width-container">
+  <a href="#" class="govuk-back-link">Back</a>
+  <div class="govuk-grid-row">
+    <div class="govuk-grid-column-two-thirds">
+      <span class="govuk-caption-xl"> Their education </span>
+      <h1 class="govuk-heading-l">
+        Education history
+      </h1>
+
+      <div class="govuk-form-group">
+        <label class="govuk-label" for="more-detail">
+          Has the child taken any SATs or GCSEs?
+        </label>
+        <span id="more-detail-hint" class="govuk-hint">
+          If so, add details of type of exams, dates taken and results </span>
+
+        <textarea class="govuk-textarea" id="more-detail" name="more-detail" rows="5"
+          aria-describedby="more-detail-hint"></textarea>
+      </div>
+
+
+
+      <a href="../task-list-2.html" class="govuk-button">Save and continue</a>
+      <a href="../task-list-2" class="govuk-button govuk-button--secondary">Save and return</a>
+
+
+
+    </div>
+
+    </main>
+
+
+
+
+
+    {% endblock %}

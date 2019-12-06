@@ -9,24 +9,25 @@ Apply to adopt a child
   <a href="#" class="govuk-back-link">Back</a>
   <div class="govuk-grid-row">
     <div class="govuk-grid-column-two-thirds">
-      <span class="govuk-caption-xl"> Their health history </span>
+      <span class="govuk-caption-xl"> Their education </span>
       <h1 class="govuk-heading-l">
-        Cultural practices
+        Educational needs
       </h1>
-
-
 
       <div class="govuk-form-group">
         <fieldset class="govuk-fieldset" aria-describedby="how-contacted-conditional-hint">
           <legend class="govuk-fieldset__legend govuk-fieldset__legend--m">
             <label class="govuk-label govuk-label--m" for="passport-number">
-              Has the child been brought up with norms or traditions of their culture?</label>
+              Does the child have any special educational needs</label>
           </legend>
+
+
+
 
           <div class="govuk-radios govuk-radios--conditional" data-module="govuk-radios">
             <div class="govuk-radios__item">
               <input class="govuk-radios__input" id="how-contacted-conditional" name="how-contacted" type="radio"
-                value="email" data-aria-controls="judge-conditional-yes">
+                value="email" data-aria-controls="judge-conditional-yes-1">
               <label class="govuk-label govuk-radios__label" for="how-contacted-conditional">
                 Yes
               </label>
@@ -38,35 +39,39 @@ Apply to adopt a child
               <label class="govuk-label govuk-radios__label" for="how-contacted-conditional-2">
                 No
               </label>
-            </div>
-
-            <div
-              class="govuk-radios__conditional govuk-radios__conditional--applicants govuk-radios__conditional--hidden"
-              id="judge-conditional-yes">
-              <fieldset class="govuk-fieldset" role="group" aria-describedby="dob-hint">
-
-                <label class="govuk-label govuk-label--m" for="more-detail">
-                  Add details of their cultural norms or traditions</label>
-                <textarea class="govuk-textarea" id="more-detail" name="more-detail" rows="5"
-                  aria-describedby="more-detail-hint"></textarea>
+              <div
+                class="govuk-radios__conditional govuk-radios__conditional--applicants govuk-radios__conditional--hidden"
+                id="judge-conditional-yes-1">
 
 
-              </fieldset>
-            </div>
-          </div>
+
+                <div class="govuk-form-group">
+                  <legend class="govuk-fieldset__legend govuk-fieldset__legend--m">
+                    Add details of their special educational needs
+
+
+                    <textarea class="govuk-textarea" id="more-detail" name="more-detail" rows="5"
+                      aria-describedby="more-detail-hint"></textarea>
+                </div>
+
         </fieldset>
       </div>
-      <a href="../task-list-2.html" class="govuk-button">Save and continue</a>
-      <a href="../task-list-2" class="govuk-button govuk-button--secondary">Save and return</a>
-
-
-
+      </fieldset>
     </div>
-
-    </main>
-
+  </div>
 
 
+  <a href="fourth-step-3.html" class="govuk-button">Save and continue</a>
+  <a href="../task-list-2" class="govuk-button govuk-button--secondary">Save and return</a>
 
 
-    {% endblock %}
+
+</div>
+
+</main>
+
+
+
+
+
+{% endblock %}
