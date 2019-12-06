@@ -1,8 +1,7 @@
-
 {% extends "layout-signed-in.html" %}
 
 {% block pageTitle %}
-  Apply to adopt a child
+Apply to adopt a child
 {% endblock %}
 
 {% block content %}
@@ -13,36 +12,33 @@
 
       <div class="govuk-form-group">
         <fieldset class="govuk-fieldset" role="group" aria-describedby="dob-hint">
-          <legend class="govuk-fieldset__legend govuk-fieldset__legend--xl">
-            <span class="govuk-caption-xl">Your relationship</span>
+          <legend class="govuk-fieldset__legend govuk-fieldset__legend--l">
+            <span class="govuk-caption-l">Your relationship</span>
             <h1 class="govuk-fieldset__heading">
-              Were you both on the original placement order?
+              Upload marriadge certificate
             </h1>
           </legend>
 
-          <div class="govuk-radios govuk-radios--conditional" data-module="govuk-radios">
-            <div class="govuk-radios__item">
-              <input class="govuk-radios__input" id="how-contacted-conditional" name="how-contacted" type="radio" value="email" data-aria-controls="conditional-how-contacted-conditional">
-              <label class="govuk-label govuk-radios__label" for="how-contacted-conditional">
-                Yes
+          <div class="govuk-form-group">
+            <fieldset class="govuk-fieldset" role="group" aria-describedby="dob-hint">
+              <label class="govuk-label govuk-label--m" for="passport-number">
+
               </label>
-            </div>
-            <div class="govuk-radios__item">
-              <input class="govuk-radios__input" id="how-contacted-conditional-2" name="how-contacted" type="radio" value="phone" data-aria-controls="conditional-how-contacted-conditional-2">
-              <label class="govuk-label govuk-radios__label" for="how-contacted-conditional-2">
-                No
-              </label>
-            </div>
+              <input class="govuk-file-upload" id="file-upload-1" name="file-upload-1" type="file">
+            </fieldset>
           </div>
 
-        </fieldset>
+
+      <div class="govuk-form-group">
+        <a href="../task-list-2" class="govuk-button">Save and continue</a>
+        <a href="../task-list-2" class="govuk-button govuk-button--secondary">Save and return</a>
       </div>
 
-      <a href="../task-list-2" class="govuk-button">Save and continue</a>
-      <a href="../task-list-2" class="govuk-button govuk-button--secondary">Save and return</a>
-
     </div>
-  </div>
-</div>
+</main>
 
-{% endblock %}
+
+
+
+
+    {% endblock %}
