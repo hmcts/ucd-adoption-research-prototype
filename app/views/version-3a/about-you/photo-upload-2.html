@@ -1,0 +1,68 @@
+{% extends "layout-signed-in.html" %}
+
+{% block pageTitle %}
+Apply to adopt a child
+{% endblock %}
+
+{% block content %}
+<div class="govuk-width-container">
+  <a href="#" class="govuk-back-link">Back</a>
+  <div class="govuk-grid-row">
+    <div class="govuk-grid-column-two-thirds">
+      <span class="govuk-caption-l">Your heritage and background</span>
+      <h2 class="govuk-heading-l">
+        Upload your proof of identity
+      </h2>
+
+      <p>You will need to upload 2 forms of identification. These can be your drivers licence or...</p>
+
+
+      <fieldset class="govuk-fieldset" role="group" aria-describedby="dob-hint">
+        <a href="../task-list-2" class="govuk-button govuk-button--secondary">Choose documents</a>
+      </fieldset>
+
+
+      <h4 class="govuk-heading-s">
+        Documents
+      </h4>
+      <dl class="govuk-summary-list govuk-!-margin-bottom-9">
+          <div class="govuk-summary-list__row">
+            <dd class="govuk-summary-list__value">
+              drivers-licence.png
+            </dd>
+            <dd class="govuk-summary-list__value">
+            </dd>
+            <dd class="govuk-summary-list__actions">
+              <a class="govuk-link" href="#">
+                Remove<span class="govuk-visually-hidden"> name</span>
+              </a>
+            </dd>
+          </div>
+          <div class="govuk-summary-list__row">
+            <dd class="govuk-summary-list__value">
+              something.png
+            </dd>
+            <dd class="govuk-summary-list__value">
+            </dd>
+            <dd class="govuk-summary-list__actions">
+              <a class="govuk-link" href="#">
+                Remove<span class="govuk-visually-hidden"> name</span>
+              </a>
+            </dd>
+          </div>
+        </dl>
+
+
+    <a href="../task-list-2" class="govuk-button">Save and continue</a>
+    <a href="../task-list-2" class="govuk-button govuk-button--secondary">Save and return</a>
+
+
+
+    </div>
+    </main>
+
+
+
+
+
+    {% endblock %}

@@ -1,0 +1,40 @@
+{% extends "layout-signed-in.html" %}
+
+{% block pageTitle %}
+Apply to adopt a child
+{% endblock %}
+
+{% block content %}
+<div class="govuk-width-container">
+  <a href="#" class="govuk-back-link">Back</a>
+  <div class="govuk-grid-row">
+    <div class="govuk-grid-column-two-thirds">
+      <span class="govuk-caption-l">Your heritage and background</span>
+      <h2 class="govuk-heading-l">
+        How long have you lived in the British Isles?
+      </h2>
+
+      <div class="govuk-form-group">
+        <fieldset class="govuk-fieldset" role="group" aria-describedby="dob-hint">
+          <div class="govuk-form-group">
+            <input class="govuk-input govuk-date-input__input govuk-input--width-4" id="expiry-year"
+              name="expiry-year" type="number" pattern="[0-9]*">
+          </div>
+        </fieldset>
+
+      </div>
+
+
+    <a href="background-2" class="govuk-button">Save and continue</a>
+    <a href="../task-list-2" class="govuk-button govuk-button--secondary">Save and return</a>
+
+
+
+    </div>
+    </main>
+
+
+
+
+
+    {% endblock %}
