@@ -1,0 +1,54 @@
+{% extends "layout-signed-in.html" %}
+
+{% block pageTitle %}
+Apply to adopt a child
+{% endblock %}
+
+{% block content %}
+<div class="govuk-width-container">
+  <a href="#" class="govuk-back-link">Back</a>
+  <div class="govuk-grid-row">
+    <div class="govuk-grid-column-two-thirds">
+      <span class="govuk-caption-l">Your wishes and interests</span>
+      <h2 class="govuk-heading-l">
+        Your reasons and expectations for the child
+      </h2>
+
+
+        <div class="govuk-form-group">
+        <label class="govuk-label govuk-label--m" for="width-20">
+          Why do you want to adopt?
+        </label>
+        <textarea class="govuk-textarea" id="more-detail" name="more-detail" rows="5" aria-describedby="more-detail-hint"></textarea>
+      </div>
+
+      <div class="govuk-form-group">
+      <label class="govuk-label govuk-label--m" for="width-20">
+        Why do you think it is in the child’s best interest to be adopted?
+      </label>
+      <textarea class="govuk-textarea" id="more-detail" name="more-detail" rows="5" aria-describedby="more-detail-hint"></textarea>
+    </div>
+
+    <div class="govuk-form-group">
+    <label class="govuk-label govuk-label--m" for="width-20">
+      What hopes and expectations do you have for the child?
+    </label>
+    <textarea class="govuk-textarea" id="more-detail" name="more-detail" rows="5" aria-describedby="more-detail-hint"></textarea>
+  </div>
+
+
+      <br>
+
+    <a href="experience-3" class="govuk-button">Save and continue</a>
+    <a href="../task-list-2" class="govuk-button govuk-button--secondary">Save and return</a>
+
+
+
+    </div>
+    </main>
+
+
+
+
+
+    {% endblock %}
