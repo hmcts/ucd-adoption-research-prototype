@@ -9,9 +9,9 @@ Apply to adopt a child
   <a href="#" class="govuk-back-link">Back</a>
   <div class="govuk-grid-row">
     <div class="govuk-grid-column-two-thirds">
-      <span class="govuk-caption-xl">Add the children's details</span>
-      <h1 class="govuk-heading-xl">
-        About the first child
+      <span class="govuk-caption-xl">Birth certificate, names and placement</span>
+      <h1 class="govuk-heading-l">
+        Add birth certificate details
       </h1>
 
       <div class="govuk-form-group">
@@ -36,19 +36,6 @@ Apply to adopt a child
             TBC
           </div>
         </details>
-      </div>
-
-      <div class="govuk-form-group">
-        <fieldset class="govuk-fieldset" role="group" aria-describedby="dob-hint">
-
-          <label class="govuk-label govuk-label--m" for="passport-number">
-            Proposed new name
-          </label>
-          <span class="govuk-hint">Enter their name as it's written on their birth certificate</span>
-          <input class="govuk-input" id="full-name" name="full-name" type="text" autocomplete="name" spellcheck="false">
-          <br>
-          <br>
-        </fieldset>
       </div>
 
 
@@ -91,16 +78,7 @@ Apply to adopt a child
         </fieldset>
         <br>
         <br>
-        <details class="govuk-details" data-module="govuk-details">
-            <summary class="govuk-details__summary">
-              <span class="govuk-details__summary-text">
-                I do not know their date of birth
-              </span>
-            </summary>
-            <div class="govuk-details__text">
-              TBC
-            </div>
-          </details>
+
       </div>
 
 
@@ -114,8 +92,15 @@ Apply to adopt a child
         </fieldset>
       </div>
 
-    <a href="first-step-2" class="govuk-button">Save and continue</a>
-    <a href="../task-list-2" class="govuk-button govuk-button--secondary">Save and return</a>
+      <div class="govuk-form-group">
+        <label class="govuk-label govuk-label--m" for="passport-number">
+          Upload child's birth certificate
+        </label>
+        <input class="govuk-file-upload" id="file-upload-1" name="file-upload-1" type="file">
+      </div>
+
+      <a href="first-step-1-b" class="govuk-button">Save and continue</a>
+      <a href="../task-list-2" class="govuk-button govuk-button--secondary">Save and return</a>
 
 
 
