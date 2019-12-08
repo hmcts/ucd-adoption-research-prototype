@@ -9,44 +9,44 @@ Apply to adopt a child
   <a href="#" class="govuk-back-link">Back</a>
   <div class="govuk-grid-row">
     <div class="govuk-grid-column-two-thirds">
-      <span class="govuk-caption-xl">Add application details</span>
-
+      <!--<span class="govuk-caption-xl">Applicants and relationship</span>-->
+      <h1 class="govuk-heading-l">
+        Your relationships
+      </h1>
       <div class="govuk-form-group">
         <fieldset class="govuk-fieldset" aria-describedby="how-contacted-conditional-hint">
-          <legend class="govuk-fieldset__legend govuk-fieldset__legend--l">
-            <h1 class="govuk-fieldset__heading"> Are you in an enduring relationship?
-            </h1>
-          </legend>
+          <label class="govuk-label govuk-label--m" for="width-20">
+            Are you married or in a civil partnership? </label>
+          </label>
           <div class="govuk-radios govuk-radios--conditional" data-module="govuk-radios">
             <div class="govuk-radios__item">
               <input class="govuk-radios__input" id="how-contacted-conditional" name="how-contacted" type="radio"
                 value="email" data-aria-controls="judge-conditional-yes">
               <label class="govuk-label govuk-radios__label" for="how-contacted-conditional">
-                No
+                Yes
               </label>
             </div>
 
             <div class="govuk-radios__item">
               <input class="govuk-radios__input" id="how-contacted-conditional-2" name="how-contacted" type="radio"
-                value="phone" data-aria-controls="judge-conditional-no" checked>
+                value="phone" data-aria-controls="judge-conditional-no">
               <label class="govuk-label govuk-radios__label" for="how-contacted-conditional-2">
-                Yes
+                No
               </label>
             </div>
 
             <div
               class="govuk-radios__conditional govuk-radios__conditional--applicants govuk-radios__conditional--hidden"
-              id="judge-conditional-no">
+              id="judge-conditional-yes">
               <div class="govuk-form-group">
                 <fieldset class="govuk-fieldset">
-                  <legend class="govuk-fieldset__legend govuk-fieldset__legend--m">
-                    <h1 class="govuk-fieldset__heading">
-                      Are you applying to adopt together? </h1>
-                  </legend>
+                  <label class="govuk-label govuk-label--m" for="width-20">
+                    Are you applying to adopt together?
+                  </label>
                   <div class="govuk-radios">
                     <div class="govuk-radios__item">
-                      <input class="govuk-radios__input" id="where-do-you-live" name="where-do-you-live" type="radio"
-                        value="england" checked>
+                      <input class="govuk-radios__input checked" id="where-do-you-live" name="where-do-you-live"
+                        type="radio" value="england">
                       <label class="govuk-label govuk-radios__label" for="where-do-you-live">
                         Yes
                       </label>
@@ -62,13 +62,41 @@ Apply to adopt a child
               </div>
             </div>
 
+            <div
+              class="govuk-radios__conditional govuk-radios__conditional--applicants govuk-radios__conditional--hidden"
+              id="judge-conditional-no">
+              <div class="govuk-form-group">
+                <fieldset class="govuk-fieldset">
+                  <legend class="govuk-fieldset__legend govuk-fieldset__legend--l">
+                    <label class="govuk-label govuk-label--m" for="width-20">
+                      Are you the only person who's applying to adopt the child? </h2>
+                    </label>
+                    <div class="govuk-radios">
+                      <div class="govuk-radios__item">
+                        <input class="govuk-radios__input" id="where-do-you-live" name="where-do-you-live" type="radio"
+                          value="england">
+                        <label class="govuk-label govuk-radios__label" for="where-do-you-live">
+                          Yes
+                        </label>
+                      </div>
+                      <div class="govuk-radios__item">
+                        <input class="govuk-radios__input" id="where-do-you-live-3" name="where-do-you-live"
+                          type="radio" value="scotland" data-aria-controls="sitting-days-no">
+                        <label class="govuk-label govuk-radios__label" for="where-do-you-live-3">
+                          No
+                        </label>
+                      </div>
+                </fieldset>
+              </div>
+            </div>
+
 
         </fieldset>
       </div>
 
 
 
-      <a href="../task-list.html" class="govuk-button">Save and continue</a>
+      <a href="../task-list-2.html" class="govuk-button">Save and continue</a>
 
     </div>
   </div>

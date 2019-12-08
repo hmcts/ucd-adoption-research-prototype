@@ -9,15 +9,18 @@ Apply to adopt a child
   <a href="#" class="govuk-back-link">Back</a>
   <div class="govuk-grid-row">
     <div class="govuk-grid-column-two-thirds">
-      <span class="govuk-caption-l">Other people in your life</span>
+      <!--<span class="govuk-caption-l">Other people in your life</span><-->
       <h2 class="govuk-heading-l">
-        People in your house and their views
+        Other people in your life
       </h2>
 
       <div class="govuk-form-group">
         <label class="govuk-label govuk-label--m" for="width-20">
-          Do you have anyone other than your partner living in your house?
+          Does anyone else live at your house?
         </label>
+        <span id="more-detail-hint" class="govuk-hint">
+          Do not include your partner if you're both applying to adopt
+        </span>
         <div class="govuk-radios govuk-radios--conditional" data-module="govuk-radios">
           <div class="govuk-radios__item">
             <input class="govuk-radios__input" id="how-contacted-conditional" name="how-contacted" type="radio"
@@ -39,34 +42,38 @@ Apply to adopt a child
             id="judge-conditional-yes">
             <fieldset class="govuk-fieldset" role="group" aria-describedby="dob-hint">
               <div class="govuk-form-group">
-              <label class="govuk-label govuk-label--m" for="width-20">
-                Who are they?
-              </label>
-              <textarea class="govuk-textarea" id="more-detail" name="more-detail" rows="5" aria-describedby="more-detail-hint"></textarea>
-            </div>
-            <div class="govuk-form-group">
-              <label class="govuk-label govuk-label--m" for="width-20">
-                How do they feel about the adoption?
-              </label>
-              <textarea class="govuk-textarea" id="more-detail" name="more-detail" rows="5" aria-describedby="more-detail-hint"></textarea>
-            </div>
+                <label class="govuk-label govuk-label--m" for="width-20">
+                  What's your relationship?
+                </label>
+                <span id="more-detail-hint" class="govuk-hint">
+                  For example, sibling or housemate </span>
+                <textarea class="govuk-textarea" id="more-detail" name="more-detail" rows="5"
+                  aria-describedby="more-detail-hint"></textarea>
+              </div>
+              <div class="govuk-form-group">
+                <label class="govuk-label govuk-label--m" for="width-20">
+                  How do they feel about the adoption?
+                </label>
+                <textarea class="govuk-textarea" id="more-detail" name="more-detail" rows="5"
+                  aria-describedby="more-detail-hint"></textarea>
+              </div>
 
             </fieldset>
           </div>
+        </div>
+
+        <br>
+
+        <a href="../task-list-2.html" class="govuk-button">Save and continue</a>
+        <a href="../task-list-2" class="govuk-button govuk-button--secondary">Save and return</a>
+
+
+
       </div>
-
-      <br>
-
-    <a href="cultural" class="govuk-button">Save and continue</a>
-    <a href="../task-list-2" class="govuk-button govuk-button--secondary">Save and return</a>
-
-
-
-    </div>
-    </main>
+      </main>
 
 
 
 
 
-    {% endblock %}
+      {% endblock %}
