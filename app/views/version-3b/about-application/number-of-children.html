@@ -5,42 +5,39 @@ Apply to adopt a child
 {% endblock %}
 
 {% block content %}
+
 <div class="govuk-width-container">
   <a href="#" class="govuk-back-link">Back</a>
-  <div class="govuk-grid-row">
-    <div class="govuk-grid-column-two-thirds">
-      <!--<span class="govuk-caption-xl">Your application</span>,-->
 
-      <h1 class="govuk-heading-l">
-        Number of children
-      </h1>
-      <div class="govuk-form-group">
-        <fieldset class="govuk-fieldset" role="group" aria-describedby="dob-hint">
-          <legend class="govuk-fieldset__legend govuk-fieldset__legend--l">
-            <label class="govuk-label govuk-label--m" for="width-20">
-              How many children are you applying to adopt?</label>
-            </label>
-          </legend>
+  <main class="govuk-main-wrapper " id="main-content" role="main">
+    <div class="govuk-grid-row">
+      <div class="govuk-grid-column-two-thirds">
+        <h2 class="govuk-heading-l">Number of children</h2>
+
+        <div class="govuk-form-group">
+          <fieldset class="govuk-fieldset" role="group" aria-describedby="passport-issued-hint">
+              <label class="govuk-label" for="full-name">
+                How many children are you applying to adopt?
+              </label>
+            <div class="govuk-date-input" id="passport-issued">
+              <div class="govuk-date-input__item">
+
+              <div class="govuk-date-input__item">
+                <div class="govuk-form-group">
+                  <input class="govuk-input govuk-date-input__input govuk-input--width-4" id="passport-issued-year" name="passport-issued-year" type="number" pattern="[0-9]*">
+                </div>
+              </div>
+            </div>
+          </fieldset>
+        </div>
 
 
+        <a href="number-of-applicants" class="govuk-button">Save and continue</a>
+        <a href="../task-list-2" class="govuk-button govuk-button--secondary">Save and return</a>
 
-          <input class="govuk-input govuk-input--width-3" id="width-10" name="width-10" type="text">
       </div>
-
     </div>
-
-
-
-    <br>
-
-    </fieldset>
-  </div>
-
-  <a href="number-of-applicants" class="govuk-button">Save and continue</a>
-  <a href="../task-list" class="govuk-button govuk-button--secondary">Save and return</a>
-
-</div>
-</div>
+  </main>
 </div>
 
 {% endblock %}
