@@ -1,0 +1,52 @@
+{% extends "layout-signed-in.html" %}
+
+{% block pageTitle %}
+Apply to adopt a child
+{% endblock %}
+
+{% block content %}
+<div class="govuk-width-container">
+  <a href="#" class="govuk-back-link">Back</a>
+  <div class="govuk-grid-row">
+    <div class="govuk-grid-column-two-thirds">
+      <!--<span class="govuk-caption-l">Your education and occupation</span><-->
+      <h2 class="govuk-heading-l">
+        Current employment and income
+      </h2>
+
+
+
+      <div class="govuk-form-group">
+        <label class="govuk-label govuk-label--m" for="width-20">
+          What's your occupation?
+        </label>
+        <span id="more-detail-hint" class="govuk-hint">
+          This will be printed on the adoption certificate
+        </span>
+        <input class="govuk-input govuk-input--width-20" id="width-20" name="width-20" type="text">
+      </div>
+
+      <div class="govuk-form-group">
+        <label class="govuk-label govuk-label--m" for="width-20">
+          How much do you earn each year, before tax?
+        </label>
+
+        <input class="govuk-input govuk-input--width-10" id="width-10" name="width-10" type="text">
+
+      </div>
+
+
+
+      <a href="employment-history" class="govuk-button">Save and continue</a>
+      <a href="../task-list-2" class="govuk-button govuk-button--secondary">Save and return</a>
+
+
+
+    </div>
+    </main>
+
+
+
+
+
+    {% endblock %}
