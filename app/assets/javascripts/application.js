@@ -27,3 +27,18 @@ function show1(){
 function show2(){
   document.getElementById('div1').style.display = 'block';
 }
+
+
+function myFunction() {
+  document.getElementById("demo").style.opacity = 100;
+}
+
+
+$(document).ready(function(){
+    $(".test").click(function(){
+        $("#showme").show();
+       $("#divsthatIwanttohide").hide();
+
+    });
+
+});
