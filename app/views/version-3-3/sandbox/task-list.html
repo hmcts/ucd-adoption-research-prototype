@@ -14,40 +14,56 @@
 {% endblock %}
 
 {% block beforeContent %}
-  
+
 {% endblock %}
 
 {% block content %}
 
 <div class="govuk-grid-row">
-  <div class="govuk-grid-column-two-thirds">
+  <div class="govuk-grid-column-full">
 
     <h1 class="govuk-heading-l">
       Apply to adopt a child placed in your care
     </h1>
 
-    <div id="step-by-step-navigation" class="app-step-nav app-step-nav--large app-step-nav--active" data-show-text="Show" data-hide-text="Hide" data-show-all-text="Show all" data-hide-all-text="Hide all">
-      <ol class="app-step-nav__steps">
-        <li class="app-step-nav__step js-step" id="check-youre-allowed-to-drive" >
-          <div class="app-step-nav__header js-toggle-panel" data-position="1">
-            <h2 class="app-step-nav__title">
-              <span class="app-step-nav__circle app-step-nav__circle--number">
-                <span class="app-step-nav__circle-inner">
-                  <span class="app-step-nav__circle-background">
-                    <span class="govuk-visually-hidden">Step</span> 1
-                  </span>
-                </span>
-              </span>
+    <div class="govuk-tabs tabs-custom" data-module="govuk-tabs">
+      <h2 class="govuk-tabs__title">
+        Contents
+      </h2>
+      <ul class="govuk-tabs__list">
+        <li class="govuk-tabs__list-item govuk-tabs__list-item--selected">
+          <a class="govuk-tabs__tab" href="#past-day">
+            Application details
+          </a>
+        </li>
+        <li class="govuk-tabs__list-item">
+          <a class="govuk-tabs__tab" href="#past-week">
+            Child's details
+          </a>
+        </li>
+        <li class="govuk-tabs__list-item">
+          <a class="govuk-tabs__tab" href="#past-month">
+            Your details
+          </a>
+        </li>
+        <li class="govuk-tabs__list-item">
+          <a class="govuk-tabs__tab" href="#past-year">
+            Adoption contacts
+          </a>
+        </li>
+        <li class="govuk-tabs__list-item">
+          <a class="govuk-tabs__tab" href="#financial">
+            Financial aid
+          </a>
+        </li>
+      </ul>
+      <section class="govuk-tabs__panel remove-border" id="past-day">
 
-              <span class="js-step-title">
-                Add application details
-              </span>
+        <ol class="app-task-list">
+          <li>
+            <h2 class="app-task-list__section">
+              <span class="app-task-list__section-number">Add application details</span>
             </h2>
-          </div>
-
-          <div class="app-step-nav__panel js-panel js-hidden" id="step-panel-check-youre-allowed-to-drive-1">
-
-            <ol class="app-task-list">
               <li class="app-task-list__item">
                 <span class="app-task-list__task-name">
                   <a href="./about-application/number-of-children-saved.html">
@@ -55,101 +71,76 @@
                   </a>
                 </span>
                 <strong class="govuk-tag app-task-list__task-completed" id="eligibility-completed">Completed</strong>
+
               </li>
               <li class="app-task-list__item">
                 <span class="app-task-list__task-name">
+
                   <a href="./about-application/number-of-applicants-saved.html">
                     Applicants and relationship
                   </a>
                 </span>
                 <strong class="govuk-tag app-task-list__task-completed" id="eligibility-completed">Completed</strong>
               </li>
-            </ol>
-          </div>
+          </li>
 
+        </ol>
+
+      </section>
+      <section class="govuk-tabs__panel govuk-tabs__panel--hidden remove-border" id="past-week">
+        <ol class="app-task-list">
+
+          <li>
+            <h2 class="app-task-list__section">
+              <span class="app-task-list__section-number">Add the child's details</span>
+            </h2>
+          <li class="app-task-list__item">
+            <span class="app-task-list__task-name">
+              <a href="./about-children/step-1.html" aria-describedby="eligibility-completed">
+                Their birth certificate, names and placement
+              </a>
+            </span>
+          </li>
+          <li class="app-task-list__item">
+            <span class="app-task-list__task-name">
+              <a href="./about-children/step-2.html" aria-describedby="eligibility-completed">
+                Their language, beliefs and culture </a>
+            </span>
+          </li>
+          <li class="app-task-list__item">
+            <span class="app-task-list__task-name">
+              <a href="./about-children/step-3.html" aria-describedby="eligibility-completed">
+                Their health
+              </a>
+            </span>
+          </li>
+          <li class="app-task-list__item">
+            <span class="app-task-list__task-name">
+              <a href="./about-children/step-4.html" aria-describedby="eligibility-completed">
+                Their education
+              </a>
+            </span>
+          </li>
+          <li class="app-task-list__item">
+            <span class="app-task-list__task-name">
+              <a href="./about-children/step-5.html" aria-describedby="eligibility-completed">
+                Birth parents' details and wishes
+              </a>
+            </span>
+          </li>
         </li>
 
-        <li class="app-step-nav__step js-step" id="get-a-provisional-licence" >
-          <div class="app-step-nav__header js-toggle-panel" data-position="2">
-            <h2 class="app-step-nav__title">
-              <span class="app-step-nav__circle app-step-nav__circle--number">
-                <span class="app-step-nav__circle-inner">
-                  <span class="app-step-nav__circle-background">
-                    <span class="govuk-visually-hidden">Step</span> 2
-                  </span>
-                </span>
-              </span>
+        </ol>
 
-              <span class="js-step-title">
-                Add the child's details
-              </span>
+      </section>
+      <section class="govuk-tabs__panel govuk-tabs__panel--hidden remove-border" id="past-month">
+        <ol class="app-task-list">
+
+          <li>
+            <h2 class="app-task-list__section">
+              <span class="app-task-list__section-number">Add your details</span>
             </h2>
-          </div>
 
-          <div class="app-step-nav__panel js-panel js-hidden" id="step-panel-get-a-provisional-licence-2">
-
-            <p class="app-step-nav__paragraph">You are going to need their birth certificate.</p>
-            <ol class="app-task-list">
-              <li class="app-task-list__item">
-                <span class="app-task-list__task-name">
-                  <a href="./about-children/step-1.html" aria-describedby="eligibility-completed">
-                    Their birth certificate, names and placement
-                  </a>
-                </span>
-              </li>
-              <li class="app-task-list__item">
-                <span class="app-task-list__task-name">
-                  <a href="./about-children/step-2.html" aria-describedby="eligibility-completed">
-                    Their language, beliefs and culture </a>
-                </span>
-              </li>
-              <li class="app-task-list__item">
-                <span class="app-task-list__task-name">
-                  <a href="./about-children/step-3.html" aria-describedby="eligibility-completed">
-                    Their health
-                  </a>
-                </span>
-              </li>
-              <li class="app-task-list__item">
-                <span class="app-task-list__task-name">
-                  <a href="./about-children/step-4.html" aria-describedby="eligibility-completed">
-                    Their education
-                  </a>
-                </span>
-              </li>
-              <li class="app-task-list__item">
-                <span class="app-task-list__task-name">
-                  <a href="./about-children/step-5.html" aria-describedby="eligibility-completed">
-                    Birth parents' details and wishes
-                  </a>
-                </span>
-              </li>
-            </ol>
-          </div>
-
-        </li>
-
-        <li class="app-step-nav__step js-step" id="driving-lessons-and-practice" >
-          <div class="app-step-nav__header js-toggle-panel" data-position="3">
-            <h2 class="app-step-nav__title">
-              <span class="app-step-nav__circle app-step-nav__circle--number">
-                <span class="app-step-nav__circle-inner">
-                  <span class="app-step-nav__circle-background">
-                    <span class="govuk-visually-hidden">Step</span> 3
-                  </span>
-                </span>
-              </span>
-
-              <span class="js-step-title">
-                Add your details
-              </span>
-            </h2>
-          </div>
-
-          <div class="app-step-nav__panel js-panel js-hidden" id="step-panel-driving-lessons-and-practice-3">
-            <p class="app-step-nav__paragraph">You need a provisional driving licence to take lessons or practice.</p>
-
-            <ol class="app-task-list">
               <li class="app-task-list__item">
                 <span class="app-task-list__task-name">
                   <a href="about-you/step-1" aria-describedby="eligibility-completed">
@@ -200,31 +191,19 @@
                   </a>
                 </span>
               </li>
-            </ol>
 
-          </div>
+          </li>
+        </ol>
 
-        </li>
+      </section>
+      <section class="govuk-tabs__panel govuk-tabs__panel--hidden remove-border" id="past-year">
+        <ol class="app-task-list">
 
-        <li class="app-step-nav__step js-step" id="book-and-manage-your-theory-test" >
-          <div class="app-step-nav__header js-toggle-panel" data-position="5">
-            <h2 class="app-step-nav__title">
-              <span class="app-step-nav__circle app-step-nav__circle--number">
-                <span class="app-step-nav__circle-inner">
-                  <span class="app-step-nav__circle-background">
-                    <span class="govuk-visually-hidden">Step</span> 4
-                  </span>
-                </span>
-              </span>
-
-              <span class="js-step-title">
-                Add your adoption contacts
-              </span>
+          <li>
+            <h2 class="app-task-list__section">
+              <span class="app-task-list__section-number">Add your adoption contacts</span>
             </h2>
-          </div>
 
-          <div class="app-step-nav__panel js-panel js-hidden" id="step-panel-book-and-manage-your-theory-test-5">
-            <ol class="app-task-list">
               <li class="app-task-list__item">
                 <span class="app-task-list__task-name">
                   <a href="about-your-prof-help/step-1">
@@ -246,31 +225,20 @@
                   </a>
                 </span>
               </li>
-            </ol>
-          </div>
 
-        </li>
+          </li>
+        </ol>
 
-        <li class="app-step-nav__step js-step" id="book-and-manage-your-driving-test" >
-          <div class="app-step-nav__header js-toggle-panel" data-position="6">
-            <h2 class="app-step-nav__title">
-              <span class="app-step-nav__circle app-step-nav__circle--number">
-                <span class="app-step-nav__circle-inner">
-                  <span class="app-step-nav__circle-background">
-                    <span class="govuk-visually-hidden">Step</span> 5
-                  </span>
-                </span>
-              </span>
+      </section>
 
-              <span class="js-step-title">
-                Financial payments
-              </span>
+      <section class="govuk-tabs__panel govuk-tabs__panel--hidden remove-border" id="financial">
+        <ol class="app-task-list">
+
+          <li>
+            <h2 class="app-task-list__section">
+              <span class="app-task-list__section-number">Financial payments</span>
             </h2>
-          </div>
 
-          <div class="app-step-nav__panel js-panel js-hidden" id="step-panel-book-and-manage-your-driving-test-6">
-
-            <ol class="app-task-list">
               <li class="app-task-list__item">
                 <span class="app-task-list__task-name">
                   <a href="about-your-prof-help/step-4">
@@ -278,30 +246,18 @@
                   </a>
                 </span>
               </li>
-            </ol>
-          </div>
 
-        </li>
+          </li>
+        </ol>
 
-        <li class="app-step-nav__step js-step" id="when-you-pass" >
-          <div class="app-step-nav__header js-toggle-panel" data-position="7">
-            <h2 class="app-step-nav__title">
-              <span class="app-step-nav__circle app-step-nav__circle--number">
-                <span class="app-step-nav__circle-inner">
-                  <span class="app-step-nav__circle-background">
-                    <span class="govuk-visually-hidden">Step</span> 6
-                  </span>
-                </span>
-              </span>
+      </section>
 
-              <span class="js-step-title">
-                Review application, pay and send
-              </span>
+      <section class="govuk-tabs__panel govuk-tabs__panel--hidden remove-border" id="finish">
+        <ol class="app-task-list">
+          <li>
+            <h2 class="app-task-list__section">
+              <span class="app-task-list__section-number">Review application, pay and send</span>
             </h2>
-          </div>
-
-          <div class="app-step-nav__panel js-panel js-hidden" id="step-panel-when-you-pass-7">
-            <ol class="app-task-list">
               <li class="app-task-list__item">
                 <span class="app-task-list__task-name">
                   <a href="check-your-answers.html">
@@ -309,11 +265,10 @@
                   </a>
                 </span>
               </li>
-            </ol>
-          </div>
+          </li>
+        </ol>
 
-        </li>
-      </ol>
+      </section>
     </div>
 
   </div>
