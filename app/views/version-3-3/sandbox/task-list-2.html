@@ -1,0 +1,252 @@
+{% extends "layout-signed-in.html" %}
+
+{% block pageTitle %}
+  Step by step navigation
+{% endblock %}
+
+{% block pageScripts %}
+  <script src="/public/javascripts/step-by-step-navigation.js"></script>
+  <script type="text/javascript">
+    var $element = $('#step-by-step-navigation')
+    var stepByStepNavigation = new GOVUK.Modules.StepByStepNavigation()
+    stepByStepNavigation.start($element)
+  </script>
+{% endblock %}
+
+{% block beforeContent %}
+
+{% endblock %}
+
+{% block content %}
+
+<div class="govuk-grid-row">
+  <div class="govuk-grid-column-two-thirds">
+
+    <h1 class="govuk-heading-l">
+      Apply to adopt a child placed in your care
+    </h1>
+
+    <div class="govuk-accordion" data-module="govuk-accordion" id="accordion-default">
+      <div class="govuk-accordion__section ">
+        <div class="govuk-accordion__section-header">
+          <h2 class="govuk-accordion__section-heading">
+            <span class="govuk-accordion__section-button" id="accordion-default-heading-1">
+              Add application details
+            </span>
+          </h2>
+        </div>
+        <div id="accordion-default-content-1" class="govuk-accordion__section-content" aria-labelledby="accordion-default-heading-1">
+          <ol class="app-task-list">
+            <li class="app-task-list__item">
+              <span class="app-task-list__task-name">
+                <a href="./about-application/number-of-children-saved.html">
+                  Number of children
+                </a>
+              </span>
+              <strong class="govuk-tag app-task-list__task-completed" id="eligibility-completed">Completed</strong>
+            </li>
+            <li class="app-task-list__item">
+              <span class="app-task-list__task-name">
+                <a href="./about-application/number-of-applicants-saved.html">
+                  Applicants and relationship
+                </a>
+              </span>
+              <strong class="govuk-tag app-task-list__task-completed" id="eligibility-completed">Completed</strong>
+            </li>
+          </ol>
+        </div>
+      </div>
+      <div class="govuk-accordion__section ">
+        <div class="govuk-accordion__section-header">
+          <h2 class="govuk-accordion__section-heading">
+            <span class="govuk-accordion__section-button" id="accordion-default-heading-2">
+              Add the child's details
+            </span>
+          </h2>
+        </div>
+        <div id="accordion-default-content-2" class="govuk-accordion__section-content" aria-labelledby="accordion-default-heading-2">
+          <p>You will need their birth certificate.</p>
+          <ol class="app-task-list">
+            <li class="app-task-list__item">
+              <span class="app-task-list__task-name">
+                <a href="./about-children/step-1.html" aria-describedby="eligibility-completed">
+                  Their birth certificate, names and placement
+                </a>
+              </span>
+            </li>
+            <li class="app-task-list__item">
+              <span class="app-task-list__task-name">
+                <a href="./about-children/step-2.html" aria-describedby="eligibility-completed">
+                  Their language, beliefs and culture </a>
+              </span>
+            </li>
+            <li class="app-task-list__item">
+              <span class="app-task-list__task-name">
+                <a href="./about-children/step-3.html" aria-describedby="eligibility-completed">
+                  Their health
+                </a>
+              </span>
+            </li>
+            <li class="app-task-list__item">
+              <span class="app-task-list__task-name">
+                <a href="./about-children/step-4.html" aria-describedby="eligibility-completed">
+                  Their education
+                </a>
+              </span>
+            </li>
+            <li class="app-task-list__item">
+              <span class="app-task-list__task-name">
+                <a href="./about-children/step-5.html" aria-describedby="eligibility-completed">
+                  Birth parents' details and wishes
+                </a>
+              </span>
+            </li>
+          </ol>
+        </div>
+      </div>
+      <div class="govuk-accordion__section ">
+        <div class="govuk-accordion__section-header">
+          <h2 class="govuk-accordion__section-heading">
+            <span class="govuk-accordion__section-button" id="accordion-default-heading-3">
+              Add your details
+            </span>
+          </h2>
+        </div>
+        <div id="accordion-default-content-3" class="govuk-accordion__section-content" aria-labelledby="accordion-default-heading-3">
+          <ol class="app-task-list">
+            <li class="app-task-list__item">
+              <span class="app-task-list__task-name">
+                <a href="about-you/step-1" aria-describedby="eligibility-completed">
+                  Your relationship
+                </a>
+              </span>
+            </li>
+            <!--<p><strong>First applicant</strong></p><-->
+            <li class="app-task-list__item">
+              <span class="app-task-list__task-name">
+                <a href="about-you/step-2" aria-describedby="eligibility-completed">
+                  Birth certificate details, address and photo ID
+                </a>
+              </span>
+            </li>
+            <li class="app-task-list__item">
+              <span class="app-task-list__task-name">
+                <a href="about-you/step-3" aria-describedby="eligibility-completed">
+                  Languages, beliefs and culture
+                </a>
+              </span>
+            </li>
+            <li class="app-task-list__item">
+              <span class="app-task-list__task-name">
+                <a href="about-you/step-4" aria-describedby="eligibility-completed">
+                  Education and occupation
+                </a>
+              </span>
+            </li>
+            <li class="app-task-list__item">
+              <span class="app-task-list__task-name">
+                <a href="about-you/step-5" aria-describedby="eligibility-completed">
+                  Other people in your life
+                </a>
+              </span>
+            </li>
+            <li class="app-task-list__item">
+              <span class="app-task-list__task-name">
+                <a href="about-you/step-6" aria-describedby="eligibility-completed">
+                  Experience with other children
+                </a>
+              </span>
+            </li>
+            <li class="app-task-list__item">
+              <span class="app-task-list__task-name">
+                <a href="about-you/step-7" aria-describedby="eligibility-completed">
+                  Reasons for applying and hopes for the child
+                </a>
+              </span>
+            </li>
+          </ol>
+        </div>
+      </div>
+      <div class="govuk-accordion__section ">
+        <div class="govuk-accordion__section-header">
+          <h2 class="govuk-accordion__section-heading">
+            <span class="govuk-accordion__section-button" id="accordion-default-heading-4">
+              Add your adoption contacts
+            </span>
+          </h2>
+        </div>
+        <div id="accordion-default-content-4" class="govuk-accordion__section-content" aria-labelledby="accordion-default-heading-4">
+          <ol class="app-task-list">
+            <li class="app-task-list__item">
+              <span class="app-task-list__task-name">
+                <a href="about-your-prof-help/step-1">
+                  Your social worker or adoption agency details
+                </a>
+              </span>
+            </li>
+            <li class="app-task-list__item">
+              <span class="app-task-list__task-name">
+                <a href="about-your-prof-help/step-2">
+                  The children’s social worker’s details
+                </a>
+              </span>
+            </li>
+            <li class="app-task-list__item">
+              <span class="app-task-list__task-name">
+                <a href="about-your-prof-help/step-3">
+                  Your legal representative's details (optional)
+                </a>
+              </span>
+            </li>
+          </ol>
+        </div>
+      </div>
+
+      <div class="govuk-accordion__section ">
+        <div class="govuk-accordion__section-header">
+          <h2 class="govuk-accordion__section-heading">
+            <span class="govuk-accordion__section-button" id="accordion-default-heading-5">
+              Financial payments
+            </span>
+          </h2>
+        </div>
+        <div id="accordion-default-content-4" class="govuk-accordion__section-content" aria-labelledby="accordion-default-heading-5">
+          <ol class="app-task-list">
+            <li class="app-task-list__item">
+              <span class="app-task-list__task-name">
+                <a href="about-your-prof-help/step-4">
+                  Financial aid
+                </a>
+              </span>
+            </li>
+          </ol>
+        </div>
+      </div>
+
+      <div class="govuk-accordion__section ">
+        <div class="govuk-accordion__section-header">
+          <h2 class="govuk-accordion__section-heading">
+            <span class="govuk-accordion__section-button" id="accordion-default-heading-6">
+              Review application, pay and send
+            </span>
+          </h2>
+        </div>
+        <div id="accordion-default-content-4" class="govuk-accordion__section-content" aria-labelledby="accordion-default-heading-6">
+          <ol class="app-task-list">
+            <li class="app-task-list__item">
+              <span class="app-task-list__task-name">
+                <a href="check-your-answers.html">
+                  Review application, pay and send
+                </a>
+              </span>
+            </li>
+          </ol>
+        </div>
+      </div>
+
+    </div>
+
+  </div>
+</div>
+
+{% endblock %}
