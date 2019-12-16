@@ -100,3 +100,20 @@ $govuk-assets-path: '/govuk/assets/';
     width: 60%;
   }
 }
+
+#accordion-default {
+  a {
+    font-size: 19px !important;
+  }
+}
+
+.tabs-custom {
+  a {
+    font-size: 19px !important;
+  }
+}
+
+.task-list-inset {
+  margin-top: 15px !important;
+  margin-bottom: 0px !important;
+}
