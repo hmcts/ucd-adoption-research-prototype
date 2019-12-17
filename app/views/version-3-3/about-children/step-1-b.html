@@ -1,0 +1,73 @@
+{% extends "layout-signed-in.html" %}
+
+{% block pageTitle %}
+Apply to adopt a child
+{% endblock %}
+
+{% block content %}
+
+<div class="govuk-width-container">
+  <a href="#" class="govuk-back-link">Back</a>
+
+  <main class="govuk-main-wrapper " id="main-content" role="main">
+    <div class="govuk-grid-row">
+      <div class="govuk-grid-column-two-thirds">
+        <h2 class="govuk-heading-l">Upload the child's birth certificate</h2>
+
+
+
+
+        <div class="govuk-form-group">
+          <label class="govuk-label" for="file-upload-1">
+            This must be their original birth certificate.
+          </label>
+
+          <input class="govuk-file-upload" id="file-upload-1" name="file-upload-1" type="file">
+        </div>
+        <details class="govuk-details" data-module="govuk-details">
+          <summary class="govuk-details__summary">
+            <span class="govuk-details__summary-text">
+              What's an 'original' birth certificate?
+            </span>
+          </summary>
+          <div class="govuk-details__text">
+            An 'original' long-form birth certificate is made when the child's birth is registered. <p>
+              <p> Copies will not be accepted, even if they're official copies from the General Register Office ( GRO ).
+          </div>
+        </details>
+
+        <div class="govuk-warning-text">
+          <span class="govuk-warning-text__icon" aria-hidden="true">!</span>
+          <strong class="govuk-warning-text__text">
+            You must also send their original birth certificate to the
+            family court that will be reviewing your application.
+          </strong>
+        </div>
+
+
+        <h3 class="govuk-heading-m">Find your family court </h3>
+
+        <div class="govuk-form-group">
+
+          <fieldset class="govuk-fieldset" role="group" aria-describedby="dob-hint">
+            <label class="govuk-label govuk-label--m" for="passport-number">
+              Address
+            </label>
+            <div class="govuk-form-group">
+              <label class="govuk-label" for="width-10">
+                Postcode
+              </label>
+              <input class="govuk-input govuk-input--width-10" id="width-10" name="width-10" type="text">
+            </div>
+
+        </div>
+
+        <a href="step-1-3" class="govuk-button">Save and continue</a>
+        <a href="../task-list-2" class="govuk-button govuk-button--secondary">Save and return</a>
+
+      </div>
+    </div>
+  </main>
+</div>
+
+{% endblock %}
