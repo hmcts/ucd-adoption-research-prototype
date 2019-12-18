@@ -1,0 +1,125 @@
+{% extends "layout-signed-in.html" %}
+
+{% block pageTitle %}
+Apply to adopt a child
+{% endblock %}
+
+{% block content %}
+
+<div class="govuk-width-container">
+  <a href="#" class="govuk-back-link">Back</a>
+
+  <main class="govuk-main-wrapper " id="main-content" role="main">
+    <div class="govuk-grid-row">
+      <div class="govuk-grid-column-two-thirds">
+        <h2 class="govuk-heading-l">The child's birth certificate details</h2>
+
+
+        <div class="govuk-form-group">
+          <label class="govuk-label" for="full-name">
+            Full name
+          </label>
+          <span id="changed-name-hint" class="govuk-hint">
+            Enter their name exactly as it's shown on their birth certificate.
+          </span>
+          <input class="govuk-input" id="full-name" name="full-name" type="text" autocomplete="name" spellcheck="false">
+        </div>
+
+        <!--<details class="govuk-details" data-module="govuk-details">
+          <summary class="govuk-details__summary">
+            <span class="govuk-details__summary-text">
+              I do not have their birth certificate
+            </span>
+          </summary>
+          <div class="govuk-details__text">
+            TBC
+          </div>
+        </details> -->
+
+        <div class="govuk-form-group">
+          <fieldset class="govuk-fieldset" role="group" aria-describedby="passport-issued-hint">
+            <label class="govuk-label" for="full-name">
+              Date of birth
+            </label>
+            <span id="passport-issued-hint" class="govuk-hint">
+              For example, 31 3 2011
+            </span>
+            <div class="govuk-date-input" id="passport-issued">
+              <div class="govuk-date-input__item">
+                <div class="govuk-form-group">
+                  <label class="govuk-label govuk-date-input__label" for="passport-issued-day">
+                    Day
+                  </label>
+                  <input class="govuk-input govuk-date-input__input govuk-input--width-2" id="passport-issued-day"
+                    name="passport-issued-day" type="number" pattern="[0-9]*">
+                </div>
+              </div>
+              <div class="govuk-date-input__item">
+                <div class="govuk-form-group">
+                  <label class="govuk-label govuk-date-input__label" for="passport-issued-month">
+                    Month
+                  </label>
+                  <input class="govuk-input govuk-date-input__input govuk-input--width-2" id="passport-issued-month"
+                    name="passport-issued-month" type="number" pattern="[0-9]*">
+                </div>
+              </div>
+              <div class="govuk-date-input__item">
+                <div class="govuk-form-group">
+                  <label class="govuk-label govuk-date-input__label" for="passport-issued-year">
+                    Year
+                  </label>
+                  <input class="govuk-input govuk-date-input__input govuk-input--width-4" id="passport-issued-year"
+                    name="passport-issued-year" type="number" pattern="[0-9]*">
+                </div>
+              </div>
+            </div>
+          </fieldset>
+        </div>
+
+        <div class="govuk-form-group">
+          <label class="govuk-label" for="full-name">
+            Gender
+          </label>
+          <span id="changed-name-hint" class="govuk-hint">
+            Enter their gender as it's written on their birth certificate.
+          </span>
+          <input class="govuk-input govuk-input--width-10" id="width-10" name="width-10" type="text">
+        </div>
+
+        <div class="govuk-form-group">
+          <label class="govuk-label" for="full-name">
+            Country of birth
+          </label>
+          <input class="govuk-input" id="full-name" name="full-name" type="text" autocomplete="name" spellcheck="false">
+        </div>
+
+        <!--<div class="govuk-form-group">
+          <label class="govuk-label" for="file-upload-1">
+            Upload their birth certificate
+          </label>
+          <span id="passport-issued-hint" class="govuk-hint">This must be the original certificate, not a copy from the
+            General Registrar Office.</span>
+          <input class="govuk-file-upload" id="file-upload-1" name="file-upload-1" type="file">
+        </div>
+
+        <div class="govuk-warning-text">
+          <span class="govuk-warning-text__icon" aria-hidden="true">!</span>
+          <strong class="govuk-warning-text__text">
+            You must also send the original birth certificate to:
+            <br>Family Court Building
+            <br>Main Road
+            <br>Southampton
+            <br>S1 8HE
+          </strong>
+        </div>
+        <!-->
+
+        <a href="step-1-b.html" class="govuk-button">Save and continue</a>
+        <a href="../task-list-2" class="govuk-button govuk-button--secondary">Save and return</a>
+
+      </div>
+    </div>
+  </main>
+</div>
+
+{% endblock %}
