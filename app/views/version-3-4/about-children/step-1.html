@@ -12,7 +12,7 @@ Apply to adopt a child
   <main class="govuk-main-wrapper " id="main-content" role="main">
     <div class="govuk-grid-row">
       <div class="govuk-grid-column-two-thirds">
-        <h2 class="govuk-heading-l">The child's birth certificate details</h2>
+        <h2 class="govuk-heading-l">Add the child's birth certificate details</h2>
 
 
         <div class="govuk-form-group">
@@ -42,7 +42,7 @@ Apply to adopt a child
               Date of birth
             </label>
             <span id="passport-issued-hint" class="govuk-hint">
-              For example, 31 3 2011
+              For example, 31 3 2011.
             </span>
             <div class="govuk-date-input" id="passport-issued">
               <div class="govuk-date-input__item">
@@ -75,6 +75,38 @@ Apply to adopt a child
             </div>
           </fieldset>
         </div>
+
+        <div class="govuk-form-group">
+          <fieldset class="govuk-fieldset" role="group" aria-describedby="passport-issued-hint">
+            <label class="govuk-label" for="full-name">
+              Time of birth, if known
+            </label>
+            <span id="passport-issued-hint" class="govuk-hint">
+              Use the 24 hour clock. For example, 22 48.
+            </span>
+            <div class="govuk-date-input" id="passport-issued">
+              <div class="govuk-date-input__item">
+                <div class="govuk-form-group">
+                  <label class="govuk-label govuk-date-input__label" for="passport-issued-day">
+                    Hour
+                  </label>
+                  <input class="govuk-input govuk-date-input__input govuk-input--width-2" id="passport-issued-day"
+                    name="passport-issued-day" type="number" pattern="[0-9]*">
+                </div>
+              </div>
+              <div class="govuk-date-input__item">
+                <div class="govuk-form-group">
+                  <label class="govuk-label govuk-date-input__label" for="passport-issued-month">
+                    Minute
+                  </label>
+                  <input class="govuk-input govuk-date-input__input govuk-input--width-2" id="passport-issued-month"
+                    name="passport-issued-month" type="number" pattern="[0-9]*">
+                </div>
+              </div>
+            </div>
+          </fieldset>
+        </div>
+
 
         <div class="govuk-form-group">
           <label class="govuk-label" for="full-name">
