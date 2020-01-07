@@ -1,0 +1,79 @@
+{% extends "layout-signed-out.html" %}
+
+{% block pageTitle %}
+Apply to adopt a child
+{% endblock %}
+
+{% block content %}
+
+<div class="govuk-width-container">
+
+  <div class="govuk-grid-row">
+    <div class="govuk-grid-column-one-half">
+      <h1 class="govuk-heading-l">Create an account or sign in</h1>
+
+      <br>
+      <br>
+
+      <h2 class="govuk-heading-m">Create an account</h2>
+
+      <div class="govuk-form-group">
+        <label class="govuk-label" for="width-10"><b>
+          First name</b>
+        </label>
+        <input class="govuk-input govuk-input--width-20" id="width-10" name="width-10" type="text">
+      </div>
+
+
+      <div class="govuk-form-group">
+        <label class="govuk-label" for="width-10"><b>
+          Last name</b>
+        </label>
+        <input class="govuk-input govuk-input--width-20" id="width-10" name="width-10" type="text">
+      </div>
+
+      <div class="govuk-form-group">
+        <label class="govuk-label" for="width-10"><b>
+          Email address</b>
+        </label>
+        <input class="govuk-input govuk-input--width-20" id="width-10" name="width-10" type="text">
+      </div>
+
+
+      <p>Read our<a href="#">privacy policy</a>and <a href="#">terms and conditions</a></p>
+
+
+      <a href="task-list" class="govuk-button">Continue</a>
+      <!--
+      <h2 class="govuk-heading-m"><a href="about-the-child/number-of-children">Version with No. of kids asked first</h2>
+      </a>-->
+
+
+<br>
+<br>
+<br>
+
+<details class="govuk-details" data-module="govuk-details">
+  <summary class="govuk-details__summary">
+    <span class="govuk-details__summary-text">
+      Is there a problem with this page?
+    </span>
+  </summary>
+  <div class="govuk-details__text">
+    We need to know your nationality so we can work out which elections you’re entitled to vote in. If you cannot provide your nationality, you’ll have to send copies of identity documents through the post.
+  </div>
+</details>
+
+    </div>
+
+      <div class="govuk-grid-column-one-half">
+        <p>govuk-grid-column-one-half</p>
+      </div>
+    </div>
+
+    </div>
+  </div>
+
+</div>
+
+{% endblock %}
