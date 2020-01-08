@@ -40,6 +40,9 @@ Task list
             Number of children in application
           </a>
         </span>
+        {% if data['number-of-children'] %}
+        <strong class="govuk-tag app-task-list__task-completed" id="eligibility-completed">Completed</strong>
+        {% endif %}
 
       </li>
 
@@ -50,6 +53,9 @@ Task list
             Your relationships
           </a>
         </span>
+        {% if data['your-relationships'] %}
+        <strong class="govuk-tag app-task-list__task-completed" id="eligibility-completed">Completed</strong>
+        {% endif %}
       </li>
       </ul>
 
