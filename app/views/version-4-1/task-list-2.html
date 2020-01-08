@@ -283,6 +283,9 @@ Task list
                 Financial aid
               </a>
             </span>
+            {% if data['finance'] %}
+            <strong class="govuk-tag app-task-list__task-completed" id="eligibility-completed">Completed</strong>
+            {% endif %}
           </li>
         </ul>
       </li>
