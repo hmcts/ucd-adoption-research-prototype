@@ -159,7 +159,11 @@ Task list
               <a href="about-you/step-2-2" aria-describedby="eligibility-completed">
                 Address and birth certificate details
               </a>
-              </a></span><br>
+              </a></span>
+              {% if data['your-name'] %}
+              <strong class="govuk-tag app-task-list__task-completed" id="eligibility-completed">Completed</strong>
+              {% endif %}
+              <br>
             <span id="changed-name-hint" class="govuk-hint">
               You'll need to upload your birth certificate and 2 pieces of photo ID.
             </span>
