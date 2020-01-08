@@ -17,63 +17,64 @@ Apply to adopt a child
         <p class="govuk-body-l">This information will appear on the adoption certificate, if your application is
           approved. </p>
 
+          <form action="../task-list-2" method="post" class="form">
 
-        <div class="govuk-form-group">
-          <fieldset class="govuk-fieldset" aria-describedby="how-contacted-conditional-hint">
-            <label class="govuk-label" for="full-name">
-              Do you want to change the child's name after adoption?
-            </label>
-            <span id="changed-name-hint" class="govuk-hint">For example, will they use your surname?</span>
-
-            <div class="govuk-radios govuk-radios--conditional" data-module="govuk-radios">
-              <div class="govuk-radios__item">
-                <input class="govuk-radios__input" id="how-contacted-conditional" name="how-contacted" type="radio"
-                  value="email" data-aria-controls="conditional-how-contacted-conditional">
-                <label class="govuk-label govuk-radios__label" for="how-contacted-conditional">
-                  Yes
+            <div class="govuk-form-group">
+              <fieldset class="govuk-fieldset" aria-describedby="how-contacted-conditional-hint">
+                <label class="govuk-label" for="full-name">
+                  Do you want to change the child's name after adoption?
                 </label>
+                <span id="changed-name-hint" class="govuk-hint">For example, will they use your surname?</span>
+
+                <div class="govuk-radios govuk-radios--conditional" data-module="govuk-radios">
+                  <div class="govuk-radios__item">
+                    <input class="govuk-radios__input" id="how-contacted-conditional" name="how-contacted" type="radio"
+                      value="email" data-aria-controls="conditional-how-contacted-conditional">
+                    <label class="govuk-label govuk-radios__label" for="how-contacted-conditional">
+                      Yes
+                    </label>
+                  </div>
+
+                  <div class="govuk-radios__item">
+                    <input class="govuk-radios__input" id="how-contacted-conditional-2" name="how-contacted" type="radio"
+                      value="phone" data-aria-controls="conditional-how-contacted-conditional-2">
+                    <label class="govuk-label govuk-radios__label" for="how-contacted-conditional-2">
+                      No
+                    </label>
+                  </div>
+
+
+                  <div
+                    class="govuk-radios__conditional govuk-radios__conditional--applicants govuk-radios__conditional--hidden"
+                    id="conditional-how-contacted-conditional">
+                    <div class="govuk-form-group">
+                      <label class="govuk-label" for="contact-by-email">
+                        Proposed new name
+                      </label>
+                      <span id="changed-name-hint" class="govuk-hint">
+                        Enter the full name, starting with first name.
+                      </span>
+                      <input class="govuk-input" id="full-name" name="full-name" type="text" autocomplete="name"
+                        spellcheck="false">
+                    </div>
+                  </div>
+                </fieldset>
               </div>
 
-              <div class="govuk-radios__item">
-                <input class="govuk-radios__input" id="how-contacted-conditional-2" name="how-contacted" type="radio"
-                  value="phone" data-aria-controls="conditional-how-contacted-conditional-2">
-                <label class="govuk-label govuk-radios__label" for="how-contacted-conditional-2">
-                  No
+              <div class="govuk-form-group">
+                <label class="govuk-label" for="occupation">
+                  What's your occupation?
                 </label>
+                <input class="govuk-input" name="occupation" type="text" autocomplete="name" spellcheck="false" value="{{ data['occupation'] }}">
               </div>
 
+            <!-- <a href="../task-list-2.html" class="govuk-button">Save and return</a> -->
+            <button class="govuk-button" data-module="govuk-button">Save and return</button>
 
-              <div
-                class="govuk-radios__conditional govuk-radios__conditional--applicants govuk-radios__conditional--hidden"
-                id="conditional-how-contacted-conditional">
-                <div class="govuk-form-group">
-                  <label class="govuk-label" for="contact-by-email">
-                    Proposed new name
-                  </label>
-                  <span id="changed-name-hint" class="govuk-hint">
-                    Enter the full name, starting with first name.
-                  </span>
-                  <input class="govuk-input" id="full-name" name="full-name" type="text" autocomplete="name"
-                    spellcheck="false">
-                </div>
-              </div>
-            </fieldset>
+          </form>
+
           </div>
-
-
-          <div class="govuk-form-group">
-            <label class="govuk-label" for="full-name">
-              What's your occupation?
-            </label>
-
-            <input class="govuk-input" id="full-name" name="full-name" type="text" autocomplete="name" spellcheck="false">
-          </div>
-
-      </div>
-    </div>
-
-
-    <a href="../task-list-2.html" class="govuk-button">Save and return</a>
+        </div>
 
   </main>
 </div>
