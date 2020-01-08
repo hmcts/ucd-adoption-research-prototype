@@ -68,10 +68,14 @@ Task list
               <a href="./about-children/step-1.html" aria-describedby="eligibility-completed">
                 Their birth certificate details
               </a></span>
+              {% if data['childs-name'] %}
+              <strong class="govuk-tag app-task-list__task-completed" id="eligibility-completed">Completed</strong>
+              {% endif %}
               <br>
             <span id="changed-name-hint" class="govuk-hint">
               You'll also need to upload their full birth certificate.
             </span>
+
           </li>
           <li class="app-task-list__item">
             <span class="app-task-list__task-name">
@@ -98,7 +102,7 @@ Task list
               {% endif %}
               <br>
               <span id="changed-name-hint" class="govuk-hint">
-                You will need to upload the placement order.
+                You will need to upload the child's placement order.
               </span>
           </li>
           <li class="app-task-list__item">
