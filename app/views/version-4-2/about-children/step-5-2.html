@@ -1,0 +1,57 @@
+{% extends "layout-signed-in.html" %}
+
+{% block pageTitle %}
+Apply to adopt a child
+{% endblock %}
+
+{% block content %}
+
+<div class="govuk-width-container">
+  <a href="#" class="govuk-back-link">Back</a>
+
+  <main class="govuk-main-wrapper " id="main-content" role="main">
+    <div class="govuk-grid-row">
+      <div class="govuk-grid-column-two-thirds">
+        <h2 class="govuk-heading-l">Wishes of the birth parents</h2>
+
+        <form action="../task-list-2" method="post" class="form">
+
+
+        <div class="govuk-form-group">
+          <fieldset class="govuk-fieldset" aria-describedby="how-contacted-conditional-hint">
+            <label class="govuk-label" for="full-name">
+              Would you follow any wishes the birth parents might have for the child's upbringing?
+            </label>
+            <span id="changed-name-hint" class="govuk-hint">
+              For example, any religious or cultural wishes.
+            </span>
+            <div class="govuk-radios govuk-radios--conditional" data-module="govuk-radios">
+              <div class="govuk-radios__item">
+                <input class="govuk-radios__input" id="how-contacted-conditional-gp" name="wishes" type="radio" value="yes" data-aria-controls="conditional-gp" {{ checked("wishes", "yes") }}>
+
+                <label class="govuk-label govuk-radios__label" for="how-contacted-conditional-gp">
+                  Yes
+                </label>
+              </div>
+
+              <div class="govuk-radios__item">
+                <input class="govuk-radios__input" id="conditional-how-contacted-condi" name="wishes" type="radio" value="no" data-aria-controls="conditional-how-contacted-condi" {{ checked("wishes", "no") }}>
+                <label class="govuk-label govuk-radios__label" for="conditional-how-contacted-condi">
+                  No
+                </label>
+              </div>
+
+            </div>
+          </fieldset>
+        </div>
+
+        <button class="govuk-button" data-module="govuk-button">Save and return</button>
+
+        </form>
+
+      </div>
+    </div>
+  </main>
+</div>
+
+{% endblock %}
