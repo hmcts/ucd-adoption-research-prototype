@@ -12934,6 +12934,7 @@ span.moj-header__link:hover {
   margin-bottom: 40px;
   list-style: none;
   padding-left: 0;
+  vertical-align: middle;
 }
 
 @media print {
