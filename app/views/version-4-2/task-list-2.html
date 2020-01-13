@@ -75,7 +75,19 @@ Task list
           <li class="app-task-list__item">
             <span class="app-task-list__task-name">
               <a href="about-you/step-2-2" aria-describedby="eligibility-completed">
-                Your address and birth certificate details
+                Your contact details
+              </a>
+              </a></span>
+            {% if data['your-name'] %}
+            <strong class="govuk-tag app-task-list__task-completed" id="eligibility-completed">Completed</strong>
+            {% endif %}
+            <br>
+
+          </li>
+          <li class="app-task-list__item">
+            <span class="app-task-list__task-name">
+              <a href="about-you/step-2" aria-describedby="eligibility-completed">
+                Your birth certificate details
               </a>
               </a></span>
             {% if data['your-name'] %}

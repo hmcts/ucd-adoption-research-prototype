@@ -12,67 +12,70 @@ Apply to adopt a child
   <main class="govuk-main-wrapper " id="main-content" role="main">
     <div class="govuk-grid-row">
       <div class="govuk-grid-column-two-thirds">
-        <h2 class="govuk-heading-l">Your relationship</h2>
+        <h2 class="govuk-heading-l">Add your relationship details</h2>
 
         <form action="../task-list-2" method="post" class="form">
 
-        <div class="govuk-form-group">
-          <fieldset class="govuk-fieldset" role="group" aria-describedby="passport-issued-hint">
+          <div class="govuk-form-group">
+            <fieldset class="govuk-fieldset" role="group" aria-describedby="passport-issued-hint">
               <label class="govuk-label" for="full-name">
                 When did you get married or enter into a civil partnership?
               </label>
-            <span id="passport-issued-hint" class="govuk-hint">
-              For example, 31 3 2011
+              <span id="passport-issued-hint" class="govuk-hint">
+                For example, 31 3 2011
+              </span>
+              <div class="govuk-date-input" id="passport-issued">
+                <div class="govuk-date-input__item">
+                  <div class="govuk-form-group">
+                    <label class="govuk-label govuk-date-input__label" for="passport-issued-day">
+                      Day
+                    </label>
+                    <input class="govuk-input govuk-date-input__input govuk-input--width-2" id="passport-issued-day"
+                      name="relationship" type="number" pattern="[0-9]*" value="{{ data['relationship'] }}">
+                  </div>
+                </div>
+                <div class="govuk-date-input__item">
+                  <div class="govuk-form-group">
+                    <label class="govuk-label govuk-date-input__label" for="passport-issued-month">
+                      Month
+                    </label>
+                    <input class="govuk-input govuk-date-input__input govuk-input--width-2" id="passport-issued-month"
+                      name="passport-issued-month" type="number" pattern="[0-9]*">
+                  </div>
+                </div>
+                <div class="govuk-date-input__item">
+                  <div class="govuk-form-group">
+                    <label class="govuk-label govuk-date-input__label" for="passport-issued-year">
+                      Year
+                    </label>
+                    <input class="govuk-input govuk-date-input__input govuk-input--width-4" id="passport-issued-year"
+                      name="passport-issued-year" type="number" pattern="[0-9]*">
+                  </div>
+                </div>
+              </div>
+            </fieldset>
+          </div>
+
+          <div class="govuk-form-group">
+            <label class="govuk-label" for="full-name">
+              Where was the ceremony?
+            </label>
+            <span id="changed-name-hint" class="govuk-hint">
+              Town or city
             </span>
-            <div class="govuk-date-input" id="passport-issued">
-              <div class="govuk-date-input__item">
-                <div class="govuk-form-group">
-                  <label class="govuk-label govuk-date-input__label" for="passport-issued-day">
-                    Day
-                  </label>
-                  <input class="govuk-input govuk-date-input__input govuk-input--width-2" id="passport-issued-day" name="relationship" type="number" pattern="[0-9]*" value="{{ data['relationship'] }}">
-                </div>
-              </div>
-              <div class="govuk-date-input__item">
-                <div class="govuk-form-group">
-                  <label class="govuk-label govuk-date-input__label" for="passport-issued-month">
-                    Month
-                  </label>
-                  <input class="govuk-input govuk-date-input__input govuk-input--width-2" id="passport-issued-month" name="passport-issued-month" type="number" pattern="[0-9]*">
-                </div>
-              </div>
-              <div class="govuk-date-input__item">
-                <div class="govuk-form-group">
-                  <label class="govuk-label govuk-date-input__label" for="passport-issued-year">
-                    Year
-                  </label>
-                  <input class="govuk-input govuk-date-input__input govuk-input--width-4" id="passport-issued-year" name="passport-issued-year" type="number" pattern="[0-9]*">
-                </div>
-              </div>
-            </div>
-          </fieldset>
-        </div>
-
-        <div class="govuk-form-group">
-          <label class="govuk-label" for="full-name">
-            Where was the ceremony?
-          </label>
-          <span id="changed-name-hint" class="govuk-hint">
-            Town or city
-          </span>
-          <input class="govuk-input govuk-input--width-20" id="width-20" name="width-20" type="text">
-        </div>
+            <input class="govuk-input govuk-input--width-20" id="width-20" name="width-20" type="text">
+          </div>
 
 
-        <div class="govuk-form-group">
-          <label class="govuk-label" for="file-upload-1">
-            Upload marriage or civil partnership certificate
-          </label>
-          <input class="govuk-file-upload" id="file-upload-1" name="file-upload-1" type="file">
-        </div>
+          <div class="govuk-form-group">
+            <label class="govuk-label" for="file-upload-1">
+              Upload marriage or civil partnership certificate
+            </label>
+            <input class="govuk-file-upload" id="file-upload-1" name="file-upload-1" type="file">
+          </div>
 
 
-        <button class="govuk-button" data-module="govuk-button">Save and return</button>
+          <button class="govuk-button" data-module="govuk-button">Save and return</button>
 
         </form>
 
