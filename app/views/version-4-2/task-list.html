@@ -53,6 +53,7 @@ Task list
             Your relationships
           </a>
         </span>
+
         {% if data['your-relationships'] %}
         <strong class="govuk-tag app-task-list__task-completed" id="eligibility-completed">Completed</strong>
         {% endif %}
@@ -60,29 +61,40 @@ Task list
       </ul>
 
 
-      <li class="app-task-list__item">
-        <span class="app-task-list__task-name">
-          <h2 class="app-task-list__section">
-            <span class="app-task-list__section-number">2. </span>Add the child's details
-          </h2>
-        </span>
-        <strong class="govuk-tag app-task-list__task-completed cant-start-tag" id="eligibility-completed">Can't start
-          yet</strong>
-      </li>
 
-      <br><br>
+
 
       <li class="app-task-list__item">
         <span class="app-task-list__task-name">
           <h2 class="app-task-list__section">
-            <span class="app-task-list__section-number">3. </span>Add your details
+            <span class="app-task-list__section-number">2. </span>Add your details
           </h2>
+          <strong class="govuk-tag app-task-list__task-completed cant-start-tag" id="eligibility-completed">Can't start
+            yet</strong>
+          <ul class="app-task-list__items">
+            <p class="govuk-body-l">You'll need to upload copies of your birth certificate and 2 pieces of photo ID.</p>
+          </ul>
         </span>
-        <strong class="govuk-tag app-task-list__task-completed cant-start-tag" id="eligibility-completed">Can't start
-          yet</strong>
+
+
       </li>
 
       <br><br>
+      <li class="app-task-list__item">
+        <span class="app-task-list__task-name">
+          <h2 class="app-task-list__section">
+            <span class="app-task-list__section-number">3. </span>Add the child's details
+          </h2>
+          <strong class="govuk-tag app-task-list__task-completed cant-start-tag" id="eligibility-completed">Can't start
+            yet</strong>
+          <ul class="app-task-list__items">
+            <p class="govuk-body-l">You'll need to work with your social worker to answer these sections.</p>
+        </span>
+        </ul>
+
+      </li>
+      <br>
+
 
       <li class="app-task-list__item">
         <span class="app-task-list__task-name">
@@ -92,19 +104,28 @@ Task list
         </span>
         <strong class="govuk-tag app-task-list__task-completed cant-start-tag" id="eligibility-completed">Can't start
           yet</strong>
+        </span>
+
+
       </li>
 
       <br><br>
 
-      <li class="app-task-list__item remove-bottom-line">
+      <li class="app-task-list__item">
         <span class="app-task-list__task-name">
           <h2 class="app-task-list__section">
             <span class="app-task-list__section-number">5. </span>Review application, pay and send
           </h2>
+          <strong class="govuk-tag app-task-list__task-completed cant-start-tag" id="eligibility-completed">Can't start
+            yet</strong>
+          <ul class="app-task-list__items">
+            <p class="govuk-body-l">You'll need your credit or debit card.</p>
         </span>
-        <strong class="govuk-tag app-task-list__task-completed cant-start-tag" id="eligibility-completed">Can't start
-          yet</strong>
+        </ui>
+
       </li>
+
+
 
 
     </ol>

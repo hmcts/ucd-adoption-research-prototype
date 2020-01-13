@@ -57,24 +57,112 @@ Task list
         </ul>
 
 
+
+
       <li>
         <h2 class="app-task-list__section">
-          <span class="app-task-list__section-number">2. </span>Add the child's details
+          <span class="app-task-list__section-number">2. </span>Add your details
+        </h2>
+
+        <ul class="app-task-list__items">
+          <div class="govuk-inset-text">
+            You'll need to upload copies of your birth certificate and 2 pieces of photo ID.</div>
+          <p class="govuk-body-l"></p>
+
+          <p class="govuk-body-l"></p>
+
+          <!-- <p><strong>First child</strong></p><-->
+          <li class="app-task-list__item">
+            <span class="app-task-list__task-name">
+              <a href="about-you/step-2-2" aria-describedby="eligibility-completed">
+                Your address and birth certificate details
+              </a>
+              </a></span>
+            {% if data['your-name'] %}
+            <strong class="govuk-tag app-task-list__task-completed" id="eligibility-completed">Completed</strong>
+            {% endif %}
+            <br>
+
+          </li>
+          <li class="app-task-list__item">
+            <span class="app-task-list__task-name">
+              <a href="about-you/step-1" aria-describedby="eligibility-completed">
+                Your relationship
+              </a>
+            </span>
+            {% if data['relationship'] %}
+            <strong class="govuk-tag app-task-list__task-completed" id="eligibility-completed">Completed</strong>
+            {% endif %}
+          </li>
+          <!--<p><strong>First applicant</strong></p><-->
+
+
+          <li class="app-task-list__item">
+            <span class="app-task-list__task-name">
+              <a href="about-you/step-4" aria-describedby="eligibility-completed">
+                Your education and occupation
+              </a>
+            </span>
+            {% if data['employment-history'] %}
+            <strong class="govuk-tag app-task-list__task-completed" id="eligibility-completed">Completed</strong>
+            {% endif %}
+          </li>
+          <li class="app-task-list__item">
+            <span class="app-task-list__task-name">
+              <a href="about-you/step-5" aria-describedby="eligibility-completed">
+                Other people in your life
+              </a>
+            </span>
+            {% if data['other-people'] %}
+            <strong class="govuk-tag app-task-list__task-completed" id="eligibility-completed">Completed</strong>
+            {% endif %}
+          </li>
+          <li class="app-task-list__item">
+            <span class="app-task-list__task-name">
+              <a href="about-you/step-6" aria-describedby="eligibility-completed">
+                Your experience with other children
+              </a>
+            </span>
+            {% if data['experience-children'] %}
+            <strong class="govuk-tag app-task-list__task-completed" id="eligibility-completed">Completed</strong>
+            {% endif %}
+          </li>
+          <li class="app-task-list__item">
+            <span class="app-task-list__task-name">
+              <a href="about-you/step-7" aria-describedby="eligibility-completed">
+                Your reasons for applying and hopes for the child
+              </a>
+            </span>
+            {% if data['childs-feelings'] %}
+            <strong class="govuk-tag app-task-list__task-completed" id="eligibility-completed">Completed</strong>
+            {% endif %}
+          </li>
+        </ul>
+      </li>
+
+
+      <li>
+        <h2 class="app-task-list__section">
+          <span class="app-task-list__section-number">3. </span>Add the child's details
         </h2>
         <ul class="app-task-list__items">
+          <div class="govuk-inset-text">
+            You'll need to work with your social worker to answer these sections and upload the
+            child's birth certificate. </div>
+
+          <p class="govuk-body-l"></p>
+
           <!-- <p><strong>First child</strong></p><-->
           <li class="app-task-list__item">
             <span class="app-task-list__task-name">
               <a href="./about-children/step-1.html" aria-describedby="eligibility-completed">
                 Their birth certificate details
               </a></span>
-              {% if data['childs-name'] %}
-              <strong class="govuk-tag app-task-list__task-completed" id="eligibility-completed">Completed</strong>
-              {% endif %}
-              <br>
-            <span id="changed-name-hint" class="govuk-hint">
-              You'll also need to upload their full birth certificate.
-            </span>
+            {% if data['childs-name'] %}
+            <strong class="govuk-tag app-task-list__task-completed" id="eligibility-completed">Completed</strong>
+            {% endif %}
+            <br>
+
 
           </li>
           <li class="app-task-list__item">
@@ -83,29 +171,25 @@ Task list
                 Adoption certificate details
               </a></span>
 
-          {% if data['occupation'] %}
-          <strong class="govuk-tag app-task-list__task-completed" id="eligibility-completed">Completed</strong>
-          {% endif %}
+            {% if data['occupation'] %}
+            <strong class="govuk-tag app-task-list__task-completed" id="eligibility-completed">Completed</strong>
+            {% endif %}
 
-              <br>
-            <span id="changed-name-hint" class="govuk-hint">
-              Add information for the adoption certificate, if your application is approved.
-            </span>
+            <br>
+
           </li>
           <li class="app-task-list__item">
             <span class="app-task-list__task-name">
               <a href="./about-children/step-1-3.html" aria-describedby="eligibility-completed">
                 Their history with you
               </a></span>
-              {% if data['date-placed'] %}
-              <strong class="govuk-tag app-task-list__task-completed" id="eligibility-completed">Completed</strong>
-              {% endif %}
-              <br>
-              <span id="changed-name-hint" class="govuk-hint">
-                You will need to upload the child's placement order.
-              </span>
+            {% if data['date-placed'] %}
+            <strong class="govuk-tag app-task-list__task-completed" id="eligibility-completed">Completed</strong>
+            {% endif %}
+            <br>
+
           </li>
-         
+
           <li class="app-task-list__item">
             <span class="app-task-list__task-name">
               <a href="./about-children/step-3.html" aria-describedby="eligibility-completed">
@@ -133,83 +217,6 @@ Task list
               </a>
             </span>
             {% if data['wishes'] %}
-            <strong class="govuk-tag app-task-list__task-completed" id="eligibility-completed">Completed</strong>
-            {% endif %}
-          </li>
-        </ul>
-      </li>
-
-
-      <li>
-        <h2 class="app-task-list__section">
-          <span class="app-task-list__section-number">3. </span>Add your details
-        </h2>
-        <ul class="app-task-list__items">
-          <!-- <p><strong>First child</strong></p><-->
-          <li class="app-task-list__item">
-            <span class="app-task-list__task-name">
-              <a href="about-you/step-2-2" aria-describedby="eligibility-completed">
-                Address and birth certificate details
-              </a>
-              </a></span>
-              {% if data['your-name'] %}
-              <strong class="govuk-tag app-task-list__task-completed" id="eligibility-completed">Completed</strong>
-              {% endif %}
-              <br>
-            <span id="changed-name-hint" class="govuk-hint">
-              You'll need to upload your birth certificate and 2 pieces of photo ID.
-            </span>
-          </li>
-          <li class="app-task-list__item">
-            <span class="app-task-list__task-name">
-              <a href="about-you/step-1" aria-describedby="eligibility-completed">
-                Your relationship
-              </a>
-            </span>
-            {% if data['relationship'] %}
-            <strong class="govuk-tag app-task-list__task-completed" id="eligibility-completed">Completed</strong>
-            {% endif %}
-          </li>
-          <!--<p><strong>First applicant</strong></p><-->
-
-          
-          <li class="app-task-list__item">
-            <span class="app-task-list__task-name">
-              <a href="about-you/step-4" aria-describedby="eligibility-completed">
-                Education and occupation
-              </a>
-            </span>
-            {% if data['employment-history'] %}
-            <strong class="govuk-tag app-task-list__task-completed" id="eligibility-completed">Completed</strong>
-            {% endif %}
-          </li>
-          <li class="app-task-list__item">
-            <span class="app-task-list__task-name">
-              <a href="about-you/step-5" aria-describedby="eligibility-completed">
-                Other people in your life
-              </a>
-            </span>
-            {% if data['other-people'] %}
-            <strong class="govuk-tag app-task-list__task-completed" id="eligibility-completed">Completed</strong>
-            {% endif %}
-          </li>
-          <li class="app-task-list__item">
-            <span class="app-task-list__task-name">
-              <a href="about-you/step-6" aria-describedby="eligibility-completed">
-                Experience with other children
-              </a>
-            </span>
-            {% if data['experience-children'] %}
-            <strong class="govuk-tag app-task-list__task-completed" id="eligibility-completed">Completed</strong>
-            {% endif %}
-          </li>
-          <li class="app-task-list__item">
-            <span class="app-task-list__task-name">
-              <a href="about-you/step-7" aria-describedby="eligibility-completed">
-                Reasons for applying and hopes for the child
-              </a>
-            </span>
-            {% if data['childs-feelings'] %}
             <strong class="govuk-tag app-task-list__task-completed" id="eligibility-completed">Completed</strong>
             {% endif %}
           </li>
@@ -260,6 +267,10 @@ Task list
           <span class="app-task-list__section-number">5. </span>Review application, pay and send
         </h2>
         <ul class="app-task-list__items">
+          <div class="govuk-inset-text">
+            You'll need your credit or debit card. </div>
+          <p class="govuk-body-l"></p>
+
           <li class="app-task-list__item">
             <span class="app-task-list__task-name">
               <a href="check-your-answers.html">
