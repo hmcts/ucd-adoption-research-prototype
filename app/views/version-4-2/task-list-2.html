@@ -96,16 +96,7 @@ Task list
             <br>
 
           </li>
-          <li class="app-task-list__item">
-            <span class="app-task-list__task-name">
-              <a href="about-you/step-1" aria-describedby="eligibility-completed">
-                Your relationship
-              </a>
-            </span>
-            {% if data['relationship'] %}
-            <strong class="govuk-tag app-task-list__task-completed" id="eligibility-completed">Completed</strong>
-            {% endif %}
-          </li>
+
           <!--<p><strong>First applicant</strong></p><-->
 
 
@@ -119,6 +110,18 @@ Task list
             <strong class="govuk-tag app-task-list__task-completed" id="eligibility-completed">Completed</strong>
             {% endif %}
           </li>
+
+          <li class="app-task-list__item">
+            <span class="app-task-list__task-name">
+              <a href="about-you/step-1" aria-describedby="eligibility-completed">
+                Your relationship
+              </a>
+            </span>
+            {% if data['relationship'] %}
+            <strong class="govuk-tag app-task-list__task-completed" id="eligibility-completed">Completed</strong>
+            {% endif %}
+          </li>
+
           <li class="app-task-list__item">
             <span class="app-task-list__task-name">
               <a href="about-you/step-5" aria-describedby="eligibility-completed">
@@ -142,7 +145,7 @@ Task list
           <li class="app-task-list__item">
             <span class="app-task-list__task-name">
               <a href="about-you/step-7" aria-describedby="eligibility-completed">
-                Your reasons for applying and hopes for the child
+                Why you want to adopt this child
               </a>
             </span>
             {% if data['childs-feelings'] %}
