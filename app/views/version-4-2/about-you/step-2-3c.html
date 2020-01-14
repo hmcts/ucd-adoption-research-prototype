@@ -14,6 +14,8 @@ Apply to adopt a child
       <div class="govuk-grid-column-two-thirds">
         <h2 class="govuk-heading-l">How should we contact you?</h2>
 
+
+        <form action="../task-list-2" method="post" class="form">
         <div class="govuk-form-group">
 
           <fieldset class="govuk-fieldset" role="group" aria-describedby="dob-hint">
@@ -26,17 +28,17 @@ Apply to adopt a child
             </span>
             <div class="govuk-checkboxes">
               <div class="govuk-checkboxes__item">
-                <input class="govuk-checkboxes__input" id="waste" name="waste" type="checkbox" value="carcasses">
+                <input class="govuk-checkboxes__input" id="waste" name="your-name2" type="checkbox" value="phone" {{ checked("your-name2", "phone") }}> 
                 <label class="govuk-label govuk-checkboxes__label" for="waste">
                   Phone – calls and text </label>
               </div>
               <div class="govuk-checkboxes__item">
-                <input class="govuk-checkboxes__input" id="waste" name="waste" type="checkbox" value="carcasses">
+                <input class="govuk-checkboxes__input" id="waste" name="your-name2" type="checkbox" value="email" {{ checked("your-name2", "email") }}> 
                 <label class="govuk-label govuk-checkboxes__label" for="waste">
                   Email </label>
               </div>
               <div class="govuk-checkboxes__item">
-                <input class="govuk-checkboxes__input" id="waste-2" name="waste" type="checkbox" value="mines">
+                <input class="govuk-checkboxes__input" id="waste-2" name="your-name2" type="checkbox" value="post" {{ checked("your-name2", "post") }}> 
                 <label class="govuk-label govuk-checkboxes__label" for="waste-2">
                   By post </label>
               </div>
@@ -45,8 +47,9 @@ Apply to adopt a child
           </fieldset>
         </div>
 
-        <a href="../task-list-2" class="govuk-button">Save and return</a>
+        <button class="govuk-button" data-module="govuk-button">Save and return</button>
 
+        </form>
       </div>
     </div>
   </main>
