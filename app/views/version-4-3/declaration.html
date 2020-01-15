@@ -1,0 +1,45 @@
+{% extends "layout-signed-in.html" %}
+
+{% block pageTitle %}
+Apply to adopt a child
+{% endblock %}
+
+{% block content %}
+
+<div class="govuk-width-container">
+
+  <div class="govuk-grid-row">
+    <div class="govuk-grid-column-two-thirds">
+      <a href="#" class="govuk-back-link">Back</a>
+      <br><br>
+      <h1 class="govuk-heading-xl">Declaration</h1>
+
+      <p class="govuk-body">By continuing you agree that:</p>
+      <ul class="govuk-list govuk-list--bullet">
+        <li>the information you've given is correct</li>
+        <li>you've read and accept the <a href="#">terms and conditions</a></li>
+
+
+      </ul>
+
+      <div class="govuk-warning-text">
+        <span class="govuk-warning-text__icon" aria-hidden="true">!</span>
+        <strong class="govuk-warning-text__text">
+          <span class="govuk-warning-text__assistive">Warning</span>
+          You could be in contempt of court if you send information you know to be false.
+        </strong>
+      </div>
+
+      <br><br>
+
+      <a href="payment" class="govuk-button">Agree and continue</a>
+
+
+
+    </div>
+
+  </div>
+
+</div>
+
+{% endblock %}

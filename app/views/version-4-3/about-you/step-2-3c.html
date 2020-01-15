@@ -1,0 +1,58 @@
+{% extends "layout-signed-in.html" %}
+
+{% block pageTitle %}
+Apply to adopt a child
+{% endblock %}
+
+{% block content %}
+
+<div class="govuk-width-container">
+  <a href="#" class="govuk-back-link">Back</a>
+
+  <main class="govuk-main-wrapper " id="main-content" role="main">
+    <div class="govuk-grid-row">
+      <div class="govuk-grid-column-two-thirds">
+        <h2 class="govuk-heading-l">How should we contact you?</h2>
+
+
+        <form action="../task-list-2" method="post" class="form">
+        <div class="govuk-form-group">
+
+          <fieldset class="govuk-fieldset" role="group" aria-describedby="dob-hint">
+
+
+
+
+            <span id="waste-hint" class="govuk-hint">
+              Select all that apply.
+            </span>
+            <div class="govuk-checkboxes">
+              <div class="govuk-checkboxes__item">
+                <input class="govuk-checkboxes__input" id="waste" name="your-name2" type="checkbox" value="phone" {{ checked("your-name2", "phone") }}> 
+                <label class="govuk-label govuk-checkboxes__label" for="waste">
+                  Phone – calls and text </label>
+              </div>
+              <div class="govuk-checkboxes__item">
+                <input class="govuk-checkboxes__input" id="waste" name="your-name2" type="checkbox" value="email" {{ checked("your-name2", "email") }}> 
+                <label class="govuk-label govuk-checkboxes__label" for="waste">
+                  Email </label>
+              </div>
+              <div class="govuk-checkboxes__item">
+                <input class="govuk-checkboxes__input" id="waste-2" name="your-name2" type="checkbox" value="post" {{ checked("your-name2", "post") }}> 
+                <label class="govuk-label govuk-checkboxes__label" for="waste-2">
+                  By post </label>
+              </div>
+
+            </div>
+          </fieldset>
+        </div>
+
+        <button class="govuk-button" data-module="govuk-button">Save and return</button>
+
+        </form>
+      </div>
+    </div>
+  </main>
+</div>
+
+{% endblock %}
