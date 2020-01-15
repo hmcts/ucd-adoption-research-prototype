@@ -102,9 +102,9 @@ Task list
 
           <li class="app-task-list__item">
             <span class="app-task-list__task-name">
-              <a href="about-you/step-4" aria-describedby="eligibility-completed">
-                Your education and work history
-              </a>
+              <a href="about-you/step-4-3.html" aria-describedby="eligibility-completed">
+                Your current job
+              </a
             </span>
             {% if data['employment-history'] %}
             <strong class="govuk-tag app-task-list__task-completed" id="eligibility-completed">Completed</strong>
@@ -118,37 +118,6 @@ Task list
               </a>
             </span>
             {% if data['relationship'] %}
-            <strong class="govuk-tag app-task-list__task-completed" id="eligibility-completed">Completed</strong>
-            {% endif %}
-          </li>
-
-          <li class="app-task-list__item">
-            <span class="app-task-list__task-name">
-              <a href="about-you/step-5" aria-describedby="eligibility-completed">
-                Other people in your life
-              </a>
-            </span>
-            {% if data['other-people'] %}
-            <strong class="govuk-tag app-task-list__task-completed" id="eligibility-completed">Completed</strong>
-            {% endif %}
-          </li>
-          <li class="app-task-list__item">
-            <span class="app-task-list__task-name">
-              <a href="about-you/step-6" aria-describedby="eligibility-completed">
-                Your experience with other children
-              </a>
-            </span>
-            {% if data['experience-children'] %}
-            <strong class="govuk-tag app-task-list__task-completed" id="eligibility-completed">Completed</strong>
-            {% endif %}
-          </li>
-          <li class="app-task-list__item">
-            <span class="app-task-list__task-name">
-              <a href="about-you/step-7" aria-describedby="eligibility-completed">
-                Why you want to adopt this child
-              </a>
-            </span>
-            {% if data['childs-feelings'] %}
             <strong class="govuk-tag app-task-list__task-completed" id="eligibility-completed">Completed</strong>
             {% endif %}
           </li>
@@ -203,27 +172,6 @@ Task list
             {% endif %}
             <br>
 
-          </li>
-
-          <li class="app-task-list__item">
-            <span class="app-task-list__task-name">
-              <a href="./about-children/step-3.html" aria-describedby="eligibility-completed">
-                Their health
-              </a>
-            </span>
-            {% if data['health-issues'] %}
-            <strong class="govuk-tag app-task-list__task-completed" id="eligibility-completed">Completed</strong>
-            {% endif %}
-          </li>
-          <li class="app-task-list__item">
-            <span class="app-task-list__task-name">
-              <a href="./about-children/step-4-2.html" aria-describedby="eligibility-completed">
-                Their education
-              </a>
-            </span>
-            {% if data['education'] %}
-            <strong class="govuk-tag app-task-list__task-completed" id="eligibility-completed">Completed</strong>
-            {% endif %}
           </li>
           <li class="app-task-list__item">
             <span class="app-task-list__task-name">
