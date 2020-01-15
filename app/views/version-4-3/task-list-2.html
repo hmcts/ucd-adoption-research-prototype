@@ -104,8 +104,8 @@ Task list
             <span class="app-task-list__task-name">
               <a href="about-you/step-4-3.html" aria-describedby="eligibility-completed">
                 Your current job
-              </a
-            </span>
+              </a>
+              </span>
             {% if data['employment-history'] %}
             <strong class="govuk-tag app-task-list__task-completed" id="eligibility-completed">Completed</strong>
             {% endif %}
@@ -185,16 +185,6 @@ Task list
           </li>
           <li class="app-task-list__item">
             <span class="app-task-list__task-name">
-              <a href="./about-children/step-6.html" aria-describedby="eligibility-completed">
-                Their siblings or half-siblings
-              </a>
-            </span>
-            {% if data['wishes2'] %}
-            <strong class="govuk-tag app-task-list__task-completed" id="eligibility-completed">Completed</strong>
-            {% endif %}
-          </li>
-          <li class="app-task-list__item">
-            <span class="app-task-list__task-name">
               <a href="./about-children/step-7.html" aria-describedby="eligibility-completed">
                 Any previous court orders
               </a>
@@ -203,6 +193,16 @@ Task list
             <strong class="govuk-tag app-task-list__task-completed" id="eligibility-completed">Completed</strong>
             {% endif %}
           </li>
+          <li class="app-task-list__item">
+              <span class="app-task-list__task-name">
+                <a href="./about-children/step-6.html" aria-describedby="eligibility-completed">
+                  Their siblings or half-siblings
+                </a>
+              </span>
+              {% if data['wishes2'] %}
+              <strong class="govuk-tag app-task-list__task-completed" id="eligibility-completed">Completed</strong>
+              {% endif %}
+            </li>
         </ul>
       </li>
 
