@@ -97,6 +97,39 @@ Task list
 
           </li>
 
+          <li class="app-task-list__item">
+              <span class="app-task-list__task-name">
+                <a href="about-you/step-2-4" aria-describedby="eligibility-completed">
+                  Upload photo ID
+                </a>
+                </a></span>
+              {% if data['your-name'] %}
+              <strong class="govuk-tag app-task-list__task-completed" id="eligibility-completed">Completed</strong>
+              {% endif %}
+              <br>
+  
+            </li>
+
+
+            <li class="app-task-list__item">
+                <span class="app-task-list__task-name">
+                  <a href="about-you/step-2" aria-describedby="eligibility-completed">
+                    Upload photo of you (optional)
+                  </a>
+                  </a></span>
+                {% if data['your-name'] %}
+                <strong class="govuk-tag app-task-list__task-completed" id="eligibility-completed">Completed</strong>
+                {% endif %}
+                <br>
+    
+              </li>
+
+
+
+
+
+
+
           <!--<p><strong>First applicant</strong></p><-->
 
 
@@ -146,6 +179,24 @@ Task list
             <strong class="govuk-tag app-task-list__task-completed" id="eligibility-completed">Completed</strong>
             {% endif %}
             <br>
+
+
+
+
+            <li class="app-task-list__item">
+                <span class="app-task-list__task-name">
+                  <a href="about-you/step-2-4.html" aria-describedby="eligibility-completed">
+                    Upload photo of child (optional)
+                  </a>
+                  </a></span>
+                {% if data['your-name'] %}
+                <strong class="govuk-tag app-task-list__task-completed" id="eligibility-completed">Completed</strong>
+                {% endif %}
+                <br>
+    
+              </li>
+
+
 
 
           </li>
