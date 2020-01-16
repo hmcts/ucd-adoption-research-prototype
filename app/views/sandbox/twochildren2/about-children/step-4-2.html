@@ -1,0 +1,102 @@
+{% extends "layout-signed-in.html" %}
+
+{% block pageTitle %}
+Apply to adopt a child
+{% endblock %}
+
+{% block content %}
+
+<div class="govuk-width-container">
+  <a href="#" class="govuk-back-link">Back</a>
+
+  <main class="govuk-main-wrapper " id="main-content" role="main">
+    <div class="govuk-grid-row">
+      <div class="govuk-grid-column-two-thirds">
+        <h2 class="govuk-heading-l">Their education</h2>
+
+        <form action="../task-list-2" method="post" class="form">
+        <div class="govuk-form-group">
+          <fieldset class="govuk-fieldset" aria-describedby="how-contacted-conditional-hint">
+            <label class="govuk-label" for="full-name">
+              Does the child go to school?
+            </label>
+            <span id="changed-name-hint" class="govuk-hint">
+              This includes pre-school or nursery
+            </span>
+
+            <div class="govuk-radios govuk-radios--conditional" data-module="govuk-radios">
+              <div class="govuk-radios__item">
+                <input class="govuk-radios__input" id="how-contacted-conditional-gp" name="education" 
+                type="radio" value="yes" data-aria-controls="conditional-gp" {{ checked("education", "yes") }}>
+                <label class="govuk-label govuk-radios__label" for="how-contacted-conditional-gp">
+                  Yes
+                </label>
+              </div>
+
+              <div class="govuk-radios__item">
+                <input class="govuk-radios__input" id="conditional-how-contacted-condi" name="education" 
+                type="radio" value="no" data-aria-controls="conditional-how-contacted-condi" {{ checked("education", "no") }}> 
+                <label class="govuk-label govuk-radios__label" for="conditional-how-contacted-condi" >
+                  No
+                </label>
+              </div>
+
+
+              <div class="govuk-radios__conditional govuk-radios__conditional--applicants govuk-radios__conditional--hidden" id="conditional-gp">
+                <div class="govuk-form-group">
+                  <label class="govuk-label" for="more-detail">
+                    Add their school's details
+                  </label>
+                  <br>
+                  <div class="govuk-form-group">
+                    <label class="govuk-label" for="address-town">
+                      Building name or number
+                    </label>
+                    <input class="govuk-input" id="event-name" name="event-name" type="text">
+                  </div>
+
+                  <div class="govuk-form-group">
+                    <label class="govuk-label" for="address-town">
+                      Street
+                    </label>
+                    <input class="govuk-input govuk-!-width-two-thirds" id="address-town" name="address-town" type="text">
+                  </div>
+
+                  <div class="govuk-form-group">
+                    <label class="govuk-label" for="address-town">
+                      Town or city
+                    </label>
+                    <input class="govuk-input govuk-!-width-two-thirds" id="address-town" name="address-town" type="text">
+                  </div>
+
+                  <div class="govuk-form-group">
+                    <label class="govuk-label" for="address-county">
+                      County
+                    </label>
+                    <input class="govuk-input govuk-!-width-two-thirds" id="address-county" name="address-county" type="text">
+                  </div>
+
+                  <div class="govuk-form-group">
+                    <label class="govuk-label" for="address-postcode">
+                      Postcode
+                    </label>
+                    <input class="govuk-input govuk-input--width-10" id="address-postcode" name="address-postcode" type="text">
+                  </div>
+
+
+                </div>
+              </div>
+
+            </div>
+          </fieldset>
+        </div>
+
+        <button class="govuk-button" data-module="govuk-button">Save and return</button>
+
+      </form>
+      </div>
+    </div>
+  </main>
+</div>
+
+{% endblock %}

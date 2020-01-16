@@ -1,0 +1,74 @@
+{% extends "layout-signed-in.html" %}
+
+{% block pageTitle %}
+Apply to adopt a child
+{% endblock %}
+
+{% block content %}
+
+<div class="govuk-width-container">
+  <a href="#" class="govuk-back-link">Back</a>
+
+  <main class="govuk-main-wrapper " id="main-content" role="main">
+    <div class="govuk-grid-row">
+      <div class="govuk-grid-column-two-thirds">
+        <h2 class="govuk-heading-l">How many children are you applying to adopt?</h2>
+
+        <form action="../task-list" method="post" class="form">
+
+        <div class="govuk-form-group">
+          <fieldset class="govuk-fieldset" role="group" aria-describedby="passport-issued-hint">
+            <label class="govuk-label" for="full-name">
+              <!-- <label class="govuk-label" for="full-name">
+                How many children are you applying to adopt?
+              </label><-->
+              <div class="govuk-date-input" id="passport-issued">
+                <div class="govuk-date-input__item">
+
+                  <div class="govuk-date-input__item">
+                    <div class="govuk-form-group">
+                      <input class="govuk-input govuk-date-input__input govuk-input--width-4" id="passport-issued-year" placeholder="2"
+                        name="number-of-children" type="number" pattern="[0-9]*" value="{{ data['number-of-children'] }}">
+                    </div>
+                  </div>
+                </div>
+          </fieldset>
+        </div>
+
+
+        <h1 class="govuk-heading-l">
+            Are they siblings or half-siblings?
+          </h1>
+          <div class="govuk-form-group">
+            <fieldset class="govuk-fieldset" aria-describedby="how-contacted-conditional-hint">
+              <div class="govuk-radios govuk-radios--conditional" data-module="govuk-radios">
+                <div class="govuk-radios__item">
+                  <input class="govuk-radios__input" id="how-contacted-conditional" name="how-contacted" type="radio"
+                    value="email" data-aria-controls="judge-conditional-yes">
+                  <label class="govuk-label govuk-radios__label" for="how-contacted-conditional">
+                    Yes
+                  </label>
+                </div>
+    
+                <div class="govuk-radios__item">
+                  <input class="govuk-radios__input" id="how-contacted-conditional-2" name="how-contacted" type="radio"
+                    value="phone" data-aria-controls="judge-conditional-no">
+                  <label class="govuk-label govuk-radios__label" for="how-contacted-conditional-2">
+                    No
+                  </label>
+                </div>
+
+
+
+<br><br>
+
+        <button class="govuk-button" data-module="govuk-button">Save and return</button>
+
+        </form>
+
+      </div>
+    </div>
+  </main>
+</div>
+
+{% endblock %}
