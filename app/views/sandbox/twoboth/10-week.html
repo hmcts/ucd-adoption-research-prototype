@@ -1,0 +1,108 @@
+{% extends "layout-signed-in.html" %}
+
+{% block pageTitle %}
+Apply to adopt a child
+{% endblock %}
+
+{% block content %}
+<div class="govuk-width-container">
+  <a href="#" class="govuk-back-link">Back</a>
+  <div class="govuk-grid-row">
+    <div class="govuk-grid-column-two-thirds">
+      <!---<span class="govuk-caption-l">Review application, pay and send</span><-->
+      <h2 class="govuk-heading-l">
+        Languages spoken
+      </h2>
+
+      <div class="govuk-form-group">
+        <fieldset class="govuk-fieldset" aria-describedby="how-contacted-conditional-hint">
+          <legend class="govuk-fieldset__legend govuk-fieldset__legend--m">
+            <label class="govuk-label govuk-label--m" for="passport-number">
+              Has the child lived with you for 10 weeks?</label>
+          </legend>
+
+          <div class="govuk-radios govuk-radios--conditional" data-module="govuk-radios">
+            <div class="govuk-radios__item">
+              <input class="govuk-radios__input" id="how-contacted-conditional" name="how-contacted" type="radio"
+                value="email" data-aria-controls="judge-conditional-yes">
+              <label class="govuk-label govuk-radios__label" for="how-contacted-conditional">
+                Yes
+              </label>
+            </div>
+
+            <div class="govuk-radios__item">
+              <input class="govuk-radios__input" id="how-contacted-conditional-2" name="how-contacted" type="radio"
+                value="phone" data-aria-controls="judge-conditional-no">
+              <label class="govuk-label govuk-radios__label" for="how-contacted-conditional-2">
+                No
+              </label>
+            </div>
+
+            <div
+              class="govuk-radios__conditional govuk-radios__conditional--applicants govuk-radios__conditional--hidden"
+              id="judge-conditional-yes">
+              <div class="govuk-form-group">
+                <label class="govuk-label govuk-label--m" for="passport-number">
+                  When did they move in?
+                </label>
+                <fieldset class="govuk-fieldset" role="group" aria-describedby="dob-hint">
+                  <span id="expiry-hint" class="govuk-hint">
+                    For example, 31 3 2011
+                  </span>
+                  <div class="govuk-date-input__item">
+                    <div class="govuk-form-group">
+                      <label class="govuk-label govuk-date-input__label" for="expiry-day">
+                        Day
+                      </label>
+                      <input class="govuk-input govuk-date-input__input govuk-input--width-2" id="expiry-day"
+                        name="expiry-day" type="number" pattern="[0-9]*">
+                    </div>
+                  </div>
+                  <div class="govuk-date-input__item">
+                    <div class="govuk-form-group">
+                      <label class="govuk-label govuk-date-input__label" for="expiry-month">
+                        Month
+                      </label>
+                      <input class="govuk-input govuk-date-input__input govuk-input--width-2" id="expiry-month"
+                        name="expiry-month" type="number" pattern="[0-9]*">
+                    </div>
+                  </div>
+                  <div class="govuk-date-input__item">
+                    <div class="govuk-form-group">
+                      <label class="govuk-label govuk-date-input__label" for="expiry-year">
+                        Year
+                      </label>
+                      <input class="govuk-input govuk-date-input__input govuk-input--width-4" id="expiry-year"
+                        name="expiry-year" type="number" pattern="[0-9]*">
+                    </div>
+                  </div>
+
+                </fieldset>
+
+              </div>
+            </div>
+
+            <div
+              class="govuk-radios__conditional govuk-radios__conditional--applicants govuk-radios__conditional--hidden"
+              id="judge-conditional-no">
+              <div class="govuk-inset-text">
+                You can not send your application until the child has been living with you for 10 weeks.
+              </div>
+            </div>
+          </div>
+
+          <br>
+
+          <a href="check-your-answers" class="govuk-button">Save and continue</a>
+          <a href="../task-list-2" class="govuk-button govuk-button--secondary">Save and return</a>
+
+
+
+      </div>
+      </main>
+
+
+
+
+
+      {% endblock %}
