@@ -157,9 +157,12 @@ Task list
         </h2>
         <ul class="app-task-list__items">
           <div class="govuk-inset-text">
-            You'll need to work with your social worker on this section. </p>
-            <p> You'll also need to upload the child's
-              long-form birth certificate.</p>
+            <p class="govuk-body">You'll need to work with your social worker or adoption agency to answer these
+              questions, but it's important the answers come from you.</p>
+            <p class="govuk-body">This is because, if your application is successful, <a href="PR">'parental
+                responsibility'</a> will
+              permanently transfer from
+              the birth parents to you.
           </div>
 
           <p class="govuk-body-l"></p>
@@ -178,7 +181,7 @@ Task list
 
 
 
-          <li class="app-task-list__item">
+            <!--<li class="app-task-list__item">
             <span class="app-task-list__task-name">
               <a href="about-children/step-2-4.html" aria-describedby="eligibility-completed">
                 Upload their photo (optional)
@@ -189,77 +192,77 @@ Task list
             {% endif %}
             <br>
 
+          </li><-->
+
+
+
+
           </li>
+          <li class="app-task-list__item">
+            <span class="app-task-list__task-name">
+              <a href="./about-children/step-1-2.html" aria-describedby="eligibility-completed">
+                Adoption certificate details
+              </a></span>
 
+            {% if data['occupation'] %}
+            <strong class="govuk-tag app-task-list__task-completed" id="eligibility-completed">Completed</strong>
+            {% endif %}
 
+            <br>
 
+          </li>
+          <li class="app-task-list__item">
+            <span class="app-task-list__task-name">
+              <a href="./about-children/step-1-3.html" aria-describedby="eligibility-completed">
+                Their history with you
+              </a></span>
+            {% if data['date-placed'] %}
+            <strong class="govuk-tag app-task-list__task-completed" id="eligibility-completed">Completed</strong>
+            {% endif %}
+            <br>
 
-      </li>
-      <li class="app-task-list__item">
-        <span class="app-task-list__task-name">
-          <a href="./about-children/step-1-2.html" aria-describedby="eligibility-completed">
-            Adoption certificate details
-          </a></span>
-
-        {% if data['occupation'] %}
-        <strong class="govuk-tag app-task-list__task-completed" id="eligibility-completed">Completed</strong>
-        {% endif %}
-
-        <br>
-
-      </li>
-      <li class="app-task-list__item">
-        <span class="app-task-list__task-name">
-          <a href="./about-children/step-1-3.html" aria-describedby="eligibility-completed">
-            Their history with you
-          </a></span>
-        {% if data['date-placed'] %}
-        <strong class="govuk-tag app-task-list__task-completed" id="eligibility-completed">Completed</strong>
-        {% endif %}
-        <br>
-
-      </li>
-      <li class="app-task-list__item">
-        <span class="app-task-list__task-name">
-          <a href="./about-children/step-5.html" aria-describedby="eligibility-completed">
-            Their birth mother's details
-          </a>
-        </span>
-        {% if data['wishes'] %}
-        <strong class="govuk-tag app-task-list__task-completed" id="eligibility-completed">Completed</strong>
-        {% endif %}
-      </li>
-      <li class="app-task-list__item">
-        <span class="app-task-list__task-name">
-          <a href="./about-children/step-5.html" aria-describedby="eligibility-completed">
-            Their birth father's details
-          </a>
-        </span>
-        {% if data['wishes'] %}
-        <strong class="govuk-tag app-task-list__task-completed" id="eligibility-completed">Completed</strong>
-        {% endif %}
-      </li>
-      <li class="app-task-list__item">
-        <span class="app-task-list__task-name">
-          <a href="./about-children/step-7.html" aria-describedby="eligibility-completed">
-            Any previous court orders
-          </a>
-        </span>
-        {% if data['wishes3'] %}
-        <strong class="govuk-tag app-task-list__task-completed" id="eligibility-completed">Completed</strong>
-        {% endif %}
-      </li>
-      <li class="app-task-list__item">
-        <span class="app-task-list__task-name">
-          <a href="./about-children/step-6.html" aria-describedby="eligibility-completed">
-            Their siblings or half-siblings
-          </a>
-        </span>
-        {% if data['wishes2'] %}
-        <strong class="govuk-tag app-task-list__task-completed" id="eligibility-completed">Completed</strong>
-        {% endif %}
-      </li>
-      </ul>
+          </li>
+          <li class="app-task-list__item">
+            <span class="app-task-list__task-name">
+              <a href="./about-children/step-5.html" aria-describedby="eligibility-completed">
+                Their birth mother's details
+              </a>
+            </span>
+            {% if data['wishes'] %}
+            <strong class="govuk-tag app-task-list__task-completed" id="eligibility-completed">Completed</strong>
+            {% endif %}
+          </li>
+          <li class="app-task-list__item">
+            <span class="app-task-list__task-name">
+              <a href="./about-children/step-5-2.html" aria-describedby="eligibility-completed">
+                Their birth father's details
+              </a>
+            </span>
+            {% if data['wishes'] %}
+            <strong class="govuk-tag app-task-list__task-completed" id="eligibility-completed">Completed</strong>
+            {% endif %}
+          </li>
+          <li class="app-task-list__item">
+            <span class="app-task-list__task-name">
+              <a href="./about-children/step-7.html" aria-describedby="eligibility-completed">
+                Any previous court orders
+              </a>
+            </span>
+            {% if data['wishes3'] %}
+            <strong class="govuk-tag app-task-list__task-completed" id="eligibility-completed">Completed</strong>
+            {% endif %}
+          </li>
+          <li class="app-task-list__item">
+            <span class="app-task-list__task-name">
+              <a href="./about-children/step-6.html" aria-describedby="eligibility-completed">
+                Their siblings or half-siblings
+              </a>
+            </span>
+            {% if data['wishes2'] %}
+            <strong class="govuk-tag app-task-list__task-completed" id="eligibility-completed">Completed</strong>
+            {% endif %}
+          </li>
+        </ul>
       </li>
 
       <li>
