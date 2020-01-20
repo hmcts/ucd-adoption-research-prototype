@@ -27,16 +27,16 @@ Apply to adopt a child
 
               <div class="govuk-radios govuk-radios--conditional" data-module="govuk-radios">
                 <div class="govuk-radios__item">
-                  <input class="govuk-radios__input" id="how-contacted-conditional-gp" name="how-contacted" type="radio"
-                    value="email" data-aria-controls="conditional-gp">
+                  <input class="govuk-radios__input" id="how-contacted-conditional-gp" name="payment-declaration" type="radio"
+                    value="email" data-aria-controls="conditional-gp" {{ checked("payment-declaration", "yes") }}>
                   <label class="govuk-label govuk-radios__label" for="how-contacted-conditional-gp">
                     Yes
                   </label>
                 </div>
 
                 <div class="govuk-radios__item">
-                  <input class="govuk-radios__input" id="conditional-how-contacted-condi" name="how-contacted"
-                    type="radio" value="phone" data-aria-controls="conditional-how-contacted-condi-no">
+                  <input class="govuk-radios__input" id="conditional-how-contacted-condi" name="payment-declaration"
+                    type="radio" value="phone" data-aria-controls="conditional-how-contacted-condi-no" {{ checked("payment-declaration", "yes") }}>
                   <label class="govuk-label govuk-radios__label" for="conditional-how-contacted-condi">
                     No
                   </label>
@@ -63,11 +63,6 @@ Apply to adopt a child
             </fieldset>
 
           </div>
-
-
-
-
-
 
 
           <button class="govuk-button" data-module="govuk-button">Save and return</button>

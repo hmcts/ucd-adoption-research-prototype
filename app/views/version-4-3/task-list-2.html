@@ -296,13 +296,14 @@ Task list
           <span class="app-task-list__section-number">5. </span>Financial payments
         </h2>
         <ul class="app-task-list__items">
-
-
           <li class="app-task-list__item">
             <span class="app-task-list__task-name">
               <a href="declare-payments">
                 Declare any payments made or received </a>
             </span>
+            {% if data['payment-declaration'] %}
+            <strong class="govuk-tag app-task-list__task-completed" id="eligibility-completed">Completed</strong>
+            {% endif %}
           </li>
         </ul>
       </li>
