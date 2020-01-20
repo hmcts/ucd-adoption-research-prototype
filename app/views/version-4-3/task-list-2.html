@@ -101,22 +101,10 @@ Task list
           <li class="app-task-list__item">
             <span class="app-task-list__task-name">
               <a href="about-you/step-2-4" aria-describedby="eligibility-completed">
-                Upload your photo ID
+                Upload your photo ID and personal photos
               </a>
               </a></span>
-            {% if data[''] %}
-            <strong class="govuk-tag app-task-list__task-completed" id="eligibility-completed">Completed</strong>
-            {% endif %}
-            <br>
-
-          </li>
-          <li class="app-task-list__item">
-            <span class="app-task-list__task-name">
-              <a href="about-you/step-2-5" aria-describedby="eligibility-completed">
-                Upload your photo (optional)
-              </a>
-              </a></span>
-            {% if data[''] %}
+            {% if data['personal-photo'] %}
             <strong class="govuk-tag app-task-list__task-completed" id="eligibility-completed">Completed</strong>
             {% endif %}
             <br>
