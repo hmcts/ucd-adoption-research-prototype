@@ -15,7 +15,7 @@ Apply to adopt a child
         <h2 class="govuk-heading-l">Search family courts by postcode</h2>
 
 
-        <form action="step-1-c-2" method="post" class="form">
+        <form action="step-1-d" method="post" class="form">
 
           <div class="govuk-warning-text">
             <span class="govuk-warning-text__icon" aria-hidden="true">!</span>
@@ -37,16 +37,30 @@ Apply to adopt a child
               <p class="govuk-body"> Enter your postcode, or a postcode in the region you want to review your case.
 
                 <div class="govuk-form-group">
-                  <label class="govuk-label" for="width-10">Postcode
-                  </label>
-                  <input class="govuk-input govuk-input--width-10" id="width-10" name="width-10" type="text">
+
+                  <fieldset class="govuk-fieldset" role="group" aria-describedby="dob-hint">
+                    <h4 class="govuk-heading-s">Postcode</h4>
+                    <div class="govuk-form-group float-left">
+                      <p class="">SW1A 1AA</p>
+                      <p><a href="address-1">Change</a></p>
+                    </div>
+
+                    <div class="govuk-form-group">
+                      <select class="govuk-select" id="sort" name="sort">
+                        <option value="published">1 address found </option>
+                        <option value="updated">Buckingham Palace, LONDON SW1A 1AA</option>
+                      </select>
+                    </div>
+
                 </div>
-
-
 
           </div>
 
-          <button class="govuk-button" data-module="govuk-button">Find address</button>
+          <div class="govuk-form-group">
+            <p><a href="">Or enter address manually</a></p>
+          </div>
+
+          <button class="govuk-button" data-module="govuk-button">Save and continue</button>
           <a href="../task-list-2" class="govuk-button govuk-button--secondary">Save and return</a>
         </form>
 
