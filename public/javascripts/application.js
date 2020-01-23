@@ -20,6 +20,13 @@ $("a.govuk-back-link").click(function(){
   return false;
 });
 
+// radio button routing
+
+$('.radioTargetSet').click(function(){
+    var getTarget = $(this).val();
+    $('.govuk-button').attr('href',getTarget);
+});
+
 
 function show1(){
   document.getElementById('div1').style.display ='none';
