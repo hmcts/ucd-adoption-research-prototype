@@ -26,22 +26,28 @@ Apply to adopt a child
 
       <p class="govuk-body">By continuing you agree that, to the best of your knowledge, the information given is
         correct.
+        <div class="govuk-checkboxes">
+          <div class="govuk-checkboxes__item">
+            <input class="govuk-checkboxes__input" id="waste" name="waste" type="checkbox" value="carcasses">
+            <label class="govuk-label govuk-checkboxes__label" for="waste">
+              I agree
+            </label>
+          </div>
 
 
-        </ul>
 
 
 
-        <br><br>
+          <br><br>
 
-        <a href="payment" class="govuk-button">Agree and continue</a>
+          <a href="payment" class="govuk-button">Agree and continue</a>
 
 
+
+        </div>
 
     </div>
 
   </div>
 
-</div>
-
-{% endblock %}
+  {% endblock %}
