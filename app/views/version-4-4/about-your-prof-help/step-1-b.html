@@ -1,0 +1,48 @@
+{% extends "layout-signed-in.html" %}
+
+{% block pageTitle %}
+Apply to adopt a child
+{% endblock %}
+
+{% block content %}
+
+<div class="govuk-width-container">
+  <a href="#" class="govuk-back-link">Back</a>
+
+  <main class="govuk-main-wrapper " id="main-content" role="main">
+    <div class="govuk-grid-row">
+      <div class="govuk-grid-column-two-thirds">
+        <h2 class="govuk-heading-l">Add your adoption agency or social worker's address</h2>
+
+        <form action="step-1-c" method="post" class="form">
+
+          <div class="govuk-form-group">
+
+            <label class="govuk-label govuk-label" for="passport-number">
+              Postcode
+            </label>
+
+            <input class="govuk-input govuk-input--width-10" id="width-10" name="width-10" type="text">
+
+
+          </div>
+
+          <div class="govuk-form-group">
+            <p><a href="">Or enter address manually</a></p>
+          </div>
+
+          <button class="govuk-button" data-module="govuk-button">Find address</button>
+          <a href="../task-list-2" class="govuk-button govuk-button--secondary">Save and return</a>
+
+        </div>
+      </div>
+
+
+    </form>
+
+      </div>
+    </div>
+  </main>
+</div>
+
+{% endblock %}
