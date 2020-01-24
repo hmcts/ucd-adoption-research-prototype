@@ -128,3 +128,12 @@ $govuk-assets-path: '/govuk/assets/';
   border-color: #2b8cc4 !important;
 
 }
+
+.card {
+  margin-top: 1em;
+  padding: 30px;
+  background: #005EA5;
+  h1 p  {
+    color: white !important;
+  }
+}

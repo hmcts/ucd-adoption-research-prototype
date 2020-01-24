@@ -1,0 +1,40 @@
+{% extends "layout-signed-in.html" %}
+
+{% block pageTitle %}
+Apply to adopt a child
+{% endblock %}
+
+{% block content %}
+
+<div class="govuk-width-container">
+  <a href="#" class="govuk-back-link">Back</a>
+
+  <main class="govuk-main-wrapper " id="main-content" role="main">
+    <div class="govuk-grid-row">
+      <div class="govuk-grid-column-two-thirds">
+        <!--<p class="govuk-body-l">You can work with your adoption agency or social worker to gather this information, but
+          we need to receive this from you. This is because it's you who's applying to adopt.</p><-->
+
+        <form action="step-1-3-b" method="post" class="form">
+
+          <div class="card">
+            <header>
+              <h1 class="govuk-heading-l">You will not be able to submit your application yet</h1>
+            </header>
+
+            <p>The child must have lived with you for 10 weeks to send off the application but you can still continue.</p>
+
+            <button class="govuk-button button-white" data-module="govuk-button">Continue</button>
+
+          </div>
+
+
+
+
+    </form>
+</div>
+</div>
+</main>
+</div>
+
+{% endblock %}
