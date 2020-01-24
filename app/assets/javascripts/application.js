@@ -24,7 +24,8 @@ $("a.govuk-back-link").click(function(){
 
 $('.radioTargetSet').click(function(){
     var getTarget = $(this).val();
-    $('.govuk-button').attr('href',getTarget);
+    $('#siblingsForm').attr('action', getTarget);
+    // $('.govuk-button').attr('href',getTarget);
 });
 
 
