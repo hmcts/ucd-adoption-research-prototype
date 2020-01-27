@@ -20,13 +20,23 @@ $("a.govuk-back-link").click(function(){
   return false;
 });
 
-// radio button routing
+// Eligible condition
 
 $('.radioTargetSet').click(function(){
     var getTarget = $(this).val();
     $('#siblingsForm').attr('action', getTarget);
     // $('.govuk-button').attr('href',getTarget);
 });
+
+// Siblings conditional
+
+$('.radioTargetSet').click(function(){
+    var getTarget = $(this).val();
+    $('#eligible-form').attr('action', getTarget);
+    // $('.govuk-button').attr('href',getTarget);
+});
+
+
 
 
 function show1(){

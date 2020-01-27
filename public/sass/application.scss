@@ -133,7 +133,13 @@ $govuk-assets-path: '/govuk/assets/';
   margin-top: 1em;
   padding: 30px;
   background: #005EA5;
-  h1 p  {
+  h1, p  {
     color: white !important;
+  }
+  .button-white {
+    background-color: white !important;
+    box-shadow: 0 1px 0 #0b0c0c;
+    border: #0b0c0c 1px solid;
+    color: #0b0c0c;
   }
 }
