@@ -6,65 +6,65 @@ Apply to adopt a child
 
 {% block content %}
 <div class="govuk-width-container">
-    <a href="#" class="govuk-back-link">Back</a>
-    <main class="govuk-main-wrapper " id="main-content" role="main">
+  <a href="#" class="govuk-back-link">Back</a>
+  <main class="govuk-main-wrapper " id="main-content" role="main">
 
-  <div class="govuk-grid-row">
-    <div class="govuk-grid-column-two-thirds">
+    <div class="govuk-grid-row">
+      <div class="govuk-grid-column-two-thirds">
 
-      <form action="" id="eligible-form" method="post" class="form">
+        <form action="" id="eligible-form" method="post" class="form">
 
-      <legend class="govuk-fieldset__legend govuk-fieldset__legend--l">
-        <h1 class="govuk-fieldset__heading">
-          Have you lived in the British Isles for the last 12 months?
-        </h1>
-      </legend>
+          <legend class="govuk-fieldset__legend govuk-fieldset__legend--l">
+            <h1 class="govuk-fieldset__heading">
+              Have you lived in the British Isles for the last 12 months?
+            </h1>
+          </legend>
 
-      <div class="govuk-form-group">
-        <fieldset class="govuk-fieldset" aria-describedby="changed-name-hint">
-          <span id="changed-name-hint" class="govuk-hint">
-            If you’re adopting as a couple, you must both have lived in the British Isles for the last 12 months.
-          </span>
-          <div class="govuk-radios">
-            <div class="govuk-radios__item">
-              <input class="govuk-radios__input radioTargetSet" id="where-do-you-live" name="where-do-you-live" type="radio"
-                value="collaboration">
-              <label class="govuk-label govuk-radios__label" for="where-do-you-live">
-                Yes
-              </label>
-            </div>
-            <div class="govuk-radios__item">
-              <input class="govuk-radios__input radioTargetSet" id="where-do-you-live-2" name="where-do-you-live" type="radio"
-                value="not-eligible">
-              <label class="govuk-label govuk-radios__label" for="where-do-you-live-2">
-                No
-              </label>
-            </div>
+          <div class="govuk-form-group">
+            <fieldset class="govuk-fieldset" aria-describedby="changed-name-hint">
+              <span id="changed-name-hint" class="govuk-hint">
+                If you’re adopting as a couple, you must both have lived in the British Isles for the last 12 months.
+              </span>
+              <div class="govuk-radios">
+                <div class="govuk-radios__item">
+                  <input class="govuk-radios__input radioTargetSet" id="where-do-you-live" name="where-do-you-live"
+                    type="radio" value="collaboration">
+                  <label class="govuk-label govuk-radios__label" for="where-do-you-live">
+                    Yes
+                  </label>
+                </div>
+                <div class="govuk-radios__item">
+                  <input class="govuk-radios__input radioTargetSet" id="where-do-you-live-2" name="where-do-you-live"
+                    type="radio" value="not-eligible">
+                  <label class="govuk-label govuk-radios__label" for="where-do-you-live-2">
+                    No
+                  </label>
+                </div>
+              </div>
+            </fieldset>
           </div>
-        </fieldset>
-      </div>
 
-      <div class="govuk-form-group">
-        <details class="govuk-details" data-module="govuk-details">
-          <summary class="govuk-details__summary">
-            <span class="govuk-details__summary-text">
-              Countries in the British Isles
-            </span>
-          </summary>
-          <div class="govuk-details__text">
-            The British Isles are made up of the United Kingdom, the Channel Islands and the Isle of Man
+          <div class="govuk-form-group">
+            <details class="govuk-details" data-module="govuk-details">
+              <summary class="govuk-details__summary">
+                <span class="govuk-details__summary-text">
+                  Countries in the British Isles
+                </span>
+              </summary>
+              <div class="govuk-details__text">
+                The British Isles are made up of the United Kingdom, the Channel Islands and the Isle of Man.
+              </div>
+            </details>
           </div>
-        </details>
+
+
+          <button class="govuk-button" data-module="govuk-button">Save and continue</button>
+
+        </form>
+
       </div>
-
-
-      <button class="govuk-button" data-module="govuk-button">Save and continue</button>
-
-    </form>
-
     </div>
-  </div>
-</main>
+  </main>
 </div>
 
 {% endblock %}
