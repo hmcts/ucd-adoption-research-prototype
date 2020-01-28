@@ -1,0 +1,68 @@
+{% extends "layout-signed-in.html" %}
+
+{% block pageTitle %}
+Apply to adopt a child
+{% endblock %}
+
+{% block content %}
+
+<div class="govuk-width-container">
+  <a href="#" class="govuk-back-link">Back</a>
+
+  <main class="govuk-main-wrapper " id="main-content" role="main">
+    <div class="govuk-grid-row">
+      <div class="govuk-grid-column-two-thirds">
+
+        <form action="../task-list-2" method="post" class="form">
+
+          <h2 class="govuk-heading-l">Have there been any previous court orders for the child?</h2>
+
+          <div class="govuk-form-group">
+            <fieldset class="govuk-fieldset">
+
+              <div class="govuk-radios">
+                <div class="govuk-radios__item">
+                  <input class="govuk-radios__input" id="where-do-you-live-2" name="health-issues" type="radio"
+                    value="igottwo" onclick="show2();" {{ checked("health-issues", "igottwo") }}>
+
+                  <label class="govuk-label govuk-radios__label" for="where-do-you-live-2">
+                    Yes
+                  </label>
+                </div>
+                <div class="govuk-radios__item">
+                  <input class="govuk-radios__input" id="where-do-you-live" name="health-issues" type="radio"
+                    value="igotnone" onclick="show1();" {{ checked("health-issues", "igotnone") }}>
+                  <label class="govuk-label govuk-radios__label" for="where-do-you-live">
+                    No
+                  </label>
+                </div>
+                <div class="govuk-radios__item">
+                  <input class="govuk-radios__input" id="where-do-you-live" name="health-issues" type="radio"
+                    value="igotnone" onclick="show1();" {{ checked("health-issues", "igotnone") }}>
+                  <label class="govuk-label govuk-radios__label" for="where-do-you-live">
+                    Do not know
+                  </label>
+                </div>
+
+                <div id="div1" class="govuk-form-group hide">
+                  <label class="govuk-label" for="more-detail">
+                    Add previous court order serial number
+                  </label>
+                  <input class="govuk-input govuk-input--width-10" id="width-10" name="width-10" type="text">
+
+                </div>
+
+              </div>
+            </fieldset>
+          </div>
+
+
+          <button class="govuk-button" data-module="govuk-button">Save and return</button>
+
+        </form>
+      </div>
+    </div>
+  </main>
+</div>
+
+{% endblock %}

@@ -1,0 +1,77 @@
+{% extends "layout-signed-in.html" %}
+
+{% block pageTitle %}
+Apply to adopt a child
+{% endblock %}
+
+{% block content %}
+<div class="govuk-width-container">
+    <a href="#" class="govuk-back-link">Back</a>
+    <main class="govuk-main-wrapper " id="main-content" role="main">
+
+  <div class="govuk-grid-row">
+    <div class="govuk-grid-column-two-thirds">
+      <legend class="govuk-fieldset__legend govuk-fieldset__legend--l">
+        <h1 class="govuk-fieldset__heading">
+          Have you talked with your social worker about your decision to apply?
+        </h1>
+      </legend>
+
+      <div class="govuk-form-group">
+        <fieldset class="govuk-fieldset" aria-describedby="how-contacted-conditional-hint">
+
+
+
+          <div class="govuk-radios govuk-radios--conditional" data-module="govuk-radios">
+            <div class="govuk-radios__item">
+              <input class="govuk-radios__input" id="how-contacted-conditional" name="experience-children" type="radio"
+                value="yes" data-aria-controls="conditional-how-contacted-conditional"
+                {{ checked("experience-children", "yes") }}>
+              <label class="govuk-label govuk-radios__label" for="how-contacted-conditional">
+                Yes
+              </label>
+            </div>
+
+            <div class="govuk-radios__item">
+              <input class="govuk-radios__input" id="how-contacted-conditional-2" name="experience-children"
+                type="radio" value="no" data-aria-controls="conditional-how-contacted-conditional-2"
+                {{ checked("experience-children", "no") }}>
+              <label class="govuk-label govuk-radios__label" for="how-contacted-conditional-2">
+                No
+              </label>
+            </div>
+
+
+            <div
+              class="govuk-radios__conditional govuk-radios__conditional--applicants govuk-radios__conditional--hidden"
+              id="conditional-how-contacted-conditional-2">
+              <div class="govuk-inset-text">
+
+                <p class="govuk-body">You should work with your social worker to:</p>
+                <ul class="govuk-list govuk-list--bullet">
+                  <li>help you with this application – you'll need information only they might have</li>
+                  <li>avoid delays – they'll then know they should start their own paperwork for the court
+                  </li>
+
+                </ul>
+              </div>
+            </div>
+
+
+
+
+          </div>
+        </fieldset>
+      </div>
+
+
+
+
+      <a href="registration2/start.html" class="govuk-button">Continue</a>
+
+    </div>
+  </div>
+</main>
+</div>
+
+{% endblock %}
