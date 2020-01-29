@@ -16,14 +16,12 @@ Apply to adopt a child
 
         <form action="step-1-b" method="post" class="form">
 
+          <p class="govuk-body-l">Enter these details as they're written on your birth certificate.</p>
 
           <div class="govuk-form-group">
             <label class="govuk-label" for="full-name">
               Full name
             </label>
-            <span id="changed-name-hint" class="govuk-hint">
-              Enter this as it's shown on the birth certificate.
-            </span>
             <input class="govuk-input" id="full-name" name="childs-name" type="text" autocomplete="name"
               spellcheck="false" value="{{ data['childs-name'] }}">
           </div>
@@ -115,9 +113,6 @@ Apply to adopt a child
             <label class="govuk-label" for="full-name">
               Gender
             </label>
-            <span id="changed-name-hint" class="govuk-hint">
-              Enter this as it's written on the birth certificate.
-            </span>
             <input class="govuk-input govuk-input--width-10" id="width-10" name="width-10" type="text">
           </div>
 
