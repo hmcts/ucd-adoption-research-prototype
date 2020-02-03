@@ -52,6 +52,14 @@ $('.radioTargetSet').click(function(){
     // $('.govuk-button').attr('href',getTarget);
 });
 
+// Solicitor conditional
+
+$('.radioTargetSet').click(function(){
+    var getTarget = $(this).val();
+    $('#solicitor-form').attr('action', getTarget);
+    // $('.govuk-button').attr('href',getTarget);
+});
+
 
 
 
