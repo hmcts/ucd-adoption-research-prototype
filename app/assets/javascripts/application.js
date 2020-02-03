@@ -44,6 +44,14 @@ $('.radioTargetSet').click(function(){
     // $('.govuk-button').attr('href',getTarget);
 });
 
+// Birth father conditional
+
+$('.radioTargetSet').click(function(){
+    var getTarget = $(this).val();
+    $('#birth-father-form').attr('action', getTarget);
+    // $('.govuk-button').attr('href',getTarget);
+});
+
 
 
 
