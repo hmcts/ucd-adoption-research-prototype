@@ -36,6 +36,14 @@ $('.radioTargetSet').click(function(){
     // $('.govuk-button').attr('href',getTarget);
 });
 
+// Birth mother conditional
+
+$('.radioTargetSet').click(function(){
+    var getTarget = $(this).val();
+    $('#birth-mother-form').attr('action', getTarget);
+    // $('.govuk-button').attr('href',getTarget);
+});
+
 
 
 
