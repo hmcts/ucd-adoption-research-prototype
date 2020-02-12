@@ -61,6 +61,15 @@ $('.radioTargetSet').click(function(){
 });
 
 
+// Child placed conditional
+
+$('.radioTargetSet').click(function(){
+    var getTarget = $(this).val();
+    $('#placemet-date-form').attr('action', getTarget);
+    // $('.govuk-button').attr('href',getTarget);
+});
+
+
 // Number of applicants
 
 $('.radioTargetSet').click(function(){
