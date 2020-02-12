@@ -1,0 +1,174 @@
+{% extends "layout-signed-out.html" %}
+
+{% block pageTitle %}
+Apply to adopt a child
+{% endblock %}
+
+{% block content %}
+
+<head>
+    <!-- Place your kit's code here -->
+    <script src="https://kit.fontawesome.com/03c0a94a07.js" crossorigin="anonymous"></script>
+  </head>
+
+<div class="govuk-width-container">
+
+  <div class="govuk-grid-row">
+
+    <div class="govuk-grid-column-full">
+
+      <!-- The Related items component is not part of GOV.UK Frontend but will be styled if used in the Prototype Kit -->
+
+      <h1 class="govuk-heading-xl">Your adoption application</h1>
+
+      <br>
+
+      <div class="hmcts-progress-bar">
+        <ol class="hmcts-progress-bar__list">
+        <li class="hmcts-progress-bar__list-item">
+          <span class="hmcts-progress-bar__icon hmcts-progress-bar__icon--complete"><i class="fas fa-check"></i></span>
+          <span class="hmcts-progress-bar__label">Application recieved</span>
+        </li>
+        <li class="hmcts-progress-bar__list-item" aria-current="step">
+          <span class="hmcts-progress-bar__icon"></span>
+          <span class="hmcts-progress-bar__label">Application reviewed</span>
+        </li>
+        <li class="hmcts-progress-bar__list-item">
+          <span class="hmcts-progress-bar__icon"></span>
+          <span class="hmcts-progress-bar__label">Reports submitted</span>
+        </li>
+        <li class="hmcts-progress-bar__list-item">
+          <span class="hmcts-progress-bar__icon"></span>
+          <span class="hmcts-progress-bar__label">The court decides</span>
+        </li>
+        <li class="hmcts-progress-bar__list-item">
+          <span class="hmcts-progress-bar__icon"></span>
+          <span class="hmcts-progress-bar__label">Adoption decision made</span>
+        </li>
+
+        </ol>
+      </div>
+<br>
+<br>
+    </div>
+
+
+  </div>
+
+  <div class="govuk-grid-row">
+
+    <div class="govuk-grid-column-one-third">
+
+      <div class="blue-box">
+        <span class="govuk-caption-m">Application submitted</span>
+        <h3 class="govuk-heading-m">11 December 2019</h3>
+      </div>
+
+      <br>
+
+      <p class="govuk-body-s"><strong>Reference:</strong>&nbsp;&nbsp;&nbsp; 2283-2245-2364-2352
+          <br>
+      <strong>Child's name:</strong> &nbsp;&nbsp;&nbsp;Mick Angel
+      <br>
+      <strong>Applicant's name:</strong> &nbsp;&nbsp;&nbsp;Rebecca Williams</p>
+
+      <!-- The Related items component is not part of GOV.UK Frontend but will be styled if used in the Prototype Kit -->
+
+      
+<br>
+<p><button class="govuk-button" data-module="govuk-button">
+    Download Application PDF
+  </button></p>
+
+
+
+      <aside class="app-related-items" role="complementary"></aside>
+        <h3 class="govuk-heading-s" id="subsection-title">
+          Getting help
+        </h3>
+
+
+        <p class="govuk-body-s"><strong class="bold-xsmall">Email</strong>
+            <br>
+            adoption-west-london@justice.gov.uk</p>
+
+        <p class="govuk-body-s"><strong class="bold-xsmall">Phone</strong>
+            <br>
+            0300 303 0642
+            <br>
+            (Monday to Friday, 8.30am to 5pm)</p>
+
+
+        <p class="govuk-body-s"><strong class="bold-xsmall">Courts and Tribunals Service Centre</strong>
+            <br>
+            West London Family Court
+            <br>
+            4 Goose Green West
+            <br>
+            Feltham
+            <br>
+            NG2 9QN</p>
+
+            
+      </aside>
+
+    </div>
+
+
+    <div class="govuk-grid-column-two-thirds">
+
+      <h3 class="govuk-heading-m">What happens next</h3>
+
+      <p class="govuk-body">The court will:</p>
+      <ul class="govuk-list govuk-list--bullet">
+          <li>check your application and get in touch if they have questions</li>
+          <li>ask your and the child’s social workers to finish and send their paperwork</li>
+          <li>ask the local authority to write to all parties, including the birth parents if relevant, with the ‘initial direction’ - this includes the hearing date and things that must be done before that date (‘directions’).</li>
+          </ul>
+
+          <p>The birth parents have the right to ask to oppose the adoption. This can happen at any time before an adoption application is approved. If this happens, the judge will ask the birth parents to explain what has changed since the placement order was made.</p>
+
+          <h3 class="govuk-heading-m">Your adoption contacts</h3>
+          <p>Here are the details of your adoption contacts, taken from your application.</p>
+
+          <h4 class="govuk-heading-s">Your social worker or adoption agency details</h4>
+           <p>       
+            Future Families Adoption Agency
+            <br>
+            Linda Paul
+            <br>
+            Lindapaul@test.com
+            <br>
+            futurefamilies@test.com
+            <br>
+            07915740231
+            <br>
+            Buckingham Palace <br> London <br> SW1A 1AA</p>
+
+
+
+            <h4 class="govuk-heading-s">The child's social worker's details</h4>
+            <p>       
+              Essex County Council Children's Services
+              <br>
+              Craig Davis
+              <br>
+              Craigdavis@test.com
+              <br>
+              Pamassessments@test.com
+              <br>
+              07538234761
+              <br>
+              Buckingham Palace <br> London <br> SW1A 1AA</p>
+
+      
+
+
+    </div>
+
+
+  </div>
+
+</div>
+
+{% endblock %}
