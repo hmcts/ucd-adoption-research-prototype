@@ -61,6 +61,13 @@ $('.radioTargetSet').click(function(){
 });
 
 
+// Number of applicants
+
+$('.radioTargetSet').click(function(){
+    var getTarget = $(this).val();
+    $('#number-of-applicants-form').attr('action', getTarget);
+    // $('.govuk-button').attr('href',getTarget);
+});
 
 
 function show1(){
