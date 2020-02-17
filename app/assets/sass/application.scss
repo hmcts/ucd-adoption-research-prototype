@@ -360,6 +360,8 @@ $govuk-assets-path: '/govuk/assets/';
 }
 .govuk-list--bullet.bullet{
   list-style-type: circle;
+  width: calc(2 * 2px);
+height: calc(2 * 2px);
 }
 
 .govuk-list--bullet li:before {
