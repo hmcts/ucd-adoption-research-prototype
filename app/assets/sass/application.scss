@@ -133,8 +133,47 @@ $govuk-assets-path: '/govuk/assets/';
 .home-office-inset-text {
   background-color: #dbeff9 !important;
   border-color: #2b8cc4 !important;
-
 }
+// 
+// .home-office-inset-text-error {
+//   background-color: #f3dede !important;
+//   border-color: #c42b2b; !important;
+// }
+
+.panel {
+  box-sizing: border-box;
+  clear: both;
+  border-left-style: solid;
+  border-color: #bfc1c3;
+  padding: 0.2em 0.7em;
+  margin-bottom: 0.78947em;
+}
+
+h2.govuk-heading-s {
+	font-size: 22px;
+	margin-bottom: 0.6em;
+	margin-top: 0.6em;
+}
+
+.panel-border-wide {
+  border-left-width: 10px;
+}
+
+.panel-border-wide.alert-default {
+  border-color: #2b8cc4;
+  background-color: #dbeff9;
+}
+
+.panel-border-wide.alert-success {
+  border-color: #28a197;
+  background-color: #c6ece9;
+}
+
+.panel-border-wide.alert-error {
+  border-color: #c42b2b;
+  background-color: #f3dede;
+}
+
 
 .card {
   margin-top: 1em;
@@ -282,13 +321,50 @@ $govuk-assets-path: '/govuk/assets/';
   }
 
   .govuk-button {
-    color: #0B0C0C;
+    color: white !important;
     margin-bottom: 0;
   }
 }
 
 @include govuk-media-query($from: tablet) {
   .status {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+
+    p {
+      font-size: 24px;
+      margin: 0;
+    }
+
+    .status-extra {
+      font-size: 18px;
+    }
+  }
+}
+
+.status-error {
+  background-color: #d4351c;
+  color: #FFF;
+  padding: 20px;
+
+  p {
+    font-weight: 700;
+    color: #FFF;
+  }
+
+  .status-extra {
+    font-weight: normal;
+  }
+
+  .govuk-button {
+    color: white !important;
+    margin-bottom: 0;
+  }
+}
+
+@include govuk-media-query($from: tablet) {
+  .status-error {
     display: flex;
     align-items: center;
     justify-content: space-between;
@@ -327,6 +403,8 @@ $govuk-assets-path: '/govuk/assets/';
 
 .timeline .timeline-border:after {
   border-left: 4px solid 	#00703c !important;
+  top: 0px !important;
+  height: 100%;
 }
 
 .timeline .action_needed:before {
@@ -336,6 +414,7 @@ $govuk-assets-path: '/govuk/assets/';
 
 .timeline ul li:before {
   border: 4px solid #00703c;
+  top: 0px !important;
 }
 
 .timeline .action_needed {
@@ -349,6 +428,7 @@ $govuk-assets-path: '/govuk/assets/';
     }
     li:after {
       border: unset !important;
+      top: 0px !important;
     }
 }
 
@@ -368,7 +448,7 @@ $govuk-assets-path: '/govuk/assets/';
 .govuk-list--bullet.bullet{
   list-style-type: circle;
   width: calc(2 * 2px);
-height: calc(2 * 2px);
+  height: calc(2 * 2px);
 }
 
 .govuk-list--bullet li:before {
