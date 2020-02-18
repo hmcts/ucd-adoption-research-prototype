@@ -51,9 +51,11 @@ $govuk-assets-path: '/govuk/assets/';
 }
 
 .profile-link {
+  float: right;
   a:link {
     text-decoration: underline;
     font-size: 19px;
+    padding-left: 15px;
   }
 }
 
@@ -134,7 +136,7 @@ $govuk-assets-path: '/govuk/assets/';
   background-color: #dbeff9 !important;
   border-color: #2b8cc4 !important;
 }
-// 
+//
 // .home-office-inset-text-error {
 //   background-color: #f3dede !important;
 //   border-color: #c42b2b; !important;
