@@ -60,8 +60,13 @@ $govuk-assets-path: '/govuk/assets/';
 }
 
 .started-tag {
-  background-color: #1d70b8 !important;
+  background-color: #b1b4b6	 !important;
   color: black;
+}
+
+.changes-tag {
+  background-color: #d4351c	 !important;
+  color: white;
 }
 
 .cant-start-tag {
