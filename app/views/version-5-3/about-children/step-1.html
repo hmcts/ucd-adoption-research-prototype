@@ -77,35 +77,64 @@ Apply to adopt a child
             </fieldset>
           </div>
 
+
+
+
           <div class="govuk-form-group">
-            <fieldset class="govuk-fieldset" role="group" aria-describedby="passport-issued-hint">
-              <label class="govuk-label" for="full-name">
-                Time of birth, if known
-              </label>
-              <span id="passport-issued-hint" class="govuk-hint">
-                Use the 24 hour clock. For example, 22 48.
-              </span>
-              <div class="govuk-date-input" id="passport-issued">
-                <div class="govuk-date-input__item">
-                  <div class="govuk-form-group">
-                    <label class="govuk-label govuk-date-input__label" for="passport-issued-day">
-                      Hour
+                    <label class="govuk-label" for="full-name">
+                      Do you know the time of birth?
                     </label>
-                    <input class="govuk-input govuk-date-input__input govuk-input--width-2" id="passport-issued-day"
-                      name="passport-issued-day" type="number" pattern="[0-9]*">
-                  </div>
-                </div>
-                <div class="govuk-date-input__item">
-                  <div class="govuk-form-group">
-                    <label class="govuk-label govuk-date-input__label" for="passport-issued-month">
-                      Minute
-                    </label>
-                    <input class="govuk-input govuk-date-input__input govuk-input--width-2" id="passport-issued-month"
-                      name="passport-issued-month" type="number" pattern="[0-9]*">
-                  </div>
-                </div>
-              </div>
-            </fieldset>
+                    <div class="govuk-radios govuk-radios--conditional" data-module="govuk-radios">
+                      <div class="govuk-radios__item">
+                        <input class="govuk-radios__input" id="how-contacted-time-yes" name="time" type="radio"
+                          value="yes" data-aria-controls="time-yes" >
+                        <label class="govuk-label govuk-radios__label" for="how-contacted-time-yes">
+                          Yes
+                        </label>
+                      </div>
+
+                      <div class="govuk-radios__item">
+                        <input class="govuk-radios__input" id="conditional-how-contacted-condi" name="time" type="radio"
+                          value="no" data-aria-controls="conditional-how-contacted-condi" >
+                        <label class="govuk-label govuk-radios__label" for="conditional-how-contacted-condi">
+                          No
+                        </label>
+                      </div>
+
+
+                      <div class="govuk-radios__conditional govuk-radios__conditional--applicants govuk-radios__conditional--hidden"
+                        id="time-yes">
+                          <fieldset class="govuk-fieldset" role="group" aria-describedby="passport-issued-hint">
+                            <label class="govuk-label" for="full-name">
+                              Time of birth
+                            </label>
+                            <span id="passport-issued-hint" class="govuk-hint">
+                              Use the 24 hour clock. For example, 22 48.
+                            </span>
+                            <div class="govuk-date-input" id="passport-issued">
+                              <div class="govuk-date-input__item">
+                                <div class="govuk-form-group">
+                                  <label class="govuk-label govuk-date-input__label" for="passport-issued-day">
+                                    Hour
+                                  </label>
+                                  <input class="govuk-input govuk-date-input__input govuk-input--width-2" id="passport-issued-day"
+                                    name="passport-issued-day" type="number" pattern="[0-9]*">
+                                </div>
+                              </div>
+                              <div class="govuk-date-input__item">
+                                <div class="govuk-form-group">
+                                  <label class="govuk-label govuk-date-input__label" for="passport-issued-month">
+                                    Minute
+                                  </label>
+                                  <input class="govuk-input govuk-date-input__input govuk-input--width-2" id="passport-issued-month"
+                                    name="passport-issued-month" type="number" pattern="[0-9]*">
+                                </div>
+                              </div>
+                            </div>
+                          </fieldset>
+
+                      </div>
+                    </div>
           </div>
 
 
@@ -142,7 +171,7 @@ Apply to adopt a child
           <div class="govuk-radios govuk-radios--conditional" data-module="govuk-radios">
             <div class="govuk-radios__item">
               <input class="govuk-radios__input" id="how-contacted-conditional-gp" name="education" type="radio"
-                value="yes" data-aria-controls="conditional-gp" {{ checked("education", "yes") }}>
+                value="yes" data-aria-controls="conditional-gp">
               <label class="govuk-label govuk-radios__label" for="how-contacted-conditional-gp">
                 Yes
               </label>
@@ -150,7 +179,7 @@ Apply to adopt a child
 
             <div class="govuk-radios__item">
               <input class="govuk-radios__input" id="conditional-how-contacted-condi" name="education" type="radio"
-                value="no" data-aria-controls="conditional-how-contacted-condi" {{ checked("education", "no") }}>
+                value="no" data-aria-controls="conditional-how-contacted-condi">
               <label class="govuk-label govuk-radios__label" for="conditional-how-contacted-condi">
                 No
               </label>
@@ -166,10 +195,11 @@ Apply to adopt a child
                 <input class="govuk-input" id="event-name" name="event-name" type="text">
               </div>
             </div>
+          </div>
 </div>
 
 
-</br>
+
 
 
           <button class="govuk-button" data-module="govuk-button">Save and continue</button>
