@@ -1,0 +1,148 @@
+{% extends "layout-signed-in.html" %}
+
+{% block pageTitle %}
+Apply to adopt a child
+{% endblock %}
+
+{% block content %}
+
+<div class="govuk-width-container">
+  <a href="#" class="govuk-back-link">Back</a>
+
+  <main class="govuk-main-wrapper " id="main-content" role="main">
+    <div class="govuk-grid-row">
+      <div class="govuk-grid-column-two-thirds">
+
+        <legend class="govuk-fieldset__legend govuk-fieldset__legend--l">
+     <h2 class="govuk-fieldset__heading">
+       Upload the child's 'full' birth certificate
+     </h2>
+   </legend>
+   <p>
+     Speak to your adoption agency or social worker if you do not have it.
+   </p>
+
+        <!-- <h2 class="govuk-heading-l">
+        Upload the child's 'full' birth certificate
+      </h2> -->
+        <div class="govuk-inset-text">
+          This will only be seen by the court.
+        </div>
+
+        <form action="step-1-h" method="post" class="form">
+
+          <!-- <div class="govuk-form-group">
+            <label class="govuk-label" for="file-upload-1">
+              Upload their 'full' birth certificate
+            </label>
+            <span id="changed-name-hint" class="govuk-hint"> Speak to your
+              adoption agency or social worker if you do not
+              have it.
+            </span>
+          </div> -->
+
+          <div class="govuk-form-group">
+            <div class="document-upload-box" style="
+            border-style: dashed;
+            border-color: #b1b4b6;
+            padding-left: 20px;
+            padding-top: 20px;
+            ">
+              <button class="govuk-button govuk-button--secondary" data-module="govuk-button" onclick="myFunction()">
+                Choose photos
+              </button>
+              <p style="
+            float: right;
+            padding-right: 20px;
+            padding-top: 10px;
+            color: #b1b4b6;
+            ">Drag and drop photos</p>
+            </div>
+          </div>
+
+          <div id="myDIV" style="display: none;">
+            <dl class="govuk-summary-list govuk-!-margin-bottom-9">
+              <div class="govuk-summary-list__row">
+                <dd class="govuk-summary-list__value">
+                  <a href="">identification_1.pdf</a>
+                </dd>
+                <dd class="govuk-summary-list__actions">
+                  <a class="govuk-link" href="#">
+                    Remove<span class="govuk-visually-hidden"> name</span>
+                  </a>
+                </dd>
+              </div>
+              <div class="govuk-summary-list__row">
+                <dd class="govuk-summary-list__value">
+                  <a href="">identification_2.pdf</a>
+                </dd>
+                <dd class="govuk-summary-list__actions">
+                  <a class="govuk-link" href="#">
+                    Remove<span class="govuk-visually-hidden"> date of birth</span>
+                  </a>
+                </dd>
+              </div>
+            </dl>
+          </div>
+
+
+
+          <details class="govuk-details" data-module="govuk-details">
+            <summary class="govuk-details__summary">
+              <span class="govuk-details__summary-text">
+                What's a 'full' birth certificate?
+              </span>
+            </summary>
+            <div class="govuk-details__text">
+              A 'full' birth certificate, also called a 'long form certificate', has details of the baby and its
+              parents.
+              The short version only has the baby’s details.
+
+              <p>
+
+            </div>
+          </details>
+
+          <!-- <div class="govuk-warning-text">
+            <span class="govuk-warning-text__icon" aria-hidden="true">!</span>
+            <strong class="govuk-warning-text__text">
+              You must also send their birth certificate to the
+              family court you want to review your application. This can be the original or a certified copy.
+            </strong>
+          </div> -->
+
+
+          <!-- <h3 class="govuk-heading-m">Search family courts by postcode </h3>
+          <p class="govuk-body">You can choose to have your application reviewed in your local family court, or one in a
+            different
+            region.</p>
+          <div class="govuk-form-group">
+
+            <fieldset class="govuk-fieldset" role="group" aria-describedby="dob-hint">
+              <label class="govuk-label govuk-label--m" for="passport-number">
+              </label>
+              <p class="govuk-body"> Enter your postcode, or a postcode in the region you want to review your case.
+
+                <div class="govuk-form-group">
+                  <label class="govuk-label" for="width-10">Postcode
+                  </label>
+                  <input class="govuk-input govuk-input--width-10" id="width-10" name="width-10" type="text">
+                </div>
+                <br>
+                <button class="govuk-button govuk-button--secondary" data-module="govuk-button">
+                  Find address
+                </button>
+
+
+          </div> -->
+
+          <button class="govuk-button" data-module="govuk-button">Save and continue</button>
+          <a href="../task-list-2" class="govuk-button govuk-button--secondary">Save and return</a>
+        </form>
+
+      </div>
+    </div>
+  </main>
+</div>
+
+{% endblock %}
