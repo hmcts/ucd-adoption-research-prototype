@@ -1,0 +1,45 @@
+{% extends "layout-signed-in.html" %}
+
+{% block pageTitle %}
+Apply to adopt a child
+{% endblock %}
+
+{% block content %}
+
+<div class="govuk-width-container">
+  <a href="#" class="govuk-back-link">Back</a>
+
+  <main class="govuk-main-wrapper " id="main-content" role="main">
+    <div class="govuk-grid-row">
+      <div class="govuk-grid-column-two-thirds">
+
+        <form action="step-1c" method="post" class="form">
+
+          <legend class="govuk-fieldset__legend govuk-fieldset__legend--l">
+            <h2 class="govuk-fieldset__heading">
+              Where was the ceremony?
+            </h2>
+          </legend>
+          <span id="changed-name-hint" class="govuk-hint">
+            Town or city.
+          </span>
+
+
+          <div class="govuk-form-group">
+
+            <input class="govuk-input govuk-input--width-20" id="width-20" name="width-20" type="text">
+          </div>
+
+
+          <button class="govuk-button" data-module="govuk-button">Save and continue</button>
+          <a href="../task-list-2" class="govuk-button govuk-button--secondary">Save and return</a>
+
+
+        </form>
+
+      </div>
+    </div>
+  </main>
+</div>
+
+{% endblock %}
