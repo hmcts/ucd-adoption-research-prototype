@@ -166,25 +166,6 @@ Task list
             {% endif %}
             <br>
 
-
-
-
-            <!--<li class="app-task-list__item">
-            <span class="app-task-list__task-name">
-              <a href="about-children/step-2-4.html" aria-describedby="eligibility-completed">
-                Upload their photo (optional)
-              </a>
-              </a></span>
-            {% if data['your-name'] %}
-            <strong class="govuk-tag app-task-list__task-completed" id="eligibility-completed">Completed</strong>
-            {% endif %}
-            <br>
-
-          </li><-->
-
-
-
-
           </li>
           <li class="app-task-list__item">
             <span class="app-task-list__task-name">
@@ -213,7 +194,17 @@ Task list
           <li class="app-task-list__item">
             <span class="app-task-list__task-name">
               <a href="./about-children/step-5.html" aria-describedby="eligibility-completed">
-                Their birth parents' details
+                Their birth mother's details
+              </a>
+            </span>
+            {% if data['wishes3'] %}
+            <strong class="govuk-tag app-task-list__task-completed" id="eligibility-completed">Completed</strong>
+            {% endif %}
+          </li>
+          <li class="app-task-list__item">
+            <span class="app-task-list__task-name">
+              <a href="./about-children/step-5-2.html" aria-describedby="eligibility-completed">
+                Their birth father or other parent's details
               </a>
             </span>
             {% if data['wishes3'] %}
