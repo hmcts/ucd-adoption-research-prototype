@@ -124,6 +124,16 @@ Task list
             <strong class="govuk-tag app-task-list__task-completed" id="eligibility-completed">Completed</strong>
             {% endif %}
           </li>
+          <li class="app-task-list__item">
+            <span class="app-task-list__task-name">
+              <a href="about-you/step-6" aria-describedby="eligibility-completed">
+                Your relationship (if the user said they were the only applicant)
+              </a>
+            </span>
+            {% if data['relationship'] %}
+            <strong class="govuk-tag app-task-list__task-completed" id="eligibility-completed">Completed</strong>
+            {% endif %}
+          </li>
         </ul>
       </li>
 
