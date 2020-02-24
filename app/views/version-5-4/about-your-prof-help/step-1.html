@@ -49,10 +49,41 @@ Apply to adopt a child
           </div>
 
           <div class="govuk-form-group">
-            <label class="govuk-label" for="width-10">
-              Phone number, if known
-            </label>
-            <input class="govuk-input govuk-input--width-10" id="width-10" name="width-10" type="text">
+            <fieldset class="govuk-fieldset" aria-describedby="how-contacted-conditional-hint">
+
+              <label class="govuk-label" for="full-name">
+                Do you know their phone number?
+              </label>
+
+              <div class="govuk-radios govuk-radios--conditional" data-module="govuk-radios">
+                <div class="govuk-radios__item">
+                  <input class="govuk-radios__input" id="how-contacted-conditional-gp" name="education" type="radio"
+                    value="yes" data-aria-controls="conditional-gp">
+                  <label class="govuk-label govuk-radios__label" for="how-contacted-conditional-gp">
+                    Yes
+                  </label>
+                </div>
+
+                <div class="govuk-radios__item">
+                  <input class="govuk-radios__input" id="conditional-how-contacted-condi" name="education"
+                    type="radio" value="no" data-aria-controls="conditional-how-contacted-condi">
+                  <label class="govuk-label govuk-radios__label" for="conditional-how-contacted-condi">
+                    No
+                  </label>
+                </div>
+
+
+                <div
+                  class="govuk-radios__conditional govuk-radios__conditional--applicants govuk-radios__conditional--hidden"
+                  id="conditional-gp">
+                  <div class="govuk-form-group">
+                    <label class="govuk-label" for="width-10">
+                      Phone number
+                    </label>
+                    <input class="govuk-input govuk-input--width-10" id="width-10" name="width-10" type="text">
+                  </div>
+                </div>
+            </fieldset>
           </div>
 
 
