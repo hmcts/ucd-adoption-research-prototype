@@ -12,7 +12,7 @@ Apply to adopt a child
   <main class="govuk-main-wrapper " id="main-content" role="main">
     <div class="govuk-grid-row">
       <div class="govuk-grid-column-two-thirds">
-        <h2 class="govuk-heading-l">How should we contact you?</h2>
+        <h2 class="govuk-heading-l">How else can we contact you?</h2>
         <p class="govuk-body">For example, with questions or updates about your application. All legal papers will be
           posted.</p>
         <span id="passport-issued-hint" class="govuk-hint">
@@ -38,8 +38,9 @@ Apply to adopt a child
                     <label class="govuk-label" for="contact-by-email">
                       Email address
                     </label>
-                    <input class="govuk-input govuk-!-width-one-third" id="contact-by-email" name="phone-number"
-                      type="email" spellcheck="false" value="{{ data['phone-number'] }}">
+                    <input class="govuk-input govuk-!-width-two-thirds" id="contact-by-email" name="phone-number"
+                      type="email" placeholder="hello@mail.com" spellcheck="false" value="{{ data['phone-number'] }}">
+                    <a href="#">Change</a>
                   </div>
 
                 </div>
@@ -59,6 +60,7 @@ Apply to adopt a child
                     <input class="govuk-input govuk-!-width-one-third" id="contact-by-phone" name="phone-number"
                       type="tel" value="{{ data['phone-number'] }}">
                   </div>
+
 
                 </div>
                 <div class="govuk-checkboxes__item">

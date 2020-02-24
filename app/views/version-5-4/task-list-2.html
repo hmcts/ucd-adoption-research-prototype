@@ -38,7 +38,7 @@ Task list
             <span class="app-task-list__task-name">
 
               <a href="about-children/step-1-c">
-                Find your court
+                Choose your family court
               </a>
             </span>
             <strong class="govuk-tag app-task-list__task-completed" id="eligibility-completed">Completed</strong>
@@ -55,8 +55,7 @@ Task list
         <ul class="app-task-list__items">
           <div class="govuk-inset-text home-office-inset-text">
             You'll need to upload 2 pieces of photo ID. </p>
-            <p>You can also upload a photo of you, your partner and your
-              family.</p>
+            <p>You'll also need copies of your UK visa or immigration stamps in your passport, if relevant. </p>
           </div>
 
 
@@ -90,7 +89,7 @@ Task list
           <li class="app-task-list__item">
             <span class="app-task-list__task-name">
               <a href="about-you/step-2-4" aria-describedby="eligibility-completed">
-                Upload your photo ID and personal photos
+                Upload your photo ID
               </a>
               </a></span>
             {% if data['personal-photo'] %}
@@ -106,7 +105,7 @@ Task list
           <li class="app-task-list__item">
             <span class="app-task-list__task-name">
               <a href="about-you/step-4-3.html" aria-describedby="eligibility-completed">
-                Your current and last job
+                Your current or last job
               </a>
             </span>
             {% if data['employment-history'] %}
@@ -117,7 +116,7 @@ Task list
           <li class="app-task-list__item">
             <span class="app-task-list__task-name">
               <a href="about-you/step-1" aria-describedby="eligibility-completed">
-                Your relationship
+                Your relationship details
               </a>
             </span>
             {% if data['relationship'] %}
@@ -204,7 +203,7 @@ Task list
           <li class="app-task-list__item">
             <span class="app-task-list__task-name">
               <a href="./about-children/step-5-2.html" aria-describedby="eligibility-completed">
-                Their birth father or other parent's details
+                Their birth father's or other parent's details
               </a>
             </span>
             {% if data['wishes3'] %}
@@ -214,7 +213,7 @@ Task list
           <li class="app-task-list__item">
             <span class="app-task-list__task-name">
               <a href="./about-children/step-7.html" aria-describedby="eligibility-completed">
-                Their previous court orders
+                Previous court orders for the child
               </a>
             </span>
             {% if data['health-issues'] %}
@@ -224,7 +223,7 @@ Task list
           <li class="app-task-list__item">
             <span class="app-task-list__task-name">
               <a href="./about-children/step-6.html" aria-describedby="eligibility-completed">
-                Their siblings or half-siblings
+                Court order details for any siblings or half-siblings
               </a>
             </span>
             {% if data['siblings'] %}
@@ -260,19 +259,11 @@ Task list
             {% endif %}
           </li>
 
-          <li class="app-task-list__item">
-            <span class="app-task-list__task-name">
-              <a href="about-your-prof-help/step-4.html">
-                Any other adoption agencies involved </a>
-            </span>
-            {% if data['adoption-or-social'] %}
-            <strong class="govuk-tag app-task-list__task-completed" id="eligibility-completed">Completed</strong>
-            {% endif %}
-          </li>
+
           <li class="app-task-list__item">
             <span class="app-task-list__task-name">
               <a href="about-your-prof-help/step-3">
-                Your solicitor, if you used one
+                Your solicitor, if relevant
               </a>
             </span>
             {% if data['company-name'] %}
@@ -283,13 +274,13 @@ Task list
       </li>
       <li>
         <h2 class="app-task-list__section">
-          <span class="app-task-list__section-number">5. </span>Financial payments
+          <span class="app-task-list__section-number">5. </span>Declare payments
         </h2>
         <ul class="app-task-list__items">
           <li class="app-task-list__item">
             <span class="app-task-list__task-name">
               <a href="declare-payments">
-                Any payments made or received </a>
+                Declare any payments made or received </a>
             </span>
             {% if data['payment-declaration'] %}
             <strong class="govuk-tag app-task-list__task-completed" id="eligibility-completed">Completed</strong>
@@ -310,7 +301,7 @@ Task list
           <li class="app-task-list__item">
             <span class="app-task-list__task-name">
               <a href="check-your-answers.html">
-                Review application, pay and send
+                Review your application, pay and send
               </a>
             </span>
           </li>
