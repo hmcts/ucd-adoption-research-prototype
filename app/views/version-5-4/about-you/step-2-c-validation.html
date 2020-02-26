@@ -8,7 +8,7 @@ Apply to adopt a child
 
 <div class="govuk-width-container">
   <a href="#" class="govuk-back-link">Back</a>
-  <a href="step-2-validation" class="govuk-button govuk-button--secondary" style="float:right;">Validation on</a>
+  <a href="step-2-c" class="govuk-button govuk-button--secondary" style="float:right;">Validation off</a>
 
 
   <main class="govuk-main-wrapper " id="main-content" role="main">
@@ -16,20 +16,22 @@ Apply to adopt a child
       <div class="govuk-grid-column-two-thirds">
         <!-- <h2 class="govuk-heading-l">Add your birth certificate details</h2> -->
 
-        <form action="step-2-1" method="post" class="form">
+        <form action="step-2-d" method="post" class="form">
 
-          <div class="govuk-form-group">
+          <div class="govuk-form-group govuk-form-group--error">
             <legend class="govuk-fieldset__legend govuk-fieldset__legend--l">
-              <!-- <span class="govuk-caption-l">govuk-caption-l</span> -->
               <h1 class="govuk-fieldset__heading">
-                Your full name
+                Your gender
               </h1>
             </legend>
-
-            <input class="govuk-input" id="full-name" name="childs-name" type="text" autocomplete="name"
-              spellcheck="false">
-          </div>
-
+            <span id="changed-name-hint" class="govuk-hint">
+              As written on your birth certificate.
+            </span>
+              <span id="full-name-error" class="govuk-error-message">
+                <span class="govuk-visually-hidden">Error:</span> Something...
+              </span>
+              <input class="govuk-input govuk-input--error" id="full-name" name="full-name" type="text" aria-describedby="full-name-error" autocomplete="name" spellcheck="false">
+            </div>
 
 
         <button class="govuk-button" data-module="govuk-button">Save and continue</button>

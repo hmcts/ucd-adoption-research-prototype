@@ -13,8 +13,9 @@ Apply to adopt a child
     <div class="govuk-grid-row">
       <div class="govuk-grid-column-two-thirds">
         <h2 class="govuk-heading-l">How else can we contact you?</h2>
-        <p class="govuk-body">For example, with questions or updates about your application. All legal papers will be
-          posted.</p>
+
+        <p>For example, with questions or updates about your application. All legal papers will be posted.</p>
+
         <span id="passport-issued-hint" class="govuk-hint">
           Select all that apply.
         </span>
@@ -29,21 +30,16 @@ Apply to adopt a child
                   <input class="govuk-checkboxes__input" id="citizenship-conditional" name="citizen" type="checkbox"
                     value="email" data-aria-controls="conditional-citizenship-conditional">
                   <label class="govuk-label govuk-checkboxes__label" for="citizenship-conditional">
-                    Email
+                    Email - jane@goodall.com.
                   </label>
                 </div>
-                <div class="govuk-checkboxes__conditional govuk-checkboxes__conditional--hidden"
+                <!-- <div class="govuk-checkboxes__conditional govuk-checkboxes__conditional--hidden"
                   id="conditional-citizenship-conditional">
-                  <div class="govuk-form-group">
-                    <label class="govuk-label" for="contact-by-email">
-                      Email address
-                    </label>
-                    <input class="govuk-input govuk-!-width-two-thirds" id="contact-by-email" name="phone-number"
-                      type="email" placeholder="hello@mail.com" spellcheck="false" value="{{ data['phone-number'] }}">
-                    <a href="#">Change</a>
+                  <div class="govuk-inset-text">
+                    The email address we will contact you on is jane@goodall.com.
                   </div>
 
-                </div>
+                </div> -->
                 <div class="govuk-checkboxes__item">
                   <input class="govuk-checkboxes__input" id="citizenship-conditional-2" name="citizen" type="checkbox"
                     value="phone" data-aria-controls="conditional-citizenship-conditional-2">
@@ -57,7 +53,7 @@ Apply to adopt a child
                     <label class="govuk-label" for="contact-by-phone">
                       Phone number
                     </label>
-                    <input class="govuk-input govuk-!-width-one-third" id="contact-by-phone" name="phone-number"
+                    <input class="govuk-input govuk-input--width-20" id="contact-by-phone" name="phone-number"
                       type="tel" value="{{ data['phone-number'] }}">
                   </div>
 
@@ -76,7 +72,7 @@ Apply to adopt a child
                     <label class="govuk-label" for="contact-by-text">
                       Mobile phone number
                     </label>
-                    <input class="govuk-input govuk-!-width-one-third" id="contact-by-text" name="contact-by-text"
+                    <input class="govuk-input govuk-input--width-20" id="contact-by-text" name="contact-by-text"
                       type="tel" value="{{ data['phone-number'] }}">
                   </div>
 
