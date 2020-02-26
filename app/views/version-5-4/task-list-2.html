@@ -53,8 +53,20 @@ Task list
 
         <ul class="app-task-list__items">
           <div class="govuk-inset-text home-office-inset-text">
-            You'll need to upload 2 pieces of photo ID. </p>
-            <p>You'll also need copies of your UK visa or immigration stamps in your passport, if relevant. </p>
+            You'll need to upload your:
+            <ul class="govuk-list govuk-list--bullet">
+
+              <li> marriage or civil partnership certificate [if couple; only show for 1 user]</li>
+
+              <li>passport's photo page</li>
+              <li>driving licence</li>
+            </ul>
+            <p>If relevant to you, you'll also need to upload:
+              <ul class="govuk-list govuk-list--bullet">
+
+                <li>your UK visa</li>
+                <li>immigration stamps in your passport</li>
+                <li>evidence of any name changes, for example a deed poll</li>
           </div>
 
 
@@ -88,7 +100,7 @@ Task list
           <li class="app-task-list__item">
             <span class="app-task-list__task-name">
               <a href="about-you/step-2-4" aria-describedby="eligibility-completed">
-                Upload photo ID
+                Upload your identity documents
               </a>
               </a></span>
             {% if data['personal-photo'] %}
