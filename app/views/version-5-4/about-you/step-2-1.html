@@ -16,20 +16,17 @@ Apply to adopt a child
       <div class="govuk-grid-column-two-thirds">
         <!-- <h2 class="govuk-heading-l">Add your birth certificate details</h2> -->
 
-        <form action="step-2-b" method="post" class="form">
+        <form action="" id="eligible-form" method="post" class="form">
 
           <div class="govuk-form-group">
             <legend class="govuk-fieldset__legend govuk-fieldset__legend--l">
               <h1 class="govuk-fieldset__heading">
-                Have you ever changed your name?
+                Is this the name on your marriage or civil partnership certificate?
               </h1>
             </legend>
-            <span id="changed-name-hint" class="govuk-hint">
-              For example, after marriage or by deed poll.
-            </span>
             <div class="govuk-radios govuk-radios--conditional" data-module="govuk-radios">
               <div class="govuk-radios__item">
-                <input class="govuk-radios__input" id="father-conditional" name="father" type="radio" value="yes"
+                <input class="govuk-radios__input radioTargetSet" id="father-conditional" name="father" type="radio" value="step-2-b"
                   data-aria-controls="fathers-name-yes">
                 <label class="govuk-label govuk-radios__label" for="father-conditional">
                   Yes
@@ -37,45 +34,15 @@ Apply to adopt a child
               </div>
 
               <div class="govuk-radios__item">
-                <input class="govuk-radios__input" id="father-conditional-no" name="father" type="radio" value="no"
-                  data-aria-controls="father-conditional-no">
+                <input class="govuk-radios__input radioTargetSet" id="father-conditional-no" name="father" type="radio"
+                  data-aria-controls="father-conditional-no" value="step-2-b">
                 <label class="govuk-label govuk-radios__label" for="father-conditional-no">
                   No
                 </label>
               </div>
 
 
-              <div
-                class="govuk-radios__conditional govuk-radios__conditional--applicants govuk-radios__conditional--hidden"
-                id="fathers-name-yes">
-                <div class="govuk-form-group">
-                  <label class="govuk-label" for="full-name">
-                    Previous full name
-                  </label>
-                  <!--<span id="changed-name-hint" class="govuk-hint">
-                  Enter this as it's shown on the birth certificate.
-                </span><-->
-                  <input class="govuk-input" id="full-name" name="childs-name" type="text" autocomplete="name"
-                    spellcheck="false">
-                </div>
-                <div class="govuk-form-group">
-                  <label class="govuk-label" for="full-name">
-                    How did you change this name
-                  </label>
-                  <span id="changed-name-hint" class="govuk-hint">For example, by deed poll or by marriage or civil
-                    partnership certificate.</span>
 
-
-                  <input class="govuk-input" id="full-name" name="childs-name" type="text" autocomplete="name"
-                    spellcheck="false">
-
-                </div>
-                <br>
-                <p class="govuk-body"><a href="">Add another name</a></p>
-
-
-
-              </div>
             </div>
 
 
