@@ -1,0 +1,109 @@
+{% extends "layout-signed-in.html" %}
+
+{% block pageTitle %}
+Apply to adopt a child
+{% endblock %}
+
+{% block content %}
+
+<div class="govuk-width-container">
+  <a href="#" class="govuk-back-link">Back</a>
+  <a href="step-2-1" class="govuk-button govuk-button--secondary" style="float:right;">Validation off</a>
+
+
+  <main class="govuk-main-wrapper " id="main-content" role="main">
+    <div class="govuk-grid-row">
+      <div class="govuk-grid-column-two-thirds">
+        <!-- <h2 class="govuk-heading-l">Add your birth certificate details</h2> -->
+
+        <form action="step-2-b" method="post" class="form">
+
+          <div class="govuk-error-summary" aria-labelledby="error-summary-title" role="alert" tabindex="-1" data-module="govuk-error-summary">
+            <h2 class="govuk-error-summary__title" id="error-summary-title">
+              There is a problem
+            </h2>
+            <div class="govuk-error-summary__body">
+              <ul class="govuk-list govuk-error-summary__list">
+                <li>
+                  <a href="#passport-issued-error">Something...</a>
+                </li>
+              </ul>
+            </div>
+          </div>
+
+          <div class="govuk-form-group govuk-form-group--error">
+            <legend class="govuk-fieldset__legend govuk-fieldset__legend--l">
+              <h1 class="govuk-fieldset__heading">
+                Have you ever changed your name?
+              </h1>
+            </legend>
+            <span id="changed-name-hint" class="govuk-hint">
+              For example, after marriage or by deed poll.
+            </span>
+            <div class="govuk-radios govuk-radios--conditional" data-module="govuk-radios">
+              <div class="govuk-radios__item">
+                <input class="govuk-radios__input" id="father-conditional" name="father" type="radio" value="yes"
+                  data-aria-controls="fathers-name-yes" checked>
+                <label class="govuk-label govuk-radios__label" for="father-conditional">
+                  Yes
+                </label>
+              </div>
+
+              <div class="govuk-radios__item">
+                <input class="govuk-radios__input" id="father-conditional-no" name="father" type="radio" value="no"
+                  data-aria-controls="father-conditional-no">
+                <label class="govuk-label govuk-radios__label" for="father-conditional-no">
+                  No
+                </label>
+              </div>
+
+
+              <div
+                class="govuk-radios__conditional govuk-radios__conditional--applicants govuk-radios__conditional--hidden"
+                id="fathers-name-yes">
+
+                <div class="govuk-form-group govuk-form-group--error">
+                  <label class="govuk-label" for="full-name">
+                    Previous full name
+                  </label>
+                    <span id="full-name-error" class="govuk-error-message">
+                      <span class="govuk-visually-hidden">Error:</span> Something...
+                    </span>
+                    <input class="govuk-input govuk-input--error" id="full-name" name="full-name" type="text" aria-describedby="full-name-error" autocomplete="name" spellcheck="false">
+                  </div>
+                <div class="govuk-form-group">
+                  <label class="govuk-label" for="full-name">
+                    How did you change this name
+                  </label>
+                  <span id="changed-name-hint" class="govuk-hint">For example, by deed poll or by marriage or civil
+                    partnership certificate.</span>
+
+
+                  <input class="govuk-input" id="full-name" name="childs-name" type="text" autocomplete="name"
+                    spellcheck="false">
+
+                </div>
+                <br>
+                <p class="govuk-body"><a href="">Add another name</a></p>
+
+
+
+              </div>
+            </div>
+
+
+          </div>
+
+
+          <button class="govuk-button" data-module="govuk-button">Save and continue</button>
+          <a href="../task-list-2" class="govuk-button govuk-button--secondary">Save and return</a>
+
+
+        </form>
+
+      </div>
+    </div>
+  </main>
+</div>
+
+{% endblock %}

@@ -1,0 +1,56 @@
+{% extends "layout-signed-out.html" %}
+
+{% block pageTitle %}
+Apply to adopt a child
+{% endblock %}
+
+{% block content %}
+<div class="govuk-width-container">
+  <a href="#" class="govuk-back-link">Back</a>
+  <main class="govuk-main-wrapper " id="main-content" role="main">
+
+    <div class="govuk-grid-row">
+      <div class="govuk-grid-column-two-thirds">
+
+        <form action="" id="eligible-form" method="post" class="form">
+
+          <legend class="govuk-fieldset__legend govuk-fieldset__legend--l">
+            <h1 class="govuk-fieldset__heading">
+              Have you ever been married or in a civil partnership?
+            </h1>
+          </legend>
+
+          <div class="govuk-form-group">
+            <fieldset class="govuk-fieldset" aria-describedby="changed-name-hint">
+              <span id="changed-name-hint" class="govuk-hint">
+              <div class="govuk-radios">
+                <div class="govuk-radios__item">
+                  <input class="govuk-radios__input radioTargetSet" id="where-do-you-live" name="where-do-you-live"
+                    type="radio" value="step-7">
+                  <label class="govuk-label govuk-radios__label" for="where-do-you-live">
+                    Yes
+                  </label>
+                </div>
+                <div class="govuk-radios__item">
+                  <input class="govuk-radios__input radioTargetSet" id="where-do-you-live-2" name="where-do-you-live"
+                    type="radio" value="../task-list-2">
+                  <label class="govuk-label govuk-radios__label" for="where-do-you-live-2">
+                    No
+                  </label>
+                </div>
+              </div>
+            </fieldset>
+          </div>
+
+          <button class="govuk-button" data-module="govuk-button">Save and continue</button>
+          <a href="../task-list-2" class="govuk-button govuk-button--secondary">Save and return</a>
+
+
+        </form>
+
+      </div>
+    </div>
+  </main>
+</div>
+
+{% endblock %}
