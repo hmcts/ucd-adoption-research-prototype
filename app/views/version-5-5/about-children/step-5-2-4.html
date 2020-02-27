@@ -12,108 +12,22 @@ Apply to adopt a child
   <main class="govuk-main-wrapper " id="main-content" role="main">
     <div class="govuk-grid-row">
       <div class="govuk-grid-column-two-thirds">
-        <h2 class="govuk-heading-l">Add the other parent's details</h2>
 
-        <form action="step-5-2-2b" method="post" class="form" id="birth-father-form">
+        <form action="step-5-2-4a" method="post" class="form" id="birth-father-form">
 
+          <legend class="govuk-fieldset__legend govuk-fieldset__legend--l">
+            <span class="govuk-caption-l">Their birth father’s or other parent’s details </span>
+            <h1 class="govuk-fieldset__heading">
+              Add their full name
+            </h1>
+          </legend>
           <div class="govuk-form-group">
-            <label class="govuk-label" for="full-name">
-              Full name
-            </label>
-            <!--<span id="changed-name-hint" class="govuk-hint">
-              Enter this as it's shown on the birth certificate.
-            </span><-->
+
             <input class="govuk-input" id="full-name" name="childs-name" type="text" autocomplete="name"
               spellcheck="false">
           </div>
 
-          <div class="govuk-form-group">
-            <fieldset class="govuk-fieldset" aria-describedby="how-contacted-conditional-hint">
-
-              <label class="govuk-label" for="full-name">
-                Do you know their date of birth?
-              </label>
-
-              <div class="govuk-radios govuk-radios--conditional" data-module="govuk-radios">
-                <div class="govuk-radios__item">
-                  <input class="govuk-radios__input" id="how-contacted-conditional-gp" name="education" type="radio"
-                    value="yes" data-aria-controls="conditional-gp" {{ checked("education", "yes") }}>
-                  <label class="govuk-label govuk-radios__label" for="how-contacted-conditional-gp">
-                    Yes
-                  </label>
-                </div>
-
-                <div class="govuk-radios__item">
-                  <input class="govuk-radios__input" id="conditional-how-contacted-condi" name="education" type="radio"
-                    value="no" data-aria-controls="conditional-how-contacted-condi" {{ checked("education", "no") }}>
-                  <label class="govuk-label govuk-radios__label" for="conditional-how-contacted-condi">
-                    No
-                  </label>
-                </div>
-
-
-                <div
-                  class="govuk-radios__conditional govuk-radios__conditional--applicants govuk-radios__conditional--hidden"
-                  id="conditional-gp">
-                  <div class="govuk-form-group">
-                    <fieldset class="govuk-fieldset" role="group" aria-describedby="passport-issued-hint">
-                      <label class="govuk-label" for="full-name">
-                        Date of birth
-                      </label>
-                      <span id="passport-issued-hint" class="govuk-hint">
-                        For example, 31 3 2011
-                      </span>
-                      <div class="govuk-date-input" id="passport-issued">
-                        <div class="govuk-date-input__item">
-                          <div class="govuk-form-group">
-                            <label class="govuk-label govuk-date-input__label" for="passport-issued-day">
-                              Day
-                            </label>
-                            <input class="govuk-input govuk-date-input__input govuk-input--width-2"
-                              id="passport-issued-day" name="passport-issued-day" type="number" pattern="[0-9]*">
-                          </div>
-                        </div>
-                        <div class="govuk-date-input__item">
-                          <div class="govuk-form-group">
-                            <label class="govuk-label govuk-date-input__label" for="passport-issued-month">
-                              Month
-                            </label>
-                            <input class="govuk-input govuk-date-input__input govuk-input--width-2"
-                              id="passport-issued-month" name="passport-issued-month" type="number" pattern="[0-9]*">
-                          </div>
-                        </div>
-                        <div class="govuk-date-input__item">
-                          <div class="govuk-form-group">
-                            <label class="govuk-label govuk-date-input__label" for="passport-issued-year">
-                              Year
-                            </label>
-                            <input class="govuk-input govuk-date-input__input govuk-input--width-4"
-                              id="passport-issued-year" name="passport-issued-year" type="number" pattern="[0-9]*">
-                          </div>
-                        </div>
-                      </div>
-                    </fieldset>
-                  </div>
-                </div>
-            </fieldset>
-          </div>
-
-
-          <div class="govuk-form-group">
-            <label class="govuk-label" for="full-name">
-              Country of birth
-            </label>
-            <input class="govuk-input" id="full-name" name="full-name" type="text" autocomplete="name"
-              spellcheck="false">
-          </div>
-
-          <div class="govuk-form-group">
-            <label class="govuk-label" for="full-name">
-              Occupation
-            </label>
-            <input class="govuk-input" id="full-name" name="full-name" type="text" autocomplete="name"
-              spellcheck="false">
-          </div>
+          </fieldset>
 
           <button class="govuk-button" data-module="govuk-button">Save and continue</button>
           <a href="../task-list-2" class="govuk-button govuk-button--secondary">Save and return</a>
