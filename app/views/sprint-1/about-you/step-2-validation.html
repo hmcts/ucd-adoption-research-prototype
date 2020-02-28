@@ -1,0 +1,72 @@
+{% extends "layout-signed-in.html" %}
+
+{% block pageTitle %}
+Apply to adopt a child
+{% endblock %}
+
+{% block content %}
+
+<div class="govuk-width-container">
+  <a href="#" class="govuk-back-link">Back</a>
+  <a href="step-2" class="govuk-button govuk-button--secondary" style="float:right;">Validation off</a>
+
+
+  <main class="govuk-main-wrapper " id="main-content" role="main">
+    <div class="govuk-grid-row">
+      <div class="govuk-grid-column-two-thirds">
+        <!-- <h2 class="govuk-heading-l">Add your birth certificate details</h2> -->
+
+        <form action="step-2-1" method="post" class="form">
+
+
+
+          <div class="govuk-error-summary" aria-labelledby="error-summary-title" role="alert" tabindex="-1"
+            data-module="govuk-error-summary">
+            <h2 class="govuk-error-summary__title" id="error-summary-title">
+              There's a problem
+            </h2>
+            <div class="govuk-error-summary__body">
+              <ul class="govuk-list govuk-error-summary__list">
+                <li>
+                  <a href="#name">Enter your full name</a>
+                </li>
+              </ul>
+            </div>
+          </div>
+
+
+
+
+
+          <div class="govuk-form-group govuk-form-group--error">
+            <legend class="govuk-fieldset__legend govuk-fieldset__legend--l">
+                <span class="govuk-caption-l">Your details </span>
+                <h1 class="govuk-fieldset__heading">
+                    Add your full name
+                </h1>
+
+              <div class="govuk-form-group govuk-form-group--error">
+                <label class="govuk-label" for="name">
+                </label>
+                <span id="name-error" class="govuk-error-message">
+                  <span class="govuk-visually-hidden">Error:</span> Enter your full name
+                </span>
+                <input class="govuk-input govuk-input--error" id="name" name="name" type="text"
+                  aria-describedby="name-error">
+              </div>
+            </legend>
+          </div>
+
+
+          <button class="govuk-button" data-module="govuk-button">Save and continue</button>
+          <a href="../task-list-2" class="govuk-button govuk-button--secondary">Save and return</a>
+
+
+        </form>
+
+      </div>
+    </div>
+  </main>
+</div>
+
+{% endblock %}
