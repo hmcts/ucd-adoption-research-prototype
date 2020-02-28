@@ -62,11 +62,11 @@ Task list
               <li>driving licence</li>
             </ul>
             <p>If relevant to you, you'll also need to upload:</p>
-              <ul class="govuk-list govuk-list--bullet">
+            <ul class="govuk-list govuk-list--bullet">
 
-                <li>your UK visa</li>
-                <li>immigration stamps in your passport</li>
-                <li>evidence of any name changes, for example a deed poll</li>
+              <li>your UK visa</li>
+              <li>immigration stamps in your passport</li>
+              <li>evidence of any name changes, for example a deed poll</li>
           </div>
 
 
@@ -112,7 +112,7 @@ Task list
 
           <!--<p><strong>First applicant</strong></p><-->
 
-<!--
+          <!--
           <li class="app-task-list__item">
             <span class="app-task-list__task-name">
               <a href="about-you/step-4-3.html" aria-describedby="eligibility-completed">
@@ -192,8 +192,17 @@ Task list
           </li>
           <li class="app-task-list__item">
             <span class="app-task-list__task-name">
-              <a href="./about-children/step-1-3.html" aria-describedby="eligibility-completed">
+              <a href="./about-children/step-1-3" aria-describedby="eligibility-completed">
                 Their history with you
+              </a></span>
+            {% if data['date-placed'] %}
+            <strong class="govuk-tag app-task-list__task-completed" id="eligibility-completed">Completed</strong>
+            {% endif %}
+            <br>
+          <li class="app-task-list__item">
+            <span class="app-task-list__task-name">
+              <a href="./about-children/step-1-3b-yes.html" aria-describedby="eligibility-completed">
+                Their placement order details
               </a></span>
             {% if data['date-placed'] %}
             <strong class="govuk-tag app-task-list__task-completed" id="eligibility-completed">Completed</strong>
