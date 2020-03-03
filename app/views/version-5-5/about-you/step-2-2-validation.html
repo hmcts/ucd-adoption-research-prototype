@@ -15,25 +15,41 @@ Apply to adopt a child
     <div class="govuk-grid-row">
       <div class="govuk-grid-column-two-thirds">
 
-        <div class="govuk-form-group">
-            <legend class="govuk-fieldset__legend govuk-fieldset__legend--l">
-                <span class="govuk-caption-l">Your details </span>
-                <h1 class="govuk-fieldset__heading">
-                    Add your address
-                </h1>
-            </legend>
+        <div class="govuk-error-summary" aria-labelledby="error-summary-title" role="alert" tabindex="-1"
+          data-module="govuk-error-summary">
+          <h2 class="govuk-error-summary__title" id="error-summary-title">
+            There's a problem
+          </h2>
+          <div class="govuk-error-summary__body">
+            <ul class="govuk-list govuk-error-summary__list">
+              <li>
+                <a href="#name">Enter a real postcode</a>
+              </li>
+            </ul>
+          </div>
+        </div>
+
+        <div class="govuk-form-group govuk-form-group--error">
+          <legend class="govuk-fieldset__legend govuk-fieldset__legend--l">
+            <span class="govuk-caption-l">Your details </span>
+            <h1 class="govuk-fieldset__heading">
+              What's your address?
+            </h1>
+          </legend>
           <p class="govuk-body"> We'll send all court papers to this address.</p>
 
 
-          <div class="govuk-form-group govuk-form-group--error">
+          <div class="govuk-form-group">
             <label class="govuk-label govuk-label--m" for="passport-number">
               Postcode
             </label>
-              <span id="address-postcode-error" class="govuk-error-message">
-                <span class="govuk-visually-hidden">Error:</span> Enter a real postcode
-              </span>
-              <input class="govuk-input govuk-input--width-10 govuk-input--error" id="address-postcode" name="address-postcode" type="text" value="Not a postcode" aria-describedby="address-postcode-error" autocomplete="postal-code">
-            </div>
+            <span id="address-postcode-error" class="govuk-error-message">
+              <span class="govuk-visually-hidden">Error:</span> Enter a real postcode
+            </span>
+            <input class="govuk-input govuk-input--width-10 govuk-input--error" id="address-postcode"
+              name="address-postcode" type="text" value="Not a postcode" aria-describedby="address-postcode-error"
+              autocomplete="postal-code">
+          </div>
 
 
         </div>

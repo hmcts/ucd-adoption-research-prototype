@@ -1,0 +1,65 @@
+{% extends "layout-signed-in.html" %}
+
+{% block pageTitle %}
+Apply to adopt a child
+{% endblock %}
+
+{% block content %}
+
+<div class="govuk-width-container">
+  <a href="#" class="govuk-back-link">Back</a>
+  <a href="step-2-2-validation" class="govuk-button govuk-button--secondary" style="float:right;">Validation on</a>
+
+
+  <main class="govuk-main-wrapper " id="main-content" role="main">
+    <div class="govuk-grid-row">
+      <div class="govuk-grid-column-two-thirds">
+
+        <div class="govuk-form-group">
+          <legend class="govuk-fieldset__legend govuk-fieldset__legend--l">
+            <span class="govuk-caption-l">Second applicant's details </span>
+            <h1 class="govuk-fieldset__heading">
+              What's your address?
+            </h1>
+          </legend>
+          <p class="govuk-body"> We'll send all court papers to this address.</p>
+
+
+          <fieldset class="govuk-fieldset">
+
+
+            <div class="govuk-form-group">
+
+              <input class="govuk-input" id="address-line-1" name="address-line-1" type="text"
+                autocomplete="address-line1" placeholder="17 Sun Lane">
+            </div>
+
+            <div class="govuk-form-group">
+
+              <input class="govuk-input" id="address-line-2" name="address-line-2" type="text"
+                autocomplete="address-line2" placeholder="Chorley">
+            </div>
+
+            <div class="govuk-form-group">
+
+              <input class="govuk-input govuk-!-width-two-thirds" id="address-town" name="address-town" type="text"
+                autocomplete="address-level2" placeholder="Lancashire">
+            </div>
+
+            <div>
+
+              <input class="govuk-input govuk-input--width-10" id="address-postcode" name="address-postcode" type="text"
+                autocomplete="postal-code" placeholder="PR6 0AN">
+            </div>
+
+          </fieldset>
+        </div>
+        <a href="../task-list-2" class="govuk-button">Save and return</a>
+        <a href="" class="govuk-button govuk-button--secondary">Change address</a>
+
+      </div>
+    </div>
+  </main>
+</div>
+
+{% endblock %}

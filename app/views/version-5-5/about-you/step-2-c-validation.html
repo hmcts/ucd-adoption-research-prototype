@@ -18,28 +18,41 @@ Apply to adopt a child
 
         <form action="step-2-d" method="post" class="form">
 
+          <div class="govuk-error-summary" aria-labelledby="error-summary-title" role="alert" tabindex="-1"
+            data-module="govuk-error-summary">
+            <h2 class="govuk-error-summary__title" id="error-summary-title">
+              There's a problem
+            </h2>
+            <div class="govuk-error-summary__body">
+              <ul class="govuk-list govuk-error-summary__list">
+                <li>
+                  <a href="#name">Something...</a>
+                </li>
+              </ul>
+            </div>
+          </div>
+
           <div class="govuk-form-group govuk-form-group--error">
             <legend class="govuk-fieldset__legend govuk-fieldset__legend--l">
-                <span class="govuk-caption-l">Your details </span>
-                <h1 class="govuk-fieldset__heading">
-                    Add your gender
-                </h1>
+              <span class="govuk-caption-l">Your details </span>
+              <h1 class="govuk-fieldset__heading">
+                What's your gender?
+              </h1>
             </legend>
-            <span id="changed-name-hint" class="govuk-hint">
-              As written on your birth certificate.
+
+            <span id="full-name-error" class="govuk-error-message">
+              <span class="govuk-visually-hidden">Error:</span> Something...
             </span>
-              <span id="full-name-error" class="govuk-error-message">
-                <span class="govuk-visually-hidden">Error:</span> Something...
-              </span>
-              <input class="govuk-input govuk-input--error" id="full-name" name="full-name" type="text" aria-describedby="full-name-error" autocomplete="name" spellcheck="false">
-            </div>
+            <input class="govuk-input govuk-input--error" id="full-name" name="full-name" type="text"
+              aria-describedby="full-name-error" autocomplete="name" spellcheck="false">
+          </div>
 
 
-        <button class="govuk-button" data-module="govuk-button">Save and continue</button>
-        <a href="../task-list-2" class="govuk-button govuk-button--secondary">Save and return</a>
+          <button class="govuk-button" data-module="govuk-button">Save and continue</button>
+          <a href="../task-list-2" class="govuk-button govuk-button--secondary">Save and return</a>
 
 
-      </form>
+        </form>
 
       </div>
     </div>

@@ -8,7 +8,7 @@ Apply to adopt a child
 
 <div class="govuk-width-container">
   <a href="#" class="govuk-back-link">Back</a>
-  <a href="step-2-1a-validation" class="govuk-button govuk-button--secondary" style="float:right;">Validation on</a>
+  <a href="step-2-1a" class="govuk-button govuk-button--secondary" style="float:right;">Validation off</a>
 
 
   <main class="govuk-main-wrapper " id="main-content" role="main">
@@ -17,19 +17,38 @@ Apply to adopt a child
 
         <form action="step-2-b" method="post" class="form">
 
-          <legend class="govuk-fieldset__legend govuk-fieldset__legend--l">
+          <div class="govuk-error-summary" aria-labelledby="error-summary-title" role="alert" tabindex="-1"
+            data-module="govuk-error-summary">
+            <h2 class="govuk-error-summary__title" id="error-summary-title">
+              There's a problem
+            </h2>
+            <div class="govuk-error-summary__body">
+              <ul class="govuk-list govuk-error-summary__list">
+                <li>
+                  <a href="#name">The CSV must be smaller than 2MB</a>
+                </li>
+              </ul>
+            </div>
+          </div>
+
+          <div class="govuk-form-group govuk-form-group--error">
+
             <legend class="govuk-fieldset__legend govuk-fieldset__legend--l">
-              <span class="govuk-caption-l">Your details </span>
-              <h1 class="govuk-fieldset__heading">
-                Upload evidence of your name change
-              </h1>
+              <legend class="govuk-fieldset__legend govuk-fieldset__legend--l">
+                <span class="govuk-caption-l">Your details </span>
+                <h1 class="govuk-fieldset__heading">
+                  Upload evidence of your name change
+                </h1>
+              </legend>
             </legend>
-          </legend>
 
-          <p class="govuk-body"> For example, your <a href="https://www.gov.uk/change-name-deed-poll" target="_blank">deed
-              poll</a>.</p>
+            <p class="govuk-body"> For example, your <a href="https://www.gov.uk/change-name-deed-poll" target="_blank">deed
+                poll</a>.</p>
 
-          <div class="govuk-form-group">
+                <span id="full-name-error" class="govuk-error-message">
+                  <span class="govuk-visually-hidden">Error:</span> The CSV must be smaller than 2MB
+                </span>
+
             <div class="document-upload-box" style="
             border-style: dashed;
             border-color: #b1b4b6;
