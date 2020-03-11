@@ -1,0 +1,41 @@
+{% extends "layout-signed-in.html" %}
+
+{% block pageTitle %}
+Apply to adopt a child
+{% endblock %}
+
+{% block content %}
+
+<div class="govuk-width-container">
+  <a href="#" class="govuk-back-link">Back</a>
+
+  <main class="govuk-main-wrapper " id="main-content" role="main">
+    <div class="govuk-grid-row">
+      <div class="govuk-grid-column-two-thirds">
+        <!--<p class="govuk-body-l">You can work with your adoption agency or social worker to gather this information, but
+          we need to receive this from you. This is because it's you who's applying to adopt.</p><-->
+
+        <form action="../task-list-2" method="post" class="form">
+
+          <div class="card">
+            <header>
+              <h1 class="govuk-heading-l">Sending your application</h1>
+            </header>
+
+            <p>You can start your application now, but you will not be able to send it until 26 April 2020.</p>
+            <p>That will be 10 weeks since the child was placed with you. The courts cannot look at your application
+              until then.
+              <p>We'll email you a reminder on 26 April 2020.
+              </p>
+              <button class="govuk-button button-white" data-module="govuk-button">Continue</button>
+
+          </div>
+
+
+        </form>
+      </div>
+    </div>
+  </main>
+</div>
+
+{% endblock %}

@@ -1,0 +1,84 @@
+{% extends "layout-signed-in.html" %}
+
+{% block pageTitle %}
+Apply to adopt a child
+{% endblock %}
+
+{% block content %}
+
+<div class="govuk-width-container">
+  <a href="#" class="govuk-back-link">Back</a>
+
+  <main class="govuk-main-wrapper " id="main-content" role="main">
+    <div class="govuk-grid-row">
+      <div class="govuk-grid-column-two-thirds">
+        <h2 class="govuk-heading-l">Does the other parent have parental responsibility? </h2>
+
+        <form action="../task-list-2" method="post" class="form">
+
+          <div class="govuk-form-group">
+            <fieldset class="govuk-fieldset" aria-describedby="how-contacted-conditional-hint">
+
+              <div class="govuk-radios govuk-radios--conditional" data-module="govuk-radios">
+                <div class="govuk-radios__item">
+                  <input class="govuk-radios__input" id="how-contacted-conditional-gp" name="wishes3" type="radio"
+                    value="yes" data-aria-controls="conditional-gp" {{ checked("wishes3", "yes") }}>
+                  <label class="govuk-label govuk-radios__label" for="how-contacted-conditional-gp">
+                    Yes
+                  </label>
+                </div>
+
+                <div class="govuk-radios__item">
+                  <input class="govuk-radios__input" id="conditional-how-contacted-condi" name="wishes3" type="radio"
+                    value="no" data-aria-controls="conditional-how-contacted-condi" {{ checked("wishes3", "no") }}>
+                  <label class="govuk-label govuk-radios__label" for="conditional-how-contacted-condi">
+                    No
+                  </label>
+                </div>
+                <div class="govuk-radios__item">
+                  <input class="govuk-radios__input" id="conditional-how-contacted-condi" name="wishes3" type="radio"
+                    value="middle" data-aria-controls="conditional-how-contacted-condi"
+                    {{ checked("wishes3", "middle") }}>
+                  <label class="govuk-label govuk-radios__label" for="conditional-how-contacted-condi">
+                    Not sure
+                  </label>
+                </div>
+              </div>
+            </fieldset>
+          </div>
+
+
+          <details class="govuk-details" data-module="govuk-details">
+            <summary class="govuk-details__summary">
+              <span class="govuk-details__summary-text">
+                More about 'parental responsibility'
+              </span>
+            </summary>
+            <div class="govuk-details__text">
+              In family law, parental responsibility means all the rights, duties, powers, responsibilities and
+              authority that a parent has for the child.</p>
+              <p>If a child’s father and mother were married to each other when the child was born,
+                each has parental responsibility.</p>
+              <p>If the parents were not married to each other at that time, the father can gain
+                parental responsibility:
+                <ul class="govuk-list govuk-list--bullet">
+
+                  <li>by registering the child’s birth jointly with the mother </li>
+                  <li>by marrying the child’s mother</li>
+                  <li>through a ‘parental responsibility agreement’ between him and the child’s mother which is
+                    registered with the court</li>
+                  <li>by getting a court order for parental responsibility </li>
+                </ul>
+            </div>
+          </details>
+
+
+          <button class="govuk-button" data-module="govuk-button">Save and return</button>
+
+        </form>
+      </div>
+    </div>
+  </main>
+</div>
+
+{% endblock %}

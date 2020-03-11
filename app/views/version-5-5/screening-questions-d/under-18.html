@@ -7,7 +7,7 @@ Apply to adopt a child
 {% block content %}
 
 <div class="govuk-width-container">
-  <a href="child-married.html" class="govuk-back-link">Back</a>
+  <a href="#" class="govuk-back-link">Back</a>
 
   <main class="govuk-main-wrapper " id="main-content" role="main">
     <div class="govuk-grid-row">
@@ -19,52 +19,40 @@ Apply to adopt a child
           <legend class="govuk-fieldset__legend govuk-fieldset__legend--l">
             <span class="govuk-caption-l">Check you're eligible to adopt</span>
             <h2 class="govuk-fieldset__heading">
-              When was the child born?
-            </h2>
+              Is the child under 18 years old? </h2>
           </legend>
+          <p class="govuk-body">If you're applying to adopt more than 1 child, are all under 18?</p>
 
           <div class="govuk-form-group">
             <fieldset class="govuk-fieldset" role="group" aria-describedby="passport-issued-hint">
 
 
-              <span id="changed-name-hint" class="govuk-hint">
-                For example, 31 3 2019
-              </span>
 
 
-              <div class="govuk-date-input" id="passport-issued">
-                <div class="govuk-date-input__item">
-                  <div class="govuk-form-group">
-                    <label class="govuk-label govuk-date-input__label" for="passport-issued-day">
-                      Day
-                    </label>
-                    <input class="govuk-input govuk-date-input__input govuk-input--width-2" name="date-placed"
-                      type="number" pattern="[0-9]*" value="{{ data['date-placed'] }}">
-                  </div>
+
+
+
+              <div class="govuk-radios">
+                <div class="govuk-radios__item">
+                  <input class="govuk-radios__input" id="where-do-you-live" name="where-do-you-live" type="radio"
+                    value="england">
+                  <label class="govuk-label govuk-radios__label" for="where-do-you-live">
+                    Yes
+                  </label>
                 </div>
-                <div class="govuk-date-input__item">
-                  <div class="govuk-form-group">
-                    <label class="govuk-label govuk-date-input__label" for="passport-issued-month">
-                      Month
-                    </label>
-                    <input class="govuk-input govuk-date-input__input govuk-input--width-2" id="passport-issued-month"
-                      name="passport-issued-month" type="number" pattern="[0-9]*">
-                  </div>
+                <div class="govuk-radios__item">
+                  <input class="govuk-radios__input" id="where-do-you-live-2" name="where-do-you-live" type="radio"
+                    value="scotland">
+                  <label class="govuk-label govuk-radios__label" for="where-do-you-live-2">
+                    No
+                  </label>
                 </div>
-                <div class="govuk-date-input__item">
-                  <div class="govuk-form-group">
-                    <label class="govuk-label govuk-date-input__label" for="passport-issued-year">
-                      Year
-                    </label>
-                    <input class="govuk-input govuk-date-input__input govuk-input--width-4" id="passport-issued-year"
-                      name="passport-issued-year" type="number" pattern="[0-9]*">
-                  </div>
-                </div>
+
+
+
               </div>
             </fieldset>
           </div>
-
-
 
           <a href="married.html" class="govuk-button govuk-button">Save and continue</a>
 

@@ -1,0 +1,39 @@
+{% extends "layout-signed-in.html" %}
+
+{% block pageTitle %}
+Apply to adopt a child
+{% endblock %}
+
+{% block content %}
+
+<div class="govuk-width-container">
+  <a href="#" class="govuk-back-link">Back</a>
+
+  <main class="govuk-main-wrapper " id="main-content" role="main">
+    <div class="govuk-grid-row">
+      <div class="govuk-grid-column-two-thirds">
+        <span class="govuk-caption-l">About the first sibling </span>
+
+        <h2 class="govuk-heading-l">What type of order was made or applied for?</h2>
+
+        <form action="step-6-3b" method="post" class="form">
+
+
+          <div class="govuk-form-group">
+            <input class="govuk-input" id="full-name" name="childs-name" type="text" autocomplete="name"
+              spellcheck="false">
+          </div>
+
+
+          <button class="govuk-button" data-module="govuk-button">Save and continue</button>
+          <a href="../task-list-2" class="govuk-button govuk-button--secondary">Save and return</a>
+
+
+        </form>
+
+      </div>
+    </div>
+  </main>
+</div>
+
+{% endblock %}
