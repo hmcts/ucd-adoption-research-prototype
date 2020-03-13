@@ -68,10 +68,10 @@ Task list
               <li>immigration stamps in your passport</li>
               <li>evidence of any name changes, for example a deed poll</li>
           </div>
-          <p><strong>Both applicants</strong></p>
+
           <li class="app-task-list__item">
             <span class="app-task-list__task-name">
-              <a href="./about-you/relationship-1.html" aria-describedby="eligibility-completed">
+              <a href="about-you/step-1" aria-describedby="eligibility-completed">
                 Your relationship details
               </a>
             </span>
@@ -79,9 +79,38 @@ Task list
             <strong class="govuk-tag app-task-list__task-completed" id="eligibility-completed">Completed</strong>
             {% endif %}
           </li>
+          <!--
+          <li class="app-task-list__item">
+            <span class="app-task-list__task-name">
+              <a href="about-you/step-6" aria-describedby="eligibility-completed">
+                Your relationship details (if the user said they were the only applicant)
+              </a>
+            </span>
+            {% if data['relationship'] %}
+            <strong class="govuk-tag app-task-list__task-completed" id="eligibility-completed">Completed</strong>
+            {% endif %}
+          </li>
 
-
-
+          <li class="app-task-list__item">
+            <span class="app-task-list__task-name">
+              <a href="about-you/address" aria-describedby="eligibility-completed">
+                Your address
+              </a>
+              </a></span>
+            {% if data['phone-number'] %}
+            <strong class="govuk-tag app-task-list__task-completed" id="eligibility-completed">Completed</strong>
+            {% endif %}
+          </li>
+          <li class="app-task-list__item">
+            <span class="app-task-list__task-name">
+              <a href="about-you/address-multiple" aria-describedby="eligibility-completed">
+                Your address - other adoption-cert-details
+              </a>
+              </a></span>
+            {% if data['phone-number'] %}
+            <strong class="govuk-tag app-task-list__task-completed" id="eligibility-completed">Completed</strong>
+            {% endif %}
+          </li>
 
           <br>
 
