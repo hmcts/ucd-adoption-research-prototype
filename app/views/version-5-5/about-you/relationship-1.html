@@ -13,7 +13,7 @@ Apply to adopt a child
     <div class="govuk-grid-row">
       <div class="govuk-grid-column-two-thirds">
 
-        <div class="govuk-form-group">
+        <form action="" id="eligible-form" method="post" class="form">
 
           <legend class="govuk-fieldset__legend govuk-fieldset__legend--l">
             <span class="govuk-caption-l">Your relationship details </span>
@@ -22,23 +22,23 @@ Apply to adopt a child
             </h1>
           </legend>
 
-
+          <div class="govuk-form-group">
 
           <fieldset class="govuk-fieldset" aria-describedby="how-contacted-conditional-hint">
 
 
             <div class="govuk-radios govuk-radios--conditional" data-module="govuk-radios">
               <div class="govuk-radios__item">
-                <input class="govuk-radios__input" id="how-contacted-conditional" name="how-contacted" type="radio"
-                  value="email" data-aria-controls="conditional-how-contacted-conditional-yes">
+                <input class="govuk-radios__input radioTargetSet" id="how-contacted-conditional" name="how-contacted" type="radio"
+                  value="../about-you/step-1" data-aria-controls="conditional-how-contacted-conditional-yes">
                 <label class="govuk-label govuk-radios__label" for="how-contacted-conditional">
                   Yes
                 </label>
               </div>
 
               <div class="govuk-radios__item">
-                <input class="govuk-radios__input" id="how-contacted-conditional-2" name="how-contacted" type="radio"
-                  value="phone" data-aria-controls="conditional-how-contacted-conditional-2">
+                <input class="govuk-radios__input radioTargetSet" id="how-contacted-conditional-2" name="how-contacted" type="radio"
+                  value="../task-list-2-multiple" data-aria-controls="conditional-how-contacted-conditional-2">
                 <label class="govuk-label govuk-radios__label" for="how-contacted-conditional-2">
                   No
                 </label>
@@ -49,9 +49,10 @@ Apply to adopt a child
         </div>
 
 
-        <a href="../about-you/step-1.html
-        " class="govuk-button">Save and return</a>
+        <button class="govuk-button" data-module="govuk-button">Save and continue</button>
         <a href="../task-list-2" class="govuk-button govuk-button--secondary">Save as draft</a>
+
+      </form>
 
       </div>
     </div>
