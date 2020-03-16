@@ -56,7 +56,6 @@ Task list
             <p>You'll need to upload your:</p>
             <ul class="govuk-list govuk-list--bullet">
 
-              <li> marriage or civil partnership certificate [if couple; only show for 1 user]</li>
 
               <li>passport's photo page</li>
               <li>driving licence</li>
@@ -69,21 +68,11 @@ Task list
               <li>evidence of any name changes, for example a deed poll</li>
           </div>
 
-          <li class="app-task-list__item">
-            <span class="app-task-list__task-name">
-              <a href="about-you/step-1" aria-describedby="eligibility-completed">
-                Your relationship details
-              </a>
-            </span>
-            {% if data['relationship'] %}
-            <strong class="govuk-tag app-task-list__task-completed" id="eligibility-completed">Completed</strong>
-            {% endif %}
-          </li>
-          <!--
+
           <li class="app-task-list__item">
             <span class="app-task-list__task-name">
               <a href="about-you/step-6" aria-describedby="eligibility-completed">
-                Your relationship details (if the user said they were the only applicant)
+                Your relationship details
               </a>
             </span>
             {% if data['relationship'] %}
