@@ -56,18 +56,37 @@ Task list
             <p>You'll need to upload your:</p>
             <ul class="govuk-list govuk-list--bullet">
 
-              <li> marriage or civil partnership certificate [if couple; only show for 1 user]</li>
 
               <li>passport's photo page</li>
               <li>driving licence</li>
             </ul>
             <p>If relevant to you, you'll also need to upload:</p>
             <ul class="govuk-list govuk-list--bullet">
+              <li> your marriage or civil partnership certificate</li>
 
+              <li> evidence of your divorce, for example your decree absolute</li>
+              <li> evidence of dissolution of your civil partnership</li>
+              <li>the death certificate of your spouse</li>
               <li>your UK visa</li>
               <li>immigration stamps in your passport</li>
-              <li>evidence of any name changes, for example a deed poll</li>
           </div>
+
+
+          <li class="app-task-list__item">
+            <span class="app-task-list__task-name">
+              <a href="about-you/step-6" aria-describedby="eligibility-completed">
+                Your relationship details
+              </a>
+            </span>
+            {% if data['relationship'] %}
+            <strong class="govuk-tag app-task-list__task-completed" id="eligibility-completed">Completed</strong>
+            {% endif %}
+          </li>
+
+
+
+
+
 
 
           <!-- <p><strong>First child</strong></p><-->
@@ -86,7 +105,7 @@ Task list
           </li>
           <li class="app-task-list__item">
             <span class="app-task-list__task-name">
-              <a href="about-you/step-2-2" aria-describedby="eligibility-completed">
+              <a href="about-you/step-2-3c" aria-describedby="eligibility-completed">
                 Your contact details
               </a>
               </a></span>
@@ -100,24 +119,46 @@ Task list
 
           <li class="app-task-list__item">
             <span class="app-task-list__task-name">
-              <a href="about-you/step-1" aria-describedby="eligibility-completed">
-                Your relationship details
+              <a href="about-you/step-2-4" aria-describedby="eligibility-completed">
+                Upload your identity documents
               </a>
-            </span>
-            {% if data['relationship'] %}
+              </a></span>
+            {% if data['personal-photo'] %}
             <strong class="govuk-tag app-task-list__task-completed" id="eligibility-completed">Completed</strong>
             {% endif %}
+          </li>
+
+
+
+
+
+          <!-- <p><strong>First child</strong></p>
+
+          <li class="app-task-list__item">
+            <span class="app-task-list__task-name">
+              <a href="about-you/step-2" aria-describedby="eligibility-completed">
+                Your personal details
+              </a>
+              </a></span>
+            {% if data['your-name'] %}
+            <strong class="govuk-tag app-task-list__task-completed" id="eligibility-completed">Completed</strong>
+            {% endif %}
+            <br>
+
           </li>
           <li class="app-task-list__item">
             <span class="app-task-list__task-name">
-              <a href="about-you/step-6" aria-describedby="eligibility-completed">
-                Your relationship details (if the user said they were the only applicant)
+              <a href="about-you/step-2-3c" aria-describedby="eligibility-completed">
+                Your contact details
               </a>
-            </span>
-            {% if data['relationship'] %}
+              </a></span>
+            {% if data['phone-number'] %}
             <strong class="govuk-tag app-task-list__task-completed" id="eligibility-completed">Completed</strong>
             {% endif %}
+            <br>
+
           </li>
+
 
           <li class="app-task-list__item">
             <span class="app-task-list__task-name">
@@ -128,7 +169,7 @@ Task list
             {% if data['personal-photo'] %}
             <strong class="govuk-tag app-task-list__task-completed" id="eligibility-completed">Completed</strong>
             {% endif %}
-            <br>
+          </li>-->
 
         </ul>
       </li>
@@ -176,7 +217,15 @@ Task list
             <br>
 
           </li>
-          
+          <li class="app-task-list__item">
+            <span class="app-task-list__task-name">
+              <a href="./about-children/step-1-3" aria-describedby="eligibility-completed">
+                Their history with you
+              </a></span>
+            {% if data['date-placed'] %}
+            <strong class="govuk-tag app-task-list__task-completed" id="eligibility-completed">Completed</strong>
+            {% endif %}
+            <br>
           <li class="app-task-list__item">
             <span class="app-task-list__task-name">
               <a href="./about-children/step-1-3b-yes.html" aria-describedby="eligibility-completed">
