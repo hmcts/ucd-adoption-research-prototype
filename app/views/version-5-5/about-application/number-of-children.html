@@ -15,35 +15,36 @@ Apply to adopt a child
 
         <form action="number-of-applicants" method="post" class="form">
 
-        <div class="govuk-form-group">
+          <div class="govuk-form-group">
 
             <legend class="govuk-fieldset__legend govuk-fieldset__legend--l">
-                <span class="govuk-caption-l">Add application details </span>
-                <h1 class="govuk-fieldset__heading">
-                    How many children are you applying to adopt?
-                </h1>
-              </legend>
+              <span class="govuk-caption-l">Application details </span>
+              <h1 class="govuk-fieldset__heading">
+                How many children are you applying to adopt?
+              </h1>
+            </legend>
 
 
-          <fieldset class="govuk-fieldset" role="group" aria-describedby="passport-issued-hint">
-            <label class="govuk-label" for="full-name">
-              <!-- <label class="govuk-label" for="full-name">
+            <fieldset class="govuk-fieldset" role="group" aria-describedby="passport-issued-hint">
+              <label class="govuk-label" for="full-name">
+                <!-- <label class="govuk-label" for="full-name">
                 How many children are you applying to adopt?
               </label><-->
-              <div class="govuk-date-input" id="passport-issued">
-                <div class="govuk-date-input__item">
-
+                <div class="govuk-date-input" id="passport-issued">
                   <div class="govuk-date-input__item">
-                    <div class="govuk-form-group">
-                      <input class="govuk-input govuk-date-input__input govuk-input--width-4" id="passport-issued-year"
-                        name="number-of-children" type="number" pattern="[0-9]*" value="{{ data['number-of-children'] }}">
+
+                    <div class="govuk-date-input__item">
+                      <div class="govuk-form-group">
+                        <input class="govuk-input govuk-date-input__input govuk-input--width-4"
+                          id="passport-issued-year" name="number-of-children" type="number" pattern="[0-9]*"
+                          value="{{ data['number-of-children'] }}">
+                      </div>
                     </div>
                   </div>
-                </div>
-          </fieldset>
-        </div>
+            </fieldset>
+          </div>
 
-        <button class="govuk-button" data-module="govuk-button">Continue</button>
+          <button class="govuk-button" data-module="govuk-button">Continue</button>
 
         </form>
 
