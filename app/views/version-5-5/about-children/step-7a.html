@@ -1,0 +1,165 @@
+{% extends "layout-signed-in.html" %}
+
+{% block pageTitle %}
+Apply to adopt a child
+{% endblock %}
+
+{% block content %}
+
+<div class="govuk-width-container">
+  <a href="#" class="govuk-back-link">Back</a>
+
+  <main class="govuk-main-wrapper " id="main-content" role="main">
+    <div class="govuk-grid-row">
+      <div class="govuk-grid-column-two-thirds">
+
+        <form action="../task-list-2" method="post" class="form">
+
+          <legend class="govuk-fieldset__legend govuk-fieldset__legend--l">
+            <span class="govuk-caption-l">The child's details</span>
+            <h2 class="govuk-fieldset__heading">
+              Add previous court order serial number
+            </h2>
+          </legend>
+
+          <div   class="answer_list" >
+            <input type="button" id="div2" class="govuk-button govuk-button--secondary float-right hide" name="answer" value="Remove" style="margin-bottom: unset;" />
+            <h4 class="govuk-heading-s">Previous court order</h4>
+
+            <div class="govuk-form-group">
+              <label class="govuk-label" for="more-detail">
+                Type of order made or applied for
+              </label>
+              <input class="govuk-input" id="width-10" name="width-10" type="text">
+            </div>
+
+            <div class="govuk-form-group">
+              <label class="govuk-label" for="more-detail">
+                Date the order was made
+              </label>
+              <span id="passport-issued-hint" class="govuk-hint">
+                For example, 27 3 2007
+              </span>
+              <div class="govuk-date-input" id="passport-issued">
+                <div class="govuk-date-input__item">
+                  <div class="govuk-form-group">
+                    <label class="govuk-label govuk-date-input__label" for="passport-issued-day">
+                      Day
+                    </label>
+                    <input class="govuk-input govuk-date-input__input govuk-input--width-2" id="passport-issued-day" name="passport-issued-day" type="text" pattern="[0-9]*" inputmode="numeric">
+                  </div>
+                </div>
+                <div class="govuk-date-input__item">
+                  <div class="govuk-form-group">
+                    <label class="govuk-label govuk-date-input__label" for="passport-issued-month">
+                      Month
+                    </label>
+                    <input class="govuk-input govuk-date-input__input govuk-input--width-2" id="passport-issued-month" name="passport-issued-month" type="text" pattern="[0-9]*" inputmode="numeric">
+                  </div>
+                </div>
+                <div class="govuk-date-input__item">
+                  <div class="govuk-form-group">
+                    <label class="govuk-label govuk-date-input__label" for="passport-issued-year">
+                      Year
+                    </label>
+                    <input class="govuk-input govuk-date-input__input govuk-input--width-4" id="passport-issued-year" name="passport-issued-year" type="text" pattern="[0-9]*" inputmode="numeric">
+                  </div>
+                </div>
+              </div>
+            </div>
+
+            <div class="govuk-form-group">
+              <label class="govuk-label" for="more-detail">
+                The court the order was made in
+              </label>
+              <input class="govuk-input" id="width-10" name="width-10" type="text">
+            </div>
+
+            <div class="govuk-form-group">
+              <label class="govuk-label" for="more-detail">
+                Court order serial number
+              </label>
+              <input class="govuk-input govuk-input--width-10" id="width-10" name="width-10" type="text">
+            </div>
+
+          </div>
+
+          <div id="div1" class="govuk-form-group hide">
+            <input type="button" id="div3" class="govuk-button govuk-button--secondary float-right hide" name="answer" value="Remove" style="margin-bottom: unset;" onclick="show1();" />
+            <h4 class="govuk-heading-s">Previous court order</h4>
+
+            <div class="govuk-form-group">
+              <label class="govuk-label" for="more-detail">
+                Type of order made or applied for
+              </label>
+              <input class="govuk-input" id="width-10" name="width-10" type="text">
+            </div>
+
+            <div class="govuk-form-group">
+              <label class="govuk-label" for="more-detail">
+                What date was the order made?
+              </label>
+              <span id="passport-issued-hint" class="govuk-hint">
+                For example, 27 3 2007
+              </span>
+              <div class="govuk-date-input" id="passport-issued">
+                <div class="govuk-date-input__item">
+                  <div class="govuk-form-group">
+                    <label class="govuk-label govuk-date-input__label" for="passport-issued-day">
+                      Day
+                    </label>
+                    <input class="govuk-input govuk-date-input__input govuk-input--width-2" id="passport-issued-day" name="passport-issued-day" type="text" pattern="[0-9]*" inputmode="numeric">
+                  </div>
+                </div>
+                <div class="govuk-date-input__item">
+                  <div class="govuk-form-group">
+                    <label class="govuk-label govuk-date-input__label" for="passport-issued-month">
+                      Month
+                    </label>
+                    <input class="govuk-input govuk-date-input__input govuk-input--width-2" id="passport-issued-month" name="passport-issued-month" type="text" pattern="[0-9]*" inputmode="numeric">
+                  </div>
+                </div>
+                <div class="govuk-date-input__item">
+                  <div class="govuk-form-group">
+                    <label class="govuk-label govuk-date-input__label" for="passport-issued-year">
+                      Year
+                    </label>
+                    <input class="govuk-input govuk-date-input__input govuk-input--width-4" id="passport-issued-year" name="passport-issued-year" type="text" pattern="[0-9]*" inputmode="numeric">
+                  </div>
+                </div>
+              </div>
+            </div>
+
+            <div class="govuk-form-group">
+              <label class="govuk-label" for="more-detail">
+                The court the order made in
+              </label>
+              <input class="govuk-input" id="width-10" name="width-10" type="text">
+            </div>
+
+            <div class="govuk-form-group">
+              <label class="govuk-label" for="more-detail">
+                Previous court order serial number
+              </label>
+              <input class="govuk-input govuk-input--width-10" id="width-10" name="width-10" type="text">
+            </div>
+          </div>
+
+          <div class="govuk-form-group">
+            <a class="govuk-button govuk-button--secondary" onclick="show2();">Add another</a>
+          </div>
+
+
+
+
+          <button class="govuk-button" data-module="govuk-button">Save and return</button>
+          <a href="../task-list-2" class="govuk-button govuk-button--secondary">Save as draft</a>
+
+
+        </form>
+      </div>
+    </div>
+  </main>
+</div>
+
+{% endblock %}
