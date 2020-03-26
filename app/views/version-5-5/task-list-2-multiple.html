@@ -81,6 +81,17 @@ Task list
             {% endif %}
           </li>
 
+          <li class="app-task-list__item">
+            <span class="app-task-list__task-name">
+              <a href="./about-you/address.html" aria-describedby="eligibility-completed">
+                Your address
+              </a>
+            </span>
+            {% if data['relationship'] %}
+            <strong class="govuk-tag app-task-list__task-completed" id="eligibility-completed">Completed</strong>
+            {% endif %}
+          </li>
+
 
 
 
@@ -105,7 +116,7 @@ Task list
           </li>
           <li class="app-task-list__item">
             <span class="app-task-list__task-name">
-              <a href="about-you/step-2-3c" aria-describedby="eligibility-completed">
+              <a href="about-you/address-both" aria-describedby="eligibility-completed">
                 Your contact details
               </a>
               </a></span>
