@@ -13,41 +13,36 @@ Apply to adopt a child
     <div class="govuk-grid-row">
       <div class="govuk-grid-column-two-thirds">
 
-
         <form action="" id="eligible-form" method="post" class="form">
 
-
+          <legend class="govuk-fieldset__legend govuk-fieldset__legend--l">
+            <span class="govuk-caption-l">Your relationship details </span>
+            <h1 class="govuk-fieldset__heading">
+              Do you have evidence of your separation?
+            </h1>
+          </legend>
+          <span class="govuk-hint">For example, a decree of official separation.</span>
           <div class="govuk-form-group">
 
-            <legend class="govuk-fieldset__legend govuk-fieldset__legend--l">
-              <span class="govuk-caption-l">Application details </span>
-              <h1 class="govuk-fieldset__heading">
-                How many people are applying to adopt?
-              </h1>
-            </legend>
-
-
-
             <fieldset class="govuk-fieldset" aria-describedby="how-contacted-conditional-hint">
-              <!--<label class="govuk-label" for="full-name">
-              Are you married or in a civil partnership?
-            </label><-->
+
 
               <div class="govuk-radios govuk-radios--conditional" data-module="govuk-radios">
                 <div class="govuk-radios__item">
                   <input class="govuk-radios__input radioTargetSet" id="how-contacted-conditional" name="how-contacted"
-                    type="radio" value="../one-applicant/task-list-2" data-aria-controls="conditional-how-contacted-conditional-yes">
+                    type="radio" value="separation-and-marriage-cert"
+                    data-aria-controls="conditional-how-contacted-conditional-yes">
                   <label class="govuk-label govuk-radios__label" for="how-contacted-conditional">
-                    1
+                    Yes
                   </label>
                 </div>
 
                 <div class="govuk-radios__item">
                   <input class="govuk-radios__input radioTargetSet" id="how-contacted-conditional-2"
-                    name="how-contacted" type="radio" value="../two-applicants/task-list-2-multiple"
+                    name="how-contacted" type="radio" value="separation-cert"
                     data-aria-controls="conditional-how-contacted-conditional-2">
                   <label class="govuk-label govuk-radios__label" for="how-contacted-conditional-2">
-                    2
+                    No
                   </label>
                 </div>
 
@@ -56,7 +51,8 @@ Apply to adopt a child
           </div>
 
 
-          <button class="govuk-button" data-module="govuk-button">Continue</button>
+          <button class="govuk-button" data-module="govuk-button">Save and continue</button>
+          <a href="../task-list-2" class="govuk-button govuk-button--secondary">Save as draft</a>
 
         </form>
 

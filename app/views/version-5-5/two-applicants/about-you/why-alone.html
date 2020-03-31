@@ -1,0 +1,41 @@
+{% extends "layout-signed-out.html" %}
+
+{% block pageTitle %}
+Apply to adopt a child
+{% endblock %}
+
+{% block content %}
+<div class="govuk-width-container">
+  <a href="#" class="govuk-back-link">Back</a>
+  <main class="govuk-main-wrapper " id="main-content" role="main">
+
+    <div class="govuk-grid-row">
+      <div class="govuk-grid-column-two-thirds">
+
+        <form action="../task-list-2-single" id="eligible-form" method="post" class="form">
+
+          <legend class="govuk-fieldset__legend govuk-fieldset__legend--l">
+            <span class="govuk-caption-l">Your relationship details </span>
+            <h1 class="govuk-fieldset__heading">
+              Why is your partner not applying to adopt?
+            </h1>
+          </legend>
+
+          <div class="govuk-form-group">
+
+            <textarea class="govuk-textarea" id="more-detail" name="more-detail" rows="5"
+              aria-describedby="more-detail-hint"></textarea>
+          </div>
+
+          <button class="govuk-button" data-module="govuk-button">Save and return</button>
+          <a href="../task-list-2" class="govuk-button govuk-button--secondary">Save as draft</a>
+
+
+        </form>
+
+      </div>
+    </div>
+  </main>
+</div>
+
+{% endblock %}
