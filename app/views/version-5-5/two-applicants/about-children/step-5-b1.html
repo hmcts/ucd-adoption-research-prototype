@@ -29,22 +29,22 @@ Apply to adopt a child
               <div class="govuk-radios__item">
                 <!-- <input class="govuk-radios__input" id="where-do-you-live" name="radio1" type="radio"
                   value="england"> -->
-                <input class="govuk-radios__input radioTargetSet" id="radio2" name="radio1" type="radio"
-                  value="step-5-b">
+                <input class="govuk-radios__input radioTargetSet" id="radio2" name="mother-alive" type="radio"
+                  value="step-5-b" {{ checked("mother-alive", "yes") }}>
                 <label class="govuk-label govuk-radios__label" for="where-do-you-live">
                   Yes
                 </label>
               </div>
               <div class="govuk-radios__item">
-                <input class="govuk-radios__input radioTargetSet" id="where-do-you-live-2" name="radio1" type="radio"
-                  value="step-death3">
+                <input class="govuk-radios__input radioTargetSet" id="where-do-you-live-2" name="mother-alive" type="radio"
+                  value="step-death3" {{ checked("mother-alive", "no") }}>
                 <label class="govuk-label govuk-radios__label" for="where-do-you-live-2">
                   No
                 </label>
               </div>
               <div class="govuk-radios__item">
-                <input class="govuk-radios__input radioTargetSet" id="where-do-you-live-2" name="radio1" type="radio"
-                  value="step-5-b">
+                <input class="govuk-radios__input radioTargetSet" id="where-do-you-live-2" name="mother-alive" type="radio"
+                  value="step-5-b" {{ checked("mother-alive", "not sure") }}>
                 <label class="govuk-label govuk-radios__label" for="where-do-you-live-2">
                   Not sure
                 </label>
