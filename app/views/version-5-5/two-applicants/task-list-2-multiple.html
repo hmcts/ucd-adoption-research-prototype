@@ -41,6 +41,10 @@ Task list
                 Choose your family court
               </a>
             </span>
+            {% if data['court-finder'] %}
+            <strong class="govuk-tag app-task-list__task-completed" id="eligibility-completed">Completed</strong>
+            {% endif %}
+            <br>
 
           </li>
         </ul>
@@ -76,24 +80,10 @@ Task list
                 Your relationship details
               </a>
             </span>
-            {% if data['relationship'] %}
+            {% if data['married'] %}
             <strong class="govuk-tag app-task-list__task-completed" id="eligibility-completed">Completed</strong>
             {% endif %}
           </li>
-
-          <li class="app-task-list__item">
-            <span class="app-task-list__task-name">
-              <a href="./about-you/address.html" aria-describedby="eligibility-completed">
-                Your address
-              </a>
-            </span>
-            {% if data['relationship'] %}
-            <strong class="govuk-tag app-task-list__task-completed" id="eligibility-completed">Completed</strong>
-            {% endif %}
-          </li>
-
-
-
 
           <br>
 
@@ -108,7 +98,7 @@ Task list
                 Your personal details
               </a>
               </a></span>
-            {% if data['your-name'] %}
+            {% if data['you-occupation'] %}
             <strong class="govuk-tag app-task-list__task-completed" id="eligibility-completed">Completed</strong>
             {% endif %}
             <br>
@@ -116,11 +106,11 @@ Task list
           </li>
           <li class="app-task-list__item">
             <span class="app-task-list__task-name">
-              <a href="about-you/address-both" aria-describedby="eligibility-completed">
+              <a href="about-you/step-2-2" aria-describedby="eligibility-completed">
                 Your contact details
               </a>
               </a></span>
-            {% if data['phone-number'] %}
+            {% if data['first-address'] %}
             <strong class="govuk-tag app-task-list__task-completed" id="eligibility-completed">Completed</strong>
             {% endif %}
             <br>
@@ -153,7 +143,7 @@ Task list
                 Your personal details
               </a>
               </a></span>
-            {% if data['your-name'] %}
+            {% if data['name'] %}
             <strong class="govuk-tag app-task-list__task-completed" id="eligibility-completed">Completed</strong>
             {% endif %}
             <br>
@@ -161,13 +151,14 @@ Task list
           </li>
           <li class="app-task-list__item">
             <span class="app-task-list__task-name">
-              <a href="about-you/step-2-3c" aria-describedby="eligibility-completed">
+              <a href="about-you/address-both" aria-describedby="eligibility-completed">
                 Your contact details
               </a>
               </a></span>
-            {% if data['phone-number'] %}
-            <strong class="govuk-tag app-task-list__task-completed" id="eligibility-completed">Completed</strong>
-            {% endif %}
+              {% if data['second-address'] %}
+              <strong class="govuk-tag app-task-list__task-completed" id="eligibility-completed">Completed</strong>
+              {% endif %}
+
             <br>
 
           </li>
@@ -211,7 +202,7 @@ Task list
               <a href="./about-children/step-1.html" aria-describedby="eligibility-completed">
                 Their birth certificate details
               </a></span>
-            {% if data['childs-name'] %}
+            {% if data['child-nationality'] %}
             <strong class="govuk-tag app-task-list__task-completed" id="eligibility-completed">Completed</strong>
             {% endif %}
             <br>
@@ -223,22 +214,14 @@ Task list
                 Adoption certificate details
               </a></span>
 
-            {% if data['adoption-cert-details'] %}
+            {% if data['adoption-cert'] %}
             <strong class="govuk-tag app-task-list__task-completed" id="eligibility-completed">Completed</strong>
             {% endif %}
 
             <br>
 
           </li>
-          <li class="app-task-list__item">
-            <span class="app-task-list__task-name">
-              <a href="./about-children/step-1-3" aria-describedby="eligibility-completed">
-                Their history with you
-              </a></span>
-            {% if data['date-placed'] %}
-            <strong class="govuk-tag app-task-list__task-completed" id="eligibility-completed">Completed</strong>
-            {% endif %}
-            <br>
+
           <li class="app-task-list__item">
             <span class="app-task-list__task-name">
               <a href="./about-children/step-1-3c.html" aria-describedby="eligibility-completed">
@@ -256,7 +239,7 @@ Task list
                 Their birth mother's details
               </a>
             </span>
-            {% if data['wishes3'] %}
+            {% if data['mother-alive'] %}
             <strong class="govuk-tag app-task-list__task-completed" id="eligibility-completed">Completed</strong>
             {% endif %}
           </li>
@@ -266,7 +249,7 @@ Task list
                 Their birth father's or other parent's details
               </a>
             </span>
-            {% if data['wishes3'] %}
+            {% if data['birth-father'] %}
             <strong class="govuk-tag app-task-list__task-completed" id="eligibility-completed">Completed</strong>
             {% endif %}
           </li>
@@ -276,7 +259,7 @@ Task list
                 Previous court orders for the child
               </a>
             </span>
-            {% if data['health-issues'] %}
+            {% if data['court-orders'] %}
             <strong class="govuk-tag app-task-list__task-completed" id="eligibility-completed">Completed</strong>
             {% endif %}
           </li>
@@ -304,7 +287,7 @@ Task list
                 Your adoption agency or local authority
               </a>
             </span>
-            {% if data['agency-name'] %}
+            {% if data['your-adoption-agency'] %}
             <strong class="govuk-tag app-task-list__task-completed" id="eligibility-completed">Completed</strong>
             {% endif %}
           </li>
@@ -314,7 +297,7 @@ Task list
                 The child's adoption agency or local authority
               </a>
             </span>
-            {% if data['adoption-agency-name'] %}
+            {% if data['childs-adoption-agency'] %}
             <strong class="govuk-tag app-task-list__task-completed" id="eligibility-completed">Completed</strong>
             {% endif %}
           </li>
@@ -326,7 +309,7 @@ Task list
                 Your solicitor
               </a>
             </span>
-            {% if data['company-name'] %}
+            {% if data['solicitor'] %}
             <strong class="govuk-tag app-task-list__task-completed" id="eligibility-completed">Completed</strong>
             {% endif %}
           </li>

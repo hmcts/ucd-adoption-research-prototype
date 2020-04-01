@@ -29,16 +29,16 @@ Apply to adopt a child
 
             <div class="govuk-radios govuk-radios--conditional" data-module="govuk-radios">
               <div class="govuk-radios__item">
-                <input class="govuk-radios__input radioTargetSet" id="how-contacted-conditional" name="how-contacted" type="radio"
-                  value="../about-you/step-1" data-aria-controls="conditional-how-contacted-conditional-yes">
+                <input class="govuk-radios__input radioTargetSet" id="how-contacted-conditional" name="married" type="radio"
+                  value="../about-you/step-1" data-aria-controls="conditional-how-contacted-conditional-yes" {{ checked("married", "yes") }}>
                 <label class="govuk-label govuk-radios__label" for="how-contacted-conditional">
                   Yes
                 </label>
               </div>
 
               <div class="govuk-radios__item">
-                <input class="govuk-radios__input radioTargetSet" id="how-contacted-conditional-2" name="how-contacted" type="radio"
-                  value="../task-list-2-multiple" data-aria-controls="conditional-how-contacted-conditional-2">
+                <input class="govuk-radios__input radioTargetSet" id="how-contacted-conditional-2" name="married" type="radio"
+                  value="../task-list-2-multiple" data-aria-controls="conditional-how-contacted-conditional-2" {{ checked("married", "no") }}>
                 <label class="govuk-label govuk-radios__label" for="how-contacted-conditional-2">
                   No
                 </label>
