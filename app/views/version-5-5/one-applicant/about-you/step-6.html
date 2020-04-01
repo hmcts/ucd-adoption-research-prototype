@@ -27,15 +27,15 @@ Apply to adopt a child
               <span id="changed-name-hint" class="govuk-hint">
                 <div class="govuk-radios">
                   <div class="govuk-radios__item">
-                    <input class="govuk-radios__input radioTargetSet" id="where-do-you-live" name="where-do-you-live"
-                      type="radio" value="step-5">
+                    <input class="govuk-radios__input radioTargetSet" id="where-do-you-live" name="single-relationship"
+                      type="radio" value="step-5" {{ checked("single-relationship", "yes") }}>
                     <label class="govuk-label govuk-radios__label" for="where-do-you-live">
                       Yes
                     </label>
                   </div>
                   <div class="govuk-radios__item">
-                    <input class="govuk-radios__input radioTargetSet" id="where-do-you-live-2" name="where-do-you-live"
-                      type="radio" value="enduring-relationship">
+                    <input class="govuk-radios__input radioTargetSet" id="where-do-you-live-2" name="single-relationship"
+                      type="radio" value="enduring-relationship" {{ checked("single-relationship", "no") }}>
                     <label class="govuk-label govuk-radios__label" for="where-do-you-live-2">
                       No
                     </label>

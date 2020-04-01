@@ -29,9 +29,9 @@ Apply to adopt a child
 
 
                 <div class="govuk-radios__item">
-                  <input class="govuk-radios__input" id="how-contacted-conditional-3" name="how-contacted" type="radio"
+                  <input class="govuk-radios__input" id="how-contacted-conditional-3" name="childs-details" type="radio"
                     value="text" data-aria-controls="conditional-how-contacted-conditional-3" value="igottwo"
-                    onclick="show2();">
+                    onclick="show2();" {{ checked("childs-details", "yes") }}>
                   <label class="govuk-label govuk-radios__label" for="how-contacted-conditional-3">
                     Yes
                   </label>
@@ -39,9 +39,9 @@ Apply to adopt a child
 
 
                 <div class="govuk-radios__item">
-                  <input class="govuk-radios__input" id="how-contacted-conditional-2" name="how-contacted" type="radio"
+                  <input class="govuk-radios__input" id="how-contacted-conditional-2" name="childs-details" type="radio"
                     value="phone" data-aria-controls="conditional-how-contacted-conditional-2" value="igotnone"
-                    onclick="show1();">
+                    onclick="show1();" {{ checked("childs-details", "no") }}>
                   <label class="govuk-label govuk-radios__label" for="how-contacted-conditional-2">
                     No
                   </label>

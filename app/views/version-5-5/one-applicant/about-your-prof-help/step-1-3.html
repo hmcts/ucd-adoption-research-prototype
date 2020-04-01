@@ -25,16 +25,16 @@ Apply to adopt a child
 
             <div class="govuk-radios govuk-radios--conditional" data-module="govuk-radios">
               <div class="govuk-radios__item">
-                <input class="govuk-radios__input" id="father-conditional" name="father" type="radio" value="yes"
-                  data-aria-controls="fathers-name-yes">
+                <input class="govuk-radios__input" id="father-conditional" name="your-adoption-agency" type="radio" value="yes"
+                  data-aria-controls="fathers-name-yes" {{ checked("your-adoption-agency", "yes") }}>
                 <label class="govuk-label govuk-radios__label" for="father-conditional">
                   Yes
                 </label>
               </div>
 
               <div class="govuk-radios__item">
-                <input class="govuk-radios__input" id="father-conditional-no" name="father" type="radio" value="no"
-                  data-aria-controls="father-conditional-no">
+                <input class="govuk-radios__input" id="father-conditional-no" name="your-adoption-agency" type="radio" value="no"
+                  data-aria-controls="father-conditional-no" {{ checked("your-adoption-agency", "no") }}>
                 <label class="govuk-label govuk-radios__label" for="father-conditional-no">
                   No
                 </label>

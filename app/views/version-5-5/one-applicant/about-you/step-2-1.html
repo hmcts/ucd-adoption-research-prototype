@@ -31,16 +31,16 @@ Apply to adopt a child
             <div class="govuk-form-group">
               <div class="govuk-radios" data-module="govuk-radios">
                 <div class="govuk-radios__item">
-                  <input class="govuk-radios__input radioTargetSet" id="father-conditional" name="father" type="radio"
-                    value="step-2-b" data-aria-controls="fathers-name-yes">
+                  <input class="govuk-radios__input radioTargetSet" id="father-conditional" name="your-name" type="radio"
+                    value="step-2-b" data-aria-controls="fathers-name-yes" {{ checked("your-name", "yes") }}>
                   <label class="govuk-label govuk-radios__label" for="father-conditional">
                     Yes
                   </label>
                 </div>
 
                 <div class="govuk-radios__item">
-                  <input class="govuk-radios__input radioTargetSet" id="father-conditional-no" name="father"
-                    type="radio" data-aria-controls="father-conditional-no" value="step-2-1a">
+                  <input class="govuk-radios__input radioTargetSet" id="father-conditional-no" name="your-name"
+                    type="radio" data-aria-controls="father-conditional-no" value="step-2-1a" {{ checked("your-name", "yes") }}>
                   <label class="govuk-label govuk-radios__label" for="father-conditional-no">
                     No
                   </label>

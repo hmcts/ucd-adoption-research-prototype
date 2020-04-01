@@ -30,42 +30,26 @@ Apply to adopt a child
                 approved. </p>
 
               <div class="govuk-form-group">
-
-                <input class="govuk-input" id="event-name" name="event-name" type="text">
+                <input class="govuk-input" id="event-name" name="adoption-cert" type="text" value="{{ data['adoption-cert'] }}">
               </div>
-              <details class="govuk-details" data-module="govuk-details">
-                <summary class="govuk-details__summary">
-                  <span class="govuk-details__summary-text">
-                    About adoption certificates
-                  </span>
-                </summary>
-
-                <div class="govuk-details__text">
-                  If your application is successful, information from the adoption order will be added to the
-                  Adopted Children Register. </p>
-                  <p>A new birth certificate is then created in the child’s adoptive name. This is known as an
-                    adoption certificate and replaces their original birth certificate for all
-                    legal purposes.
-                </div>
-              </details>
-
-              <div id="div1" style="display:none;">
 
 
+              <div class="govuk-form-group">
+                <details class="govuk-details" data-module="govuk-details">
+                  <summary class="govuk-details__summary">
+                    <span class="govuk-details__summary-text">
+                      About adoption certificates
+                    </span>
+                  </summary>
 
-                <div class="govuk-form-group">
-                  <label class="govuk-label" for="contact-by-email">
-                    Proposed new name
-                  </label>
-                  <span id="changed-name-hint" class="govuk-hint">
-                    Enter the full name, starting with first name.
-                  </span>
-                  <input class="govuk-input" id="full-name" name="full-name" type="text" autocomplete="name"
-                    spellcheck="false">
-                </div>
-
-                <br><br>
-
+                  <div class="govuk-details__text">
+                    If your application is successful, information from the adoption order will be added to the
+                    Adopted Children Register. </p>
+                    <p>A new birth certificate is then created in the child’s adoptive name. This is known as an
+                      adoption certificate and replaces their original birth certificate for all
+                      legal purposes.
+                  </div>
+                </details>
               </div>
 
             </fieldset>
