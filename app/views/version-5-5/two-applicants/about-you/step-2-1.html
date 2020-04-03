@@ -23,54 +23,69 @@ Apply to adopt a child
               <legend class="govuk-fieldset__legend govuk-fieldset__legend--l">
                 <span class="govuk-caption-l">First applicant </span>
                 <h1 class="govuk-fieldset__heading">
-                  Is this the name on your marriage or civil partnership certificate?
+                  Have you ever legally been known by any other names?
                 </h1>
               </legend>
+              <p>For example, your name before marriage.
             </legend>
 
-            <div class="govuk-form-group">
-              <div class="govuk-radios" data-module="govuk-radios">
-                <div class="govuk-radios__item">
-                  <input class="govuk-radios__input radioTargetSet" id="father-conditional" name="father" type="radio"
-                    value="step-2-b" data-aria-controls="fathers-name-yes">
-                  <label class="govuk-label govuk-radios__label" for="father-conditional">
-                    Yes
-                  </label>
-                </div>
-
-                <div class="govuk-radios__item">
-                  <input class="govuk-radios__input radioTargetSet" id="father-conditional-no" name="father"
-                    type="radio" data-aria-controls="father-conditional-no" value="step-2-1a">
-                  <label class="govuk-label govuk-radios__label" for="father-conditional-no">
-                    No
-                  </label>
-                </div>
 
 
 
+            <div class="govuk-radios govuk-radios--conditional" data-module="govuk-radios">
+              <div class="govuk-radios__item">
+                <input class="govuk-radios__input" id="father-conditional" name="your-adoption-agency" type="radio"
+                  value="yes" data-aria-controls="fathers-name-yes" {{ checked("your-adoption-agency", "yes") }}>
+                <label class="govuk-label govuk-radios__label" for="father-conditional">
+                  Yes
+                </label>
+              </div>
+
+              <div class="govuk-radios__item">
+                <input class="govuk-radios__input" id="father-conditional-no" name="your-adoption-agency" type="radio"
+                  value="no" data-aria-controls="father-conditional-no" {{ checked("your-adoption-agency", "no") }}>
+                <label class="govuk-label govuk-radios__label" for="father-conditional-no">
+                  No
+                </label>
               </div>
 
 
+              <div
+                class="govuk-radios__conditional govuk-radios__conditional--applicants govuk-radios__conditional--hidden"
+                id="fathers-name-yes">
+                <div class="govuk-form-group">
+                  <label class="govuk-label" for="width-20">
+                    Add your previous full name
+                  </label>
+                  <!--<span id="changed-name-hint" class="govuk-hint">
+                  Enter this as it's shown on the birth certificate.
+                </span><-->
+                  <input class="govuk-input govuk-input--width-20" id="width-20" name="width-20" type="text">
 
-
-
-
-
+                </div>
+              </div>
             </div>
 
 
           </div>
 
-
-          <button class="govuk-button" data-module="govuk-button">Save and continue</button>
-          <a href="../task-list-2-multiple" class="govuk-button govuk-button--secondary">Save as draft</a>
-
-
         </form>
 
       </div>
     </div>
-  </main>
+
+
+
+
+    <a href="step-2-b.html" class="govuk-button govuk-button">Save and continue</a>
+    <a href="../task-list-2-multiple" class="govuk-button govuk-button--secondary">Save as draft</a>
+
+
+    </form>
+
+</div>
+</div>
+</main>
 </div>
 
 {% endblock %}
