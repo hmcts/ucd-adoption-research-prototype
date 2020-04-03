@@ -18,72 +18,71 @@ Apply to adopt a child
           <legend class="govuk-fieldset__legend govuk-fieldset__legend--l">
             <span class="govuk-caption-l">The child's details</span>
             <h2 class="govuk-fieldset__heading">
-              Have there been any previous court orders for the child?
-            </h2>
+              Are there any other current or previous court orders for the child? </h2>
           </legend>
+          <p>For example, care order or supervision order.
+            <div class="govuk-form-group">
+              <fieldset class="govuk-fieldset">
 
-          <div class="govuk-form-group">
-            <fieldset class="govuk-fieldset">
+                <div class="govuk-radios">
+                  <div class="govuk-radios__item">
+                    <input class="govuk-radios__input" id="where-do-you-live-2" name="court-orders" type="radio"
+                      value="igottwo" onclick="show2();" {{ checked("court-orders", "yes") }}>
 
-              <div class="govuk-radios">
-                <div class="govuk-radios__item">
-                  <input class="govuk-radios__input" id="where-do-you-live-2" name="court-orders" type="radio"
-                  value="igottwo" onclick="show2();" {{ checked("court-orders", "yes") }}>
+                    <label class="govuk-label govuk-radios__label" for="where-do-you-live-2">
+                      Yes
+                    </label>
+                  </div>
+                  <div class="govuk-radios__item">
+                    <input class="govuk-radios__input" id="where-do-you-live" name="court-orders" type="radio"
+                      value="igotnone" onclick="show1();" {{ checked("court-orders", "no") }}>
+                    <label class="govuk-label govuk-radios__label" for="where-do-you-live">
+                      No
+                    </label>
+                  </div>
+                  <div class="govuk-radios__item">
+                    <input class="govuk-radios__input" id="where-do-you-live" name="court-orders" type="radio"
+                      value="igotnone" onclick="show1();" {{ checked("court-orders", "not sure") }}>
+                    <label class="govuk-label govuk-radios__label" for="where-do-you-live">
+                      Not sure
+                    </label>
+                  </div>
 
-                  <label class="govuk-label govuk-radios__label" for="where-do-you-live-2">
-                    Yes
-                  </label>
-                </div>
-                <div class="govuk-radios__item">
-                  <input class="govuk-radios__input" id="where-do-you-live" name="court-orders" type="radio"
-                  value="igotnone" onclick="show1();" {{ checked("court-orders", "no") }}>
-                  <label class="govuk-label govuk-radios__label" for="where-do-you-live">
-                    No
-                  </label>
-                </div>
-                <div class="govuk-radios__item">
-                  <input class="govuk-radios__input" id="where-do-you-live" name="court-orders" type="radio"
-                  value="igotnone" onclick="show1();" {{ checked("court-orders", "not sure") }}>
-                  <label class="govuk-label govuk-radios__label" for="where-do-you-live">
-                    Not sure
-                  </label>
-                </div>
+                  <div id="div1" class="govuk-form-group hide">
+                    <br>
 
-                <div id="div1" class="govuk-form-group hide">
-                  <br>
+                    <div class="hmcts-add-another">
 
-                  <div class="hmcts-add-another">
+                      <form method="post">
 
-                    <form method="post">
+                        <fieldset class="govuk-fieldset hmcts-add-another__item">
 
-                      <fieldset class="govuk-fieldset hmcts-add-another__item">
-
-                        <label class="govuk-label" for="more-detail">
-                          How many?
-                        </label>
-                        <input class="govuk-input govuk-input--width-10" id="width-10" name="width-10" type="text">
-
-
-                      </fieldset>
+                          <label class="govuk-label" for="more-detail">
+                            How many other current or previous orders do you know about?
+                          </label>
+                          <input class="govuk-input govuk-input--width-5" id="width-5" name="width-5" type="text">
 
 
+                        </fieldset>
+
+
+
+
+                    </div>
 
 
                   </div>
 
-
                 </div>
+              </fieldset>
+            </div>
 
-              </div>
-            </fieldset>
-          </div>
+            <!-- <button class="govuk-button" data-module="govuk-button">Save and continue</button> -->
 
-          <!-- <button class="govuk-button" data-module="govuk-button">Save and continue</button> -->
-
-          <a href="step-7c" class="govuk-button">Save and continue - option 1</a>
-          <a href="step-7b" class="govuk-button">Save and continue - option 2</a>
-          <a href="step-7a" class="govuk-button">Save and continue - option 3</a>
-          <a href="../task-list-2-multiple" class="govuk-button govuk-button--secondary">Save as draft</a>
+            <!--  <a href="step-7c" class="govuk-button">Save and continue - option 1</a>-->
+            <a href="step-7b" class="govuk-button">Save and continue </a>
+            <!-- <a href="step-7a" class="govuk-button">Save and continue - option 3</a>-->
+            <a href="../task-list-2-multiple" class="govuk-button govuk-button--secondary">Save as draft</a>
 
 
         </form>
