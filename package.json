@@ -14,7 +14,7 @@
   "dependencies": {
     "@hmcts/frontend": "0.0.41-alpha",
     "@ministryofjustice/frontend": "0.0.17-alpha",
-    "acorn": "^6.0.5",
+    "acorn": "^6.4.1",
     "ansi-colors": "^3.2.3",
     "basic-auth": "^2.0.0",
     "basic-auth-connect": "^1.0.0",
