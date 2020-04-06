@@ -8,7 +8,7 @@ Apply to adopt a child
 
 <div class="govuk-width-container">
   <a href="#" class="govuk-back-link">Back</a>
-  <a href="step-1-c-validation" class="govuk-button govuk-button--secondary" style="float:right;">Validation on</a>
+  <!--<a href="step-1-c-validation" class="govuk-button govuk-button--secondary" style="float:right;">Validation on</a><-->
 
 
   <main class="govuk-main-wrapper " id="main-content" role="main">
@@ -20,26 +20,30 @@ Apply to adopt a child
           <legend class="govuk-fieldset__legend govuk-fieldset__legend--l">
             <span class="govuk-caption-l">Application details </span>
             <h1 class="govuk-fieldset__heading">
-              Choose your family court
+              Find your family court
             </h1>
           </legend>
+          <p class="govuk-body"> Enter your postcode to find your local family court. They'll review your application
+            and schedule a hearing date.</P>
 
-          <p class="govuk-body">You can choose to have your application reviewed in your local family court, or one in a
-            different region.</p>
+          <p class="govuk-body">You can also choose a court in a different region.</p>
+
           <div class="govuk-form-group">
 
-            <p class="govuk-body"> Enter your postcode, or a postcode in the region you want to review your case.
 
-              <div class="govuk-form-group">
-                <label class="govuk-label govuk-label--m" for="passport-number">
-                  Postcode
-                </label>
-                <input class="govuk-input govuk-input--width-10" id="width-10" name="court-finder" type="text" value="{{ data['court-finder'] }}">
-              </div>
+            <div class="govuk-form-group">
+              <label class="govuk-label govuk-label--m" for="passport-number">
+                Postcode
+              </label>
+              <span class=govuk-hint>Use your postcode, or enter a postcode in the region you want your application
+                heard.</span>
+              <input class="govuk-input govuk-input--width-10" id="width-10" name="court-finder" type="text"
+                value="{{ data['court-finder'] }}">
+            </div>
 
-              <div class="govuk-form-group">
-                <p><a href="">Or enter address manually</a></p>
-              </div>
+            <div class="govuk-form-group">
+              <p><a href="">Or enter address manually</a></p>
+            </div>
 
           </div>
 

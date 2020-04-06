@@ -12,15 +12,21 @@ Apply to adopt a child
   <main class="govuk-main-wrapper " id="main-content" role="main">
     <div class="govuk-grid-row">
       <div class="govuk-grid-column-two-thirds">
-        <span class="govuk-caption-l">The child’s details </span>
-
-        <h2 class="govuk-heading-l">Do they have any siblings that have had proceedings made against them?</h2>
         <form action="" id="siblingsForm" method="post" class="form">
+
+          <legend class="govuk-fieldset__legend govuk-fieldset__legend--l">
+            <span class="govuk-caption-l">The child's details</span>
+            <h2 class="govuk-fieldset__heading">
+              Does the child have any siblings with current or previous court orders?</h2>
+          </legend>
+
+          <span class="govuk-hint">This includes full and half-siblings.</span>
 
           <div class="govuk-radios govuk-radios--conditional" data-module="govuk-radios">
             <div class="govuk-radios__item">
-              <input class="govuk-radios__input radioTargetSet" id="how-contacted-conditional-gp" name="siblings" type="radio"
-              value="step-6b" data-aria-controls="conditional-gp" {{ checked("siblings", "yes") }}>
+              <input class="govuk-radios__input radioTargetSet" id="how-contacted-conditional-gp" name="siblings"
+                type="radio" value="step-6-siblings" data-aria-controls="conditional-gp"
+                {{ checked("siblings", "yes") }}>
 
               <label class="govuk-label govuk-radios__label" for="how-contacted-conditional-gp">
                 Yes
@@ -28,38 +34,49 @@ Apply to adopt a child
             </div>
 
             <div class="govuk-radios__item">
-              <input class="govuk-radios__input radioTargetSet" id="conditional-how-contacted-condi" name="siblings" type="radio"
-              value="../task-list-2-multiple" data-aria-controls="conditional-how-contacted-condi" {{ checked("siblings", "no") }}>
+              <input class="govuk-radios__input radioTargetSet" id="conditional-how-contacted-condi" name="siblings"
+                type="radio" value="../task-list-2-multiple" data-aria-controls="conditional-how-contacted-condi"
+                {{ checked("siblings", "no") }}>
               <label class="govuk-label govuk-radios__label" for="conditional-how-contacted-condi">
                 No
               </label>
             </div>
+            <div class="govuk-radios__item">
+              <input class="govuk-radios__input radioTargetSet" id="conditional-how-contacted-condi" name="siblings"
+                type="radio" value="../task-list-2-multiple" data-aria-controls="conditional-how-contacted-condi"
+                {{ checked("siblings", "no") }}>
+              <label class="govuk-label govuk-radios__label" for="conditional-how-contacted-condi">
+                Not sure
+              </label>
+            </div>
 
 
-            <div class="govuk-radios__conditional govuk-radios__conditional--applicants govuk-radios__conditional--hidden" id="conditional-gp">
+            <div
+              class="govuk-radios__conditional govuk-radios__conditional--applicants govuk-radios__conditional--hidden"
+              id="conditional-gp">
 
               <div id="div1" class="govuk-form-group">
                 <label class="govuk-label" for="more-detail">
-                How many?
+                  How many siblings have current or previous court orders?
                 </label>
                 <input class="govuk-input govuk-date-input__input govuk-input--width-4" id="passport-issued-year"
-                name="passport-issued-year" type="number" pattern="[0-9]*">
+                  name="passport-issued-year" type="number" pattern="[0-9]*">
               </div>
 
-        </div>
+            </div>
 
 
-        <br>
+            <br>
 
-        <button class="govuk-button" data-module="govuk-button">Save and continue</button>
-        <a href="../task-list-2-multiple" class="govuk-button govuk-button--secondary">Save as draft</a>
+            <button class="govuk-button" data-module="govuk-button">Save and continue</button>
+            <a href="../task-list-2-multiple" class="govuk-button govuk-button--secondary">Save as draft</a>
 
 
+          </div>
+        </form>
       </div>
-    </form>
-  </div>
-</div>
-</main>
+    </div>
+  </main>
 </div>
 
 {% endblock %}
