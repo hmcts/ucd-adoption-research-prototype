@@ -1,0 +1,55 @@
+{% extends "layout-signed-in.html" %}
+
+{% block pageTitle %}
+Apply to adopt a child
+{% endblock %}
+
+{% block content %}
+
+<div class="govuk-width-container">
+  <a href="#" class="govuk-back-link">Back</a>
+
+  <main class="govuk-main-wrapper " id="main-content" role="main">
+    <div class="govuk-grid-row">
+      <div class="govuk-grid-column-two-thirds">
+        <form action="second-name.html" id="siblingsForm" method="post" class="form">
+
+          <legend class="govuk-fieldset__legend govuk-fieldset__legend--l">
+            <span class="govuk-caption-l">The child's details</span>
+            <h2 class="govuk-fieldset__heading">
+              Do you know about any more orders for this or another child?</h2>
+          </legend>
+
+
+          <div class="govuk-radios govuk-radios--conditional" data-module="govuk-radios">
+            <div class="govuk-radios__item">
+              <input class="govuk-radios__input radioTargetSet" id="how-contacted-conditional-gp" name="siblings"
+                type="radio" value="second-name" data-aria-controls="conditional-gp" {{ checked("siblings", "yes") }}>
+
+              <label class="govuk-label govuk-radios__label" for="how-contacted-conditional-gp">
+                Yes
+              </label>
+            </div>
+
+            <div class="govuk-radios__item">
+              <input class="govuk-radios__input radioTargetSet" id="conditional-how-contacted-condi" name="siblings"
+                type="radio" value="../task-list-2-multiple" data-aria-controls="conditional-how-contacted-condi"
+                {{ checked("siblings", "no") }}>
+              <label class="govuk-label govuk-radios__label" for="conditional-how-contacted-condi">
+                No
+              </label>
+            </div>
+            <br>
+
+            <button class="govuk-button" data-module="govuk-button">Save and continue</button>
+            <a href="../task-list-2-multiple" class="govuk-button govuk-button--secondary">Save as draft</a>
+
+
+          </div>
+        </form>
+      </div>
+    </div>
+  </main>
+</div>
+
+{% endblock %}
