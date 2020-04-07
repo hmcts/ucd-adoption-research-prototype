@@ -90,6 +90,13 @@ function show2(){
   document.getElementById('div3').style.display = 'block';
 }
 
+function show3(){
+  document.getElementById('div4').style.display = 'block';
+  document.getElementById('div5').style.display = 'block';
+}
+
+
+
 
 
 function myFunction() {
