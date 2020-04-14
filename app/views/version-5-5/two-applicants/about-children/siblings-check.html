@@ -16,10 +16,9 @@ Apply to adopt a child
         <form action="../task-list-2-multiple" method="post" class="form">
 
           <legend class="govuk-fieldset__legend govuk-fieldset__legend--l">
-            <span class="govuk-caption-l">About the siblings</span>
+            <span class="govuk-caption-l">Orders for the child's siblings</span>
             <h2 class="govuk-fieldset__heading">
-              Current or previous court orders
-            </h2>
+              Check, add or delete orders </h2>
           </legend>
           <br>
           <br>
@@ -27,16 +26,8 @@ Apply to adopt a child
           <ol class="app-task-list">
 
             <li>
-              <!-- <h2 class="app-task-list__section">
-                Review application, pay and send
-              </h2> -->
 
               <ul class="app-task-list__items" style="padding-left: unset;">
-
-                <!--<p><strong>First sibling</strong> <a href="" class="hide" id="div5"
-                    style="float:right; padding-left:15px;">Remove child</a></p><-->
-
-
 
                 <li class="app-task-list__item" style="border-top: unset;">
                   <span class="app-task-list__task-name">
@@ -54,7 +45,7 @@ Apply to adopt a child
                 <li class="app-task-list__item">
                   <span class="app-task-list__task-name">
                     <a href="">
-                      Fiona Leavy<br> Order no. 2975
+                      Celine Leavy<br> Order no. 2975
                     </a>
                   </span>
                   <a href="" style="float:right; padding-left:15px;">Delete</a>
@@ -66,63 +57,32 @@ Apply to adopt a child
 
 
 
-                <br>
+                <li class="app-task-list__item">
+                  <span class="app-task-list__task-name">
+                    <a href="">
+                      Deidre Leavy <br> Order no. 6745 </a>
+                  </span>
+                  <a href="" style="float:right; padding-left:15px;">Delete</a>
+                </li>
 
+                <li class="app-task-list__item">
+                  <span class="app-task-list__task-name">
+                    <a href="">
+                      Patricia Leavy <br> Order no. 6985
+                    </a>
+                  </span>
+                  <a href="" style="float:right; padding-left:15px;">Delete</a>
+                </li>
+
+
+                <br>
                 <a class="add-another-link" onclick="show2();">Add another order</a>
 
-                <span class="hide" id="div4">
-
-                  <br>
-
-
-                  <li class="app-task-list__item" style="border-top: unset;">
-                    <span class="app-task-list__task-name">
-                      <a href="step-7b-siblings-type.html">
-                        Celine Leavy<br> Order no. 1947
-                      </a>
-                    </span>
-                    <a href="" style="float:right; padding-left:15px;">Delete</a>
-                    {% if data['court-orders-2'] %}
-                    <strong class="govuk-tag app-task-list__task-completed"
-                      id="eligibility-completed">Completed</strong>
-                    {% endif %}
-                  </li>
-
-                  <li class="app-task-list__item hide" id="div1">
-                    <span class="app-task-list__task-name">
-                      <a href="">
-                        About the second order
-                      </a>
-                    </span>
-                    <a href="" style="float:right; padding-left:15px;">Remove</a>
-                  </li>
-
-                  <br>
-
-                  <a class="add-another-link" onclick="show2();">Add another order</a>
-
-
-
-
-                </span>
-
-
-                <br>
-                <br>
-                <br>
-
-
-
-                <p><a class="add-another-link" onclick="show3();">Add another child</a></p>
-
-
               </ul>
-
 
             </li>
 
           </ol>
-
 
           <button class="govuk-button" data-module="govuk-button">Save and return</button>
           <a href="../task-list-2-multiple" class="govuk-button govuk-button--secondary">Save as draft</a>
