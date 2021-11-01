@@ -19,6 +19,7 @@ module.exports = (router) => {
   })
   
   router.post('/screening-questions/under-18', function(req, res) {
+    console.log("Test: ", req.body['child-under-18'])
     var errors = []
     if (req.body['child-under-18'] === undefined) {
       errors.push({
@@ -64,6 +65,23 @@ module.exports = (router) => {
     
   })
 
+  router.post('/screening-questions/under-21', function(req, res) {
+    var errors = []
+    if (req.body['under-21'] === undefined) {
+      errors.push({
+      text: 'Select an answer',
+      href: '#under-21'
+      })
+    }
+  
+    if (errors.length === 0) {
+        res.redirect('/alpha-tidy-up/screening-questions/lived-uk')
+    }
+    else {
+        res.render('.//alpha-tidy-up/screening-questions/under-21', { errors: errors })  
+    }
+  })
+  
 
 
 
