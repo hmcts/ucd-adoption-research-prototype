@@ -1,0 +1,58 @@
+{% extends "layout-signed-in.html" %}
+
+{% block pageTitle %}
+Apply to adopt a child
+{% endblock %}
+
+{% block content %}
+
+<div class="govuk-width-container">
+  <a href="#" class="govuk-back-link">Back</a>
+  <a href="step-1-c" class="govuk-button govuk-button--secondary" style="float:right;">Validation off</a>
+
+
+  <main class="govuk-main-wrapper " id="main-content" role="main">
+    <div class="govuk-grid-row">
+      <div class="govuk-grid-column-two-thirds">
+      
+        <form action="step-1-c-2" method="post" class="form">
+            <legend class="govuk-fieldset__legend govuk-fieldset__legend--l">
+                <span class="govuk-caption-l">Add application details </span>
+                <h1 class="govuk-fieldset__heading">
+                    Choose your family court
+                </h1>
+              </legend>
+
+          <p class="govuk-body">You can choose to have your application reviewed in your local family court, or one in a different region.</p>
+          <div class="govuk-form-group">
+
+              <p class="govuk-body"> Enter your postcode, or a postcode in the region you want to review your case.
+
+                <div class="govuk-form-group govuk-form-group--error">
+                  <label class="govuk-label govuk-label--m" for="passport-number">
+                    Postcode
+                  </label>
+                    <span id="address-postcode-error" class="govuk-error-message">
+                      <span class="govuk-visually-hidden">Error:</span> Enter a real postcode
+                    </span>
+                    <input class="govuk-input govuk-input--width-10 govuk-input--error" id="address-postcode" name="address-postcode" type="text" value="Not a postcode" aria-describedby="address-postcode-error" autocomplete="postal-code">
+                  </div>
+
+                <div class="govuk-form-group">
+                  <p><a href="">Or enter address manually</a></p>
+                </div>
+
+
+
+          </div>
+
+          <button class="govuk-button" data-module="govuk-button">Find address</button>
+          <a href="../task-list-2" class="govuk-button govuk-button--secondary">Save and return</a>
+        </form>
+
+      </div>
+    </div>
+  </main>
+</div>
+
+{% endblock %}

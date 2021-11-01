@@ -1,0 +1,40 @@
+{% extends "layout-signed-in.html" %}
+
+{% block pageTitle %}
+Apply to adopt a child
+{% endblock %}
+
+{% block content %}
+<div class="govuk-width-container">
+  <div class="govuk-grid-row">
+    <div class="govuk-grid-column-two-thirds">
+
+
+      <h1 class="govuk-heading-xl"> You cannot apply to adopt</h1>
+
+
+      <p class="govuk-body">Based on your answers, you cannot apply to adopt this child.</p>
+
+      <p class="govuk-body">This is because it's not been 10 weeks since the child was placed with you.
+
+        <h2 class="govuk-heading-m">What you can do now</h2>
+
+
+        <p class="govuk-body">You can continue to fill in this application form, but you will not be able to send it
+          until the 10 week point.
+
+
+
+
+          <div class="govuk-form-group">
+
+
+            <a href="../task-list.html" class="govuk-button">Continue</a>
+
+            <p class="govuk-body">Or exit to <a href="#"> GOV.UK</a>.
+
+          </div>
+    </div>
+  </div>
+
+  {% endblock %}

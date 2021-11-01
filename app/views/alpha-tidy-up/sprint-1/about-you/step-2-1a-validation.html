@@ -1,0 +1,107 @@
+{% extends "layout-signed-in.html" %}
+
+{% block pageTitle %}
+Apply to adopt a child
+{% endblock %}
+
+{% block content %}
+
+<div class="govuk-width-container">
+  <a href="#" class="govuk-back-link">Back</a>
+  <a href="step-2-1a" class="govuk-button govuk-button--secondary" style="float:right;">Validation off</a>
+
+
+  <main class="govuk-main-wrapper " id="main-content" role="main">
+    <div class="govuk-grid-row">
+      <div class="govuk-grid-column-two-thirds">
+
+        <form action="step-2-b" method="post" class="form">
+
+          <div class="govuk-error-summary" aria-labelledby="error-summary-title" role="alert" tabindex="-1"
+            data-module="govuk-error-summary">
+            <h2 class="govuk-error-summary__title" id="error-summary-title">
+              There's a problem
+            </h2>
+            <div class="govuk-error-summary__body">
+              <ul class="govuk-list govuk-error-summary__list">
+                <li>
+                  <a href="#name">The CSV must be smaller than 2MB</a>
+                </li>
+              </ul>
+            </div>
+          </div>
+
+          <div class="govuk-form-group govuk-form-group--error">
+
+            <legend class="govuk-fieldset__legend govuk-fieldset__legend--l">
+              <legend class="govuk-fieldset__legend govuk-fieldset__legend--l">
+                <span class="govuk-caption-l">Your details </span>
+                <h1 class="govuk-fieldset__heading">
+                  Upload evidence of your name change
+                </h1>
+              </legend>
+            </legend>
+
+            <p class="govuk-body"> For example, your <a href="https://www.gov.uk/change-name-deed-poll" target="_blank">deed
+                poll</a>.</p>
+
+                <span id="full-name-error" class="govuk-error-message">
+                  <span class="govuk-visually-hidden">Error:</span> The CSV must be smaller than 2MB
+                </span>
+
+            <div class="document-upload-box" style="
+            border-style: dashed;
+            border-color: #b1b4b6;
+            padding-left: 20px;
+            padding-top: 20px;
+            ">
+              <button class="govuk-button govuk-button--secondary" data-module="govuk-button" onclick="myFunction()">
+                Choose file
+              </button>
+              <p style="
+            float: right;
+            padding-right: 20px;
+            padding-top: 10px;
+            color: #b1b4b6;
+            ">Drag and drop file</p>
+            </div>
+          </div>
+
+          <div id="myDIV" style="display: none;">
+            <dl class="govuk-summary-list govuk-!-margin-bottom-9">
+              <div class="govuk-summary-list__row">
+                <dd class="govuk-summary-list__value">
+                  <a href="">identification_1.pdf</a>
+                </dd>
+                <dd class="govuk-summary-list__actions">
+                  <a class="govuk-link" href="#">
+                    Remove<span class="govuk-visually-hidden"> name</span>
+                  </a>
+                </dd>
+              </div>
+              <div class="govuk-summary-list__row">
+                <dd class="govuk-summary-list__value">
+                  <a href="">identification_2.pdf</a>
+                </dd>
+                <dd class="govuk-summary-list__actions">
+                  <a class="govuk-link" href="#">
+                    Remove<span class="govuk-visually-hidden"> date of birth</span>
+                  </a>
+                </dd>
+              </div>
+            </dl>
+          </div>
+
+
+          <button class="govuk-button" data-module="govuk-button">Save and continue</button>
+          <a href="../task-list-2" class="govuk-button govuk-button--secondary">Save and return</a>
+
+
+        </form>
+
+      </div>
+    </div>
+  </main>
+</div>
+
+{% endblock %}

@@ -1,0 +1,90 @@
+{% extends "layout-signed-in.html" %}
+
+{% block pageTitle %}
+Apply to adopt a child
+{% endblock %}
+
+{% block beforeContent %}
+<a class="govuk-back-link" href="javascript:history.back()">Back</a>
+{% endblock %}
+
+{% block content %}
+
+<div class="govuk-width-container">
+  <div class="govuk-grid-row">
+    <div class="govuk-grid-column-two-thirds">
+
+      {% set 21YearsOld = '' %}
+  
+      {% if errors | length > 0 %}
+      {{ govukErrorSummary({
+        titleText: "There is a problem",
+        errorList: errors
+      }) }}
+      {% for error in errors %}
+        {% if error.href == '#under-21' %}
+          {% set 21YearsOld = error.text %}
+        {% endif %}
+      {% endfor %}
+      {% endif %}
+
+
+      <form action="/screening-questions/under-21" method="post" class="form">
+
+        <legend class="govuk-fieldset__legend govuk-fieldset__legend--l">
+          <span class="govuk-caption-l">Check you're eligible to adopt</span>
+          <h1 class="govuk-fieldset__heading">
+            Are you at least 21 years old?
+          </h1>
+        </legend>
+        <div id="changed-name-hint" class="govuk-hint">
+          If you're applying with a partner, are you both at least 21?
+        </div>
+
+        {% if (21YearsOld != '')%}
+        <div class="govuk-form-group--error">
+        {% endif%}
+        {% if 21YearsOld != '' %}
+          <span class="govuk-error-message govuk-form">
+            <span class="govuk-visually-hidden">Error:</span> {{ 21YearsOld }}
+          </span>
+        {% endif %}
+
+        <div class="govuk-form-group">
+          <fieldset class="govuk-fieldset" role="group" aria-describedby="has-child-lived-with-you--for-at-least-under-21">
+
+            <div class="govuk-radios govuk-radios--conditional" data-module="govuk-radios">
+              <div class="govuk-radios__item">
+                <input class="govuk-radios__input" id="yes" name="under-21" type="radio"
+                  value="Yes">
+                <label class="govuk-label govuk-radios__label" for="yes">
+                  Yes
+                </label>
+              </div>
+
+              <div class="govuk-radios govuk-radios--conditional" data-module="govuk-radios">
+                <div class="govuk-radios__item">
+                  <input class="govuk-radios__input" id="no" name="under-21" type="radio" value="No" data-aria-controls="conditional-contact">
+                  <label class="govuk-label govuk-radios__label" for="under-21">
+                    No
+                  </label>
+                </div>
+                <div class="govuk-radios__conditional govuk-radios__conditional--hidden" id="conditional-contact">
+                  <div class="govuk-form-group">
+                    <p>[NEEDS CONTENT] You need to be over 21 when you apply.</p>         
+                  </div>  
+                           
+            </div>
+          </fieldset>
+        </div>
+        {% if 21YearsOld != '' %}
+          </div>
+          {% endif %}
+        <button class="govuk-button" data-module="govuk-button">
+          Continue
+        </button>
+    </form>   
+  </div>
+</div>
+
+{% endblock %}
