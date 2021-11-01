@@ -1,0 +1,97 @@
+{% extends "layout-signed-in.html" %}
+
+{% block pageTitle %}
+Apply to adopt a child
+{% endblock %}
+
+{% block content %}
+
+<div class="govuk-width-container">
+  <a href="#" class="govuk-back-link">Back</a>
+  <a href="step-2-1-validation" class="govuk-button govuk-button--secondary" style="float:right;">Validation on</a>
+
+
+  <main class="govuk-main-wrapper " id="main-content" role="main">
+    <div class="govuk-grid-row">
+      <div class="govuk-grid-column-two-thirds">
+        <!-- <h2 class="govuk-heading-l">Add your birth certificate details</h2> -->
+
+        <form action="step-2-b" method="post" class="form">
+
+          <div class="govuk-form-group">
+            <legend class="govuk-fieldset__legend govuk-fieldset__legend--l">
+              <h1 class="govuk-fieldset__heading">
+                List all previous names
+              </h1>
+            </legend>
+
+            <div class="govuk-form-group">
+              <label class="govuk-label" for="full-name">
+                Full name
+              </label>
+              <input class="govuk-input govuk-input--width-20" id="full-name" name="childs-name" type="text" autocomplete="name"
+                spellcheck="false">
+            </div>
+            <div class="govuk-form-group">
+              <label class="govuk-label" for="full-name">
+                How did you change this name
+              </label>
+              <span id="changed-name-hint" class="govuk-hint">For example, by deed poll or by marriage or civil
+                partnership certificate.</span>
+              <input class="govuk-input govuk-input--width-20" id="full-name" name="childs-name" type="text" autocomplete="name"
+                spellcheck="false">
+
+            </div>
+
+
+                <div id="foo" style="display: none;">
+                  <div class="govuk-form-group">
+                    <label class="govuk-label" for="full-name">
+                      Full name
+                    </label>
+                    <span><input class="govuk-input govuk-input--width-20" id="full-name" name="childs-name" type="text" autocomplete="name"
+                      spellcheck="false">
+                    <p class="govuk-body" style="float:right; padding-top:10px;"><a href="#" onclick="toggle_visibility('foo');" >Remove</a></p></span>
+
+
+                  </div>
+                  <div class="govuk-form-group">
+                    <label class="govuk-label" for="full-name">
+                      How did you change this name
+                    </label>
+                    <span id="changed-name-hint" class="govuk-hint">For example, by deed poll or by marriage or civil
+                      partnership certificate.</span>
+                    <input class="govuk-input govuk-input--width-20" id="full-name" name="childs-name" type="text" autocomplete="name"
+                      spellcheck="false">
+
+                  </div>
+
+                  <br> <br>
+                </div>
+
+                <p class="govuk-body"><a href="#" onclick="toggle_visibility('foo');" >Add another name</a></p>
+
+
+
+
+
+
+              </div>
+            </div>
+
+
+          </div>
+
+
+          <button class="govuk-button" data-module="govuk-button">Save and continue</button>
+          <a href="../task-list-2" class="govuk-button govuk-button--secondary">Save and return</a>
+
+
+        </form>
+
+      </div>
+    </div>
+  </main>
+</div>
+
+{% endblock %}

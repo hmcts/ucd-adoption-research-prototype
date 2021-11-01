@@ -1,0 +1,76 @@
+{% extends "layout-signed-in.html" %}
+
+{% block pageTitle %}
+Apply to adopt a child
+{% endblock %}
+
+{% block content %}
+
+<div class="govuk-width-container">
+  <a href="#" class="govuk-back-link">Back</a>
+  <!-- <a href="step-4-3-validation" class="govuk-button govuk-button--secondary" style="float:right;">Validation on</a> -->
+
+
+  <main class="govuk-main-wrapper " id="main-content" role="main">
+    <div class="govuk-grid-row">
+      <div class="govuk-grid-column-two-thirds">
+
+
+        <form action="../task-list-2-multiple" method="post" class="form">
+
+
+          <div class="govuk-form-group">
+            <legend class="govuk-fieldset__legend govuk-fieldset__legend--l">
+              <span class="govuk-caption-l">First applicant </span>
+              <h1 class="govuk-fieldset__heading">
+                What's your current or previous occupation? </h1>
+            </legend>
+
+
+
+            <input class="govuk-input govuk-input--width-20" id="width-20" name="you-occupation" type="text"
+              value="{{ data['you-occupation'] }}">
+
+          </div>
+
+          <div class="govuk-warning-text">
+            <span class="govuk-warning-text__icon" aria-hidden="true">!</span>
+            <strong class="govuk-warning-text__text">
+              <span class="govuk-warning-text__assistive">Warning</span>
+              This information will appear on the adoption certificate, so it must be accurate.
+            </strong>
+          </div>
+
+          <details class="govuk-details" data-module="govuk-details">
+            <summary class="govuk-details__summary">
+              <span class="govuk-details__summary-text">
+                Help with how to describe your occupation
+              </span>
+            </summary>
+            <div class="govuk-details__text">
+
+              You should write your full job title or role. For example, 'Secondary school teacher' not just 'Teacher'.
+              </p>
+              If you're retired, add your last role. For example, 'Retired hairdresser'.</p>
+
+              If you're self-employed, include this. For example, 'Self-employed carpenter', not just 'Carpenter'.</p>
+              <p>If you're a stay-at-home parent, include this. For example, 'Full-time mum'.
+
+                <p>If you do not have a job, add your last role.
+
+                </p>
+            </div>
+          </details>
+
+
+          <button class="govuk-button" data-module="govuk-button">Save and return</button>
+          <a href="../task-list-2-multiple" class="govuk-button govuk-button--secondary">Save as draft</a>
+
+
+        </form>
+      </div>
+    </div>
+  </main>
+</div>
+
+{% endblock %}

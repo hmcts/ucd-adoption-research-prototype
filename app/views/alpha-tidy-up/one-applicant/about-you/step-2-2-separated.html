@@ -1,0 +1,48 @@
+{% extends "layout-signed-in.html" %}
+
+{% block pageTitle %}
+Apply to adopt a child
+{% endblock %}
+
+{% block content %}
+
+<div class="govuk-width-container">
+  <a href="#" class="govuk-back-link">Back</a>
+
+  <main class="govuk-main-wrapper " id="main-content" role="main">
+    <div class="govuk-grid-row">
+      <div class="govuk-grid-column-two-thirds">
+
+
+
+        <div class="govuk-form-group">
+          <legend class="govuk-fieldset__legend govuk-fieldset__legend--l">
+            <span class="govuk-caption-l">Your relationship details </span>
+            <h1 class="govuk-fieldset__heading">
+              What's their address?
+            </h1>
+          </legend>
+          <p class="govuk-body"> We'll send all court papers to this address.</p>
+
+
+          <label class="govuk-label govuk-label--m" for="passport-number">
+            Postcode
+          </label>
+
+          <input class="govuk-input govuk-input--width-10" id="width-10" name="width-10" type="text">
+
+
+        </div>
+        <div class="govuk-form-group">
+          <p><a href="step-2-3-b">Or enter address manually</a></p>
+        </div>
+
+        <a href="step-2-3-separated" class="govuk-button">Find address</a>
+        <a href="../task-list-2" class="govuk-button govuk-button--secondary">Save as draft</a>
+
+      </div>
+    </div>
+  </main>
+</div>
+
+{% endblock %}

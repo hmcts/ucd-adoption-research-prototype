@@ -1,0 +1,56 @@
+{% extends "layout-signed-in.html" %}
+
+{% block pageTitle %}
+Apply to adopt a child
+{% endblock %}
+
+{% block content %}
+
+<div class="govuk-width-container">
+  <a href="#" class="govuk-back-link">Back</a>
+
+  <main class="govuk-main-wrapper " id="main-content" role="main">
+    <div class="govuk-grid-row">
+      <div class="govuk-grid-column-two-thirds">
+        <form action="step-3-b" method="post" class="form" id="solicitor-form">
+            <span class="govuk-caption-l">Your solicitor</span>
+          <h2 class="govuk-heading-l">Is a solicitor helping you with this application?</h2>
+
+          <div class="govuk-form-group">
+            <fieldset class="govuk-fieldset" aria-describedby="how-contacted-conditional-hint">
+
+              <div class="govuk-radios govuk-radios--conditional" data-module="govuk-radios">
+                <div class="govuk-radios__item">
+                  <input class="govuk-radios__input radioTargetSet" id="how-contacted-conditional-gp" name="solicitor" type="radio"
+                    value="step-3-new" data-aria-controls="conditional-gp" {{ checked("solicitor", "yes") }}>
+                  <label class="govuk-label govuk-radios__label" for="how-contacted-conditional-gp">
+                    Yes
+                  </label>
+                </div>
+
+                <div class="govuk-radios__item">
+                  <input class="govuk-radios__input radioTargetSet" id="conditional-how-contacted-condi" name="solicitor"
+                    type="radio" value="../task-list-2-multiple" data-aria-controls="conditional-how-contacted-conditional-2" {{ checked("solicitor", "no") }}>
+                  <label class="govuk-label govuk-radios__label" for="conditional-how-contacted-condi">
+                    No
+                  </label>
+                </div>
+
+
+              </div>
+            </fieldset>
+          </div>
+
+
+          <button class="govuk-button" data-module="govuk-button">Save and continue</button>
+          <a href="../task-list-2-multiple" class="govuk-button govuk-button--secondary">Save as draft</a>
+
+
+        </form>
+
+      </div>
+    </div>
+  </main>
+</div>
+
+{% endblock %}

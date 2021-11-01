@@ -1,0 +1,268 @@
+{% extends "layout-signed-in.html" %}
+
+{% block pageTitle %}
+Apply to adopt a child
+{% endblock %}
+
+{% block content %}
+
+<head>
+  <!-- Place your kit's code here -->
+  <script src="https://kit.fontawesome.com/03c0a94a07.js" crossorigin="anonymous"></script>
+
+
+</head>
+
+
+<div class="govuk-width-container">
+
+  <main class="govuk-main-wrapper">
+
+    <!-- <div class="govuk-grid-row">
+
+      <div class="govuk-grid-column-full">
+        <h1 class="govuk-heading-l">Your adoption application</h1>
+
+      </div>
+
+    </div> -->
+
+    <div class="govuk-grid-row">
+
+
+
+
+      <div class="govuk-grid-column-full">
+        <span class="govuk-caption-l">2283-2245-2364-2352</span>
+        <h1 class="govuk-heading-l">Your adoption application</h1>
+
+        <div class="govuk-tabs hmcts-sub-navigation" data-module="govuk-tabs">
+            <h2 class="govuk-tabs__title">
+              Contents
+            </h2>
+            <ul class="govuk-tabs__list">
+              <li class="govuk-tabs__list-item govuk-tabs__list-item--selected">
+                <a class="govuk-tabs__tab" href="#past-day">
+                  Your application
+                </a>
+              </li>
+              <li class="govuk-tabs__list-item">
+                <a class="govuk-tabs__tab" href="#past-week">
+                  Your adoption contacts
+                </a>
+              </li>
+              <li class="govuk-tabs__list-item">
+                <a class="govuk-tabs__tab" href="#past-year">
+                  Getting help
+                </a>
+              </li>
+            </ul>
+
+
+
+
+            <section class="govuk-tabs__panel" id="past-day">
+
+              <div class="timeline">
+                  <ul class="timeline-border">
+                    <li class="action_needed timeline-circle">
+
+                      <h2>Application received</h2>
+                      <p class="time">2 September 2017 at 1.01pm</p>
+
+                          <P>Your application as been recieved by the courts and is waiting to be looked at by an adoption clerk</P>
+                          <button class="govuk-button" data-module="govuk-button">
+                            View application
+                          </button>
+                    </li>
+                    <li class="timeline-circle">
+                      <h2>Application reviewed</h2>
+                      <p class="govuk-body">The court will:</p>
+
+                      <ul class="govuk-list govuk-list--bullet">
+                        <li class="bullet">check your application and get in touch if they have questions</li>
+                        <li>ask your and the child’s social workers to finish and send their paperwork</li>
+                        <li>ask the local authority to write to all parties, including the birth parents if relevant, with the ‘initial direction’ - this includes the hearing date and things that must be done before that date (‘directions’)</li>
+                      </ul>
+
+                      <p>The birth parents have the right to ask to oppose the adoption. This can happen at any time before an adoption application is approved. If this happens, the judge will ask the birth parents to explain what has changed since the placement order was made.</p>
+                    </li>
+
+                    <li class="timeline-circle">
+                      <h2>Reports submitted</h2>
+                      <p>Both social workers have submitted their reports and this will then be matched to your application.</p>
+                    </li>
+                    <li class="timeline-circle">
+                      <h2>The court decides</h2>
+                      <p>If all the directions have been done, the hearing should happen on the date in the initial direction.</p>
+                      <p> If the birth parents have asked to oppose the adoption, the judge will use this hearing to listen to their case. If there is no request to oppose, this will become the final hearing. The judge will look at your application and the social workers’ reports to make a decision.</p>
+                      <p> You may go to this hearing, but usually the court will suggest you do not. This is because there’s a chance you and the birth parents could accidentally meet.</p>
+                      <p> The child cannot go to this hearing.</p>
+                    </li>
+                    <li class="timeline-circle">
+                      <h2>Adoption decision made</h2>
+                      <p>If your application is successful, the court will schedule a ‘celebration hearing’ for you and the child. This blah blah blah</p>
+                      <div class="timeline-details">
+                      </div>
+                    </li>
+                  </ul>
+                </div>
+
+
+            </section>
+
+
+
+
+
+              <section class="govuk-tabs__panel govuk-tabs__panel--hidden" id="past-week">
+
+                <h2 class="govuk-heading-m">Your social worker details</h2>
+
+                <table class="govuk-table">
+                        <tbody class="govuk-table__body">
+                            <tr class="govuk-table__row">
+                              <th scope="row" class="govuk-table__header">Name</th>
+                              <td class="govuk-table__cell">Future Families Adoption Agency</td>
+                            </tr>
+                            <tr class="govuk-table__row">
+                              <th scope="row" class="govuk-table__header">Email addresses</th>
+                              <td class="govuk-table__cell"> Lindapaul@test.com <br>
+                                futurefamilies@test.com </td>
+                            </tr>
+                            <tr class="govuk-table__row">
+                              <th scope="row" class="govuk-table__header">Phone numbers</th>
+                              <td class="govuk-table__cell"> 07915740231
+                                  <br>
+                                  01517664834</td>
+                            </tr>
+                            <tr class="govuk-table__row">
+                                <th scope="row" class="govuk-table__header">Address</th>
+                                <td class="govuk-table__cell">    Future Families Adoption Centre
+                                    <br>
+                                    56  Farburn Terrace
+                                    <br>
+                                    LITTLE LONDON
+                                    <br>
+                                    PE12 0HF</td>
+                              </tr>
+                          </tbody>
+                        </table>
+
+          <br>
+
+
+
+
+          <h2 class="govuk-heading-m">Child's social worker details</h2>
+
+  <br>
+          <table class="govuk-table">
+             <tbody class="govuk-table__body">
+                      <tr class="govuk-table__row">
+                        <th scope="row" class="govuk-table__header">Name</th>
+                        <td class="govuk-table__cell">Essex County Children's Services</td>
+                      </tr>
+                      <tr class="govuk-table__row">
+                        <th scope="row" class="govuk-table__header">Email addresses</th>
+                        <td class="govuk-table__cell"> Craigdavis@test.com <br>
+                          Essex-childrens-service@test.com </td>
+                      </tr>
+                      <tr class="govuk-table__row">
+                        <th scope="row" class="govuk-table__header">Phone numbers</th>
+                        <td class="govuk-table__cell">  07538234761
+                            <br>
+                            01517642894</td>
+                      </tr>
+                      <tr class="govuk-table__row">
+                          <th scope="row" class="govuk-table__header">Address</th>
+                          <td class="govuk-table__cell">      Essex County Council Office
+                              <br>
+                              118  Hart Road
+                              <br>
+                              Essex
+                              <br>
+                              BA1 2QA</td>
+                        </tr>
+                    </tbody>
+                  </table>
+
+
+
+
+
+              </section>
+
+
+
+              <section class="govuk-tabs__panel govuk-tabs__panel--hidden" id="past-year">
+
+                <h2 class="govuk-heading-m" id="subsection-title">
+                  Getting help
+                </h2>
+
+
+                <p class=""><strong class="bold-xsmall">Email</strong>
+                  <br>
+                  adoption-west-london@justice.gov.uk</p>
+
+                  <p class=""><strong class="">Phone</strong>
+                    <br>
+                    0300 303 0642
+                    <br>
+                    (Monday to Friday, 8.30am to 5pm)</p>
+
+
+                    <p class=""><strong class="">Courts and Tribunals Service Centre</strong>
+                      <br>
+                      West London Family Court
+                      <br>
+                      4 Goose Green West
+                      <br>
+                      Feltham
+                      <br>
+                      NG2 9QN</p>
+
+          <h2 class="govuk-heading-m" id="subsection-title">
+            Useful links
+          </h2>
+          <nav role="navigation" aria-labelledby="subsection-title">
+            <ul class="govuk-list govuk-!-font-size-16">
+              <li>
+                <a href="https://www.gov.uk/child-adoption">Gov.uk child adoption landing page</a>
+              </li>
+              <li>
+                <a href="https://assets.publishing.service.gov.uk/government/uploads/system/uploads/attachment_data/file/336069/Adoption_NMS_July_2014_for_publication.pdf">Adoption national minimum standards</a>
+              </li>
+              <li>
+                <a href="https://www.gov.uk/adoption-pay-leave">Adoption pay and leave</a>
+              </li>
+            </ul>
+          </nav>
+
+          <!-- <button class="govuk-button govuk-button--warning" data-module="govuk-button">
+            Delete application
+          </button> -->
+
+
+              </section>
+            </div>
+
+
+
+
+      </div>
+
+
+
+
+    </div>
+
+  </main>
+</div>
+
+
+
+
+
+{% endblock %}

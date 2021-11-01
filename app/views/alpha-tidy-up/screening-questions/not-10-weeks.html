@@ -1,0 +1,51 @@
+{% extends "layout-signed-in.html" %}
+
+{% block pageTitle %}
+Apply to adopt a child
+{% endblock %}
+
+{% block content %}
+
+<div class="govuk-width-container">
+  <a href="cannot-apply.html" class="govuk-back-link">Back</a>
+
+  <main class="govuk-main-wrapper " id="main-content" role="main">
+    <div class="govuk-grid-row">
+      <div class="govuk-grid-column-two-thirds">
+
+
+        <form action="step-1-3b-yes" method="post" class="form">
+
+          <legend class="govuk-fieldset__legend govuk-fieldset__legend--l">
+            <span class="govuk-caption-l">Check you're eligible to adopt</span>
+            <h2 class="govuk-fieldset__heading">
+              You're eligible to apply
+            </h2>
+          </legend>
+          <p class="govuk-body">Based on your answers, you can continue to fill in the application form.
+
+            <p>However, you will not be able to
+              submit it until the child has lived with you for 10
+              weeks.
+
+
+
+            </p>
+          </p>
+        </form>
+      </div>
+    </div>
+
+
+
+    <a href="../registration/start1.html" class="govuk-button govuk-button">Continue</a>
+
+
+
+    </form>
+</div>
+</div>
+</main>
+</div>
+
+{% endblock %}

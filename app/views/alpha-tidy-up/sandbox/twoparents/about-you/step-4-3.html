@@ -1,0 +1,68 @@
+{% extends "layout-signed-in.html" %}
+
+{% block pageTitle %}
+Apply to adopt a child
+{% endblock %}
+
+{% block content %}
+
+<div class="govuk-width-container">
+  <a href="#" class="govuk-back-link">Back</a>
+
+  <main class="govuk-main-wrapper " id="main-content" role="main">
+    <div class="govuk-grid-row">
+      <div class="govuk-grid-column-two-thirds">
+        <h2 class="govuk-heading-l">Your current or last job </h2>
+        <div class="govuk-warning-text">
+          <span class="govuk-warning-text__icon" aria-hidden="true">!</span>
+          <strong class="govuk-warning-text__text">
+            <span class="govuk-warning-text__assistive">Warning</span>
+            This information will appear on the adoption certificate, so it must be accurate.
+          </strong>
+        </div>
+
+        <div class="govuk-form-group">
+          <label class="govuk-label" for="occupation">
+            What's your current or last job?
+          </label>
+          <span id="changed-name-hint" class="govuk-hint">
+          </span>
+          <input class="govuk-input" name="occupation" type="text" autocomplete="name" spellcheck="false"
+            value="{{ data['occupation'] }}">
+        </div>
+
+        <details class="govuk-details" data-module="govuk-details">
+          <summary class="govuk-details__summary">
+            <span class="govuk-details__summary-text">
+              Help with answering this question
+            </span>
+          </summary>
+          <div class="govuk-details__text">
+
+            You should write your full job title or role. For example, 'Secondary school teacher' not just 'Teacher'.
+            </p>
+            If you're self-employed, include this. For example, 'Self-employed carpenter', not just 'Carpenter'.
+
+            </p>
+            If you're retired, add your last role. For example, 'Retired hairdresser'.</p>
+          </div>
+        </details>
+
+
+
+
+
+
+
+
+
+        
+        <a href="../task-list-2" class="govuk-button govuk">Save and return</a>
+
+        </form>
+      </div>
+    </div>
+  </main>
+</div>
+
+{% endblock %}

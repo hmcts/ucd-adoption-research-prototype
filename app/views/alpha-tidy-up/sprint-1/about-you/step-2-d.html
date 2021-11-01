@@ -1,0 +1,70 @@
+{% extends "layout-signed-in.html" %}
+
+{% block pageTitle %}
+Apply to adopt a child
+{% endblock %}
+
+{% block content %}
+
+<div class="govuk-width-container">
+  <a href="#" class="govuk-back-link">Back</a>
+  <a href="step-2-d-validation" class="govuk-button govuk-button--secondary" style="float:right;">Validation on</a>
+
+
+  <main class="govuk-main-wrapper " id="main-content" role="main">
+    <div class="govuk-grid-row">
+      <div class="govuk-grid-column-two-thirds">
+        <!-- <h2 class="govuk-heading-l">Add your birth certificate details</h2> -->
+
+        <form action="step-4-3" method="post" class="form">
+
+          <div class="govuk-form-group">
+            <legend class="govuk-fieldset__legend govuk-fieldset__legend--l">
+              <span class="govuk-caption-l">Your details </span>
+              <h1 class="govuk-fieldset__heading">
+                What's your nationality?
+              </h1>
+            </legend>
+            <input class="govuk-input govuk-input--width-10" id="width-10" name="width-10" type="text">
+
+          </div>
+
+
+
+          <!-- <div class="hmcts-button-action">
+
+            <button class="govuk-button hmcts-button--secondary  hmcts-add-another__add-button  govuk-!-margin-bottom-4"
+              data-module="govuk-button">
+              Add another nationality
+            </button>
+
+          </div> -->
+
+
+          <!--<details class="govuk-details" data-module="govuk-details">
+            <summary class="govuk-details__summary">
+              <span class="govuk-details__summary-text">
+                Help with nationality
+              </span>
+            </summary>
+            <div class="govuk-details__text">
+
+
+
+              If you’re not sure about your nationality, try to find out from an official document like a passport or
+              national ID card.
+              </p>
+            </div>
+          </details><-->
+          <button class="govuk-button" data-module="govuk-button">Save and continue</button>
+          <a href="../task-list-2" class="govuk-button govuk-button--secondary">Save and return</a>
+
+
+        </form>
+
+      </div>
+    </div>
+  </main>
+</div>
+
+{% endblock %}
