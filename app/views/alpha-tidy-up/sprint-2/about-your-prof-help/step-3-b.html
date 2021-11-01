@@ -1,0 +1,66 @@
+{% extends "layout-signed-in.html" %}
+
+{% block pageTitle %}
+Apply to adopt a child
+{% endblock %}
+
+{% block content %}
+
+<div class="govuk-width-container">
+  <a href="#" class="govuk-back-link">Back</a>
+
+  <main class="govuk-main-wrapper " id="main-content" role="main">
+    <div class="govuk-grid-row">
+      <div class="govuk-grid-column-two-thirds">
+        <form action="step-3-c" method="post" class="form">
+
+          <h2 class="govuk-heading-l">Add your solicitor's details</h2>
+
+          <div class="govuk-form-group">
+            <fieldset class="govuk-fieldset" aria-describedby="how-contacted-conditional-hint">
+
+              <div class="govuk-form-group">
+
+                <div class="govuk-form-group">
+                  <label class="govuk-label" for="address-town">
+                    Practice or company name
+                  </label>
+                  <input class="govuk-input" id="event-name" name="event-name" type="text">
+                </div>
+                <div class="govuk-form-group">
+                  <label class="govuk-label" for="full-name">
+                    Solicitor's name
+                  </label>
+                  <input class="govuk-input" id="full-name" name="full-name" type="text" autocomplete="name" spellcheck="false">
+                </div>
+
+                <div class="govuk-form-group">
+                  <label class="govuk-label" for="full-name">
+                    Their email address
+                  </label>
+                  <input class="govuk-input" id="full-name" name="full-name" type="text" autocomplete="name" spellcheck="false">
+                </div>
+
+                <div class="govuk-form-group">
+                  <label class="govuk-label" for="width-10">
+                    Phone number
+                  </label>
+                  <input class="govuk-input govuk-input--width-10" id="width-10" name="width-10" type="text">
+                </div>
+
+              </div>
+
+              <br><br>
+              <button class="govuk-button" data-module="govuk-button">Save and continue</button>
+              <a href="../task-list-2" class="govuk-button govuk-button--secondary">Save and return</a>
+
+            </fieldset>
+          </div>
+        </form>
+
+      </div>
+    </div>
+  </main>
+</div>
+
+{% endblock %}

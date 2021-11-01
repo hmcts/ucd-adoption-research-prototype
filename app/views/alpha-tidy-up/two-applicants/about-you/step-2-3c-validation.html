@@ -1,0 +1,122 @@
+{% extends "layout-signed-in.html" %}
+
+{% block pageTitle %}
+Apply to adopt a child
+{% endblock %}
+
+{% block content %}
+
+<div class="govuk-width-container">
+  <a href="#" class="govuk-back-link">Back</a>
+  <a href="step-2-3c" class="govuk-button govuk-button--secondary" style="float:right;">Validation off</a>
+
+
+  <main class="govuk-main-wrapper " id="main-content" role="main">
+    <div class="govuk-grid-row">
+      <div class="govuk-grid-column-two-thirds">
+
+
+        <form action="../task-list-2-multiple" method="post" class="form">
+
+          <div class="govuk-error-summary" aria-labelledby="error-summary-title" role="alert" tabindex="-1"
+            data-module="govuk-error-summary">
+            <h2 class="govuk-error-summary__title" id="error-summary-title">
+              There's a problem
+            </h2>
+            <div class="govuk-error-summary__body">
+              <ul class="govuk-list govuk-error-summary__list">
+                <li>
+                  <a href="#name">Select if you want to be contacted by email, phone or text message</a>
+                </li>
+              </ul>
+            </div>
+          </div>
+
+          <div class="govuk-form-group govuk-form-group--error">
+    <fieldset class="govuk-fieldset" aria-describedby="nationality-hint nationality-error">
+      <legend class="govuk-fieldset__legend govuk-fieldset__legend--l">
+          <span class="govuk-caption-l">Your details </span>
+          <h1 class="govuk-fieldset__heading">
+              How else can we contact you?
+          </h1>
+      </legend>
+
+      <p>For example, with questions or updates about your application. All legal papers will be posted.</p>
+
+
+      <span id="nationality-hint" class="govuk-hint">
+        Select all that apply.
+      </span>
+      <span id="nationality-error" class="govuk-error-message">
+        <span class="govuk-visually-hidden">Error:</span> Select if you want to be contacted by email, phone or text message
+      </span>
+      <div class="govuk-checkboxes" data-module="govuk-checkboxes">
+        <div class="govuk-checkboxes__item">
+          <input class="govuk-checkboxes__input" id="citizenship-conditional" name="citizen" type="checkbox"
+            value="email" data-aria-controls="conditional-citizenship-conditional">
+          <label class="govuk-label govuk-checkboxes__label" for="citizenship-conditional">
+            Email - jane@goodall.com.
+          </label>
+        </div>
+        <!-- <div class="govuk-checkboxes__conditional govuk-checkboxes__conditional--hidden"
+          id="conditional-citizenship-conditional">
+          <div class="govuk-inset-text">
+            The email address we will contact you on is jane@goodall.com.
+          </div>
+
+        </div> -->
+        <div class="govuk-checkboxes__item">
+          <input class="govuk-checkboxes__input" id="citizenship-conditional-2" name="citizen" type="checkbox"
+            value="phone" data-aria-controls="conditional-citizenship-conditional-2">
+          <label class="govuk-label govuk-checkboxes__label" for="citizenship-conditional-2">
+            Phone
+          </label>
+        </div>
+        <div class="govuk-checkboxes__conditional govuk-checkboxes__conditional--hidden"
+          id="conditional-citizenship-conditional-2">
+          <div class="govuk-form-group">
+            <label class="govuk-label" for="contact-by-phone">
+              Phone number
+            </label>
+            <input class="govuk-input govuk-input--width-20" id="contact-by-phone" name="phone-number"
+              type="tel" value="{{ data['phone-number'] }}">
+          </div>
+
+
+        </div>
+        <div class="govuk-checkboxes__item">
+          <input class="govuk-checkboxes__input" id="citizenship-conditional-3" name="phone-number"
+            type="checkbox" value="text message" data-aria-controls="conditional-citizenship-conditional-3">
+          <label class="govuk-label govuk-checkboxes__label" for="citizenship-conditional-3">
+            Text message
+          </label>
+        </div>
+        <div class="govuk-checkboxes__conditional govuk-checkboxes__conditional--hidden"
+          id="conditional-citizenship-conditional-3">
+          <div class="govuk-form-group">
+            <label class="govuk-label" for="contact-by-text">
+              Mobile phone number
+            </label>
+            <input class="govuk-input govuk-input--width-20" id="contact-by-text" name="contact-by-text"
+              type="tel" value="{{ data['phone-number'] }}">
+          </div>
+
+        </div>
+      </div>
+    </div>
+
+
+
+          <button class="govuk-button" data-module="govuk-button">Save and return</button>
+          <a href="../task-list-2-multiple" class="govuk-button govuk-button--secondary">Save as draft</a>
+
+
+        </form>
+
+</div>
+
+
+  </main>
+</div>
+
+{% endblock %}

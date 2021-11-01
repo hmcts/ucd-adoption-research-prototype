@@ -1,0 +1,70 @@
+{% extends "layout-signed-in.html" %}
+
+{% block pageTitle %}
+Apply to adopt a child
+{% endblock %}
+
+{% block content %}
+<div class="govuk-width-container">
+  <div class="govuk-grid-row">
+    <div class="govuk-grid-column-two-thirds">
+
+
+      <legend class="govuk-fieldset__legend govuk-fieldset__legend--l">
+        <h1 class="govuk-fieldset__heading">
+          When did the child come to live with you?
+        </h1>
+      </legend>
+
+
+
+      <span id="changed-name-hint" class="govuk-hint">
+        This is the date the local authority placed the child was placed with you. Check with your adoption agency or
+        social worker if you're not sure.
+      </span>
+      <div class="govuk-date-input" id="passport-issued">
+        <div class="govuk-date-input__item">
+          <div class="govuk-form-group">
+            <label class="govuk-label govuk-date-input__label" for="passport-issued-day">
+              Day
+            </label>
+            <input class="govuk-input govuk-date-input__input govuk-input--width-2" id="passport-issued-day"
+              name="passport-issued-day" type="number" pattern="[0-9]*">
+          </div>
+        </div>
+        <div class="govuk-date-input__item">
+          <div class="govuk-form-group">
+            <label class="govuk-label govuk-date-input__label" for="passport-issued-month">
+              Month
+            </label>
+            <input class="govuk-input govuk-date-input__input govuk-input--width-2" id="passport-issued-month"
+              name="passport-issued-month" type="number" pattern="[0-9]*">
+          </div>
+        </div>
+        <div class="govuk-date-input__item">
+          <div class="govuk-form-group">
+            <label class="govuk-label govuk-date-input__label" for="passport-issued-year">
+              Year
+            </label>
+            <input class="govuk-input govuk-date-input__input govuk-input--width-4" id="passport-issued-year"
+              name="passport-issued-year" type="number" pattern="[0-9]*">
+          </div>
+        </div>
+      </div>
+      </fieldset>
+    </div>
+  </div>
+
+
+
+
+
+
+
+  <a href="eligibility-4.html" class="govuk-button">Continue</a>
+
+</div>
+</div>
+</div>
+
+{% endblock %}

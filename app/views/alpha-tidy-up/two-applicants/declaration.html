@@ -1,0 +1,68 @@
+{% extends "layout-signed-in.html" %}
+
+{% block pageTitle %}
+Apply to adopt a child
+{% endblock %}
+
+{% block content %}
+
+<div class="govuk-width-container">
+
+  <div class="govuk-grid-row">
+    <div class="govuk-grid-column-two-thirds">
+      <a href="#" class="govuk-back-link">Back</a>
+      <br><br>
+
+      <legend class="govuk-fieldset__legend govuk-fieldset__legend--l">
+        <span class="govuk-caption-l">Review your application, pay and send </span>
+        <h1 class="govuk-fieldset__heading">
+          Declaration
+        </h1>
+      </legend>
+
+<br>
+
+
+      <p class="govuk-body">Do you confirm that, to the best of your knowledge, the information given in this
+        application correct.
+
+
+
+
+
+        <div class="govuk-checkboxes">
+
+          <div class="govuk-checkboxes__item">
+            <input class="govuk-checkboxes__input" id="waste-2" name="waste" type="checkbox" value="mines">
+            <label class="govuk-label govuk-checkboxes__label" for="waste-2">
+              Yes – Jacqueline Lynch
+            </label>
+          </div>
+
+        </div>
+        </fieldset>
+    </div>
+  </div>
+  <br><br>
+
+  <div class="govuk-warning-text">
+    <span class="govuk-warning-text__icon" aria-hidden="true">!</span>
+    <strong class="govuk-warning-text__text">
+      <span class="govuk-warning-text__assistive">Warning</span>
+      You could be in contempt of court if you give false information in this form.
+
+    </strong>
+  </div>
+
+
+  <a href="payment" class="govuk-button">Continue</a>
+
+
+
+</div>
+
+</div>
+
+</div>
+
+{% endblock %}

@@ -1,0 +1,94 @@
+{% extends "layout-signed-in.html" %}
+
+{% block pageTitle %}
+Apply to adopt a child
+{% endblock %}
+
+{% block content %}
+
+<div class="govuk-width-container">
+  <a href="#" class="govuk-back-link">Back</a>
+  <a href="step-2-1" class="govuk-button govuk-button--secondary" style="float:right;">Validation off</a>
+
+
+  <main class="govuk-main-wrapper " id="main-content" role="main">
+    <div class="govuk-grid-row">
+      <div class="govuk-grid-column-two-thirds">
+        <!-- <h2 class="govuk-heading-l">Add your birth certificate details</h2> -->
+
+        <form action="" id="eligible-form" method="post" class="form">
+
+          <div class="govuk-error-summary" aria-labelledby="error-summary-title" role="alert" tabindex="-1"
+            data-module="govuk-error-summary">
+            <h2 class="govuk-error-summary__title" id="error-summary-title">
+              There's a problem
+            </h2>
+            <div class="govuk-error-summary__body">
+              <ul class="govuk-list govuk-error-summary__list">
+                <li>
+                  <a href="#name">Select yes if the name on your marriage or civil partnership certificate is the same</a>
+                </li>
+              </ul>
+            </div>
+          </div>
+
+          <div class="govuk-form-group govuk-form-group--error">
+            <legend class="govuk-fieldset__legend govuk-fieldset__legend--l">
+              <legend class="govuk-fieldset__legend govuk-fieldset__legend--l">
+                <span class="govuk-caption-l">Your details </span>
+                <h1 class="govuk-fieldset__heading">
+                  Is this the name on your marriage or civil partnership certificate?
+                </h1>
+              </legend>
+            </legend>
+
+            <span id="changed-name-error" class="govuk-error-message">
+              <span class="govuk-visually-hidden">Error:</span> Select yes if the name on your marriage or civil partnership certificate is the same
+            </span>
+
+            <div class="govuk-form-group">
+              <div class="govuk-radios" data-module="govuk-radios">
+                <div class="govuk-radios__item">
+                  <input class="govuk-radios__input radioTargetSet" id="father-conditional" name="father" type="radio"
+                    value="step-2-b" data-aria-controls="fathers-name-yes">
+                  <label class="govuk-label govuk-radios__label" for="father-conditional">
+                    Yes
+                  </label>
+                </div>
+
+                <div class="govuk-radios__item">
+                  <input class="govuk-radios__input radioTargetSet" id="father-conditional-no" name="father"
+                    type="radio" data-aria-controls="father-conditional-no" value="step-2-1a">
+                  <label class="govuk-label govuk-radios__label" for="father-conditional-no">
+                    No
+                  </label>
+                </div>
+
+
+
+              </div>
+
+
+
+
+
+
+
+            </div>
+
+
+          </div>
+
+
+          <button class="govuk-button" data-module="govuk-button">Save and continue</button>
+          <a href="../task-list-2-multiple" class="govuk-button govuk-button--secondary">Save as draft</a>
+
+
+        </form>
+
+      </div>
+    </div>
+  </main>
+</div>
+
+{% endblock %}

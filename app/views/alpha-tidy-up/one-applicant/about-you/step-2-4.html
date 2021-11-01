@@ -1,0 +1,95 @@
+{% extends "layout-signed-in.html" %}
+
+{% block pageTitle %}
+Apply to adopt a child
+{% endblock %}
+
+{% block content %}
+
+<div class="govuk-width-container">
+  <a href="#" class="govuk-back-link">Back</a>
+
+  <main class="govuk-main-wrapper " id="main-content" role="main">
+    <div class="govuk-grid-row">
+      <div class="govuk-grid-column-two-thirds">
+
+
+          <legend class="govuk-fieldset__legend govuk-fieldset__legend--l">
+              <span class="govuk-caption-l">Your details </span>
+              <h1 class="govuk-fieldset__heading">
+                  Upload photo ID
+              </h1>
+          </legend>
+
+
+
+
+        </p>
+        <p>You'll need to upload your:</p>
+        <ul class="govuk-list govuk-list--bullet">
+          <li> passport's photo page</li>
+          <li> driving licence</li>
+        </ul>
+        <p> If relevant, you'll also need to upload:
+
+          <ul class="govuk-list govuk-list--bullet">
+            <li>a copy of your UK visa </li>
+            <li>any passport pages that have UK immigration entry stamps
+            </li>
+          </ul>
+          <div class="govuk-form-group">
+            <div class="document-upload-box" style="
+          border-style: dashed;
+          border-color: #b1b4b6;
+          padding-left: 20px;
+          padding-top: 20px;
+          ">
+              <button class="govuk-button govuk-button--secondary" data-module="govuk-button" onclick="myFunction()">
+                Choose files
+              </button>
+              <p style="
+          float: right;
+          padding-right: 20px;
+          padding-top: 10px;
+          color: #b1b4b6;
+          ">Drag and drop files</p>
+            </div>
+          </div>
+
+          <div id="myDIV" style="display: none;">
+            <dl class="govuk-summary-list govuk-!-margin-bottom-9">
+              <div class="govuk-summary-list__row">
+                <dd class="govuk-summary-list__value">
+                  <a href="">identification_1.pdf</a>
+                </dd>
+                <dd class="govuk-summary-list__actions">
+                  <a class="govuk-link" href="#">
+                    Remove<span class="govuk-visually-hidden"> name</span>
+                  </a>
+                </dd>
+              </div>
+              <div class="govuk-summary-list__row">
+                <dd class="govuk-summary-list__value">
+                  <a href="">identification_2.pdf</a>
+                </dd>
+                <dd class="govuk-summary-list__actions">
+                  <a class="govuk-link" href="#">
+                    Remove<span class="govuk-visually-hidden"> date of birth</span>
+                  </a>
+                </dd>
+              </div>
+            </dl>
+          </div>
+
+
+          <a href="../task-list-2" class="govuk-button">Save and return</a>
+          <a href="../task-list-2" class="govuk-button govuk-button--secondary">Save as draft</a>
+
+
+      </div>
+    </div>
+
+  </main>
+</div>
+
+{% endblock %}
