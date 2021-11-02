@@ -22,14 +22,14 @@ Apply to adopt a child
         errorList: errors
       }) }}
       {% for error in errors %}
-        {% if error.href == '#10-weeks' %}
+        {% if error.href == '#first-applicant-name' %}
           {% set nameError = error.text %}
         {% endif %}
       {% endfor %}
       {% endif %}
 
 
-      <form action="/two-applicants/about-you/step-2" method="post" class="form">
+      <form action="/two-applicants/about-you/first-applicant-name" method="post" class="form">
 
         <legend class="govuk-fieldset__legend govuk-fieldset__legend--l">
           <span class="govuk-caption-l">First applicant</span>
@@ -40,14 +40,16 @@ Apply to adopt a child
 
 
         <div class="govuk-form-group {% if (nameError != '')%} govuk-form-group--error {% endif%}">
+          {% if (nameError != '')%}
+          <span id="national-insurance-number-error" class="govuk-error-message">
+            <span class="govuk-visually-hidden">Error:</span> Enter your full name [NEEDS CONTENT]
+          </span>
+          {% endif%}
 
           <input class="govuk-input" id="full-name" name="first-applicant-name" type="text" autocomplete="name" spellcheck="false"
             value="{{ data['first-applicant-name'] }}">
         </div>
 
-        {% if nameError != '' %}
-          </div>
-        {% endif %}
           <!-- Buttons -->
           {% include "../../../includes/buttons.html" %}
 
