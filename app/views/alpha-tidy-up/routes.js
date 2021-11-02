@@ -81,25 +81,48 @@ module.exports = (router) => {
     }
   })
   
-  router.post('/two-applicants/about-you/step-2', function(req, res) {
+  router.post('/two-applicants/about-you/first-applicant-name', function(req, res) {
     var errors = []
-    if (req.body['first-applicant-name'] === undefined) {
+    if (req.body['first-applicant-name'] === '') {
       errors.push({
       text: 'Select an answer',
-      href: '#step-2'
+      href: '#first-applicant-name'
       })
     }
   
     if (errors.length === 0) {
       if (req.body['submit-button'] === 'save-and-continue') {
-        res.redirect('/alpha-tidy-up/two-applicants/about-you/step-2-1')
+        res.redirect('/alpha-tidy-up/two-applicants/about-you/first-applicant-other-names')
       } 
       else {
         res.redirect('/alpha-tidy-up/two-applicants/task-list-2-multiple')
       }
     }
     else {
-        res.render('.//alpha-tidy-up/two-applicants/about-you/step-2', { errors: errors })  
+        res.render('.//alpha-tidy-up/two-applicants/about-you/first-applicant-name', { errors: errors })  
+    }
+  })
+
+
+  router.post('/two-applicants/about-you/first-applicant-other-names', function(req, res) {
+    var errors = []
+    if (req.body['previous-full-name'] === '') {
+      errors.push({
+      text: 'Select an answer',
+      href: '#first-applicant-other-names'
+      })
+    }
+  
+    if (errors.length === 0) {
+      if (req.body['submit-button'] === 'save-and-continue') {
+        res.redirect('/alpha-tidy-up/two-applicants/about-you/first-applicant-date-birth')
+      } 
+      else {
+        res.redirect('/alpha-tidy-up/two-applicants/task-list-2-multiple')
+      }
+    }
+    else {
+        res.render('.//alpha-tidy-up/two-applicants/about-you/first-applicant-other-names', { errors: errors })  
     }
   })
 
