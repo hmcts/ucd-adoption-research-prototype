@@ -19,7 +19,6 @@ module.exports = (router) => {
   })
   
   router.post('/screening-questions/under-18', function(req, res) {
-    console.log("Test: ", req.body['child-under-18'])
     var errors = []
     if (req.body['child-under-18'] === undefined) {
       errors.push({
@@ -56,7 +55,7 @@ module.exports = (router) => {
         res.redirect('/alpha-tidy-up/screening-questions/cannot-apply')
       }
       else {
-        res.redirect('/alpha-tidy-up/screening-questions/can-apply')
+        res.redirect('/alpha-tidy-up/screening-questions/child-can-be-adopted')
       }
     }
     else {
@@ -82,8 +81,68 @@ module.exports = (router) => {
     }
   })
   
+  router.post('/two-applicants/about-you/step-2', function(req, res) {
+    var errors = []
+    if (req.body['first-applicant-name'] === undefined) {
+      errors.push({
+      text: 'Select an answer',
+      href: '#step-2'
+      })
+    }
+  
+    if (errors.length === 0) {
+      if (req.body['submit-button'] === 'save-and-continue') {
+        res.redirect('/alpha-tidy-up/two-applicants/about-you/step-2-1')
+      } 
+      else {
+        res.redirect('/alpha-tidy-up/two-applicants/task-list-2-multiple')
+      }
+    }
+    else {
+        res.render('.//alpha-tidy-up/two-applicants/about-you/step-2', { errors: errors })  
+    }
+  })
 
 
+
+
+
+
+
+
+  // Examples
+  router.post('/damages/default-judgments/5-hearing-details', function(req, res) {
+    req.session.data.unavailable = req.body['exclusion-dates']
+    if (req.body['submit-button'] === 'add') {
+      count = req.session.data.dateCount
+      console.log("count start", count)
+      req.session.data.dayFrom = req.body['date-from-day']
+      req.session.data.monthFrom = req.body['date-from-month']
+      req.session.data.yearFrom = req.body['date-from-year']
+      req.session.data.dayTo = req.body['date-to-day']
+      req.session.data.monthTo = req.body['date-to-month']
+      req.session.data.yearTo = req.body['date-to-year']
+    
+      req.session.data.id[count] = count
+      req.session.data.startDate[count] = req.body['date-from-day'] + " " + req.session.data.shortMonthName[req.body['date-from-month']] + " " + req.body['date-from-year']
+      req.session.data.endDate[count] = req.body['date-to-day'] + " " + req.session.data.shortMonthName[req.body['date-to-month']] + " " + req.body['date-to-year']
+    
+      console.log("From", req.session.data.startDate[count]);
+      console.log("unavailable", req.session.data.unavailable)
+    
+      req.session.data.dateCount = count + 1
+      console.log("dateCount", req.session.data.dateCount)
+    
+      res.redirect('/damages/default-judgments/5-hearing-details#unavailable-dates')
+      }
+    else if (req.body['submit-button'] === 'continue') {
+      res.redirect('/damages/default-judgments/6-check-your-answers')
+    }
+    else {
+        res.redirect('/damages/default-judgments/4-make-request-judgment')
+    }    
+  })
+  
 
 
 
