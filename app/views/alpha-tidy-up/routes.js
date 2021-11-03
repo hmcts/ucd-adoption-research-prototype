@@ -126,6 +126,14 @@ module.exports = (router) => {
     }
   })
 
+  router.post('/two-applicants/about-you/add-other-names', function(req, res) {
+    var count = 0
+    if (req.body['previous-full-name'] !== '') {
+      req.session.data.id[count] = count
+      req.session.data.previousNames[count] = req.body['previous-full-name']
+      res.redirect('/alpha-tidy-up/two-applicants/about-you/first-applicant-other-names')
+    }
+  })
 
 
 
@@ -133,7 +141,8 @@ module.exports = (router) => {
 
 
 
-  // Examples
+// ************************************* Examples ************************************* //
+  
   router.post('/damages/default-judgments/5-hearing-details', function(req, res) {
     req.session.data.unavailable = req.body['exclusion-dates']
     if (req.body['submit-button'] === 'add') {
