@@ -126,6 +126,63 @@ module.exports = (router) => {
     }
   })
 
+  router.post('/two-applicants/about-you/first-applicant-date-birth', function(req, res) {
+    console.log("Day: ", req.body['day'])
+    var errors = []
+    if (req.body['day'] === '' || req.body['month'] === '' || req.body['year'] === '') {
+      errors.push({
+      text: 'Select an answer',
+      href: '#first-applicant-date-birth'
+      })
+    }
+  
+    if (errors.length === 0) {
+      if (req.body['submit-button'] === 'save-and-continue') {
+        res.redirect('/alpha-tidy-up/two-applicants/about-you/first-applicant-gender')
+      } 
+      else {
+        res.redirect('/alpha-tidy-up/two-applicants/task-list-2-multiple')
+      }
+    }
+    else {
+        res.render('.//alpha-tidy-up/two-applicants/about-you/first-applicant-date-birth', { errors: errors })  
+    }
+  })
+
+  router.post('/two-applicants/about-you/first-applicant-naitonality', function(req, res) {
+    var errors = []
+    if (req.body['first-applicant-nationality'] === '') {
+      errors.push({
+      text: 'Select an answer',
+      href: '#first-applicant-nationality'
+      })
+    }
+  
+    if (errors.length === 0) {
+      if (req.body['submit-button'] === 'save-and-continue') {
+        res.redirect('/alpha-tidy-up/two-applicants/about-you/first-applicant-occupation')
+      } 
+      else {
+        res.redirect('/alpha-tidy-up/two-applicants/task-list-2-multiple')
+      }
+    }
+    else {
+        res.render('.//alpha-tidy-up/two-applicants/about-you/first-applicant-nationality', { errors: errors })  
+    }
+  })
+
+
+
+
+
+
+
+
+
+
+
+
+  // Work in progress to add several previous names - to review Monday 8 November
   router.post('/two-applicants/about-you/add-other-names', function(req, res) {
     var count = 0
     if (req.body['previous-full-name'] !== '') {
