@@ -75,6 +75,7 @@ module.exports = (router) => {
     }
 
     if (errors.length === 0) {
+      if (req.body['under-21'] === "Yes") {
         res.redirect('/alpha-tidy-up/screening-questions/lived-uk')
     }
     else {
