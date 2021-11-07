@@ -81,6 +81,26 @@ module.exports = (router) => {
         res.render('.//alpha-tidy-up/screening-questions/under-21', { errors: errors })
     }
   })
+  router.post('/screening-questions/lived-uk', function(req, res) {
+   var errors = []
+   if (req.body['lived-uk'] === undefined) {
+     errors.push({
+     text: 'Select an answer',
+     href: '#lived-uk'
+     })
+   }
+   if (errors.length === 0) {
+     if (req.body['lived-uk'] === "Yes") {
+       res.redirect('/alpha-tidy-up/screening-questions/can-apply')
+     }
+     else {
+       res.redirect('/alpha-tidy-up/screening-questions/cannot-apply-applicant')
+     }
+   }
+   else {
+       res.render('.//alpha-tidy-up/screening-questions/lived-uk', { errors: errors })
+   }
+ })
 
 
 
