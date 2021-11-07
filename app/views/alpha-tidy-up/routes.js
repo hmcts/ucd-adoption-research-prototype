@@ -90,15 +90,20 @@ module.exports = (router) => {
       href: '#lived-uk'
       })
     }
-
     if (errors.length === 0) {
+      if (req.body['lived-uk'] === "Yes") {
         res.redirect('/alpha-tidy-up/screening-questions/can-apply')
+      }
+      else {
+        res.redirect('/alpha-tidy-up/screening-questions/cannot-apply')
+      }
     }
     else {
         res.render('.//alpha-tidy-up/screening-questions/lived-uk', { errors: errors })
-      }
-    })
-    
+    }
+
+  })
+
 
 
 
