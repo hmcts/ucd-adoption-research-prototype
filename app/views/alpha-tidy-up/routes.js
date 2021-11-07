@@ -101,8 +101,8 @@ module.exports = (router) => {
     }
     else {
         res.render('.//alpha-tidy-up/screening-questions/lived-uk', { errors: errors })
-    }
 
+    }
   })
 
 
