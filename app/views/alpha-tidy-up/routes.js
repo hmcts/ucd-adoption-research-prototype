@@ -82,7 +82,20 @@ module.exports = (router) => {
     }
   })
 
+  router.post('/screening-questions/lived-uk', function(req, res) {
+    var errors = []
+    if (req.body['lived-uk'] === undefined) {
+      errors.push({
+      text: 'Select an answer',
+      href: '#lived-uk'
+      })
+    }
 
+    if (errors.length === 0) {
+        res.redirect('/alpha-tidy-up/screening-questions/can-apply')
+    }
+    else {
+        res.render('.//alpha-tidy-up/screening-questions/lived-uk', { errors: errors })
 
 
 
