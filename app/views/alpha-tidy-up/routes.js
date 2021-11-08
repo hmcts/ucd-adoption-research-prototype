@@ -149,7 +149,7 @@ module.exports = (router) => {
     }
   })
 
-  router.post('/two-applicants/about-you/first-applicant-naitonality', function(req, res) {
+  router.post('/two-applicants/about-you/first-applicant-nationality', function(req, res) {
     var errors = []
     if (req.body['first-applicant-nationality'] === '') {
       errors.push({
