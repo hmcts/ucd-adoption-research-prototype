@@ -1,6 +1,6 @@
 module.exports = (router) => {
 
-
+  
   router.post('/screening-questions/10-weeks', function(req, res) {
     var errors = []
     if (req.body['10-weeks'] === undefined) {
@@ -9,15 +9,15 @@ module.exports = (router) => {
       href: '#10-weeks'
       })
     }
-
+  
     if (errors.length === 0) {
         res.redirect('/alpha-tidy-up/screening-questions/under-18')
     }
     else {
-        res.render('.//alpha-tidy-up/screening-questions/10-weeks', { errors: errors })
+        res.render('.//alpha-tidy-up/screening-questions/10-weeks', { errors: errors })  
     }
   })
-
+  
   router.post('/screening-questions/under-18', function(req, res) {
     var errors = []
     if (req.body['child-under-18'] === undefined) {
@@ -26,7 +26,7 @@ module.exports = (router) => {
       href: '#under-18'
       })
     }
-
+  
     if (errors.length === 0) {
       if (req.body['child-under-18'] === "Yes") {
         res.redirect('/alpha-tidy-up/screening-questions/married')
@@ -36,9 +36,9 @@ module.exports = (router) => {
       }
     }
     else {
-        res.render('.//alpha-tidy-up/screening-questions/under-18', { errors: errors })
+        res.render('.//alpha-tidy-up/screening-questions/under-18', { errors: errors })  
     }
-
+    
   })
 
   router.post('/screening-questions/married', function(req, res) {
@@ -49,7 +49,7 @@ module.exports = (router) => {
       href: '#married'
       })
     }
-
+  
     if (errors.length === 0) {
       if (req.body['child-married'] === 'Yes') {
         res.redirect('/alpha-tidy-up/screening-questions/cannot-apply')
@@ -59,9 +59,9 @@ module.exports = (router) => {
       }
     }
     else {
-        res.render('.//alpha-tidy-up/screening-questions/married', { errors: errors })
+        res.render('.//alpha-tidy-up/screening-questions/married', { errors: errors })  
     }
-
+    
   })
 
   router.post('/screening-questions/under-21', function(req, res) {
@@ -72,15 +72,15 @@ module.exports = (router) => {
       href: '#under-21'
       })
     }
-
+  
     if (errors.length === 0) {
         res.redirect('/alpha-tidy-up/screening-questions/lived-uk')
     }
     else {
-        res.render('.//alpha-tidy-up/screening-questions/under-21', { errors: errors })
+        res.render('.//alpha-tidy-up/screening-questions/under-21', { errors: errors })  
     }
   })
-
+  
   router.post('/two-applicants/about-you/first-applicant-name', function(req, res) {
     var errors = []
     if (req.body['first-applicant-name'] === '') {
@@ -89,74 +89,43 @@ module.exports = (router) => {
       href: '#first-applicant-name'
       })
     }
-
+  
     if (errors.length === 0) {
       if (req.body['submit-button'] === 'save-and-continue') {
         res.redirect('/alpha-tidy-up/two-applicants/about-you/first-applicant-other-names')
-      }
+      } 
       else {
         res.redirect('/alpha-tidy-up/two-applicants/task-list-2-multiple')
       }
     }
     else {
-        res.render('.//alpha-tidy-up/two-applicants/about-you/first-applicant-name', { errors: errors })
+        res.render('.//alpha-tidy-up/two-applicants/about-you/first-applicant-name', { errors: errors })  
     }
   })
-  router.post('/screening-questions/lived-uk', function(req, res) {
-   var errors = []
-   if (req.body['lived-uk'] === undefined) {
-     errors.push({
-     text: 'Select an answer',
-     href: '#lived-uk'
-     })
-   }
-   if (errors.length === 0) {
-     if (req.body['lived-uk'] === "Yes") {
-       res.redirect('/alpha-tidy-up/screening-questions/can-apply')
-     }
-     else {
-       res.redirect('/alpha-tidy-up/screening-questions/cannot-apply-applicant')
-     }
-   }
-   else {
-       res.render('.//alpha-tidy-up/screening-questions/lived-uk', { errors: errors })
-   }
- })
 
 
   router.post('/two-applicants/about-you/first-applicant-other-names', function(req, res) {
     var errors = []
-    if (req.body['previous-full-name'] === '' && req.session.previousNames === '') {
+    if (req.body['previous-full-name'] === '') {
       errors.push({
       text: 'Select an answer',
       href: '#first-applicant-other-names'
       })
     }
-
+  
     if (errors.length === 0) {
-      count = req.session.data.nameCount
-      if (req.body['submit-button'] === 'add') {
-        req.session.data.previousNames[count] = req.body['previous-full-name']
-        req.session.data.idNames[count] = count
-        req.session.data.nameCount = count + 1
-        res.redirect('/alpha-tidy-up/two-applicants/about-you/first-applicant-other-names')
-      }
-      else if (req.body['submit-button'] === 'save-and-continue') {
-        req.session.data.previousNames[count] = req.body['previous-full-name']
-        console.log("Previous names: ", req.session.data.previousNames[count])
+      if (req.body['submit-button'] === 'save-and-continue') {
         res.redirect('/alpha-tidy-up/two-applicants/about-you/first-applicant-date-birth')
-      }
+      } 
       else {
         res.redirect('/alpha-tidy-up/two-applicants/task-list-2-multiple')
-      }   
-    } 
-    else {
-        res.render('.//alpha-tidy-up/two-applicants/about-you/first-applicant-other-names', { errors: errors })
+      }
     }
-
+    else {
+        res.render('.//alpha-tidy-up/two-applicants/about-you/first-applicant-other-names', { errors: errors })  
+    }
   })
 
-  
   router.post('/two-applicants/about-you/first-applicant-date-birth', function(req, res) {
     console.log("Day: ", req.body['day'])
     var errors = []
@@ -166,39 +135,17 @@ module.exports = (router) => {
       href: '#first-applicant-date-birth'
       })
     }
-
+  
     if (errors.length === 0) {
       if (req.body['submit-button'] === 'save-and-continue') {
         res.redirect('/alpha-tidy-up/two-applicants/about-you/first-applicant-gender')
-      }
+      } 
       else {
         res.redirect('/alpha-tidy-up/two-applicants/task-list-2-multiple')
       }
     }
     else {
-        res.render('.//alpha-tidy-up/two-applicants/about-you/first-applicant-date-birth', { errors: errors })
-    }
-  })
-
-  router.post('/two-applicants/about-you/first-applicant-gender', function(req, res) {
-    var errors = []
-    if (req.body['first-applicant-gender'] === '') {
-      errors.push({
-      text: 'Select an answer',
-      href: '#first-applicant-gender'
-      })
-    }
-
-    if (errors.length === 0) {
-      if (req.body['submit-button'] === 'save-and-continue') {
-        res.redirect('/alpha-tidy-up/two-applicants/about-you/first-applicant-nationality')
-      }
-      else {
-        res.redirect('/alpha-tidy-up/two-applicants/task-list-2-multiple')
-      }
-    }
-    else {
-        res.render('.//alpha-tidy-up/two-applicants/about-you/first-applicant-gender', { errors: errors })
+        res.render('.//alpha-tidy-up/two-applicants/about-you/first-applicant-date-birth', { errors: errors })  
     }
   })
 
@@ -210,17 +157,17 @@ module.exports = (router) => {
       href: '#first-applicant-nationality'
       })
     }
-
+  
     if (errors.length === 0) {
       if (req.body['submit-button'] === 'save-and-continue') {
         res.redirect('/alpha-tidy-up/two-applicants/about-you/first-applicant-occupation')
-      }
+      } 
       else {
         res.redirect('/alpha-tidy-up/two-applicants/task-list-2-multiple')
       }
     }
     else {
-        res.render('.//alpha-tidy-up/two-applicants/about-you/first-applicant-nationality', { errors: errors })
+        res.render('.//alpha-tidy-up/two-applicants/about-you/first-applicant-nationality', { errors: errors })  
     }
   })
 
@@ -232,8 +179,13 @@ module.exports = (router) => {
 
 
 
-// ************************************* Examples ************************************* //
 
+
+
+
+
+// ************************************* Examples ************************************* //
+  
   router.post('/damages/default-judgments/5-hearing-details', function(req, res) {
     req.session.data.unavailable = req.body['exclusion-dates']
     if (req.body['submit-button'] === 'add') {
@@ -245,17 +197,17 @@ module.exports = (router) => {
       req.session.data.dayTo = req.body['date-to-day']
       req.session.data.monthTo = req.body['date-to-month']
       req.session.data.yearTo = req.body['date-to-year']
-
+    
       req.session.data.id[count] = count
       req.session.data.startDate[count] = req.body['date-from-day'] + " " + req.session.data.shortMonthName[req.body['date-from-month']] + " " + req.body['date-from-year']
       req.session.data.endDate[count] = req.body['date-to-day'] + " " + req.session.data.shortMonthName[req.body['date-to-month']] + " " + req.body['date-to-year']
-
+    
       console.log("From", req.session.data.startDate[count]);
       console.log("unavailable", req.session.data.unavailable)
-
+    
       req.session.data.dateCount = count + 1
       console.log("dateCount", req.session.data.dateCount)
-
+    
       res.redirect('/damages/default-judgments/5-hearing-details#unavailable-dates')
       }
     else if (req.body['submit-button'] === 'continue') {
@@ -263,9 +215,9 @@ module.exports = (router) => {
     }
     else {
         res.redirect('/damages/default-judgments/4-make-request-judgment')
-    }
+    }    
   })
-
+  
 
 
 
@@ -277,7 +229,7 @@ module.exports = (router) => {
   // router.post('/screening-questions/10-weeks', function(req, res) {
   //   res.redirect('/alpha-tidy-up/screening-questions/under-18')
   // })
-
+  
 
 
 
@@ -293,7 +245,7 @@ router.post('/sps/work-in-progress/how-to-verify', function(req, res) {
       if (req.body['verifyOrChange'] === 'verify') {
           res.redirect('/sps/work-in-progress/confirmation-email-sent')
       } else {
-        if (req.session.data.route === 'external' || req.session.data.route === 'current-bouncing' || req.session.data.route === 'current-unverified') {
+        if (req.session.data.route === 'external' || req.session.data.route === 'current-bouncing' || req.session.data.route === 'current-unverified') { 
           res.redirect('/sps/work-in-progress/how-to-verify')
         }
         else {
@@ -302,7 +254,7 @@ router.post('/sps/work-in-progress/how-to-verify', function(req, res) {
       }
       }
   })
-
+  
   // Error messages on how-to-get-tax-letters
   router.post('/sps/work-in-progress/how-to-get-tax-letters', (req, res) => {
       var errors = []
@@ -315,7 +267,7 @@ router.post('/sps/work-in-progress/how-to-verify', function(req, res) {
       if (errors.length === 0) {
         if (req.body['howContacted'] === 'Online') {
           res.redirect('/sps/work-in-progress/add-email')
-        }
+        } 
       else {
           if (req.session.data.route === 'external') {
             res.redirect('/sps/work-in-progress/confirmation-post-alternative')
