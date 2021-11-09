@@ -124,10 +124,9 @@ module.exports = (router) => {
  })
 
 
-
   router.post('/two-applicants/about-you/first-applicant-other-names', function(req, res) {
     var errors = []
-    if (req.body['previous-full-name'] === '') {
+    if (req.body['previous-full-name'] === '' && req.session.previousNames === '') {
       errors.push({
       text: 'Select an answer',
       href: '#first-applicant-other-names'
@@ -135,18 +134,29 @@ module.exports = (router) => {
     }
 
     if (errors.length === 0) {
-      if (req.body['submit-button'] === 'save-and-continue') {
+      count = req.session.data.nameCount
+      if (req.body['submit-button'] === 'add') {
+        req.session.data.previousNames[count] = req.body['previous-full-name']
+        req.session.data.idNames[count] = count
+        req.session.data.nameCount = count + 1
+        res.redirect('/alpha-tidy-up/two-applicants/about-you/first-applicant-other-names')
+      }
+      else if (req.body['submit-button'] === 'save-and-continue') {
+        req.session.data.previousNames[count] = req.body['previous-full-name']
+        console.log("Previous names: ", req.session.data.previousNames[count])
         res.redirect('/alpha-tidy-up/two-applicants/about-you/first-applicant-date-birth')
       }
       else {
         res.redirect('/alpha-tidy-up/two-applicants/task-list-2-multiple')
-      }
-    }
+      }   
+    } 
     else {
         res.render('.//alpha-tidy-up/two-applicants/about-you/first-applicant-other-names', { errors: errors })
     }
+
   })
 
+  
   router.post('/two-applicants/about-you/first-applicant-date-birth', function(req, res) {
     console.log("Day: ", req.body['day'])
     var errors = []
@@ -167,6 +177,28 @@ module.exports = (router) => {
     }
     else {
         res.render('.//alpha-tidy-up/two-applicants/about-you/first-applicant-date-birth', { errors: errors })
+    }
+  })
+
+  router.post('/two-applicants/about-you/first-applicant-gender', function(req, res) {
+    var errors = []
+    if (req.body['first-applicant-gender'] === '') {
+      errors.push({
+      text: 'Select an answer',
+      href: '#first-applicant-gender'
+      })
+    }
+
+    if (errors.length === 0) {
+      if (req.body['submit-button'] === 'save-and-continue') {
+        res.redirect('/alpha-tidy-up/two-applicants/about-you/first-applicant-nationality')
+      }
+      else {
+        res.redirect('/alpha-tidy-up/two-applicants/task-list-2-multiple')
+      }
+    }
+    else {
+        res.render('.//alpha-tidy-up/two-applicants/about-you/first-applicant-gender', { errors: errors })
     }
   })
 
@@ -200,26 +232,29 @@ module.exports = (router) => {
 
 
 
-
-
-
-  // Work in progress to add several previous names - to review Monday 8 November
-  router.post('/two-applicants/about-you/add-other-names', function(req, res) {
-    var count = 0
-    if (req.body['previous-full-name'] !== '') {
-      req.session.data.id[count] = count
-      req.session.data.previousNames[count] = req.body['previous-full-name']
-      res.redirect('/alpha-tidy-up/two-applicants/about-you/first-applicant-other-names')
-    }
-  })
-
-
-
-
-
-
-
 // ************************************* Examples ************************************* //
+
+router.post('/ocmc/general-applications/application-submission/1-application', function(req, res) {
+  if (req.body['submit-button'] === 'add') {
+    
+    count = req.session.data.applicationCount
+    console.log("count start", count)
+
+    req.session.data.application[count] = req.body['order']
+    req.session.data.idApplication[count] = count
+  
+    req.session.data.applicationCount = count + 1
+    console.log("applicationCount", req.session.data.applicationCount)
+  
+    res.redirect('/ocmc/general-applications/application-submission/1-application')
+    }
+  else if (req.body['submit-button'] === 'continue') {
+    res.redirect('/ocmc/general-applications/application-submission/2-respondent-agreement')
+  }
+  else {
+      res.redirect('/index')
+  }    
+})
 
   router.post('/damages/default-judgments/5-hearing-details', function(req, res) {
     req.session.data.unavailable = req.body['exclusion-dates']

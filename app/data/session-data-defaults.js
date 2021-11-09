@@ -20,6 +20,14 @@ Example usage:
 module.exports = {
 
   // Insert values here
+  "idNames": [],
+  "previousNames": [],
+  "nameCount": 0,
+
+
+
+
+//old ones
   "vehicle-registration": "Eilis",
   "occupation": ""
 }
