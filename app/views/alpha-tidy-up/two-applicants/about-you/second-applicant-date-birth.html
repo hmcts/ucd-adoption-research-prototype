@@ -1,0 +1,87 @@
+{% extends "layout-signed-in.html" %}
+
+{% block pageTitle %}
+Apply to adopt a child
+{% endblock %}
+
+{% block beforeContent %}
+<a class="govuk-back-link" href="javascript:history.back()">Back</a>
+{% endblock %}
+
+{% block content %}
+
+<div class="govuk-width-container">
+  <div class="govuk-grid-row">
+    <div class="govuk-grid-column-two-thirds">
+
+      {% set dobError = '' %}
+  
+      {% if errors | length > 0 %}
+      {{ govukErrorSummary({
+        titleText: "There is a problem",
+        errorList: errors
+      }) }}
+      {% for error in errors %}
+        {% if error.href == '#first-applicant-date-birth' %}
+          {% set dobError = error.text %}
+        {% endif %}
+      {% endfor %}
+      {% endif %}
+
+
+      <form action="/two-applicants/about-you/first-applicant-date-birth" method="post" class="form">
+
+        <legend class="govuk-fieldset__legend govuk-fieldset__legend--l">
+          <span class="govuk-caption-l">First applicant</span>
+          <h1 class="govuk-fieldset__heading">
+            What's your date of birth?
+          </h1>
+        </legend>
+        <div id="date-of-birth-hint" class="govuk-hint">
+          For example, 27 3 2007
+        </div>
+
+
+        <div class="govuk-form-group {% if (dobError != '')%} govuk-form-group--error {% endif%}">
+          {% if (dobError != '')%}
+          <span id="national-insurance-number-error" class="govuk-error-message">
+            <span class="govuk-visually-hidden">Error:</span> Enter your date of birth [NEEDS CONTENT]
+          </span>
+          {% endif%}
+
+          <div class="govuk-date-input" id="dob">
+            <div class="govuk-date-input__item">
+              <div class="govuk-form-group">
+                <label class="govuk-label govuk-date-input__label" for="day">
+                  Day
+                </label>
+                <input class="govuk-input govuk-date-input__input govuk-input--width-2" id="day" name="day" type="text" pattern="[0-9]*" inputmode="numeric" value="{{ data['day'] }}"></div>
+            </div>
+            <div class="govuk-date-input__item">
+              <div class="govuk-form-group">
+                <label class="govuk-label govuk-date-input__label" for="month">
+                  Month
+                </label>
+                <input class="govuk-input govuk-date-input__input govuk-input--width-2" id="month" name="month" type="text" pattern="[0-9]*" inputmode="numeric" value="{{ data['month'] }}"></div>
+            </div>
+            <div class="govuk-date-input__item">
+              <div class="govuk-form-group">
+                <label class="govuk-label govuk-date-input__label" for="year">
+                  Year
+                </label>
+                <input class="govuk-input govuk-date-input__input govuk-input--width-4" id="year" name="year" type="text" pattern="[0-9]*" inputmode="numeric" value="{{ data['year'] }}"></div>
+            </div>
+
+        </div>
+
+          <!-- Buttons -->
+          {% include "../../../includes/buttons.html" %}
+
+        </form>
+
+      </div>
+    </div>
+  </main>
+</div>
+
+{% endblock %}
