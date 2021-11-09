@@ -109,19 +109,7 @@ module.exports = (router) => {
        text: ‘Enter a valid postcode’,
        href: ‘#step-2-2’
        })
-     }
-     if (errors.length === 0) {
-       if (req.body[‘submit-button’] === ‘find-address’) {
-         res.redirect(‘/alpha-tidy-up/two-applicants/about-you/step-2-3’)
-       }
-       else {
-         res.redirect(‘/alpha-tidy-up/two-applicants/step-2-2’)
-       }
-     }
-     else {
-         res.render(‘.//alpha-tidy-up/two-applicants/about-you/first-applicant-name’, { errors: errors })
-     }
-   })
+    
 
 
 
