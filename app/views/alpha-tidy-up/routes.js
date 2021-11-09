@@ -203,20 +203,6 @@ module.exports = (router) => {
 
 
 
-  // Work in progress to add several previous names - to review Monday 8 November
-  router.post('/two-applicants/about-you/add-other-names', function(req, res) {
-    var count = 0
-    if (req.body['previous-full-name'] !== '') {
-      req.session.data.id[count] = count
-      req.session.data.previousNames[count] = req.body['previous-full-name']
-      res.redirect('/alpha-tidy-up/two-applicants/about-you/first-applicant-other-names')
-    }
-  })
-
-
-
-
-
 
 
 // ************************************* Examples ************************************* //
