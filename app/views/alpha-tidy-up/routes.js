@@ -102,7 +102,26 @@ module.exports = (router) => {
    }
  })
 
-
+ router.post(‘/screening-questions/lived-uk’, function(req, res) {
+     var errors = []
+     if (req.body[‘lived-uk’] === undefined) {
+       errors.push({
+       text: ‘Select an answer’,
+       href: ‘#lived-uk’
+       })
+     }
+     if (errors.length === 0) {
+       if (req.body[‘submit-button’] === ‘save-and-continue’) {
+         res.redirect(‘/alpha-tidy-up/two-applicants/about-you/first-applicant-other-names’)
+       }
+       else {
+         res.redirect(‘/alpha-tidy-up/two-applicants/task-list-2-multiple’)
+       }
+     }
+     else {
+         res.render(‘.//alpha-tidy-up/two-applicants/about-you/first-applicant-name’, { errors: errors })
+     }
+   })
 
 
 
