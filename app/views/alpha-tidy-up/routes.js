@@ -111,7 +111,7 @@ module.exports = (router) => {
        })
      }
      if (errors.length === 0) {
-       if (req.body[‘submit-button’] === ‘save-and-continue’) {
+       if (req.body[‘submit-button’] === ‘find-address’) {
          res.redirect(‘/alpha-tidy-up/two-applicants/about-you/step-2-3’)
        }
        else {
