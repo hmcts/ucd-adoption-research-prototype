@@ -102,7 +102,26 @@ module.exports = (router) => {
    }
  })
 
-
+ router.post(‘/two-applicants/about-you/step-2-2’, function(req, res) {
+     var errors = []
+     if (req.body[‘step-2-2’] === undefined) {
+       errors.push({
+       text: ‘Enter a valid postcode’,
+       href: ‘#step-2-2’
+       })
+     }
+     if (errors.length === 0) {
+       if (req.body[‘submit-button’] === ‘save-and-continue’) {
+         res.redirect(‘/alpha-tidy-up/two-applicants/about-you/step-2-3’)
+       }
+       else {
+         res.redirect(‘/alpha-tidy-up/two-applicants/task-list-2-multiple’)
+       }
+     }
+     else {
+         res.render(‘.//alpha-tidy-up/two-applicants/about-you/first-applicant-name’, { errors: errors })
+     }
+   })
 
 
 
