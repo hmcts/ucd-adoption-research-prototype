@@ -102,14 +102,8 @@ module.exports = (router) => {
    }
  })
 
- router.post(‘/two-applicants/about-you/step-2-2’, function(req, res) {
-     var errors = []
-     if (req.body[‘step-2-2’] === undefined) {
-       errors.push({
-       text: ‘Enter a valid postcode’,
-       href: ‘#step-2-2’
-       })
-    
+
+
 
 
 
