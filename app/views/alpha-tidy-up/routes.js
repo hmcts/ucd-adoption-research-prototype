@@ -115,7 +115,7 @@ module.exports = (router) => {
          res.redirect(‘/alpha-tidy-up/two-applicants/about-you/step-2-3’)
        }
        else {
-         res.redirect(‘/alpha-tidy-up/two-applicants/task-list-2-multiple’)
+         res.redirect(‘/alpha-tidy-up/two-applicants/step-2-2’)
        }
      }
      else {
