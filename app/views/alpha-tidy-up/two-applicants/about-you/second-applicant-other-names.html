@@ -31,10 +31,10 @@ Apply to adopt a child
       {% endif %}
 
 
-        <form action="/two-applicants/about-you/first-applicant-other-names" method="post" class="form">
+        <form action="/two-applicants/about-you/second-applicant-other-names" method="post" class="form">
 
           <legend class="govuk-fieldset__legend govuk-fieldset__legend--l">
-            <span class="govuk-caption-l">First applicant</span>
+            <span class="govuk-caption-l">Second applicant</span>
             <h1 class="govuk-fieldset__heading">
               Have you ever legally been known by any other names?
             </h1>
@@ -59,22 +59,22 @@ Apply to adopt a child
               <div class="govuk-radios govuk-radios--conditional" data-module="govuk-radios">
                 <div class="govuk-radios govuk-radios--conditional" data-module="govuk-radios">
                   <div class="govuk-radios__item">
-                    <input class="govuk-radios__input" id="yes" name="other-names" type="radio" value="Yes" data-aria-controls="conditional-contact"  {% if (data['other-names'] === "Yes") %} checked {% endif %}}>
-                    <label class="govuk-label govuk-radios__label" for="other-names">
+                    <input class="govuk-radios__input" id="yes" name="second-applicant-other-names" type="radio" value="Yes" data-aria-controls="conditional-contact"  {% if (data['other-names'] === "Yes") %} checked {% endif %}}>
+                    <label class="govuk-label govuk-radios__label" for="second-applicant-other-names">
                       Yes
                     </label>
                   </div>
                   
                   <div class="govuk-radios__conditional govuk-radios__conditional--hidden" id="conditional-contact">
                     
-                    {% if (data['nameCount'] > 0) %}
+                    {% if (data['secondNameCount'] > 0) %}
 
-                    {% for id in data['idNames']|reverse %}
+                    {% for id in data['idNamesSecond']|reverse %}
                     
                       <dl class="govuk-summary-list govuk-!-margin-bottom-4 ">                    
                         <div class="govuk-summary-list__row">
                           <dt class="govuk-summary-list__key">
-                            {{data['previousNames'][id]}}
+                            {{data['secondPreviousNames'][id]}}
                           </dt>
                           <dd class="govuk-summary-list__actions">
                             <a class="govuk-link" href="#">
@@ -99,39 +99,11 @@ Apply to adopt a child
                           <label class="govuk-label" for="other">
                             Add your previous full name
                           </label>
-                          <input class="govuk-input govuk-!-width-two-thirds" id="previous-full-name" name="previous-full-name" type="text">
+                          <input class="govuk-input govuk-!-width-two-thirds" id="previous-full-name-second" name="previous-full-name-second" type="text">
                         </div>
                           <button class="govuk-button govuk-button--secondary govuk-!-margin-top-5" data-module="govuk-button" name="submit-button" value="add">Add</button>
                       </details>
   
-                    <!-- {% if (data['nameCount'] > 0) %}
-
-                    {% for id in data['idNames']|reverse %}
-                    
-                      <dl class="govuk-summary-list govuk-!-margin-bottom-4 ">                    
-                        <div class="govuk-summary-list__row">
-                          <dt class="govuk-summary-list__key">
-                            {{data['previousNames'][id]}}
-                          </dt>
-                          <dd class="govuk-summary-list__actions">
-                            <a class="govuk-link" href="#">
-                              Remove<span class="govuk-visually-hidden"> name</span>
-                            </a>
-                          </dd>
-                        </div>
-                      </dl>
-                    {% endfor %}
-                                            
-                    {% endif %}
-  
-                      <div class="govuk-form-group">
-                        <label class="govuk-label" for="other">
-                          Add your previous full name
-                        </label>
-                        <input class="govuk-input govuk-!-width-two-thirds" id="previous-full-name" name="previous-full-name" type="text" value="{{data['previousNames'][0]}}">
-                      </div>
-                        <button class="link-button gov-uk-!-margin-top-3" data-module="govuk-button" name="submit-button" value="add">Add another name</button>
-                         -->
                   </div>                               
                 </div>
 

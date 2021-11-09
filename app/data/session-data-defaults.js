@@ -23,6 +23,9 @@ module.exports = {
   "idNames": [],
   "previousNames": [],
   "nameCount": 0,
+  "idNamesSecond": [],
+  "secondPreviousNames": [],
+  "secondNameCount": 0,
 
 
 
