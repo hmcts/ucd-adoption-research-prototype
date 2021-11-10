@@ -20,12 +20,12 @@ Example usage:
 module.exports = {
 
   // Insert values here
-  "idNames": [],
-  "previousNames": [],
-  "nameCount": 0,
-  "idNamesSecond": [],
-  "secondPreviousNames": [],
-  "secondNameCount": 0,
+  "idFirstApplicant": [],
+  "firstApplicantPreviousNames": [],
+  "firstApplicantNameCount": 0,
+  "idSecondApplicant": [],
+  "secondApplicantPreviousNames": [],
+  "secondApplicantNameCount": 0,
 
 
 

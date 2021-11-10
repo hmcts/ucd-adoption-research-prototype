@@ -1,6 +1,6 @@
 module.exports = (router) => {
 
-  // Eligibility
+  // ********************** Eligibility **********************
   router.post('/screening-questions/10-weeks', function(req, res) {
     var errors = []
     if (req.body['10-weeks'] === undefined) {
@@ -89,22 +89,60 @@ module.exports = (router) => {
       href: '#lived-uk'
       })
     }
+
     if (errors.length === 0) {
-      if (req.body['submit-button'] === 'save-and-continue') {
-        res.redirect('/alpha-tidy-up/two-applicants/about-you/first-applicant-other-names')
+      if (req.body['lived-uk'] === "Yes") {
+        res.redirect('/alpha-tidy-up/screening-questions/can-apply')
       }
       else {
-        res.redirect('/alpha-tidy-up/two-applicants/task-list-2-multiple')
+        res.redirect('/alpha-tidy-up/screening-questions/cannot-apply')
       }
     }
     else {
-        res.render('.//alpha-tidy-up/two-applicants/about-you/first-applicant-name', { errors: errors })
+        res.render('.//alpha-tidy-up/screening-questions/lived-uk', { errors: errors })
+    }
+
+  })
+
+
+  // ********************** Application details  **********************
+  router.post('/about-application/number-of-children', function(req, res) {
+    var errors = []
+    if (req.body['number-children'] === undefined) {
+      errors.push({
+      text: 'Select an answer',
+      href: '#number-of-children'
+      })
+    }
+    if (errors.length === 0) {
+        res.redirect('/alpha-tidy-up/about-application/number-of-applicants')
+    }
+    else {
+        res.render('.//alpha-tidy-up/about-application/number-of-children', { errors: errors })
     }
   })
- 
+
+  router.post('/about-application/number-of-applicants', function(req, res) {
+    var errors = []
+    if (req.body['number-of-applicants'] === undefined) {
+      errors.push({
+      text: 'Select an answer',
+      href: '#number-of-applicants'
+      })
+    }
+    if (errors.length === 0) {
+        res.redirect('/alpha-tidy-up/two-applicants/task-list-2-multiple')
+    }
+    else {
+        res.render('.//alpha-tidy-up/about-application/number-of-applicants', { errors: errors })
+    }
+  })
+
+
+
  
 
-  // First applicant personal details
+  // ********************** First applicant personal details **********************
   router.post('/two-applicants/about-you/first-applicant-name', function(req, res) {
     var errors = []
     if (req.body['first-applicant-name'] === '') {
@@ -128,23 +166,23 @@ module.exports = (router) => {
 
   router.post('/two-applicants/about-you/first-applicant-other-names', function(req, res) {
     var errors = []
-    if (req.body['previous-full-name'] === '' && req.session.previousNames === '') {
+    if (req.body['first-applicant-previous-full-name'] === '' && req.session.firstApplicantPreviousNames === '') {
       errors.push({
       text: 'Select an answer',
       href: '#first-applicant-other-names'
       })
     }
     if (errors.length === 0) {
-      count = req.session.data.nameCount
+      count = req.session.data.firstApplicantNameCount
       if (req.body['submit-button'] === 'add') {
-        req.session.data.previousNames[count] = req.body['previous-full-name']
-        req.session.data.idNames[count] = count
-        req.session.data.nameCount = count + 1
+        req.session.data.firstApplicantPreviousNames[count] = req.body['first-applicant-previous-full-name']
+        req.session.data.idFirstApplicant[count] = count
+        req.session.data.firstApplicantNameCount = count + 1
         res.redirect('/alpha-tidy-up/two-applicants/about-you/first-applicant-other-names')
       }
       else if (req.body['submit-button'] === 'save-and-continue') {
-        req.session.data.previousNames[count] = req.body['previous-full-name']
-        console.log("Previous names: ", req.session.data.previousNames[count])
+        req.session.data.firstApplicantPreviousNames[count] = req.body['first-applicant-previous-full-name']
+        console.log("Previous names: ", req.session.data.firstApplicantPreviousNames[count])
         res.redirect('/alpha-tidy-up/two-applicants/about-you/first-applicant-date-birth')
       }
       else {
@@ -243,7 +281,7 @@ module.exports = (router) => {
   })
 
 
-// Second applicant personal details
+// ********************** Second applicant personal details **********************
 router.post('/two-applicants/about-you/second-applicant-name', function(req, res) {
   var errors = []
   if (req.body['second-applicant-name'] === '') {
@@ -267,23 +305,23 @@ router.post('/two-applicants/about-you/second-applicant-name', function(req, res
 
 router.post('/two-applicants/about-you/second-applicant-other-names', function(req, res) {
   var errors = []
-  if (req.body['previous-full-name-second'] === '' && req.session.secondPreviousNames === '') {
+  if (req.body['previous-full-name-second'] === '' && req.session.secondApplicantPreviousNames === '') {
     errors.push({
     text: 'Select an answer',
     href: '#second-applicant-other-names'
     })
   }
   if (errors.length === 0) {
-    count = req.session.data.secondNameCount
+    count = req.session.data.secondApplicantNameCount
     if (req.body['submit-button'] === 'add') {
-      req.session.data.secondPreviousNames[count] = req.body['previous-full-name-second']
-      req.session.data.idNames[count] = count
-      req.session.data.nameCount = count + 1
+      req.session.data.secondApplicantPreviousNames[count] = req.body['previous-full-name-second']
+      req.session.data.idFirstApplicant[count] = count
+      req.session.data.firstApplicantNameCount = count + 1
       res.redirect('/alpha-tidy-up/two-applicants/about-you/second-applicant-other-names')
     }
     else if (req.body['submit-button'] === 'save-and-continue') {
-      req.session.data.secondPreviousNames[count] = req.body['previous-full-name-second']
-      console.log("Previous names: ", req.session.data.secondPreviousNames[count])
+      req.session.data.secondApplicantPreviousNames[count] = req.body['previous-full-name-second']
+      console.log("Previous names: ", req.session.data.secondApplicantPreviousNames[count])
       res.redirect('/alpha-tidy-up/two-applicants/about-you/second-applicant-date-birth')
     }
     else {
