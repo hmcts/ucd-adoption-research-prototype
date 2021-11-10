@@ -14,7 +14,7 @@ Apply to adopt a child
   <div class="govuk-grid-row">
     <div class="govuk-grid-column-two-thirds">
 
-      {% set nameError = '' %}
+      {% set secondApplicantNameError = '' %}
   
       {% if errors | length > 0 %}
       {{ govukErrorSummary({
@@ -23,7 +23,7 @@ Apply to adopt a child
       }) }}
       {% for error in errors %}
         {% if error.href == '#second-applicant-name' %}
-          {% set nameError = error.text %}
+          {% set secondApplicantNameError = error.text %}
         {% endif %}
       {% endfor %}
       {% endif %}
@@ -39,8 +39,8 @@ Apply to adopt a child
         </legend>
 
 
-        <div class="govuk-form-group {% if (nameError != '')%} govuk-form-group--error {% endif%}">
-          {% if (nameError != '')%}
+        <div class="govuk-form-group {% if (secondApplicantNameError != '')%} govuk-form-group--error {% endif%}">
+          {% if (secondApplicantNameError != '')%}
           <span id="national-insurance-number-error" class="govuk-error-message">
             <span class="govuk-visually-hidden">Error:</span> Enter your full name [NEEDS CONTENT]
           </span>

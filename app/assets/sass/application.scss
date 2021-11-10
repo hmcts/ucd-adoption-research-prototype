@@ -16,60 +16,60 @@ $govuk-assets-path: '/govuk/assets/';
 @import "components/cookie-banner";
 
 // Add extra styles here, or re-organise the Sass files in whichever way makes most sense to you
-.link-button:focus, a:focus {
-  background: none!important;
-  border: none;
-  outline: 3px solid transparent;
-  color: #0b0c0c;
-  background-color: #ffdd00;
-  box-shadow: 0 -2px #ffdd00, 0 4px #0b0c0c;
-  text-decoration: none;
-}
+// .link-button:focus, a:focus {
+//   background: none!important;
+//   border: none;
+//   outline: 3px solid transparent;
+//   color: #0b0c0c;
+//   background-color: #ffdd00;
+//   box-shadow: 0 -2px #ffdd00, 0 4px #0b0c0c;
+//   text-decoration: none;
+// }
 
-.link-button:link, a:link {
-  background: none!important;
-  border: none;
-  color: #1d70b8;
-}
+// .link-button:link, a:link {
+//   background: none!important;
+//   border: none;
+//   color: #1d70b8;
+// }
 
-.link-button:visited, a:visited {
-  background: none!important;
-  border: none;
-  color: #4c2c92;
-}
+// .link-button:visited, a:visited {
+//   background: none!important;
+//   border: none;
+//   color: #4c2c92;
+// }
 
-.link-button:hover, a:hover {
-  background: none!important;
-  border: none;
-  color: #003078;
-}
+// .link-button:hover, a:hover {
+//   background: none!important;
+//   border: none;
+//   color: #003078;
+// }
 
-.link-button:active, a:active {
-  background: none!important;
-  border: none;
-  color: #0b0c0c;
-}
+// .link-button:active, a:active {
+//   background: none!important;
+//   border: none;
+//   color: #0b0c0c;
+// }
 
-.link-button:focus, a:focus {
-  background: none!important;
-  border: none;
-  color: #0b0c0c;
-}
+// .link-button:focus, a:focus {
+//   background: none!important;
+//   border: none;
+//   color: #0b0c0c;
+// }
 
-.link-button {
-  background: none!important;
-  border: none;
-  padding: 0!important;
-  font-family: "GDS Transport", arial, sans-serif;
-  -webkit-font-smoothing: antialiased;
-  font-size: 1.1875rem;
-  line-height: 1.31579;
-  text-decoration: underline;
-  cursor: pointer;
-  outline: 3px solid transparent;
-  color: #1d70b8;
-  margin-top: 10px;
-}
+// .link-button {
+//   background: none!important;
+//   border: none;
+//   padding: 0!important;
+//   font-family: "GDS Transport", arial, sans-serif;
+//   -webkit-font-smoothing: antialiased;
+//   font-size: 1.1875rem;
+//   line-height: 1.31579;
+//   text-decoration: underline;
+//   cursor: pointer;
+//   outline: 3px solid transparent;
+//   color: #1d70b8;
+//   margin-top: 10px;
+// }
 
 
 .govuk-radios__conditional--applicants {

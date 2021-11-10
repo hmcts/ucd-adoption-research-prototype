@@ -16,7 +16,7 @@ Apply to adopt a child
     <div class="govuk-grid-row">
       <div class="govuk-grid-column-two-thirds">
 
-      {% set otherNamesError = '' %}
+      {% set firstOtherNamesError = '' %}
   
       {% if errors | length > 0 %}
       {{ govukErrorSummary({
@@ -25,7 +25,7 @@ Apply to adopt a child
       }) }}
       {% for error in errors %}
         {% if error.href == '#under-18' %}
-          {% set otherNamesError = error.text %}
+          {% set firstOtherNamesError = error.text %}
         {% endif %}
       {% endfor %}
       {% endif %}
@@ -44,37 +44,37 @@ Apply to adopt a child
             For example, your name before marriage.
           </div>
   
-          {% if (otherNamesError != '')%}
+          {% if (firstOtherNamesError != '')%}
           <div class="govuk-form-group--error">
           {% endif%}
-          {% if otherNamesError != '' %}
+          {% if firstOtherNamesError != '' %}
             <span class="govuk-error-message govuk-form">
-              <span class="govuk-visually-hidden">Error:</span> {{ otherNamesError }}
+              <span class="govuk-visually-hidden">Error:</span> {{ firstOtherNamesError }}
             </span>
           {% endif %}
   
           <div class="govuk-form-group">
-            <fieldset class="govuk-fieldset" role="group" aria-describedby="other-names">
+            <fieldset class="govuk-fieldset" role="group" aria-describedby="first-applicant-other-names">
   
               <div class="govuk-radios govuk-radios--conditional" data-module="govuk-radios">
                 <div class="govuk-radios govuk-radios--conditional" data-module="govuk-radios">
                   <div class="govuk-radios__item">
-                    <input class="govuk-radios__input" id="yes" name="other-names" type="radio" value="Yes" data-aria-controls="conditional-contact"  {% if (data['other-names'] === "Yes") %} checked {% endif %}}>
-                    <label class="govuk-label govuk-radios__label" for="other-names">
+                    <input class="govuk-radios__input" id="yes" name="first-applicant-other-names" type="radio" value="Yes" data-aria-controls="conditional-contact"  {% if (data['first-applicant-other-names'] === "Yes") %} checked {% endif %}}>
+                    <label class="govuk-label govuk-radios__label" for="first-applicant-other-names">
                       Yes
                     </label>
                   </div>
                   
                   <div class="govuk-radios__conditional govuk-radios__conditional--hidden" id="conditional-contact">
                     
-                    {% if (data['nameCount'] > 0) %}
+                    {% if (data['firstApplicantNameCount'] > 0) %}
 
-                    {% for id in data['idNames']|reverse %}
+                    {% for id in data['idFirstApplicant']|reverse %}
                     
                       <dl class="govuk-summary-list govuk-!-margin-bottom-4 ">                    
                         <div class="govuk-summary-list__row">
                           <dt class="govuk-summary-list__key">
-                            {{data['previousNames'][id]}}
+                            {{data['firstApplicantPreviousNames'][id]}}
                           </dt>
                           <dd class="govuk-summary-list__actions">
                             <a class="govuk-link" href="#">
@@ -99,44 +99,16 @@ Apply to adopt a child
                           <label class="govuk-label" for="other">
                             Add your previous full name
                           </label>
-                          <input class="govuk-input govuk-!-width-two-thirds" id="previous-full-name" name="previous-full-name" type="text">
+                          <input class="govuk-input govuk-!-width-two-thirds" id="first-applicant-previous-full-name" name="first-applicant-previous-full-name" type="text">
                         </div>
                           <button class="govuk-button govuk-button--secondary govuk-!-margin-top-5" data-module="govuk-button" name="submit-button" value="add">Add</button>
                       </details>
   
-                    <!-- {% if (data['nameCount'] > 0) %}
-
-                    {% for id in data['idNames']|reverse %}
-                    
-                      <dl class="govuk-summary-list govuk-!-margin-bottom-4 ">                    
-                        <div class="govuk-summary-list__row">
-                          <dt class="govuk-summary-list__key">
-                            {{data['previousNames'][id]}}
-                          </dt>
-                          <dd class="govuk-summary-list__actions">
-                            <a class="govuk-link" href="#">
-                              Remove<span class="govuk-visually-hidden"> name</span>
-                            </a>
-                          </dd>
-                        </div>
-                      </dl>
-                    {% endfor %}
-                                            
-                    {% endif %}
-  
-                      <div class="govuk-form-group">
-                        <label class="govuk-label" for="other">
-                          Add your previous full name
-                        </label>
-                        <input class="govuk-input govuk-!-width-two-thirds" id="previous-full-name" name="previous-full-name" type="text" value="{{data['previousNames'][0]}}">
-                      </div>
-                        <button class="link-button gov-uk-!-margin-top-3" data-module="govuk-button" name="submit-button" value="add">Add another name</button>
-                         -->
                   </div>                               
                 </div>
 
                 <div class="govuk-radios__item">
-                  <input class="govuk-radios__input" id="no" name="other-names" type="radio" value="No">
+                  <input class="govuk-radios__input" id="no" name="first-applicant-other-names" type="radio" value="No">
                   <label class="govuk-label govuk-radios__label" for="yes">
                     No
                   </label>
@@ -145,7 +117,7 @@ Apply to adopt a child
   
             </fieldset>
           </div>
-          {% if otherNamesError != '' %}
+          {% if firstOtherNamesError != '' %}
             </div>
             {% endif %}
           <!-- Buttons -->
