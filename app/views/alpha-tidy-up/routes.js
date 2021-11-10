@@ -305,7 +305,7 @@ router.post('/two-applicants/about-you/second-applicant-name', function(req, res
 
 router.post('/two-applicants/about-you/second-applicant-other-names', function(req, res) {
   var errors = []
-  if (req.body['previous-full-name-second'] === '' && req.session.secondApplicantPreviousNames === '') {
+  if (req.body['second-applicant-previous-full-name'] === '' && req.session.secondApplicantPreviousNames === '') {
     errors.push({
     text: 'Select an answer',
     href: '#second-applicant-other-names'
@@ -314,13 +314,13 @@ router.post('/two-applicants/about-you/second-applicant-other-names', function(r
   if (errors.length === 0) {
     count = req.session.data.secondApplicantNameCount
     if (req.body['submit-button'] === 'add') {
-      req.session.data.secondApplicantPreviousNames[count] = req.body['previous-full-name-second']
-      req.session.data.idFirstApplicant[count] = count
-      req.session.data.firstApplicantNameCount = count + 1
+      req.session.data.secondApplicantPreviousNames[count] = req.body['second-applicant-previous-full-name']
+      req.session.data.idSecondApplicant[count] = count
+      req.session.data.secondApplicantNameCount = count + 1
       res.redirect('/alpha-tidy-up/two-applicants/about-you/second-applicant-other-names')
     }
     else if (req.body['submit-button'] === 'save-and-continue') {
-      req.session.data.secondApplicantPreviousNames[count] = req.body['previous-full-name-second']
+      req.session.data.secondApplicantPreviousNames[count] = req.body['second-applicant-previous-full-name']
       console.log("Previous names: ", req.session.data.secondApplicantPreviousNames[count])
       res.redirect('/alpha-tidy-up/two-applicants/about-you/second-applicant-date-birth')
     }
@@ -335,9 +335,9 @@ router.post('/two-applicants/about-you/second-applicant-other-names', function(r
 })
 
 router.post('/two-applicants/about-you/second-applicant-date-birth', function(req, res) {
-  console.log("Day: ", req.body['day'])
+  console.log("Day: ", req.body['2day'])
   var errors = []
-  if (req.body['day'] === '' || req.body['month'] === '' || req.body['year'] === '') {
+  if (req.body['2day'] === '' || req.body['2month'] === '' || req.body['2year'] === '') {
     errors.push({
     text: 'Select an answer',
     href: '#second-applicant-date-birth'
