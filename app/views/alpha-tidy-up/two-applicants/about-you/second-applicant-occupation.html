@@ -14,7 +14,7 @@ Apply to adopt a child
   <div class="govuk-grid-row">
     <div class="govuk-grid-column-two-thirds">
 
-      {% set occupationError = '' %}
+      {% set 2occupationError = '' %}
   
       {% if errors | length > 0 %}
       {{ govukErrorSummary({
@@ -22,32 +22,32 @@ Apply to adopt a child
         errorList: errors
       }) }}
       {% for error in errors %}
-        {% if error.href == '#first-applicant-occupation' %}
-          {% set occupationError = error.text %}
+        {% if error.href == '#second-applicant-occupation' %}
+          {% set 2occupationError = error.text %}
         {% endif %}
       {% endfor %}
       {% endif %}
 
 
-      <form action="/two-applicants/about-you/first-applicant-occupation" method="post" class="form">
+      <form action="/two-applicants/about-you/second-applicant-occupation" method="post" class="form">
 
         <legend class="govuk-fieldset__legend govuk-fieldset__legend--l">
-          <span class="govuk-caption-l">First applicant</span>
+          <span class="govuk-caption-l">Second applicant</span>
           <h1 class="govuk-fieldset__heading">
             What's your current or previous occupation?
           </h1>
         </legend>
 
 
-        <div class="govuk-form-group {% if (occupationError != '')%} govuk-form-group--error {% endif%}">
-          {% if (occupationError != '')%}
+        <div class="govuk-form-group {% if (2occupationError != '')%} govuk-form-group--error {% endif%}">
+          {% if (2occupationError != '')%}
           <span id="occupation-error" class="govuk-error-message">
             <span class="govuk-visually-hidden">Error:</span> Enter your occupation [NEEDS CONTENT]
           </span>
           {% endif%}
 
-          <input class="govuk-input" id="occupation" name="first-applicant-occupation" type="text"  spellcheck="false"
-          value="{{ data['first-applicant-occupation'] }}">
+          <input class="govuk-input" id="occupation" name="second-applicant-occupation" type="text"  spellcheck="false"
+          value="{{ data['second-applicant-occupation'] }}">
         </div>
 
         <div class="govuk-warning-text">

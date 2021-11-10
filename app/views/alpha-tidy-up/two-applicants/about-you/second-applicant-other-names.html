@@ -54,12 +54,12 @@ Apply to adopt a child
           {% endif %}
   
           <div class="govuk-form-group">
-            <fieldset class="govuk-fieldset" role="group" aria-describedby="other-names">
+            <fieldset class="govuk-fieldset" role="group" aria-describedby="second-applicant-other-names">
   
               <div class="govuk-radios govuk-radios--conditional" data-module="govuk-radios">
                 <div class="govuk-radios govuk-radios--conditional" data-module="govuk-radios">
                   <div class="govuk-radios__item">
-                    <input class="govuk-radios__input" id="yes" name="second-applicant-other-names" type="radio" value="Yes" data-aria-controls="conditional-contact"  {% if (data['other-names'] === "Yes") %} checked {% endif %}}>
+                    <input class="govuk-radios__input" id="yes" name="second-applicant-other-names" type="radio" value="Yes" data-aria-controls="conditional-contact"  {% if (data['second-applicant-other-names'] === "Yes") %} checked {% endif %}}>
                     <label class="govuk-label govuk-radios__label" for="second-applicant-other-names">
                       Yes
                     </label>
@@ -99,7 +99,7 @@ Apply to adopt a child
                           <label class="govuk-label" for="other">
                             Add your previous full name
                           </label>
-                          <input class="govuk-input govuk-!-width-two-thirds" id="previous-full-name-second" name="previous-full-name-second" type="text">
+                          <input class="govuk-input govuk-!-width-two-thirds" id="second-applicant-previous-full-name" name="second-applicant-previous-full-name" type="text">
                         </div>
                           <button class="govuk-button govuk-button--secondary govuk-!-margin-top-5" data-module="govuk-button" name="submit-button" value="add">Add</button>
                       </details>
@@ -108,7 +108,7 @@ Apply to adopt a child
                 </div>
 
                 <div class="govuk-radios__item">
-                  <input class="govuk-radios__input" id="no" name="other-names" type="radio" value="No">
+                  <input class="govuk-radios__input" id="no" name="second-applicant-other-names" type="radio" value="No">
                   <label class="govuk-label govuk-radios__label" for="yes">
                     No
                   </label>
