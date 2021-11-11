@@ -140,7 +140,7 @@ module.exports = (router) => {
 
 
 
- 
+
 
   // ********************** First applicant personal details **********************
   router.post('/two-applicants/about-you/first-applicant-name', function(req, res) {
@@ -187,8 +187,8 @@ module.exports = (router) => {
       }
       else {
         res.redirect('/alpha-tidy-up/two-applicants/task-list-2-multiple')
-      }   
-    } 
+      }
+    }
     else {
         res.render('.//alpha-tidy-up/two-applicants/about-you/first-applicant-other-names', { errors: errors })
     }
@@ -280,7 +280,68 @@ module.exports = (router) => {
     }
   })
 
+// ********************** First applicant contact details **********************
+router.post('/two-applicants/about-you/first-applicant-address', function(req, res) {
+  var errors = []
+  if (req.body['first-applicant-address'] === '') {
+    errors.push({
+    text: 'Enter a valid postcode',
+    href: '#first-applicant-address'
+    })
+  }
+  if (errors.length === 0) {
+    if (req.body['submit-button'] === 'save-and-continue') {
+      res.redirect('/alpha-tidy-up/two-applicants/about-you/first-applicant-find-address')
+    }
+    else {
+      res.redirect('/alpha-tidy-up/two-applicants/task-list-2-multiple')
+    }
+  }
+  else {
+      res.render('.//alpha-tidy-up/two-applicants/about-you/first-applicant-address', { errors: errors })
+  }
+})
 
+router.post('/two-applicants/about-you/first-applicant-find-address', function(req, res) {
+  var errors = []
+  if (req.body['first-applicant-find-address'] === '') {
+    errors.push({
+    text: 'Enter address',
+    href: '#first-applicant-find-address'
+    })
+  }
+  if (errors.length === 0) {
+    if (req.body['submit-button'] === 'save-and-continue') {
+      res.redirect('/alpha-tidy-up/two-applicants/about-you/first-applicant-contact')
+    }
+    else {
+      res.redirect('/alpha-tidy-up/two-applicants/task-list-2-multiple')
+    }
+  }
+  else {
+      res.render('.//alpha-tidy-up/two-applicants/about-you/first-applicant-find-address', { errors: errors })
+  }
+})
+router.post('/two-applicants/about-you/first-applicant-find-address', function(req, res) {
+  var errors = []
+  if (req.body['first-applicant-find-address'] === '') {
+    errors.push({
+    text: 'Enter address',
+    href: '#first-applicant-find-address'
+    })
+  }
+  if (errors.length === 0) {
+    if (req.body['submit-button'] === 'save-and-continue') {
+      res.redirect('/alpha-tidy-up/two-applicants/about-you/first-applicant-contact')
+    }
+    else {
+      res.redirect('/alpha-tidy-up/two-applicants/task-list-2-multiple')
+    }
+  }
+  else {
+      res.render('.//alpha-tidy-up/two-applicants/about-you/first-applicant-find-address', { errors: errors })
+  }
+})
 // ********************** Second applicant personal details **********************
 router.post('/two-applicants/about-you/second-applicant-name', function(req, res) {
   var errors = []
@@ -326,8 +387,8 @@ router.post('/two-applicants/about-you/second-applicant-other-names', function(r
     }
     else {
       res.redirect('/alpha-tidy-up/two-applicants/task-list-2-multiple')
-    }   
-  } 
+    }
+  }
   else {
       res.render('.//alpha-tidy-up/two-applicants/about-you/second-applicant-other-names', { errors: errors })
   }

@@ -14,6 +14,9 @@ Apply to adopt a child
   <div class="govuk-grid-row">
     <div class="govuk-grid-column-two-thirds">
 
+        <form action="/two-applicants/about-you/first-applicant-address" method="post" class="form">
+
+
               <div class="govuk-form-group">
                 <legend class="govuk-fieldset__legend govuk-fieldset__legend--l">
                   <span class="govuk-caption-l">Your details </span>
@@ -36,14 +39,16 @@ Apply to adopt a child
                 <p><a href="step-2-3-b">Or enter address manually</a></p>
               </div>
 
-                <div class="govuk-button-group govuk-!-margin-top-6">
-          <button class=“govuk-button” data-module=“govuk-button” name=“submit-button” value=“find-address”>
-            Find address
-          </button>
-          <button class=“govuk-button govuk-button--secondary” data-module=“govuk-button” name=“submit-button” value=“save-as-draft”>
-            Save as draft
-          </button>
-        </div>
+        
+
+        <!-- Buttons -->
+        {% include "../../../includes/buttons0.html" %}
+
+
+
+
+      </form>
+
 
 
 
