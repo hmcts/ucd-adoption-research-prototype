@@ -1,0 +1,61 @@
+{% extends "layout-signed-in.html" %}
+
+{% block pageTitle %}
+Apply to adopt a child
+{% endblock %}
+
+{% block beforeContent %}
+<a class="govuk-back-link" href="javascript:history.back()">Back</a>
+{% endblock %}
+
+{% block content %}
+
+<div class="govuk-width-container">
+  <div class="govuk-grid-row">
+    <div class="govuk-grid-column-two-thirds">
+
+        <form action="/two-applicants/about-you/second-applicant-same-address" method="post" class="form">
+
+          <legend class="govuk-fieldset__legend govuk-fieldset__legend--l">
+            <span class="govuk-caption-l">Second applicant – your details </span>
+            <h1 class="govuk-fieldset__heading">
+              Do you also live at this address?
+            </h1>
+          </legend>
+
+          <div class="govuk-inset-text">
+            Buckingham Palace <br> London <br> SW1A 1AA
+          </div>
+
+          <div class="govuk-form-group">
+            <fieldset class="govuk-fieldset" aria-describedby="changed-name-hint">
+
+              <div class="govuk-radios">
+                <div class="govuk-radios__item">
+                  <input class="govuk-radios__input radioTargetSet" id="where-do-you-live" name="second-address"
+                    type="radio" value="step-2-3c-second" {{ checked("second-address", "yes") }}>
+                  <label class="govuk-label govuk-radios__label" for="where-do-you-live">
+                    Yes
+                  </label>
+                </div>
+                <div class="govuk-radios__item">
+                  <input class="govuk-radios__input radioTargetSet" id="where-do-you-live-2" name="second-address"
+                    type="radio" value="step-2-2" {{ checked("second-address", "yes") }}>
+                  <label class="govuk-label govuk-radios__label" for="">
+                    No
+                  </label>
+                </div>
+              </div>
+            </fieldset>
+            <!-- Buttons -->
+            {% include "../../../includes/buttons.html" %}
+          </div>
+
+        </form>
+
+      </div>
+    </div>
+  </main>
+</div>
+
+{% endblock %}
