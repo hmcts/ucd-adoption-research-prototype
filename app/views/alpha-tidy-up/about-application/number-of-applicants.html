@@ -22,7 +22,7 @@ Apply to adopt a child
         errorList: errors
       }) }}
       {% for error in errors %}
-        {% if error.href == '#10-weeks' %}
+        {% if error.href == '#number-of-applicants' %}
           {% set numberApplicantsError = error.text %}
         {% endif %}
       {% endfor %}
