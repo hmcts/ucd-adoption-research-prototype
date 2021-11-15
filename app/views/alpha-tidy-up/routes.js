@@ -545,7 +545,7 @@ router.post('/two-applicants/about-you/second-applicant-address', function(req, 
     href: '#second-applicant-address'
     })
   }
-  
+
   if (errors.length === 0) {
    if (req.body['submit-button'] === 'save-and-continue') {
       console.log("Test: ", req.body['submit-button'])
@@ -561,8 +561,51 @@ router.post('/two-applicants/about-you/second-applicant-address', function(req, 
 
 })
 
+router.post('/two-applicants/about-you/second-applicant-address2', function(req, res) {
+  var errors = []
+  if (req.body['select'] === "") {
+    errors.push({
+    text: 'Select an address',
+    href: '#second-applicant-address2'
+    })
+  }
 
+  if (errors.length === 0) {
+   if (req.body['submit-button'] === 'save-and-continue') {
+        res.redirect('/alpha-tidy-up/two-applicants/about-you/second-applicant-contact')
+    }
+    else {
+      res.redirect('/alpha-tidy-up/two-applicants/task-list-2-multiple')
+    }
+  }
+  else {
+      res.render('.//alpha-tidy-up/two-applicants/about-you/second-applicant-address2', { errors: errors })
+  }
 
+})
+
+router.post('/two-applicants/about-you/second-applicant-contact', function(req, res) {
+  var errors = []
+  if (req.body['checkbox'] === "") {
+    errors.push({
+    text: 'Select all that apply',
+    href: '#second-applicant-contact'
+    })
+  }
+
+  if (errors.length === 0) {
+   if (req.body['submit-button'] === 'save-and-continue') {
+        res.redirect('/alpha-tidy-up/two-applicants/task-list-2-multiple')
+    }
+    else {
+      res.redirect('/alpha-tidy-up/two-applicants/task-list-2-multiple')
+    }
+  }
+  else {
+      res.render('.//alpha-tidy-up/two-applicants/about-you/second-applicant-contact', { errors: errors })
+  }
+
+})
 
 //router.post('/two-applicants/about-you/second-applicant-same-address', function(req, res) {
   //var errors = []
