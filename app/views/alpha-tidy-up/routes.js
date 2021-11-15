@@ -283,7 +283,7 @@ module.exports = (router) => {
 // ********************** First applicant contact details **********************
 router.post('/two-applicants/about-you/first-applicant-address', function(req, res) {
   var errors = []
-  if (req.body['first-applicant-address'] === '') {
+  if (req.body['first-applicant-address'] === "") {
     errors.push({
     text: 'Enter a valid postcode',
     href: '#first-applicant-address'
