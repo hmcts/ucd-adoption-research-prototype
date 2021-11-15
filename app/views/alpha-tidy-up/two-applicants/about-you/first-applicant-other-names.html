@@ -24,7 +24,7 @@ Apply to adopt a child
         errorList: errors
       }) }}
       {% for error in errors %}
-        {% if error.href == '#under-18' %}
+        {% if error.href == '#first-applicant-other-names' %}
           {% set firstOtherNamesError = error.text %}
         {% endif %}
       {% endfor %}
