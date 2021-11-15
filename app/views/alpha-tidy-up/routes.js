@@ -539,16 +539,17 @@ router.post('/two-applicants/about-you/second-applicant-same-address', function(
 
 router.post('/two-applicants/about-you/second-applicant-address', function(req, res) {
   var errors = []
-  if (req.body['address'] === undefined) {
+  if (req.body['postcode'] === "") {
     errors.push({
     text: 'Enter a valid postcode',
     href: '#second-applicant-address'
     })
   }
-
+  
   if (errors.length === 0) {
    if (req.body['submit-button'] === 'save-and-continue') {
-        res.redirect('/alpha-tidy-up/two-applicants/about-you/second-applicant-address2')
+      console.log("Test: ", req.body['submit-button'])
+      res.redirect('/alpha-tidy-up/two-applicants/about-you/second-applicant-address2')
     }
     else {
       res.redirect('/alpha-tidy-up/two-applicants/task-list-2-multiple')
