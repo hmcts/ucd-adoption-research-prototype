@@ -110,7 +110,7 @@ module.exports = (router) => {
     var errors = []
     if (req.body['number-children'] === undefined) {
       errors.push({
-      text: 'Select the number of children you are applying to adopt',
+      text: 'Select the number of children you are applying to adopt ',
       href: '#number-of-children'
       })
     }
