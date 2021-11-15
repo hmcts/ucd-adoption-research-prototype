@@ -562,6 +562,8 @@ router.post('/two-applicants/about-you/second-applicant-address', function(req, 
 })
 
 
+
+
 //router.post('/two-applicants/about-you/second-applicant-same-address', function(req, res) {
   //var errors = []
   //if (req.body['second-applicant-same-address'] === undefined) {
