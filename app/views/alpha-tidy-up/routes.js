@@ -116,7 +116,7 @@ module.exports = (router) => {
     }
     else if (req.body['number-children'] === "3 or more" && req.body['more-than-3'] === "") {
       errors.push({
-      text: 'Enter the number of children you are applying to adopt',
+      text: 'Enter a number',
       href: '#exact-number'
       })
     }
