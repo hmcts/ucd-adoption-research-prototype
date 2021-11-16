@@ -353,7 +353,7 @@ router.post('/two-applicants/about-you/first-applicant-find-address', function(r
 
 router.post('/two-applicants/about-you/first-applicant-contact', function(req, res) {
   var errors = []
-  if (req.body['first-applicant-contact'] === '') {
+  if (req.body['contact'] === undefined) {
     errors.push({
     text: 'Select an answer',
     href: '#first-applicant-contact'
