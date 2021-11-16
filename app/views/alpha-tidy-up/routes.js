@@ -110,10 +110,17 @@ module.exports = (router) => {
     var errors = []
     if (req.body['number-children'] === undefined) {
       errors.push({
-      text: 'Select the number of children you are applying to adopt ',
+      text: 'Select the number of children you are applying to adopt',
       href: '#number-of-children'
       })
     }
+    else if (req.body['number-children'] === "3 or more" && req.body['more-than-3'] === "") {
+      errors.push({
+      text: 'Enter the number of children you are applying to adopt',
+      href: '#exact-number'
+      })
+    }
+
     if (errors.length === 0) {
         res.redirect('/alpha-tidy-up/about-application/number-of-applicants')
     }

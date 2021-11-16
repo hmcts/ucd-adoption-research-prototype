@@ -22,9 +22,11 @@ Apply to adopt a child
         errorList: errors
       }) }}
       {% for error in errors %}
-        {% if error.href == '#number-of-children' %}
-          {% set numberChildrenError = error.text %}
-        {% endif %}
+      {% if error.href == '#number-of-children' %}
+        {% set numberChildrenError = error.text %}
+      {% elseif error.href == '#exact-number' %}
+        {% set numberChildrenError = error.text %}
+      {% endif %}
       {% endfor %}
       {% endif %}
 
@@ -34,15 +36,12 @@ Apply to adopt a child
         <legend class="govuk-fieldset__legend govuk-fieldset__legend--l">
           <span class="govuk-caption-l">Application details</span>
           <h1 class="govuk-fieldset__heading">
-            How many children are you applying to adopt?
+            How many people are applying to adopt?
           </h1>
         </legend>
 
-
-        {% if (numberChildrenError != '')%}
+        {% if (numberChildrenError == 'Select the number of children you are applying to adopt')%}
         <div class="govuk-form-group--error">
-        {% endif%}
-        {% if numberChildrenError != '' %}
           <span class="govuk-error-message govuk-form">
             <span class="govuk-visually-hidden">Error:</span> {{ numberChildrenError }}
           </span>
@@ -54,7 +53,7 @@ Apply to adopt a child
             <div class="govuk-radios govuk-radios--conditional" data-module="govuk-radios">
               <div class="govuk-radios__item">
                 <input class="govuk-radios__input" id="1" name="number-children" type="radio"
-                  value="1">
+                  value="1" {% if (data['number-children'] === "1") %} checked {% endif %}}>
                 <label class="govuk-label govuk-radios__label" for="one">
                   1
                 </label>
@@ -62,41 +61,49 @@ Apply to adopt a child
 
               <div class="govuk-radios__item">
                 <input class="govuk-radios__input" id="2" name="number-children" type="radio" value="2" data-aria-controls="conditional-contact">
-                <label class="govuk-label govuk-radios__label" for="two">
+                <label class="govuk-label govuk-radios__label" for="two" {% if (data['number-children'] === "2") %} checked {% endif %}>
                   2
                 </label>
               </div>
 
               <div class="govuk-radios__item">
-                <input class="govuk-radios__input" id="3-or-more" name="number-children" type="radio" value="3 or more" data-aria-controls="conditional-contact-2">
+                <input class="govuk-radios__input" id="3-or-more" name="number-children" type="radio" value="3 or more" data-aria-controls="conditional-contact-2" {% if (data['number-children'] === "3 or more") %} checked {% endif %}>
                 <label class="govuk-label govuk-radios__label" for="3 or more">
                   3 or more
                 </label>
               </div>
-              <div class="govuk-radios__conditional govuk-radios__conditional--hidden" id="conditional-contact-2">
-                <div class="govuk-form-group">
-                  <label class="govuk-label" for="contact-by-phone">
-                    Enter the number of children you are applying to adopt
-                  </label>
-                  <input class="govuk-input govuk-input--width-2" id="many" name="more-than-3" type="number" autocomplete="tel"></div>
-        
+
+              <div class="govuk-radios__conditional govuk-radios__conditional--hidden {% if (numberChildrenError == 'Enter the number of children you are applying to adopt')%}govuk-form-group--error{% endif%}" id="conditional-contact-2">
+                {% if numberChildrenError == 'Enter the number of children you are applying to adopt' %}
+                  <div class="govuk-form-group govuk-form-group--error">
+                    <label class="govuk-label" for="full-name-input">
+                      Enter the number of children you are applying to adopt
+                    </label>
+                    <span id="full-name-input-error" class="govuk-error-message">
+                      <span class="govuk-visually-hidden">Error:</span> {{ numberChildrenError }}
+                    </span>
+                    <input class="govuk-input govuk-input--error govuk-input--width-2" id="full-name-input" name="more-than-3" type="text" aria-describedby="full-name-input-error" autocomplete="name">
+                  </div>
+                {% else %}
+                  <div class="govuk-form-group">
+                    <label class="govuk-label" for="contact-by-phone">
+                      Enter the number of children you are applying to adopt
+                    </label>
+                    <input class="govuk-input govuk-input--width-2" id="many" name="more-than-3" type="number" autocomplete="tel" value="{{ data['more-than-3']}}" >
+                  </div>
+                {% endif %}
               </div>
             </div>            
           </fieldset>
         </div>
-        {% if numberChildrenError != '' %}
+        {% if numberChildrenError == 'Select the number of children you are applying to adopt' %}
           </div>
           {% endif %}
-
         <button class="govuk-button" data-module="govuk-button">
           Continue
         </button>
-
-        </form>
-
-      </div>
-    </div>
-  </main>
+    </form>   
+  </div>
 </div>
 
 {% endblock %}
