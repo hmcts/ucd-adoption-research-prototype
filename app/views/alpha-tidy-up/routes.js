@@ -110,10 +110,17 @@ module.exports = (router) => {
     var errors = []
     if (req.body['number-children'] === undefined) {
       errors.push({
-      text: 'Select the number of children you are applying to adopt ',
+      text: 'Select the number of children you are applying to adopt',
       href: '#number-of-children'
       })
     }
+    else if (req.body['number-children'] === "3 or more" && req.body['more-than-3'] === "") {
+      errors.push({
+      text: 'Enter a number',
+      href: '#exact-number'
+      })
+    }
+
     if (errors.length === 0) {
         res.redirect('/alpha-tidy-up/about-application/number-of-applicants')
     }
@@ -346,7 +353,7 @@ router.post('/two-applicants/about-you/first-applicant-find-address', function(r
 
 router.post('/two-applicants/about-you/first-applicant-contact', function(req, res) {
   var errors = []
-  if (req.body['first-applicant-contact'] === '') {
+  if (req.body['contact'] === undefined) {
     errors.push({
     text: 'Select an answer',
     href: '#first-applicant-contact'
