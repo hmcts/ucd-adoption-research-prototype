@@ -13,7 +13,19 @@ Apply to adopt a child
 <div class="govuk-width-container">
   <div class="govuk-grid-row">
     <div class="govuk-grid-column-two-thirds">
+      {% set postcodeerror = '' %}
 
+      {% if errors | length > 0 %}
+      {{ govukErrorSummary({
+        titleText: "There is a problem",
+        errorList: errors
+      }) }}
+      {% for error in errors %}
+        {% if error.href == '#first-applicant-address' %}
+          {% set postcodeerror = error.text %}
+        {% endif %}
+      {% endfor %}
+      {% endif %}
         <form action="/two-applicants/about-you/first-applicant-address" method="post" class="form">
 
 
@@ -30,7 +42,12 @@ Apply to adopt a child
                 <label class="govuk-label govuk-label--m" for="passport-number">
                   Postcode
                 </label>
-
+                <div class="govuk-form-group {% if (postcodeerror != '')%} govuk-form-group--error {% endif%}">
+                  {% if (postcodeerror != '')%}
+                  <span id="gender-error" class="govuk-error-message">
+                    <span class="govuk-visually-hidden">Error:</span> {{ postcodeerror }}
+                  </span>
+                  {% endif%}
                 <input class="govuk-input govuk-input--width-10" id="width-10" name="first-applicant-address" type="text">
 
 

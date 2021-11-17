@@ -304,9 +304,9 @@ router.post('/two-applicants/about-you/first-applicant-address', function(req, r
 
 router.post('/two-applicants/about-you/first-applicant-address2', function(req, res) {
   var errors = []
-  if (req.body['first-applicant-address2'] === '') {
+  if (req.body['first-applicant-address2'] === undefined) {
     errors.push({
-    text: 'Select and address',
+    text: 'Select an address',
     href: '#first-applicant-address2'
     })
   }
@@ -539,7 +539,7 @@ router.post('/two-applicants/about-you/second-applicant-same-address', function(
 
 router.post('/two-applicants/about-you/second-applicant-address', function(req, res) {
   var errors = []
-  if (req.body['postcode'] === "") {
+  if (req.body['second-applicant-address'] === "") {
     errors.push({
     text: 'Enter a valid postcode',
     href: '#second-applicant-address'
