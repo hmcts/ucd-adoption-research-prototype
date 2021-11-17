@@ -13,7 +13,19 @@ Apply to adopt a child
 <div class="govuk-width-container">
   <div class="govuk-grid-row">
     <div class="govuk-grid-column-two-thirds">
+      {% set findaddresserror = '' %}
 
+      {% if errors | length > 0 %}
+      {{ govukErrorSummary({
+        titleText: "There is a problem",
+        errorList: errors
+      }) }}
+      {% for error in errors %}
+        {% if error.href == '#first-applicant-find-address' %}
+          {% set findaddresserror = error.text %}
+        {% endif %}
+      {% endfor %}
+      {% endif %}
         <form action="/two-applicants/about-you/first-applicant-find-address" method="post" class="form">
 
               <fieldset class="govuk-fieldset">
@@ -56,6 +68,12 @@ Apply to adopt a child
                   <label class="govuk-label" for="address-postcode">
                     Postcode
                   </label>
+                  <div class="govuk-form-group {% if (findaddresserror != '')%} govuk-form-group--error {% endif%}">
+                    {% if (findaddresserror != '')%}
+                    <span id="gender-error" class="govuk-error-message">
+                      <span class="govuk-visually-hidden">Error:</span> {{ findaddresserror }}
+                    </span>
+                    {% endif%}
                   <input class="govuk-input govuk-input--width-10" id="address-postcode" name="address-postcode" type="text" autocomplete="postal-code">
                 </div>
 
