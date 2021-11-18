@@ -311,7 +311,7 @@ router.post('/two-applicants/about-you/first-applicant-address', function(req, r
 
 router.post('/two-applicants/about-you/first-applicant-address2', function(req, res) {
   var errors = []
-  if (req.body['first-applicant-address2'] === undefined) {
+  if (req.body['first-applicant-address2-id'] === undefined) {
     errors.push({
     text: 'Select an address',
     href: '#first-applicant-address2'
