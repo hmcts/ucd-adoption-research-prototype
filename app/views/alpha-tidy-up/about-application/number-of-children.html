@@ -98,11 +98,13 @@ Apply to adopt a child
         </div>
         {% if numberChildrenError == 'Select the number of children you are applying to adopt' %}
           </div>
-          {% endif %}
-        <button class="govuk-button" data-module="govuk-button">
-          Continue
-        </button>
-    </form>   
+        {% endif %}
+
+        <!-- Buttons -->
+        {% include "../../includes/buttons.html" %}
+
+
+      </form>   
   </div>
 </div>
 
