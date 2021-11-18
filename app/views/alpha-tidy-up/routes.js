@@ -311,12 +311,15 @@ router.post('/two-applicants/about-you/first-applicant-address', function(req, r
 
 router.post('/two-applicants/about-you/first-applicant-address2', function(req, res) {
   var errors = []
-  if (req.body['first-applicant-address2'] === undefined) {
+  if (req.body['first-applicant-choose-address'] === 'address-found') {
     errors.push({
     text: 'Select an address',
     href: '#first-applicant-address2'
     })
   }
+  console.log("Select: ", req.body['first-applicant-choose-address'])
+
+
   if (errors.length === 0) {
     if (req.body['submit-button'] === 'save-and-continue') {
       res.redirect('/alpha-tidy-up/two-applicants/about-you/first-applicant-contact')
