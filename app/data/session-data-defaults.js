@@ -26,7 +26,10 @@ module.exports = {
   "idSecondApplicant": [],
   "secondApplicantPreviousNames": [],
   "secondApplicantNameCount": 0,
-
+  "numberChildren": 0,
+  "numberApplicants": 0,
+  
+  
 
 
 

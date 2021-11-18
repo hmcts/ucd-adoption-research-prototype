@@ -122,10 +122,16 @@ module.exports = (router) => {
     }
 
     if (errors.length === 0) {
-        res.redirect('/alpha-tidy-up/about-application/number-of-applicants')
+      if (req.body['more-than-3'] !== "") {
+        req.session.data.numberChildren = req.body['more-than-3']
+      }
+      else {
+        req.session.data.numberChildren = req.body['number-of-children']
+      }
+      res.redirect('/alpha-tidy-up/about-application/number-of-applicants')
     }
     else {
-        res.render('.//alpha-tidy-up/about-application/number-of-children', { errors: errors })
+      res.render('.//alpha-tidy-up/about-application/number-of-children', { errors: errors })
     }
   })
 
@@ -138,10 +144,11 @@ module.exports = (router) => {
       })
     }
     if (errors.length === 0) {
-        res.redirect('/alpha-tidy-up/two-applicants/task-list-2-multiple')
+      req.session.data.numberApplicants = req.body['number-of-applicants']
+      res.redirect('/alpha-tidy-up/two-applicants/task-list-2-multiple')
     }
     else {
-        res.render('.//alpha-tidy-up/about-application/number-of-applicants', { errors: errors })
+      res.render('.//alpha-tidy-up/about-application/number-of-applicants', { errors: errors })
     }
   })
 

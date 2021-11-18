@@ -16,60 +16,76 @@ $govuk-assets-path: '/govuk/assets/';
 @import "components/cookie-banner";
 
 // Add extra styles here, or re-organise the Sass files in whichever way makes most sense to you
-// .link-button:focus, a:focus {
-//   background: none!important;
-//   border: none;
-//   outline: 3px solid transparent;
-//   color: #0b0c0c;
-//   background-color: #ffdd00;
-//   box-shadow: 0 -2px #ffdd00, 0 4px #0b0c0c;
-//   text-decoration: none;
-// }
+// Task list pattern
 
-// .link-button:link, a:link {
-//   background: none!important;
-//   border: none;
-//   color: #1d70b8;
-// }
+.app-task-list {
+  list-style-type: none;
+  padding-left: 0;
+  margin-top: 0;
+  margin-bottom: 0;
+  @include govuk-media-query($from: tablet) {
+    min-width: 550px;
+  }
+}
 
-// .link-button:visited, a:visited {
-//   background: none!important;
-//   border: none;
-//   color: #4c2c92;
-// }
+.app-task-list__section {
+  display: table;
+  @include govuk-font($size:24, $weight: bold);
+}
 
-// .link-button:hover, a:hover {
-//   background: none!important;
-//   border: none;
-//   color: #003078;
-// }
+.app-task-list__section-number {
+  display: table-cell;
 
-// .link-button:active, a:active {
-//   background: none!important;
-//   border: none;
-//   color: #0b0c0c;
-// }
+  @include govuk-media-query($from: tablet) {
+    min-width: govuk-spacing(6);
+    padding-right: 0;
+  }
+}
 
-// .link-button:focus, a:focus {
-//   background: none!important;
-//   border: none;
-//   color: #0b0c0c;
-// }
+.app-task-list__items {
+  @include govuk-font($size: 19);
+  @include govuk-responsive-margin(9, "bottom");
+  list-style: none;
+  padding-left: 0;
+  @include govuk-media-query($from: tablet) {
+    padding-left: govuk-spacing(6);
+  }
+}
 
-// .link-button {
-//   background: none!important;
-//   border: none;
-//   padding: 0!important;
-//   font-family: "GDS Transport", arial, sans-serif;
-//   -webkit-font-smoothing: antialiased;
-//   font-size: 1.1875rem;
-//   line-height: 1.31579;
-//   text-decoration: underline;
-//   cursor: pointer;
-//   outline: 3px solid transparent;
-//   color: #1d70b8;
-//   margin-top: 10px;
-// }
+.app-task-list__item {
+  border-bottom: 1px solid $govuk-border-colour;
+  margin-bottom: 0 !important;
+  padding-top: govuk-spacing(2);
+  padding-bottom: govuk-spacing(2);
+  @include govuk-clearfix;
+}
+
+.app-task-list__item:first-child {
+  border-top: 1px solid $govuk-border-colour;
+}
+
+.app-task-list__task-name {
+  display: block;
+  @include govuk-media-query($from: 450px) {
+    float: left;
+  }
+}
+
+// The `app-task-list__task-completed` class was previously used on the task
+// list for the completed tag (changed in 86c90ec) – it's still included here to
+// avoid breaking task lists in existing prototypes.
+.app-task-list__tag,
+.app-task-list__task-completed {
+  margin-top: govuk-spacing(2);
+  margin-bottom: govuk-spacing(1);
+
+  @include govuk-media-query($from: 450px) {
+    float: right;
+    margin-top: 0;
+    margin-bottom: 0;
+  }
+}
+
 
 
 .govuk-radios__conditional--applicants {
