@@ -317,8 +317,7 @@ router.post('/two-applicants/about-you/first-applicant-address2', function(req, 
     href: '#first-applicant-address2'
     })
   }
-  console.log("Select: ", req.body['first-applicant-choose-address'])
-
+  
 
   if (errors.length === 0) {
     if (req.body['submit-button'] === 'save-and-continue') {
