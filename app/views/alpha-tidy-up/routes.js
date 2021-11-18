@@ -180,12 +180,23 @@ module.exports = (router) => {
 
   router.post('/two-applicants/about-you/first-applicant-other-names', function(req, res) {
     var errors = []
-    if (req.body['first-applicant-previous-full-name'] === '' && req.session.firstApplicantPreviousNames === '') {
+    console.log("First applicant previous names: ", req.session.data.firstApplicantPreviousNames)
+    console.log("First applicant previous name radio: ", req.body['first-applicant-previous-full-name'])
+    
+    if (req.body['first-applicant-other-names'] === undefined) {
+      // if (req.body['first-applicant-other-names'] === undefined && req.session.data.firstApplicantPreviousNames === '') {
       errors.push({
       text: 'Select an answer',
       href: '#first-applicant-other-names'
       })
     }
+    else if (req.body['first-applicant-other-names'] === "Yes" && req.session.data.firstApplicantPreviousNames === "") {
+      errors.push({
+      text: 'Enter a name or choose No',
+      href: '#name'
+      })
+    }
+
     if (errors.length === 0) {
       count = req.session.data.firstApplicantNameCount
       if (req.body['submit-button'] === 'add') {
@@ -325,7 +336,6 @@ router.post('/two-applicants/about-you/first-applicant-address2', function(req, 
     })
   }
   
-
   if (errors.length === 0) {
     if (req.body['submit-button'] === 'save-and-continue') {
       res.redirect('/alpha-tidy-up/two-applicants/about-you/first-applicant-contact')
