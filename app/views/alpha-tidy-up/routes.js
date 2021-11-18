@@ -128,7 +128,12 @@ module.exports = (router) => {
       else {
         req.session.data.numberChildren = req.body['number-of-children']
       }
-      res.redirect('/alpha-tidy-up/about-application/number-of-applicants')
+      if (req.body['submit-button'] === 'save-and-continue') {
+        res.redirect('/alpha-tidy-up/about-application/number-of-applicants')
+      }
+      else {
+        res.redirect('/alpha-tidy-up/two-applicants/task-list-2-multiple')
+      }
     }
     else {
       res.render('.//alpha-tidy-up/about-application/number-of-children', { errors: errors })
@@ -145,7 +150,12 @@ module.exports = (router) => {
     }
     if (errors.length === 0) {
       req.session.data.numberApplicants = req.body['number-of-applicants']
-      res.redirect('/alpha-tidy-up/two-applicants/task-list-2-multiple')
+      if (req.body['submit-button'] === 'save-and-continue') {
+        res.redirect('/alpha-tidy-up/two-applicants/task-list-2-multiple')
+      }
+      else {
+        res.redirect('/alpha-tidy-up/two-applicants/task-list-2-multiple')
+      }
     }
     else {
       res.render('.//alpha-tidy-up/about-application/number-of-applicants', { errors: errors })
