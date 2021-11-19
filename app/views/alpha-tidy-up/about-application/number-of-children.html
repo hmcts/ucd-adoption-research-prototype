@@ -17,17 +17,17 @@ Apply to adopt a child
       {% set numberChildrenError = '' %}
   
       {% if errors | length > 0 %}
-      {{ govukErrorSummary({
-        titleText: "There is a problem",
-        errorList: errors
-      }) }}
-      {% for error in errors %}
-      {% if error.href == '#number-of-children' %}
-        {% set numberChildrenError = error.text %}
-      {% elseif error.href == '#exact-number' %}
-        {% set numberChildrenError = error.text %}
-      {% endif %}
-      {% endfor %}
+        {{ govukErrorSummary({
+          titleText: "There is a problem",
+          errorList: errors
+        }) }}
+        {% for error in errors %}
+          {% if error.href == '#number-of-children' %}
+            {% set numberChildrenError = error.text %}
+          {% elseif error.href == '#exact-number' %}
+            {% set numberChildrenError = error.text %}
+          {% endif %}
+        {% endfor %}
       {% endif %}
 
 

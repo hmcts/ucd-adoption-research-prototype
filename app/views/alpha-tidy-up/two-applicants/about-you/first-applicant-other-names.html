@@ -16,20 +16,35 @@ Apply to adopt a child
     <div class="govuk-grid-row">
       <div class="govuk-grid-column-two-thirds">
 
-      {% set firstOtherNamesError = '' %}
-  
-      {% if errors | length > 0 %}
-      {{ govukErrorSummary({
-        titleText: "There is a problem",
-        errorList: errors
-      }) }}
-      {% for error in errors %}
-        {% if error.href == '#first-applicant-other-names' %}
-          {% set firstOtherNamesError = error.text %}
+        {% set firstOtherNamesError = '' %}
+    
+        {% if errors | length > 0 %}
+        {{ govukErrorSummary({
+          titleText: "There is a problem",
+          errorList: errors
+        }) }}
+        {% for error in errors %}
+          {% if error.href == '#first-applicant-other-names' %}
+            {% set firstOtherNamesError = error.text %}
+          {% endif %}
+        {% endfor %}
         {% endif %}
-      {% endfor %}
-      {% endif %}
-
+        
+        {% set firstOtherNamesError = '' %}
+    
+        {% if errors | length > 0 %}
+          {{ govukErrorSummary({
+            titleText: "There is a problem",
+            errorList: errors
+          }) }}
+          {% for error in errors %}
+            {% if error.href == '#first-applicant-other-names' %}
+              {% set firstOtherNamesError = error.text %}
+            {% elseif error.href == '#name' %}
+              {% set firstOtherNamesError = error.text %}
+            {% endif %}
+          {% endfor %}
+        {% endif %}
 
         <form action="/two-applicants/about-you/first-applicant-other-names" method="post" class="form">
 
