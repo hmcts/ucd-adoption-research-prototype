@@ -250,7 +250,7 @@ module.exports = (router) => {
     }
       if (req.body['submit-button'] === 'save-and-continue') {
         if (errors.length === 0) {
-          res.redirect('/alpha-tidy-up/two-applicants/about-you/first-applicant-gender')
+          res.redirect('/alpha-tidy-up/two-applicants/about-you/first-applicant-nationality')
         }
         else {
           res.render('.//alpha-tidy-up/two-applicants/about-you/first-applicant-date-birth', { errors: errors })
