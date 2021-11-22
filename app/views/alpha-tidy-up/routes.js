@@ -140,7 +140,7 @@ module.exports = (router) => {
       }
     }
     else {
-      res.redirect('/alpha-tidy-up/two-applicants/task-list-2-multiple')
+      res.redirect('/alpha-tidy-up/task-list')
     }
   })
 
@@ -158,14 +158,14 @@ module.exports = (router) => {
 
     if (req.body['submit-button'] === 'save-and-continue') {
       if (errors.length === 0) {
-        res.redirect('/alpha-tidy-up/two-applicants/task-list-2-multiple')
+        res.redirect('/alpha-tidy-up/task-list')
       }
       else {
         res.render('.//alpha-tidy-up/about-application/number-of-applicants', { errors: errors })
       }
     }
     else {
-        res.redirect('/alpha-tidy-up/two-applicants/task-list-2-multiple')
+        res.redirect('/alpha-tidy-up/task-list')
     }
   })
 
@@ -192,7 +192,7 @@ module.exports = (router) => {
       }
     }
     else {
-      res.redirect('/alpha-tidy-up/two-applicants/task-list-2-multiple')
+      res.redirect('/alpha-tidy-up/task-list')
     }  
   })
 
@@ -234,7 +234,7 @@ module.exports = (router) => {
       }
     }
     else {
-      res.redirect('/alpha-tidy-up/two-applicants/task-list-2-multiple')
+      res.redirect('/alpha-tidy-up/task-list')
     }
   })
 
@@ -257,7 +257,7 @@ module.exports = (router) => {
         }
       }
       else {
-        res.redirect('/alpha-tidy-up/two-applicants/task-list-2-multiple')
+        res.redirect('/alpha-tidy-up/task-list')
       }
   })
 
@@ -279,7 +279,7 @@ module.exports = (router) => {
           }
       }
       else {
-        res.redirect('/alpha-tidy-up/two-applicants/task-list-2-multiple')
+        res.redirect('/alpha-tidy-up/task-list')
       }
   })
 
@@ -301,7 +301,7 @@ module.exports = (router) => {
       }
     }
     else {
-      res.redirect('/alpha-tidy-up/two-applicants/task-list-2-multiple')
+      res.redirect('/alpha-tidy-up/task-list')
     }
   })
 
@@ -317,14 +317,14 @@ module.exports = (router) => {
 
     if (req.body['submit-button'] === 'save-and-continue') {
       if (errors.length === 0) {
-        res.redirect('/alpha-tidy-up/two-applicants/task-list-2-multiple')
+        res.redirect('/alpha-tidy-up/task-list')
       }
       else {
           res.render('.//alpha-tidy-up/two-applicants/about-you/first-applicant-occupation', { errors: errors })
       }
     }
     else {
-      res.redirect('/alpha-tidy-up/two-applicants/task-list-2-multiple')
+      res.redirect('/alpha-tidy-up/task-list')
     }
   })
 
@@ -348,7 +348,7 @@ router.post('/two-applicants/about-you/first-applicant-address', function(req, r
     }
   }
   else {
-    res.redirect('/alpha-tidy-up/two-applicants/task-list-2-multiple')
+    res.redirect('/alpha-tidy-up/task-list')
   }
 })
 
@@ -371,7 +371,7 @@ router.post('/two-applicants/about-you/first-applicant-address2', function(req, 
     }
   }
   else {
-    res.redirect('/alpha-tidy-up/two-applicants/task-list-2-multiple')
+    res.redirect('/alpha-tidy-up/task-list')
   }
 })
 
@@ -393,7 +393,7 @@ router.post('/two-applicants/about-you/first-applicant-find-address', function(r
     }
   }
   else {
-    res.redirect('/alpha-tidy-up/two-applicants/task-list-2-multiple')
+    res.redirect('/alpha-tidy-up/task-list')
   }
 })
 
@@ -408,14 +408,14 @@ router.post('/two-applicants/about-you/first-applicant-contact', function(req, r
   }
   if (req.body['submit-button'] === 'save-and-continue') {
     if (errors.length === 0) {
-      res.redirect('/alpha-tidy-up/two-applicants/task-list-2-multiple')
+      res.redirect('/alpha-tidy-up/task-list')
     }
     else {
       res.render('.//alpha-tidy-up/two-applicants/about-you/first-applicant-contact', { errors: errors })
     }
   }
   else {
-    res.redirect('/alpha-tidy-up/two-applicants/task-list-2-multiple')
+    res.redirect('/alpha-tidy-up/task-list')
   }
 })
 
@@ -436,7 +436,7 @@ router.post('/two-applicants/about-you/second-applicant-name', function(req, res
       res.redirect('/alpha-tidy-up/two-applicants/about-you/second-applicant-other-names')
     }
     else {
-      res.redirect('/alpha-tidy-up/two-applicants/task-list-2-multiple')
+      res.redirect('/alpha-tidy-up/task-list')
     }
   }
   else {
@@ -467,7 +467,7 @@ router.post('/two-applicants/about-you/second-applicant-other-names', function(r
       res.redirect('/alpha-tidy-up/two-applicants/about-you/second-applicant-date-birth')
     }
     else {
-      res.redirect('/alpha-tidy-up/two-applicants/task-list-2-multiple')
+      res.redirect('/alpha-tidy-up/task-list')
     }
   }
   else {
@@ -490,7 +490,7 @@ router.post('/two-applicants/about-you/second-applicant-date-birth', function(re
       res.redirect('/alpha-tidy-up/two-applicants/about-you/second-applicant-gender')
     }
     else {
-      res.redirect('/alpha-tidy-up/two-applicants/task-list-2-multiple')
+      res.redirect('/alpha-tidy-up/task-list')
     }
   }
   else {
@@ -512,7 +512,7 @@ router.post('/two-applicants/about-you/second-applicant-gender', function(req, r
       res.redirect('/alpha-tidy-up/two-applicants/about-you/second-applicant-nationality')
     }
     else {
-      res.redirect('/alpha-tidy-up/two-applicants/task-list-2-multiple')
+      res.redirect('/alpha-tidy-up/task-list')
     }
   }
   else {
@@ -534,7 +534,7 @@ router.post('/two-applicants/about-you/second-applicant-nationality', function(r
       res.redirect('/alpha-tidy-up/two-applicants/about-you/second-applicant-occupation')
     }
     else {
-      res.redirect('/alpha-tidy-up/two-applicants/task-list-2-multiple')
+      res.redirect('/alpha-tidy-up/task-list')
     }
   }
   else {
@@ -553,10 +553,10 @@ router.post('/two-applicants/about-you/second-applicant-occupation', function(re
   }
   if (errors.length === 0) {
     if (req.body['submit-button'] === 'save-and-continue') {
-      res.redirect('/alpha-tidy-up/two-applicants/task-list-2-multiple')
+      res.redirect('/alpha-tidy-up/task-list')
     }
     else {
-      res.redirect('/alpha-tidy-up/two-applicants/task-list-2-multiple')
+      res.redirect('/alpha-tidy-up/task-list')
     }
   }
   else {
@@ -587,7 +587,7 @@ router.post('/two-applicants/about-you/second-applicant-same-address', function(
       }
     }
     else {
-      res.redirect('/alpha-tidy-up/two-applicants/task-list-2-multiple')
+      res.redirect('/alpha-tidy-up/task-list')
     }
   }
   else {
@@ -612,7 +612,7 @@ router.post('/two-applicants/about-you/second-applicant-address', function(req, 
       res.redirect('/alpha-tidy-up/two-applicants/about-you/second-applicant-address2')
     }
     else {
-      res.redirect('/alpha-tidy-up/two-applicants/task-list-2-multiple')
+      res.redirect('/alpha-tidy-up/task-list')
     }
   }
   else {
@@ -636,7 +636,7 @@ router.post('/two-applicants/about-you/second-applicant-address2', function(req,
         res.redirect('/alpha-tidy-up/two-applicants/about-you/second-applicant-contact')
     }
     else {
-      res.redirect('/alpha-tidy-up/two-applicants/task-list-2-multiple')
+      res.redirect('/alpha-tidy-up/task-list')
     }
   }
   else {
@@ -657,10 +657,10 @@ router.post('/two-applicants/about-you/second-applicant-contact', function(req, 
 
   if (errors.length === 0) {
    if (req.body['submit-button'] === 'save-and-continue') {
-        res.redirect('/alpha-tidy-up/two-applicants/task-list-2-multiple')
+        res.redirect('/alpha-tidy-up/task-list')
     }
     else {
-      res.redirect('/alpha-tidy-up/two-applicants/task-list-2-multiple')
+      res.redirect('/alpha-tidy-up/task-list')
     }
   }
   else {
