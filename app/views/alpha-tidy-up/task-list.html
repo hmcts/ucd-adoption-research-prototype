@@ -26,15 +26,15 @@ Task list
 
             <span class="app-task-list__task-name">
 
-              <a href="about-application/number-of-children">
-                Number of children and applicants
+              <a href="about-application/number-of-applicants.html">
+                Number of applicants
               </a>
             </span>
             
             {% if (data['number-of-applicants']) %}
                 <strong class="govuk-tag app-task-list__tag" id="eligibility-completed">completed</strong>
             {% else %}
-                <strong class="govuk-tag govuk-tag--grey app-task-list__tag">incomplete</strong>
+                <strong class="govuk-tag govuk-tag--grey app-task-list__tag">not started</strong>
             {% endif %}
             
           </li>
@@ -49,7 +49,7 @@ Task list
             {% if data['court-finder'] %}
                 <strong class="govuk-tag  app-task-list__tag" id="eligibility-completed">Completed</strong>
             {% else %}
-                <strong class="govuk-tag govuk-tag--grey app-task-list__tag">incomplete</strong>
+                <strong class="govuk-tag govuk-tag--grey app-task-list__tag">not started</strong>
             {% endif %}
             <br>
 
@@ -92,7 +92,7 @@ Task list
             {% if data['married'] %}
                 <strong class="govuk-tag  app-task-list__tag" id="eligibility-completed">Completed</strong>
             {% else %}
-                <strong class="govuk-tag govuk-tag--grey app-task-list__tag">incomplete</strong>
+                <strong class="govuk-tag govuk-tag--grey app-task-list__tag">not started</strong>
             {% endif %}
           </li>
 
@@ -109,10 +109,12 @@ Task list
                 Your personal details
               </a>
               </a></span>
-            {% if data['you-occupation'] %}
+            {% if data['first-applicant-occupation'] %}
                 <strong class="govuk-tag  app-task-list__tag" id="eligibility-completed">Completed</strong>
+            {% elseif data['first-applicant-name'] %}
+                <strong class="govuk-tag govuk-tag--blue app-task-list__tag">in progress</strong>
             {% else %}
-                <strong class="govuk-tag govuk-tag--grey app-task-list__tag">incomplete</strong>
+                <strong class="govuk-tag govuk-tag--grey app-task-list__tag">not started</strong>
             {% endif %}
             <br>
 
@@ -126,7 +128,7 @@ Task list
             {% if data['first-address'] %}
                 <strong class="govuk-tag  app-task-list__tag" id="eligibility-completed">Completed</strong>
             {% else %}
-                <strong class="govuk-tag govuk-tag--grey app-task-list__tag">incomplete</strong>
+                <strong class="govuk-tag govuk-tag--grey app-task-list__tag">not started</strong>
             {% endif %}
             <br>
 
@@ -142,7 +144,7 @@ Task list
             {% if data['personal-photo'] %}
                 <strong class="govuk-tag  app-task-list__tag" id="eligibility-completed">Completed</strong>
             {% else %}
-                <strong class="govuk-tag govuk-tag--grey app-task-list__tag">incomplete</strong>
+                <strong class="govuk-tag govuk-tag--grey app-task-list__tag">not started</strong>
             {% endif %}
           </li>
 
@@ -163,7 +165,7 @@ Task list
             {% if data['name'] %}
                 <strong class="govuk-tag  app-task-list__tag" id="eligibility-completed">Completed</strong>
             {% else %}
-                <strong class="govuk-tag govuk-tag--grey app-task-list__tag">incomplete</strong>
+                <strong class="govuk-tag govuk-tag--grey app-task-list__tag">not started</strong>
             {% endif %}
             <br>
 
@@ -177,7 +179,7 @@ Task list
             {% if data['second-address'] %}
                 <strong class="govuk-tag  app-task-list__tag" id="eligibility-completed">Completed</strong>
             {% else %}
-                <strong class="govuk-tag govuk-tag--grey app-task-list__tag">incomplete</strong>
+                <strong class="govuk-tag govuk-tag--grey app-task-list__tag">not started</strong>
             {% endif %}
 
             <br>
@@ -194,7 +196,7 @@ Task list
             {% if data['personal-photo'] %}
                 <strong class="govuk-tag  app-task-list__tag" id="eligibility-completed">Completed</strong>
             {% else %}
-                <strong class="govuk-tag govuk-tag--grey app-task-list__tag">incomplete</strong>
+                <strong class="govuk-tag govuk-tag--grey app-task-list__tag">not started</strong>
             {% endif %}
           </li>
 
@@ -228,7 +230,7 @@ Task list
             {% if data['child-nationality'] %}
                 <strong class="govuk-tag  app-task-list__tag" id="eligibility-completed">Completed</strong>
             {% else %}
-                <strong class="govuk-tag govuk-tag--grey app-task-list__tag">incomplete</strong>
+                <strong class="govuk-tag govuk-tag--grey app-task-list__tag">not started</strong>
             {% endif %}
             <br>
 
@@ -242,7 +244,7 @@ Task list
             {% if data['adoption-cert'] %}
                 <strong class="govuk-tag  app-task-list__tag" id="eligibility-completed">Completed</strong>
             {% else %}
-                <strong class="govuk-tag govuk-tag--grey app-task-list__tag">incomplete</strong>
+                <strong class="govuk-tag govuk-tag--grey app-task-list__tag">not started</strong>
             {% endif %}
 
             <br>
@@ -257,7 +259,7 @@ Task list
             {% if data['date-placed'] %}
                 <strong class="govuk-tag  app-task-list__tag" id="eligibility-completed">Completed</strong>
             {% else %}
-                <strong class="govuk-tag govuk-tag--grey app-task-list__tag">incomplete</strong>
+                <strong class="govuk-tag govuk-tag--grey app-task-list__tag">not started</strong>
             {% endif %}
             <br>
 
@@ -271,7 +273,7 @@ Task list
             {% if data['mother-alive'] %}
                 <strong class="govuk-tag  app-task-list__tag" id="eligibility-completed">Completed</strong>
             {% else %}
-                <strong class="govuk-tag govuk-tag--grey app-task-list__tag">incomplete</strong>
+                <strong class="govuk-tag govuk-tag--grey app-task-list__tag">not started</strong>
             {% endif %}
           </li>
           <li class="app-task-list__item">
@@ -283,7 +285,7 @@ Task list
             {% if data['birth-father'] %}
                 <strong class="govuk-tag  app-task-list__tag" id="eligibility-completed">Completed</strong>
             {% else %}
-                <strong class="govuk-tag govuk-tag--grey app-task-list__tag">incomplete</strong>
+                <strong class="govuk-tag govuk-tag--grey app-task-list__tag">not started</strong>
             {% endif %}
           </li>
           <li class="app-task-list__item">
@@ -295,7 +297,7 @@ Task list
             {% if data['court-orders'] %}
                 <strong class="govuk-tag  app-task-list__tag" id="eligibility-completed">Completed</strong>
             {% else %}
-                <strong class="govuk-tag govuk-tag--grey app-task-list__tag">incomplete</strong>
+                <strong class="govuk-tag govuk-tag--grey app-task-list__tag">not started</strong>
             {% endif %}
           </li>
           <li class="app-task-list__item">
@@ -325,7 +327,7 @@ Task list
             {% if data['your-adoption-agency'] %}
                 <strong class="govuk-tag  app-task-list__tag" id="eligibility-completed">Completed</strong>
             {% else %}
-                <strong class="govuk-tag govuk-tag--grey app-task-list__tag">incomplete</strong>
+                <strong class="govuk-tag govuk-tag--grey app-task-list__tag">not started</strong>
             {% endif %}
           </li>
           <li class="app-task-list__item">
@@ -337,7 +339,7 @@ Task list
             {% if data['childs-adoption-agency'] %}
                 <strong class="govuk-tag  app-task-list__tag" id="eligibility-completed">Completed</strong>
             {% else %}
-                <strong class="govuk-tag govuk-tag--grey app-task-list__tag">incomplete</strong>
+                <strong class="govuk-tag govuk-tag--grey app-task-list__tag">not started</strong>
             {% endif %}
           </li>
 
@@ -351,7 +353,7 @@ Task list
             {% if data['solicitor'] %}
                 <strong class="govuk-tag  app-task-list__tag" id="eligibility-completed">Completed</strong>
             {% else %}
-                <strong class="govuk-tag govuk-tag--grey app-task-list__tag">incomplete</strong>
+                <strong class="govuk-tag govuk-tag--grey app-task-list__tag">not started</strong>
             {% endif %}
           </li>
         </ul>
@@ -369,7 +371,7 @@ Task list
             {% if data['payment-declaration'] %}
                 <strong class="govuk-tag  app-task-list__tag" id="eligibility-completed">Completed</strong>
             {% else %}
-                <strong class="govuk-tag govuk-tag--grey app-task-list__tag">incomplete</strong>
+                <strong class="govuk-tag govuk-tag--grey app-task-list__tag">not started</strong>
             {% endif %}
           </li>
         </ul>
