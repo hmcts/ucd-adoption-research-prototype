@@ -406,6 +406,7 @@ router.post('/two-applicants/about-you/first-applicant-contact', function(req, r
     href: '#first-applicant-contact'
     })
   }
+  req.session.data.firstApplicantContactCheckbox = req.body['contact']
   if (req.body['submit-button'] === 'save-and-continue') {
     if (errors.length === 0) {
       res.redirect('/alpha-tidy-up/task-list')
