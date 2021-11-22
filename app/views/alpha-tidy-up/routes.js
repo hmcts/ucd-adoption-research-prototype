@@ -18,6 +18,7 @@ module.exports = (router) => {
     }
   })
 
+
   router.post('/screening-questions/under-18', function(req, res) {
     var errors = []
     if (req.body['child-under-18'] === undefined) {
@@ -40,6 +41,7 @@ module.exports = (router) => {
     }
 
   })
+
 
   router.post('/screening-questions/married', function(req, res) {
     var errors = []
@@ -64,6 +66,7 @@ module.exports = (router) => {
 
   })
 
+
   router.post('/screening-questions/under-21', function(req, res) {
     var errors = []
     if (req.body['under-21'] === undefined) {
@@ -80,6 +83,7 @@ module.exports = (router) => {
         res.render('.//alpha-tidy-up/screening-questions/under-21', { errors: errors })
     }
   })
+
 
   router.post('/screening-questions/lived-uk', function(req, res) {
     var errors = []
@@ -101,7 +105,6 @@ module.exports = (router) => {
     else {
         res.render('.//alpha-tidy-up/screening-questions/lived-uk', { errors: errors })
     }
-
   })
 
 
@@ -121,13 +124,26 @@ module.exports = (router) => {
       })
     }
 
-    if (errors.length === 0) {
-        res.redirect('/alpha-tidy-up/about-application/number-of-applicants')
+    if (req.body['more-than-3'] !== "") {
+      req.session.data.numberChildren = req.body['more-than-3']
     }
     else {
+      req.session.data.numberChildren = req.body['number-of-children']
+    }
+
+    if (req.body['submit-button'] === 'save-and-continue') {
+      if (errors.length === 0) {
+        res.redirect('/alpha-tidy-up/about-application/number-of-applicants')
+      }
+      else {
         res.render('.//alpha-tidy-up/about-application/number-of-children', { errors: errors })
+      }
+    }
+    else {
+      res.redirect('/alpha-tidy-up/two-applicants/task-list-2-multiple')
     }
   })
+
 
   router.post('/about-application/number-of-applicants', function(req, res) {
     var errors = []
@@ -137,11 +153,19 @@ module.exports = (router) => {
       href: '#number-of-applicants'
       })
     }
-    if (errors.length === 0) {
+
+    req.session.data.numberApplicants = req.body['number-of-applicants']
+
+    if (req.body['submit-button'] === 'save-and-continue') {
+      if (errors.length === 0) {
         res.redirect('/alpha-tidy-up/two-applicants/task-list-2-multiple')
+      }
+      else {
+        res.render('.//alpha-tidy-up/about-application/number-of-applicants', { errors: errors })
+      }
     }
     else {
-        res.render('.//alpha-tidy-up/about-application/number-of-applicants', { errors: errors })
+        res.redirect('/alpha-tidy-up/two-applicants/task-list-2-multiple')
     }
   })
 
@@ -158,49 +182,62 @@ module.exports = (router) => {
       href: '#first-applicant-name'
       })
     }
-    if (errors.length === 0) {
-      if (req.body['submit-button'] === 'save-and-continue') {
+
+    if (req.body['submit-button'] === 'save-and-continue') {
+      if (errors.length === 0) {
         res.redirect('/alpha-tidy-up/two-applicants/about-you/first-applicant-other-names')
       }
       else {
-        res.redirect('/alpha-tidy-up/two-applicants/task-list-2-multiple')
+        res.render('.//alpha-tidy-up/two-applicants/about-you/first-applicant-name', { errors: errors })
       }
     }
     else {
-        res.render('.//alpha-tidy-up/two-applicants/about-you/first-applicant-name', { errors: errors })
-    }
+      res.redirect('/alpha-tidy-up/two-applicants/task-list-2-multiple')
+    }  
   })
+
 
   router.post('/two-applicants/about-you/first-applicant-other-names', function(req, res) {
     var errors = []
-    if (req.body['first-applicant-previous-full-name'] === '' && req.session.firstApplicantPreviousNames === '') {
+    console.log("First applicant previous names: ", req.session.data.firstApplicantPreviousNames)
+    console.log("First applicant previous name radio: ", req.body['first-applicant-previous-full-name'])
+    
+    if (req.body['first-applicant-other-names'] === undefined) {
+      // if (req.body['first-applicant-other-names'] === undefined && req.session.data.firstApplicantPreviousNames === '') {
       errors.push({
       text: 'Select an answer',
       href: '#first-applicant-other-names'
       })
     }
-    if (errors.length === 0) {
-      count = req.session.data.firstApplicantNameCount
-      if (req.body['submit-button'] === 'add') {
-        req.session.data.firstApplicantPreviousNames[count] = req.body['first-applicant-previous-full-name']
-        req.session.data.idFirstApplicant[count] = count
-        req.session.data.firstApplicantNameCount = count + 1
-        res.redirect('/alpha-tidy-up/two-applicants/about-you/first-applicant-other-names')
-      }
-      else if (req.body['submit-button'] === 'save-and-continue') {
+    else if (req.body['first-applicant-other-names'] === "Yes" && req.session.data.firstApplicantPreviousNames === "") {
+      errors.push({
+      text: 'Enter a name or choose No',
+      href: '#name'
+      })
+    }
+
+    count = req.session.data.firstApplicantNameCount
+    if (req.body['submit-button'] === 'add') {
+      req.session.data.firstApplicantPreviousNames[count] = req.body['first-applicant-previous-full-name']
+      req.session.data.idFirstApplicant[count] = count
+      req.session.data.firstApplicantNameCount = count + 1
+      res.redirect('/alpha-tidy-up/two-applicants/about-you/first-applicant-other-names')
+    }
+    else if (req.body['submit-button'] === 'save-and-continue') {
+      if (errors.length === 0) {
         req.session.data.firstApplicantPreviousNames[count] = req.body['first-applicant-previous-full-name']
         console.log("Previous names: ", req.session.data.firstApplicantPreviousNames[count])
         res.redirect('/alpha-tidy-up/two-applicants/about-you/first-applicant-date-birth')
       }
       else {
-        res.redirect('/alpha-tidy-up/two-applicants/task-list-2-multiple')
+        res.render('.//alpha-tidy-up/two-applicants/about-you/first-applicant-other-names', { errors: errors })
       }
     }
     else {
-        res.render('.//alpha-tidy-up/two-applicants/about-you/first-applicant-other-names', { errors: errors })
+      res.redirect('/alpha-tidy-up/two-applicants/task-list-2-multiple')
     }
-
   })
+
 
   router.post('/two-applicants/about-you/first-applicant-date-birth', function(req, res) {
     console.log("Day: ", req.body['day'])
@@ -211,19 +248,20 @@ module.exports = (router) => {
       href: '#first-applicant-date-birth'
       })
     }
-    if (errors.length === 0) {
       if (req.body['submit-button'] === 'save-and-continue') {
-        res.redirect('/alpha-tidy-up/two-applicants/about-you/first-applicant-gender')
+        if (errors.length === 0) {
+          res.redirect('/alpha-tidy-up/two-applicants/about-you/first-applicant-nationality')
+        }
+        else {
+          res.render('.//alpha-tidy-up/two-applicants/about-you/first-applicant-date-birth', { errors: errors })
+        }
       }
       else {
         res.redirect('/alpha-tidy-up/two-applicants/task-list-2-multiple')
       }
-    }
-    else {
-        res.render('.//alpha-tidy-up/two-applicants/about-you/first-applicant-date-birth', { errors: errors })
-    }
   })
 
+  
   router.post('/two-applicants/about-you/first-applicant-gender', function(req, res) {
     var errors = []
     if (req.body['first-applicant-gender'] === '') {
@@ -232,19 +270,20 @@ module.exports = (router) => {
       href: '#first-applicant-gender'
       })
     }
-    if (errors.length === 0) {
       if (req.body['submit-button'] === 'save-and-continue') {
-        res.redirect('/alpha-tidy-up/two-applicants/about-you/first-applicant-nationality')
+        if (errors.length === 0) {
+          res.redirect('/alpha-tidy-up/two-applicants/about-you/first-applicant-nationality')
+        }
+        else {
+            res.render('.//alpha-tidy-up/two-applicants/about-you/first-applicant-gender', { errors: errors })
+          }
       }
       else {
         res.redirect('/alpha-tidy-up/two-applicants/task-list-2-multiple')
       }
-    }
-    else {
-        res.render('.//alpha-tidy-up/two-applicants/about-you/first-applicant-gender', { errors: errors })
-    }
   })
 
+  
   router.post('/two-applicants/about-you/first-applicant-nationality', function(req, res) {
     var errors = []
     if (req.body['first-applicant-nationality'] === '') {
@@ -253,19 +292,20 @@ module.exports = (router) => {
       href: '#first-applicant-nationality'
       })
     }
-    if (errors.length === 0) {
-      if (req.body['submit-button'] === 'save-and-continue') {
+    if (req.body['submit-button'] === 'save-and-continue') {
+      if (errors.length === 0) {
         res.redirect('/alpha-tidy-up/two-applicants/about-you/first-applicant-occupation')
       }
       else {
-        res.redirect('/alpha-tidy-up/two-applicants/task-list-2-multiple')
+          res.render('.//alpha-tidy-up/two-applicants/about-you/first-applicant-nationality', { errors: errors })
       }
     }
     else {
-        res.render('.//alpha-tidy-up/two-applicants/about-you/first-applicant-nationality', { errors: errors })
+      res.redirect('/alpha-tidy-up/two-applicants/task-list-2-multiple')
     }
   })
 
+  
   router.post('/two-applicants/about-you/first-applicant-occupation', function(req, res) {
     var errors = []
     if (req.body['first-applicant-occupation'] === '') {
@@ -274,18 +314,21 @@ module.exports = (router) => {
       href: '#first-applicant-occupation'
       })
     }
-    if (errors.length === 0) {
-      if (req.body['submit-button'] === 'save-and-continue') {
+
+    if (req.body['submit-button'] === 'save-and-continue') {
+      if (errors.length === 0) {
         res.redirect('/alpha-tidy-up/two-applicants/task-list-2-multiple')
       }
       else {
-        res.redirect('/alpha-tidy-up/two-applicants/task-list-2-multiple')
+          res.render('.//alpha-tidy-up/two-applicants/about-you/first-applicant-occupation', { errors: errors })
       }
     }
     else {
-        res.render('.//alpha-tidy-up/two-applicants/about-you/first-applicant-occupation', { errors: errors })
+      res.redirect('/alpha-tidy-up/two-applicants/task-list-2-multiple')
     }
   })
+
+
 
 // ********************** First applicant contact details **********************
 router.post('/two-applicants/about-you/first-applicant-address', function(req, res) {
@@ -296,18 +339,19 @@ router.post('/two-applicants/about-you/first-applicant-address', function(req, r
     href: '#first-applicant-address'
     })
   }
-  if (errors.length === 0) {
-    if (req.body['submit-button'] === 'save-and-continue') {
+  if (req.body['submit-button'] === 'save-and-continue') {
+    if (errors.length === 0) {
       res.redirect('/alpha-tidy-up/two-applicants/about-you/first-applicant-address2')
     }
     else {
-      res.redirect('/alpha-tidy-up/two-applicants/task-list-2-multiple')
+      res.render('.//alpha-tidy-up/two-applicants/about-you/first-applicant-address', { errors: errors })
     }
   }
   else {
-      res.render('.//alpha-tidy-up/two-applicants/about-you/first-applicant-address', { errors: errors })
+    res.redirect('/alpha-tidy-up/two-applicants/task-list-2-multiple')
   }
 })
+
 
 router.post('/two-applicants/about-you/first-applicant-address2', function(req, res) {
   var errors = []
@@ -318,19 +362,19 @@ router.post('/two-applicants/about-you/first-applicant-address2', function(req, 
     })
   }
   
-
-  if (errors.length === 0) {
-    if (req.body['submit-button'] === 'save-and-continue') {
+  if (req.body['submit-button'] === 'save-and-continue') {
+    if (errors.length === 0) {
       res.redirect('/alpha-tidy-up/two-applicants/about-you/first-applicant-contact')
     }
     else {
-      res.redirect('/alpha-tidy-up/two-applicants/task-list-2-multiple')
+      res.render('.//alpha-tidy-up/two-applicants/about-you/first-applicant-address2', { errors: errors })
     }
   }
   else {
-      res.render('.//alpha-tidy-up/two-applicants/about-you/first-applicant-address2', { errors: errors })
+    res.redirect('/alpha-tidy-up/two-applicants/task-list-2-multiple')
   }
 })
+
 
 router.post('/two-applicants/about-you/first-applicant-find-address', function(req, res) {
   var errors = []
@@ -340,18 +384,19 @@ router.post('/two-applicants/about-you/first-applicant-find-address', function(r
     href: '#first-applicant-find-address'
     })
   }
-  if (errors.length === 0) {
-    if (req.body['submit-button'] === 'save-and-continue') {
+  if (req.body['submit-button'] === 'save-and-continue') {
+    if (errors.length === 0) {
       res.redirect('/alpha-tidy-up/two-applicants/about-you/first-applicant-contact')
     }
     else {
-      res.redirect('/alpha-tidy-up/two-applicants/task-list-2-multiple')
+      res.render('.//alpha-tidy-up/two-applicants/about-you/first-applicant-find-address', { errors: errors })
     }
   }
   else {
-      res.render('.//alpha-tidy-up/two-applicants/about-you/first-applicant-find-address', { errors: errors })
+    res.redirect('/alpha-tidy-up/two-applicants/task-list-2-multiple')
   }
 })
+
 
 router.post('/two-applicants/about-you/first-applicant-contact', function(req, res) {
   var errors = []
@@ -361,18 +406,21 @@ router.post('/two-applicants/about-you/first-applicant-contact', function(req, r
     href: '#first-applicant-contact'
     })
   }
-  if (errors.length === 0) {
-    if (req.body['submit-button'] === 'save-and-continue') {
+  if (req.body['submit-button'] === 'save-and-continue') {
+    if (errors.length === 0) {
       res.redirect('/alpha-tidy-up/two-applicants/task-list-2-multiple')
     }
-    else if (req.body['submit-button'] === 'save-as-draft') {
-      res.redirect('/alpha-tidy-up/two-applicants/task-list-2-multiple')
+    else {
+      res.render('.//alpha-tidy-up/two-applicants/about-you/first-applicant-contact', { errors: errors })
     }
   }
   else {
-      res.render('.//alpha-tidy-up/two-applicants/about-you/first-applicant-contact', { errors: errors })
+    res.redirect('/alpha-tidy-up/two-applicants/task-list-2-multiple')
   }
 })
+
+
+
 
 // ********************** Second applicant personal details **********************
 router.post('/two-applicants/about-you/second-applicant-name', function(req, res) {
@@ -395,6 +443,7 @@ router.post('/two-applicants/about-you/second-applicant-name', function(req, res
       res.render('.//alpha-tidy-up/two-applicants/about-you/second-applicant-name', { errors: errors })
   }
 })
+
 
 router.post('/two-applicants/about-you/second-applicant-other-names', function(req, res) {
   var errors = []
@@ -424,8 +473,8 @@ router.post('/two-applicants/about-you/second-applicant-other-names', function(r
   else {
       res.render('.//alpha-tidy-up/two-applicants/about-you/second-applicant-other-names', { errors: errors })
   }
-
 })
+
 
 router.post('/two-applicants/about-you/second-applicant-date-birth', function(req, res) {
   console.log("Day: ", req.body['2day'])
@@ -449,6 +498,7 @@ router.post('/two-applicants/about-you/second-applicant-date-birth', function(re
   }
 })
 
+
 router.post('/two-applicants/about-you/second-applicant-gender', function(req, res) {
   var errors = []
   if (req.body['second-applicant-gender'] === '') {
@@ -470,6 +520,7 @@ router.post('/two-applicants/about-you/second-applicant-gender', function(req, r
   }
 })
 
+
 router.post('/two-applicants/about-you/second-applicant-nationality', function(req, res) {
   var errors = []
   if (req.body['second-applicant-nationality'] === '') {
@@ -490,6 +541,7 @@ router.post('/two-applicants/about-you/second-applicant-nationality', function(r
       res.render('.//alpha-tidy-up/two-applicants/about-you/second-applicant-nationality', { errors: errors })
   }
 })
+
 
 router.post('/two-applicants/about-you/second-applicant-occupation', function(req, res) {
   var errors = []
@@ -515,8 +567,6 @@ router.post('/two-applicants/about-you/second-applicant-occupation', function(re
 
 
 // ********************** Second applicant contact details **********************
-
-
 router.post('/two-applicants/about-you/second-applicant-same-address', function(req, res) {
   var errors = []
   if (req.body['same-address'] === undefined) {
@@ -546,6 +596,7 @@ router.post('/two-applicants/about-you/second-applicant-same-address', function(
 
 })
 
+
 router.post('/two-applicants/about-you/second-applicant-address', function(req, res) {
   var errors = []
   if (req.body['second-applicant-address'] === "") {
@@ -570,6 +621,7 @@ router.post('/two-applicants/about-you/second-applicant-address', function(req, 
 
 })
 
+
 router.post('/two-applicants/about-you/second-applicant-address2', function(req, res) {
   var errors = []
   if (req.body['select'] === "") {
@@ -593,6 +645,7 @@ router.post('/two-applicants/about-you/second-applicant-address2', function(req,
 
 })
 
+
 router.post('/two-applicants/about-you/second-applicant-contact', function(req, res) {
   var errors = []
   if (req.body['checkbox'] === "") {
@@ -613,32 +666,8 @@ router.post('/two-applicants/about-you/second-applicant-contact', function(req, 
   else {
       res.render('.//alpha-tidy-up/two-applicants/about-you/second-applicant-contact', { errors: errors })
   }
-
 })
 
-//router.post('/two-applicants/about-you/second-applicant-same-address', function(req, res) {
-  //var errors = []
-  //if (req.body['second-applicant-same-address'] === undefined) {
-    //errors.push({
-    //text: 'Select an answer',
-    //href: '#second-applicant-same-address'
-  //  })
-  //}
-
-//  if (errors.length === 0) {
-  //  if (req.body['submit-button'] === 'save-and-continue') {
-    //if (req.body['second-applicant-same-address'] === "Yes") {
-  //    res.redirect('/alpha-tidy-up/two-applicants/about-you/second-applicant-contact')
-  //  }
-  //  else {
-    //  res.redirect('/alpha-tidy-up/two-applicants/about-you/second-applicant-address')
-  //  }
-//}
-  //else {
-    //  res.render('.//alpha-tidy-up/stwo-applicants/about-you/second-applicant-same-address', { errors: errors })
-  //}
-
-//})
 
 
 
@@ -679,25 +708,6 @@ router.post('/two-applicants/about-you/second-applicant-contact', function(req, 
         res.redirect('/damages/default-judgments/4-make-request-judgment')
     }
   })
-
-
-
-
-
-
-
-
-
-  // router.post('/screening-questions/10-weeks', function(req, res) {
-  //   res.redirect('/alpha-tidy-up/screening-questions/under-18')
-  // })
-
-
-
-
-
-
-
 
 
 

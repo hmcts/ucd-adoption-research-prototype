@@ -46,7 +46,7 @@ Apply to adopt a child
           </span>
           {% endif%}
 
-          <input class="govuk-input" id="occupation" name="first-applicant-occupation" type="text"  spellcheck="false"
+          <input class="govuk-input {% if (occupationError != '')%} govuk-input--error {% endif%}" id="occupation" name="first-applicant-occupation" type="text"  spellcheck="false"
           value="{{ data['first-applicant-occupation'] }}">
         </div>
 
