@@ -646,6 +646,27 @@ router.post('/two-applicants/about-you/second-applicant-address2', function(req,
 
 })
 
+router.post('/two-applicants/about-you/second-applicant-find-address', function(req, res) {
+  var errors = []
+  if (req.body['second-applicant-find-address'] === '') {
+    errors.push({
+    text: 'Enter address',
+    href: '#second-applicant-find-address'
+    })
+  }
+  if (req.body['submit-button'] === 'save-and-continue') {
+    if (errors.length === 0) {
+      res.redirect('/alpha-tidy-up/two-applicants/about-you/second-applicant-contact')
+    }
+    else {
+      res.render('.//alpha-tidy-up/two-applicants/about-you/second-applicant-find-address', { errors: errors })
+    }
+  }
+  else {
+    res.redirect('/alpha-tidy-up/task-list')
+  }
+})
+
 
 router.post('/two-applicants/about-you/second-applicant-contact', function(req, res) {
   var errors = []
