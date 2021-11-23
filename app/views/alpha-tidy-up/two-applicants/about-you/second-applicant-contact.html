@@ -28,87 +28,82 @@ Apply to adopt a child
       {% endfor %}
       {% endif %}
 
-      <form action="../task-list-2-multiple" method="post" class="form">
 
-        <legend class="govuk-fieldset__legend govuk-fieldset__legend--l">
-          <span class="govuk-caption-l">Second applicant </span>
-          <h1 class="govuk-fieldset__heading">
-            How else can we contact you?
-          </h1>
-        </legend>
-        <p>For example, with questions or updates about your application. All legal papers will be posted.</p>
+      <form action="/two-applicants/about-you/second-applicant-contact" method="post" class="form">
 
-        <span id="passport-issued-hint" class="govuk-hint">
-          Select all that apply.
-        </span>
+          <legend class="govuk-fieldset__legend govuk-fieldset__legend--l">
+            <span class="govuk-caption-l">second applicant</span>
+            <h1 class="govuk-fieldset__heading">
+              How else can we contact you?
+            </h1>
+          </legend>
 
-        <div class="govuk-form-group">
-          <fieldset class="govuk-fieldset" aria-describedby="citizenship-conditional-hint">
+          <span id="passport-issued-hint" class="govuk-hint">
+            For example, with questions or updates about your application. All legal papers will be posted.<br><br>Select all that apply.
+          </span>
 
-            <div class="govuk-checkboxes" data-module="govuk-checkboxes">
-              <div class="govuk-checkboxes__item">
-                <input class="govuk-checkboxes__input" id="citizenship-conditional" name="second-applicant-contact-options" type="checkbox"
-                  value="email" data-aria-controls="conditional-citizenship-conditional">
-                <label class="govuk-label govuk-checkboxes__label" for="citizenship-conditional">
-                  Email - <strong>jane@goodall.com</strong>
-                </label>
-              </div>
-              <div class="govuk-checkboxes__item">
-                <input class="govuk-checkboxes__input" id="citizenship-conditional-2" name="second-applicant-contact-options" type="checkbox"
-                  value="phone" data-aria-controls="conditional-citizenship-conditional-2">
-                <label class="govuk-label govuk-checkboxes__label" for="citizenship-conditional-2">
-                  Phone
-                </label>
-              </div>
-              <div class="govuk-checkboxes__conditional govuk-checkboxes__conditional--hidden"
-                id="conditional-citizenship-conditional-2">
-                <div class="govuk-form-group">
-                  <label class="govuk-label" for="contact-by-phone">
-                    Phone number
+          <div class="govuk-form-group {% if (contactError != '')%}govuk-form-group--error{% endif%}">
+            <fieldset class="govuk-fieldset" aria-describedby="citizenship-conditional-hint">
+              <span id="nationality-error" class="govuk-error-message">
+                <span class="govuk-visually-hidden">Error:</span> {{ contactError }}
+              </span>
+
+              <div class="govuk-checkboxes" data-module="govuk-checkboxes">
+                <div class="govuk-checkboxes__item">
+                  <input class="govuk-checkboxes__input" id="email" name="second-applicant-contact-options" type="checkbox"
+                    value="email" data-aria-controls="conditional-citizenship-conditional" {% if (data['second-applicant-contact-options'] == 'phone') %} checked{%endif%}>
+                  <label class="govuk-label govuk-checkboxes__label" for="citizenship-conditional">
+                    Email &ndash; <span class="govuk-!-font-weight-bold">jane@goodall.com</span>
                   </label>
-                  <input class="govuk-input govuk-input--width-20" id="contact-by-phone" name="second-applicant-contact-options"
-                    type="tel" value="{{ data['first-address'] }}">
                 </div>
-
-
-              </div>
-              <div class="govuk-checkboxes__item">
-                <input class="govuk-checkboxes__input" id="text" name="second-applicant-contact-options"
-                  type="checkbox" value="text message" data-aria-controls="conditional-citizenship-conditional-3" {% if (data['second-applicant-contact-options'] == 'text message') %} checked{%endif%}>
-                <label class="govuk-label govuk-checkboxes__label" for="citizenship-conditional-3">
-                  Text message
-                </label>
-              </div>
-              <div class="govuk-checkboxes__conditional govuk-checkboxes__conditional--hidden"
-                id="conditional-citizenship-conditional-3">
-                <div class="govuk-form-group">
-                  <label class="govuk-label" for="contact-by-text">
-                    Mobile phone number
+                <div class="govuk-checkboxes__item">
+                  <input class="govuk-checkboxes__input" id="phone" name="second-applicant-contact-options" type="checkbox"
+                    value="phone" data-aria-controls="conditional-citizenship-conditional-2" {% if (data['second-applicant-contact-options'] == 'phone') %} checked{%endif%}>
+                  <label class="govuk-label govuk-checkboxes__label" for="citizenship-conditional-2">
+                    Phone
                   </label>
-                  <input class="govuk-input govuk-input--width-20" id="contact-by-text" name="second-applicant-contact-options"
-                    type="tel" value="{{ data['first-address'] }}">
                 </div>
+                <div class="govuk-checkboxes__conditional govuk-checkboxes__conditional--hidden"
+                  id="conditional-citizenship-conditional-2">
+                  <div class="govuk-form-group">
+                    <label class="govuk-label" for="contact-by-phone">
+                      Phone number
+                    </label>
+                    <input class="govuk-input govuk-input--width-20" id="contact-by-phone" name="second-applicant-phone-number"
+                      type="tel" value="{{ data['second-applicant-phone-number'] }}">
+                  </div>
+                </div>
+                <div class="govuk-checkboxes__item">
+                  <input class="govuk-checkboxes__input" id="text" name="second-applicant-contact-options"
+                    type="checkbox" value="text message" data-aria-controls="conditional-citizenship-conditional-3" {% if (data['second-applicant-contact-options'] == 'text message') %} checked{%endif%}>
+                  <label class="govuk-label govuk-checkboxes__label" for="citizenship-conditional-3">
+                    Text message
+                  </label>
+                </div>
+                <div class="govuk-checkboxes__conditional govuk-checkboxes__conditional--hidden"
+                  id="conditional-citizenship-conditional-3">
+                  <div class="govuk-form-group">
+                    <label class="govuk-label" for="contact-by-text">
+                      Mobile phone number
+                    </label>
+                    <input class="govuk-input govuk-input--width-20" id="contact-by-text" name="text-number"
+                      type="tel" value="{{ data['text-number'] }}">
+                  </div>
 
+                </div>
               </div>
-            </div>
-          </fieldset>
-        </div>
-        <button class="govuk-button" data-module="govuk-button" name="submit-button" value="save-and-continue">
-          Save and return
-        </button>
-        <button class="govuk-button govuk-button--secondary" data-module="govuk-button" name="submit-button" value="save-as-draft">
-          Save as draft
-        </button>
+            </fieldset>
+          </div>
 
 
-      </form>
+          <!-- Buttons -->
+          {% include "../../../includes/buttons.html" %}
+
+
+        </form>
+      </div>
     </div>
-    <article>
-
-
-    </article>
-  </div>
-</main>
+  </main>
 </div>
 
 {% endblock %}
