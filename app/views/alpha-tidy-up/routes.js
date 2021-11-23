@@ -400,13 +400,13 @@ router.post('/two-applicants/about-you/first-applicant-find-address', function(r
 
 router.post('/two-applicants/about-you/first-applicant-contact', function(req, res) {
   var errors = []
-  if (req.body['contact'] === undefined) {
+  if (req.body['first-applicant-contact-options'] === undefined) {
     errors.push({
     text: 'Select an answer',
     href: '#first-applicant-contact'
     })
   }
-  req.session.data.firstApplicantContactCheckbox = req.body['contact']
+  // req.session.data.firstApplicantContactCheckbox = req.body['first-applicant-contact-options']
   if (req.body['submit-button'] === 'save-and-continue') {
     if (errors.length === 0) {
       res.redirect('/alpha-tidy-up/task-list')
