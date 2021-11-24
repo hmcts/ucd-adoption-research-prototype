@@ -169,6 +169,30 @@ module.exports = (router) => {
     }
   })
 
+  router.post('/about-application/number-of-applicants-2', function(req, res) {
+    var errors = []
+    if (req.body['number-of-applicants'] === undefined) {
+      errors.push({
+      text: 'Select an option which best describes who is applying',
+      href: '#number-of-applicants'
+      })
+    }
+
+    req.session.data.numberApplicants = req.body['number-of-applicants']
+
+    if (req.body['submit-button'] === 'save-and-continue') {
+      if (errors.length === 0) {
+        res.redirect('/alpha-tidy-up/task-list')
+      }
+      else {
+        res.render('.//alpha-tidy-up/about-application/number-of-applicants-2', { errors: errors })
+      }
+    }
+    else {
+        res.redirect('/alpha-tidy-up/task-list')
+    }
+  })
+
 
 
 
