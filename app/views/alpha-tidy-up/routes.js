@@ -174,7 +174,7 @@ module.exports = (router) => {
 
 
   // ********************** First applicant personal details **********************
-  router.post('/two-applicants/about-you/first-applicant-name', function(req, res) {
+  router.post('/alpha-tidy-up/two-applicants/about-you/first-applicant-name', function(req, res) {
     var errors = []
     if (req.body['first-applicant-name'] === '') {
       errors.push({
@@ -331,7 +331,7 @@ module.exports = (router) => {
 
 
 // ********************** First applicant contact details **********************
-router.post('/two-applicants/about-you/first-applicant-address', function(req, res) {
+router.post('/alpha-tidy-up/two-applicants/about-you/first-applicant-address', function(req, res) {
   var errors = []
   if (req.body['first-applicant-address'] === "") {
     errors.push({
@@ -598,7 +598,7 @@ router.post('/two-applicants/about-you/second-applicant-same-address', function(
 })
 
 
-router.post('/two-applicants/about-you/second-applicant-address', function(req, res) {
+router.post('/alpha-tidy-up/two-applicants/about-you/second-applicant-address', function(req, res) {
   var errors = []
   if (req.body['second-applicant-address'] === "") {
     errors.push({
