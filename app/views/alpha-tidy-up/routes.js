@@ -23,7 +23,7 @@ module.exports = (router) => {
     var errors = []
     if (req.body['child-under-18'] === undefined) {
       errors.push({
-      text: 'Select an answer',
+      text: "Select Yes if the child will be under 18 on the date the application is submitted",
       href: '#under-18'
       })
     }
@@ -47,7 +47,7 @@ module.exports = (router) => {
     var errors = []
     if (req.body['child-married'] === undefined) {
       errors.push({
-      text: 'Select an answer',
+      text: 'Select no if the child has never been married or in a civil partnership',
       href: '#married'
       })
     }
@@ -57,7 +57,7 @@ module.exports = (router) => {
         res.redirect('/alpha-tidy-up/screening-questions/cannot-apply')
       }
       else {
-        res.redirect('/alpha-tidy-up/screening-questions/child-can-be-adopted')
+        res.redirect('/alpha-tidy-up/screening-questions/under-21')
       }
     }
     else {
@@ -96,7 +96,7 @@ module.exports = (router) => {
 
     if (errors.length === 0) {
       if (req.body['lived-uk'] === "Yes") {
-        res.redirect('/alpha-tidy-up/screening-questions/can-apply')
+        res.redirect('/alpha-tidy-up/registration/start1')
       }
       else {
         res.redirect('/alpha-tidy-up/screening-questions/cannot-apply')
