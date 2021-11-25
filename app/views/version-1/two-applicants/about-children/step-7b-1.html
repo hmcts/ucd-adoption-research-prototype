@@ -1,0 +1,43 @@
+{% extends "layout-signed-in.html" %}
+
+{% block pageTitle %}
+Apply to adopt a child
+{% endblock %}
+
+{% block content %}
+
+<div class="govuk-width-container">
+  <a href="#" class="govuk-back-link">Back</a>
+
+  <main class="govuk-main-wrapper " id="main-content" role="main">
+    <div class="govuk-grid-row">
+      <div class="govuk-grid-column-two-thirds">
+
+
+        <form action="step-7b-2" method="post" class="form">
+
+          <legend class="govuk-fieldset__legend govuk-fieldset__legend--l">
+            <span class="govuk-caption-l">About the first order</span>
+            <h2 class="govuk-fieldset__heading">
+              What type of order is it?
+            </h2>
+          </legend>
+
+          <div class="govuk-form-group">
+            <input class="govuk-input" id="full-name" name="court-orders-2" type="text" autocomplete="name"
+              spellcheck="false" value="{{ data['court-orders-2'] }}">
+          </div>
+
+
+          <button class="govuk-button" data-module="govuk-button">Save and continue</button>
+          <a href="step-7b" class="govuk-button govuk-button--secondary">Save as draft</a>
+
+
+        </form>
+
+      </div>
+    </div>
+  </main>
+</div>
+
+{% endblock %}

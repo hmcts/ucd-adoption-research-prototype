@@ -1,0 +1,72 @@
+{% extends "layout-signed-in.html" %}
+
+{% block pageTitle %}
+Apply to adopt a child
+{% endblock %}
+
+{% block content %}
+
+<div class="govuk-width-container">
+  <a href="#" class="govuk-back-link">Back</a>
+
+  <main class="govuk-main-wrapper " id="main-content" role="main">
+    <div class="govuk-grid-row">
+      <div class="govuk-grid-column-two-thirds">
+
+        <form action="../task-list-2-multiple" method="post" class="form">
+
+
+
+          <div class="govuk-form-group">
+            <fieldset class="govuk-fieldset" aria-describedby="how-contacted-conditional-hint">
+              <legend class="govuk-fieldset__legend govuk-fieldset__legend--l">
+                <span class="govuk-caption-l">The child’s details </span>
+                <h1 class="govuk-fieldset__heading">
+                  What will the child's full name be after adoption? </h1>
+              </legend>
+
+              <p class="">For example, will they have your surname? This information will appear on the adoption
+                certificate, if your application is
+                approved. </p>
+
+              <div class="govuk-form-group">
+                <input class="govuk-input" id="event-name" name="adoption-cert" type="text" value="{{ data['adoption-cert'] }}">
+              </div>
+
+              <div class="govuk-form-group">
+                <details class="govuk-details" data-module="govuk-details">
+                  <summary class="govuk-details__summary">
+                    <span class="govuk-details__summary-text">
+                      About adoption certificates
+                    </span>
+                  </summary>
+
+                  <div class="govuk-details__text">
+                    If your application is successful, information from the adoption order will be added to the
+                    Adopted Children Register. </p>
+                    <p>A new birth certificate is then created in the child’s adoptive name. This is known as an
+                      adoption certificate and replaces their original birth certificate for all
+                      legal purposes.
+                  </div>
+                </details>
+              </div>
+
+
+            </fieldset>
+
+            <button class="govuk-button" data-module="govuk-button">Save and return</button>
+            <a href="../task-list-2-multiple" class="govuk-button govuk-button--secondary">Save as draft</a>
+
+
+          </div>
+
+
+        </form>
+
+      </div>
+    </div>
+
+  </main>
+</div>
+
+{% endblock %}
