@@ -1,0 +1,63 @@
+{% extends "layout-signed-in.html" %}
+
+{% block pageTitle %}
+Apply to adopt a child
+{% endblock %}
+
+{% block beforeContent %}
+<a class="govuk-back-link" href="javascript:history.back()">Back</a>
+{% endblock %}
+
+{% block content %}
+
+<div class="govuk-width-container">
+  <div class="govuk-grid-row">
+    <div class="govuk-grid-column-two-thirds">
+
+      {% set 2nationalityError = '' %}
+  
+      {% if errors | length > 0 %}
+      {{ govukErrorSummary({
+        titleText: "There is a problem",
+        errorList: errors
+      }) }}
+      {% for error in errors %}
+        {% if error.href == '#second-applicant-nationality' %}
+          {% set 2nationalityError = error.text %}
+        {% endif %}
+      {% endfor %}
+      {% endif %}
+
+
+      <form action="/two-applicants/about-you/second-applicant-nationality" method="post" class="form">
+
+        <legend class="govuk-fieldset__legend govuk-fieldset__legend--l">
+          <span class="govuk-caption-l">Second applicant</span>
+          <h1 class="govuk-fieldset__heading">
+            What's your nationality?
+          </h1>
+        </legend>
+
+
+        <div class="govuk-form-group {% if (2nationalityError != '')%} govuk-form-group--error {% endif%}">
+          {% if (2nationalityError != '')%}
+          <span id="nationality-error" class="govuk-error-message">
+            <span class="govuk-visually-hidden">Error:</span> Enter your nationality [NEEDS CONTENT]
+          </span>
+          {% endif%}
+
+          <input class="govuk-input" id="full-name" name="second-applicant-nationality" type="text"  spellcheck="false"
+          value="{{ data['second-applicant-nationality'] }}">
+        </div>
+
+          <!-- Buttons -->
+          {% include "../../../includes/buttons.html" %}
+
+        </form>
+
+      </div>
+    </div>
+  </main>
+</div>
+
+{% endblock %}
