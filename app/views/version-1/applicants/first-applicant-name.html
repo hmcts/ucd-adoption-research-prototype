@@ -1,0 +1,63 @@
+{% extends "layout-signed-in.html" %}
+
+{% block pageTitle %}
+Apply to adopt a child
+{% endblock %}
+
+{% block beforeContent %}
+<a class="govuk-back-link" href="javascript:history.back()">Back</a>
+{% endblock %}
+
+{% block content %}
+
+<div class="govuk-width-container">
+  <div class="govuk-grid-row">
+    <div class="govuk-grid-column-two-thirds">
+
+      {% set nameError = '' %}
+  
+      {% if errors | length > 0 %}
+      {{ govukErrorSummary({
+        titleText: "There is a problem",
+        errorList: errors
+      }) }}
+      {% for error in errors %}
+        {% if error.href == '#first-applicant-name' %}
+          {% set nameError = error.text %}
+        {% endif %}
+      {% endfor %}
+      {% endif %}
+
+
+      <form action="/version-1/applicants/first-applicant-name" method="post" class="form">
+
+        <legend class="govuk-fieldset__legend govuk-fieldset__legend--l">
+          <span class="govuk-caption-l">First applicant</span>
+          <h1 class="govuk-fieldset__heading">
+            What's your full name?
+          </h1>
+        </legend>
+
+
+        <div class="govuk-form-group {% if (nameError != '')%} govuk-form-group--error {% endif%}">
+          {% if (nameError != '')%}
+          <span id="national-insurance-number-error" class="govuk-error-message">
+            <span class="govuk-visually-hidden">Error:</span> Enter your full name [NEEDS CONTENT]
+          </span>
+          {% endif%}
+
+          <input class="govuk-input {% if (nameError != '')%} govuk-input--error {% endif%}" id="full-name" name="first-applicant-name" type="text" autocomplete="name" spellcheck="false"
+            value="{{ data['first-applicant-name'] }}">
+        </div>
+
+          <!-- Buttons -->
+          {% include "../../includes/buttons.html" %}
+
+        </form>
+
+      </div>
+    </div>
+  </main>
+</div>
+
+{% endblock %}

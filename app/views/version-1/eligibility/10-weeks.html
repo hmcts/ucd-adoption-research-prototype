@@ -14,7 +14,7 @@ Apply to adopt a child
   <div class="govuk-grid-row">
     <div class="govuk-grid-column-two-thirds">
 
-      {% set 21YearsOld = '' %}
+      {% set 10Weeks = '' %}
   
       {% if errors | length > 0 %}
       {{ govukErrorSummary({
@@ -22,40 +22,37 @@ Apply to adopt a child
         errorList: errors
       }) }}
       {% for error in errors %}
-        {% if error.href == '#under-21' %}
-          {% set 21YearsOld = error.text %}
+        {% if error.href == '#10-weeks' %}
+          {% set 10Weeks = error.text %}
         {% endif %}
       {% endfor %}
       {% endif %}
 
 
-      <form action="/version-1/screening-questions/under-21" method="post" class="form">
+      <form action="/version-1/eligibility/10-weeks" method="post" class="form">
 
         <legend class="govuk-fieldset__legend govuk-fieldset__legend--l">
           <span class="govuk-caption-l">Check you're eligible to adopt</span>
           <h1 class="govuk-fieldset__heading">
-            Are you at least 21 years old?
+            Has the child lived with you permanently for at least 10 weeks?
           </h1>
         </legend>
-        <div id="changed-name-hint" class="govuk-hint">
-          If you're applying with a partner, are you both at least 21?
-        </div>
 
-        {% if (21YearsOld != '')%}
+        {% if (10Weeks != '')%}
         <div class="govuk-form-group--error">
         {% endif%}
-        {% if 21YearsOld != '' %}
+        {% if 10Weeks != '' %}
           <span class="govuk-error-message govuk-form">
-            <span class="govuk-visually-hidden">Error:</span> {{ 21YearsOld }}
+            <span class="govuk-visually-hidden">Error:</span> {{ 10Weeks }}
           </span>
         {% endif %}
 
         <div class="govuk-form-group">
-          <fieldset class="govuk-fieldset" role="group" aria-describedby="has-child-lived-with-you--for-at-least-under-21">
+          <fieldset class="govuk-fieldset" role="group" aria-describedby="has-child-lived-with-you--for-at-least-10-weeks">
 
             <div class="govuk-radios govuk-radios--conditional" data-module="govuk-radios">
               <div class="govuk-radios__item">
-                <input class="govuk-radios__input" id="yes" name="under-21" type="radio"
+                <input class="govuk-radios__input" id="yes" name="10-weeks" type="radio"
                   value="Yes">
                 <label class="govuk-label govuk-radios__label" for="yes">
                   Yes
@@ -64,20 +61,20 @@ Apply to adopt a child
 
               <div class="govuk-radios govuk-radios--conditional" data-module="govuk-radios">
                 <div class="govuk-radios__item">
-                  <input class="govuk-radios__input" id="no" name="under-21" type="radio" value="No" data-aria-controls="conditional-contact">
-                  <label class="govuk-label govuk-radios__label" for="under-21">
+                  <input class="govuk-radios__input" id="no" name="10-weeks" type="radio" value="No" data-aria-controls="conditional-contact">
+                  <label class="govuk-label govuk-radios__label" for="10-weeks">
                     No
                   </label>
                 </div>
                 <div class="govuk-radios__conditional govuk-radios__conditional--hidden" id="conditional-contact">
                   <div class="govuk-form-group">
-                    <p>[NEEDS CONTENT] You need to be over 21 when you apply.</p>         
+                    <p>[NEEDS CONTENT] You can fill in the form but you can only apply to adopt this child after they have lived with you for at least 10 weeks.</p>         
                   </div>  
                            
             </div>
           </fieldset>
         </div>
-        {% if 21YearsOld != '' %}
+        {% if 10Weeks != '' %}
           </div>
           {% endif %}
         <button class="govuk-button" data-module="govuk-button">

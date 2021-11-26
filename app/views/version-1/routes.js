@@ -1,7 +1,7 @@
 module.exports = (router) => {
 
   // ********************** Eligibility **********************
-  router.post('/version-1/screening-questions/10-weeks', function(req, res) {
+  router.post('/version-1/eligibility/10-weeks', function(req, res) {
     var errors = []
     if (req.body['10-weeks'] === undefined) {
       errors.push({
@@ -11,39 +11,39 @@ module.exports = (router) => {
     }
 
     if (errors.length === 0) {
-        res.redirect('/version-1/screening-questions/under-18')
+        res.redirect('/version-1/eligibility/under-18')
     }
     else {
-        res.render('.//version-1/screening-questions/10-weeks', { errors: errors })
+        res.render('.//version-1/eligibility/10-weeks', { errors: errors })
     }
   })
 
 
-  router.post('/version-1/screening-questions/under-18', function(req, res) {
+  router.post('/version-1/eligibility/under-18', function(req, res) {
     var errors = []
     if (req.body['child-under-18'] === undefined) {
       errors.push({
-      text: "Select Yes if the child will be under 18 on the date the application is submitted",
+      text: "Select yes if the child will be under 18 on the date the application is submitted",
       href: '#under-18'
       })
     }
 
     if (errors.length === 0) {
       if (req.body['child-under-18'] === "Yes") {
-        res.redirect('/version-1/screening-questions/married')
+        res.redirect('/version-1/eligibility/married')
       }
       else {
-        res.redirect('/version-1/screening-questions/cannot-apply')
+        res.redirect('/version-1/eligibility/cannot-apply')
       }
     }
     else {
-        res.render('.//version-1/screening-questions/under-18', { errors: errors })
+        res.render('.//version-1/eligibility/under-18', { errors: errors })
     }
 
   })
 
 
-  router.post/('version-1/screening-questions/married', function(req, res) {
+  router.post('/version-1/eligibility/married', function(req, res) {
     var errors = []
     if (req.body['child-married'] === undefined) {
       errors.push({
@@ -51,23 +51,25 @@ module.exports = (router) => {
       href: '#married'
       })
     }
+    console.log("Test")
+    console.log("Error: ", req.body['child-married'])
 
     if (errors.length === 0) {
       if (req.body['child-married'] === 'Yes') {
-        res.redirect('/version-1/screening-questions/cannot-apply')
+        res.redirect('/version-1/eligibility/cannot-apply')
       }
       else {
-        res.redirect('/version-1/screening-questions/under-21')
+        res.redirect('/version-1/eligibility/under-21')
       }
     }
     else {
-        res.render('.//version-1/screening-questions/married', { errors: errors })
+        res.render('.//version-1/eligibility/married', { errors: errors })
     }
 
   })
 
 
-  router.post/('version-1/screening-questions/under-21', function(req, res) {
+  router.post('/version-1/eligibility/under-21', function(req, res) {
     var errors = []
     if (req.body['under-21'] === undefined) {
       errors.push({
@@ -77,15 +79,15 @@ module.exports = (router) => {
     }
 
     if (errors.length === 0) {
-        res.redirect('/version-1/screening-questions/lived-uk')
+        res.redirect('/version-1/eligibility/lived-uk')
     }
     else {
-        res.render('.//version-1/screening-questions/under-21', { errors: errors })
+        res.render('.//version-1/eligibility/under-21', { errors: errors })
     }
   })
 
 
-  router.post('/screening-questions/lived-uk', function(req, res) {
+  router.post('/version-1/eligibility/lived-uk', function(req, res) {
     var errors = []
     if (req.body['lived-uk'] === undefined) {
       errors.push({
@@ -99,17 +101,17 @@ module.exports = (router) => {
         res.redirect('/version-1/registration/start1')
       }
       else {
-        res.redirect('/version-1/screening-questions/cannot-apply')
+        res.redirect('/version-1/eligibility/cannot-apply')
       }
     }
     else {
-        res.render('.//version-1/screening-questions/lived-uk', { errors: errors })
+        res.render('.//version-1/eligibility/lived-uk', { errors: errors })
     }
   })
 
 
   // ********************** Application details  **********************
-  router.post/('version-1/about-application/number-of-children', function(req, res) {
+  router.post('/version-1/applicants/number-of-children', function(req, res) {
     var errors = []
     if (req.body['number-children'] === undefined) {
       errors.push({
@@ -133,10 +135,10 @@ module.exports = (router) => {
 
     if (req.body['submit-button'] === 'save-and-continue') {
       if (errors.length === 0) {
-        res.redirect('/version-1/about-application/number-of-applicants')
+        res.redirect('/version-1/applicants/number-of-applicants')
       }
       else {
-        res.render('.//version-1/about-application/number-of-children', { errors: errors })
+        res.render('.//version-1/applicants/number-of-children', { errors: errors })
       }
     }
     else {
@@ -145,7 +147,7 @@ module.exports = (router) => {
   })
 
 
-  router.post/('version-1/about-application/number-of-applicants', function(req, res) {
+  router.post('/version-1/applicants/number-of-applicants', function(req, res) {
     var errors = []
     if (req.body['number-of-applicants'] === undefined) {
       errors.push({
@@ -161,7 +163,7 @@ module.exports = (router) => {
         res.redirect('/version-1/task-list')
       }
       else {
-        res.render('.//version-1/about-application/number-of-applicants', { errors: errors })
+        res.render('.//version-1/applicants/number-of-applicants', { errors: errors })
       }
     }
     else {
@@ -169,7 +171,7 @@ module.exports = (router) => {
     }
   })
 
-  router.post/('version-1/about-application/number-of-applicants-2', function(req, res) {
+  router.post('version-1/about-application/number-of-applicants-2', function(req, res) {
     var errors = []
     if (req.body['number-of-applicants'] === undefined) {
       errors.push({
@@ -185,7 +187,7 @@ module.exports = (router) => {
         res.redirect('/version-1/task-list')
       }
       else {
-        res.render('.//version-1/about-application/number-of-applicants-2', { errors: errors })
+        res.render('.//version-1/applicants/number-of-applicants-2', { errors: errors })
       }
     }
     else {
@@ -198,7 +200,7 @@ module.exports = (router) => {
 
 
   // ********************** First applicant personal details **********************
-  router.post('/version-1/two-applicants/about-you/first-applicant-name', function(req, res) {
+  router.post('/version-1/applicants/first-applicant-name', function(req, res) {
     var errors = []
     if (req.body['first-applicant-name'] === '') {
       errors.push({
@@ -209,10 +211,10 @@ module.exports = (router) => {
 
     if (req.body['submit-button'] === 'save-and-continue') {
       if (errors.length === 0) {
-        res.redirect('/version-1/two-applicants/about-you/first-applicant-other-names')
+        res.redirect('/version-1/applicants/first-applicant-other-names')
       }
       else {
-        res.render('.//version-1/two-applicants/about-you/first-applicant-name', { errors: errors })
+        res.render('.//version-1/applicants/first-applicant-name', { errors: errors })
       }
     }
     else {
@@ -221,7 +223,7 @@ module.exports = (router) => {
   })
 
 
-  router.post/('version-1/two-applicants/about-you/first-applicant-other-names', function(req, res) {
+  router.post('/version-1/applicants/first-applicant-other-names', function(req, res) {
     var errors = []
     console.log("First applicant previous names: ", req.session.data.firstApplicantPreviousNames)
     console.log("First applicant previous name radio: ", req.body['first-applicant-previous-full-name'])
@@ -245,16 +247,16 @@ module.exports = (router) => {
       req.session.data.firstApplicantPreviousNames[count] = req.body['first-applicant-previous-full-name']
       req.session.data.idFirstApplicant[count] = count
       req.session.data.firstApplicantNameCount = count + 1
-      res.redirect('/version-1/two-applicants/about-you/first-applicant-other-names')
+      res.redirect('/version-1/applicants/first-applicant-other-names')
     }
     else if (req.body['submit-button'] === 'save-and-continue') {
       if (errors.length === 0) {
         req.session.data.firstApplicantPreviousNames[count] = req.body['first-applicant-previous-full-name']
         console.log("Previous names: ", req.session.data.firstApplicantPreviousNames[count])
-        res.redirect('/version-1/two-applicants/about-you/first-applicant-date-birth')
+        res.redirect('/version-1/applicants/first-applicant-date-birth')
       }
       else {
-        res.render('.//version-1/two-applicants/about-you/first-applicant-other-names', { errors: errors })
+        res.render('.//version-1/applicants/first-applicant-other-names', { errors: errors })
       }
     }
     else {
@@ -263,7 +265,7 @@ module.exports = (router) => {
   })
 
 
-  router.post('/version-1/two-applicants/about-you/first-applicant-date-birth', function(req, res) {
+  router.post('/version-1/applicants/first-applicant-date-birth', function(req, res) {
     console.log("Day: ", req.body['day'])
     var errors = []
     if (req.body['day'] === '' || req.body['month'] === '' || req.body['year'] === '') {
@@ -274,10 +276,10 @@ module.exports = (router) => {
     }
       if (req.body['submit-button'] === 'save-and-continue') {
         if (errors.length === 0) {
-          res.redirect('/version-1/two-applicants/about-you/first-applicant-nationality')
+          res.redirect('/version-1/applicants/first-applicant-nationality')
         }
         else {
-          res.render('.//version-1/two-applicants/about-you/first-applicant-date-birth', { errors: errors })
+          res.render('.//version-1/applicants/first-applicant-date-birth', { errors: errors })
         }
       }
       else {
@@ -286,7 +288,7 @@ module.exports = (router) => {
   })
 
 
-  router.post('/version-1/two-applicants/about-you/first-applicant-gender', function(req, res) {
+  router.post('/version-1/applicants/first-applicant-gender', function(req, res) {
     var errors = []
     if (req.body['first-applicant-gender'] === '') {
       errors.push({
@@ -296,10 +298,10 @@ module.exports = (router) => {
     }
       if (req.body['submit-button'] === 'save-and-continue') {
         if (errors.length === 0) {
-          res.redirect('/version-1/two-applicants/about-you/first-applicant-nationality')
+          res.redirect('/version-1/applicants/first-applicant-nationality')
         }
         else {
-            res.render('.//version-1/two-applicants/about-you/first-applicant-gender', { errors: errors })
+            res.render('.//version-1/applicants/first-applicant-gender', { errors: errors })
           }
       }
       else {
@@ -308,7 +310,7 @@ module.exports = (router) => {
   })
 
 
-  router.post('/version-1/two-applicants/about-you/first-applicant-nationality', function(req, res) {
+  router.post('/version-1/applicants/first-applicant-nationality', function(req, res) {
     var errors = []
     if (req.body['first-applicant-nationality'] === '') {
       errors.push({
@@ -318,10 +320,10 @@ module.exports = (router) => {
     }
     if (req.body['submit-button'] === 'save-and-continue') {
       if (errors.length === 0) {
-        res.redirect('/version-1/two-applicants/about-you/first-applicant-occupation')
+        res.redirect('/version-1/applicants/first-applicant-occupation')
       }
       else {
-          res.render('.//version-1/two-applicants/about-you/first-applicant-nationality', { errors: errors })
+          res.render('.//version-1/applicants/first-applicant-nationality', { errors: errors })
       }
     }
     else {
@@ -330,7 +332,7 @@ module.exports = (router) => {
   })
 
 
-  router.post('/version-1/two-applicants/about-you/first-applicant-occupation', function(req, res) {
+  router.post('/version-1/applicants/first-applicant-occupation', function(req, res) {
     var errors = []
     if (req.body['first-applicant-occupation'] === '') {
       errors.push({
@@ -344,7 +346,7 @@ module.exports = (router) => {
         res.redirect('/version-1/task-list')
       }
       else {
-          res.render('.//version-1/two-applicants/about-you/first-applicant-occupation', { errors: errors })
+          res.render('.//version-1/applicants/first-applicant-occupation', { errors: errors })
       }
     }
     else {
@@ -355,7 +357,7 @@ module.exports = (router) => {
 
 
 // ********************** First applicant contact details **********************
-router.post('/version-1/two-applicants/about-you/first-applicant-address', function(req, res) {
+router.post('/version-1/applicants/first-applicant-address', function(req, res) {
   var errors = []
   if (req.body['first-applicant-address'] === "") {
     errors.push({
@@ -365,10 +367,10 @@ router.post('/version-1/two-applicants/about-you/first-applicant-address', funct
   }
   if (req.body['submit-button'] === 'save-and-continue') {
     if (errors.length === 0) {
-      res.redirect('/version-1/two-applicants/about-you/first-applicant-address2')
+      res.redirect('/version-1/applicants/first-applicant-address2')
     }
     else {
-      res.render('.//version-1/two-applicants/about-you/first-applicant-address', { errors: errors })
+      res.render('.//version-1/applicants/first-applicant-address', { errors: errors })
     }
   }
   else {
@@ -377,7 +379,7 @@ router.post('/version-1/two-applicants/about-you/first-applicant-address', funct
 })
 
 
-router.post('/version-1/two-applicants/about-you/first-applicant-address2', function(req, res) {
+router.post('/version-1/applicants/first-applicant-address2', function(req, res) {
   var errors = []
   if (req.body['first-applicant-choose-address'] === 'address-found') {
     errors.push({
@@ -388,10 +390,10 @@ router.post('/version-1/two-applicants/about-you/first-applicant-address2', func
 
   if (req.body['submit-button'] === 'save-and-continue') {
     if (errors.length === 0) {
-      res.redirect('/version-1/two-applicants/about-you/first-applicant-contact')
+      res.redirect('/version-1/applicants/first-applicant-contact')
     }
     else {
-      res.render('.//version-1/two-applicants/about-you/first-applicant-address2', { errors: errors })
+      res.render('.//version-1/applicants/first-applicant-address2', { errors: errors })
     }
   }
   else {
@@ -400,7 +402,7 @@ router.post('/version-1/two-applicants/about-you/first-applicant-address2', func
 })
 
 
-router.post('/version-1/two-applicants/about-you/first-applicant-find-address', function(req, res) {
+router.post('/version-1/applicants/first-applicant-find-address', function(req, res) {
   var errors = []
   if (req.body['first-applicant-find-address'] === '') {
     errors.push({
@@ -410,10 +412,10 @@ router.post('/version-1/two-applicants/about-you/first-applicant-find-address', 
   }
   if (req.body['submit-button'] === 'save-and-continue') {
     if (errors.length === 0) {
-      res.redirect('/version-1/two-applicants/about-you/first-applicant-contact')
+      res.redirect('/version-1/applicants/first-applicant-contact')
     }
     else {
-      res.render('.//version-1/two-applicants/about-you/first-applicant-find-address', { errors: errors })
+      res.render('.//version-1/applicants/first-applicant-find-address', { errors: errors })
     }
   }
   else {
@@ -422,7 +424,7 @@ router.post('/version-1/two-applicants/about-you/first-applicant-find-address', 
 })
 
 
-router.post('/version-1/two-applicants/about-you/first-applicant-contact', function(req, res) {
+router.post('/version-1/applicants/first-applicant-contact', function(req, res) {
   var errors = []
   if (req.body['first-applicant-contact-options'] === undefined) {
     errors.push({
@@ -436,7 +438,7 @@ router.post('/version-1/two-applicants/about-you/first-applicant-contact', funct
       res.redirect('/version-1/task-list')
     }
     else {
-      res.render('.//version-1/two-applicants/about-you/first-applicant-contact', { errors: errors })
+      res.render('.//version-1/applicants/first-applicant-contact', { errors: errors })
     }
   }
   else {
@@ -448,7 +450,7 @@ router.post('/version-1/two-applicants/about-you/first-applicant-contact', funct
 
 
 // ********************** Second applicant personal details **********************
-router.post('/version-1/two-applicants/about-you/second-applicant-name', function(req, res) {
+router.post('/version-1/applicants/second-applicant-name', function(req, res) {
   var errors = []
   if (req.body['second-applicant-name'] === '') {
     errors.push({
@@ -458,19 +460,19 @@ router.post('/version-1/two-applicants/about-you/second-applicant-name', functio
   }
   if (errors.length === 0) {
     if (req.body['submit-button'] === 'save-and-continue') {
-      res.redirect('/version-1/two-applicants/about-you/second-applicant-other-names')
+      res.redirect('/version-1/applicants/second-applicant-other-names')
     }
     else {
       res.redirect('/version-1/task-list')
     }
   }
   else {
-      res.render('.//version-1/two-applicants/about-you/second-applicant-name', { errors: errors })
+      res.render('.//version-1/applicants/second-applicant-name', { errors: errors })
   }
 })
 
 
-router.post('/version-1/two-applicants/about-you/second-applicant-other-names', function(req, res) {
+router.post('/version-1/applicants/second-applicant-other-names', function(req, res) {
   var errors = []
   if (req.body['second-applicant-previous-full-name'] === '' && req.session.secondApplicantPreviousNames === '') {
     errors.push({
@@ -484,24 +486,24 @@ router.post('/version-1/two-applicants/about-you/second-applicant-other-names', 
       req.session.data.secondApplicantPreviousNames[count] = req.body['second-applicant-previous-full-name']
       req.session.data.idSecondApplicant[count] = count
       req.session.data.secondApplicantNameCount = count + 1
-      res.redirect('/version-1/two-applicants/about-you/second-applicant-other-names')
+      res.redirect('/version-1/applicants/second-applicant-other-names')
     }
     else if (req.body['submit-button'] === 'save-and-continue') {
       req.session.data.secondApplicantPreviousNames[count] = req.body['second-applicant-previous-full-name']
       console.log("Previous names: ", req.session.data.secondApplicantPreviousNames[count])
-      res.redirect('/version-1/two-applicants/about-you/second-applicant-date-birth')
+      res.redirect('/version-1/applicants/second-applicant-date-birth')
     }
     else {
       res.redirect('/version-1/task-list')
     }
   }
   else {
-      res.render('.//version-1/two-applicants/about-you/second-applicant-other-names', { errors: errors })
+      res.render('.//version-1/applicants/second-applicant-other-names', { errors: errors })
   }
 })
 
 
-router.post('/version-1/two-applicants/about-you/second-applicant-date-birth', function(req, res) {
+router.post('/version-1/applicants/second-applicant-date-birth', function(req, res) {
   console.log("Day: ", req.body['2day'])
   var errors = []
   if (req.body['2day'] === '' || req.body['2month'] === '' || req.body['2year'] === '') {
@@ -512,19 +514,19 @@ router.post('/version-1/two-applicants/about-you/second-applicant-date-birth', f
   }
   if (errors.length === 0) {
     if (req.body['submit-button'] === 'save-and-continue') {
-      res.redirect('/version-1/two-applicants/about-you/second-applicant-gender')
+      res.redirect('/version-1/applicants/second-applicant-gender')
     }
     else {
       res.redirect('/version-1/task-list')
     }
   }
   else {
-      res.render('.//version-1/two-applicants/about-you/second-applicant-date-birth', { errors: errors })
+      res.render('.//version-1/applicants/second-applicant-date-birth', { errors: errors })
   }
 })
 
 
-router.post('/version-1/two-applicants/about-you/second-applicant-gender', function(req, res) {
+router.post('/version-1/applicants/second-applicant-gender', function(req, res) {
   var errors = []
   if (req.body['second-applicant-gender'] === '') {
     errors.push({
@@ -534,19 +536,19 @@ router.post('/version-1/two-applicants/about-you/second-applicant-gender', funct
   }
   if (errors.length === 0) {
     if (req.body['submit-button'] === 'save-and-continue') {
-      res.redirect('/version-1/two-applicants/about-you/second-applicant-nationality')
+      res.redirect('/version-1/applicants/second-applicant-nationality')
     }
     else {
       res.redirect('/version-1/task-list')
     }
   }
   else {
-      res.render('.//version-1/two-applicants/about-you/second-applicant-gender', { errors: errors })
+      res.render('.//version-1/applicants/second-applicant-gender', { errors: errors })
   }
 })
 
 
-router.post('/version-1/two-applicants/about-you/second-applicant-nationality', function(req, res) {
+router.post('/version-1/applicants/second-applicant-nationality', function(req, res) {
   var errors = []
   if (req.body['second-applicant-nationality'] === '') {
     errors.push({
@@ -556,19 +558,19 @@ router.post('/version-1/two-applicants/about-you/second-applicant-nationality', 
   }
   if (errors.length === 0) {
     if (req.body['submit-button'] === 'save-and-continue') {
-      res.redirect('/version-1/two-applicants/about-you/second-applicant-occupation')
+      res.redirect('/version-1/applicants/second-applicant-occupation')
     }
     else {
       res.redirect('/version-1/task-list')
     }
   }
   else {
-      res.render('.//version-1/two-applicants/about-you/second-applicant-nationality', { errors: errors })
+      res.render('.//version-1/applicants/second-applicant-nationality', { errors: errors })
   }
 })
 
 
-router.post('/version-1/two-applicants/about-you/second-applicant-occupation', function(req, res) {
+router.post('/version-1/applicants/second-applicant-occupation', function(req, res) {
   var errors = []
   if (req.body['second-applicant-occupation'] === '') {
     errors.push({
@@ -585,14 +587,14 @@ router.post('/version-1/two-applicants/about-you/second-applicant-occupation', f
     }
   }
   else {
-      res.render('.//version-1/two-applicants/about-you/second-applicant-occupation', { errors: errors })
+      res.render('.//version-1/applicants/second-applicant-occupation', { errors: errors })
   }
 })
 
 
 
 // ********************** Second applicant contact details **********************
-router.post('/version-1/two-applicants/about-you/second-applicant-same-address', function(req, res) {
+router.post('/version-1/applicants/second-applicant-same-address', function(req, res) {
   var errors = []
   if (req.body['same-address'] === undefined) {
     errors.push({
@@ -605,10 +607,10 @@ router.post('/version-1/two-applicants/about-you/second-applicant-same-address',
    if (req.body['submit-button'] === 'save-and-continue') {
       if (req.body['same-address'] === "Yes") {
         console.log("Test: ",req.body['same-address'])
-        res.redirect('/version-1/two-applicants/about-you/second-applicant-contact')
+        res.redirect('/version-1/applicants/second-applicant-contact')
       }
       else {
-        res.redirect('/version-1/two-applicants/about-you/second-applicant-address')
+        res.redirect('/version-1/applicants/second-applicant-address')
       }
     }
     else {
@@ -616,13 +618,13 @@ router.post('/version-1/two-applicants/about-you/second-applicant-same-address',
     }
   }
   else {
-      res.render('.//version-1/two-applicants/about-you/second-applicant-same-address', { errors: errors })
+      res.render('.//version-1/applicants/second-applicant-same-address', { errors: errors })
   }
 
 })
 
 
-router.post('/version-1/two-applicants/about-you/second-applicant-address', function(req, res) {
+router.post('/version-1/applicants/second-applicant-address', function(req, res) {
   var errors = []
   if (req.body['second-applicant-address'] === "") {
     errors.push({
@@ -634,20 +636,20 @@ router.post('/version-1/two-applicants/about-you/second-applicant-address', func
   if (errors.length === 0) {
    if (req.body['submit-button'] === 'save-and-continue') {
       console.log("Test: ", req.body['submit-button'])
-      res.redirect('/version-1/two-applicants/about-you/second-applicant-address2')
+      res.redirect('/version-1/applicants/second-applicant-address2')
     }
     else {
       res.redirect('/version-1/task-list')
     }
   }
   else {
-      res.render('.//version-1/two-applicants/about-you/second-applicant-address', { errors: errors })
+      res.render('.//version-1/applicants/second-applicant-address', { errors: errors })
   }
 
 })
 
 
-router.post('/version-1/two-applicants/about-you/second-applicant-address2', function(req, res) {
+router.post('/version-1/applicants/second-applicant-address2', function(req, res) {
   var errors = []
   if (req.body['second-applicant-choose-address'] === 'address-found') {
     errors.push({
@@ -658,10 +660,10 @@ router.post('/version-1/two-applicants/about-you/second-applicant-address2', fun
 
   if (req.body['submit-button'] === 'save-and-continue') {
     if (errors.length === 0) {
-      res.redirect('/version-1/two-applicants/about-you/second-applicant-contact')
+      res.redirect('/version-1/applicants/second-applicant-contact')
     }
     else {
-      res.render('.//version-1/two-applicants/about-you/second-applicant-address2', { errors: errors })
+      res.render('.//version-1/applicants/second-applicant-address2', { errors: errors })
     }
   }
   else {
@@ -672,7 +674,7 @@ router.post('/version-1/two-applicants/about-you/second-applicant-address2', fun
 
 
 
-router.post('/version-1/two-applicants/about-you/second-applicant-contact', function(req, res) {
+router.post('/version-1/applicants/second-applicant-contact', function(req, res) {
   var errors = []
   if (req.body['second-applicant-contact-options'] === undefined) {
     errors.push({
@@ -686,7 +688,7 @@ router.post('/version-1/two-applicants/about-you/second-applicant-contact', func
       res.redirect('/version-1/task-list')
     }
     else {
-      res.render('.//version-1/two-applicants/about-you/second-applicant-contact', { errors: errors })
+      res.render('.//version-1/applicants/second-applicant-contact', { errors: errors })
     }
   }
   else {
