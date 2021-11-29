@@ -23,7 +23,7 @@ module.exports = (router) => {
     var errors = []
     if (req.body['child-under-18'] === undefined) {
       errors.push({
-      text: 'Select an answer',
+      text: "Select Yes if the child will be under 18 on the date the application is submitted",
       href: '#under-18'
       })
     }
@@ -47,7 +47,7 @@ module.exports = (router) => {
     var errors = []
     if (req.body['child-married'] === undefined) {
       errors.push({
-      text: 'Select an answer',
+      text: 'Select no if the child has never been married or in a civil partnership',
       href: '#married'
       })
     }
@@ -57,7 +57,7 @@ module.exports = (router) => {
         res.redirect('/alpha-tidy-up/screening-questions/cannot-apply')
       }
       else {
-        res.redirect('/alpha-tidy-up/screening-questions/child-can-be-adopted')
+        res.redirect('/alpha-tidy-up/screening-questions/under-21')
       }
     }
     else {
@@ -96,7 +96,7 @@ module.exports = (router) => {
 
     if (errors.length === 0) {
       if (req.body['lived-uk'] === "Yes") {
-        res.redirect('/alpha-tidy-up/screening-questions/can-apply')
+        res.redirect('/alpha-tidy-up/registration/start1')
       }
       else {
         res.redirect('/alpha-tidy-up/screening-questions/cannot-apply')
@@ -145,11 +145,35 @@ module.exports = (router) => {
   })
 
 
-  router.post('/about-application/number-of-applicants', function(req, res) {
+  router.post('/about-application/number-of-applicants-old', function(req, res) {
     var errors = []
     if (req.body['number-of-applicants'] === undefined) {
       errors.push({
       text: 'Select the number of people applying to adopt',
+      href: '#number-of-applicants'
+      })
+    }
+
+    req.session.data.numberApplicants = req.body['number-of-applicants']
+
+    if (req.body['submit-button'] === 'save-and-continue') {
+      if (errors.length === 0) {
+        res.redirect('/alpha-tidy-up/task-list')
+      }
+      else {
+        res.render('.//alpha-tidy-up/about-application/number-of-applicants', { errors: errors })
+      }
+    }
+    else {
+        res.redirect('/alpha-tidy-up/task-list')
+    }
+  })
+
+  router.post('/about-application/number-of-applicants', function(req, res) {
+    var errors = []
+    if (req.body['number-of-applicants'] === undefined) {
+      errors.push({
+      text: 'Select an option which best describes who is applying',
       href: '#number-of-applicants'
       })
     }
@@ -174,11 +198,11 @@ module.exports = (router) => {
 
 
   // ********************** First applicant personal details **********************
-  router.post('/two-applicants/about-you/first-applicant-name', function(req, res) {
+  router.post('/alpha-tidy-up/two-applicants/about-you/first-applicant-name', function(req, res) {
     var errors = []
     if (req.body['first-applicant-name'] === '') {
       errors.push({
-      text: 'Select an answer',
+      text: 'Enter your full name',
       href: '#first-applicant-name'
       })
     }
@@ -331,7 +355,7 @@ module.exports = (router) => {
 
 
 // ********************** First applicant contact details **********************
-router.post('/two-applicants/about-you/first-applicant-address', function(req, res) {
+router.post('/alpha-tidy-up/two-applicants/about-you/first-applicant-address', function(req, res) {
   var errors = []
   if (req.body['first-applicant-address'] === "") {
     errors.push({
@@ -598,7 +622,7 @@ router.post('/two-applicants/about-you/second-applicant-same-address', function(
 })
 
 
-router.post('/two-applicants/about-you/second-applicant-address', function(req, res) {
+router.post('/alpha-tidy-up/two-applicants/about-you/second-applicant-address', function(req, res) {
   var errors = []
   if (req.body['second-applicant-address'] === "") {
     errors.push({

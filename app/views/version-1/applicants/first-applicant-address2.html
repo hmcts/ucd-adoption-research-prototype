@@ -1,0 +1,83 @@
+{% extends "layout-signed-in.html" %}
+
+{% block pageTitle %}
+Apply to adopt a child
+{% endblock %}
+
+{% block beforeContent %}
+<a class="govuk-back-link" href="javascript:history.back()">Back</a>
+{% endblock %}
+
+{% block content %}
+
+<div class="govuk-width-container">
+  <div class="govuk-grid-row">
+    <div class="govuk-grid-column-two-thirds">
+       {% set address2error = '' %}
+
+      {% if errors | length > 0 %}
+      {{ govukErrorSummary({
+        titleText: "There is a problem",
+        errorList: errors
+      }) }}
+      {% for error in errors %}
+        {% if error.href == '#first-applicant-address2' %}
+          {% set address2error = error.text %}
+        {% endif %}
+      {% endfor %}
+      {% endif %}
+      <form action="/version-1/applicants/first-applicant-address2" method="post" class="form">
+
+
+              <div class="govuk-form-group">
+                <legend class="govuk-fieldset__legend govuk-fieldset__legend--l">
+                  <span class="govuk-caption-l">First applicant </span>
+                  <h1 class="govuk-fieldset__heading">
+                    What's your address?
+                  </h1>
+                </legend>
+                <p class="govuk-body"> We'll send all court papers to this address.</p>
+                <fieldset class="govuk-fieldset" role="group" aria-describedby="dob-hint">
+                  <label class="govuk-label govuk-label--m" for="passport-number">
+                    Postcode
+                  </label>
+                  <div class="govuk-form-group float-left">
+                    <!-- <p class="govuk-body-l">SW1A 1AA</p> -->
+                    <p class="govuk-body govuk-!-font-size-19">SW1A 1AA</p>
+
+                    <p><a href="first-applicant-address">Change</a></p>
+                  </div>
+
+                  <div class="govuk-form-group">
+                    <label class="govuk-label govuk-label--m" for="passport-number">
+                      Select an address
+                    </label>
+                  <div class="govuk-form-group {% if (address2error != '')%} govuk-form-group--error {% endif%}">
+                      {% if (address2error != '')%}
+                      <span id="gender-error" class="govuk-error-message">
+                        <span class="govuk-visually-hidden">Error:</span> {{ address2error }}
+                      </span>
+                      {% endif%}
+          <select class="govuk-select" id="sort" name="first-applicant-choose-address">
+                      <option value="address-found">1 address found </option>
+                      <option value="address-option-1" {% if (data['first-applicant-choose-address'] === 'address-option-1') %} selected {% endif %}>Buckingham Palace, LONDON SW1A 1AA</option>
+                    </select>
+                  </div>
+
+              </div>
+
+              <div class="govuk-form-group">
+                <p><a href="first-applicant-find-address">Or enter address manually</a></p>
+              </div>
+
+              <!--  Buttons  -->
+              {% include "../../includes/buttons.html" %}
+
+            </div>
+
+                </form>
+          </div>
+        </main>
+      </div>
+
+      {% endblock %}

@@ -24,7 +24,7 @@ Apply to adopt a child
         errorList: errors
       }) }}
       {% for error in errors %}
-        {% if error.href == '#under-18' %}
+        {% if error.href == '#married' %}
           {% set marriedError = error.text %}
         {% endif %}
       {% endfor %}
@@ -62,7 +62,7 @@ Apply to adopt a child
                   </div>
                   <div class="govuk-radios__conditional govuk-radios__conditional--hidden" id="conditional-contact">
                     <div class="govuk-form-group">
-                      <p>[NEEDS CONTENT] You cannot adopt a child who has been married etc..</p>         
+                      <p>You can only apply to adopt a child if they've not been married or in a civil partnership.</p>         
                     </div>                               
                   </div>
 
