@@ -33,7 +33,7 @@ module.exports = (router) => {
         res.redirect('/version-1/eligibility/married')
       }
       else {
-        res.redirect('/version-1/eligibility/cannot-apply')
+        res.redirect('/version-1/eligibility/cannot-apply-over-18')
       }
     }
     else {
@@ -47,7 +47,7 @@ module.exports = (router) => {
     var errors = []
     if (req.body['child-married'] === undefined) {
       errors.push({
-      text: 'Select no if the child has never been married or in a civil partnership',
+      text: 'Please answer the question',
       href: '#married'
       })
     }
@@ -56,7 +56,7 @@ module.exports = (router) => {
 
     if (errors.length === 0) {
       if (req.body['child-married'] === 'Yes') {
-        res.redirect('/version-1/eligibility/cannot-apply')
+        res.redirect('/version-1/eligibility/cannot-apply-married')
       }
       else {
         res.redirect('/version-1/eligibility/under-21')
@@ -73,7 +73,7 @@ module.exports = (router) => {
     var errors = []
     if (req.body['under-21'] === undefined) {
       errors.push({
-      text: 'Select an answer',
+      text: 'Please answer the question',
       href: '#under-21'
       })
     }
@@ -91,7 +91,7 @@ module.exports = (router) => {
     var errors = []
     if (req.body['lived-uk'] === undefined) {
       errors.push({
-      text: 'Select an answer',
+      text: 'Please answer the question',
       href: '#lived-uk'
       })
     }
