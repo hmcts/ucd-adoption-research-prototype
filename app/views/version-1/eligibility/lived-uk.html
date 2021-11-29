@@ -36,10 +36,13 @@ Apply to adopt a child
           <legend class="govuk-fieldset__legend govuk-fieldset__legend--l">
             <span class="govuk-caption-l">Check you're eligible to adopt</span>
             <h1 class="govuk-fieldset__heading">
-              Have you lived in the UK, Channel Islands or Isle of Man for at least 12 months?
+              Have you and any other applicant if relevant, lived in the UK, Channel Islands or Isle of Man for at least 12 months?
             </h1>
           </legend>
-
+          <div id="event-name-hint" class="govuk-hint">
+            You can answer yes if your permanent home is here.
+          </div>
+          
           {% if (liveduk != '')%}
           <div class="govuk-form-group--error">
           {% endif%}
