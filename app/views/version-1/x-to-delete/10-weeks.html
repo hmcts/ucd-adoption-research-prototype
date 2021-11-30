@@ -31,6 +31,7 @@ Apply to adopt a child
 
       <form action="/version-1/eligibility/10-weeks" method="post" class="form">
 
+        <div class="govuk-form-group {% if (10Weeks != '')%} govuk-form-group--error {% endif %}"></div>
         <legend class="govuk-fieldset__legend govuk-fieldset__legend--l">
           <span class="govuk-caption-l">Check you're eligible to adopt</span>
           <h1 class="govuk-fieldset__heading">
@@ -38,9 +39,6 @@ Apply to adopt a child
           </h1>
         </legend>
 
-        {% if (10Weeks != '')%}
-        <div class="govuk-form-group--error">
-        {% endif%}
         {% if 10Weeks != '' %}
           <span class="govuk-error-message govuk-form">
             <span class="govuk-visually-hidden">Error:</span> {{ 10Weeks }}

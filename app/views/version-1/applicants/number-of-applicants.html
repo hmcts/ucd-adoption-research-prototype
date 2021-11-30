@@ -30,7 +30,8 @@ Apply to adopt a child
 
 
       <form action="/version-1/applicants/number-of-applicants" method="post" class="form">
-
+        
+        <div class="govuk-form-group {% if (numberApplicantsError != '')%} govuk-form-group--error {% endif %}">
         <legend class="govuk-fieldset__legend govuk-fieldset__legend--l">
           <span class="govuk-caption-l">Applicant details</span>
           <h1 class="govuk-fieldset__heading">
@@ -39,7 +40,6 @@ Apply to adopt a child
         </legend>
 
         {% if (numberApplicantsError != '')%}
-        <div class="govuk-form-group--error">
           <span class="govuk-error-message govuk-form">
             <span class="govuk-visually-hidden">Error:</span> {{ numberApplicantsError }}
           </span>
