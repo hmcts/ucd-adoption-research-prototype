@@ -101,7 +101,7 @@ module.exports = (router) => {
         res.redirect('/version-1/registration/start1')
       }
       else {
-        res.redirect('/version-1/eligibility/cannot-apply')
+        res.redirect('/version-1/eligibility/cannot-apply-lived-uk')
       }
     }
     else {
