@@ -105,3 +105,4 @@ dist
 
 lib/.DS_Store
 lib/middleware/.DS_Store
+node_modules
