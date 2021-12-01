@@ -61,7 +61,12 @@ module.exports = (router) => {
     }
 
     if (errors.length === 0) {
+      if (req.body['under-21'] === "Yes") {
         res.redirect('/version-1/eligibility/lived-uk')
+      }
+      else {
+        res.redirect('/version-1/eligibility/cannot-apply-under-21')
+      }
     }
     else {
         res.render('.//version-1/eligibility/under-21', { errors: errors })
@@ -192,7 +197,7 @@ module.exports = (router) => {
     var errors = []
     if (req.body['day'] === '' || req.body['month'] === '' || req.body['year'] === '') {
       errors.push({
-      text: 'Select an answer',
+      text: 'Developers: please refer to ADOP-149 for different error messages',
       href: '#first-applicant-date-birth'
       })
     }
@@ -267,7 +272,7 @@ router.post('/version-1/applicants/first-applicant-address', function(req, res) 
   }
   if (req.body['submit-button'] === 'save-and-continue') {
     if (errors.length === 0) {
-      res.redirect('/version-1/applicants/first-applicant-address2')
+      res.redirect('/version-1/applicants/first-applicant-find-address')
     }
     else {
       res.render('.//version-1/applicants/first-applicant-address', { errors: errors })
@@ -279,12 +284,12 @@ router.post('/version-1/applicants/first-applicant-address', function(req, res) 
 })
 
 
-router.post('/version-1/applicants/first-applicant-address2', function(req, res) {
+router.post('/version-1/applicants/first-applicant-find-address', function(req, res) {
   var errors = []
   if (req.body['first-applicant-choose-address'] === 'address-found') {
     errors.push({
     text: 'Select an address',
-    href: '#first-applicant-address2'
+    href: '#first-applicant-find-address'
     })
   }
 
@@ -293,7 +298,7 @@ router.post('/version-1/applicants/first-applicant-address2', function(req, res)
       res.redirect('/version-1/applicants/first-applicant-contact')
     }
     else {
-      res.render('.//version-1/applicants/first-applicant-address2', { errors: errors })
+      res.render('.//version-1/applicants/first-applicant-find-address', { errors: errors })
     }
   }
   else {
@@ -302,20 +307,22 @@ router.post('/version-1/applicants/first-applicant-address2', function(req, res)
 })
 
 
-router.post('/version-1/applicants/first-applicant-find-address', function(req, res) {
+router.post('/version-1/applicants/first-applicant-enter-address-manually', function(req, res) {
   var errors = []
-  if (req.body['first-applicant-find-address'] === '') {
+  if (req.body['first-applicant-address-line-1'] === '' || req.body['first-applicant-postcode'] === ''){
     errors.push({
     text: 'Enter address',
-    href: '#first-applicant-find-address'
+    href: '#first-applicant-manual-address'
     })
   }
+
+
   if (req.body['submit-button'] === 'save-and-continue') {
     if (errors.length === 0) {
       res.redirect('/version-1/applicants/first-applicant-contact')
     }
     else {
-      res.render('.//version-1/applicants/first-applicant-find-address', { errors: errors })
+      res.render('.//version-1/applicants/first-applicant-enter-address-manually', { errors: errors })
     }
   }
   else {
@@ -408,7 +415,7 @@ router.post('/version-1/applicants/second-applicant-date-birth', function(req, r
   var errors = []
   if (req.body['2day'] === '' || req.body['2month'] === '' || req.body['2year'] === '') {
     errors.push({
-    text: 'Select an answer',
+    text: 'Please refer to ADOP-149 for different error messages',
     href: '#second-applicant-date-birth'
     })
   }
@@ -536,7 +543,7 @@ router.post('/version-1/applicants/second-applicant-address', function(req, res)
   if (errors.length === 0) {
    if (req.body['submit-button'] === 'save-and-continue') {
       console.log("Test: ", req.body['submit-button'])
-      res.redirect('/version-1/applicants/second-applicant-address2')
+      res.redirect('/version-1/applicants/second-applicant-find-address')
     }
     else {
       res.redirect('/version-1/task-list')
@@ -549,12 +556,12 @@ router.post('/version-1/applicants/second-applicant-address', function(req, res)
 })
 
 
-router.post('/version-1/applicants/second-applicant-address2', function(req, res) {
+router.post('/version-1/applicants/second-applicant-find-address', function(req, res) {
   var errors = []
   if (req.body['second-applicant-choose-address'] === 'address-found') {
     errors.push({
     text: 'Select an address',
-    href: '#second-applicant-address2'
+    href: '#second-applicant-find-address'
     })
   }
 
@@ -563,7 +570,7 @@ router.post('/version-1/applicants/second-applicant-address2', function(req, res
       res.redirect('/version-1/applicants/second-applicant-contact')
     }
     else {
-      res.render('.//version-1/applicants/second-applicant-address2', { errors: errors })
+      res.render('.//version-1/applicants/second-applicant-find-address', { errors: errors })
     }
   }
   else {
