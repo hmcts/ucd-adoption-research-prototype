@@ -34,7 +34,8 @@ Apply to adopt a child
           <legend class="govuk-fieldset__legend govuk-fieldset__legend--l">
           <span class="govuk-caption-l">{{ data['firstApplicant'] }}</span>
           <h1 class="govuk-fieldset__heading">
-            Upload
+            Upload photo id for {% if (data['first-applicant-name']) %} {{ data['first-applicant-name']}} {% else %}{{ data['firstApplicant'] }}{% endif %} 
+
           </h1>
           </legend>
 
@@ -45,16 +46,16 @@ Apply to adopt a child
           {% endif%}
 
           </p>
-          <p>You'll need to upload your:</p>
+          <p>Upload a photo or scanner copy of either:</p>
           <ul class="govuk-list govuk-list--bullet">
-            <li> passport's photo page</li>
-            <li> driving licence</li>
+            <li>your UK passport photo page, or</li>
+            <li>your UK driving licence</li>
           </ul>
-          <p> If relevant, you'll also need to upload:
+          <p> If you have a UK visa, also upload photos of both:
 
             <ul class="govuk-list govuk-list--bullet">
-              <li>a copy of your UK visa </li>
-              <li>any passport pages that have UK immigration entry stamps
+              <li>your UK visa </li>
+              <li>any pages of your UK passport with UK entry stamps
               </li>
             </ul>
             <div class="govuk-form-group">

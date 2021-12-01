@@ -375,13 +375,13 @@ router.post('/version-1/applicants/first-applicant-contact', function(req, res) 
   var errors = []
   if (req.body['first-applicant-email'] === undefined && req.body['first-applicant-phone'] === undefined) {
     errors.push({
-    text: 'Select an answer',
+    text: 'Enter your telephone number or email address',
     href: '#first-applicant-contact'
     })
   }
   else if (req.body['first-applicant-phone'] !== undefined && req.body['first-applicant-phone-number'] === '') {
     errors.push({
-      text: 'Add a number',
+      text: 'Enter a UK telephone number',
       href: '#first-applicant-phone-number'
       })  
   }
@@ -416,6 +416,31 @@ router.post('/version-1/applicants/first-applicant-upload', function(req, res) {
     }
     else {
       res.render('.//version-1/applicants/first-applicant-upload', { errors: errors })
+    }
+  }
+  else {
+    res.redirect('/version-1/task-list')
+  }
+})
+
+
+
+router.post('/version-1/applicants/first-applicant-upload', function(req, res) {
+  var errors = []
+  if (req.body['first-applicant-upload'] === '') {
+    errors.push({
+    text: 'Error message',
+    href: '#first-applicant-upload'
+    })
+  }
+
+  if (req.body['submit-button'] === 'save-and-continue') {
+    if (errors.length === 0) {
+      req.session.data.upload = 1
+      res.redirect('/version-1/task-list')
+    }
+    else {
+        res.render('.//version-1/applicants/first-applicant-upload', { errors: errors })
     }
   }
   else {
