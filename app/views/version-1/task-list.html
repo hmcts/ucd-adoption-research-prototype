@@ -165,11 +165,11 @@ Task list
                 <!-- Second applicant - upload identity documents -->
                 <li class="app-task-list__item">
                     <span class="app-task-list__task-name">
-                    <a href="" aria-describedby="eligibility-completed">
+                    <a href="applicants/second-applicant-upload.html" aria-describedby="eligibility-completed">
                         Upload your identity documents
                     </a>
                     </a></span>
-                    {% if data['personal-photo'] %}
+                    {% if data['secondupload'] == 1 %}
                         <strong class="govuk-tag  app-task-list__tag" id="eligibility-completed">Completed</strong>
                     {% else %}
                         <strong class="govuk-tag govuk-tag--grey app-task-list__tag">not started</strong>

@@ -745,7 +745,7 @@ router.post('/version-1/applicants/second-applicant-upload', function(req, res) 
 
   if (req.body['submit-button'] === 'save-and-continue') {
     if (errors.length === 0) {
-      req.session.data.upload = 1
+      req.session.data.secondupload = 1
       res.redirect('/version-1/task-list')
     }
     else {
