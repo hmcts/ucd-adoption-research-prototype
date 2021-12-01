@@ -106,7 +106,7 @@ Task list
                         Your contact details
                     </a>
                     </a></span>
-                    {% if data['first-applicant-contact-options'] %}
+                    {% if data['first-applicant-contact-email'] or data['first-applicant-phone'] %}
                         <strong class="govuk-tag  app-task-list__tag" id="eligibility-completed">Completed</strong>
                     {% elseif data['first-applicant-address'] %}
                         <strong class="govuk-tag govuk-tag--blue app-task-list__tag">in progress</strong>

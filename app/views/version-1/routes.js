@@ -215,7 +215,7 @@ module.exports = (router) => {
   })
 
 
-  router.post('/version-1/applicants/first-applicant-nationality', function(req, res) {
+  router.post('/version-1/applicants/first-applicant-nationality-old', function(req, res) {
     var errors = []
     if (req.body['first-applicant-nationality'] === '') {
       errors.push({
@@ -235,6 +235,46 @@ module.exports = (router) => {
       res.redirect('/version-1/task-list')
     }
   })
+
+  router.post('/version-1/applicants/first-applicant-nationality', function(req, res) {
+    var errors = []
+
+    if (req.body['first-applicant-british'] === undefined && req.body['first-applicant-irish'] === undefined &&req.body['first-applicant-other'] === undefined) {
+      console.log("error")
+      errors.push({
+      text: 'Select if you are British, Irish or a citizen of a different country',
+      href: '#first-applicant-nationality'
+      })
+    }
+    else if (req.body['first-applicant-other'] !== undefined && req.session.data.firstApplicantNationalityCount === 0) {
+      console.log("no nationality added error: ", req.session.data.firstApplicantNationalities)
+      errors.push({
+      text: 'This is not a valid entry',
+      href: '#first-applicant-no-name'
+      })
+    }
+
+    count = req.session.data.firstApplicantNationalityCount
+    if (req.body['submit-button'] === 'save-and-continue') {
+      if (errors.length === 0) {
+        req.session.data.firstApplicantNationalities[count] = req.body['first-applicant-additional-country']
+        res.redirect('/version-1/applicants/first-applicant-occupation')
+      }
+      else {
+        res.render('.//version-1/applicants/first-applicant-nationality', { errors: errors })
+      }
+    }
+    else if (req.body['submit-button'] === 'save-as-draft') {
+      res.redirect('/version-1/task-list')
+    }
+    else {
+      req.session.data.firstApplicantNationalities[count] = req.body['first-applicant-additional-country']
+      req.session.data.firstApplicantNationalityId[count] = count
+      req.session.data.firstApplicantNationalityCount = count + 1
+      res.redirect('/version-1/applicants/first-applicant-nationality')
+    }
+  })
+
 
 
   router.post('/version-1/applicants/first-applicant-occupation', function(req, res) {
@@ -333,11 +373,17 @@ router.post('/version-1/applicants/first-applicant-enter-address-manually', func
 
 router.post('/version-1/applicants/first-applicant-contact', function(req, res) {
   var errors = []
-  if (req.body['first-applicant-contact-options'] === undefined) {
+  if (req.body['first-applicant-email'] === undefined && req.body['first-applicant-phone'] === undefined) {
     errors.push({
     text: 'Select an answer',
     href: '#first-applicant-contact'
     })
+  }
+  else if (req.body['first-applicant-phone'] !== undefined && req.body['first-applicant-phone-number'] === '') {
+    errors.push({
+      text: 'Add a number',
+      href: '#first-applicant-phone-number'
+      })  
   }
   // req.session.data.firstApplicantContactCheckbox = req.body['first-applicant-contact-options']
   if (req.body['submit-button'] === 'save-and-continue') {

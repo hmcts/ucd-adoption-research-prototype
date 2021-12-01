@@ -32,25 +32,60 @@ Apply to adopt a child
       <form action="/version-1/applicants/first-applicant-nationality" method="post" class="form">
 
         <div class="govuk-form-group {% if (nationalityError != '')%} govuk-form-group--error {% endif%}">
-          <legend class="govuk-fieldset__legend govuk-fieldset__legend--l">
-          <span class="govuk-caption-l">{{ data['firstApplicant'] }}</span>
-          <h1 class="govuk-fieldset__heading">
-            What's your nationality?
-          </h1>
-        </legend>
+          <fieldset class="govuk-fieldset" aria-describedby="nationality-hint">
+            <legend class="govuk-fieldset__legend govuk-fieldset__legend--l">
+              <h1 class="govuk-fieldset__heading">
+                What is your nationality?
+              </h1>
+            </legend>
 
+            {% if (nationalityError != '')%}
+            <span id="national-insurance-number-error" class="govuk-error-message">
+              <span class="govuk-visually-hidden">Error:</span> {{ nationalityError }}
+            </span>
+            {% endif%}
+  
 
-        <div class="govuk-form-group {% if (nationalityError != '')%} govuk-form-group--error {% endif%}">
-          {% if (nationalityError != '')%}
-          <span id="nationality-error" class="govuk-error-message">
-            <span class="govuk-visually-hidden">Error:</span> {{ nationalityError }}
-          </span>
-          {% endif%}
-
-          <input class="govuk-input {% if (nationalityError != '')%} govuk-input--error {% endif%}" id="full-name" name="first-applicant-nationality" type="text"  spellcheck="false"
-          value="{{ data['first-applicant-nationality'] }}">
+            <div id="nationality-hint" class="govuk-hint">
+              Select all options that are relevant to you.
+            </div>
+            <div class="govuk-checkboxes" data-module="govuk-checkboxes">
+              <div class="govuk-checkboxes__item">
+                <input class="govuk-checkboxes__input" id="first-applicant-british" name="first-applicant-british" type="checkbox"  aria-describedby="nationality-item-hint" {% if (data['first-applicant-british'] != undefined) %} checked {% endif %}>
+                <label class="govuk-label govuk-checkboxes__label" for="nationality">
+                  British
+                </label>
+                <div id="nationality-item-hint" class="govuk-hint govuk-checkboxes__hint">
+                  including English, Scottish, Welsh and Northern Irish
+                </div>
+              </div>
+              <div class="govuk-checkboxes__item">
+                <input class="govuk-checkboxes__input" id="first-applicant-nationality-2" name="first-applicant-irish" type="checkbox" {% if (data['first-applicant-irish'] != undefined) %} checked {% endif %}>
+                <label class="govuk-label govuk-checkboxes__label" for="nationality-2">
+                  Irish
+                </label>
+              </div>
+              <div class="govuk-checkboxes__item">
+                <input class="govuk-checkboxes__input" id="other" name="first-applicant-other" type="checkbox"
+                   data-aria-controls="conditional-citizenship-conditional-2" {% if (data['first-applicant-other'] != undefined) %} checked {% endif %}>
+                <label class="govuk-label govuk-checkboxes__label" for="citizenship-conditional-2">
+                  Citizen of a different country
+                </label>
+              </div>
+              <div class="govuk-checkboxes__conditional govuk-checkboxes__conditional--hidden"
+                id="conditional-citizenship-conditional-2">
+                <div class="govuk-form-group">
+                  <label class="govuk-label" for="other">
+                    Country name
+                  </label>
+                  <input class="govuk-input govuk-!-width-two-thirds" id="first-applicant-other" name="first-applicant-additional-country" type="text">
+                </div>
+                  <button class="govuk-button govuk-button--secondary govuk-!-margin-top-5" data-module="govuk-button" name="submit-button" value="add">Add additional country</button>
         </div>
-
+          </div>
+        
+          </fieldset>
+          </div>
           <!-- Buttons -->
           {% include "../../includes/buttons.html" %}
 
