@@ -400,6 +400,30 @@ router.post('/version-1/applicants/first-applicant-contact', function(req, res) 
 })
 
 
+router.post('/version-1/applicants/first-applicant-upload', function(req, res) {
+  var errors = []
+  if (req.body['first-applicant-upload'] === '') {
+    errors.push({
+    text: 'Error message',
+    href: '#first-applicant-upload'
+    })
+  }
+
+  if (req.body['submit-button'] === 'save-and-continue') {
+    if (errors.length === 0) {
+      req.session.data.upload = 1
+      res.redirect('/version-1/task-list')
+    }
+    else {
+      res.render('.//version-1/applicants/first-applicant-upload', { errors: errors })
+    }
+  }
+  else {
+    res.redirect('/version-1/task-list')
+  }
+})
+
+
 
 router.post('/version-1/applicants/first-applicant-upload', function(req, res) {
   var errors = []
