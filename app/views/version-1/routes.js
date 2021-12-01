@@ -241,7 +241,7 @@ module.exports = (router) => {
     var errors = []
     if (req.body['first-applicant-occupation'] === '') {
       errors.push({
-      text: 'Select an answer',
+      text: 'Enter your occupation',
       href: '#first-applicant-occupation'
       })
     }
