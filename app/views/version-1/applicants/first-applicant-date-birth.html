@@ -31,8 +31,9 @@ Apply to adopt a child
 
       <form action="/version-1/applicants/first-applicant-date-birth" method="post" class="form">
 
-        <legend class="govuk-fieldset__legend govuk-fieldset__legend--l">
-          <span class="govuk-caption-l">First applicant</span>
+        <div class="govuk-form-group {% if (dobError != '')%} govuk-form-group--error {% endif%}">
+          <legend class="govuk-fieldset__legend govuk-fieldset__legend--l">
+          <span class="govuk-caption-l">{{ data['firstApplicant'] }}</span>
           <h1 class="govuk-fieldset__heading">
             What's your date of birth?
           </h1>
@@ -45,7 +46,7 @@ Apply to adopt a child
         <div class="govuk-form-group  {% if (dobError != '')%} govuk-form-group--error {% endif%}">
           {% if (dobError != '')%}
           <span id="national-insurance-number-error" class="govuk-error-message">
-            <span class="govuk-visually-hidden">Error:</span> Enter your date of birth [NEEDS CONTENT]
+            <span class="govuk-visually-hidden">Error:</span> {{ dobError }}
           </span>
           {% endif%}
 
