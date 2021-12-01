@@ -41,7 +41,7 @@ Apply to adopt a child
 
           {% if (nameError != '')%}
           <span id="national-insurance-number-error" class="govuk-error-message">
-            <span class="govuk-visually-hidden">Error:</span> Enter your full name [NEEDS CONTENT]
+            <span class="govuk-visually-hidden">Error:</span> {{ nameError }}
           </span>
           {% endif%}
 

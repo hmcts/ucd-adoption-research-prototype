@@ -31,6 +31,7 @@ Apply to adopt a child
 
       <form action="/version-1/applicants/first-applicant-contact" method="post" class="form">
 
+        <div class="govuk-form-group {% if (contactError != '')%} govuk-form-group--error {% endif%}">
           <legend class="govuk-fieldset__legend govuk-fieldset__legend--l">
             <span class="govuk-caption-l">{{ data['firstApplicant'] }}</span>
             <h1 class="govuk-fieldset__heading">
@@ -42,7 +43,6 @@ Apply to adopt a child
             This is so we can contact you with updates or questions about your application.<br><br>Select all that apply.
           </span>
 
-          <div class="govuk-form-group {% if (contactError != '')%}govuk-form-group--error{% endif%}">
             <fieldset class="govuk-fieldset" aria-describedby="citizenship-conditional-hint">
               <span id="nationality-error" class="govuk-error-message">
                 <span class="govuk-visually-hidden">Error:</span> {{ contactError }}
