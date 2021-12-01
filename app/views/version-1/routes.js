@@ -400,6 +400,7 @@ router.post('/version-1/applicants/first-applicant-contact', function(req, res) 
 })
 
 
+// ********************** First applicant upload **********************
 router.post('/version-1/applicants/first-applicant-upload', function(req, res) {
   var errors = []
   if (req.body['first-applicant-upload'] === '') {
@@ -425,173 +426,182 @@ router.post('/version-1/applicants/first-applicant-upload', function(req, res) {
 
 
 
-router.post('/version-1/applicants/first-applicant-upload', function(req, res) {
-  var errors = []
-  if (req.body['first-applicant-upload'] === '') {
-    errors.push({
-    text: 'Error message',
-    href: '#first-applicant-upload'
-    })
-  }
 
-  if (req.body['submit-button'] === 'save-and-continue') {
-    if (errors.length === 0) {
-      req.session.data.upload = 1
-      res.redirect('/version-1/task-list')
+
+  // ********************** Second applicant personal details **********************
+  router.post('/version-1/applicants/second-applicant-name', function(req, res) {
+    var errors = []
+    if (req.body['second-applicant-name'] === '') {
+      errors.push({
+      text: 'Enter your full name',
+      href: '#second-applicant-name'
+      })
     }
-    else {
-        res.render('.//version-1/applicants/first-applicant-upload', { errors: errors })
-    }
-  }
-  else {
-    res.redirect('/version-1/task-list')
-  }
-})
 
-
-
-
-// ********************** Second applicant personal details **********************
-router.post('/version-1/applicants/second-applicant-name', function(req, res) {
-  var errors = []
-  if (req.body['second-applicant-name'] === '') {
-    errors.push({
-    text: 'Select an answer',
-    href: '#second-applicant-name'
-    })
-  }
-  if (errors.length === 0) {
     if (req.body['submit-button'] === 'save-and-continue') {
-      res.redirect('/version-1/applicants/second-applicant-other-names')
+      if (errors.length === 0) {
+        res.redirect('/version-1/applicants/second-applicant-other-names')
+      }
+      else {
+        res.render('.//version-1/applicants/second-applicant-name', { errors: errors })
+      }
     }
     else {
       res.redirect('/version-1/task-list')
     }
-  }
-  else {
-      res.render('.//version-1/applicants/second-applicant-name', { errors: errors })
-  }
-})
+  })
 
 
-router.post('/version-1/applicants/second-applicant-other-names', function(req, res) {
-  var errors = []
-  if (req.body['second-applicant-previous-full-name'] === '' && req.session.secondApplicantPreviousNames === '') {
-    errors.push({
-    text: 'Select an answer',
-    href: '#second-applicant-other-names'
-    })
-  }
-  if (errors.length === 0) {
+  router.post('/version-1/applicants/second-applicant-other-names', function(req, res) {
+    var errors = []
+    console.log("First applicant previous names: ", req.session.data.secondApplicantPreviousNames)
+    console.log("First applicant previous name radio: ", req.body['second-applicant-previous-full-name'])
+    console.log("name count: ", req.session.data.secondApplicantNameCount)
+
+    if (req.body['second-applicant-other-names'] === undefined) {
+      // if (req.body['second-applicant-other-names'] === undefined && req.session.data.secondApplicantPreviousNames === '') {
+      errors.push({
+      text: 'Select an answer',
+      href: '#second-applicant-other-names'
+      })
+    }
+    else if (req.body['second-applicant-other-names'] === "Yes" && req.session.data.secondApplicantNameCount === 0) {
+      console.log("no name added error: ", req.session.data.secondApplicantPreviousNames)
+      errors.push({
+      text: 'Enter a name or choose No',
+      href: '#second-applicant-no-name'
+      })
+    }
+
     count = req.session.data.secondApplicantNameCount
     if (req.body['submit-button'] === 'add') {
       req.session.data.secondApplicantPreviousNames[count] = req.body['second-applicant-previous-full-name']
-      req.session.data.idSecondApplicant[count] = count
+      req.session.data.idFirstApplicant[count] = count
       req.session.data.secondApplicantNameCount = count + 1
       res.redirect('/version-1/applicants/second-applicant-other-names')
     }
     else if (req.body['submit-button'] === 'save-and-continue') {
-      req.session.data.secondApplicantPreviousNames[count] = req.body['second-applicant-previous-full-name']
-      console.log("Previous names: ", req.session.data.secondApplicantPreviousNames[count])
-      res.redirect('/version-1/applicants/second-applicant-date-birth')
+      if (errors.length === 0) {
+        req.session.data.secondApplicantPreviousNames[count] = req.body['second-applicant-previous-full-name']
+        console.log("Previous names: ", req.session.data.secondApplicantPreviousNames[count])
+        res.redirect('/version-1/applicants/second-applicant-date-birth')
+      }
+      else {
+        res.render('.//version-1/applicants/second-applicant-other-names', { errors: errors })
+      }
     }
     else {
       res.redirect('/version-1/task-list')
     }
-  }
-  else {
-      res.render('.//version-1/applicants/second-applicant-other-names', { errors: errors })
-  }
-})
+  })
 
 
-router.post('/version-1/applicants/second-applicant-date-birth', function(req, res) {
-  console.log("Day: ", req.body['2day'])
-  var errors = []
-  if (req.body['2day'] === '' || req.body['2month'] === '' || req.body['2year'] === '') {
-    errors.push({
-    text: 'Please refer to ADOP-149 for different error messages',
-    href: '#second-applicant-date-birth'
-    })
-  }
-  if (errors.length === 0) {
+  router.post('/version-1/applicants/second-applicant-date-birth', function(req, res) {
+    console.log("Day: ", req.body['day'])
+    var errors = []
+    if (req.body['day'] === '' || req.body['month'] === '' || req.body['year'] === '') {
+      errors.push({
+      text: 'Developers: please refer to ADOP-149 for different error messages',
+      href: '#second-applicant-date-birth'
+      })
+    }
+      if (req.body['submit-button'] === 'save-and-continue') {
+        if (errors.length === 0) {
+          res.redirect('/version-1/applicants/second-applicant-nationality')
+        }
+        else {
+          res.render('.//version-1/applicants/second-applicant-date-birth', { errors: errors })
+        }
+      }
+      else {
+        res.redirect('/version-1/task-list')
+      }
+  })
+
+
+  router.post('/version-1/applicants/second-applicant-nationality-old', function(req, res) {
+    var errors = []
+    if (req.body['second-applicant-nationality'] === '') {
+      errors.push({
+      text: 'Select an answer',
+      href: '#second-applicant-nationality'
+      })
+    }
     if (req.body['submit-button'] === 'save-and-continue') {
-      res.redirect('/version-1/applicants/second-applicant-gender')
+      if (errors.length === 0) {
+        res.redirect('/version-1/applicants/second-applicant-occupation')
+      }
+      else {
+          res.render('.//version-1/applicants/second-applicant-nationality', { errors: errors })
+      }
     }
     else {
       res.redirect('/version-1/task-list')
     }
-  }
-  else {
-      res.render('.//version-1/applicants/second-applicant-date-birth', { errors: errors })
-  }
-})
+  })
 
+  router.post('/version-1/applicants/second-applicant-nationality', function(req, res) {
+    var errors = []
 
-router.post('/version-1/applicants/second-applicant-gender', function(req, res) {
-  var errors = []
-  if (req.body['second-applicant-gender'] === '') {
-    errors.push({
-    text: 'Select an answer',
-    href: '#second-applicant-gender'
-    })
-  }
-  if (errors.length === 0) {
+    if (req.body['second-applicant-british'] === undefined && req.body['second-applicant-irish'] === undefined &&req.body['second-applicant-other'] === undefined) {
+      console.log("error")
+      errors.push({
+      text: 'Select if you are British, Irish or a citizen of a different country',
+      href: '#second-applicant-nationality'
+      })
+    }
+    else if (req.body['second-applicant-other'] !== undefined && req.session.data.secondApplicantNationalityCount === 0) {
+      console.log("no nationality added error: ", req.session.data.secondApplicantNationalities)
+      errors.push({
+      text: 'This is not a valid entry',
+      href: '#second-applicant-no-name'
+      })
+    }
+
+    count = req.session.data.secondApplicantNationalityCount
     if (req.body['submit-button'] === 'save-and-continue') {
+      if (errors.length === 0) {
+        req.session.data.secondApplicantNationalities[count] = req.body['second-applicant-additional-country']
+        res.redirect('/version-1/applicants/second-applicant-occupation')
+      }
+      else {
+        res.render('.//version-1/applicants/second-applicant-nationality', { errors: errors })
+      }
+    }
+    else if (req.body['submit-button'] === 'save-as-draft') {
+      res.redirect('/version-1/task-list')
+    }
+    else {
+      req.session.data.secondApplicantNationalities[count] = req.body['second-applicant-additional-country']
+      req.session.data.secondApplicantNationalityId[count] = count
+      req.session.data.secondApplicantNationalityCount = count + 1
       res.redirect('/version-1/applicants/second-applicant-nationality')
     }
-    else {
-      res.redirect('/version-1/task-list')
+  })
+
+
+
+  router.post('/version-1/applicants/second-applicant-occupation', function(req, res) {
+    var errors = []
+    if (req.body['second-applicant-occupation'] === '') {
+      errors.push({
+      text: 'Enter your occupation',
+      href: '#second-applicant-occupation'
+      })
     }
-  }
-  else {
-      res.render('.//version-1/applicants/second-applicant-gender', { errors: errors })
-  }
-})
 
-
-router.post('/version-1/applicants/second-applicant-nationality', function(req, res) {
-  var errors = []
-  if (req.body['second-applicant-nationality'] === '') {
-    errors.push({
-    text: 'Select an answer',
-    href: '#second-applicant-nationality'
-    })
-  }
-  if (errors.length === 0) {
     if (req.body['submit-button'] === 'save-and-continue') {
-      res.redirect('/version-1/applicants/second-applicant-occupation')
+      if (errors.length === 0) {
+        res.redirect('/version-1/task-list')
+      }
+      else {
+          res.render('.//version-1/applicants/second-applicant-occupation', { errors: errors })
+      }
     }
     else {
       res.redirect('/version-1/task-list')
     }
-  }
-  else {
-      res.render('.//version-1/applicants/second-applicant-nationality', { errors: errors })
-  }
-})
-
-
-router.post('/version-1/applicants/second-applicant-occupation', function(req, res) {
-  var errors = []
-  if (req.body['second-applicant-occupation'] === '') {
-    errors.push({
-    text: 'Select an answer',
-    href: '#second-applicant-occupation'
-    })
-  }
-  if (errors.length === 0) {
-    if (req.body['submit-button'] === 'save-and-continue') {
-      res.redirect('/version-1/task-list')
-    }
-    else {
-      res.redirect('/version-1/task-list')
-    }
-  }
-  else {
-      res.render('.//version-1/applicants/second-applicant-occupation', { errors: errors })
-  }
-})
+  })
 
 
 
@@ -625,7 +635,6 @@ router.post('/version-1/applicants/second-applicant-same-address', function(req,
 
 })
 
-
 router.post('/version-1/applicants/second-applicant-address', function(req, res) {
   var errors = []
   if (req.body['second-applicant-address'] === "") {
@@ -634,20 +643,17 @@ router.post('/version-1/applicants/second-applicant-address', function(req, res)
     href: '#second-applicant-address'
     })
   }
-
-  if (errors.length === 0) {
-   if (req.body['submit-button'] === 'save-and-continue') {
-      console.log("Test: ", req.body['submit-button'])
+  if (req.body['submit-button'] === 'save-and-continue') {
+    if (errors.length === 0) {
       res.redirect('/version-1/applicants/second-applicant-find-address')
     }
     else {
-      res.redirect('/version-1/task-list')
+      res.render('.//version-1/applicants/second-applicant-address', { errors: errors })
     }
   }
   else {
-      res.render('.//version-1/applicants/second-applicant-address', { errors: errors })
+    res.redirect('/version-1/task-list')
   }
-
 })
 
 
@@ -674,17 +680,45 @@ router.post('/version-1/applicants/second-applicant-find-address', function(req,
 })
 
 
+router.post('/version-1/applicants/second-applicant-enter-address-manually', function(req, res) {
+  var errors = []
+  if (req.body['second-applicant-address-line-1'] === '' || req.body['second-applicant-postcode'] === ''){
+    errors.push({
+    text: 'Enter address',
+    href: '#second-applicant-manual-address'
+    })
+  }
+
+
+  if (req.body['submit-button'] === 'save-and-continue') {
+    if (errors.length === 0) {
+      res.redirect('/version-1/applicants/second-applicant-contact')
+    }
+    else {
+      res.render('.//version-1/applicants/second-applicant-enter-address-manually', { errors: errors })
+    }
+  }
+  else {
+    res.redirect('/version-1/task-list')
+  }
+})
 
 
 router.post('/version-1/applicants/second-applicant-contact', function(req, res) {
   var errors = []
-  if (req.body['second-applicant-contact-options'] === undefined) {
+  if (req.body['second-applicant-email'] === undefined && req.body['second-applicant-phone'] === undefined) {
     errors.push({
-    text: 'Select an answer',
+    text: 'Enter your telephone number or email address',
     href: '#second-applicant-contact'
     })
   }
-  // req.session.data.firstApplicantContactCheckbox = req.body['first-applicant-contact-options']
+  else if (req.body['second-applicant-phone'] !== undefined && req.body['second-applicant-phone-number'] === '') {
+    errors.push({
+      text: 'Enter a UK telephone number',
+      href: '#second-applicant-phone-number'
+      })  
+  }
+  // req.session.data.secondApplicantContactCheckbox = req.body['second-applicant-contact-options']
   if (req.body['submit-button'] === 'save-and-continue') {
     if (errors.length === 0) {
       res.redirect('/version-1/task-list')
@@ -697,6 +731,289 @@ router.post('/version-1/applicants/second-applicant-contact', function(req, res)
     res.redirect('/version-1/task-list')
   }
 })
+
+
+// ********************** Second applicant upload **********************
+router.post('/version-1/applicants/second-applicant-upload', function(req, res) {
+  var errors = []
+  if (req.body['second-applicant-upload'] === '') {
+    errors.push({
+    text: 'Error message',
+    href: '#second-applicant-upload'
+    })
+  }
+
+  if (req.body['submit-button'] === 'save-and-continue') {
+    if (errors.length === 0) {
+      req.session.data.upload = 1
+      res.redirect('/version-1/task-list')
+    }
+    else {
+      res.render('.//version-1/applicants/second-applicant-upload', { errors: errors })
+    }
+  }
+  else {
+    res.redirect('/version-1/task-list')
+  }
+})
+
+
+
+
+
+
+
+
+
+
+
+
+// ********************** Second applicant personal details **********************
+// router.post('/version-1/applicants/second-applicant-name', function(req, res) {
+//   var errors = []
+//   if (req.body['second-applicant-name'] === '') {
+//     errors.push({
+//     text: 'Select an answer',
+//     href: '#second-applicant-name'
+//     })
+//   }
+//   if (errors.length === 0) {
+//     if (req.body['submit-button'] === 'save-and-continue') {
+//       res.redirect('/version-1/applicants/second-applicant-other-names')
+//     }
+//     else {
+//       res.redirect('/version-1/task-list')
+//     }
+//   }
+//   else {
+//       res.render('.//version-1/applicants/second-applicant-name', { errors: errors })
+//   }
+// })
+
+
+// router.post('/version-1/applicants/second-applicant-other-names', function(req, res) {
+//   var errors = []
+//   if (req.body['second-applicant-previous-full-name'] === '' && req.session.secondApplicantPreviousNames === '') {
+//     errors.push({
+//     text: 'Select an answer',
+//     href: '#second-applicant-other-names'
+//     })
+//   }
+//   if (errors.length === 0) {
+//     count = req.session.data.secondApplicantNameCount
+//     if (req.body['submit-button'] === 'add') {
+//       req.session.data.secondApplicantPreviousNames[count] = req.body['second-applicant-previous-full-name']
+//       req.session.data.idSecondApplicant[count] = count
+//       req.session.data.secondApplicantNameCount = count + 1
+//       res.redirect('/version-1/applicants/second-applicant-other-names')
+//     }
+//     else if (req.body['submit-button'] === 'save-and-continue') {
+//       req.session.data.secondApplicantPreviousNames[count] = req.body['second-applicant-previous-full-name']
+//       console.log("Previous names: ", req.session.data.secondApplicantPreviousNames[count])
+//       res.redirect('/version-1/applicants/second-applicant-date-birth')
+//     }
+//     else {
+//       res.redirect('/version-1/task-list')
+//     }
+//   }
+//   else {
+//       res.render('.//version-1/applicants/second-applicant-other-names', { errors: errors })
+//   }
+// })
+
+
+// router.post('/version-1/applicants/second-applicant-date-birth', function(req, res) {
+//   console.log("Day: ", req.body['2day'])
+//   var errors = []
+//   if (req.body['2day'] === '' || req.body['2month'] === '' || req.body['2year'] === '') {
+//     errors.push({
+//     text: 'Please refer to ADOP-149 for different error messages',
+//     href: '#second-applicant-date-birth'
+//     })
+//   }
+//   if (errors.length === 0) {
+//     if (req.body['submit-button'] === 'save-and-continue') {
+//       res.redirect('/version-1/applicants/second-applicant-gender')
+//     }
+//     else {
+//       res.redirect('/version-1/task-list')
+//     }
+//   }
+//   else {
+//       res.render('.//version-1/applicants/second-applicant-date-birth', { errors: errors })
+//   }
+// })
+
+
+// router.post('/version-1/applicants/second-applicant-gender', function(req, res) {
+//   var errors = []
+//   if (req.body['second-applicant-gender'] === '') {
+//     errors.push({
+//     text: 'Select an answer',
+//     href: '#second-applicant-gender'
+//     })
+//   }
+//   if (errors.length === 0) {
+//     if (req.body['submit-button'] === 'save-and-continue') {
+//       res.redirect('/version-1/applicants/second-applicant-nationality')
+//     }
+//     else {
+//       res.redirect('/version-1/task-list')
+//     }
+//   }
+//   else {
+//       res.render('.//version-1/applicants/second-applicant-gender', { errors: errors })
+//   }
+// })
+
+
+// router.post('/version-1/applicants/second-applicant-nationality', function(req, res) {
+//   var errors = []
+//   if (req.body['second-applicant-nationality'] === '') {
+//     errors.push({
+//     text: 'Select an answer',
+//     href: '#second-applicant-nationality'
+//     })
+//   }
+//   if (errors.length === 0) {
+//     if (req.body['submit-button'] === 'save-and-continue') {
+//       res.redirect('/version-1/applicants/second-applicant-occupation')
+//     }
+//     else {
+//       res.redirect('/version-1/task-list')
+//     }
+//   }
+//   else {
+//       res.render('.//version-1/applicants/second-applicant-nationality', { errors: errors })
+//   }
+// })
+
+
+// router.post('/version-1/applicants/second-applicant-occupation', function(req, res) {
+//   var errors = []
+//   if (req.body['second-applicant-occupation'] === '') {
+//     errors.push({
+//     text: 'Select an answer',
+//     href: '#second-applicant-occupation'
+//     })
+//   }
+//   if (errors.length === 0) {
+//     if (req.body['submit-button'] === 'save-and-continue') {
+//       res.redirect('/version-1/task-list')
+//     }
+//     else {
+//       res.redirect('/version-1/task-list')
+//     }
+//   }
+//   else {
+//       res.render('.//version-1/applicants/second-applicant-occupation', { errors: errors })
+//   }
+// })
+
+
+
+// // ********************** Second applicant contact details **********************
+// router.post('/version-1/applicants/second-applicant-same-address', function(req, res) {
+//   var errors = []
+//   if (req.body['same-address'] === undefined) {
+//     errors.push({
+//     text: 'Select an answer',
+//     href: '#second-applicant-same-address'
+//     })
+//   }
+
+//   if (errors.length === 0) {
+//    if (req.body['submit-button'] === 'save-and-continue') {
+//       if (req.body['same-address'] === "Yes") {
+//         console.log("Test: ",req.body['same-address'])
+//         res.redirect('/version-1/applicants/second-applicant-contact')
+//       }
+//       else {
+//         res.redirect('/version-1/applicants/second-applicant-address')
+//       }
+//     }
+//     else {
+//       res.redirect('/version-1/task-list')
+//     }
+//   }
+//   else {
+//       res.render('.//version-1/applicants/second-applicant-same-address', { errors: errors })
+//   }
+
+// })
+
+
+// router.post('/version-1/applicants/second-applicant-address', function(req, res) {
+//   var errors = []
+//   if (req.body['second-applicant-address'] === "") {
+//     errors.push({
+//     text: 'Enter a valid postcode',
+//     href: '#second-applicant-address'
+//     })
+//   }
+
+//   if (errors.length === 0) {
+//    if (req.body['submit-button'] === 'save-and-continue') {
+//       console.log("Test: ", req.body['submit-button'])
+//       res.redirect('/version-1/applicants/second-applicant-find-address')
+//     }
+//     else {
+//       res.redirect('/version-1/task-list')
+//     }
+//   }
+//   else {
+//       res.render('.//version-1/applicants/second-applicant-address', { errors: errors })
+//   }
+
+// })
+
+
+// router.post('/version-1/applicants/second-applicant-find-address', function(req, res) {
+//   var errors = []
+//   if (req.body['second-applicant-choose-address'] === 'address-found') {
+//     errors.push({
+//     text: 'Select an address',
+//     href: '#second-applicant-find-address'
+//     })
+//   }
+
+//   if (req.body['submit-button'] === 'save-and-continue') {
+//     if (errors.length === 0) {
+//       res.redirect('/version-1/applicants/second-applicant-contact')
+//     }
+//     else {
+//       res.render('.//version-1/applicants/second-applicant-find-address', { errors: errors })
+//     }
+//   }
+//   else {
+//     res.redirect('/version-1/task-list')
+//   }
+// })
+
+
+
+
+// router.post('/version-1/applicants/second-applicant-contact', function(req, res) {
+//   var errors = []
+//   if (req.body['second-applicant-contact-options'] === undefined) {
+//     errors.push({
+//     text: 'Select an answer',
+//     href: '#second-applicant-contact'
+//     })
+//   }
+//   // req.session.data.firstApplicantContactCheckbox = req.body['first-applicant-contact-options']
+//   if (req.body['submit-button'] === 'save-and-continue') {
+//     if (errors.length === 0) {
+//       res.redirect('/version-1/task-list')
+//     }
+//     else {
+//       res.render('.//version-1/applicants/second-applicant-contact', { errors: errors })
+//     }
+//   }
+//   else {
+//     res.redirect('/version-1/task-list')
+//   }
+// })
 
 
 
