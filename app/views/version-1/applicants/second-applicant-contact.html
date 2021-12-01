@@ -50,15 +50,15 @@ Apply to adopt a child
 
               <div class="govuk-checkboxes" data-module="govuk-checkboxes">
                 <div class="govuk-checkboxes__item">
-                  <input class="govuk-checkboxes__input" id="email" name="second-applicant-contact-options" type="checkbox"
-                    value="email" data-aria-controls="conditional-citizenship-conditional" {% if (data['second-applicant-contact-options'] == 'phone') %} checked{%endif%}>
+                  <input class="govuk-checkboxes__input" id="email" name="second-applicant-contact-email" type="checkbox"
+                    value="email" data-aria-controls="conditional-citizenship-conditional" {% if (data['second-applicant-contact-email'] != undefined) %} checked {% endif %}>
                   <label class="govuk-label govuk-checkboxes__label" for="citizenship-conditional">
                     Email address &ndash; <span class="govuk-!-font-weight-bold">jane@goodall.com</span>
                   </label>
                 </div>
                 <div class="govuk-checkboxes__item">
-                  <input class="govuk-checkboxes__input" id="phone" name="second-applicant-contact-options" type="checkbox"
-                    value="phone" data-aria-controls="conditional-citizenship-conditional-2" {% if (data['second-applicant-contact-options'] == 'phone') %} checked{%endif%}>
+                  <input class="govuk-checkboxes__input" id="phone" name="second-applicant-contact-phone" type="checkbox"
+                    value="phone" data-aria-controls="conditional-citizenship-conditional-2" {% if (data['second-applicant-contact-phone'] != undefined) %} checked{% endif %}>
                   <label class="govuk-label govuk-checkboxes__label" for="citizenship-conditional-2">
                     UK Phone number
                   </label>
