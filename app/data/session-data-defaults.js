@@ -28,12 +28,9 @@ module.exports = {
   "secondApplicantNameCount": 0,
   "numberChildren": 0,
   "numberApplicants": 0,
+  "firstApplicant": "Primary applicant",
+  "secondApplicant": "Other applicant"
   
   
 
-
-
-//old ones
-  "vehicle-registration": "Eilis",
-  "occupation": ""
-}
+,}
