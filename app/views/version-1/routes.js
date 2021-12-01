@@ -1,24 +1,6 @@
 module.exports = (router) => {
 
   // ********************** Eligibility **********************
-  router.post('/version-1/eligibility/10-weeks', function(req, res) {
-    var errors = []
-    if (req.body['10-weeks'] === undefined) {
-      errors.push({
-      text: 'Select an answer',
-      href: '#10-weeks'
-      })
-    }
-
-    if (errors.length === 0) {
-        res.redirect('/version-1/eligibility/under-18')
-    }
-    else {
-        res.render('.//version-1/eligibility/10-weeks', { errors: errors })
-    }
-  })
-
-
   router.post('/version-1/eligibility/under-18', function(req, res) {
     var errors = []
     if (req.body['child-under-18'] === undefined) {
@@ -110,43 +92,7 @@ module.exports = (router) => {
   })
 
 
-  // ********************** Application details  **********************
-  router.post('/version-1/applicants/number-of-children', function(req, res) {
-    var errors = []
-    if (req.body['number-children'] === undefined) {
-      errors.push({
-      text: 'Select the number of children you are applying to adopt',
-      href: '#number-of-children'
-      })
-    }
-    else if (req.body['number-children'] === "3 or more" && req.body['more-than-3'] === "") {
-      errors.push({
-      text: 'Enter a number',
-      href: '#exact-number'
-      })
-    }
-
-    if (req.body['more-than-3'] !== "") {
-      req.session.data.numberChildren = req.body['more-than-3']
-    }
-    else {
-      req.session.data.numberChildren = req.body['number-of-children']
-    }
-
-    if (req.body['submit-button'] === 'save-and-continue') {
-      if (errors.length === 0) {
-        res.redirect('/version-1/applicants/number-of-applicants')
-      }
-      else {
-        res.render('.//version-1/applicants/number-of-children', { errors: errors })
-      }
-    }
-    else {
-      res.redirect('/version-1/task-list')
-    }
-  })
-
-
+  // ********************** Applicants  **********************
   router.post('/version-1/applicants/number-of-applicants', function(req, res) {
     var errors = []
     if (req.body['number-of-applicants'] === undefined) {
@@ -170,32 +116,6 @@ module.exports = (router) => {
         res.redirect('/version-1/task-list')
     }
   })
-
-  router.post('version-1/about-application/number-of-applicants-2', function(req, res) {
-    var errors = []
-    if (req.body['number-of-applicants'] === undefined) {
-      errors.push({
-      text: 'Select an option which best describes who is applying',
-      href: '#number-of-applicants'
-      })
-    }
-
-    req.session.data.numberApplicants = req.body['number-of-applicants']
-
-    if (req.body['submit-button'] === 'save-and-continue') {
-      if (errors.length === 0) {
-        res.redirect('/version-1/task-list')
-      }
-      else {
-        res.render('.//version-1/applicants/number-of-applicants-2', { errors: errors })
-      }
-    }
-    else {
-        res.redirect('/version-1/task-list')
-    }
-  })
-
-
 
 
 
@@ -281,28 +201,6 @@ module.exports = (router) => {
         else {
           res.render('.//version-1/applicants/first-applicant-date-birth', { errors: errors })
         }
-      }
-      else {
-        res.redirect('/version-1/task-list')
-      }
-  })
-
-
-  router.post('/version-1/applicants/first-applicant-gender', function(req, res) {
-    var errors = []
-    if (req.body['first-applicant-gender'] === '') {
-      errors.push({
-      text: 'Select an answer',
-      href: '#first-applicant-gender'
-      })
-    }
-      if (req.body['submit-button'] === 'save-and-continue') {
-        if (errors.length === 0) {
-          res.redirect('/version-1/applicants/first-applicant-nationality')
-        }
-        else {
-            res.render('.//version-1/applicants/first-applicant-gender', { errors: errors })
-          }
       }
       else {
         res.redirect('/version-1/task-list')
@@ -695,6 +593,91 @@ router.post('/version-1/applicants/second-applicant-contact', function(req, res)
     res.redirect('/version-1/task-list')
   }
 })
+
+
+
+
+
+
+
+
+
+
+// ************************************* Old functions not in use any more ************************************* //
+  router.post('/version-1/eligibility/10-weeks', function(req, res) {
+    var errors = []
+    if (req.body['10-weeks'] === undefined) {
+      errors.push({
+      text: 'Select an answer',
+      href: '#10-weeks'
+      })
+    }
+
+    if (errors.length === 0) {
+        res.redirect('/version-1/eligibility/under-18')
+    }
+    else {
+        res.render('.//version-1/eligibility/10-weeks', { errors: errors })
+    }
+  })
+
+  router.post('/version-1/applicants/number-of-children', function(req, res) {
+    var errors = []
+    if (req.body['number-children'] === undefined) {
+      errors.push({
+      text: 'Select the number of children you are applying to adopt',
+      href: '#number-of-children'
+      })
+    }
+    else if (req.body['number-children'] === "3 or more" && req.body['more-than-3'] === "") {
+      errors.push({
+      text: 'Enter a number',
+      href: '#exact-number'
+      })
+    }
+
+    if (req.body['more-than-3'] !== "") {
+      req.session.data.numberChildren = req.body['more-than-3']
+    }
+    else {
+      req.session.data.numberChildren = req.body['number-of-children']
+    }
+
+    if (req.body['submit-button'] === 'save-and-continue') {
+      if (errors.length === 0) {
+        res.redirect('/version-1/applicants/number-of-applicants')
+      }
+      else {
+        res.render('.//version-1/applicants/number-of-children', { errors: errors })
+      }
+    }
+    else {
+      res.redirect('/version-1/task-list')
+    }
+  })
+
+
+  router.post('/version-1/applicants/first-applicant-gender', function(req, res) {
+    var errors = []
+    if (req.body['first-applicant-gender'] === '') {
+      errors.push({
+      text: 'Select an answer',
+      href: '#first-applicant-gender'
+      })
+    }
+      if (req.body['submit-button'] === 'save-and-continue') {
+        if (errors.length === 0) {
+          res.redirect('/version-1/applicants/first-applicant-nationality')
+        }
+        else {
+            res.render('.//version-1/applicants/first-applicant-gender', { errors: errors })
+          }
+      }
+      else {
+        res.redirect('/version-1/task-list')
+      }
+  })
+
 
 
 
