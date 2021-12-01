@@ -147,6 +147,7 @@ module.exports = (router) => {
     var errors = []
     console.log("First applicant previous names: ", req.session.data.firstApplicantPreviousNames)
     console.log("First applicant previous name radio: ", req.body['first-applicant-previous-full-name'])
+    console.log("name count: ", req.session.data.firstApplicantNameCount)
 
     if (req.body['first-applicant-other-names'] === undefined) {
       // if (req.body['first-applicant-other-names'] === undefined && req.session.data.firstApplicantPreviousNames === '') {
@@ -155,10 +156,11 @@ module.exports = (router) => {
       href: '#first-applicant-other-names'
       })
     }
-    else if (req.body['first-applicant-other-names'] === "Yes" && req.session.data.firstApplicantPreviousNames === "") {
+    else if (req.body['first-applicant-other-names'] === "Yes" && req.session.data.firstApplicantNameCount === 0) {
+      console.log("no name added error: ", req.session.data.firstApplicantPreviousNames)
       errors.push({
       text: 'Enter a name or choose No',
-      href: '#name'
+      href: '#first-applicant-no-name'
       })
     }
 
