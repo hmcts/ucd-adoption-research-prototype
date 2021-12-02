@@ -31,8 +31,9 @@ Apply to adopt a child
 
         <form action="/version-1/applicants/second-applicant-same-address" method="post" class="form">
 
-          <legend class="govuk-fieldset__legend govuk-fieldset__legend--l">
-            <span class="govuk-caption-l">Second applicant – your details </span>
+          <div class="govuk-form-group {% if (sameAddressError != '')%} govuk-form-group--error {% endif%}">          
+            <legend class="govuk-fieldset__legend govuk-fieldset__legend--l">
+            <span class="govuk-caption-l">{{ data['secondApplicant'] }}</span>
             <h1 class="govuk-fieldset__heading">
               Do you also live at this address?
             </h1>
@@ -43,9 +44,6 @@ Apply to adopt a child
             Buckingham Palace <br> London <br> SW1A 1AA
           </div>
 
-          {% if (sameAddressError != '')%}
-          <div class="govuk-form-group--error">
-          {% endif%}
           {% if sameAddressError != '' %}
             <span class="govuk-error-message govuk-form">
               <span class="govuk-visually-hidden">Error:</span> {{ sameAddressError }}
@@ -59,14 +57,14 @@ Apply to adopt a child
               <div class="govuk-radios govuk-radios--conditional" data-module="govuk-radios">
                 <div class="govuk-radios__item">
                   <input class="govuk-radios__input" id="Yes" name="same-address" type="radio"
-                    value="Yes">
+                    value="Yes" {% if data['same-address'] == 'Yes' %} checked {% endif %}>
                   <label class="govuk-label govuk-radios__label" for="same address">
                     Yes
                   </label>
                 </div>
   
                 <div class="govuk-radios__item">
-                  <input class="govuk-radios__input" id="No" name="same-address" type="radio" value="No" data-aria-controls="conditional-contact">
+                  <input class="govuk-radios__input" id="No" name="same-address" type="radio" value="No" data-aria-controls="conditional-contact" {% if data['same-address'] == 'No' %} checked {% endif %}>
                   <label class="govuk-label govuk-radios__label" for="same address">
                     No
                   </label>
