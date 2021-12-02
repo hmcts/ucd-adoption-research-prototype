@@ -718,7 +718,7 @@ router.post('/version-1/applicants/second-applicant-contact', function(req, res)
     href: '#second-applicant-contact'
     })
   }
-  else if (req.body['second-applicant-email-checkout'] !== undefined && req.body['second-applicant-email-address'] === '') {
+  else if (req.body['second-applicant-email-checkbox'] !== undefined && req.body['second-applicant-email-address'] === '') {
     errors.push({
       text: 'Enter an email address in the correct format, like name@example.com',
       href: '#second-applicant-email'
