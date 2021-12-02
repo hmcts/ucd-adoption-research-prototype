@@ -625,6 +625,7 @@ router.post('/version-1/applicants/second-applicant-same-address', function(req,
    if (req.body['submit-button'] === 'save-and-continue') {
       if (req.body['same-address'] === "Yes") {
         console.log("Test: ",req.body['same-address'])
+        req.session.data.secondApplicantAddress = 1
         res.redirect('/version-1/applicants/second-applicant-contact')
       }
       else {
