@@ -373,13 +373,13 @@ router.post('/version-1/applicants/first-applicant-enter-address-manually', func
 
 router.post('/version-1/applicants/first-applicant-contact', function(req, res) {
   var errors = []
-  if (req.body['first-applicant-email'] === undefined && req.body['first-applicant-phone'] === undefined) {
+  if (req.body['first-applicant-email-checkbox'] === undefined && req.body['first-applicant-phone'] === undefined) {
     errors.push({
     text: 'Enter your telephone number or email address',
     href: '#first-applicant-contact'
     })
   }
-  else if (req.body['first-applicant-email-checkout'] !== undefined && req.body['first-applicant-email-address'] === '') {
+  else if (req.body['first-applicant-email-checkbox'] !== undefined && req.body['first-applicant-email-address'] === '') {
     errors.push({
       text: 'Enter an email address in the correct format, like name@example.com',
       href: '#first-applicant-email'
