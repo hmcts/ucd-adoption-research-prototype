@@ -379,6 +379,12 @@ router.post('/version-1/applicants/first-applicant-contact', function(req, res) 
     href: '#first-applicant-contact'
     })
   }
+  else if (req.body['first-applicant-email-checkout'] !== undefined && req.body['first-applicant-email-address'] === '') {
+    errors.push({
+      text: 'Enter an email address in the correct format, like name@example.com',
+      href: '#first-applicant-email'
+      })  
+  }
   else if (req.body['first-applicant-phone'] !== undefined && req.body['first-applicant-phone-number'] === '') {
     errors.push({
       text: 'Enter a UK telephone number',
