@@ -22,7 +22,7 @@ Apply to adopt a child
         errorList: errors
       }) }}
       {% for error in errors %}
-        {% if error.href == '#first-applicant-contact' or error.href == '#first-applicant-phone-number'  %}
+        {% if error.href == '#first-applicant-contact' or error.href == '#first-applicant-phone-number' or error.href == '#first-applicant-email' %}
           {% set contactError = error.text %}
         {% endif %}
       {% endfor %}
@@ -35,7 +35,7 @@ Apply to adopt a child
           <legend class="govuk-fieldset__legend govuk-fieldset__legend--l">
             <span class="govuk-caption-l">{{ data['firstApplicant'] }}</span>
             <h1 class="govuk-fieldset__heading">
-              What are your contact details?s
+              What are your contact details?
             </h1>
           </legend>
 
@@ -51,13 +51,28 @@ Apply to adopt a child
               {% endif %}
 
               <div class="govuk-checkboxes" data-module="govuk-checkboxes">
+                <!-- Email address -->
                 <div class="govuk-checkboxes__item">
-                  <input class="govuk-checkboxes__input" id="email" name="first-applicant-email" type="checkbox"
-                    data-aria-controls="conditional-citizenship-conditional" {% if (data['first-applicant-email'] != undefined) %} checked {% endif %}>
+                  <input class="govuk-checkboxes__input" id="email" name="first-applicant-email-checkbox" type="checkbox"
+                    data-aria-controls="conditional-citizenship-conditional" {% if (data['first-applicant-email-checkbox'] != undefined) %} checked {% endif %}>
                   <label class="govuk-label govuk-checkboxes__label" for="citizenship-conditional">
-                    Email address &ndash; <span class="govuk-!-font-weight-bold">jane@goodall.com</span>
+                    Email address
                   </label>
                 </div>
+                <div class="govuk-checkboxes__conditional govuk-checkboxes__conditional--hidden"
+                  id="conditional-citizenship-conditional">
+                  <div class="govuk-form-group">
+                    {% if (data['first-applicant-email-checkbox'] !== undefined) and (data['first-applicant-email-address'] == '') %}
+                    <span id="contact-error" class="govuk-error-message">
+                      <span class="govuk-visually-hidden">Error:</span> {{ contactError }}
+                    </span>      
+                    {% endif %}
+                    <input class="govuk-input govuk-input--width-20 {% if (data['first-applicant-email-checkbox'] !== undefined) and (data['first-applicant-email-address'] == '') %} govuk-input--error {% endif %}" id="contact-by-enmail" name="first-applicant-email-address"
+                      type="email" value="{{ data['first-applicant-email-address'] }}">
+                  </div>
+                </div>                
+                
+                <!-- Phone number -->
                 <div class="govuk-checkboxes__item">
                   <input class="govuk-checkboxes__input" id="phone" name="first-applicant-phone" type="checkbox"
                     data-aria-controls="conditional-citizenship-conditional-2" {% if (data['first-applicant-phone'] != undefined) %} checked {% endif %}>
@@ -68,9 +83,6 @@ Apply to adopt a child
                 <div class="govuk-checkboxes__conditional govuk-checkboxes__conditional--hidden"
                   id="conditional-citizenship-conditional-2">
                   <div class="govuk-form-group">
-                    <label class="govuk-label" for="contact-by-phone">
-                      Phone number
-                    </label>
                     {% if (data['first-applicant-phone'] !== undefined) and (data['first-applicant-phone-number'] == '') %}
                     <span id="contact-error" class="govuk-error-message">
                       <span class="govuk-visually-hidden">Error:</span> {{ contactError }}
