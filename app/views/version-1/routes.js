@@ -712,13 +712,13 @@ router.post('/version-1/applicants/second-applicant-enter-address-manually', fun
 
 router.post('/version-1/applicants/second-applicant-contact', function(req, res) {
   var errors = []
-  if (req.body['second-applicant-email'] === undefined && req.body['second-applicant-phone'] === undefined) {
+  if (req.body['second-applicant-email-checkbox'] === undefined && req.body['second-applicant-phone'] === undefined) {
     errors.push({
     text: 'Enter your telephone number or email address',
     href: '#second-applicant-contact'
     })
   }
-  else if (req.body['second-applicant-email-checkout'] !== undefined && req.body['second-applicant-email-address'] === '') {
+  else if (req.body['second-applicant-email-checkbox'] !== undefined && req.body['second-applicant-email-address'] === '') {
     errors.push({
       text: 'Enter an email address in the correct format, like name@example.com',
       href: '#second-applicant-email'
@@ -743,6 +743,7 @@ router.post('/version-1/applicants/second-applicant-contact', function(req, res)
     res.redirect('/version-1/task-list')
   }
 })
+
 
 
 // ********************** Second applicant upload **********************
