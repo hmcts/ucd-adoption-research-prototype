@@ -22,16 +22,17 @@ Apply to adopt a child
         errorList: errors
       }) }}
       {% for error in errors %}
-        {% if error.href == '#10-weeks' %}
+        {% if error.href == '#second-applicant-same-address' %}
           {% set sameAddressError = error.text %}
         {% endif %}
       {% endfor %}
       {% endif %}
 
 
+
         <form action="/version-1/applicants/second-applicant-same-address" method="post" class="form">
 
-          <div class="govuk-form-group {% if (sameAddressError != '')%} govuk-form-group--error {% endif%}">          
+          <div class="govuk-form-group {% if (sameAddressError != '')%} govuk-form-group--error {% endif%}">            
             <legend class="govuk-fieldset__legend govuk-fieldset__legend--l">
             <span class="govuk-caption-l">{{ data['secondApplicant'] }}</span>
             <h1 class="govuk-fieldset__heading">
@@ -44,11 +45,11 @@ Apply to adopt a child
             Buckingham Palace <br> London <br> SW1A 1AA
           </div>
 
-          {% if sameAddressError != '' %}
-            <span class="govuk-error-message govuk-form">
-              <span class="govuk-visually-hidden">Error:</span> {{ sameAddressError }}
-            </span>
-          {% endif %}
+          {% if (sameAddressError != '')%}
+          <span id="national-insurance-number-error" class="govuk-error-message">
+            <span class="govuk-visually-hidden">Error:</span> {{ sameAddressError }}
+          </span>
+          {% endif%}
   
 
           <div class="govuk-form-group">

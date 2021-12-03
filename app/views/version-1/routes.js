@@ -616,7 +616,7 @@ router.post('/version-1/applicants/second-applicant-same-address', function(req,
   var errors = []
   if (req.body['same-address'] === undefined) {
     errors.push({
-    text: 'Select an answer',
+    text: 'Please answer the question',
     href: '#second-applicant-same-address'
     })
   }
