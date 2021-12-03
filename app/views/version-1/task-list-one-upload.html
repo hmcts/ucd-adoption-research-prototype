@@ -257,7 +257,18 @@ Task list
     
               <li class="app-task-list__item">
                 <span class="app-task-list__task-name">
-                  <p>Upload required documents</p>
+                  <p>Upload applicants' documents</p>
+                </span>
+                {% if data['birth-father'] %}
+                <strong class="govuk-tag  app-task-list__tag" id="eligibility-completed">Completed</strong>
+                    {% else %}
+                    <strong class="govuk-tag govuk-tag--grey app-task-list__tag">cannot start yet</strong>
+                {% endif %}
+    
+              </li>
+              <li class="app-task-list__item">
+                <span class="app-task-list__task-name">
+                  <p>Upload child's documents</p>
                 </span>
                 {% if data['birth-father'] %}
                 <strong class="govuk-tag  app-task-list__tag" id="eligibility-completed">Completed</strong>
