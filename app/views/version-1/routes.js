@@ -157,14 +157,14 @@ module.exports = (router) => {
     if (req.body['first-applicant-other-names'] === undefined) {
       // if (req.body['first-applicant-other-names'] === undefined && req.session.data.firstApplicantPreviousNames === '') {
       errors.push({
-      text: 'Select an answer',
+      text: 'Please answer the question',
       href: '#first-applicant-other-names'
       })
     }
     else if (req.body['first-applicant-other-names'] === "Yes" && req.session.data.firstApplicantNameCount === 0) {
       console.log("no name added error: ", req.session.data.firstApplicantPreviousNames)
       errors.push({
-      text: 'Enter a name or choose No',
+      text: 'Enter a name or choose no',
       href: '#first-applicant-no-name'
       })
     }
@@ -787,14 +787,39 @@ router.post('/version-1/applicants/second-applicant-upload', function(req, res) 
 
     if (req.body['submit-button'] === 'save-and-continue') {
       if (errors.length === 0) {
-        res.redirect('/version-1/applicants/mother-alive')
+        res.redirect('/version-1/children/mother-alive')
       }
       else {
-        res.render('.//version-1/applicants/mother-name', { errors: errors })
+        res.render('.//version-1/children/mother-name', { errors: errors })
       }
     }
     else {
       res.redirect('/version-1/task-list')
+    }
+  })
+
+
+  router.post('/version-1/children/mother-alive', function(req, res) {
+    var errors = []
+    if (req.body['mother-alive'] === undefined) {
+      errors.push({
+      text: 'Select the number of people applying to adopt',
+      href: '#mother-alive'
+      })
+    }
+
+    req.session.data.numberApplicants = req.body['mother-alive']
+
+    if (req.body['submit-button'] === 'save-and-continue') {
+      if (errors.length === 0) {
+        res.redirect('//version-1/children/mother-nationality')
+      }
+      else {
+        res.render('.//version-1/children/mother-alive', { errors: errors })
+      }
+    }
+    else {
+        res.redirect('/version-1/task-list')
     }
   })
 

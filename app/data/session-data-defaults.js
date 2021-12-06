@@ -36,6 +36,13 @@ module.exports = {
   "secondApplicantNationalities": [],
   "secondApplicantNationalityCount": 0,
 
+  "motherNationalityId": [],
+  "motherNationalities": [],
+  "motherNationalityCount": 0,
+
+  "fatherNationalityId": [],
+  "fatherNationalities": [],
+  "fatherNationalityCount": 0,
 
 
   "numberChildren": 0,
