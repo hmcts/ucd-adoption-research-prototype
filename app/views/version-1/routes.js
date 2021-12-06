@@ -1070,7 +1070,75 @@ router.post('/version-1/applicants/second-applicant-upload', function(req, res) 
     }
   })
 
-
+  router.post('/version-1/children/mother-address-postcode', function(req, res) {
+    var errors = []
+    if (req.body['mother-address-postcode'] === "") {
+      errors.push({
+      text: 'Enter a valid postcode',
+      href: '#mother-address-postcode'
+      })
+    }
+    if (req.body['submit-button'] === 'save-and-continue') {
+      if (errors.length === 0) {
+        res.redirect('/version-1/children/first-applicant-find-address')
+      }
+      else {
+        res.render('.//version-1/children/mother-address-postcode', { errors: errors })
+      }
+    }
+    else {
+      res.redirect('/version-1/task-list')
+    }
+  })
+  
+  
+  router.post('/version-1/children/first-applicant-find-address', function(req, res) {
+    var errors = []
+    if (req.body['first-applicant-choose-address'] === 'address-found') {
+      errors.push({
+      text: 'Select an address',
+      href: '#first-applicant-find-address'
+      })
+    }
+  
+    if (req.body['submit-button'] === 'save-and-continue') {
+      if (errors.length === 0) {
+        res.redirect('/version-1/children/first-applicant-contact')
+      }
+      else {
+        res.render('.//version-1/children/first-applicant-find-address', { errors: errors })
+      }
+    }
+    else {
+      res.redirect('/version-1/task-list')
+    }
+  })
+  
+  
+  router.post('/version-1/children/first-applicant-enter-address-manually', function(req, res) {
+    var errors = []
+    if (req.body['first-applicant-address-line-1'] === '' || req.body['first-applicant-postcode'] === ''){
+      errors.push({
+      text: 'Enter address',
+      href: '#first-applicant-manual-address'
+      })
+    }
+  
+  
+    if (req.body['submit-button'] === 'save-and-continue') {
+      if (errors.length === 0) {
+        res.redirect('/version-1/children/first-applicant-contact')
+      }
+      else {
+        res.render('.//version-1/children/first-applicant-enter-address-manually', { errors: errors })
+      }
+    }
+    else {
+      res.redirect('/version-1/task-list')
+    }
+  })
+  
+  
 
 
 
