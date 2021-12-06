@@ -14,7 +14,7 @@ Apply to adopt a child
   <div class="govuk-grid-row">
     <div class="govuk-grid-column-two-thirds">
 
-      {% set nameError = '' %}
+      {% set nationalityError = '' %}
 
       {% if errors | length > 0 %}
       {{ govukErrorSummary({
@@ -22,8 +22,8 @@ Apply to adopt a child
         errorList: errors
       }) }}
       {% for error in errors %}
-        {% if error.href == '#child-nationality' %}
-          {% set nameError = error.text %}
+        {% if (error.href == '#child-nationality' or error.href == '#child-no-nationality') %}
+          {% set nationalityError = error.text %}
         {% endif %}
       {% endfor %}
       {% endif %}
@@ -31,32 +31,95 @@ Apply to adopt a child
 
       <form action="/version-1/children/child-nationality" method="post" class="form">
 
-        <div class="govuk-form-group {% if (nameError != '')%} govuk-form-group--error {% endif%}">
-          <legend class="govuk-fieldset__legend govuk-fieldset__legend--l">
-          <span class="govuk-caption-l">{{ data['child'] }}</span>
-          <h1 class="govuk-fieldset__heading">
-            What is the child's nationality?
-          </h1>
-          </legend>
-          <div id="namehint" class="govuk-hint">
-            Enter these details as they're written on their birth certificate. Speak to your adoption agency or social worker if you do not have this.
-          </div>
+        <div class="govuk-form-group {% if (nationalityError != '')%} govuk-form-group--error {% endif%}">
+          <fieldset class="govuk-fieldset" aria-describedby="nationality-hint">
+            <legend class="govuk-fieldset__legend govuk-fieldset__legend--l">
+              <span class="govuk-caption-l">{{ data['child'] }}</span>
+              <h1 class="govuk-fieldset__heading">
+                What's their nationality?
+              </h1>
+            </legend>
 
-          {% if (nameError != '')%}
-          <span id="name-error" class="govuk-error-message">
-            <span class="govuk-visually-hidden">Error:</span> {{ nameError }}
-          </span>
-          {% endif%}
+            {% if (nationalityError != '')%}
+            <span id="national-insurance-number-error" class="govuk-error-message">
+              <span class="govuk-visually-hidden">Error:</span> {{ nationalityError }}
+            </span>
+            {% endif%}
 
-          <input class="govuk-input {% if (nameError != '')%} govuk-input--error {% endif%}" id="child-nationality" name="child-nationality" type="text" autocomplete="name" spellcheck="false"
-            value="{{ data['child-nationality'] }}">
+
+            <div id="nationality-hint" class="govuk-hint">
+              Select all options that are relevant.
+            </div>
+            <div class="govuk-checkboxes" data-module="govuk-checkboxes">
+              <div class="govuk-checkboxes__item">
+                <input class="govuk-checkboxes__input" id="child-british" name="child-british" type="checkbox"  aria-describedby="nationality-item-hint" {% if (data['child-british'] != undefined) %} checked {% endif %}>
+                <label class="govuk-label govuk-checkboxes__label" for="nationality">
+                  British
+                </label>
+                <div id="nationality-item-hint" class="govuk-hint govuk-checkboxes__hint">
+                  including English, Scottish, Welsh and Northern Irish
+                </div>
+              </div>
+              <div class="govuk-checkboxes__item">
+                <input class="govuk-checkboxes__input" id="child-nationality-2" name="child-irish" type="checkbox" {% if (data['child-irish'] != undefined) %} checked {% endif %}>
+                <label class="govuk-label govuk-checkboxes__label" for="nationality-2">
+                  Irish
+                </label>
+              </div>
+              <div class="govuk-checkboxes__item">
+                <input class="govuk-checkboxes__input" id="other" name="child-other" type="checkbox"
+                   data-aria-controls="conditional-citizenship-conditional-2" {% if (data['child-other'] != undefined) %} checked {% endif %}>
+                <label class="govuk-label govuk-checkboxes__label" for="citizenship-conditional-2">
+                  Citizen of a different country
+                </label>
+              </div>
+              <div class="govuk-checkboxes__conditional govuk-checkboxes__conditional--hidden"
+                id="conditional-citizenship-conditional-2">
+                <div class="govuk-form-group {% if (nationalityError != '')%} govuk-form-group--error {% endif%}">
+
+                  {% if (data['childNationalityCount'] > 0) %}
+
+                  {% for id in data['childNationalityId']|reverse %}
+
+                    <dl class="govuk-summary-list govuk-!-margin-bottom-4 ">
+                      <div class="govuk-summary-list__row">
+                        <dt class="govuk-summary-list__key">
+                          {{data['childNationalities'][id]}}
+                        </dt>
+                        <dd class="govuk-summary-list__actions">
+                          <a class="govuk-link" href="#">
+                            Remove<span class="govuk-visually-hidden"> name</span>
+                          </a>
+                        </dd>
+                      </div>
+                    </dl>
+                    {% endfor %}
+
+                    <details class="govuk-details" data-module="govuk-details">
+                      <summary class="govuk-details__summary">
+                        <span class="govuk-details__summary-text">
+                          Add another country
+                        </span>
+                      </summary>
+                      <div class="govuk-details__text">
+
+                      {% endif %}
+
+                      <div class="govuk-form-group">
+                        <label class="govuk-label" for="other">
+                          Country name
+                        </label>
+                        <input class="govuk-input govuk-!-width-two-thirds" id="child-different-country" name="child-different-country" type="text">
+                      </div>
+                        <button class="govuk-button govuk-button--secondary govuk-!-margin-top-5" data-module="govuk-button" name="submit-button" value="add">Add</button>
+                    </details>
+                </div>
+            </div>
+          </fieldset>
         </div>
-
-          <!-- Buttons -->
-          {% include "../../includes/buttons.html" %}
-
-        </form>
-
+        <!-- Buttons -->
+        {% include "../../includes/buttons.html" %}
+      </form>
       </div>
     </div>
   </main>
