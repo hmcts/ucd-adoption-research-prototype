@@ -772,6 +772,31 @@ router.post('/version-1/applicants/second-applicant-upload', function(req, res) 
 
 
 
+  // ******************************************** Child's details ********************************************
+
+  // ********************** Birth mother's details **********************
+  router.post('/version-1/children/mother-name', function(req, res) {
+    var errors = []
+    if (req.body['mother-name'] === '') {
+      errors.push({
+      text: 'Enter your full name',
+      href: '#mother-name'
+      })
+    }
+
+    if (req.body['submit-button'] === 'save-and-continue') {
+      if (errors.length === 0) {
+        res.redirect('/version-1/applicants/mother-alive')
+      }
+      else {
+        res.render('.//version-1/applicants/mother-name', { errors: errors })
+      }
+    }
+    else {
+      res.redirect('/version-1/task-list')
+    }
+  })
+
 
 
 

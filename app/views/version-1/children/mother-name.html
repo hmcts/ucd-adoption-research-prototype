@@ -29,24 +29,24 @@ Apply to adopt a child
       {% endif %}
 
 
-      <form action="/version-1/applicants/first-applicant-name" method="post" class="form">
+      <form action="/version-1/children/mother-name" method="post" class="form">
 
         <div class="govuk-form-group {% if (nameError != '')%} govuk-form-group--error {% endif%}">
           <legend class="govuk-fieldset__legend govuk-fieldset__legend--l">
-          <span class="govuk-caption-l">{{ data['child'] }}</span>
+          <span class="govuk-caption-l">{{ data['mother'] }}</span>
           <h1 class="govuk-fieldset__heading">
-            What's your full name?
+            What's the full name of the child's mother?
           </h1>
           </legend>
 
           {% if (nameError != '')%}
-          <span id="national-insurance-number-error" class="govuk-error-message">
+          <span id="name-error" class="govuk-error-message">
             <span class="govuk-visually-hidden">Error:</span> {{ nameError }}
           </span>
           {% endif%}
 
-          <input class="govuk-input {% if (nameError != '')%} govuk-input--error {% endif%}" id="full-name" name="first-applicant-name" type="text" autocomplete="name" spellcheck="false"
-            value="{{ data['first-applicant-name'] }}">
+          <input class="govuk-input {% if (nameError != '')%} govuk-input--error {% endif%}" id="mother-name" name="mother-name" type="text" autocomplete="name" spellcheck="false"
+            value="{{ data['mother-name'] }}">
         </div>
 
           <!-- Buttons -->
