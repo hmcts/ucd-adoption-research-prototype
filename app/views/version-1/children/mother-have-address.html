@@ -1,0 +1,80 @@
+{% extends "layout-signed-in.html" %}
+
+{% block pageTitle %}
+Apply to adopt a child
+{% endblock %}
+
+{% block beforeContent %}
+<a class="govuk-back-link" href="javascript:history.back()">Back</a>
+{% endblock %}
+
+{% block content %}
+
+<div class="govuk-width-container">
+  <div class="govuk-grid-row">
+    <div class="govuk-grid-column-two-thirds">
+
+      {% set haveAddressError = '' %}
+  
+      {% if errors | length > 0 %}
+      {{ govukErrorSummary({
+        titleText: "There is a problem",
+        errorList: errors
+      }) }}
+      {% for error in errors %}
+        {% if error.href == '#mother-have-address' %}
+          {% set haveAddressError = error.text %}
+        {% endif %}
+      {% endfor %}
+      {% endif %}
+
+
+      <form action="/version-1/children/mother-have-address" method="post" class="form">
+        
+        <div class="govuk-form-group {% if (haveAddressError != '')%} govuk-form-group--error {% endif %}">
+        <legend class="govuk-fieldset__legend govuk-fieldset__legend--l">
+          <span class="govuk-caption-l">{{ data['mother'] }}</span>
+          <h1 class="govuk-fieldset__heading">
+            Do you know her last known address?
+          </h1>
+        </legend>
+
+        {% if (haveAddressError != '')%}
+          <span class="govuk-error-message govuk-form">
+            <span class="govuk-visually-hidden">Error:</span> {{ haveAddressError }}
+          </span>
+        {% endif %}
+
+        <div class="govuk-form-group">
+          <fieldset class="govuk-fieldset" role="group" aria-describedby="how-many-people-are-applying-to-adopt">
+
+            <div class="govuk-radios govuk-radios--conditional" data-module="govuk-radios">
+              <div class="govuk-radios__item">
+                <input class="govuk-radios__input" id="yes" name="mother-have-address" type="radio" value="yes" {% if (data['mother-have-address'] === "yes") %} checked {% endif %}>
+                <label class="govuk-label govuk-radios__label" for="yes">
+                  Yes
+                </label>
+              </div>
+
+              <div class="govuk-radios__item">
+                <input class="govuk-radios__input" id="no" name="mother-have-address" type="radio" value="no" {% if (data['mother-have-address'] === "no") %} checked {% endif %}>
+                <label class="govuk-label govuk-radios__label" for="no">
+                  No
+                </label>
+              </div>
+            </div>
+          </fieldset>
+        </div>
+        {% if haveAddressError != '' %}
+          </div>
+        {% endif %}
+
+        <!-- Buttons -->
+          {% include "../../includes/buttons.html" %}
+
+
+      </form>   
+  </div>
+</div>
+
+{% endblock %}

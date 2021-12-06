@@ -14,7 +14,7 @@ Apply to adopt a child
   <div class="govuk-grid-row">
     <div class="govuk-grid-column-two-thirds">
 
-      {% set nameError = '' %}
+      {% set occupationError = '' %}
   
       {% if errors | length > 0 %}
       {{ govukErrorSummary({
@@ -23,33 +23,30 @@ Apply to adopt a child
       }) }}
       {% for error in errors %}
         {% if error.href == '#first-applicant-name' %}
-          {% set nameError = error.text %}
+          {% set occupationError = error.text %}
         {% endif %}
       {% endfor %}
       {% endif %}
 
 
-      <form action="/version-1/children/mother-name" method="post" class="form">
+      <form action="/version-1/children/mother-occupation" method="post" class="form">
 
-        <div class="govuk-form-group {% if (nameError != '')%} govuk-form-group--error {% endif%}">
+        <div class="govuk-form-group {% if (occupationError != '')%} govuk-form-group--error {% endif%}">
           <legend class="govuk-fieldset__legend govuk-fieldset__legend--l">
           <span class="govuk-caption-l">{{ data['mother'] }}</span>
           <h1 class="govuk-fieldset__heading">
-            What is the full name of the child's mother?
+            What's her occupation?
           </h1>
           </legend>
-          <div id="namehint" class="govuk-hint">
-            This will be on the child’s full birth certificate. Ask the adoption agency or social worker if you’re not sure.
-          </div>
-  
-          {% if (nameError != '')%}
+
+          {% if (occupationError != '')%}
           <span id="name-error" class="govuk-error-message">
-            <span class="govuk-visually-hidden">Error:</span> {{ nameError }}
+            <span class="govuk-visually-hidden">Error:</span> {{ occupationError }}
           </span>
           {% endif%}
 
-          <input class="govuk-input {% if (nameError != '')%} govuk-input--error {% endif%}" id="mother-name" name="mother-name" type="text" autocomplete="name" spellcheck="false"
-            value="{{ data['mother-name'] }}">
+          <input class="govuk-input {% if (occupationError != '')%} govuk-input--error {% endif%}" id="mother-occupation" name="mother-occupation" type="text" autocomplete="name" spellcheck="false"
+            value="{{ data['mother-occupation'] }}">
         </div>
 
           <!-- Buttons -->
