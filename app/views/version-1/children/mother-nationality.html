@@ -22,21 +22,21 @@ Apply to adopt a child
         errorList: errors
       }) }}
       {% for error in errors %}
-        {% if (error.href == '#second-applicant-nationality' or error.href == '#second-applicant-no-nationality') %}
+        {% if (error.href == '#mother-nationality' or error.href == '#mother-no-nationality') %}
           {% set nationalityError = error.text %}
         {% endif %}
       {% endfor %}
       {% endif %}
 
 
-      <form action="/version-1/applicants/second-applicant-nationality" method="post" class="form">
+      <form action="/version-1/children/mother-nationality" method="post" class="form">
 
         <div class="govuk-form-group {% if (nationalityError != '')%} govuk-form-group--error {% endif%}">
           <fieldset class="govuk-fieldset" aria-describedby="nationality-hint">
             <legend class="govuk-fieldset__legend govuk-fieldset__legend--l">
-              <span class="govuk-caption-l">{{ data['secondApplicant'] }}</span>
+              <span class="govuk-caption-l">{{ data['mother'] }}</span>
               <h1 class="govuk-fieldset__heading">
-                What is your nationality?
+                What's her nationality?
               </h1>
             </legend>
 
@@ -52,7 +52,7 @@ Apply to adopt a child
             </div>
             <div class="govuk-checkboxes" data-module="govuk-checkboxes">
               <div class="govuk-checkboxes__item">
-                <input class="govuk-checkboxes__input" id="second-applicant-british" name="second-applicant-british" type="checkbox"  aria-describedby="nationality-item-hint" {% if (data['second-applicant-british'] != undefined) %} checked {% endif %}>
+                <input class="govuk-checkboxes__input" id="mother-british" name="mother-british" type="checkbox"  aria-describedby="nationality-item-hint" {% if (data['mother-british'] != undefined) %} checked {% endif %}>
                 <label class="govuk-label govuk-checkboxes__label" for="nationality">
                   British
                 </label>
@@ -61,14 +61,14 @@ Apply to adopt a child
                 </div>
               </div>
               <div class="govuk-checkboxes__item">
-                <input class="govuk-checkboxes__input" id="second-applicant-nationality-2" name="second-applicant-irish" type="checkbox" {% if (data['second-applicant-irish'] != undefined) %} checked {% endif %}>
+                <input class="govuk-checkboxes__input" id="mother-nationality-2" name="mother-irish" type="checkbox" {% if (data['mother-irish'] != undefined) %} checked {% endif %}>
                 <label class="govuk-label govuk-checkboxes__label" for="nationality-2">
                   Irish
                 </label>
               </div>
               <div class="govuk-checkboxes__item">
-                <input class="govuk-checkboxes__input" id="other" name="second-applicant-other" type="checkbox"
-                   data-aria-controls="conditional-citizenship-conditional-2" {% if (data['second-applicant-other'] != undefined) %} checked {% endif %}>
+                <input class="govuk-checkboxes__input" id="other" name="mother-other" type="checkbox"
+                   data-aria-controls="conditional-citizenship-conditional-2" {% if (data['mother-other'] != undefined) %} checked {% endif %}>
                 <label class="govuk-label govuk-checkboxes__label" for="citizenship-conditional-2">
                   Citizen of a different country
                 </label>
@@ -77,14 +77,14 @@ Apply to adopt a child
                 id="conditional-citizenship-conditional-2">
                 <div class="govuk-form-group {% if (nationalityError != '')%} govuk-form-group--error {% endif%}">
 
-                  {% if (data['secondApplicantNationalityCount'] > 0) %}
+                  {% if (data['motherNationalityCount'] > 0) %}
 
-                  {% for id in data['secondApplicantNationalityId']|reverse %}
+                  {% for id in data['motherNationalityId']|reverse %}
                   
                     <dl class="govuk-summary-list govuk-!-margin-bottom-4 ">                    
                       <div class="govuk-summary-list__row">
                         <dt class="govuk-summary-list__key">
-                          {{data['secondApplicantNationalities'][id]}}
+                          {{data['motherNationalities'][id]}}
                         </dt>
                         <dd class="govuk-summary-list__actions">
                           <a class="govuk-link" href="#">
@@ -109,7 +109,7 @@ Apply to adopt a child
                         <label class="govuk-label" for="other">
                           Country name
                         </label>
-                        <input class="govuk-input govuk-!-width-two-thirds" id="second-applicant-different-country" name="second-applicant-different-country" type="text">
+                        <input class="govuk-input govuk-!-width-two-thirds" id="mother-different-country" name="mother-different-country" type="text">
                       </div>
                         <button class="govuk-button govuk-button--secondary govuk-!-margin-top-5" data-module="govuk-button" name="submit-button" value="add">Add</button>
                     </details>

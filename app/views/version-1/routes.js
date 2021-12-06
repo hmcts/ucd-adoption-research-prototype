@@ -772,7 +772,7 @@ router.post('/version-1/applicants/second-applicant-upload', function(req, res) 
 
     if (req.body['submit-button'] === 'save-and-continue') {
       if (errors.length === 0) {
-        res.redirect('//version-1/children/mother-nationality')
+        res.redirect('/version-1/children/mother-nationality')
       }
       else {
         res.render('.//version-1/children/mother-alive', { errors: errors })
@@ -780,6 +780,69 @@ router.post('/version-1/applicants/second-applicant-upload', function(req, res) 
     }
     else {
         res.redirect('/version-1/task-list')
+    }
+  })
+
+  router.post('/version-1/children/mother-nationality', function(req, res) {
+    var errors = []
+
+    if (req.body['mother-british'] === undefined && req.body['mother-irish'] === undefined &&req.body['mother-other'] === undefined) {
+      console.log("error")
+      errors.push({
+      text: 'Select if you are British, Irish or a citizen of a different country',
+      href: '#mother-nationality'
+      })
+    }
+    else if (req.body['mother-other'] !== undefined && req.session.data.motherNationalityCount === 0) {
+      console.log("no nationality added error: ", req.session.data.motherNationalities)
+      errors.push({
+      text: 'This is not a valid entry',
+      href: '#mother-no-nationality'
+      })
+    }
+
+    count = req.session.data.motherNationalityCount
+    if (req.body['submit-button'] === 'save-and-continue') {
+      if (errors.length === 0) {
+        req.session.data.motherNationalities[count] = req.body['mother-different-country']
+        res.redirect('/version-1/children/mother-occupation')
+      }
+      else {
+        res.render('.//version-1/children/mother-nationality', { errors: errors })
+      }
+    }
+    else if (req.body['submit-button'] === 'save-as-draft') {
+      res.redirect('/version-1/task-list')
+    }
+    else {
+      req.session.data.motherNationalities[count] = req.body['mother-different-country']
+      req.session.data.motherNationalityId[count] = count
+      req.session.data.motherNationalityCount = count + 1
+      res.redirect('/version-1/children/mother-nationality')
+    }
+  })
+
+
+
+  router.post('/version-1/children/mother-occupation', function(req, res) {
+    var errors = []
+    if (req.body['mother-occupation'] === '') {
+      errors.push({
+      text: 'Enter your occupation',
+      href: '#mother-occupation'
+      })
+    }
+
+    if (req.body['submit-button'] === 'save-and-continue') {
+      if (errors.length === 0) {
+        res.redirect('/version-1/task-list')
+      }
+      else {
+          res.render('.//version-1/children/mother-occupation', { errors: errors })
+      }
+    }
+    else {
+      res.redirect('/version-1/task-list')
     }
   })
 
