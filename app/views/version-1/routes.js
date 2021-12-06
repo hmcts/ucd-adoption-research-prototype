@@ -932,7 +932,7 @@ router.post('/version-1/applicants/second-applicant-upload', function(req, res) 
     var errors = []
     if (req.body['mother-alive'] === undefined) {
       errors.push({
-      text: 'Select the number of people applying to adopt',
+      text: 'Please answer the question',
       href: '#mother-alive'
       })
     }
@@ -941,7 +941,13 @@ router.post('/version-1/applicants/second-applicant-upload', function(req, res) 
 
     if (req.body['submit-button'] === 'save-and-continue') {
       if (errors.length === 0) {
-        res.redirect('/version-1/children/mother-nationality')
+        if (req.body['mother-alive'] === 'yes') {
+          res.redirect('/version-1/children/mother-nationality')
+        }
+        else {
+          req.session.data.birthMotherComplete = 1
+          res.redirect('/version-1/task-list')  
+        }
       }
       else {
         res.render('.//version-1/children/mother-alive', { errors: errors })
@@ -955,10 +961,10 @@ router.post('/version-1/applicants/second-applicant-upload', function(req, res) 
   router.post('/version-1/children/mother-nationality', function(req, res) {
     var errors = []
 
-    if (req.body['mother-british'] === undefined && req.body['mother-irish'] === undefined &&req.body['mother-other'] === undefined) {
+    if (req.body['mother-british'] === undefined && req.body['mother-irish'] === undefined && req.body['mother-other'] === undefined && req.body['mother-unsure'] === undefined) {
       console.log("error")
       errors.push({
-      text: 'Select if you are British, Irish or a citizen of a different country',
+      text: 'Select if they are British, Irish or a citizen of a different country',
       href: '#mother-nationality'
       })
     }

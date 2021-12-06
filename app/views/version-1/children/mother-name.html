@@ -22,7 +22,7 @@ Apply to adopt a child
         errorList: errors
       }) }}
       {% for error in errors %}
-        {% if error.href == '#first-applicant-name' %}
+        {% if error.href == '#mother-name' %}
           {% set nameError = error.text %}
         {% endif %}
       {% endfor %}

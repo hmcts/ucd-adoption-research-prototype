@@ -195,7 +195,7 @@ Task list
                         Birth mother details
                     </a>
                     </span>
-                    {% if data['mother-address'] %}
+                    {% if data['mother-address'] or data['birthMotherComplete'] == 1 %}
                         <strong class="govuk-tag  app-task-list__tag" id="eligibility-completed">Completed</strong>
                     {% elseif data['mother-name'] %}
                         <strong class="govuk-tag govuk-tag--blue app-task-list__tag">in progress</strong>

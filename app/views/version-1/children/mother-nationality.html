@@ -36,7 +36,7 @@ Apply to adopt a child
             <legend class="govuk-fieldset__legend govuk-fieldset__legend--l">
               <span class="govuk-caption-l">{{ data['mother'] }}</span>
               <h1 class="govuk-fieldset__heading">
-                What's her nationality?
+                What is the nationality of the child’s birth mother?
               </h1>
             </legend>
 
@@ -113,8 +113,14 @@ Apply to adopt a child
                       </div>
                         <button class="govuk-button govuk-button--secondary govuk-!-margin-top-5" data-module="govuk-button" name="submit-button" value="add">Add</button>
                     </details>
-                </div>
-            </div>
+                </div>  
+              </div>
+              <div class="govuk-checkboxes__item">
+                <input class="govuk-checkboxes__input" id="mother-unsure" name="mother-unsure" type="checkbox" {% if (data['mother-unsure'] != undefined) %} checked {% endif %}>
+                <label class="govuk-label govuk-checkboxes__label" for="nationality-unsure">
+                  Not sure
+                </label>
+              </div>
           </fieldset>
         </div>
         <!-- Buttons -->

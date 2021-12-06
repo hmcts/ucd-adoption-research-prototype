@@ -22,7 +22,7 @@ Apply to adopt a child
         errorList: errors
       }) }}
       {% for error in errors %}
-        {% if error.href == '#first-applicant-name' %}
+        {% if error.href == '#mother-occupation' %}
           {% set occupationError = error.text %}
         {% endif %}
       {% endfor %}
@@ -35,7 +35,7 @@ Apply to adopt a child
           <legend class="govuk-fieldset__legend govuk-fieldset__legend--l">
           <span class="govuk-caption-l">{{ data['mother'] }}</span>
           <h1 class="govuk-fieldset__heading">
-            What's her occupation?
+            What is the occupation of the child’s birth mother?
           </h1>
           </legend>
 
