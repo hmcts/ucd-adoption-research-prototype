@@ -215,26 +215,6 @@ module.exports = (router) => {
   })
 
 
-  router.post('/version-1/applicants/first-applicant-nationality-old', function(req, res) {
-    var errors = []
-    if (req.body['first-applicant-nationality'] === '') {
-      errors.push({
-      text: 'Select an answer',
-      href: '#first-applicant-nationality'
-      })
-    }
-    if (req.body['submit-button'] === 'save-and-continue') {
-      if (errors.length === 0) {
-        res.redirect('/version-1/applicants/first-applicant-occupation')
-      }
-      else {
-          res.render('.//version-1/applicants/first-applicant-nationality', { errors: errors })
-      }
-    }
-    else {
-      res.redirect('/version-1/task-list')
-    }
-  })
 
   router.post('/version-1/applicants/first-applicant-nationality', function(req, res) {
     var errors = []
@@ -250,14 +230,14 @@ module.exports = (router) => {
       console.log("no nationality added error: ", req.session.data.firstApplicantNationalities)
       errors.push({
       text: 'This is not a valid entry',
-      href: '#first-applicant-no-name'
+      href: '#first-applicant-no-nationality'
       })
     }
 
     count = req.session.data.firstApplicantNationalityCount
     if (req.body['submit-button'] === 'save-and-continue') {
       if (errors.length === 0) {
-        req.session.data.firstApplicantNationalities[count] = req.body['first-applicant-additional-country']
+        req.session.data.firstApplicantNationalities[count] = req.body['first-applicant-different-country']
         res.redirect('/version-1/applicants/first-applicant-occupation')
       }
       else {
@@ -268,7 +248,7 @@ module.exports = (router) => {
       res.redirect('/version-1/task-list')
     }
     else {
-      req.session.data.firstApplicantNationalities[count] = req.body['first-applicant-additional-country']
+      req.session.data.firstApplicantNationalities[count] = req.body['first-applicant-different-country']
       req.session.data.firstApplicantNationalityId[count] = count
       req.session.data.firstApplicantNationalityCount = count + 1
       res.redirect('/version-1/applicants/first-applicant-nationality')
@@ -525,27 +505,6 @@ router.post('/version-1/applicants/first-applicant-upload', function(req, res) {
   })
 
 
-  router.post('/version-1/applicants/second-applicant-nationality-old', function(req, res) {
-    var errors = []
-    if (req.body['second-applicant-nationality'] === '') {
-      errors.push({
-      text: 'Select an answer',
-      href: '#second-applicant-nationality'
-      })
-    }
-    if (req.body['submit-button'] === 'save-and-continue') {
-      if (errors.length === 0) {
-        res.redirect('/version-1/applicants/second-applicant-occupation')
-      }
-      else {
-          res.render('.//version-1/applicants/second-applicant-nationality', { errors: errors })
-      }
-    }
-    else {
-      res.redirect('/version-1/task-list')
-    }
-  })
-
   router.post('/version-1/applicants/second-applicant-nationality', function(req, res) {
     var errors = []
 
@@ -560,14 +519,14 @@ router.post('/version-1/applicants/first-applicant-upload', function(req, res) {
       console.log("no nationality added error: ", req.session.data.secondApplicantNationalities)
       errors.push({
       text: 'This is not a valid entry',
-      href: '#second-applicant-no-name'
+      href: '#second-applicant-no-nationality'
       })
     }
 
     count = req.session.data.secondApplicantNationalityCount
     if (req.body['submit-button'] === 'save-and-continue') {
       if (errors.length === 0) {
-        req.session.data.secondApplicantNationalities[count] = req.body['second-applicant-additional-country']
+        req.session.data.secondApplicantNationalities[count] = req.body['second-applicant-different-country']
         res.redirect('/version-1/applicants/second-applicant-occupation')
       }
       else {
@@ -578,12 +537,13 @@ router.post('/version-1/applicants/first-applicant-upload', function(req, res) {
       res.redirect('/version-1/task-list')
     }
     else {
-      req.session.data.secondApplicantNationalities[count] = req.body['second-applicant-additional-country']
+      req.session.data.secondApplicantNationalities[count] = req.body['second-applicant-different-country']
       req.session.data.secondApplicantNationalityId[count] = count
       req.session.data.secondApplicantNationalityCount = count + 1
       res.redirect('/version-1/applicants/second-applicant-nationality')
     }
   })
+
 
 
 
