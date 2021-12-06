@@ -363,13 +363,13 @@ router.post('/version-1/applicants/first-applicant-contact', function(req, res) 
     errors.push({
       text: 'Enter an email address in the correct format, like name@example.com',
       href: '#first-applicant-email'
-      })  
+      })
   }
   else if (req.body['first-applicant-phone'] !== undefined && req.body['first-applicant-phone-number'] === '') {
     errors.push({
       text: 'Enter a UK telephone number',
       href: '#first-applicant-phone-number'
-      })  
+      })
   }
   // req.session.data.firstApplicantContactCheckbox = req.body['first-applicant-contact-options']
   if (req.body['submit-button'] === 'save-and-continue') {
@@ -683,13 +683,13 @@ router.post('/version-1/applicants/second-applicant-contact', function(req, res)
     errors.push({
       text: 'Enter an email address in the correct format, like name@example.com',
       href: '#second-applicant-email'
-      })  
+      })
   }
   else if (req.body['second-applicant-phone'] !== undefined && req.body['second-applicant-phone-number'] === '') {
     errors.push({
       text: 'Enter a UK telephone number',
       href: '#second-applicant-phone-number'
-      })  
+      })
   }
   // req.session.data.secondApplicantContactCheckbox = req.body['second-applicant-contact-options']
   if (req.body['submit-button'] === 'save-and-continue') {
@@ -734,6 +734,175 @@ router.post('/version-1/applicants/second-applicant-upload', function(req, res) 
 
 
   // ******************************************** Child's details ********************************************
+  router.post('/version-1/children/child-name', function(req, res) {
+    var errors = []
+    if (req.body['child-name'] === '') {
+      errors.push({
+      text: 'Enter their full name',
+      href: '#child-name'
+      })
+    }
+
+    if (req.body['submit-button'] === 'save-and-continue') {
+      if (errors.length === 0) {
+        res.redirect('/version-1/children/child-date-birth')
+      }
+      else {
+        res.render('.//version-1/children/child-name', { errors: errors })
+      }
+    }
+    else {
+      res.redirect('/version-1/task-list')
+    }
+  })
+
+  router.post('/version-1/children/child-date-birth', function(req, res) {
+    console.log("Day: ", req.body['day'])
+    var errors = []
+    if (req.body['day'] === '' || req.body['month'] === '' || req.body['year'] === '') {
+      errors.push({
+      text: 'Developers: please refer to ADOP-149 for different error messages',
+      href: '#child-date-birth'
+      })
+    }
+      if (req.body['submit-button'] === 'save-and-continue') {
+        if (errors.length === 0) {
+          res.redirect('/version-1/children/child-time-birth')
+        }
+        else {
+          res.render('.//version-1/children/child-date-birth', { errors: errors })
+        }
+      }
+      else {
+        res.redirect('/version-1/task-list')
+      }
+  })
+
+  router.post('/version-1/children/child-time-birth', function(req, res) {
+    var errors = []
+    if (req.body['child-time-birth'] === '') {
+      errors.push({
+      text: 'Please choose an answer',
+      href: '#child-time-birth'
+      })
+    }
+      if (req.body['submit-button'] === 'save-and-continue') {
+        if (errors.length === 0) {
+          res.redirect('/version-1/children/child-gender')
+        }
+        else {
+          res.render('.//version-1/children/child-time-birth', { errors: errors })
+        }
+      }
+      else {
+        res.redirect('/version-1/task-list')
+      }
+  })
+
+  router.post('/version-1/children/child-gender', function(req, res) {
+    var errors = []
+    if (req.body['child-gender'] === '') {
+      errors.push({
+      text: 'Enter their gender',
+      href: '#child-gender'
+      })
+    }
+
+    if (req.body['submit-button'] === 'save-and-continue') {
+      if (errors.length === 0) {
+        res.redirect('/version-1/children/child-nationality')
+      }
+      else {
+        res.render('.//version-1/children/child-gender', { errors: errors })
+      }
+    }
+    else {
+      res.redirect('/version-1/task-list')
+    }
+  })
+
+  router.post('/version-1/children/child-nationality', function(req, res) {
+    var errors = []
+    if (req.body['child-nationality'] === '') {
+      errors.push({
+      text: 'Enter their nationality',
+      href: '#child-nationality'
+      })
+    }
+
+    if (req.body['submit-button'] === 'save-and-continue') {
+      if (errors.length === 0) {
+        res.redirect('/version-1/task-list')
+      }
+      else {
+        res.render('.//version-1/children/child-nationality', { errors: errors })
+      }
+    }
+    else {
+      res.redirect('/version-1/task-list')
+    }
+  })
+  //router.post('/version-1/children/child-nationality', function(req, res) {
+  //  var errors = []
+
+  //  if (req.body['child-british'] === undefined && req.body['child-irish'] === undefined &&req.body['child-other'] === undefined) {
+    //  console.log("error")
+  //    errors.push({
+  //    text: 'Select if they are British, Irish or a citizen of a different country',
+  //    href: '#child-nationality'
+  //    })
+  //  }
+  //  else if (req.body['child-other'] !== undefined && req.session.data.childNationalityCount === 0) {
+  //    console.log("no nationality added error: ", req.session.data.childNationalities)
+  //    errors.push({
+  //    text: 'This is not a valid entry',
+  //    href: '#child-no-nationality'
+  //    })
+  //  }
+
+//    count = req.session.data.childNationalityCount
+//    if (req.body['submit-button'] === 'save-and-continue') {
+//      if (errors.length === 0) {
+//        req.session.data.childNationalities[count] = req.body['child-different-country']
+//        res.redirect('/version-1/children/child-occupation')
+//      }
+//      else {
+//        res.render('.//version-1//task-list', { errors: errors })
+//      }
+//    }
+//    else if (req.body['submit-button'] === 'save-as-draft') {
+//      res.redirect('/version-1/task-list')
+//    }
+//    else {
+//      req.session.data.childNationalities[count] = req.body['child-different-country']
+//      req.session.data.childNationalityId[count] = count
+//      req.session.data.childNationalityCount = count + 1
+//      res.redirect('/version-1/children/child-nationality')
+//    }
+//  })
+
+  // ********************** Child's adoption certificate details **********************
+  router.post('/version-1/children/child-adoption-certificate', function(req, res) {
+    var errors = []
+    if (req.body['child-adoption-certificate'] === '') {
+      errors.push({
+      text: 'Enter their full name',
+      href: '#child-adoption-certificate'
+      })
+    }
+
+    if (req.body['submit-button'] === 'save-and-continue') {
+      if (errors.length === 0) {
+        res.redirect('/version-1/task-list')
+      }
+      else {
+        res.render('.//version-1/children/child-adoption-certificate', { errors: errors })
+      }
+    }
+    else {
+      res.redirect('/version-1/task-list')
+    }
+  })
 
   // ********************** Birth mother's details **********************
   router.post('/version-1/children/mother-name', function(req, res) {
@@ -857,7 +1026,7 @@ router.post('/version-1/applicants/second-applicant-upload', function(req, res) 
     if (req.body['submit-button'] === 'save-and-continue') {
       if (errors.length === 0) {
         if (req.body['mother-have-address'] == 'no') {
-          res.redirect('/version-1/children/mother-why-no-address')  
+          res.redirect('/version-1/children/mother-why-no-address')
         }
         else {
           res.redirect('/version-1/children/mother-address-postcode')

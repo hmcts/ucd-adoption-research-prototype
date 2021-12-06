@@ -23,7 +23,7 @@ Task list
             <span class="app-task-list__section-number">1. </span>Add your details
             </h2>
             <ul class="app-task-list__items">
-            
+
                 <!-- Number of applicants -->
                 <li class="app-task-list__item">
                     <span class="app-task-list__task-name">
@@ -31,14 +31,14 @@ Task list
                         Number of applicants
                     </a>
                     </span>
-                    
+
                     {% if (data['number-of-applicants']) %}
                         <strong class="govuk-tag app-task-list__tag" id="eligibility-completed">completed</strong>
                     {% else %}
                         <strong class="govuk-tag govuk-tag--grey app-task-list__tag">not started</strong>
                     {% endif %}
                 </li>
-    
+
                 <!-- Date child moved in with you -->
                 <li class="app-task-list__item">
                     <span class="app-task-list__task-name">
@@ -71,7 +71,7 @@ Task list
                         <strong class="govuk-tag govuk-tag--grey app-task-list__tag">not started</strong>
                     {% endif %}
                 </li>
-                
+
                 <!-- First applicant - contact details -->
                 <li class="app-task-list__item">
                     <span class="app-task-list__task-name">
@@ -138,7 +138,7 @@ Task list
                 <!-- <p><strong>First child</strong></p><-->
                 <li class="app-task-list__item">
                     <span class="app-task-list__task-name">
-                    <a href="" aria-describedby="eligibility-completed">
+                  <a href="children/child-name.html" aria-describedby="eligibility-completed">
                         Birth certificate details
                     </a></span>
                     {% if data['child-nationality'] %}
@@ -151,7 +151,7 @@ Task list
                 </li>
                 <li class="app-task-list__item">
                     <span class="app-task-list__task-name">
-                    <a href="" aria-describedby="eligibility-completed">
+                  <a href="children/child-adoption-certificate.html" aria-describedby="eligibility-completed">
                         Adoption certificate details
                     </a></span>
 
@@ -216,7 +216,7 @@ Task list
                         <strong class="govuk-tag govuk-tag--grey app-task-list__tag">not started</strong>
                     {% endif %}
                 </li>
-                
+
                 <li class="app-task-list__item">
                     <span class="app-task-list__task-name">
                     <a href="" aria-describedby="eligibility-completed">
@@ -229,7 +229,7 @@ Task list
                         <strong class="govuk-tag govuk-tag--grey app-task-list__tag">not started</strong>
                     {% endif %}
                 </li>
-                                
+
                 <li class="app-task-list__item">
                     <span class="app-task-list__task-name">
                     <a href="" aria-describedby="eligibility-completed">
@@ -247,7 +247,7 @@ Task list
             </li>
 
 
-        <!-- **************************************** 3. Upload **************************************** -->      
+        <!-- **************************************** 3. Upload **************************************** -->
         <li>
             <h2 class="app-task-list__section">
               <span class="app-task-list__section-number">3. </span>Upload documents
@@ -256,7 +256,7 @@ Task list
               <!-- <div class="govuk-inset-text home-office-inset-text">
                 You'll need your credit or debit card. </div> -->
               <p class="govuk-body-l"></p>
-    
+
               <li class="app-task-list__item">
                 <span class="app-task-list__task-name">
                   <p>Upload applicants' documents</p>
@@ -266,7 +266,7 @@ Task list
                     {% else %}
                     <strong class="govuk-tag govuk-tag--grey app-task-list__tag">cannot start yet</strong>
                 {% endif %}
-    
+
               </li>
               <li class="app-task-list__item">
                 <span class="app-task-list__task-name">
@@ -277,12 +277,12 @@ Task list
                     {% else %}
                     <strong class="govuk-tag govuk-tag--grey app-task-list__tag">cannot start yet</strong>
                 {% endif %}
-    
+
               </li>
             </ul>
           </li>
-    
-        <!-- **************************************** 4. Review application, pay and send **************************************** -->      
+
+        <!-- **************************************** 4. Review application, pay and send **************************************** -->
         <li>
             <h2 class="app-task-list__section">
               <span class="app-task-list__section-number">4. </span>Review, pay and submit
@@ -291,7 +291,7 @@ Task list
               <!-- <div class="govuk-inset-text home-office-inset-text">
                 You'll need your credit or debit card. </div> -->
               <p class="govuk-body-l"></p>
-    
+
               <li class="app-task-list__item">
                 <span class="app-task-list__task-name">
                   <p>Check, pay and submit your application</p>
@@ -301,11 +301,11 @@ Task list
                     {% else %}
                     <strong class="govuk-tag govuk-tag--grey app-task-list__tag">cannot start yet</strong>
                 {% endif %}
-    
+
               </li>
             </ul>
           </li>
-    
+
             </ol>
 
 
