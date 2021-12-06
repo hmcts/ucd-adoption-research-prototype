@@ -22,7 +22,7 @@ Apply to adopt a child
         errorList: errors
       }) }}
       {% for error in errors %}
-        {% if error.href == '#first-applicant-nationality' %}
+        {% if (error.href == '#first-applicant-nationality' or error.href == '#first-applicant-no-nationality') %}
           {% set nationalityError = error.text %}
         {% endif %}
       {% endfor %}
@@ -74,23 +74,51 @@ Apply to adopt a child
               </div>
               <div class="govuk-checkboxes__conditional govuk-checkboxes__conditional--hidden"
                 id="conditional-citizenship-conditional-2">
-                <div class="govuk-form-group">
-                  <label class="govuk-label" for="other">
-                    Country name
-                  </label>
-                  <input class="govuk-input govuk-!-width-two-thirds" id="first-applicant-other" name="first-applicant-additional-country" type="text">
+                <div class="govuk-form-group {% if (nationalityError != '')%} govuk-form-group--error {% endif%}">
+
+                  {% if (data['firstApplicantNationalityCount'] > 0) %}
+
+                  {% for id in data['firstApplicantNationalityId']|reverse %}
+                  
+                    <dl class="govuk-summary-list govuk-!-margin-bottom-4 ">                    
+                      <div class="govuk-summary-list__row">
+                        <dt class="govuk-summary-list__key">
+                          {{data['firstApplicantNationalities'][id]}}
+                        </dt>
+                        <dd class="govuk-summary-list__actions">
+                          <a class="govuk-link" href="#">
+                            Remove<span class="govuk-visually-hidden"> name</span>
+                          </a>
+                        </dd>
+                      </div>
+                    </dl>
+                    {% endfor %}
+                  
+                    <details class="govuk-details" data-module="govuk-details">
+                      <summary class="govuk-details__summary">
+                        <span class="govuk-details__summary-text">
+                          Add another country
+                        </span>
+                      </summary>
+                      <div class="govuk-details__text">
+                      
+                      {% endif %}
+
+                      <div class="govuk-form-group {% if (nationalityError != '')%} govuk-form-group--error {% endif%}">
+                        <label class="govuk-label" for="other">
+                          Country name
+                        </label>
+                        <input class="govuk-input govuk-!-width-two-thirds govuk-input--error" id="first-applicant-different-country" name="first-applicant-different-country" type="text">
+                      </div>
+                        <button class="govuk-button govuk-button--secondary govuk-!-margin-top-5" data-module="govuk-button" name="submit-button" value="add">Add</button>
+                    </details>
                 </div>
-                  <button class="govuk-button govuk-button--secondary govuk-!-margin-top-5" data-module="govuk-button" name="submit-button" value="add">Add additional country</button>
-        </div>
-          </div>
-        
+            </div>
           </fieldset>
-          </div>
-          <!-- Buttons -->
-          {% include "../../includes/buttons.html" %}
-
-        </form>
-
+        </div>
+        <!-- Buttons -->
+        {% include "../../includes/buttons.html" %}
+      </form>
       </div>
     </div>
   </main>
