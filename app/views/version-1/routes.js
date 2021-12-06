@@ -740,7 +740,7 @@ router.post('/version-1/applicants/second-applicant-upload', function(req, res) 
     var errors = []
     if (req.body['mother-name'] === '') {
       errors.push({
-      text: 'Enter your full name',
+      text: 'Enter their full name',
       href: '#mother-name'
       })
     }
@@ -822,8 +822,6 @@ router.post('/version-1/applicants/second-applicant-upload', function(req, res) 
     }
   })
 
-
-
   router.post('/version-1/children/mother-occupation', function(req, res) {
     var errors = []
     if (req.body['mother-occupation'] === '') {
@@ -835,10 +833,60 @@ router.post('/version-1/applicants/second-applicant-upload', function(req, res) 
 
     if (req.body['submit-button'] === 'save-and-continue') {
       if (errors.length === 0) {
-        res.redirect('/version-1/task-list')
+        res.redirect('/version-1/children/mother-have-address')
       }
       else {
           res.render('.//version-1/children/mother-occupation', { errors: errors })
+      }
+    }
+    else {
+      res.redirect('/version-1/task-list')
+    }
+  })
+
+
+  router.post('/version-1/children/mother-have-address', function(req, res) {
+    var errors = []
+    if (req.body['mother-have-address'] === '') {
+      errors.push({
+      text: 'Enter your occupation',
+      href: '#mother-have-address'
+      })
+    }
+
+    if (req.body['submit-button'] === 'save-and-continue') {
+      if (errors.length === 0) {
+        if (req.body['mother-have-address'] == 'no') {
+          res.redirect('/version-1/children/mother-why-no-address')  
+        }
+        else {
+          res.redirect('/version-1/children/mother-address-postcode')
+        }
+      }
+      else {
+          res.render('.//version-1/children/mother-have-address', { errors: errors })
+      }
+    }
+    else {
+      res.redirect('/version-1/task-list')
+    }
+  })
+
+  router.post('/version-1/children/mother-why-no-address', function(req, res) {
+    var errors = []
+    if (req.body['mother-why-no-address'] === '') {
+      errors.push({
+      text: 'Enter your occupation',
+      href: '#mother-why-no-address'
+      })
+    }
+
+    if (req.body['submit-button'] === 'save-and-continue') {
+      if (errors.length === 0) {
+        res.redirect('/version-1/task-list')
+      }
+      else {
+          res.render('.//version-1/children/mother-why-no-address', { errors: errors })
       }
     }
     else {
