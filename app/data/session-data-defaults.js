@@ -44,6 +44,10 @@ module.exports = {
   "fatherNationalities": [],
   "fatherNationalityCount": 0,
 
+  "childNationalityId": [],
+  "childNationalities": [],
+  "childNationalityCount": 0,
+
 
   "numberChildren": 0,
   "numberApplicants": 0,
