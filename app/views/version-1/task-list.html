@@ -143,9 +143,12 @@ Task list
                     </a></span>
                     {% if data['child-nationality'] %}
                         <strong class="govuk-tag  app-task-list__tag" id="eligibility-completed">Completed</strong>
+                    {% elseif data['child-name'] %}
+                        <strong class="govuk-tag govuk-tag--blue app-task-list__tag">in progress</strong>
                     {% else %}
                         <strong class="govuk-tag govuk-tag--grey app-task-list__tag">not started</strong>
                     {% endif %}
+    
                     <br>
 
                 </li>
