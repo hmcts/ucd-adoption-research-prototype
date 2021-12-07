@@ -141,7 +141,7 @@ Task list
                   <a href="children/child-name.html" aria-describedby="eligibility-completed">
                         Birth certificate details
                     </a></span>
-                    {% if data['child-nationality'] %}
+                    {% if (data['child-nationality'] or data['childCountryAdded']) %}
                         <strong class="govuk-tag  app-task-list__tag" id="eligibility-completed">Completed</strong>
                     {% elseif data['child-name'] %}
                         <strong class="govuk-tag govuk-tag--blue app-task-list__tag">in progress</strong>

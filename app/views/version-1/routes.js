@@ -846,7 +846,7 @@ router.post('/version-1/applicants/second-applicant-upload', function(req, res) 
   router.post('/version-1/children/child-nationality', function(req, res) {
     var errors = []
 
-    if (req.body['child-british'] === undefined && req.body['child-irish'] === undefined &&req.body['child-other'] === undefined) {
+    if (req.body['child-british'] === undefined && req.body['child-irish'] === undefined &&req.body['child-other'] === undefined && req.body['child-unsure'] === undefined) {
       console.log("error")
       errors.push({
       text: 'Select if they are British, Irish or a citizen of a different country',
@@ -865,6 +865,7 @@ router.post('/version-1/applicants/second-applicant-upload', function(req, res) 
     if (req.body['submit-button'] === 'save-and-continue') {
       if (errors.length === 0) {
         req.session.data.childNationalities[count] = req.body['child-different-country']
+        req.session.data.childCountryAdded = 1
         res.redirect('/version-1/task-list')
       }
       else {
