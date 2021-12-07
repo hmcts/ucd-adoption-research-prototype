@@ -936,11 +936,19 @@ router.post('/version-1/applicants/second-applicant-upload', function(req, res) 
 
 
   router.post('/version-1/children/mother-alive', function(req, res) {
+    console.log("Mother alive: ", req.body['mother-alive'])
     var errors = []
     if (req.body['mother-alive'] === undefined) {
       errors.push({
       text: 'Please answer the question',
       href: '#mother-alive'
+      })
+    }
+    else if (req.body['mother-alive'] === 'unsure' && req.body['reason-not-sure'] === '') {
+      console.log("Mother no reason")
+      errors.push({
+      text: 'Enter more detail',
+      href: '#mother-no-reason'
       })
     }
 
@@ -1082,7 +1090,7 @@ router.post('/version-1/applicants/second-applicant-upload', function(req, res) 
 
   router.post('/version-1/children/mother-address-postcode', function(req, res) {
     var errors = []
-    if (req.body['mother-address-postcode'] === "") {
+    if (req.body['mother-postcode'] === "") {
       errors.push({
       text: 'Enter a valid postcode',
       href: '#mother-address-postcode'
@@ -1090,7 +1098,7 @@ router.post('/version-1/applicants/second-applicant-upload', function(req, res) 
     }
     if (req.body['submit-button'] === 'save-and-continue') {
       if (errors.length === 0) {
-        res.redirect('/version-1/children/first-applicant-find-address')
+        res.redirect('/version-1/children/mother-find-address')
       }
       else {
         res.render('.//version-1/children/mother-address-postcode', { errors: errors })
@@ -1102,21 +1110,22 @@ router.post('/version-1/applicants/second-applicant-upload', function(req, res) 
   })
   
   
-  router.post('/version-1/children/first-applicant-find-address', function(req, res) {
+  router.post('/version-1/children/mother-find-address', function(req, res) {
+    console.log(req.body['submit-button'])
     var errors = []
-    if (req.body['first-applicant-choose-address'] === 'address-found') {
+    if (req.body['mother-choose-address'] === 'address-found') {
       errors.push({
       text: 'Select an address',
-      href: '#first-applicant-find-address'
+      href: '#mother-find-address'
       })
     }
   
     if (req.body['submit-button'] === 'save-and-continue') {
       if (errors.length === 0) {
-        res.redirect('/version-1/children/first-applicant-contact')
+        res.redirect('/version-1/task-list')
       }
       else {
-        res.render('.//version-1/children/first-applicant-find-address', { errors: errors })
+        res.render('.//version-1/children/mother-find-address', { errors: errors })
       }
     }
     else {
@@ -1125,21 +1134,21 @@ router.post('/version-1/applicants/second-applicant-upload', function(req, res) 
   })
   
   
-  router.post('/version-1/children/first-applicant-enter-address-manually', function(req, res) {
+  router.post('/version-1/children/mother-enter-address-manually', function(req, res) {
     var errors = []
-    if (req.body['first-applicant-address-line-1'] === '' || req.body['first-applicant-postcode'] === ''){
+    if (req.body['mother-address-line-1'] === '' || req.body['mother-postcode'] === ''){
       errors.push({
       text: 'Enter address',
-      href: '#first-applicant-manual-address'
+      href: '#mother-manual-address'
       })
     }
   
     if (req.body['submit-button'] === 'save-and-continue') {
       if (errors.length === 0) {
-        res.redirect('/version-1/children/first-applicant-contact')
+        res.redirect('/version-1/children/mother-contact')
       }
       else {
-        res.render('.//version-1/children/first-applicant-enter-address-manually', { errors: errors })
+        res.render('.//version-1/children/mother-enter-address-manually', { errors: errors })
       }
     }
     else {
@@ -1159,7 +1168,7 @@ router.post('/version-1/applicants/second-applicant-upload', function(req, res) 
 
 
 
-
+// ***************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************
 // ************************************* Old functions not in use any more ************************************* //
   router.post('/version-1/eligibility/10-weeks', function(req, res) {
     var errors = []
@@ -1241,6 +1250,14 @@ router.post('/version-1/applicants/second-applicant-upload', function(req, res) 
 
 
 
+
+
+
+
+
+  
+
+
 // ************************************* Examples ************************************* //
 
   router.post('/damages/default-judgments/5-hearing-details', function(req, res) {
@@ -1274,6 +1291,18 @@ router.post('/version-1/applicants/second-applicant-upload', function(req, res) 
         res.redirect('/damages/default-judgments/4-make-request-judgment')
     }
   })
+
+
+
+
+
+
+
+
+
+
+
+
 
 
 
