@@ -738,7 +738,7 @@ router.post('/version-1/applicants/second-applicant-upload', function(req, res) 
     var errors = []
     if (req.body['child-name'] === '') {
       errors.push({
-      text: 'Enter the childs full name',
+      text: "Enter the child's full name",
       href: '#child-name'
       })
     }
