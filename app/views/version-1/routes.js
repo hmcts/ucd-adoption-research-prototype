@@ -1134,7 +1134,7 @@ router.post('/version-1/applicants/second-applicant-upload', function(req, res) 
   })
   
   
-  router.post('/version-1/children/mother-enter-address-manually', function(req, res) {
+  router.post('/version-1/children/mother-manual-address', function(req, res) {
     var errors = []
     if (req.body['mother-address-line-1'] === '' || req.body['mother-postcode'] === ''){
       errors.push({
@@ -1145,10 +1145,10 @@ router.post('/version-1/applicants/second-applicant-upload', function(req, res) 
   
     if (req.body['submit-button'] === 'save-and-continue') {
       if (errors.length === 0) {
-        res.redirect('/version-1/children/mother-contact')
+        res.redirect('/version-1/task-list')
       }
       else {
-        res.render('.//version-1/children/mother-enter-address-manually', { errors: errors })
+        res.render('.//version-1/children/mother-manual-address', { errors: errors })
       }
     }
     else {
