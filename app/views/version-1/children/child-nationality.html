@@ -114,7 +114,14 @@ Apply to adopt a child
                         <button class="govuk-button govuk-button--secondary govuk-!-margin-top-5" data-module="govuk-button" name="submit-button" value="add">Add</button>
                     </details>
                 </div>
-            </div>
+              </div>
+              <div class="govuk-checkboxes__item">
+                <input class="govuk-checkboxes__input" id="child-unsure" name="child-unsure" type="checkbox" {% if (data['child-unsure'] != undefined) %} checked {% endif %}>
+                <label class="govuk-label govuk-checkboxes__label" for="nationality-unsure">
+                  Not sure
+                </label>
+              </div>
+
           </fieldset>
         </div>
         <!-- Buttons -->

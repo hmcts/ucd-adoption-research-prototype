@@ -22,18 +22,18 @@ Apply to adopt a child
         errorList: errors
       }) }}
       {% for error in errors %}
-        {% if error.href == '#first-applicant-manual-address' %}
+        {% if error.href == '#mother-manual-address' %}
           {% set manualAddressError = error.text %}
         {% endif %}
       {% endfor %}
       {% endif %}
 
-      <form action="/version-1/applicants/first-applicant-find-address" method="post" class="form">
+      <form action="/version-1/children/mother-manual-address" method="post" class="form">
         <fieldset class="govuk-fieldset">
           <legend class="govuk-fieldset__legend govuk-fieldset__legend--l">
-            <span class="govuk-caption-l">{{ data['firstApplicant'] }}</span>
+            <span class="govuk-caption-l">{{ data['mother'] }}</span>
             <h1 class="govuk-fieldset__heading">
-              What's your address?
+              What is the birth mother's last known address?
             </h1>
           </legend>
           
