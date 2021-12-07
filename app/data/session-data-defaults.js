@@ -55,8 +55,9 @@ module.exports = {
   "firstApplicant": "Primary applicant",
   "secondApplicant": "Other applicant",
   "child": "The child's details",
-  "mother": "Birth mother details",
-  "father": "Birth father details"
-  
+
+  "mother": "Their birth mother's details",
+  "father": "Their birth father's details",
+  "socialworker": "Your adoption agency or local authority details"
 
 ,}
