@@ -1159,6 +1159,283 @@ router.post('/version-1/applicants/second-applicant-upload', function(req, res) 
     }
   })
 
+  // ********************** Birth father's details **********************
+  router.post('/version-1/children/father-in-certificate', function(req, res) {
+    var errors = []
+    if (req.body['father-in-certificate'] === '') {
+      errors.push({
+      text: 'Please answer the question',
+      href: '#father-in-certificate'
+      })
+    }
+
+    if (req.body['submit-button'] === 'save-and-continue') {
+      if (errors.length === 0) {
+        if (req.body['father-in-certificate'] == 'no') {
+          res.redirect('/version-1/task-list')
+        }
+        else {
+          res.redirect('/version-1/children/father-name')
+        }
+      }
+      else {
+          res.render('.//version-1/children/father-in-certificate', { errors: errors })
+      }
+    }
+    else {
+      res.redirect('/version-1/task-list')
+    }
+  })
+
+
+  router.post('/version-1/children/father-name', function(req, res) {
+    var errors = []
+    if (req.body['father-name'] === '') {
+      errors.push({
+      text: 'Enter their full name',
+      href: '#father-name'
+      })
+    }
+
+    if (req.body['submit-button'] === 'save-and-continue') {
+      if (errors.length === 0) {
+        res.redirect('/version-1/children/father-alive')
+      }
+      else {
+        res.render('.//version-1/children/father-name', { errors: errors })
+      }
+    }
+    else {
+      res.redirect('/version-1/task-list')
+    }
+  })
+
+
+  router.post('/version-1/children/father-alive', function(req, res) {
+    console.log("father alive: ", req.body['father-alive'])
+    var errors = []
+    if (req.body['father-alive'] === undefined) {
+      errors.push({
+      text: 'Please answer the question',
+      href: '#father-alive'
+      })
+    }
+    else if (req.body['father-alive'] === 'unsure' && req.body['reason-not-sure'] === '') {
+      console.log("father no reason")
+      errors.push({
+      text: 'Enter more detail',
+      href: '#father-no-reason'
+      })
+    }
+
+    req.session.data.numberApplicants = req.body['father-alive']
+
+    if (req.body['submit-button'] === 'save-and-continue') {
+      if (errors.length === 0) {
+        if (req.body['father-alive'] === 'yes') {
+          res.redirect('/version-1/children/father-nationality')
+        }
+        else {
+          req.session.data.birthfatherComplete = 1
+          res.redirect('/version-1/task-list')  
+        }
+      }
+      else {
+        res.render('.//version-1/children/father-alive', { errors: errors })
+      }
+    }
+    else {
+        res.redirect('/version-1/task-list')
+    }
+  })
+
+
+  router.post('/version-1/children/father-nationality', function(req, res) {
+    var errors = []
+
+    if (req.body['father-british'] === undefined && req.body['father-irish'] === undefined && req.body['father-other'] === undefined && req.body['father-unsure'] === undefined) {
+      console.log("error")
+      errors.push({
+      text: 'Select if they are British, Irish or a citizen of a different country',
+      href: '#father-nationality'
+      })
+    }
+    else if (req.body['father-other'] !== undefined && req.session.data.fatherNationalityCount === 0) {
+      console.log("no nationality added error: ", req.session.data.fatherNationalities)
+      errors.push({
+      text: 'This is not a valid entry',
+      href: '#father-no-nationality'
+      })
+    }
+
+    count = req.session.data.fatherNationalityCount
+    if (req.body['submit-button'] === 'save-and-continue') {
+      if (errors.length === 0) {
+        req.session.data.fatherNationalities[count] = req.body['father-different-country']
+        res.redirect('/version-1/children/father-occupation')
+      }
+      else {
+        res.render('.//version-1/children/father-nationality', { errors: errors })
+      }
+    }
+    else if (req.body['submit-button'] === 'save-as-draft') {
+      res.redirect('/version-1/task-list')
+    }
+    else {
+      req.session.data.fatherNationalities[count] = req.body['father-different-country']
+      req.session.data.fatherNationalityId[count] = count
+      req.session.data.fatherNationalityCount = count + 1
+      res.redirect('/version-1/children/father-nationality')
+    }
+  })
+
+
+  router.post('/version-1/children/father-occupation', function(req, res) {
+    var errors = []
+    if (req.body['father-occupation'] === '') {
+      errors.push({
+      text: 'Enter your occupation',
+      href: '#father-occupation'
+      })
+    }
+
+    if (req.body['submit-button'] === 'save-and-continue') {
+      if (errors.length === 0) {
+        res.redirect('/version-1/children/father-have-address')
+      }
+      else {
+          res.render('.//version-1/children/father-occupation', { errors: errors })
+      }
+    }
+    else {
+      res.redirect('/version-1/task-list')
+    }
+  })
+
+
+  router.post('/version-1/children/father-have-address', function(req, res) {
+    var errors = []
+    if (req.body['father-have-address'] === '') {
+      errors.push({
+      text: 'Enter your occupation',
+      href: '#father-have-address'
+      })
+    }
+
+    if (req.body['submit-button'] === 'save-and-continue') {
+      if (errors.length === 0) {
+        if (req.body['father-have-address'] == 'no') {
+          res.redirect('/version-1/children/father-why-no-address')
+        }
+        else {
+          res.redirect('/version-1/children/father-address-postcode')
+        }
+      }
+      else {
+          res.render('.//version-1/children/father-have-address', { errors: errors })
+      }
+    }
+    else {
+      res.redirect('/version-1/task-list')
+    }
+  })
+
+
+  router.post('/version-1/children/father-why-no-address', function(req, res) {
+    var errors = []
+    if (req.body['father-why-no-address'] === '') {
+      errors.push({
+      text: 'Enter your occupation',
+      href: '#father-why-no-address'
+      })
+    }
+
+    if (req.body['submit-button'] === 'save-and-continue') {
+      if (errors.length === 0) {
+        res.redirect('/version-1/task-list')
+      }
+      else {
+          res.render('.//version-1/children/father-why-no-address', { errors: errors })
+      }
+    }
+    else {
+      res.redirect('/version-1/task-list')
+    }
+  })
+
+
+  router.post('/version-1/children/father-address-postcode', function(req, res) {
+    var errors = []
+    if (req.body['father-postcode'] === "") {
+      errors.push({
+      text: 'Enter a valid postcode',
+      href: '#father-address-postcode'
+      })
+    }
+    if (req.body['submit-button'] === 'save-and-continue') {
+      if (errors.length === 0) {
+        res.redirect('/version-1/children/father-find-address')
+      }
+      else {
+        res.render('.//version-1/children/father-address-postcode', { errors: errors })
+      }
+    }
+    else {
+      res.redirect('/version-1/task-list')
+    }
+  })
+  
+  
+  router.post('/version-1/children/father-find-address', function(req, res) {
+    console.log(req.body['submit-button'])
+    var errors = []
+    if (req.body['father-choose-address'] === 'address-found') {
+      errors.push({
+      text: 'Select an address',
+      href: '#father-find-address'
+      })
+    }
+  
+    if (req.body['submit-button'] === 'save-and-continue') {
+      if (errors.length === 0) {
+        req.session.data.fatherAddress = 1
+        res.redirect('/version-1/task-list')
+      }
+      else {
+        res.render('.//version-1/children/father-find-address', { errors: errors })
+      }
+    }
+    else {
+      res.redirect('/version-1/task-list')
+    }
+  })
+  
+  
+  router.post('/version-1/children/father-manual-address', function(req, res) {
+    var errors = []
+    if (req.body['father-address-line-1'] === '' || req.body['father-postcode'] === ''){
+      errors.push({
+      text: 'Enter address',
+      href: '#father-manual-address'
+      })
+    }
+  
+    if (req.body['submit-button'] === 'save-and-continue') {
+      if (errors.length === 0) {
+        req.session.data.fatherAddress = 1
+        res.redirect('/version-1/task-list')
+      }
+      else {
+        res.render('.//version-1/children/father-manual-address', { errors: errors })
+      }
+    }
+    else {
+      res.redirect('/version-1/task-list')
+    }
+  })
+  
+  
+
 
 
 

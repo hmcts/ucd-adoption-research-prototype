@@ -209,12 +209,14 @@ Task list
 
                 <li class="app-task-list__item">
                     <span class="app-task-list__task-name">
-                    <a href="" aria-describedby="eligibility-completed">
+                    <a href="children/father-in-certificate.html" aria-describedby="eligibility-completed">
                         Birth father details
                     </a>
                     </span>
-                    {% if data['birth-father'] %}
+                    {% if data['father-address'] or data['birthfatherComplete'] == 1 or data['fatherAddress'] == 1%}
                         <strong class="govuk-tag  app-task-list__tag" id="eligibility-completed">Completed</strong>
+                    {% elseif data['father-name'] %}
+                        <strong class="govuk-tag govuk-tag--blue app-task-list__tag">in progress</strong>
                     {% else %}
                         <strong class="govuk-tag govuk-tag--grey app-task-list__tag">not started</strong>
                     {% endif %}
