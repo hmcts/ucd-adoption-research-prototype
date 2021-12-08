@@ -1,6 +1,6 @@
 module.exports = (router) => {
 
-// ******************************************** ELIGIBILITY ******************************************** 
+// ******************************************** ELIGIBILITY ********************************************
 // ************************************************************************************************************************************
 
 // ********************** Eligibility **********************
@@ -100,7 +100,7 @@ module.exports = (router) => {
   })
 
 
-// ******************************************** SECTION 1. APPLICANTS ******************************************** 
+// ******************************************** SECTION 1. APPLICANTS ********************************************
 // ************************************************************************************************************************************
 
   // ********************** Applicants  **********************
@@ -730,7 +730,7 @@ router.post('/version-1/applicants/second-applicant-upload', function(req, res) 
 })
 
 
-// ******************************************** SECTION 2. CHILDREN ******************************************** 
+// ******************************************** SECTION 2. CHILDREN ********************************************
 // ************************************************************************************************************************************
 
 // ******************************************** Child's details ********************************************
@@ -802,11 +802,14 @@ router.post('/version-1/applicants/second-applicant-upload', function(req, res) 
   })
 
 
+  //  console.log("Mother alive: ", req.body['mother-alive'])
+
+
   router.post('/version-1/children/child-gender', function(req, res) {
     var errors = []
-    if (req.body['child-gender'] === '') {
+    if (req.body['child-gender'] === undefined) {
       errors.push({
-      text: 'Enter their gender',
+      text: 'Please select an answer',
       href: '#child-gender'
       })
     }
@@ -961,7 +964,7 @@ router.post('/version-1/applicants/second-applicant-upload', function(req, res) 
         }
         else {
           req.session.data.birthMotherComplete = 1
-          res.redirect('/version-1/task-list')  
+          res.redirect('/version-1/task-list')
         }
       }
       else {
@@ -1108,8 +1111,8 @@ router.post('/version-1/applicants/second-applicant-upload', function(req, res) 
       res.redirect('/version-1/task-list')
     }
   })
-  
-  
+
+
   router.post('/version-1/children/mother-find-address', function(req, res) {
     console.log(req.body['submit-button'])
     var errors = []
@@ -1119,7 +1122,7 @@ router.post('/version-1/applicants/second-applicant-upload', function(req, res) 
       href: '#mother-find-address'
       })
     }
-  
+
     if (req.body['submit-button'] === 'save-and-continue') {
       if (errors.length === 0) {
         req.session.data.motherAddress = 1
@@ -1133,8 +1136,8 @@ router.post('/version-1/applicants/second-applicant-upload', function(req, res) 
       res.redirect('/version-1/task-list')
     }
   })
-  
-  
+
+
   router.post('/version-1/children/mother-manual-address', function(req, res) {
     var errors = []
     if (req.body['mother-address-line-1'] === '' || req.body['mother-postcode'] === ''){
@@ -1143,7 +1146,7 @@ router.post('/version-1/applicants/second-applicant-upload', function(req, res) 
       href: '#mother-manual-address'
       })
     }
-  
+
     if (req.body['submit-button'] === 'save-and-continue') {
       if (errors.length === 0) {
         req.session.data.motherAddress = 1
@@ -1157,8 +1160,8 @@ router.post('/version-1/applicants/second-applicant-upload', function(req, res) 
       res.redirect('/version-1/task-list')
     }
   })
-  
-  
+
+
 
 
 
@@ -1438,7 +1441,7 @@ router.post('/version-1/applicants/second-applicant-upload', function(req, res) 
 
 
 
-  
+
 
 
 // ************************************* Examples ************************************* //
