@@ -57,6 +57,7 @@ module.exports = {
   "child": "The child's details",
   "mother": "Birth mother details",
   "father": "Birth father details"
+
   
 
 ,}
