@@ -1622,6 +1622,38 @@ router.post('/version-1/applicants/second-applicant-upload', function(req, res) 
 
 
 
+ // ********************** Solicitor details **********************  
+  router.post('/version-1/children/solicitor-helping', function(req, res) {
+    console.log("Mother alive: ", req.body['solicitor-helping'])
+    var errors = []
+    if (req.body['solicitor-helping'] === undefined) {
+      errors.push({
+      text: 'Please answer the question',
+      href: '#solicitor-helping'
+      })
+    }
+
+    req.session.data.numberApplicants = req.body['solicitor-helping']
+
+    if (req.body['submit-button'] === 'save-and-continue') {
+      if (errors.length === 0) {
+        if (req.body['solicitor-helping'] === 'yes') {
+          res.redirect('/version-1/children/solicitor-firm-name')
+        }
+        else {
+          res.redirect('/version-1/task-list')
+        }
+      }
+      else {
+        res.render('.//version-1/children/solicitor-helping', { errors: errors })
+      }
+    }
+    else {
+        res.redirect('/version-1/task-list')
+    }
+  })
+
+
 
 
 
