@@ -23,33 +23,54 @@ Apply to adopt a child
       }) }}
       {% for error in errors %}
         {% if error.href == '#child-gender' %}
-          {% set nameError = error.text %}
+          {% set genderError = error.text %}
         {% endif %}
       {% endfor %}
       {% endif %}
 
 
       <form action="/version-1/children/child-gender" method="post" class="form">
-
-        <div class="govuk-form-group {% if (nameError != '')%} govuk-form-group--error {% endif%}">
-          <legend class="govuk-fieldset__legend govuk-fieldset__legend--l">
-          <span class="govuk-caption-l">{{ data['child'] }}</span>
-          <h1 class="govuk-fieldset__heading">
-            What is the child's gender?
-          </h1>
-          </legend>
-          <div id="namehint" class="govuk-hint">
-            Enter these details as they're written on their birth certificate. Speak to your adoption agency or social worker if you do not have this.
-          </div>
-
-          {% if (nameError != '')%}
-          <span id="name-error" class="govuk-error-message">
-            <span class="govuk-visually-hidden">Error:</span> {{ nameError }}
+        {% if (genderError != '')%}
+          <span class="govuk-error-message govuk-form">
+            <span class="govuk-visually-hidden">Error:</span> {{ genderError }}
           </span>
-          {% endif%}
+        {% endif %}
+        <div class="govuk-form-group govuk-form-group--error">
+          <fieldset class="govuk-fieldset" aria-describedby="child-gender-hint child-gender-error">
+            <legend class="govuk-fieldset__legend govuk-fieldset__legend--l">
+                  <span class="govuk-caption-l">{{ data['child'] }}</span>
+              <h1 class="govuk-fieldset__heading">
+                What was the child’s sex at birth?
+              </h1>
+            </legend>
+            <div id="child-gender-hint" class="govuk-hint">
+              You should state exactly what is listed on the birth certificate. If the child's sex is listed as 'diverse', which means their biological sex could not be determined, you should choose the 'intersex' option.
+            </div>
+            <span id="child-gender-error" class="govuk-error-message">
+              <span class="govuk-visually-hidden">Error:</span> Please select an answer
+            </span>
+            <div class="govuk-radios" data-module="govuk-radios">
+              <div class="govuk-radios__item">
+                <input class="govuk-radios__input" id="child-gender" name="child-gender" type="checkbox" value="male">
+                <label class="govuk-label govuk-radios__label" for="child-gender">
+                  Male
+                </label>
+              </div>
+              <div class="govuk-radios__item">
+                <input class="govuk-radios__input" id="child-gender-2" name="child-gender" type="checkbox" value="female">
+                <label class="govuk-label govuk-radios__label" for="child-gender-2">
+                  Female
+                </label>
+              </div>
+              <div class="govuk-radios__item">
+                <input class="govuk-radios__input" id="child-gender-3" name="child-gender" type="checkbox" value="intersex">
+                <label class="govuk-label govuk-radios__label" for="child-gender-3">
+                  Intersex
+                </label>
+              </div>
+            </div>
 
-          <input class="govuk-input {% if (nameError != '')%} govuk-input--error {% endif%}" id="child-gender" name="child-gender" type="text" autocomplete="name" spellcheck="false"
-            value="{{ data['child-gender'] }}">
+          </fieldset>
         </div>
 
           <!-- Buttons -->
