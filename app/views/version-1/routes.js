@@ -802,8 +802,6 @@ router.post('/version-1/applicants/second-applicant-upload', function(req, res) 
   })
 
 
-  //  console.log("Mother alive: ", req.body['mother-alive'])
-
 
   router.post('/version-1/children/child-gender', function(req, res) {
     var errors = []
@@ -1535,6 +1533,8 @@ router.post('/version-1/applicants/second-applicant-upload', function(req, res) 
       res.redirect('/version-1/task-list')
     }
   })
+
+
 
   router.post('/version-1/children/applicant-social-worker-number', function(req, res) {
     var errors = []
