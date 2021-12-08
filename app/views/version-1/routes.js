@@ -1,6 +1,6 @@
 module.exports = (router) => {
 
-// ******************************************** ELIGIBILITY ******************************************** 
+// ******************************************** ELIGIBILITY ********************************************
 // ************************************************************************************************************************************
 
 // ********************** Eligibility **********************
@@ -100,7 +100,7 @@ module.exports = (router) => {
   })
 
 
-// ******************************************** SECTION 1. APPLICANTS ******************************************** 
+// ******************************************** SECTION 1. APPLICANTS ********************************************
 // ************************************************************************************************************************************
 
   // ********************** Applicants  **********************
@@ -730,7 +730,7 @@ router.post('/version-1/applicants/second-applicant-upload', function(req, res) 
 })
 
 
-// ******************************************** SECTION 2. CHILDREN ******************************************** 
+// ******************************************** SECTION 2. CHILDREN ********************************************
 // ************************************************************************************************************************************
 
 // ******************************************** Child's details ********************************************
@@ -802,11 +802,12 @@ router.post('/version-1/applicants/second-applicant-upload', function(req, res) 
   })
 
 
+
   router.post('/version-1/children/child-gender', function(req, res) {
     var errors = []
-    if (req.body['child-gender'] === '') {
+    if (req.body['child-gender'] === undefined) {
       errors.push({
-      text: 'Enter their gender',
+      text: 'Please select an answer',
       href: '#child-gender'
       })
     }
@@ -961,7 +962,7 @@ router.post('/version-1/applicants/second-applicant-upload', function(req, res) 
         }
         else {
           req.session.data.birthMotherComplete = 1
-          res.redirect('/version-1/task-list')  
+          res.redirect('/version-1/task-list')
         }
       }
       else {
@@ -1108,8 +1109,8 @@ router.post('/version-1/applicants/second-applicant-upload', function(req, res) 
       res.redirect('/version-1/task-list')
     }
   })
-  
-  
+
+
   router.post('/version-1/children/mother-find-address', function(req, res) {
     console.log(req.body['submit-button'])
     var errors = []
@@ -1119,7 +1120,7 @@ router.post('/version-1/applicants/second-applicant-upload', function(req, res) 
       href: '#mother-find-address'
       })
     }
-  
+
     if (req.body['submit-button'] === 'save-and-continue') {
       if (errors.length === 0) {
         req.session.data.motherAddress = 1
@@ -1133,8 +1134,8 @@ router.post('/version-1/applicants/second-applicant-upload', function(req, res) 
       res.redirect('/version-1/task-list')
     }
   })
-  
-  
+
+
   router.post('/version-1/children/mother-manual-address', function(req, res) {
     var errors = []
     if (req.body['mother-address-line-1'] === '' || req.body['mother-postcode'] === ''){
@@ -1143,7 +1144,7 @@ router.post('/version-1/applicants/second-applicant-upload', function(req, res) 
       href: '#mother-manual-address'
       })
     }
-  
+
     if (req.body['submit-button'] === 'save-and-continue') {
       if (errors.length === 0) {
         req.session.data.motherAddress = 1
@@ -1157,8 +1158,6 @@ router.post('/version-1/applicants/second-applicant-upload', function(req, res) 
       res.redirect('/version-1/task-list')
     }
   })
-  
-  
 
   // ********************** Birth father's details **********************
   router.post('/version-1/children/father-in-certificate', function(req, res) {
@@ -1445,6 +1444,191 @@ router.post('/version-1/applicants/second-applicant-upload', function(req, res) 
 
 
 
+  // ********************** Adoption agency or local authority **********************
+
+  router.post('/version-1/children/applicant-adoption-agency-name', function(req, res) {
+    var errors = []
+    if (req.body['applicant-adoption-agency-name'] === '') {
+      errors.push({
+      text: 'Enter the name of the adoption agency',
+      href: '#applicant-adoption-agency-name'
+      })
+    }
+
+    if (req.body['submit-button'] === 'save-and-continue') {
+      if (errors.length === 0) {
+        res.redirect('/version-1/children/applicant-social-worker-name')
+      }
+      else {
+        res.render('.//version-1/children/applicant-adoption-agency-name', { errors: errors })
+      }
+    }
+    else {
+      res.redirect('/version-1/task-list')
+    }
+  })
+
+  router.post('/version-1/children/applicant-social-worker-name', function(req, res) {
+    var errors = []
+    if (req.body['applicant-social-worker-name'] === '') {
+      errors.push({
+      text: 'Enter the name of the social worker',
+      href: '#applicant-social-worker-name'
+      })
+    }
+
+    if (req.body['submit-button'] === 'save-and-continue') {
+      if (errors.length === 0) {
+        res.redirect('/version-1/children/applicant-social-worker-email')
+      }
+      else {
+        res.render('.//version-1/children/applicant-social-worker-name', { errors: errors })
+      }
+    }
+    else {
+      res.redirect('/version-1/task-list')
+    }
+  })
+
+  router.post('/version-1/children/applicant-social-worker-email', function(req, res) {
+    var errors = []
+    if (req.body['applicant-social-worker-email'] === '') {
+      errors.push({
+      text: 'Enter an email address',
+      href: '#applicant-social-worker-email'
+      })
+    }
+
+    if (req.body['submit-button'] === 'save-and-continue') {
+      if (errors.length === 0) {
+        res.redirect('/version-1/children/applicant-social-worker-team-email')
+      }
+      else {
+        res.render('.//version-1/children/applicant-social-worker-email', { errors: errors })
+      }
+    }
+    else {
+      res.redirect('/version-1/task-list')
+    }
+  })
+
+  router.post('/version-1/children/applicant-social-worker-team-email', function(req, res) {
+    var errors = []
+    if (req.body['applicant-social-worker-team-email'] === '') {
+      errors.push({
+      text: 'Select an answer',
+      href: '#applicant-social-worker-team-email'
+      })
+    }
+
+    if (req.body['submit-button'] === 'save-and-continue') {
+      if (errors.length === 0) {
+        res.redirect('/version-1/children/applicant-social-worker-number')
+      }
+      else {
+        res.render('.//version-1/children/applicant-social-worker-team-email', { errors: errors })
+      }
+    }
+    else {
+      res.redirect('/version-1/task-list')
+    }
+  })
+
+
+
+  router.post('/version-1/children/applicant-social-worker-number', function(req, res) {
+    var errors = []
+    if (req.body['applicant-social-worker-number'] === '') {
+      errors.push({
+      text: 'Select an answer',
+      href: '#applicant-social-worker-number'
+      })
+    }
+
+    if (req.body['submit-button'] === 'save-and-continue') {
+      if (errors.length === 0) {
+        res.redirect('/version-1/children/applicant-social-worker-address')
+      }
+      else {
+        res.render('.//version-1/children/applicant-social-worker-number', { errors: errors })
+      }
+    }
+    else {
+      res.redirect('/version-1/task-list')
+    }
+  })
+
+
+  router.post('/version-1/children/applicant-social-worker-address', function(req, res) {
+    var errors = []
+    if (req.body['applicant-social-worker-address'] === "") {
+      errors.push({
+      text: 'Enter a valid postcode',
+      href: '#applicant-social-worker-address'
+      })
+    }
+    if (req.body['submit-button'] === 'save-and-continue') {
+      if (errors.length === 0) {
+        res.redirect('/version-1/children/applicant-social-worker-find-address')
+      }
+      else {
+        res.render('.//version-1/children/applicant-social-worker-address', { errors: errors })
+      }
+    }
+    else {
+      res.redirect('/version-1/task-list')
+    }
+  })
+
+
+  router.post('/version-1/children/applicant-social-worker-find-address', function(req, res) {
+    var errors = []
+    if (req.body['applicant-social-worker-choose-address'] === 'address-found') {
+      errors.push({
+      text: 'Select an address',
+      href: '#applicant-social-worker-find-address'
+      })
+    }
+
+    if (req.body['submit-button'] === 'save-and-continue') {
+      if (errors.length === 0) {
+        res.redirect('/version-1/task-list')
+      }
+      else {
+        res.render('.//version-1/children/applicant-social-worker-find-address', { errors: errors })
+      }
+    }
+    else {
+      res.redirect('/version-1/task-list')
+    }
+  })
+
+
+  router.post('/version-1/children/applicant-social-worker-enter-address-manually', function(req, res) {
+    var errors = []
+    if (req.body['applicant-social-worker-address-line-1'] === '' || req.body['applicant-social-worker-postcode'] === ''){
+      errors.push({
+      text: 'Enter address',
+      href: '#applicant-social-worker-manual-address'
+      })
+    }
+
+
+    if (req.body['submit-button'] === 'save-and-continue') {
+      if (errors.length === 0) {
+        res.redirect('/version-1/task-list')
+      }
+      else {
+        res.render('.//version-1/children/applicant-social-worker-enter-address-manually', { errors: errors })
+      }
+    }
+    else {
+      res.redirect('/version-1/task-list')
+    }
+  })
+
+
+
 
 
 // ***************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************
@@ -1534,7 +1718,7 @@ router.post('/version-1/applicants/second-applicant-upload', function(req, res) 
 
 
 
-  
+
 
 
 // ************************************* Examples ************************************* //

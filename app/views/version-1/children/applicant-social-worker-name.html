@@ -22,25 +22,22 @@ Apply to adopt a child
         errorList: errors
       }) }}
       {% for error in errors %}
-        {% if error.href == '#child-name' %}
+        {% if error.href == '#applicant-social-worker-name' %}
           {% set nameError = error.text %}
         {% endif %}
       {% endfor %}
       {% endif %}
 
 
-      <form action="/version-1/children/child-name" method="post" class="form">
+      <form action="/version-1/children/applicant-social-worker-name" method="post" class="form">
 
         <div class="govuk-form-group {% if (nameError != '')%} govuk-form-group--error {% endif%}">
           <legend class="govuk-fieldset__legend govuk-fieldset__legend--l">
-          <span class="govuk-caption-l">{{ data['child'] }}</span>
+          <span class="govuk-caption-l">{{ data['socialworker'] }}</span>
           <h1 class="govuk-fieldset__heading">
-            What is the child's full name?
+            What's your social worker's name?
           </h1>
           </legend>
-          <div id="namehint" class="govuk-hint">
-            Enter the child's full name, as it's written on their birth certificate. Ask the adoption agency or social worker if you're not sure.
-          </div>
 
           {% if (nameError != '')%}
           <span id="name-error" class="govuk-error-message">
@@ -48,8 +45,8 @@ Apply to adopt a child
           </span>
           {% endif%}
 
-          <input class="govuk-input {% if (nameError != '')%} govuk-input--error {% endif%}" id="child-name" name="child-name" type="text" autocomplete="name" spellcheck="false"
-            value="{{ data['child-name'] }}">
+          <input class="govuk-input {% if (nameError != '')%} govuk-input--error {% endif%}" id="applicant-social-worker-name" name="applicant-social-worker-name" type="text" autocomplete="name" spellcheck="false"
+            value="{{ data['applicant-social-worker-name'] }}">
         </div>
 
           <!-- Buttons -->
