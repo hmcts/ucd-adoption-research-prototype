@@ -176,10 +176,15 @@ module.exports = (router) => {
 
     count = req.session.data.firstApplicantNameCount
     if (req.body['submit-button'] === 'add') {
-      req.session.data.firstApplicantPreviousNames[count] = req.body['first-applicant-previous-full-name']
-      req.session.data.idFirstApplicant[count] = count
-      req.session.data.firstApplicantNameCount = count + 1
-      res.redirect('/version-1/applicants/first-applicant-other-names')
+      if (req.body['first-applicant-previous-full-name'] !== '') {
+        req.session.data.firstApplicantPreviousNames[count] = req.body['first-applicant-previous-full-name']
+        req.session.data.idFirstApplicant[count] = count
+        req.session.data.firstApplicantNameCount = count + 1
+        res.redirect('/version-1/applicants/first-applicant-other-names')
+      }
+      else {
+        res.render('.//version-1/applicants/first-applicant-other-names', { errors: errors })
+      }
     }
     else if (req.body['submit-button'] === 'save-and-continue') {
       if (errors.length === 0) {
@@ -439,9 +444,8 @@ module.exports = (router) => {
 
   router.post('/version-1/applicants/second-applicant-other-names', function(req, res) {
     var errors = []
-    console.log("First applicant previous names: ", req.session.data.secondApplicantPreviousNames)
-    console.log("First applicant previous name radio: ", req.body['second-applicant-previous-full-name'])
-    console.log("name count: ", req.session.data.secondApplicantNameCount)
+    count = req.session.data.secondApplicantNameCount
+    console.log("Previous names: ", req.body['second-applicant-previous-full-name'])
 
     if (req.body['second-applicant-other-names'] === undefined) {
       // if (req.body['second-applicant-other-names'] === undefined && req.session.data.secondApplicantPreviousNames === '') {
@@ -458,12 +462,16 @@ module.exports = (router) => {
       })
     }
 
-    count = req.session.data.secondApplicantNameCount
     if (req.body['submit-button'] === 'add') {
-      req.session.data.secondApplicantPreviousNames[count] = req.body['second-applicant-previous-full-name']
-      req.session.data.idFirstApplicant[count] = count
-      req.session.data.secondApplicantNameCount = count + 1
-      res.redirect('/version-1/applicants/second-applicant-other-names')
+      if (req.body['second-applicant-previous-full-name'] !== '') {
+        req.session.data.secondApplicantPreviousNames[count] = req.body['second-applicant-previous-full-name']
+        req.session.data.idFirstApplicant[count] = count
+        req.session.data.secondApplicantNameCount = count + 1
+        res.redirect('/version-1/applicants/second-applicant-other-names')
+      }
+      else {
+        res.render('.//version-1/applicants/second-applicant-other-names', { errors: errors })
+      }
     }
     else if (req.body['submit-button'] === 'save-and-continue') {
       if (errors.length === 0) {
