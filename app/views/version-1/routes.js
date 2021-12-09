@@ -340,10 +340,23 @@ module.exports = (router) => {
 
   router.post('/version-1/applicants/first-applicant-enter-address-manually', function(req, res) {
     var errors = []
-    if (req.body['first-applicant-address-line-1'] === '' || req.body['first-applicant-postcode'] === ''){
+    console.log("First line: ", req.body['address-line-1'])
+    if (req.body['address-line-1'] === '') {
       errors.push({
-      text: 'Enter address',
-      href: '#first-applicant-manual-address'
+      text: 'Enter the first line of the address',
+      href: '#first-line'
+      })
+    }
+    if (req.body['address-town'] === '') {
+      errors.push({
+      text: 'Enter the town or city',
+      href: '#town'
+      })
+    }
+    if (req.body['address-postcode'] === '') {
+      errors.push({
+      text: 'Enter the postcode',
+      href: '#postcode'
       })
     }
 
