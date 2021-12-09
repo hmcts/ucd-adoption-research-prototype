@@ -28,18 +28,17 @@ Apply to adopt a child
       {% endfor %}
       {% endif %}
 
+        <span class="govuk-caption-l">{{ data['firstApplicant'] }}</span>
+        <h1 class="govuk-heading-l  govuk-!-margin-bottom-2">
+          What's your home address?
+        </h1>
+        <div id="nationality-hint" class="govuk-hint">
+          We'll send all court papers to this address.
+        </div>
 
         <form action="/version-1/applicants/first-applicant-address" method="post" class="form">
 
           <div class="govuk-form-group {% if (firstPostcodeError != '')%} govuk-form-group--error {% endif%}">
-            <legend class="govuk-fieldset__legend govuk-fieldset__legend--l">
-              <span class="govuk-caption-l">{{ data['firstApplicant'] }}</span>
-              <h1 class="govuk-fieldset__heading">
-                What's your home address?
-              </h1>
-            </legend>
-            <p class="govuk-body"> We'll send all court papers to this address.</p>
-
 
             <label class="govuk-label govuk-label--m" for="postcode">
               Postcode

@@ -176,10 +176,15 @@ module.exports = (router) => {
 
     count = req.session.data.firstApplicantNameCount
     if (req.body['submit-button'] === 'add') {
-      req.session.data.firstApplicantPreviousNames[count] = req.body['first-applicant-previous-full-name']
-      req.session.data.idFirstApplicant[count] = count
-      req.session.data.firstApplicantNameCount = count + 1
-      res.redirect('/version-1/applicants/first-applicant-other-names')
+      if (req.body['first-applicant-previous-full-name'] !== '') {
+        req.session.data.firstApplicantPreviousNames[count] = req.body['first-applicant-previous-full-name']
+        req.session.data.idFirstApplicant[count] = count
+        req.session.data.firstApplicantNameCount = count + 1
+        res.redirect('/version-1/applicants/first-applicant-other-names')
+      }
+      else {
+        res.render('.//version-1/applicants/first-applicant-other-names', { errors: errors })
+      }
     }
     else if (req.body['submit-button'] === 'save-and-continue') {
       if (errors.length === 0) {
@@ -251,11 +256,14 @@ module.exports = (router) => {
     else if (req.body['submit-button'] === 'save-as-draft') {
       res.redirect('/version-1/task-list')
     }
-    else {
+    else if (req.body['submit-button'] === 'add' && req.body['first-applicant-different-country'] !== '') {
       req.session.data.firstApplicantNationalities[count] = req.body['first-applicant-different-country']
       req.session.data.firstApplicantNationalityId[count] = count
       req.session.data.firstApplicantNationalityCount = count + 1
       res.redirect('/version-1/applicants/first-applicant-nationality')
+    }
+    else {
+      res.render('.//version-1/applicants/first-applicant-nationality', { errors: errors })
     }
   })
 
@@ -439,9 +447,8 @@ module.exports = (router) => {
 
   router.post('/version-1/applicants/second-applicant-other-names', function(req, res) {
     var errors = []
-    console.log("First applicant previous names: ", req.session.data.secondApplicantPreviousNames)
-    console.log("First applicant previous name radio: ", req.body['second-applicant-previous-full-name'])
-    console.log("name count: ", req.session.data.secondApplicantNameCount)
+    count = req.session.data.secondApplicantNameCount
+    console.log("Previous names: ", req.body['second-applicant-previous-full-name'])
 
     if (req.body['second-applicant-other-names'] === undefined) {
       // if (req.body['second-applicant-other-names'] === undefined && req.session.data.secondApplicantPreviousNames === '') {
@@ -453,17 +460,21 @@ module.exports = (router) => {
     else if (req.body['second-applicant-other-names'] === "Yes" && req.session.data.secondApplicantNameCount === 0) {
       console.log("no name added error: ", req.session.data.secondApplicantPreviousNames)
       errors.push({
-      text: 'Enter a name or choose No',
+      text: 'Enter a name or choose no',
       href: '#second-applicant-no-name'
       })
     }
 
-    count = req.session.data.secondApplicantNameCount
     if (req.body['submit-button'] === 'add') {
-      req.session.data.secondApplicantPreviousNames[count] = req.body['second-applicant-previous-full-name']
-      req.session.data.idFirstApplicant[count] = count
-      req.session.data.secondApplicantNameCount = count + 1
-      res.redirect('/version-1/applicants/second-applicant-other-names')
+      if (req.body['second-applicant-previous-full-name'] !== '') {
+        req.session.data.secondApplicantPreviousNames[count] = req.body['second-applicant-previous-full-name']
+        req.session.data.idFirstApplicant[count] = count
+        req.session.data.secondApplicantNameCount = count + 1
+        res.redirect('/version-1/applicants/second-applicant-other-names')
+      }
+      else {
+        res.render('.//version-1/applicants/second-applicant-other-names', { errors: errors })
+      }
     }
     else if (req.body['submit-button'] === 'save-and-continue') {
       if (errors.length === 0) {
@@ -535,11 +546,14 @@ module.exports = (router) => {
     else if (req.body['submit-button'] === 'save-as-draft') {
       res.redirect('/version-1/task-list')
     }
-    else {
+    else if (req.body['submit-button'] === 'add' && req.body['second-applicant-different-country'] !== '') {
       req.session.data.secondApplicantNationalities[count] = req.body['second-applicant-different-country']
       req.session.data.secondApplicantNationalityId[count] = count
       req.session.data.secondApplicantNationalityCount = count + 1
       res.redirect('/version-1/applicants/second-applicant-nationality')
+    }
+    else {
+      res.render('.//version-1/applicants/second-applicant-nationality', { errors: errors })
     }
   })
 
@@ -1436,16 +1450,7 @@ router.post('/version-1/applicants/second-applicant-upload', function(req, res) 
 
 
 
-
-
-
-
-
-
-
-
   // ********************** Adoption agency or local authority **********************
-
   router.post('/version-1/children/applicant-adoption-agency-name', function(req, res) {
     var errors = []
     if (req.body['applicant-adoption-agency-name'] === '') {
@@ -1467,6 +1472,7 @@ router.post('/version-1/applicants/second-applicant-upload', function(req, res) 
       res.redirect('/version-1/task-list')
     }
   })
+
 
   router.post('/version-1/children/applicant-social-worker-name', function(req, res) {
     var errors = []
@@ -1490,6 +1496,7 @@ router.post('/version-1/applicants/second-applicant-upload', function(req, res) 
     }
   })
 
+
   router.post('/version-1/children/applicant-social-worker-email', function(req, res) {
     var errors = []
     if (req.body['applicant-social-worker-email'] === '') {
@@ -1512,6 +1519,7 @@ router.post('/version-1/applicants/second-applicant-upload', function(req, res) 
     }
   })
 
+
   router.post('/version-1/children/applicant-social-worker-team-email', function(req, res) {
     var errors = []
     if (req.body['applicant-social-worker-team-email'] === '') {
@@ -1533,7 +1541,6 @@ router.post('/version-1/applicants/second-applicant-upload', function(req, res) 
       res.redirect('/version-1/task-list')
     }
   })
-
 
 
   router.post('/version-1/children/applicant-social-worker-number', function(req, res) {
@@ -1567,6 +1574,7 @@ router.post('/version-1/applicants/second-applicant-upload', function(req, res) 
       href: '#applicant-social-worker-address'
       })
     }
+
     if (req.body['submit-button'] === 'save-and-continue') {
       if (errors.length === 0) {
         res.redirect('/version-1/children/applicant-social-worker-find-address')
@@ -1616,7 +1624,6 @@ router.post('/version-1/applicants/second-applicant-upload', function(req, res) 
       href: '#applicant-social-worker-manual-address'
       })
     }
-
 
     if (req.body['submit-button'] === 'save-and-continue') {
       if (errors.length === 0) {
@@ -1848,107 +1855,36 @@ router.post('/version-1/applicants/second-applicant-upload', function(req, res) 
   })
 
   router.post('/version-1/applicants/number-of-children', function(req, res) {
+    
+ // ********************** Solicitor details **********************  
+  router.post('/version-1/children/solicitor-helping', function(req, res) {
+    console.log("Mother alive: ", req.body['solicitor-helping'])
+
     var errors = []
-    if (req.body['number-children'] === undefined) {
+    if (req.body['solicitor-helping'] === undefined) {
       errors.push({
-      text: 'Select the number of children you are applying to adopt',
-      href: '#number-of-children'
-      })
-    }
-    else if (req.body['number-children'] === "3 or more" && req.body['more-than-3'] === "") {
-      errors.push({
-      text: 'Enter a number',
-      href: '#exact-number'
+      text: 'Please answer the question',
+      href: '#solicitor-helping'
       })
     }
 
-    if (req.body['more-than-3'] !== "") {
-      req.session.data.numberChildren = req.body['more-than-3']
-    }
-    else {
-      req.session.data.numberChildren = req.body['number-of-children']
-    }
+    req.session.data.numberApplicants = req.body['solicitor-helping']
 
     if (req.body['submit-button'] === 'save-and-continue') {
       if (errors.length === 0) {
-        res.redirect('/version-1/applicants/number-of-applicants')
+        if (req.body['solicitor-helping'] === 'yes') {
+          res.redirect('/version-1/children/solicitor-firm-name')
+        }
+        else {
+          res.redirect('/version-1/task-list')
+        }
       }
       else {
-        res.render('.//version-1/applicants/number-of-children', { errors: errors })
+        res.render('.//version-1/children/solicitor-helping', { errors: errors })
       }
     }
     else {
-      res.redirect('/version-1/task-list')
-    }
-  })
-
-
-  router.post('/version-1/applicants/first-applicant-gender', function(req, res) {
-    var errors = []
-    if (req.body['first-applicant-gender'] === '') {
-      errors.push({
-      text: 'Select an answer',
-      href: '#first-applicant-gender'
-      })
-    }
-      if (req.body['submit-button'] === 'save-and-continue') {
-        if (errors.length === 0) {
-          res.redirect('/version-1/applicants/first-applicant-nationality')
-        }
-        else {
-            res.render('.//version-1/applicants/first-applicant-gender', { errors: errors })
-          }
-      }
-      else {
         res.redirect('/version-1/task-list')
-      }
-  })
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-// ************************************* Examples ************************************* //
-
-  router.post('/damages/default-judgments/5-hearing-details', function(req, res) {
-    req.session.data.unavailable = req.body['exclusion-dates']
-    if (req.body['submit-button'] === 'add') {
-      count = req.session.data.dateCount
-      console.log("count start", count)
-      req.session.data.dayFrom = req.body['date-from-day']
-      req.session.data.monthFrom = req.body['date-from-month']
-      req.session.data.yearFrom = req.body['date-from-year']
-      req.session.data.dayTo = req.body['date-to-day']
-      req.session.data.monthTo = req.body['date-to-month']
-      req.session.data.yearTo = req.body['date-to-year']
-
-      req.session.data.id[count] = count
-      req.session.data.startDate[count] = req.body['date-from-day'] + " " + req.session.data.shortMonthName[req.body['date-from-month']] + " " + req.body['date-from-year']
-      req.session.data.endDate[count] = req.body['date-to-day'] + " " + req.session.data.shortMonthName[req.body['date-to-month']] + " " + req.body['date-to-year']
-
-      console.log("From", req.session.data.startDate[count]);
-      console.log("unavailable", req.session.data.unavailable)
-
-      req.session.data.dateCount = count + 1
-      console.log("dateCount", req.session.data.dateCount)
-
-      res.redirect('/damages/default-judgments/5-hearing-details#unavailable-dates')
-      }
-    else if (req.body['submit-button'] === 'continue') {
-      res.redirect('/damages/default-judgments/6-check-your-answers')
-    }
-    else {
-        res.redirect('/damages/default-judgments/4-make-request-judgment')
     }
   })
 
@@ -1966,45 +1902,184 @@ router.post('/version-1/applicants/second-applicant-upload', function(req, res) 
 
 
 
-// Examples from HMRC
-router.post('/sps/work-in-progress/how-to-verify', function(req, res) {
-    console.log("route", req.session.data.route)
-      if (req.body['verifyOrChange'] === 'verify') {
-          res.redirect('/sps/work-in-progress/confirmation-email-sent')
-      } else {
-        if (req.session.data.route === 'external' || req.session.data.route === 'current-bouncing' || req.session.data.route === 'current-unverified') {
-          res.redirect('/sps/work-in-progress/how-to-verify')
-        }
-        else {
-        req.session.data.route = "settings"
-        res.redirect('/sps/work-in-progress/change-email')
-      }
-      }
-  })
 
-  // Error messages on how-to-get-tax-letters
-  router.post('/sps/work-in-progress/how-to-get-tax-letters', (req, res) => {
-      var errors = []
-      if (req.body['howContacted'] === undefined) {
-        errors.push({
-          text: 'Select how you want to get your tax letters',
-          href: '#how-to-get-tax-letters'
-        })
-      }
-      if (errors.length === 0) {
-        if (req.body['howContacted'] === 'Online') {
-          res.redirect('/sps/work-in-progress/add-email')
-        }
-      else {
-          if (req.session.data.route === 'external') {
-            res.redirect('/sps/work-in-progress/confirmation-post-alternative')
-          }
-          else {
-          res.redirect('/sps/work-in-progress/confirmation-post')
-        }
-        }
-      } else {
-        res.render('.//sps/work-in-progress/how-toget-tax-letters', { errors: errors })
-      }
-})
+// ***************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************
+// ************************************* Old functions not in use any more ************************************* //
+//   router.post('/version-1/eligibility/10-weeks', function(req, res) {
+//     var errors = []
+//     if (req.body['10-weeks'] === undefined) {
+//       errors.push({
+//       text: 'Select an answer',
+//       href: '#10-weeks'
+//       })
+//     }
+
+//     if (errors.length === 0) {
+//         res.redirect('/version-1/eligibility/under-18')
+//     }
+//     else {
+//         res.render('.//version-1/eligibility/10-weeks', { errors: errors })
+//     }
+//   })
+
+//   router.post('/version-1/applicants/number-of-children', function(req, res) {
+//     var errors = []
+//     if (req.body['number-children'] === undefined) {
+//       errors.push({
+//       text: 'Select the number of children you are applying to adopt',
+//       href: '#number-of-children'
+//       })
+//     }
+//     else if (req.body['number-children'] === "3 or more" && req.body['more-than-3'] === "") {
+//       errors.push({
+//       text: 'Enter a number',
+//       href: '#exact-number'
+//       })
+//     }
+
+//     if (req.body['more-than-3'] !== "") {
+//       req.session.data.numberChildren = req.body['more-than-3']
+//     }
+//     else {
+//       req.session.data.numberChildren = req.body['number-of-children']
+//     }
+
+//     if (req.body['submit-button'] === 'save-and-continue') {
+//       if (errors.length === 0) {
+//         res.redirect('/version-1/applicants/number-of-applicants')
+//       }
+//       else {
+//         res.render('.//version-1/applicants/number-of-children', { errors: errors })
+//       }
+//     }
+//     else {
+//       res.redirect('/version-1/task-list')
+//     }
+//   })
+
+
+//   router.post('/version-1/applicants/first-applicant-gender', function(req, res) {
+//     var errors = []
+//     if (req.body['first-applicant-gender'] === '') {
+//       errors.push({
+//       text: 'Select an answer',
+//       href: '#first-applicant-gender'
+//       })
+//     }
+//       if (req.body['submit-button'] === 'save-and-continue') {
+//         if (errors.length === 0) {
+//           res.redirect('/version-1/applicants/first-applicant-nationality')
+//         }
+//         else {
+//             res.render('.//version-1/applicants/first-applicant-gender', { errors: errors })
+//           }
+//       }
+//       else {
+//         res.redirect('/version-1/task-list')
+//       }
+//   })
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+// // ************************************* Examples ************************************* //
+
+//   router.post('/damages/default-judgments/5-hearing-details', function(req, res) {
+//     req.session.data.unavailable = req.body['exclusion-dates']
+//     if (req.body['submit-button'] === 'add') {
+//       count = req.session.data.dateCount
+//       console.log("count start", count)
+//       req.session.data.dayFrom = req.body['date-from-day']
+//       req.session.data.monthFrom = req.body['date-from-month']
+//       req.session.data.yearFrom = req.body['date-from-year']
+//       req.session.data.dayTo = req.body['date-to-day']
+//       req.session.data.monthTo = req.body['date-to-month']
+//       req.session.data.yearTo = req.body['date-to-year']
+
+//       req.session.data.id[count] = count
+//       req.session.data.startDate[count] = req.body['date-from-day'] + " " + req.session.data.shortMonthName[req.body['date-from-month']] + " " + req.body['date-from-year']
+//       req.session.data.endDate[count] = req.body['date-to-day'] + " " + req.session.data.shortMonthName[req.body['date-to-month']] + " " + req.body['date-to-year']
+
+//       console.log("From", req.session.data.startDate[count]);
+//       console.log("unavailable", req.session.data.unavailable)
+
+//       req.session.data.dateCount = count + 1
+//       console.log("dateCount", req.session.data.dateCount)
+
+//       res.redirect('/damages/default-judgments/5-hearing-details#unavailable-dates')
+//       }
+//     else if (req.body['submit-button'] === 'continue') {
+//       res.redirect('/damages/default-judgments/6-check-your-answers')
+//     }
+//     else {
+//         res.redirect('/damages/default-judgments/4-make-request-judgment')
+//     }
+//   })
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+// // Examples from HMRC
+// router.post('/sps/work-in-progress/how-to-verify', function(req, res) {
+//     console.log("route", req.session.data.route)
+//       if (req.body['verifyOrChange'] === 'verify') {
+//           res.redirect('/sps/work-in-progress/confirmation-email-sent')
+//       } else {
+//         if (req.session.data.route === 'external' || req.session.data.route === 'current-bouncing' || req.session.data.route === 'current-unverified') {
+//           res.redirect('/sps/work-in-progress/how-to-verify')
+//         }
+//         else {
+//         req.session.data.route = "settings"
+//         res.redirect('/sps/work-in-progress/change-email')
+//       }
+//       }
+//   })
+
+//   // Error messages on how-to-get-tax-letters
+//   router.post('/sps/work-in-progress/how-to-get-tax-letters', (req, res) => {
+//       var errors = []
+//       if (req.body['howContacted'] === undefined) {
+//         errors.push({
+//           text: 'Select how you want to get your tax letters',
+//           href: '#how-to-get-tax-letters'
+//         })
+//       }
+//       if (errors.length === 0) {
+//         if (req.body['howContacted'] === 'Online') {
+//           res.redirect('/sps/work-in-progress/add-email')
+//         }
+//       else {
+//           if (req.session.data.route === 'external') {
+//             res.redirect('/sps/work-in-progress/confirmation-post-alternative')
+//           }
+//           else {
+//           res.redirect('/sps/work-in-progress/confirmation-post')
+//         }
+//         }
+//       } else {
+//         res.render('.//sps/work-in-progress/how-toget-tax-letters', { errors: errors })
+//       }
+// })
 };
