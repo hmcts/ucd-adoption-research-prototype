@@ -22,16 +22,16 @@ Apply to adopt a child
         errorList: errors
       }) }}
       {% for error in errors %}
-        {% if error.href == '#applicant-social-worker-find-address' %}
+        {% if error.href == '#child-social-worker-find-address' %}
           {% set findAddressError = error.text %}
         {% endif %}
       {% endfor %}
       {% endif %}
 
-      <form action="/version-1/children/applicant-social-worker-find-address" method="post" class="form">
+      <form action="/version-1/children/child-social-worker-find-address" method="post" class="form">
         <div class="govuk-form-group {% if (findAddressError != '')%} govuk-form-group--error {% endif%}">
           <legend class="govuk-fieldset__legend govuk-fieldset__legend--l">
-            <span class="govuk-caption-l">{{ data['socialworker'] }}</span>
+            <span class="govuk-caption-l">{{ data['childsocialworker'] }}</span>
             <h1 class="govuk-fieldset__heading">
               What is their address?
             </h1>
@@ -44,7 +44,7 @@ Apply to adopt a child
               <!-- <p class="govuk-body-l">SW1A 1AA</p> -->
               <p class="govuk-body govuk-!-font-size-19">SW1A 1AA</p>
 
-              <p><a href="applicant-social-worker-find-address">Change</a></p>
+              <p><a href="child-social-worker-find-address">Change</a></p>
             </div>
 
             <div class="govuk-form-group">
@@ -58,14 +58,14 @@ Apply to adopt a child
                 {% endif%}
               <select class="govuk-select" id="sort" name="social-worker-choose-address">
                 <option value="address-found">1 address found </option>
-                <option value="address-option-1" {% if (data['social-worker-choose-address'] === 'address-option-1') %} selected {% endif %}>Buckingham Palace, LONDON SW1A 1AA</option>
+                <option value="address-option-1" {% if (data['child-social-worker-choose-address'] === 'address-option-1') %} selected {% endif %}>Buckingham Palace, LONDON SW1A 1AA</option>
               </select>
             </div>
 
         </div>
 
         <div class="govuk-form-group">
-          <p><a href="applicant-social-worker-enter-address-manually.html">Or enter address manually</a></p>
+          <p><a href="child-social-worker-enter-address-manually.html">Or enter address manually</a></p>
         </div>
 
         <!--  Buttons  -->

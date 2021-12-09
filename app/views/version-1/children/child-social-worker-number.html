@@ -14,7 +14,7 @@ Apply to adopt a child
   <div class="govuk-grid-row">
     <div class="govuk-grid-column-two-thirds">
 
-      {% set teamemailError = '' %}
+      {% set socialworkernumberError = '' %}
 
       {% if errors | length > 0 %}
       {{ govukErrorSummary({
@@ -22,26 +22,26 @@ Apply to adopt a child
         errorList: errors
       }) }}
       {% for error in errors %}
-        {% if (error.href == '#applicant-social-worker-team-email' or error.href == '#applicant-social-worker-team-email') %}
-          {% set teamemailError = error.text %}
+        {% if (error.href == '#child-social-worker-number' or error.href == '#child-social-worker-number') %}
+          {% set socialworkernumberError = error.text %}
         {% endif %}
       {% endfor %}
       {% endif %}
 
 
-      <form action="/version-1/children/applicant-social-worker-team-email" method="post" class="form">
+      <form action="/version-1/children/child-social-worker-number" method="post" class="form">
 
-        <div class="govuk-form-group {% if (teamemailError != '')%} govuk-form-group--error {% endif %}">
+        <div class="govuk-form-group {% if (socialworkernumberError != '')%} govuk-form-group--error {% endif %}">
         <legend class="govuk-fieldset__legend govuk-fieldset__legend--l">
-          <span class="govuk-caption-l">{{ data['socialworker'] }}</span>
+          <span class="govuk-caption-l">{{ data['childsocialworker'] }}</span>
           <h1 class="govuk-fieldset__heading">
-            Do you know their team email address?
+            Do you know their number?
           </h1>
         </legend>
 
-        {% if (teamemailError != '')%}
+        {% if (socialworkernumberError != '')%}
           <span class="govuk-error-message govuk-form">
-            <span class="govuk-visually-hidden">Error:</span> {{ teamemailError }}
+            <span class="govuk-visually-hidden">Error:</span> {{ socialworkernumberError }}
           </span>
         {% endif %}
 
@@ -50,7 +50,7 @@ Apply to adopt a child
 
             <div class="govuk-radios govuk-radios--conditional" data-module="govuk-radios">
               <div class="govuk-radios__item">
-                <input class="govuk-radios__input" id="yes" name="applicant-social-worker-team-email" type="radio" value="yes" data-aria-controls="conditional-contact" {% if (data['applicant-social-worker-team-email'] === "yes") %} checked {% endif %}>
+                <input class="govuk-radios__input" id="yes" name="child-social-worker-number" type="radio" value="yes" data-aria-controls="conditional-contact" {% if (data['child-social-worker-number'] === "yes") %} checked {% endif %}>
                 <label class="govuk-label govuk-radios__label" for="yes">
                   Yes
                 </label>
@@ -58,14 +58,14 @@ Apply to adopt a child
               <div class="govuk-radios__conditional govuk-radios__conditional--hidden" id="conditional-contact">
                 <div class="govuk-form-group">
                   <label class="govuk-label" for="contact-by-email">
-                    Please enter their email.
+                    Please enter their number.
                   </label>
-                  <input class="govuk-input{% if (teamemailError != '') %} govuk-input--error{% endif %}" id="team-email" name="team-email" type="text" spellcheck="false" value="{{data['team-email']}}">
+                  <input class="govuk-input{% if (socialworkernumberError != '') %} govuk-input--error{% endif %}" id="social-worker-number" name="social-worker-number" type="text" spellcheck="false" value="{{data['social-worker-number']}}">
                 </div>
               </div>
               <div class="govuk-radios govuk-radios--conditional" data-module="govuk-radios">
                 <div class="govuk-radios__item">
-                  <input class="govuk-radios__input" id="no" name="applicant-social-worker-team-email" type="radio" value="no" {% if (data['applicant-social-worker-team-email'] === "no") %} checked {% endif %}>
+                  <input class="govuk-radios__input" id="no" name="child-social-worker-number" type="radio" value="no" {% if (data['child-social-worker-number'] === "no") %} checked {% endif %}>
                   <label class="govuk-label govuk-radios__label" for="no">
                     No
                   </label>
@@ -77,7 +77,7 @@ Apply to adopt a child
             </div>
           </fieldset>
         </div>
-        {% if teamemailError != '' %}
+        {% if socialworkernumberError != '' %}
           </div>
         {% endif %}
 
