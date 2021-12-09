@@ -256,11 +256,14 @@ module.exports = (router) => {
     else if (req.body['submit-button'] === 'save-as-draft') {
       res.redirect('/version-1/task-list')
     }
-    else {
+    else if (req.body['submit-button'] === 'add' && req.body['first-applicant-different-country'] !== '') {
       req.session.data.firstApplicantNationalities[count] = req.body['first-applicant-different-country']
       req.session.data.firstApplicantNationalityId[count] = count
       req.session.data.firstApplicantNationalityCount = count + 1
       res.redirect('/version-1/applicants/first-applicant-nationality')
+    }
+    else {
+      res.render('.//version-1/applicants/first-applicant-nationality', { errors: errors })
     }
   })
 
@@ -543,11 +546,14 @@ module.exports = (router) => {
     else if (req.body['submit-button'] === 'save-as-draft') {
       res.redirect('/version-1/task-list')
     }
-    else {
+    else if (req.body['submit-button'] === 'add' && req.body['second-applicant-different-country'] !== '') {
       req.session.data.secondApplicantNationalities[count] = req.body['second-applicant-different-country']
       req.session.data.secondApplicantNationalityId[count] = count
       req.session.data.secondApplicantNationalityCount = count + 1
       res.redirect('/version-1/applicants/second-applicant-nationality')
+    }
+    else {
+      res.render('.//version-1/applicants/second-applicant-nationality', { errors: errors })
     }
   })
 
