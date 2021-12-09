@@ -453,7 +453,7 @@ module.exports = (router) => {
     else if (req.body['second-applicant-other-names'] === "Yes" && req.session.data.secondApplicantNameCount === 0) {
       console.log("no name added error: ", req.session.data.secondApplicantPreviousNames)
       errors.push({
-      text: 'Enter a name or choose No',
+      text: 'Enter a name or choose no',
       href: '#second-applicant-no-name'
       })
     }

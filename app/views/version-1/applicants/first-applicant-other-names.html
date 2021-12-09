@@ -16,7 +16,8 @@ Apply to adopt a child
     <div class="govuk-grid-row">
       <div class="govuk-grid-column-two-thirds">
 
-        {% set firstOtherNamesError = '' %}
+        {% set noRadioSelectedError = '' %}
+        {% set noNameError = '' %}
     
         {% if errors | length > 0 %}
           {{ govukErrorSummary({
@@ -24,8 +25,11 @@ Apply to adopt a child
             errorList: errors
           }) }}
           {% for error in errors %}
-            {% if (error.href == '#first-applicant-other-names' or error.href == '#first-applicant-no-name') %}
-              {% set firstOtherNamesError = error.text %}
+            {% if error.href == '#first-applicant-other-names' %}
+              {% set noRadioSelectedError = error.text %}
+            {% endif %}
+            {% if error.href == '#first-applicant-no-name' %}
+              {% set noNameError = error.text %}
             {% endif %}
           {% endfor %}
         {% endif %}
@@ -33,7 +37,7 @@ Apply to adopt a child
 
         <form action="/version-1/applicants/first-applicant-other-names" method="post" class="form">
 
-          <div class="govuk-form-group {% if (firstOtherNamesError != '')%} govuk-form-group--error {% endif%}">
+          <div class="govuk-form-group {% if (noRadioSelectedError != '')%} govuk-form-group--error {% endif%}">
             <legend class="govuk-fieldset__legend govuk-fieldset__legend--l">
             <span class="govuk-caption-l">{{ data['firstApplicant'] }}</span>
             <h1 class="govuk-fieldset__heading">
@@ -45,9 +49,9 @@ Apply to adopt a child
             For example, your name before marriage.
           </div>
   
-          {% if firstOtherNamesError != '' %}
+          {% if noRadioSelectedError != '' %}
             <span class="govuk-error-message govuk-form">
-              <span class="govuk-visually-hidden">Error:</span> {{ firstOtherNamesError }}
+              <span class="govuk-visually-hidden">Error:</span> {{ noRadioSelectedError }}
             </span>
           {% endif %}
   
@@ -97,7 +101,13 @@ Apply to adopt a child
                           <label class="govuk-label" for="other">
                             Add your previous full name
                           </label>
-                          <input class="govuk-input govuk-!-width-two-thirds" id="first-applicant-previous-full-name" name="first-applicant-previous-full-name" type="text">
+                          {% if noNameError != '' %}
+                          <span class="govuk-error-message govuk-form">
+                            <span class="govuk-visually-hidden">Error:</span> {{ noNameError }}
+                          </span>
+                           {% endif %}
+              
+                          <input class="govuk-input govuk-!-width-two-thirds {% if noNameError != '' %} govuk-input--error {% endif %}" id="first-applicant-previous-full-name" name="first-applicant-previous-full-name" type="text">
                         </div>
                           <button class="govuk-button govuk-button--secondary govuk-!-margin-top-5" data-module="govuk-button" name="submit-button" value="add">Add</button>
                       </details>
@@ -115,9 +125,7 @@ Apply to adopt a child
   
             </fieldset>
           </div>
-          {% if firstOtherNamesError != '' %}
-            </div>
-            {% endif %}
+          </div>
           <!-- Buttons -->
           {% include "../../includes/buttons.html" %}
 

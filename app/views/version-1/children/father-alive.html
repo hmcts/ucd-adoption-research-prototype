@@ -15,6 +15,7 @@ Apply to adopt a child
     <div class="govuk-grid-column-two-thirds">
 
       {% set aliveError = '' %}
+      {% set notSureError = '' %}
   
       {% if errors | length > 0 %}
       {{ govukErrorSummary({
@@ -22,10 +23,13 @@ Apply to adopt a child
         errorList: errors
       }) }}
       {% for error in errors %}
-        {% if (error.href == '#father-alive' or error.href == '#father-no-reason') %}
+        {% if error.href == '#father-alive' %}
           {% set aliveError = error.text %}
         {% endif %}
-      {% endfor %}
+        {% if error.href == '#father-no-reason' %}
+            {% set notSureError = error.text %}
+        {% endif %}
+        {% endfor %}
       {% endif %}
 
 
@@ -64,28 +68,34 @@ Apply to adopt a child
                   </label>
                 </div>
   
-                <div class="govuk-radios govuk-radios--conditional" data-module="govuk-radios">
+                <div class="govuk-radios govuk-radios--conditional " data-module="govuk-radios">
                 <div class="govuk-radios__item">
                   <input class="govuk-radios__input" id="unsure" name="father-alive" type="radio" value="unsure" data-aria-controls="conditional-contact" {% if (data['father-alive'] === "unsure") %} checked {% endif %}>
                   <label class="govuk-label govuk-radios__label" for="unsure">
                     Not sure
                   </label>
                 </div>
-                <div class="govuk-radios__conditional govuk-radios__conditional--hidden" id="conditional-contact">
+                <div class="govuk-radios__conditional govuk-radios__conditional--hidden " id="conditional-contact">
+                  <!-- <div class="govuk-form-group{% if (notSureError != '')%} govuk-form-group--error{% endif %}"> -->
                   <div class="govuk-form-group">
-                    <label class="govuk-label" for="contact-by-email">
+                      <label class="govuk-label" for="contact-by-email">
                       Provide more details. For example, "the birth father is uncontactable". Your adoption agency or social worker can help you to complete this section.
                     </label>
-                    <input class="govuk-input{% if (aliveError != '') %} govuk-input--error{% endif %}" id="reason-not-sure" name="reason-not-sure" type="text" spellcheck="false" value="{{data['reason-not-sure']}}">
+                    {% if (notSureError != '')%}
+                    <span class="govuk-error-message govuk-form">
+                      <span class="govuk-visually-hidden">Error:</span> {{ notSureError }}
+                    </span>
+                  {% endif %}
+          
+                    <input class="govuk-input{% if (notSureError != '') %} govuk-input--error{% endif %}" id="reason-not-sure" name="reason-not-sure" type="text" spellcheck="false" value="{{data['reason-not-sure']}}">
                   </div>
                 </div>
-                           
             </div>
           </fieldset>
         </div>
-
-        <!-- Buttons -->
-          {% include "../../includes/buttons.html" %}
+      </div>
+      <!-- Buttons -->
+        {% include "../../includes/buttons.html" %}
 
 
       </form>   
