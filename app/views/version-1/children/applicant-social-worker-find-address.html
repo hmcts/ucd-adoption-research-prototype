@@ -56,9 +56,9 @@ Apply to adopt a child
                   <span class="govuk-visually-hidden">Error:</span> {{ findAddressError }}
                 </span>
                 {% endif%}
-              <select class="govuk-select" id="sort" name="social-worker-choose-address">
+              <select class="govuk-select" id="sort" name="applicant-social-worker-choose-address">
                 <option value="address-found">1 address found </option>
-                <option value="address-option-1" {% if (data['social-worker-choose-address'] === 'address-option-1') %} selected {% endif %}>Buckingham Palace, LONDON SW1A 1AA</option>
+                <option value="address-option-1" {% if (data['applicant-social-worker-choose-address'] === 'address-option-1') %} selected {% endif %}>Buckingham Palace, LONDON SW1A 1AA</option>
               </select>
             </div>
 
