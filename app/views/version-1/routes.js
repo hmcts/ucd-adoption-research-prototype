@@ -708,7 +708,7 @@ router.post('/version-1/applicants/second-applicant-contact', function(req, res)
         href: '#second-applicant-email'
         })
         errors.push({
-          text: 'Enter a UK telephone number8',
+          text: 'Enter a UK telephone numberg',
           href: '#second-applicant-phone-number'
           })
     }
