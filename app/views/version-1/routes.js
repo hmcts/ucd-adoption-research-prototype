@@ -370,6 +370,16 @@ module.exports = (router) => {
       href: '#first-applicant-contact'
       })
     }
+    else if (req.body['first-applicant-email-checkbox'] !== undefined && req.body['first-applicant-email-address'] === '' && req.body['first-applicant-phone'] !== undefined && req.body['first-applicant-phone-number'] === '') {
+      errors.push({
+        text: 'Enter an email address in the correct format, like name@example.com',
+        href: '#first-applicant-email'
+        })
+        errors.push({
+          text: 'Enter a UK telephone number',
+          href: '#first-applicant-phone-number'
+          })
+    }
     else if (req.body['first-applicant-email-checkbox'] !== undefined && req.body['first-applicant-email-address'] === '') {
       errors.push({
         text: 'Enter an email address in the correct format, like name@example.com',
@@ -382,6 +392,7 @@ module.exports = (router) => {
         href: '#first-applicant-phone-number'
         })
     }
+
     // req.session.data.firstApplicantContactCheckbox = req.body['first-applicant-contact-options']
     if (req.body['submit-button'] === 'save-and-continue') {
       if (errors.length === 0) {
@@ -685,25 +696,36 @@ router.post('/version-1/applicants/second-applicant-enter-address-manually', fun
 
 router.post('/version-1/applicants/second-applicant-contact', function(req, res) {
   var errors = []
-  if (req.body['second-applicant-email-checkbox'] === undefined && req.body['second-applicant-phone'] === undefined) {
-    errors.push({
-    text: 'Enter your telephone number or email address',
-    href: '#second-applicant-contact'
-    })
-  }
-  else if (req.body['second-applicant-email-checkbox'] !== undefined && req.body['second-applicant-email-address'] === '') {
-    errors.push({
-      text: 'Enter an email address in the correct format, like name@example.com',
-      href: '#second-applicant-email'
+    if (req.body['second-applicant-email-checkbox'] === undefined && req.body['second-applicant-phone'] === undefined) {
+      errors.push({
+      text: 'Enter your telephone number or email address',
+      href: '#second-applicant-contact'
       })
-  }
-  else if (req.body['second-applicant-phone'] !== undefined && req.body['second-applicant-phone-number'] === '') {
-    errors.push({
-      text: 'Enter a UK telephone number',
-      href: '#second-applicant-phone-number'
-      })
-  }
-  // req.session.data.secondApplicantContactCheckbox = req.body['second-applicant-contact-options']
+    }
+    else if (req.body['second-applicant-email-checkbox'] !== undefined && req.body['second-applicant-email-address'] === '' && req.body['second-applicant-phone'] !== undefined && req.body['second-applicant-phone-number'] === '') {
+      errors.push({
+        text: 'Enter an email address in the correct format, like name@example.com',
+        href: '#second-applicant-email'
+        })
+        errors.push({
+          text: 'Enter a UK telephone number',
+          href: '#second-applicant-phone-number'
+          })
+    }
+    else if (req.body['second-applicant-email-checkbox'] !== undefined && req.body['second-applicant-email-address'] === '') {
+      errors.push({
+        text: 'Enter an email address in the correct format, like name@example.com',
+        href: '#second-applicant-email'
+        })
+    }
+    else if (req.body['second-applicant-phone'] !== undefined && req.body['second-applicant-phone-number'] === '') {
+      errors.push({
+        text: 'Enter a UK telephone number',
+        href: '#second-applicant-phone-number'
+        })
+    }
+
+    // req.session.data.secondApplicantContactCheckbox = req.body['second-applicant-contact-options']
   if (req.body['submit-button'] === 'save-and-continue') {
     if (errors.length === 0) {
       res.redirect('/version-1/task-list')
