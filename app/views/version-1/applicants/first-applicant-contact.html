@@ -15,6 +15,8 @@ Apply to adopt a child
     <div class="govuk-grid-column-two-thirds">
 
       {% set contactError = '' %}
+      {% set emailError = '' %}
+      {% set phoneError = '' %}
 
       {% if errors | length > 0 %}
       {{ govukErrorSummary({
@@ -22,8 +24,14 @@ Apply to adopt a child
         errorList: errors
       }) }}
       {% for error in errors %}
-        {% if error.href == '#first-applicant-contact' or error.href == '#first-applicant-phone-number' or error.href == '#first-applicant-email' %}
+        {% if error.href == '#first-applicant-contact' %}
           {% set contactError = error.text %}
+        {% endif %}
+        {% if error.href == '#first-applicant-email' %}
+          {% set emailError = error.text %} 
+        {% endif %}
+        {% if error.href == '#first-applicant-phone-number' %} 
+          {% set phoneError = error.text %}
         {% endif %}
       {% endfor %}
       {% endif %}
@@ -44,7 +52,13 @@ Apply to adopt a child
           </span>
 
             <fieldset class="govuk-fieldset" aria-describedby="citizenship-conditional-hint">
-              {% if (data['first-applicant-email-checkbox'] == undefined and data['first-applicant-phone'] == undefined) %}
+              {% if (phoneError != '' or emailError != '') %}
+              <span id="contact-error" class="govuk-error-message">
+                <span class="govuk-visually-hidden">Error:</span> 
+                <p>{{ emailError }}</p>
+                <p>{{ phoneError }}</p>
+              </span>
+              {% elseif contactError != '' %}
               <span id="contact-error" class="govuk-error-message">
                 <span class="govuk-visually-hidden">Error:</span> {{ contactError }}
               </span>
@@ -58,16 +72,16 @@ Apply to adopt a child
                   <label class="govuk-label govuk-checkboxes__label" for="citizenship-conditional">
                     Email address
                   </label>
+                  {% if emailError != '' %}
+                  <span id="contact-error" class="govuk-error-message">
+                    <span class="govuk-visually-hidden">Error:</span> {{ emailError }}
+                  </span>
+                  {% endif %}
                 </div>
                 <div class="govuk-checkboxes__conditional govuk-checkboxes__conditional--hidden"
                   id="conditional-citizenship-conditional">
                   <div class="govuk-form-group">
-                    {% if (data['first-applicant-email-checkbox'] !== undefined) and (data['first-applicant-email-address'] == '') %}
-                    <span id="contact-error" class="govuk-error-message">
-                      <span class="govuk-visually-hidden">Error:</span> {{ contactError }}
-                    </span>      
-                    {% endif %}
-                    <input class="govuk-input govuk-input--width-20 {% if (data['first-applicant-email-checkbox'] !== undefined) and (data['first-applicant-email-address'] == '') %} govuk-input--error {% endif %}" id="contact-by-enmail" name="first-applicant-email-address"
+                    <input class="govuk-input govuk-input--width-20 {% if emailError !== '' %} govuk-input--error {% endif %}" id="contact-by-enmail" name="first-applicant-email-address"
                       type="email" value="{{ data['first-applicant-email-address'] }}">
                   </div>
                 </div>                
@@ -79,37 +93,19 @@ Apply to adopt a child
                   <label class="govuk-label govuk-checkboxes__label" for="citizenship-conditional-2">
                     UK phone number (for phone calls)
                   </label>
+                  {% if phoneError != '' %}
+                  <span id="contact-error" class="govuk-error-message">
+                    <span class="govuk-visually-hidden">Error:</span> {{ phoneError }}
+                  </span>
+                  {% endif %}
                 </div>
                 <div class="govuk-checkboxes__conditional govuk-checkboxes__conditional--hidden"
                   id="conditional-citizenship-conditional-2">
                   <div class="govuk-form-group">
-                    {% if (data['first-applicant-phone'] !== undefined) and (data['first-applicant-phone-number'] == '') %}
-                    <span id="contact-error" class="govuk-error-message">
-                      <span class="govuk-visually-hidden">Error:</span> {{ contactError }}
-                    </span>      
-                    {% endif %}
-                    <input class="govuk-input govuk-input--width-20 {% if (data['first-applicant-phone'] !== undefined) and (data['first-applicant-phone-number'] == '') %} govuk-input--error {% endif %}" id="contact-by-phone" name="first-applicant-phone-number"
+                    <input class="govuk-input govuk-input--width-20 {% if phoneError !== '' %} govuk-input--error {% endif %}" id="contact-by-phone" name="first-applicant-phone-number"
                       type="tel" value="{{ data['first-applicant-phone-number'] }}">
                   </div>
                 </div>
-                <!-- <div class="govuk-checkboxes__item">
-                  <input class="govuk-checkboxes__input" id="text" name="first-applicant-contact-options"
-                    type="checkbox" value="text message" data-aria-controls="conditional-citizenship-conditional-3" {% if (data['first-applicant-contact-options'] == 'text message') %} checked{%endif%}>
-                  <label class="govuk-label govuk-checkboxes__label" for="citizenship-conditional-3">
-                    Text message
-                  </label>
-                </div>
-                <div class="govuk-checkboxes__conditional govuk-checkboxes__conditional--hidden"
-                  id="conditional-citizenship-conditional-3">
-                  <div class="govuk-form-group">
-                    <label class="govuk-label" for="contact-by-text">
-                      Mobile phone number
-                    </label>
-                    <input class="govuk-input govuk-input--width-20" id="contact-by-text" name="text-number"
-                      type="tel" value="{{ data['text-number'] }}">
-                  </div>
-
-                </div> -->
               </div>
             </fieldset>
           </div>
