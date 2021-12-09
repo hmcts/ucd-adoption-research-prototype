@@ -340,7 +340,6 @@ module.exports = (router) => {
 
   router.post('/version-1/applicants/first-applicant-enter-address-manually', function(req, res) {
     var errors = []
-    console.log("First line: ", req.body['address-line-1'])
     if (req.body['address-line-1'] === '') {
       errors.push({
       text: 'Enter the first line of the address',
@@ -359,7 +358,6 @@ module.exports = (router) => {
       href: '#postcode'
       })
     }
-
 
     if (req.body['submit-button'] === 'save-and-continue') {
       if (errors.length === 0) {
@@ -685,13 +683,24 @@ router.post('/version-1/applicants/second-applicant-find-address', function(req,
 
 router.post('/version-1/applicants/second-applicant-enter-address-manually', function(req, res) {
   var errors = []
-  if (req.body['second-applicant-address-line-1'] === '' || req.body['second-applicant-postcode'] === ''){
+  if (req.body['address-line-1'] === '') {
     errors.push({
-    text: 'Enter address',
-    href: '#second-applicant-manual-address'
+    text: 'Enter the first line of the address',
+    href: '#first-line'
     })
   }
-
+  if (req.body['address-town'] === '') {
+    errors.push({
+    text: 'Enter the town or city',
+    href: '#town'
+    })
+  }
+  if (req.body['address-postcode'] === '') {
+    errors.push({
+    text: 'Enter the postcode',
+    href: '#postcode'
+    })
+  }
 
   if (req.body['submit-button'] === 'save-and-continue') {
     if (errors.length === 0) {
@@ -1187,10 +1196,22 @@ router.post('/version-1/applicants/second-applicant-upload', function(req, res) 
 
   router.post('/version-1/children/mother-manual-address', function(req, res) {
     var errors = []
-    if (req.body['mother-address-line-1'] === '' || req.body['mother-postcode'] === ''){
+    if (req.body['address-line-1'] === '') {
       errors.push({
-      text: 'Enter address',
-      href: '#mother-manual-address'
+      text: 'Enter the first line of the address',
+      href: '#first-line'
+      })
+    }
+    if (req.body['address-town'] === '') {
+      errors.push({
+      text: 'Enter the town or city',
+      href: '#town'
+      })
+    }
+    if (req.body['address-postcode'] === '') {
+      errors.push({
+      text: 'Enter the postcode',
+      href: '#postcode'
       })
     }
 
@@ -1462,10 +1483,22 @@ router.post('/version-1/applicants/second-applicant-upload', function(req, res) 
   
   router.post('/version-1/children/father-manual-address', function(req, res) {
     var errors = []
-    if (req.body['father-address-line-1'] === '' || req.body['father-postcode'] === ''){
+    if (req.body['address-line-1'] === '') {
       errors.push({
-      text: 'Enter address',
-      href: '#father-manual-address'
+      text: 'Enter the first line of the address',
+      href: '#first-line'
+      })
+    }
+    if (req.body['address-town'] === '') {
+      errors.push({
+      text: 'Enter the town or city',
+      href: '#town'
+      })
+    }
+    if (req.body['address-postcode'] === '') {
+      errors.push({
+      text: 'Enter the postcode',
+      href: '#postcode'
       })
     }
   
@@ -1649,10 +1682,22 @@ router.post('/version-1/applicants/second-applicant-upload', function(req, res) 
 
   router.post('/version-1/children/applicant-social-worker-enter-address-manually', function(req, res) {
     var errors = []
-    if (req.body['applicant-social-worker-address-line-1'] === '' || req.body['applicant-social-worker-postcode'] === ''){
+    if (req.body['address-line-1'] === '') {
       errors.push({
-      text: 'Enter address',
-      href: '#applicant-social-worker-manual-address'
+      text: 'Enter the first line of the address',
+      href: '#first-line'
+      })
+    }
+    if (req.body['address-town'] === '') {
+      errors.push({
+      text: 'Enter the town or city',
+      href: '#town'
+      })
+    }
+    if (req.body['address-postcode'] === '') {
+      errors.push({
+      text: 'Enter the postcode',
+      href: '#postcode'
       })
     }
 
