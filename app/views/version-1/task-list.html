@@ -170,11 +170,13 @@ Task list
 
                 <li class="app-task-list__item">
                     <span class="app-task-list__task-name">
-                    <a href="" aria-describedby="eligibility-completed">
+                    <a href="children/orders-placement-case-number.html" aria-describedby="eligibility-completed">
                         Placement and court orders
                     </a></span>
-                    {% if data['date-placed'] %}
+                    {% if data['placement-x'] %}
                         <strong class="govuk-tag  app-task-list__tag" id="eligibility-completed">Completed</strong>
+                    {% elseif data['placement-case-number'] %}
+                        <strong class="govuk-tag govuk-tag--blue app-task-list__tag">in progress</strong>
                     {% else %}
                         <strong class="govuk-tag govuk-tag--grey app-task-list__tag">not started</strong>
                     {% endif %}
@@ -185,7 +187,7 @@ Task list
                     <a href="" aria-describedby="eligibility-completed">
                         Family court finder
                     </a></span>
-                    {% if data['date-placed'] %}
+                    {% if data['date-x'] %}
                         <strong class="govuk-tag  app-task-list__tag" id="eligibility-completed">Completed</strong>
                     {% else %}
                         <strong class="govuk-tag govuk-tag--grey app-task-list__tag">not started</strong>
