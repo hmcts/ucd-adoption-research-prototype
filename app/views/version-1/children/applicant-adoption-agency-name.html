@@ -14,7 +14,7 @@ Apply to adopt a child
   <div class="govuk-grid-row">
     <div class="govuk-grid-column-two-thirds">
 
-      {% set nameError = '' %}
+      {% set agencyError = '' %}
 
       {% if errors | length > 0 %}
       {{ govukErrorSummary({
@@ -22,8 +22,8 @@ Apply to adopt a child
         errorList: errors
       }) }}
       {% for error in errors %}
-        {% if error.href == '#applicant-adoption-agency-name' %}
-          {% set nameError = error.text %}
+        {% if error.href == '#agency' %}
+          {% set agencyError = error.text %}
         {% endif %}
       {% endfor %}
       {% endif %}
@@ -31,35 +31,48 @@ Apply to adopt a child
 
       <form action="/version-1/children/applicant-adoption-agency-name" method="post" class="form">
 
-        <div class="govuk-form-group {% if (nameError != '')%} govuk-form-group--error {% endif%}">
-          <legend class="govuk-fieldset__legend govuk-fieldset__legend--l">
+        <div class="govuk-form-group {% if (agencyError != '')%} govuk-form-group--error {% endif %}">
+        <legend class="govuk-fieldset__legend govuk-fieldset__legend--l">
           <span class="govuk-caption-l">{{ data['socialworker'] }}</span>
           <h1 class="govuk-fieldset__heading">
-            What's the name of your adoption agency?
+            Was the child placed with you by an adoption agency or local authority?
           </h1>
-          </legend>
-          <div id="namehint" class="govuk-hint">
-            Or the name of the local authority that placed the child with you.
-          </div>
+        </legend>
 
-          {% if (nameError != '')%}
-          <span id="name-error" class="govuk-error-message">
-            <span class="govuk-visually-hidden">Error:</span> {{ nameError }}
+        {% if (agencyError != '')%}
+          <span class="govuk-error-message govuk-form">
+            <span class="govuk-visually-hidden">Error:</span> {{ agencyError }}
           </span>
-          {% endif%}
+        {% endif %}
 
-          <input class="govuk-input {% if (nameError != '')%} govuk-input--error {% endif%}" id="applicant-adoption-agency-name" name="applicant-adoption-agency-name" type="text" autocomplete="name" spellcheck="false"
-            value="{{ data['applicant-adoption-agency-name'] }}">
+        <div class="govuk-form-group">
+          <fieldset class="govuk-fieldset" role="group" aria-describedby="how-many-people-are-applying-to-adopt">
+
+            <div class="govuk-radios govuk-radios--conditional" data-module="govuk-radios">
+              <div class="govuk-radios__item">
+                <input class="govuk-radios__input" id="yes" name="agency" type="radio" value="yes" {% if (data['agency'] === "yes") %} checked {% endif %}>
+                <label class="govuk-label govuk-radios__label" for="yes">
+                  Yes
+                </label>
+              </div>
+
+              <div class="govuk-radios__item">
+                <input class="govuk-radios__input" id="no" name="agency" type="radio" value="no" {% if (data['agency'] === "no") %} checked {% endif %}>
+                <label class="govuk-label govuk-radios__label" for="no">
+                  No
+                </label>
+              </div>
+
+            </div>
+          </fieldset>
         </div>
 
-          <!-- Buttons -->
+        <!-- Buttons -->
           {% include "../../includes/buttons.html" %}
 
-        </form>
 
-      </div>
-    </div>
-  </main>
+      </form>
+  </div>
 </div>
 
 {% endblock %}

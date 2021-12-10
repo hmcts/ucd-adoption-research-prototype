@@ -1507,21 +1507,65 @@ router.post('/version-1/applicants/second-applicant-upload', function(req, res) 
 
 
   // ********************** Adoption agency or local authority **********************
+
+
   router.post('/version-1/children/applicant-adoption-agency-name', function(req, res) {
+    console.log("Mother alive: ", req.body['agency'])
     var errors = []
-    if (req.body['applicant-adoption-agency-name'] === '') {
+    if (req.body['agency'] === undefined) {
       errors.push({
-      text: 'Enter the name of the adoption agency',
-      href: '#applicant-adoption-agency-name'
+      text: 'Please select an answer',
+      href: '#agency'
+      })
+    }
+
+    req.session.data.numberApplicants = req.body['angency']
+
+    if (req.body['submit-button'] === 'save-and-continue') {
+      if (errors.length === 0) {
+        if (req.body['agency'] === 'yes') {
+          res.redirect('/version-1/children/applicant-adoption-agency-details')
+        }
+        else {
+          res.redirect('/version-1/children/applicant-social-worker-name')
+        }
+      }
+      else {
+        res.render('.//version-1/children/applicant-adoption-agency-name', { errors: errors })
+      }
+    }
+    else {
+        res.redirect('/version-1/task-list')
+    }
+  })
+
+  router.post('/version-1/children/children/applicant-adoption-agency-details', function(req, res) {
+    var errors = []
+    if (req.body['agency-name'] === '') {
+      errors.push({
+      text: 'Enter a name',
+      href: '#agency-name'
+      })
+    }
+    if (req.body['phone-number'] === '') {
+      errors.push({
+      text: 'Enter a telephone number',
+      href: '#phone-number'
+      })
+    }
+    if (req.body['contact-name'] === '') {
+      errors.push({
+      text: 'Enter a name',
+      href: '#contact-name'
       })
     }
 
     if (req.body['submit-button'] === 'save-and-continue') {
       if (errors.length === 0) {
-        res.redirect('/version-1/children/applicant-social-worker-name')
+        res.redirect('/version-1/children/child-adoption-agency-name')
       }
       else {
-        res.render('.//version-1/children/applicant-adoption-agency-name', { errors: errors })
+        res.render('.//version-1/children/applicant-adoption-agency-details', { errors: errors })
       }
     }
     else {
@@ -1737,6 +1781,8 @@ router.post('/version-1/children/child-adoption-agency-name', function(req, res)
     res.redirect('/version-1/task-list')
   }
 })
+
+
 
 router.post('/version-1/children/child-social-worker-name', function(req, res) {
   var errors = []
