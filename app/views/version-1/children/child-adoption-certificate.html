@@ -14,61 +14,70 @@ Apply to adopt a child
   <div class="govuk-grid-row">
     <div class="govuk-grid-column-two-thirds">
 
-      {% set nameError = '' %}
+      {% set firstnamesError = '' %}
+      {% set lastnamesError = '' %}
+
 
       {% if errors | length > 0 %}
-      {{ govukErrorSummary({
-        titleText: "There is a problem",
-        errorList: errors
-      }) }}
-      {% for error in errors %}
-        {% if error.href == '#child-adoption-certificate' %}
-          {% set nameError = error.text %}
-        {% endif %}
-      {% endfor %}
+        {{ govukErrorSummary({
+          titleText: "There is a problem",
+          errorList: errors
+        }) }}
+        {% for error in errors %}
+          {% if error.href == '#first-names-line-1' %}
+            {% set firstnamesError = error.text %}
+          {% endif %}
+          {% if error.href == '#last-names' %}
+            {% set lastnamesError = error.text %}
+          {% endif %}
+          {% if error.href == '#postcode' %}
+            {% set postcodeError = error.text %}
+          {% endif %}
+        {% endfor %}
       {% endif %}
 
-
       <form action="/version-1/children/child-adoption-certificate" method="post" class="form">
-
-        <div class="govuk-form-group {% if (nameError != '')%} govuk-form-group--error {% endif%}">
+        <fieldset class="govuk-fieldset">
           <legend class="govuk-fieldset__legend govuk-fieldset__legend--l">
-          <span class="govuk-caption-l">{{ data['child'] }}</span>
-          <h1 class="govuk-fieldset__heading">
-            What will be the child's full name after adoption?
-          </h1>
+            <span class="govuk-caption-l">{{ data['child'] }}</span>
+            <h1 class="govuk-fieldset__heading">
+              What will the child’s full name be after adoption?
+            </h1>
           </legend>
           <div id="namehint" class="govuk-hint">
-            For example, will they have your surname? This information will appear on the adoption certificate, if your application is approved.
+            This will be on the adoption certificate so enter all their names as accurately as possible.
           </div>
 
-          {% if (nameError != '')%}
-          <span id="name-error" class="govuk-error-message">
-            <span class="govuk-visually-hidden">Error:</span> {{ nameError }}
-          </span>
-          {% endif%}
-
-          <input class="govuk-input {% if (nameError != '')%} govuk-input--error {% endif%}" id="child-adoption-certificate" name="child-adoption-certificate" type="text" autocomplete="name" spellcheck="false"
-            value="{{ data['child-adoption-certificate'] }}">
-        </div>
-
-        <details class="govuk-details" data-module="govuk-details">
-          <summary class="govuk-details__summary">
-            <span class="govuk-details__summary-text">
-              About adoption certificates
+          <div class="govuk-form-group">
+            <label class="govuk-label" for="first-names-line-1">
+              First names (Include any given or middle names)<span class="govuk-visually-hidden">line 1 of 2</span>
+            </label>
+            {% if firstnamesError != '' %}
+            <span id="contact-error" class="govuk-error-message">
+              <span class="govuk-visually-hidden">Error:</span> {{ firstnamesError }}
             </span>
-          </summary>
-          <div class="govuk-details__text">
-            If your application is successful, information from the adoption order will be added to the Adopted Children Register.<br>
-            <br>
-            A new birth certificate is created in the child's adoptive name. This is known as an adoption certificate and replaces their original birth certificate for all legal purposes.
-          </div>
-        </details>
-          <!-- Buttons -->
-          {% include "../../includes/buttons.html" %}
+            {% endif %}
 
+            <input class="govuk-input {% if (firstnamesError != '') %} govuk-input--error{% endif %}" id="first-names-line-1" name="first-names-line-1" type="text" autocomplete="address-line1" value="{{ data['first-names-line-1'] }}"></div>
+
+        
+          <div class="govuk-form-group">
+            <label class="govuk-label" for="last-names">
+             Last names (Include surname or family names)
+            </label>
+            {% if lastnamesError != '' %}
+            <span id="contact-error" class="govuk-error-message">
+              <span class="govuk-visually-hidden">Error:</span> {{ lastnamesError }}
+            </span>
+            {% endif %}
+            <input class="govuk-input govuk-!-width-two-thirds {% if (lastnamesError != '') %} govuk-input--error{% endif %}" id="last-names" name="last-names" type="text" autocomplete="address-level2" value="{{ data['last-names'] }}"></div>
+
+
+        </fieldset>
+
+        <!-- Buttons -->
+        {% include "../../includes/buttons.html" %}
         </form>
-
       </div>
     </div>
   </main>

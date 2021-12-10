@@ -297,7 +297,7 @@ module.exports = (router) => {
     var errors = []
     if (req.body['first-applicant-address'] === "") {
       errors.push({
-      text: 'Enter a valid postcode',
+      text: 'Enter a real postcode',
       href: '#first-applicant-address'
       })
     }
@@ -640,7 +640,7 @@ router.post('/version-1/applicants/second-applicant-address', function(req, res)
   var errors = []
   if (req.body['second-applicant-address'] === "") {
     errors.push({
-    text: 'Enter a valid postcode',
+    text: 'Enter a real postcode',
     href: '#second-applicant-address'
     })
   }
@@ -927,12 +927,20 @@ router.post('/version-1/applicants/second-applicant-upload', function(req, res) 
 
 
   // ********************** Child's adoption certificate details **********************
+
+
   router.post('/version-1/children/child-adoption-certificate', function(req, res) {
     var errors = []
-    if (req.body['child-adoption-certificate'] === '') {
+    if (req.body['first-names-line-1'] === '') {
       errors.push({
       text: 'Enter their full name',
-      href: '#child-adoption-certificate'
+      href: '#first-names-line-1'
+      })
+    }
+    if (req.body['last-names'] === '') {
+      errors.push({
+      text: 'Enter their full name',
+      href: '#last-names'
       })
     }
 
