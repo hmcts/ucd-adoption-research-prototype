@@ -53,7 +53,7 @@ module.exports = {
   "numberApplicants": 0,
 
   "firstApplicant": "Primary applicant",
-  "secondApplicant": "Other applicant",
+  "secondApplicant": "Second applicant",
   "child": "The child's details",
   "mother": "Their birth mother's details",
   "father": "Their birth father's details",
