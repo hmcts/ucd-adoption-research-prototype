@@ -15,7 +15,7 @@ Apply to adopt a child
     <div class="govuk-grid-column-two-thirds">
 
       {% set noRadioChosenError = '' %}
-      {% set emailError = '' %}
+      {% set numberError = '' %}
 
       {% if errors | length > 0 %}
       {{ govukErrorSummary({
@@ -26,20 +26,20 @@ Apply to adopt a child
         {% if error.href == '#no-radio-chosen' %}
           {% set noRadioChosenError = error.text %}
         {% endif %}
-        {% if  error.href == '#no-team-email' %}
-          {% set emailError = error.text %}
+        {% if  error.href == '#no-number' %}
+          {% set numberError = error.text %}
         {% endif %}
       {% endfor %}
       {% endif %}
 
 
-      <form action="/version-1/children/child-social-worker-team-email" method="post" class="form">
+      <form action="/version-1/children/solicitor-number" method="post" class="form">
 
         <div class="govuk-form-group {% if (noRadioChosenError != '')%} govuk-form-group--error {% endif %}">
         <legend class="govuk-fieldset__legend govuk-fieldset__legend--l">
-          <span class="govuk-caption-l">{{ data['childsocialworker'] }}</span>
+          <span class="govuk-caption-l">{{ data['solicitor'] }}</span>
           <h1 class="govuk-fieldset__heading">
-            Do you know their team email address?
+            Do you know their phone number?
           </h1>
         </legend>
 
@@ -54,7 +54,7 @@ Apply to adopt a child
 
             <div class="govuk-radios govuk-radios--conditional" data-module="govuk-radios">
               <div class="govuk-radios__item">
-                <input class="govuk-radios__input" id="yes" name="child-social-worker-team-email" type="radio" value="yes" data-aria-controls="conditional-contact" {% if (data['child-social-worker-team-email'] === "yes") %} checked {% endif %}>
+                <input class="govuk-radios__input" id="yes" name="solicitor-number" type="radio" value="yes" data-aria-controls="conditional-contact" {% if (data['solicitor-number'] === "yes") %} checked {% endif %}>
                 <label class="govuk-label govuk-radios__label" for="yes">
                   Yes
                 </label>
@@ -62,19 +62,19 @@ Apply to adopt a child
               <div class="govuk-radios__conditional govuk-radios__conditional--hidden" id="conditional-contact">
                 <div class="govuk-form-group">
                   <label class="govuk-label" for="contact-by-email">
-                    Please enter their email.
+                    Please enter their phone number.
                   </label>
-                  {% if (emailError != '')%}
+                  {% if (numberError != '')%}
                   <span class="govuk-error-message govuk-form">
-                    <span class="govuk-visually-hidden">Error:</span> {{ emailError }}
+                    <span class="govuk-visually-hidden">Error:</span> {{ numberError }}
                   </span>
                   {% endif %}
-                  <input class="govuk-input{% if (emailError != '') %} govuk-input--error{% endif %}" id="team-email" name="team-email" type="text" spellcheck="false" value="{{data['team-email']}}">
+                  <input class="govuk-input{% if (numberError != '') %} govuk-input--error{% endif %}" id="number" name="number" type="text" spellcheck="false" value="{{data['number']}}">
                 </div>
               </div>
               <div class="govuk-radios govuk-radios--conditional" data-module="govuk-radios">
                 <div class="govuk-radios__item">
-                  <input class="govuk-radios__input" id="no" name="child-social-worker-team-email" type="radio" value="no" {% if (data['child-social-worker-team-email'] === "no") %} checked {% endif %}>
+                  <input class="govuk-radios__input" id="no" name="solicitor-number" type="radio" value="no" {% if (data['solicitor-number'] === "no") %} checked {% endif %}>
                   <label class="govuk-label govuk-radios__label" for="no">
                     No
                   </label>
