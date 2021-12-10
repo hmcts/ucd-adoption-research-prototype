@@ -1019,7 +1019,14 @@ router.post('/version-1/applicants/second-applicant-upload', function(req, res) 
     if (req.body['mother-british'] === undefined && req.body['mother-irish'] === undefined && req.body['mother-other'] === undefined && req.body['mother-unsure'] === undefined) {
       console.log("error")
       errors.push({
-      text: 'Select if they are British, Irish or a citizen of a different country',
+      text: 'Select a nationality or \'Not sure\'',
+      href: '#mother-nationality'
+      })
+    }
+    else if ((req.body['mother-british'] !== undefined || req.body['mother-irish'] !== undefined || req.body['mother-other'] === undefined) && req.body['mother-unsure'] !== undefined) {
+      console.log("error")
+      errors.push({
+      text: 'Select a nationality or \'Not sure\'',
       href: '#mother-nationality'
       })
     }
@@ -1306,8 +1313,15 @@ router.post('/version-1/applicants/second-applicant-upload', function(req, res) 
     if (req.body['father-british'] === undefined && req.body['father-irish'] === undefined && req.body['father-other'] === undefined && req.body['father-unsure'] === undefined) {
       console.log("error")
       errors.push({
-      text: 'Select if they are British, Irish or a citizen of a different country',
+      text: 'Select a nationality or \'Not sure\'',
       href: '#father-nationality'
+      })
+    }
+    else if ((req.body['mother-british'] !== undefined || req.body['mother-irish'] !== undefined || req.body['mother-other'] === undefined) && req.body['mother-unsure'] !== undefined) {
+      console.log("error")
+      errors.push({
+      text: 'Select a nationality or \'Not sure\'',
+      href: '#mother-nationality'
       })
     }
     else if (req.body['father-other'] !== undefined && req.session.data.fatherNationalityCount === 0) {
