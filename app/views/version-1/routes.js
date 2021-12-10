@@ -1998,6 +1998,15 @@ router.post('/version-1/children/child-social-worker-enter-address-manually', fu
     }
   })
 
+  // ************************************* Placement and court orders ************************************* //
+  router.post('/version-1/children/orders-placement-case-number', function(req, res) {
+    var errors = []
+    if (req.body['case-number'] === '') {
+      errors.push({
+      text: 'Enter the serial or case number',
+      href: '#case-number'
+      })
+    }
 
     router.post('/version-1/children/solicitor-number', function(req, res) {
       var errors = []
@@ -2014,6 +2023,43 @@ router.post('/version-1/children/child-social-worker-enter-address-manually', fu
         })
       }
 
+    if (req.body['submit-button'] === 'save-and-continue') {
+      if (errors.length === 0) {
+        res.redirect('/version-1/children/orders-placement-court')
+      }
+      else {
+        res.render('.//version-1/children/orders-placement-case-number', { errors: errors })
+      }
+    }
+    else {
+      res.redirect('/version-1/task-list')
+    }
+  })
+
+
+  router.post('/version-1/children/orders-placement-court', function(req, res) {
+    var errors = []
+    if (req.body['court-name'] === '') {
+      errors.push({
+      text: 'Enter the court name',
+      href: '#court-name'
+      })
+    }
+
+    if (req.body['submit-button'] === 'save-and-continue') {
+      if (errors.length === 0) {
+        res.redirect('/version-1/children/orders-placement-date')
+      }
+      else {
+        res.render('.//version-1/children/orders-placement-court', { errors: errors })
+      }
+    }
+    else {
+      res.redirect('/version-1/task-list')
+    }
+  })
+
+
       if (req.body['submit-button'] === 'save-and-continue') {
         if (errors.length === 0) {
           res.redirect('/version-1/children/solicitor-address')
@@ -2027,6 +2073,26 @@ router.post('/version-1/children/child-social-worker-enter-address-manually', fu
       }
     })
 
+  router.post('/version-1/children/orders-placement-date', function(req, res) {
+    var errors = []
+    if (req.body['day'] === '' || req.body['month'] === '' || req.body['year'] === '') {
+      errors.push({
+      text: 'Developers: please refer to ADOP-XXX for different error messages',
+      href: '#order-date'
+      })
+    }
+      if (req.body['submit-button'] === 'save-and-continue') {
+        if (errors.length === 0) {
+          res.redirect('/version-1/children/orders-child-current-or-previous')
+        }
+        else {
+          res.render('.//version-1/children/orders-placement-date', { errors: errors })
+        }
+      }
+      else {
+        res.redirect('/version-1/task-list')
+      }
+  })
 
 
     router.post('/version-1/children/solicitor-address', function(req, res) {
