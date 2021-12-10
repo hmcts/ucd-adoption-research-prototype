@@ -22,20 +22,20 @@ Apply to adopt a child
         errorList: errors
       }) }}
       {% for error in errors %}
-        {% if error.href == '#solicitor-firm-name' %}
+        {% if error.href == '#solicitor-email' %}
           {% set nameError = error.text %}
         {% endif %}
       {% endfor %}
       {% endif %}
 
 
-      <form action="/version-1/children/solicitor-firm-name" method="post" class="form">
+      <form action="/version-1/children/solicitor-email" method="post" class="form">
 
         <div class="govuk-form-group {% if (nameError != '')%} govuk-form-group--error {% endif%}">
           <legend class="govuk-fieldset__legend govuk-fieldset__legend--l">
           <span class="govuk-caption-l">{{ data['solicitor'] }}</span>
           <h1 class="govuk-fieldset__heading">
-            What's the practice or company name?
+            What's their email address?
           </h1>
           </legend>
 
@@ -45,8 +45,8 @@ Apply to adopt a child
           </span>
           {% endif%}
 
-          <input class="govuk-input {% if (nameError != '')%} govuk-input--error {% endif%}" id="solicitor-firm-name" name="solicitor-firm-name" type="text" autocomplete="name" spellcheck="false"
-            value="{{ data['solicitor-firm-name'] }}">
+          <input class="govuk-input {% if (nameError != '')%} govuk-input--error {% endif%}" id="solicitor-email" name="solicitor-email" type="text" autocomplete="name" spellcheck="false"
+            value="{{ data['solicitor-email'] }}">
         </div>
 
           <!-- Buttons -->
