@@ -908,18 +908,25 @@ router.post('/version-1/applicants/second-applicant-upload', function(req, res) 
   router.post('/version-1/children/child-nationality', function(req, res) {
     var errors = []
 
-    if (req.body['child-british'] === undefined && req.body['child-irish'] === undefined &&req.body['child-other'] === undefined && req.body['child-unsure'] === undefined) {
+    if (req.body['child-british'] === undefined && req.body['child-irish'] === undefined && req.body['child-other'] === undefined && req.body['child-unsure'] === undefined) {
       console.log("error")
       errors.push({
-      text: 'Select if they are British, Irish or a citizen of a different country',
-      href: '#child-nationality'
+      text: 'Select a nationality or \'Not sure\'',
+      href: '#checkbox-error'
+      })
+    }
+    else if ((req.body['child-british'] !== undefined || req.body['child-irish'] !== undefined || req.body['child-other'] === undefined) && req.body['child-unsure'] !== undefined) {
+      console.log("error")
+      errors.push({
+      text: 'Select a nationality or \'Not sure\'',
+      href: '#checkbox-error'
       })
     }
     else if (req.body['child-other'] !== undefined && req.session.data.childNationalityCount === 0) {
       console.log("no nationality added error: ", req.session.data.childNationalities)
       errors.push({
       text: 'This is not a valid entry',
-      href: '#child-no-nationality'
+      href: '#no-country'
       })
     }
 
@@ -927,23 +934,26 @@ router.post('/version-1/applicants/second-applicant-upload', function(req, res) 
     if (req.body['submit-button'] === 'save-and-continue') {
       if (errors.length === 0) {
         req.session.data.childNationalities[count] = req.body['child-different-country']
-        req.session.data.childCountryAdded = 1
-        res.redirect('/version-1/task-list')
+        res.redirect('/version-1/children/child-occupation')
       }
       else {
-        res.render('.//version-1/children/child-adoption-nationality', { errors: errors })
+        res.render('.//version-1/children/child-nationality', { errors: errors })
       }
     }
     else if (req.body['submit-button'] === 'save-as-draft') {
       res.redirect('/version-1/task-list')
     }
-    else {
+    else if (req.body['submit-button'] === 'add' && req.body['child-different-country'] !== '') {
       req.session.data.childNationalities[count] = req.body['child-different-country']
       req.session.data.childNationalityId[count] = count
       req.session.data.childNationalityCount = count + 1
       res.redirect('/version-1/children/child-nationality')
     }
+    else {
+      res.render('.//version-1/children/child-nationality', { errors: errors })
+    }
   })
+
 
 
   // ********************** Child's adoption certificate details **********************
@@ -1040,21 +1050,21 @@ router.post('/version-1/applicants/second-applicant-upload', function(req, res) 
       console.log("error")
       errors.push({
       text: 'Select a nationality or \'Not sure\'',
-      href: '#mother-nationality'
+      href: '#checkbox-error'
       })
     }
     else if ((req.body['mother-british'] !== undefined || req.body['mother-irish'] !== undefined || req.body['mother-other'] === undefined) && req.body['mother-unsure'] !== undefined) {
       console.log("error")
       errors.push({
       text: 'Select a nationality or \'Not sure\'',
-      href: '#mother-nationality'
+      href: '#checkbox-error'
       })
     }
     else if (req.body['mother-other'] !== undefined && req.session.data.motherNationalityCount === 0) {
       console.log("no nationality added error: ", req.session.data.motherNationalities)
       errors.push({
       text: 'This is not a valid entry',
-      href: '#mother-no-nationality'
+      href: '#no-country'
       })
     }
 
@@ -1071,11 +1081,14 @@ router.post('/version-1/applicants/second-applicant-upload', function(req, res) 
     else if (req.body['submit-button'] === 'save-as-draft') {
       res.redirect('/version-1/task-list')
     }
-    else {
+    else if (req.body['submit-button'] === 'add' && req.body['mother-different-country'] !== '') {
       req.session.data.motherNationalities[count] = req.body['mother-different-country']
       req.session.data.motherNationalityId[count] = count
       req.session.data.motherNationalityCount = count + 1
       res.redirect('/version-1/children/mother-nationality')
+    }
+    else {
+      res.render('.//version-1/children/mother-nationality', { errors: errors })
     }
   })
 
@@ -1334,21 +1347,21 @@ router.post('/version-1/applicants/second-applicant-upload', function(req, res) 
       console.log("error")
       errors.push({
       text: 'Select a nationality or \'Not sure\'',
-      href: '#father-nationality'
+      href: '#checkbox-error'
       })
     }
-    else if ((req.body['mother-british'] !== undefined || req.body['mother-irish'] !== undefined || req.body['mother-other'] === undefined) && req.body['mother-unsure'] !== undefined) {
+    else if ((req.body['father-british'] !== undefined || req.body['father-irish'] !== undefined || req.body['father-other'] === undefined) && req.body['father-unsure'] !== undefined) {
       console.log("error")
       errors.push({
       text: 'Select a nationality or \'Not sure\'',
-      href: '#mother-nationality'
+      href: '#checkbox-error'
       })
     }
     else if (req.body['father-other'] !== undefined && req.session.data.fatherNationalityCount === 0) {
       console.log("no nationality added error: ", req.session.data.fatherNationalities)
       errors.push({
       text: 'This is not a valid entry',
-      href: '#father-no-nationality'
+      href: '#no-country'
       })
     }
 
@@ -1365,11 +1378,14 @@ router.post('/version-1/applicants/second-applicant-upload', function(req, res) 
     else if (req.body['submit-button'] === 'save-as-draft') {
       res.redirect('/version-1/task-list')
     }
-    else {
+    else if (req.body['submit-button'] === 'add' && req.body['father-different-country'] !== '') {
       req.session.data.fatherNationalities[count] = req.body['father-different-country']
       req.session.data.fatherNationalityId[count] = count
       req.session.data.fatherNationalityCount = count + 1
       res.redirect('/version-1/children/father-nationality')
+    }
+    else {
+      res.render('.//version-1/children/father-nationality', { errors: errors })
     }
   })
 

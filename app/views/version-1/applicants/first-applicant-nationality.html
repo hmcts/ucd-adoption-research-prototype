@@ -117,8 +117,7 @@ Apply to adopt a child
                         <span id="national-insurance-number-error" class="govuk-error-message">
                           <span class="govuk-visually-hidden">Error:</span> {{ noCountryAddedError }}
                         </span>
-                        {% endif%}
-            
+                        {% endif%}         
                         <input class="govuk-input govuk-!-width-two-thirds {% if (noCountryAddedError != '') %} govuk-input--error{% endif %}" id="first-applicant-different-country" name="first-applicant-different-country" type="text">
                       </div>
                         <button class="govuk-button govuk-button--secondary govuk-!-margin-top-5" data-module="govuk-button" name="submit-button" value="add">Add</button>

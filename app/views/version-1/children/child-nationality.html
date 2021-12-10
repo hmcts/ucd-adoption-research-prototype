@@ -15,18 +15,23 @@ Apply to adopt a child
     <div class="govuk-grid-column-two-thirds">
 
       {% set nationalityError = '' %}
-
+      {% set noCountryAddedError = '' %}
+  
       {% if errors | length > 0 %}
       {{ govukErrorSummary({
         titleText: "There is a problem",
         errorList: errors
       }) }}
       {% for error in errors %}
-        {% if (error.href == '#child-nationality' or error.href == '#child-no-nationality') %}
+        {% if error.href == '#checkbox-error' %}
           {% set nationalityError = error.text %}
         {% endif %}
+      {% if error.href == '#no-country' %}
+        {% set noCountryAddedError = error.text %}
+      {% endif %}
       {% endfor %}
       {% endif %}
+
 
 
       <form action="/version-1/children/child-nationality" method="post" class="form">
@@ -36,7 +41,7 @@ Apply to adopt a child
             <legend class="govuk-fieldset__legend govuk-fieldset__legend--l">
               <span class="govuk-caption-l">{{ data['child'] }}</span>
               <h1 class="govuk-fieldset__heading">
-                What's their nationality?
+                What is their nationality?
               </h1>
             </legend>
 
@@ -46,9 +51,8 @@ Apply to adopt a child
             </span>
             {% endif%}
 
-
             <div id="nationality-hint" class="govuk-hint">
-              Select all options that are relevant.
+              Select all options that are relevant to you.
             </div>
             <div class="govuk-checkboxes" data-module="govuk-checkboxes">
               <div class="govuk-checkboxes__item">
@@ -80,8 +84,8 @@ Apply to adopt a child
                   {% if (data['childNationalityCount'] > 0) %}
 
                   {% for id in data['childNationalityId']|reverse %}
-
-                    <dl class="govuk-summary-list govuk-!-margin-bottom-4 ">
+                  
+                    <dl class="govuk-summary-list govuk-!-margin-bottom-4 ">                    
                       <div class="govuk-summary-list__row">
                         <dt class="govuk-summary-list__key">
                           {{data['childNationalities'][id]}}
@@ -94,7 +98,7 @@ Apply to adopt a child
                       </div>
                     </dl>
                     {% endfor %}
-
+                  
                     <details class="govuk-details" data-module="govuk-details">
                       <summary class="govuk-details__summary">
                         <span class="govuk-details__summary-text">
@@ -102,18 +106,23 @@ Apply to adopt a child
                         </span>
                       </summary>
                       <div class="govuk-details__text">
-
+                      
                       {% endif %}
 
                       <div class="govuk-form-group">
                         <label class="govuk-label" for="other">
                           Country name
                         </label>
-                        <input class="govuk-input govuk-!-width-two-thirds" id="child-different-country" name="child-different-country" type="text">
+                        {% if (noCountryAddedError != '')%}
+                        <span id="national-insurance-number-error" class="govuk-error-message">
+                          <span class="govuk-visually-hidden">Error:</span> {{ noCountryAddedError }}
+                        </span>
+                        {% endif%}
+                        <input class="govuk-input govuk-!-width-two-thirds {% if (noCountryAddedError != '') %} govuk-input--error{% endif %}" id="child-different-country" name="child-different-country" type="text">
                       </div>
                         <button class="govuk-button govuk-button--secondary govuk-!-margin-top-5" data-module="govuk-button" name="submit-button" value="add">Add</button>
                     </details>
-                </div>
+                </div>  
               </div>
               <div class="govuk-checkboxes__divider">or</div>
               <div class="govuk-checkboxes__item">
@@ -122,7 +131,6 @@ Apply to adopt a child
                   Not sure
                 </label>
               </div>
-
           </fieldset>
         </div>
         <!-- Buttons -->
