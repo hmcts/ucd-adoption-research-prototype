@@ -1590,10 +1590,16 @@ router.post('/version-1/applicants/second-applicant-upload', function(req, res) 
 
   router.post('/version-1/children/applicant-social-worker-team-email', function(req, res) {
     var errors = []
-    if (req.body['applicant-social-worker-team-email'] === '') {
+    if (req.body['applicant-social-worker-team-email'] === undefined) {
       errors.push({
       text: 'Select an answer',
-      href: '#applicant-social-worker-team-email'
+      href: '#no-radio-chosen'
+      })
+    }
+    else if (req.body['team-email'] === '') {
+      errors.push({
+        text: 'Enter a valid email address',
+        href: '#no-team-email'  
       })
     }
 
