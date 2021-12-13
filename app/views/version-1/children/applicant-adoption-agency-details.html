@@ -14,9 +14,9 @@ Apply to adopt a child
   <div class="govuk-grid-row">
     <div class="govuk-grid-column-two-thirds">
 
-      {% set agencynameError = '' %}
-      {% set contactnameError = '' %}
-    {% set numberError = '' %}
+      {% set agencyNameError = '' %}
+      {% set contactNameError = '' %}
+      {% set numberError = '' %}
 
       {% if errors | length > 0 %}
         {{ govukErrorSummary({
@@ -25,10 +25,10 @@ Apply to adopt a child
         }) }}
         {% for error in errors %}
           {% if error.href == '#agency-name' %}
-            {% set agencynameError = error.text %}
+            {% set agencyNameError = error.text %}
           {% endif %}
           {% if error.href == '#contact-name' %}
-            {% set contactnameError = error.text %}
+            {% set contactNameError = error.text %}
           {% endif %}
           {% if error.href == '#phone-number' %}
             {% set numberError = error.text %}
@@ -47,15 +47,15 @@ Apply to adopt a child
 
           <div class="govuk-form-group">
             <label class="govuk-label" for="agency-name">
-              Name of adoption agency or local authority <span class="govuk-visually-hidden">line 1 of 2</span>
+              Name of adoption agency or local authority 
             </label>
-            {% if agencynameError != '' %}
+            {% if agencyNameError != '' %}
             <span id="contact-error" class="govuk-error-message">
-              <span class="govuk-visually-hidden">Error:</span> {{ agencynameError }}
+              <span class="govuk-visually-hidden">Error:</span> {{ agencyNameError }}
             </span>
             {% endif %}
 
-            <input class="govuk-input {% if (agencynameError != '') %} govuk-input--error{% endif %}" id="agency-name" name="agency-name" type="text" autocomplete="address-line1" value="{{ data['agency-name'] }}"></div>
+            <input class="govuk-input {% if (agencyNameError != '') %} govuk-input--error{% endif %}" id="agency-name" name="agency-name" type="text" value="{{ data['agency-name'] }}"></div>
 
 
           <div class="govuk-form-group">
@@ -67,24 +67,24 @@ Apply to adopt a child
               <span class="govuk-visually-hidden">Error:</span> {{ numberError }}
             </span>
             {% endif %}
-            <input class="govuk-input govuk-!-width-two-thirds {% if (numberError != '') %} govuk-input--error{% endif %}" id="phone-number" name="phone-number" type="text" autocomplete="address-level2" value="{{ data['phone-number'] }}"></div>
+            <input class="govuk-input govuk-!-width-two-thirds {% if (numberError != '') %} govuk-input--error{% endif %}" id="phone-number" name="phone-number" type="number" autocomplete="address-level2" value="{{ data['phone-number'] }}"></div>
 
             <div class="govuk-form-group">
               <label class="govuk-label" for="contact-name">
                Name of your contact
               </label>
-              {% if contactnameError != '' %}
+              {% if contactNameError != '' %}
               <span id="contact-error" class="govuk-error-message">
-                <span class="govuk-visually-hidden">Error:</span> {{ contactnameError }}
+                <span class="govuk-visually-hidden">Error:</span> {{ contactNameError }}
               </span>
               {% endif %}
-              <input class="govuk-input govuk-!-width-two-thirds {% if (contactnameError != '') %} govuk-input--error{% endif %}" id="contact-name" name="contact-name" type="text" autocomplete="address-level2" value="{{ data['contact-name'] }}"></div>
+              <input class="govuk-input govuk-!-width-two-thirds {% if (contactNameError != '') %} govuk-input--error{% endif %}" id="contact-name" name="contact-name" type="text" autocomplete="address-level2" value="{{ data['contact-name'] }}"></div>
 
               <div class="govuk-form-group">
                 <label class="govuk-label" for="email-optional">
                   Email address of your contact (optional)
                 </label>
-                <input class="govuk-input govuk-!-width-two-thirds" id="email-optional" name="email-optional" type="text" value="{{ data['email-optional'] }}"></div>
+                <input class="govuk-input govuk-!-width-two-thirds" id="email-optional" name="email-optional" type="email" value="{{ data['email-optional'] }}"></div>
 
 
         </fieldset>
