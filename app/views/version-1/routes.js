@@ -941,15 +941,15 @@ router.post('/version-1/applicants/second-applicant-upload', function(req, res) 
 
   router.post('/version-1/children/child-adoption-certificate', function(req, res) {
     var errors = []
-    if (req.body['first-names-line-1'] === '') {
+    if (req.body['certificate-first-names'] === '') {
       errors.push({
-      text: 'Enter their full name',
-      href: '#first-names-line-1'
+      text: 'Enter their first names',
+      href: '#first-names'
       })
     }
-    if (req.body['last-names'] === '') {
+    if (req.body['certificate-last-names'] === '') {
       errors.push({
-      text: 'Enter their full name',
+      text: 'Enter their last names',
       href: '#last-names'
       })
     }
