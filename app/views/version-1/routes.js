@@ -866,28 +866,7 @@ router.post('/version-1/applicants/second-applicant-upload', function(req, res) 
     }
   })
 
-//  router.post('/version-1/children/child-nationality1', function(req, res) {
-  //  var errors = []
-  //  if (req.body['child-nationality'] === '') {
-  //    errors.push({
-  //    text: 'Enter their nationality',
-  //    href: '#child-nationality'
-  //    })
-  //  }
-
-  //  if (req.body['submit-button'] === 'save-and-continue') {
-  //    if (errors.length === 0) {
-  //      res.redirect('/version-1/task-list')
-  //    }
-  //    else {
-  //      res.render('.//version-1/children/child-nationality', { errors: errors })
-  //    }
-  //  }
-  //  else {
-  //    res.redirect('/version-1/task-list')
-  //  }
-//  })
-
+  
   router.post('/version-1/children/child-nationality', function(req, res) {
     var errors = []
 
@@ -898,7 +877,7 @@ router.post('/version-1/applicants/second-applicant-upload', function(req, res) 
       href: '#checkbox-error'
       })
     }
-    else if ((req.body['child-british'] !== undefined || req.body['child-irish'] !== undefined || req.body['child-other'] === undefined) && req.body['child-unsure'] !== undefined) {
+    else if ((req.body['child-british'] !== undefined || req.body['child-irish'] !== undefined || req.body['child-other'] !== undefined) && req.body['child-unsure'] !== undefined) {
       console.log("error")
       errors.push({
       text: 'Select a nationality or \'Not sure\'',
@@ -1049,7 +1028,7 @@ router.post('/version-1/applicants/second-applicant-upload', function(req, res) 
       href: '#checkbox-error'
       })
     }
-    else if ((req.body['mother-british'] !== undefined || req.body['mother-irish'] !== undefined || req.body['mother-other'] === undefined) && req.body['mother-unsure'] !== undefined) {
+    else if ((req.body['mother-british'] !== undefined || req.body['mother-irish'] !== undefined || req.body['mother-other'] !== undefined) && req.body['mother-unsure'] !== undefined) {
       console.log("error")
       errors.push({
       text: 'Select a nationality or \'Not sure\'',
@@ -1352,7 +1331,7 @@ router.post('/version-1/applicants/second-applicant-upload', function(req, res) 
       href: '#checkbox-error'
       })
     }
-    else if ((req.body['father-british'] !== undefined || req.body['father-irish'] !== undefined || req.body['father-other'] === undefined) && req.body['father-unsure'] !== undefined) {
+    else if ((req.body['father-british'] !== undefined || req.body['father-irish'] !== undefined || req.body['father-other'] !== undefined) && req.body['father-unsure'] !== undefined) {
       console.log("error")
       errors.push({
       text: 'Select a nationality or \'Not sure\'',
