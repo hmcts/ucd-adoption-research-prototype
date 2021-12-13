@@ -14,8 +14,8 @@ Apply to adopt a child
   <div class="govuk-grid-row">
     <div class="govuk-grid-column-two-thirds">
 
-      {% set firstnamesError = '' %}
-      {% set lastnamesError = '' %}
+      {% set firstNamesError = '' %}
+      {% set lastNamesError = '' %}
 
 
       {% if errors | length > 0 %}
@@ -24,14 +24,11 @@ Apply to adopt a child
           errorList: errors
         }) }}
         {% for error in errors %}
-          {% if error.href == '#first-names-line-1' %}
-            {% set firstnamesError = error.text %}
+          {% if error.href == '#first-names' %}
+            {% set firstNamesError = error.text %}
           {% endif %}
           {% if error.href == '#last-names' %}
-            {% set lastnamesError = error.text %}
-          {% endif %}
-          {% if error.href == '#postcode' %}
-            {% set postcodeError = error.text %}
+            {% set lastNamesError = error.text %}
           {% endif %}
         {% endfor %}
       {% endif %}
@@ -41,7 +38,7 @@ Apply to adopt a child
           <legend class="govuk-fieldset__legend govuk-fieldset__legend--l">
             <span class="govuk-caption-l">{{ data['child'] }}</span>
             <h1 class="govuk-fieldset__heading">
-              What will the child’s full name be after adoption?
+              What will the child's full name be after adoption?
             </h1>
           </legend>
           <div id="namehint" class="govuk-hint">
@@ -49,28 +46,34 @@ Apply to adopt a child
           </div>
 
           <div class="govuk-form-group">
-            <label class="govuk-label" for="first-names-line-1">
-              First names (Include any given or middle names)<span class="govuk-visually-hidden">line 1 of 2</span>
+            <label class="govuk-label" for="firstNames">
+              First names<span class="govuk-visually-hidden">First names</span>
+              <div id="namehint" class="govuk-hint">
+                (Include any given or middle names)
+              </div>
             </label>
-            {% if firstnamesError != '' %}
+            {% if firstNamesError != '' %}
             <span id="contact-error" class="govuk-error-message">
-              <span class="govuk-visually-hidden">Error:</span> {{ firstnamesError }}
+              <span class="govuk-visually-hidden">Error:</span> {{ firstNamesError }}
             </span>
             {% endif %}
 
-            <input class="govuk-input {% if (firstnamesError != '') %} govuk-input--error{% endif %}" id="first-names-line-1" name="first-names-line-1" type="text" autocomplete="address-line1" value="{{ data['first-names-line-1'] }}"></div>
+            <input class="govuk-input {% if (firstNamesError != '') %} govuk-input--error{% endif %}" id="certificate-first-names" name="certificate-first-names" type="text" autocomplete="name" value="{{ data['certificate-first-names'] }}"></div>
 
         
           <div class="govuk-form-group">
-            <label class="govuk-label" for="last-names">
-             Last names (Include surname or family names)
+            <label class="govuk-label" for="lastNames">
+              Last names<span class="govuk-visually-hidden">Last names</span>
+              <div id="namehint" class="govuk-hint">
+                (Include surname or family names)
+              </div>
             </label>
-            {% if lastnamesError != '' %}
+            {% if lastNamesError != '' %}
             <span id="contact-error" class="govuk-error-message">
-              <span class="govuk-visually-hidden">Error:</span> {{ lastnamesError }}
+              <span class="govuk-visually-hidden">Error:</span> {{ lastNamesError }}
             </span>
             {% endif %}
-            <input class="govuk-input govuk-!-width-two-thirds {% if (lastnamesError != '') %} govuk-input--error{% endif %}" id="last-names" name="last-names" type="text" autocomplete="address-level2" value="{{ data['last-names'] }}"></div>
+            <input class="govuk-input {% if (lastNamesError != '') %} govuk-input--error{% endif %}" id="certificate-last-names" name="certificate-last-names" type="text" autocomplete="address-level2" value="{{ data['certificate-last-names'] }}"></div>
 
 
         </fieldset>
