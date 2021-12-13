@@ -2321,10 +2321,33 @@ router.post('/version-1/children/child-social-worker-enter-address-manually', fu
 
     if (req.body['submit-button'] === 'save-and-continue') {
       if (errors.length === 0) {
-        res.redirect('/version-1/children/orders-order-date')
+        res.redirect('/version-1/children/orders-order-court')
       }
       else {
         res.render('.//version-1/children/orders-order-case-number', { errors: errors })
+      }
+    }
+    else {
+      res.redirect('/version-1/task-list')
+    }
+  })
+
+
+  router.post('/version-1/children/orders-order-court', function(req, res) {
+    var errors = []
+    if (req.body['order-court-name'] === '') {
+      errors.push({
+      text: 'Please answer the question',
+      href: '#order-court-name'
+      })
+    }
+
+    if (req.body['submit-button'] === 'save-and-continue') {
+      if (errors.length === 0) {
+        res.redirect('/version-1/children/orders-order-date')
+      }
+      else {
+        res.render('.//version-1/children/orders-order-court', { errors: errors })
       }
     }
     else {
