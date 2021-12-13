@@ -35,9 +35,12 @@ Apply to adopt a child
           <legend class="govuk-fieldset__legend govuk-fieldset__legend--l">
           <span class="govuk-caption-l">{{ data['mother'] }}</span>
           <h1 class="govuk-fieldset__heading">
-            What is the occupation of the child’s birth mother?
+            What is the occupation of the child's birth mother?
           </h1>
           </legend>
+          <div id="occupationhint" class="govuk-hint">
+            Ask the adoption agency or social worker if you're not sure. If the occupation is not known, you can type 'unknown'. 
+          </div>
 
           {% if (occupationError != '')%}
           <span id="name-error" class="govuk-error-message">
