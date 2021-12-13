@@ -973,10 +973,16 @@ router.post('/version-1/applicants/second-applicant-upload', function(req, res) 
   // ********************** Birth mother's details **********************
   router.post('/version-1/children/mother-name', function(req, res) {
     var errors = []
-    if (req.body['mother-name'] === '') {
+    if (req.body['mother-first-names'] === '') {
       errors.push({
-      text: 'Enter their full name',
-      href: '#mother-name'
+      text: 'Enter their first names',
+      href: '#first-names'
+      })
+    }
+    if (req.body['mother-last-names'] === '') {
+      errors.push({
+      text: 'Enter their last names',
+      href: '#last-names'
       })
     }
 
@@ -1087,7 +1093,7 @@ router.post('/version-1/applicants/second-applicant-upload', function(req, res) 
     var errors = []
     if (req.body['mother-occupation'] === '') {
       errors.push({
-      text: 'Enter your occupation',
+      text: 'Enter an occupation',
       href: '#mother-occupation'
       })
     }
@@ -1108,9 +1114,9 @@ router.post('/version-1/applicants/second-applicant-upload', function(req, res) 
 
   router.post('/version-1/children/mother-have-address', function(req, res) {
     var errors = []
-    if (req.body['mother-have-address'] === '') {
+    if (req.body['mother-have-address'] === undefined) {
       errors.push({
-      text: 'Enter your occupation',
+      text: 'Please answer the question',
       href: '#mother-have-address'
       })
     }
@@ -1242,10 +1248,16 @@ router.post('/version-1/applicants/second-applicant-upload', function(req, res) 
   // ********************** Birth father's details **********************
   router.post('/version-1/children/father-in-certificate', function(req, res) {
     var errors = []
-    if (req.body['father-in-certificate'] === '') {
+    if (req.body['father-first-names'] === '') {
       errors.push({
-      text: 'Please answer the question',
-      href: '#father-in-certificate'
+      text: 'Enter their first names',
+      href: '#first-names'
+      })
+    }
+    if (req.body['father-last-names'] === '') {
+      errors.push({
+      text: 'Enter their last names',
+      href: '#last-names'
       })
     }
 
