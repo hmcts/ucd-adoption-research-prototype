@@ -1534,12 +1534,11 @@ router.post('/version-1/applicants/second-applicant-upload', function(req, res) 
 
 
   router.post('/version-1/children/applicant-adoption-agency-name', function(req, res) {
-    console.log("Mother alive: ", req.body['agency'])
     var errors = []
-    if (req.body['agency'] === undefined) {
+    if (req.body['agency-name'] === '') {
       errors.push({
       text: 'Please select an answer',
-      href: '#agency'
+      href: '#agency-name'
       })
     }
 
@@ -1562,6 +1561,42 @@ router.post('/version-1/applicants/second-applicant-upload', function(req, res) 
         res.redirect('/version-1/task-list')
     }
   })
+
+
+  router.post('/version-1/children/applicant-adoption-agency', function(req, res) {
+    var errors = []
+    if (req.body['applicant-agency-name'] === '') {
+      errors.push({
+      text: 'Enter a name',
+      href: '#name'
+      })
+    }
+    if (req.body['applicant-phone-number'] === '') {
+      errors.push({
+      text: 'Enter a telephone number',
+      href: '#phone'
+      })
+    }
+    if (req.body['applicant-contact'] === '') {
+      errors.push({
+      text: 'Enter a name',
+      href: '#contact'
+      })
+    }
+
+    if (req.body['submit-button'] === 'save-and-continue') {
+      if (errors.length === 0) {
+        res.redirect('/version-1/task-list')
+      }
+      else {
+        res.render('.//version-1/children/applicant-adoption-agency', { errors: errors })
+      }
+    }
+    else {
+      res.redirect('/version-1/task-list')
+    }
+  })
+
 
   router.post('/version-1/children/children/applicant-adoption-agency-details', function(req, res) {
     var errors = []
