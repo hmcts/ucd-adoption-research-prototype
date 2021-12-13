@@ -866,28 +866,7 @@ router.post('/version-1/applicants/second-applicant-upload', function(req, res) 
     }
   })
 
-//  router.post('/version-1/children/child-nationality1', function(req, res) {
-  //  var errors = []
-  //  if (req.body['child-nationality'] === '') {
-  //    errors.push({
-  //    text: 'Enter their nationality',
-  //    href: '#child-nationality'
-  //    })
-  //  }
-
-  //  if (req.body['submit-button'] === 'save-and-continue') {
-  //    if (errors.length === 0) {
-  //      res.redirect('/version-1/task-list')
-  //    }
-  //    else {
-  //      res.render('.//version-1/children/child-nationality', { errors: errors })
-  //    }
-  //  }
-  //  else {
-  //    res.redirect('/version-1/task-list')
-  //  }
-//  })
-
+  
   router.post('/version-1/children/child-nationality', function(req, res) {
     var errors = []
 
