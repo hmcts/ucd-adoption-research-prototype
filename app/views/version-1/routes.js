@@ -898,7 +898,7 @@ router.post('/version-1/applicants/second-applicant-upload', function(req, res) 
       href: '#checkbox-error'
       })
     }
-    else if ((req.body['child-british'] !== undefined || req.body['child-irish'] !== undefined || req.body['child-other'] === undefined) && req.body['child-unsure'] !== undefined) {
+    else if ((req.body['child-british'] !== undefined || req.body['child-irish'] !== undefined || req.body['child-other'] !== undefined) && req.body['child-unsure'] !== undefined) {
       console.log("error")
       errors.push({
       text: 'Select a nationality or \'Not sure\'',
@@ -1049,7 +1049,7 @@ router.post('/version-1/applicants/second-applicant-upload', function(req, res) 
       href: '#checkbox-error'
       })
     }
-    else if ((req.body['mother-british'] !== undefined || req.body['mother-irish'] !== undefined || req.body['mother-other'] === undefined) && req.body['mother-unsure'] !== undefined) {
+    else if ((req.body['mother-british'] !== undefined || req.body['mother-irish'] !== undefined || req.body['mother-other'] !== undefined) && req.body['mother-unsure'] !== undefined) {
       console.log("error")
       errors.push({
       text: 'Select a nationality or \'Not sure\'',
@@ -1352,7 +1352,7 @@ router.post('/version-1/applicants/second-applicant-upload', function(req, res) 
       href: '#checkbox-error'
       })
     }
-    else if ((req.body['father-british'] !== undefined || req.body['father-irish'] !== undefined || req.body['father-other'] === undefined) && req.body['father-unsure'] !== undefined) {
+    else if ((req.body['father-british'] !== undefined || req.body['father-irish'] !== undefined || req.body['father-other'] !== undefined) && req.body['father-unsure'] !== undefined) {
       console.log("error")
       errors.push({
       text: 'Select a nationality or \'Not sure\'',
