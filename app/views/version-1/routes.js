@@ -794,10 +794,16 @@ router.post('/version-1/applicants/second-applicant-upload', function(req, res) 
 // ******************************************** Child's details ********************************************
   router.post('/version-1/children/child-name', function(req, res) {
     var errors = []
-    if (req.body['child-name'] === '') {
+    if (req.body['child-first-names'] === '') {
       errors.push({
-      text: 'Enter the child\'s full name',
-      href: '#child-name'
+      text: 'Enter the child\'s first names',
+      href: '#first-names'
+      })
+    }
+    if (req.body['child-last-names'] === '') {
+      errors.push({
+      text: 'Enter the child\'s last names',
+      href: '#last-names'
       })
     }
 
@@ -836,9 +842,6 @@ router.post('/version-1/applicants/second-applicant-upload', function(req, res) 
         res.redirect('/version-1/task-list')
       }
   })
-
-
-
 
 
   router.post('/version-1/children/child-gender', function(req, res) {
@@ -913,6 +916,7 @@ router.post('/version-1/applicants/second-applicant-upload', function(req, res) 
     count = req.session.data.childNationalityCount
     if (req.body['submit-button'] === 'save-and-continue') {
       if (errors.length === 0) {
+        req.session.data.birthCertificateCompleted = 1
         req.session.data.childNationalities[count] = req.body['child-different-country']
         res.redirect('/version-1/task-list')
       }
@@ -937,8 +941,6 @@ router.post('/version-1/applicants/second-applicant-upload', function(req, res) 
 
 
   // ********************** Child's adoption certificate details **********************
-
-
   router.post('/version-1/children/child-adoption-certificate', function(req, res) {
     var errors = []
     if (req.body['certificate-first-names'] === '') {
