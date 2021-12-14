@@ -68,7 +68,7 @@ Apply to adopt a child
               <span class="govuk-visually-hidden">Error:</span> {{ phoneError }}
             </span>
             {% endif %}
-            <input class="govuk-input govuk-input--width-10 {% if (phoneError != '') %} govuk-input--error{% endif %}" id="applicant-phone-number" name="applicant-phone-number" type="text" autocomplete="address-level2" value="{{ data['applicant-phone-number'] }}">
+            <input class="govuk-input govuk-input--width-10 {% if (phoneError != '') %} govuk-input--error{% endif %}" id="applicant-phone-number" name="applicant-phone-number" type="number" autocomplete="address-level2" value="{{ data['applicant-phone-number'] }}">
           </div>
                 
           <div class="govuk-form-group">
@@ -85,9 +85,9 @@ Apply to adopt a child
 
           <div class="govuk-form-group">
             <label class="govuk-label" for="contact">
-              Email address of your contact (optional)
+              Email address of your contact (if known)
             </label>
-            <input class="govuk-input govuk-!-width-two-thirds" id="applicant-email" name="applicant-email" type="text" value="{{ data['applicant-email'] }}">
+            <input class="govuk-input govuk-!-width-two-thirds" id="applicant-email" name="applicant-email" type="email" value="{{ data['applicant-email'] }}">
           </div>
 
                         

@@ -129,6 +129,9 @@ module.exports = (router) => {
   })
 
 
+
+
+  
   // ********************** First applicant personal details **********************
   router.post('/version-1/applicants/first-applicant-name', function(req, res) {
     var errors = []
@@ -292,6 +295,8 @@ module.exports = (router) => {
 
 
 
+  
+  
   // ********************** First applicant contact details **********************
   router.post('/version-1/applicants/first-applicant-address', function(req, res) {
     var errors = []
@@ -404,7 +409,6 @@ module.exports = (router) => {
         })
     }
 
-    // req.session.data.firstApplicantContactCheckbox = req.body['first-applicant-contact-options']
     if (req.body['submit-button'] === 'save-and-continue') {
       if (errors.length === 0) {
         res.redirect('/version-1/task-list')
@@ -417,6 +421,8 @@ module.exports = (router) => {
       res.redirect('/version-1/task-list')
     }
   })
+
+
 
 
   // ********************** First applicant upload **********************
@@ -443,6 +449,10 @@ module.exports = (router) => {
     }
   })
 
+  
+  
+  
+  
   // ********************** Second applicant personal details **********************
   router.post('/version-1/applicants/second-applicant-name', function(req, res) {
     var errors = []
@@ -604,7 +614,9 @@ module.exports = (router) => {
 
 
 
-// ********************** Second applicant contact details **********************
+
+
+  // ********************** Second applicant contact details **********************
 router.post('/version-1/applicants/second-applicant-same-address', function(req, res) {
   var errors = []
   if (req.body['same-address'] === undefined) {
@@ -763,6 +775,8 @@ router.post('/version-1/applicants/second-applicant-contact', function(req, res)
 
 
 
+
+
 // ********************** Second applicant upload **********************
 router.post('/version-1/applicants/second-applicant-upload', function(req, res) {
   var errors = []
@@ -786,6 +800,10 @@ router.post('/version-1/applicants/second-applicant-upload', function(req, res) 
     res.redirect('/version-1/task-list')
   }
 })
+
+
+
+
 
 
 // ******************************************** SECTION 2. CHILDREN ********************************************
@@ -919,6 +937,8 @@ router.post('/version-1/applicants/second-applicant-upload', function(req, res) 
 
 
 
+
+
   // ********************** Child's adoption certificate details **********************
   router.post('/version-1/children/child-adoption-certificate', function(req, res) {
     var errors = []
@@ -947,6 +967,10 @@ router.post('/version-1/applicants/second-applicant-upload', function(req, res) 
       res.redirect('/version-1/task-list')
     }
   })
+
+
+
+
 
 
   // ********************** Birth mother's details **********************
@@ -1118,29 +1142,6 @@ router.post('/version-1/applicants/second-applicant-upload', function(req, res) 
   })
 
 
-  // router.post('/version-1/children/mother-why-no-address', function(req, res) {
-  //   var errors = []
-  //   if (req.body['mother-why-no-address'] === '') {
-  //     errors.push({
-  //     text: 'Enter your occupation',
-  //     href: '#mother-why-no-address'
-  //     })
-  //   }
-
-  //   if (req.body['submit-button'] === 'save-and-continue') {
-  //     if (errors.length === 0) {
-  //       res.redirect('/version-1/task-list')
-  //     }
-  //     else {
-  //         res.render('.//version-1/children/mother-why-no-address', { errors: errors })
-  //     }
-  //   }
-  //   else {
-  //     res.redirect('/version-1/task-list')
-  //   }
-  // })
-
-
   router.post('/version-1/children/mother-address-postcode', function(req, res) {
     var errors = []
     if (req.body['mother-postcode'] === "") {
@@ -1222,6 +1223,10 @@ router.post('/version-1/applicants/second-applicant-upload', function(req, res) 
       res.redirect('/version-1/task-list')
     }
   })
+
+
+
+
 
   // ********************** Birth father's details **********************
   router.post('/version-1/children/father-in-certificate', function(req, res) {
@@ -1420,29 +1425,6 @@ router.post('/version-1/applicants/second-applicant-upload', function(req, res) 
   })
 
 
-  // router.post('/version-1/children/father-why-no-address', function(req, res) {
-  //   var errors = []
-  //   if (req.body['father-why-no-address'] === '') {
-  //     errors.push({
-  //     text: 'Enter your occupation',
-  //     href: '#father-why-no-address'
-  //     })
-  //   }
-
-  //   if (req.body['submit-button'] === 'save-and-continue') {
-  //     if (errors.length === 0) {
-  //       res.redirect('/version-1/task-list')
-  //     }
-  //     else {
-  //         res.render('.//version-1/children/father-why-no-address', { errors: errors })
-  //     }
-  //   }
-  //   else {
-  //     res.redirect('/version-1/task-list')
-  //   }
-  // })
-
-
   router.post('/version-1/children/father-address-postcode', function(req, res) {
     var errors = []
     if (req.body['father-postcode'] === "") {
@@ -1524,6 +1506,9 @@ router.post('/version-1/applicants/second-applicant-upload', function(req, res) 
       res.redirect('/version-1/task-list')
     }
   })
+
+
+
 
 
 
@@ -1707,35 +1692,10 @@ router.post('/version-1/applicants/second-applicant-upload', function(req, res) 
 
 
 
+
+
+
   // ********************** Adoption agency or local authority **********************
-  router.post('/version-1/children/applicant-adoption-agency-or-social-worker', function(req, res) {
-    var errors = []
-    if (req.body['agency'] === undefined) {
-      errors.push({
-      text: 'Please select an answer',
-      href: '#agency'
-      })
-    }
-
-    if (req.body['submit-button'] === 'save-and-continue') {
-      if (errors.length === 0) {
-        if (req.body['agency'] === 'yes') {
-          res.redirect('/version-1/children/applicant-adoption-agency-details')
-        }
-        else {
-          res.redirect('/version-1/children/child-social-worker-details')
-        }
-      }
-      else {
-        res.render('.//version-1/children/applicant-adoption-agency-or-social-worker', { errors: errors })
-      }
-    }
-    else {
-        res.redirect('/version-1/task-list')
-    }
-  })
-
-
   router.post('/version-1/children/applicant-adoption-agency-details', function(req, res) {
     var errors = []
     if (req.body['applicant-agency-name'] === '') {
@@ -1759,10 +1719,74 @@ router.post('/version-1/applicants/second-applicant-upload', function(req, res) 
 
     if (req.body['submit-button'] === 'save-and-continue') {
       if (errors.length === 0) {
-        res.redirect('/version-1/children/solicitor-helping')
+        res.redirect('/version-1/children/applicant-other-adoption-agency')
       }
       else {
         res.render('.//version-1/children/applicant-adoption-agency-details', { errors: errors })
+      }
+    }
+    else {
+      res.redirect('/version-1/task-list')
+    }
+  })
+
+
+  router.post('/version-1/children/applicant-other-adoption-agency', function(req, res) {
+    console.log("Mother alive: ", req.body['other-adoption-agency'])
+    var errors = []
+    if (req.body['other-adoption-agency'] === undefined) {
+      errors.push({
+      text: 'Please answer the question',
+      href: '#other-adoption-agency'
+      })
+    }
+
+    if (req.body['submit-button'] === 'save-and-continue') {
+      if (errors.length === 0) {
+        if (req.body['other-adoption-agency'] === 'yes') {
+          res.redirect('/version-1/children/applicant-adoption-agency-details-2')
+        }
+        else {
+          res.redirect('/version-1/children/child-social-worker-details')
+        }
+      }
+      else {
+        res.render('.//version-1/children/applicant-other-adoption-agency', { errors: errors })
+      }
+    }
+    else {
+        res.redirect('/version-1/task-list')
+    }
+  })
+
+
+  router.post('/version-1/children/applicant-adoption-agency-details-2', function(req, res) {
+    var errors = []
+    if (req.body['applicant-agency-name-2'] === '') {
+      errors.push({
+      text: 'Enter a name',
+      href: '#name'
+      })
+    }
+    if (req.body['applicant-phone-number-2'] === '') {
+      errors.push({
+      text: 'Enter a telephone number',
+      href: '#phone'
+      })
+    }
+    if (req.body['applicant-contact-2'] === '') {
+      errors.push({
+      text: 'Enter a name',
+      href: '#contact'
+      })
+    }
+
+    if (req.body['submit-button'] === 'save-and-continue') {
+      if (errors.length === 0) {
+        res.redirect('/version-1/children/child-social-worker-details')
+      }
+      else {
+        res.render('.//version-1/children/applicant-adoption-agency-details-2', { errors: errors })
       }
     }
     else {
@@ -1798,6 +1822,335 @@ router.post('/version-1/applicants/second-applicant-upload', function(req, res) 
       res.redirect('/version-1/task-list')
     }
   })
+
+
+
+
+
+
+ // ********************** Solicitor details **********************
+  router.post('/version-1/children/solicitor-helping', function(req, res) {
+    console.log("Mother alive: ", req.body['solicitor-helping'])
+    var errors = []
+    if (req.body['solicitor-helping'] === undefined) {
+      errors.push({
+      text: 'Please answer the question',
+      href: '#solicitor-helping'
+      })
+    }
+
+    if (req.body['submit-button'] === 'save-and-continue') {
+      if (errors.length === 0) {
+        if (req.body['solicitor-helping'] === 'yes') {
+          res.redirect('/version-1/children/solicitor-details')
+        }
+        else {
+          req.session.data.solicitorCompleted = 1
+          res.redirect('/version-1/task-list')
+        }
+      }
+      else {
+        res.render('.//version-1/children/solicitor-helping', { errors: errors })
+      }
+    }
+    else {
+        res.redirect('/version-1/task-list')
+    }
+  })
+
+
+  router.post('/version-1/children/solicitor-details', function(req, res) {
+    var errors = []
+    if (req.body['solicitor-company-name'] === '') {
+      errors.push({
+      text: 'Enter a practice or company name',
+      href: '#name'
+      })
+    }
+    if (req.body['solicitor-name'] === '') {
+      errors.push({
+      text: 'Enter the solicitor\'s name',
+      href: '#solicitorName'
+      })
+    }
+    if (req.body['solicitor-phone-number'] === '') {
+      errors.push({
+      text: 'Enter a telephone number',
+      href: '#phone'
+      })
+    }
+
+    if (req.body['submit-button'] === 'save-and-continue') {
+      if (errors.length === 0) {
+        req.session.data.solicitorCompleted = 1
+        res.redirect('/version-1/task-list')
+      }
+      else {
+        res.render('.//version-1/children/solicitor-details', { errors: errors })
+      }
+    }
+    else {
+      res.redirect('/version-1/task-list')
+    }
+  })
+
+
+
+
+
+
+  // ************************************* Placement and court orders ************************************* //
+  router.post('/version-1/children/orders-placement-case-number', function(req, res) {
+    var errors = []
+    if (req.body['placement-case-number'] === '') {
+      errors.push({
+      text: 'Enter the serial or case number',
+      href: '#case-number'
+      })
+    }
+    count = req.session.data.childOrderCount
+
+    if (req.body['submit-button'] === 'save-and-continue') {
+      if (errors.length === 0) {
+        req.session.data.firstApplicantPreviousNames[count] = req.body['first-applicant-previous-full-name']
+        req.session.data.idFirstApplicant[count] = count
+        req.session.data.firstApplicantNameCount = count + 1
+        res.redirect('/version-1/children/orders-placement-court')
+      }
+      else {
+        res.render('.//version-1/children/orders-placement-case-number', { errors: errors })
+      }
+    }
+    else {
+      res.redirect('/version-1/task-list')
+    }
+  })
+
+
+  router.post('/version-1/children/orders-placement-court', function(req, res) {
+    var errors = []
+    if (req.body['court-name'] === '') {
+      errors.push({
+      text: 'Enter the name of the court',
+      href: '#court-name'
+      })
+    }
+
+    if (req.body['submit-button'] === 'save-and-continue') {
+      if (errors.length === 0) {
+        res.redirect('/version-1/children/orders-placement-date')
+      }
+      else {
+        res.render('.//version-1/children/orders-placement-court', { errors: errors })
+      }
+    }
+    else {
+      res.redirect('/version-1/task-list')
+    }
+  })
+
+
+  router.post('/version-1/children/orders-placement-date', function(req, res) {
+    var errors = []
+    if (req.body['day'] === '' || req.body['month'] === '' || req.body['year'] === '') {
+      errors.push({
+      text: 'Developers: please refer to ADOP-281 for different error messages',
+      href: '#order-date'
+      })
+    }
+      if (req.body['submit-button'] === 'save-and-continue') {
+        if (errors.length === 0) {
+          res.redirect('/version-1/children/orders-summary')
+        }
+        else {
+          res.render('.//version-1/children/orders-placement-date', { errors: errors })
+        }
+      }
+      else {
+        res.redirect('/version-1/task-list')
+      }
+  })
+
+
+  router.post('/version-1/children/orders-summary', function(req, res) {
+    var errors = []
+    if (req.body['add-another'] === undefined) {
+      errors.push({
+      text: 'Please select an answer',
+      href: '#agency'
+      })
+    }
+
+    if (req.body['submit-button'] === 'save-and-continue') {
+      if (errors.length === 0) {
+        if (req.body['add-another'] === 'Yes') {
+          res.redirect('/version-1/children/orders-order-type')
+        }
+        else {
+          req.session.data.AddToListFinished = 1
+          res.redirect('/version-1/task-list')
+        }
+      }
+      else {
+        res.render('.//version-1/children/children/orders-summary', { errors: errors })
+      }
+    }
+    else {
+        res.redirect('/version-1/task-list')
+    }
+  })
+
+
+  router.post('/version-1/children/orders-order-type', function(req, res) {
+    var errors = []
+    if (req.body['order-type'] === '') {
+      errors.push({
+      text: 'Please answer the question',
+      href: '#order-type'
+      })
+    }
+
+    if (req.body['submit-button'] === 'save-and-continue') {
+      if (errors.length === 0) {
+        res.redirect('/version-1/children/orders-order-case-number')
+      }
+      else {
+        res.render('.//version-1/children/orders-order-type', { errors: errors })
+      }
+    }
+    else {
+      res.redirect('/version-1/task-list')
+    }
+  })
+
+
+  router.post('/version-1/children/orders-order-case-number', function(req, res) {
+    var errors = []
+    if (req.body['order-number'] === '') {
+      errors.push({
+      text: 'Please answer the question',
+      href: '#order-number'
+      })
+    }
+
+    if (req.body['submit-button'] === 'save-and-continue') {
+      if (errors.length === 0) {
+        res.redirect('/version-1/children/orders-order-court')
+      }
+      else {
+        res.render('.//version-1/children/orders-order-case-number', { errors: errors })
+      }
+    }
+    else {
+      res.redirect('/version-1/task-list')
+    }
+  })
+
+
+  router.post('/version-1/children/orders-order-court', function(req, res) {
+    var errors = []
+    if (req.body['order-court-name'] === '') {
+      errors.push({
+      text: 'Please answer the question',
+      href: '#order-court-name'
+      })
+    }
+
+    if (req.body['submit-button'] === 'save-and-continue') {
+      if (errors.length === 0) {
+        res.redirect('/version-1/children/orders-order-date')
+      }
+      else {
+        res.render('.//version-1/children/orders-order-court', { errors: errors })
+      }
+    }
+    else {
+      res.redirect('/version-1/task-list')
+    }
+  })
+
+
+  router.post('/version-1/children/orders-order-date', function(req, res) {
+    var errors = []
+    if (req.body['day'] === '' || req.body['month'] === '' || req.body['year'] === '') {
+      errors.push({
+      text: 'Developers: please refer to ADOP-281 for different error messages',
+      href: '#order-date'
+      })
+    }
+      if (req.body['submit-button'] === 'save-and-continue') {
+        if (errors.length === 0) {
+          res.redirect('/version-1/children/orders-summary-2')
+        }
+        else {
+          res.render('.//version-1/children/orders-order-date', { errors: errors })
+        }
+      }
+      else {
+        res.redirect('/version-1/task-list')
+      }
+  })
+
+
+
+
+
+
+
+  
+
+
+
+
+
+
+// ***************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************
+// ************************************* Old functions not in use any more ************************************* //
+  // router.post('/version-1/children/mother-why-no-address', function(req, res) {
+  //   var errors = []
+  //   if (req.body['mother-why-no-address'] === '') {
+  //     errors.push({
+  //     text: 'Enter your occupation',
+  //     href: '#mother-why-no-address'
+  //     })
+  //   }
+
+  //   if (req.body['submit-button'] === 'save-and-continue') {
+  //     if (errors.length === 0) {
+  //       res.redirect('/version-1/task-list')
+  //     }
+  //     else {
+  //         res.render('.//version-1/children/mother-why-no-address', { errors: errors })
+  //     }
+  //   }
+  //   else {
+  //     res.redirect('/version-1/task-list')
+  //   }
+  // })
+
+
+  // router.post('/version-1/children/father-why-no-address', function(req, res) {
+  //   var errors = []
+  //   if (req.body['father-why-no-address'] === '') {
+  //     errors.push({
+  //     text: 'Enter your occupation',
+  //     href: '#father-why-no-address'
+  //     })
+  //   }
+
+  //   if (req.body['submit-button'] === 'save-and-continue') {
+  //     if (errors.length === 0) {
+  //       res.redirect('/version-1/task-list')
+  //     }
+  //     else {
+  //         res.render('.//version-1/children/father-why-no-address', { errors: errors })
+  //     }
+  //   }
+  //   else {
+  //     res.redirect('/version-1/task-list')
+  //   }
+  // })
+
 
 
   // router.post('/version-1/children/children/applicant-adoption-agency-details', function(req, res) {
@@ -2218,438 +2571,207 @@ router.post('/version-1/applicants/second-applicant-upload', function(req, res) 
 // })
 
 
- // ********************** Solicitor details **********************
-  router.post('/version-1/children/solicitor-helping', function(req, res) {
-    console.log("Mother alive: ", req.body['solicitor-helping'])
-    var errors = []
-    if (req.body['solicitor-helping'] === undefined) {
-      errors.push({
-      text: 'Please answer the question',
-      href: '#solicitor-helping'
-      })
-    }
+  // router.post('/version-1/children/solicitor-firm-name', function(req, res) {
+  //   var errors = []
+  //   if (req.body['solicitor-firm-name'] === '') {
+  //     errors.push({
+  //     text: 'Enter the name of the practice or company',
+  //     href: '#solicitor-firm-name'
+  //     })
+  //   }
 
-    if (req.body['submit-button'] === 'save-and-continue') {
-      if (errors.length === 0) {
-        if (req.body['solicitor-helping'] === 'yes') {
-          res.redirect('/version-1/children/solicitor-details')
-        }
-        else {
-          req.session.data.solicitorCompleted = 1
-          res.redirect('/version-1/task-list')
-        }
-      }
-      else {
-        res.render('.//version-1/children/solicitor-helping', { errors: errors })
-      }
-    }
-    else {
-        res.redirect('/version-1/task-list')
-    }
-  })
+  //   if (req.body['submit-button'] === 'save-and-continue') {
+  //     if (errors.length === 0) {
+  //       res.redirect('/version-1/children/solicitor-name')
+  //     }
+  //     else {
+  //       res.render('.//version-1/children/solicitor-firm-name', { errors: errors })
+  //     }
+  //   }
+  //   else {
+  //     res.redirect('/version-1/task-list')
+  //   }
+  // })
 
+  // router.post('/version-1/children/solicitor-name', function(req, res) {
+  //   var errors = []
+  //   if (req.body['solicitor-name'] === '') {
+  //     errors.push({
+  //     text: 'Enter the name of your solicitor',
+  //     href: '#solicitor-name'
+  //     })
+  //   }
 
-  router.post('/version-1/children/solicitor-details', function(req, res) {
-    var errors = []
-    if (req.body['solicitor-company-name'] === '') {
-      errors.push({
-      text: 'Enter a company name',
-      href: '#name'
-      })
-    }
-    if (req.body['solicitor-name'] === '') {
-      errors.push({
-      text: 'Enter the solicitor\'s name',
-      href: '#solicitorName'
-      })
-    }
-    if (req.body['solicitor-email-address'] === '') {
-      errors.push({
-      text: 'Enter an email address',
-      href: '#email'
-      })
-    }
+  //   if (req.body['submit-button'] === 'save-and-continue') {
+  //     if (errors.length === 0) {
+  //       res.redirect('/version-1/children/solicitor-email')
+  //     }
+  //     else {
+  //       res.render('.//version-1/children/solicitor-name', { errors: errors })
+  //     }
+  //   }
+  //   else {
+  //     res.redirect('/version-1/task-list')
+  //   }
+  // })
 
-    if (req.body['submit-button'] === 'save-and-continue') {
-      if (errors.length === 0) {
-        req.session.data.solicitorCompleted = 1
-        res.redirect('/version-1/task-list')
-      }
-      else {
-        res.render('.//version-1/children/solicitor-details', { errors: errors })
-      }
-    }
-    else {
-      res.redirect('/version-1/task-list')
-    }
-  })
+  // router.post('/version-1/children/solicitor-email', function(req, res) {
+  //   var errors = []
+  //   if (req.body['solicitor-email'] === '') {
+  //     errors.push({
+  //     text: 'Enter an email address',
+  //     href: '#solicitor-email'
+  //     })
+  //   }
 
-
-
-  router.post('/version-1/children/solicitor-firm-name', function(req, res) {
-    var errors = []
-    if (req.body['solicitor-firm-name'] === '') {
-      errors.push({
-      text: 'Enter the name of the practice or company',
-      href: '#solicitor-firm-name'
-      })
-    }
-
-    if (req.body['submit-button'] === 'save-and-continue') {
-      if (errors.length === 0) {
-        res.redirect('/version-1/children/solicitor-name')
-      }
-      else {
-        res.render('.//version-1/children/solicitor-firm-name', { errors: errors })
-      }
-    }
-    else {
-      res.redirect('/version-1/task-list')
-    }
-  })
-
-  router.post('/version-1/children/solicitor-name', function(req, res) {
-    var errors = []
-    if (req.body['solicitor-name'] === '') {
-      errors.push({
-      text: 'Enter the name of your solicitor',
-      href: '#solicitor-name'
-      })
-    }
-
-    if (req.body['submit-button'] === 'save-and-continue') {
-      if (errors.length === 0) {
-        res.redirect('/version-1/children/solicitor-email')
-      }
-      else {
-        res.render('.//version-1/children/solicitor-name', { errors: errors })
-      }
-    }
-    else {
-      res.redirect('/version-1/task-list')
-    }
-  })
-
-  router.post('/version-1/children/solicitor-email', function(req, res) {
-    var errors = []
-    if (req.body['solicitor-email'] === '') {
-      errors.push({
-      text: 'Enter an email address',
-      href: '#solicitor-email'
-      })
-    }
-
-    if (req.body['submit-button'] === 'save-and-continue') {
-      if (errors.length === 0) {
-        res.redirect('/version-1/children/solicitor-number')
-      }
-      else {
-        res.render('.//version-1/children/solicitor-email', { errors: errors })
-      }
-    }
-    else {
-      res.redirect('/version-1/task-list')
-    }
-  })
+  //   if (req.body['submit-button'] === 'save-and-continue') {
+  //     if (errors.length === 0) {
+  //       res.redirect('/version-1/children/solicitor-number')
+  //     }
+  //     else {
+  //       res.render('.//version-1/children/solicitor-email', { errors: errors })
+  //     }
+  //   }
+  //   else {
+  //     res.redirect('/version-1/task-list')
+  //   }
+  // })
 
 
-  router.post('/version-1/children/solicitor-address', function(req, res) {
-    var errors = []
-    if (req.body['solicitor-address'] === "") {
-      errors.push({
-      text: 'Enter a valid postcode',
-      href: '#solicitor-address'
-      })
-    }
+  // router.post('/version-1/children/solicitor-address', function(req, res) {
+  //   var errors = []
+  //   if (req.body['solicitor-address'] === "") {
+  //     errors.push({
+  //     text: 'Enter a valid postcode',
+  //     href: '#solicitor-address'
+  //     })
+  //   }
   
-    if (req.body['submit-button'] === 'save-and-continue') {
-      if (errors.length === 0) {
-        res.redirect('/version-1/children/solicitor-find-address')
-      }
-      else {
-        res.render('.//version-1/children/solicitor-address', { errors: errors })
-      }
-    }
-    else {
-      res.redirect('/version-1/task-list')
-    }
-  })
+  //   if (req.body['submit-button'] === 'save-and-continue') {
+  //     if (errors.length === 0) {
+  //       res.redirect('/version-1/children/solicitor-find-address')
+  //     }
+  //     else {
+  //       res.render('.//version-1/children/solicitor-address', { errors: errors })
+  //     }
+  //   }
+  //   else {
+  //     res.redirect('/version-1/task-list')
+  //   }
+  // })
   
-  router.post('/version-1/children/solicitor-enter-address-manually', function(req, res) {
-    var errors = []
-    if (req.body['address-line-1'] === '') {
-      errors.push({
-      text: 'Enter the first line of the address',
-      href: '#first-line'
-      })
-    }
-    if (req.body['address-town'] === '') {
-      errors.push({
-      text: 'Enter the town or city',
-      href: '#town'
-      })
-    }
-    if (req.body['address-postcode'] === '') {
-      errors.push({
-      text: 'Enter the postcode',
-      href: '#postcode'
-      })
-    }
+  // router.post('/version-1/children/solicitor-enter-address-manually', function(req, res) {
+  //   var errors = []
+  //   if (req.body['address-line-1'] === '') {
+  //     errors.push({
+  //     text: 'Enter the first line of the address',
+  //     href: '#first-line'
+  //     })
+  //   }
+  //   if (req.body['address-town'] === '') {
+  //     errors.push({
+  //     text: 'Enter the town or city',
+  //     href: '#town'
+  //     })
+  //   }
+  //   if (req.body['address-postcode'] === '') {
+  //     errors.push({
+  //     text: 'Enter the postcode',
+  //     href: '#postcode'
+  //     })
+  //   }
   
-    if (req.body['submit-button'] === 'save-and-continue') {
-      if (errors.length === 0) {
-        res.redirect('/version-1/task-list')
-      }
-      else {
-        res.render('.//version-1/children/solicitor-enter-address-manually', { errors: errors })
-      }
-    }
-    else {
-      res.redirect('/version-1/task-list')
-    }
-  })
+  //   if (req.body['submit-button'] === 'save-and-continue') {
+  //     if (errors.length === 0) {
+  //       res.redirect('/version-1/task-list')
+  //     }
+  //     else {
+  //       res.render('.//version-1/children/solicitor-enter-address-manually', { errors: errors })
+  //     }
+  //   }
+  //   else {
+  //     res.redirect('/version-1/task-list')
+  //   }
+  // })
   
-  router.post('/version-1/children/solicitor-find-address', function(req, res) {
-    var errors = []
-    if (req.body['solicitor-choose-address'] === 'address-found') {
-      errors.push({
-      text: 'Select an address',
-      href: '#solicitor-find-address'
-      })
-    }
+  // router.post('/version-1/children/solicitor-find-address', function(req, res) {
+  //   var errors = []
+  //   if (req.body['solicitor-choose-address'] === 'address-found') {
+  //     errors.push({
+  //     text: 'Select an address',
+  //     href: '#solicitor-find-address'
+  //     })
+  //   }
   
-    if (req.body['submit-button'] === 'save-and-continue') {
-      if (errors.length === 0) {
-        res.redirect('/version-1/task-list')
-      }
-      else {
-        res.render('.//version-1/children/solicitor-find-address', { errors: errors })
-      }
-    }
-    else {
-      res.redirect('/version-1/task-list')
-    }
-  })
+  //   if (req.body['submit-button'] === 'save-and-continue') {
+  //     if (errors.length === 0) {
+  //       res.redirect('/version-1/task-list')
+  //     }
+  //     else {
+  //       res.render('.//version-1/children/solicitor-find-address', { errors: errors })
+  //     }
+  //   }
+  //   else {
+  //     res.redirect('/version-1/task-list')
+  //   }
+  // })
   
   
-  router.post('/version-1/children/solicitor-number', function(req, res) {
-    var errors = []
-    if (req.body['solicitor-number'] === undefined) {
-      errors.push({
-      text: 'Select an answer',
-      href: '#no-radio-chosen'
-      })
-    }
-    else if (req.body['number'] === '') {
-      errors.push({
-        text: 'Enter a number',
-        href: '#no-number'
-      })
-    }
+  // router.post('/version-1/children/solicitor-number', function(req, res) {
+  //   var errors = []
+  //   if (req.body['solicitor-number'] === undefined) {
+  //     errors.push({
+  //     text: 'Select an answer',
+  //     href: '#no-radio-chosen'
+  //     })
+  //   }
+  //   else if (req.body['number'] === '') {
+  //     errors.push({
+  //       text: 'Enter a number',
+  //       href: '#no-number'
+  //     })
+  //   }
   
-    if (req.body['submit-button'] === 'save-and-continue') {
-      if (errors.length === 0) {
-        res.redirect('/version-1/children/solicitor-address')
-      }
-      else {
-        res.render('.//version-1/children/solicitor-number', { errors: errors })
-      }
-    }
-    else {
-      res.redirect('/version-1/task-list')
-    }
-  })
+  //   if (req.body['submit-button'] === 'save-and-continue') {
+  //     if (errors.length === 0) {
+  //       res.redirect('/version-1/children/solicitor-address')
+  //     }
+  //     else {
+  //       res.render('.//version-1/children/solicitor-number', { errors: errors })
+  //     }
+  //   }
+  //   else {
+  //     res.redirect('/version-1/task-list')
+  //   }
+  // })
   
   
+  // router.post('/version-1/children/applicant-adoption-agency-or-social-worker', function(req, res) {
+  //   var errors = []
+  //   if (req.body['agency'] === undefined) {
+  //     errors.push({
+  //     text: 'Please select an answer',
+  //     href: '#agency'
+  //     })
+  //   }
 
-
-  // ************************************* Placement and court orders ************************************* //
-  router.post('/version-1/children/orders-placement-case-number', function(req, res) {
-    var errors = []
-    if (req.body['placement-case-number'] === '') {
-      errors.push({
-      text: 'Enter the serial or case number',
-      href: '#case-number'
-      })
-    }
-
-    if (req.body['submit-button'] === 'save-and-continue') {
-      if (errors.length === 0) {
-        res.redirect('/version-1/children/orders-placement-court')
-      }
-      else {
-        res.render('.//version-1/children/orders-placement-case-number', { errors: errors })
-      }
-    }
-    else {
-      res.redirect('/version-1/task-list')
-    }
-  })
-
-
-  router.post('/version-1/children/orders-placement-court', function(req, res) {
-    var errors = []
-    if (req.body['court-name'] === '') {
-      errors.push({
-      text: 'Enter the name of the court',
-      href: '#court-name'
-      })
-    }
-
-    if (req.body['submit-button'] === 'save-and-continue') {
-      if (errors.length === 0) {
-        res.redirect('/version-1/children/orders-placement-date')
-      }
-      else {
-        res.render('.//version-1/children/orders-placement-court', { errors: errors })
-      }
-    }
-    else {
-      res.redirect('/version-1/task-list')
-    }
-  })
-
-
-  router.post('/version-1/children/orders-placement-date', function(req, res) {
-    var errors = []
-    if (req.body['day'] === '' || req.body['month'] === '' || req.body['year'] === '') {
-      errors.push({
-      text: 'Developers: please refer to ADOP-281 for different error messages',
-      href: '#order-date'
-      })
-    }
-      if (req.body['submit-button'] === 'save-and-continue') {
-        if (errors.length === 0) {
-          res.redirect('/version-1/children/orders-summary')
-        }
-        else {
-          res.render('.//version-1/children/orders-placement-date', { errors: errors })
-        }
-      }
-      else {
-        res.redirect('/version-1/task-list')
-      }
-  })
-
-
-  router.post('/version-1/children/orders-summary', function(req, res) {
-    var errors = []
-    if (req.body['add-another'] === undefined) {
-      errors.push({
-      text: 'Please select an answer',
-      href: '#agency'
-      })
-    }
-
-    if (req.body['submit-button'] === 'save-and-continue') {
-      if (errors.length === 0) {
-        if (req.body['add-another'] === 'Yes') {
-          res.redirect('/version-1/children/orders-order-type')
-        }
-        else {
-          req.session.data.AddToListFinished = 1
-          res.redirect('/version-1/task-list')
-        }
-      }
-      else {
-        res.render('.//version-1/children/children/orders-summary', { errors: errors })
-      }
-    }
-    else {
-        res.redirect('/version-1/task-list')
-    }
-  })
-
-
-  router.post('/version-1/children/orders-order-type', function(req, res) {
-    var errors = []
-    if (req.body['order-type'] === '') {
-      errors.push({
-      text: 'Please answer the question',
-      href: '#order-type'
-      })
-    }
-
-    if (req.body['submit-button'] === 'save-and-continue') {
-      if (errors.length === 0) {
-        res.redirect('/version-1/children/orders-order-case-number')
-      }
-      else {
-        res.render('.//version-1/children/orders-order-type', { errors: errors })
-      }
-    }
-    else {
-      res.redirect('/version-1/task-list')
-    }
-  })
-
-
-  router.post('/version-1/children/orders-order-case-number', function(req, res) {
-    var errors = []
-    if (req.body['order-number'] === '') {
-      errors.push({
-      text: 'Please answer the question',
-      href: '#order-number'
-      })
-    }
-
-    if (req.body['submit-button'] === 'save-and-continue') {
-      if (errors.length === 0) {
-        res.redirect('/version-1/children/orders-order-court')
-      }
-      else {
-        res.render('.//version-1/children/orders-order-case-number', { errors: errors })
-      }
-    }
-    else {
-      res.redirect('/version-1/task-list')
-    }
-  })
-
-
-  router.post('/version-1/children/orders-order-court', function(req, res) {
-    var errors = []
-    if (req.body['order-court-name'] === '') {
-      errors.push({
-      text: 'Please answer the question',
-      href: '#order-court-name'
-      })
-    }
-
-    if (req.body['submit-button'] === 'save-and-continue') {
-      if (errors.length === 0) {
-        res.redirect('/version-1/children/orders-order-date')
-      }
-      else {
-        res.render('.//version-1/children/orders-order-court', { errors: errors })
-      }
-    }
-    else {
-      res.redirect('/version-1/task-list')
-    }
-  })
-
-
-  router.post('/version-1/children/orders-order-date', function(req, res) {
-    var errors = []
-    if (req.body['day'] === '' || req.body['month'] === '' || req.body['year'] === '') {
-      errors.push({
-      text: 'Developers: please refer to ADOP-281 for different error messages',
-      href: '#order-date'
-      })
-    }
-      if (req.body['submit-button'] === 'save-and-continue') {
-        if (errors.length === 0) {
-          res.redirect('/version-1/children/orders-summary-2')
-        }
-        else {
-          res.render('.//version-1/children/orders-order-date', { errors: errors })
-        }
-      }
-      else {
-        res.redirect('/version-1/task-list')
-      }
-  })
+  //   if (req.body['submit-button'] === 'save-and-continue') {
+  //     if (errors.length === 0) {
+  //       if (req.body['agency'] === 'yes') {
+  //         res.redirect('/version-1/children/child-')
+  //       }
+  //       else {
+  //         res.redirect('/version-1/children/child-social-worker-details')
+  //       }
+  //     }
+  //     else {
+  //       res.render('.//version-1/children/applicant-adoption-agency-or-social-worker', { errors: errors })
+  //     }
+  //   }
+  //   else {
+  //       res.redirect('/version-1/task-list')
+  //   }
+  // })
 
 
 
@@ -2658,8 +2780,8 @@ router.post('/version-1/applicants/second-applicant-upload', function(req, res) 
 
 
 
-// ***************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************
-// ************************************* Old functions not in use any more ************************************* //
+
+
 //   router.post('/version-1/eligibility/10-weeks', function(req, res) {
 //     var errors = []
 //     if (req.body['10-weeks'] === undefined) {

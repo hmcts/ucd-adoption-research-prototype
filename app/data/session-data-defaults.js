@@ -48,6 +48,16 @@ module.exports = {
   "childNationalities": [],
   "childNationalityCount": 0,
 
+  "childOrderId": [],
+  "childOrderType": [],
+  "childOrderNumber": [],
+  "childOrderType": [],
+  "childOrderDay": [],
+  "childOrderMonth": [],
+  "childOrderYear": [],
+  "childOrderCompleted": [],
+  "childOrderCount": 0,
+
 
   "numberChildren": 0,
   "numberApplicants": 0,
