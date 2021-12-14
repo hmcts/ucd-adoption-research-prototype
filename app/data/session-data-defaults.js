@@ -51,7 +51,7 @@ module.exports = {
   "childOrderId": [],
   "childOrderType": [],
   "childOrderNumber": [],
-  "childOrderType": [],
+  "childOrderCourt": [],
   "childOrderDay": [],
   "childOrderMonth": [],
   "childOrderYear": [],

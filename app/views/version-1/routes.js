@@ -1908,13 +1908,14 @@ router.post('/version-1/applicants/second-applicant-upload', function(req, res) 
       href: '#case-number'
       })
     }
+
     count = req.session.data.childOrderCount
 
     if (req.body['submit-button'] === 'save-and-continue') {
       if (errors.length === 0) {
-        req.session.data.firstApplicantPreviousNames[count] = req.body['first-applicant-previous-full-name']
-        req.session.data.idFirstApplicant[count] = count
-        req.session.data.firstApplicantNameCount = count + 1
+        req.session.data.childOrderCount = count
+        req.session.data.childOrderType[count] = "Placement order"
+        req.session.data.childOrderNumber[count] = req.body['placement-case-number']
         res.redirect('/version-1/children/orders-placement-court')
       }
       else {
@@ -1924,6 +1925,7 @@ router.post('/version-1/applicants/second-applicant-upload', function(req, res) 
     else {
       res.redirect('/version-1/task-list')
     }
+    console.log("Placement: ", req.session.data.childOrderType[count])
   })
 
 
@@ -1936,8 +1938,11 @@ router.post('/version-1/applicants/second-applicant-upload', function(req, res) 
       })
     }
 
+    count = req.session.data.childOrderCount
+
     if (req.body['submit-button'] === 'save-and-continue') {
       if (errors.length === 0) {
+        req.session.data.childOrderCourt[count] = req.body['placement-court-name']
         res.redirect('/version-1/children/orders-placement-date')
       }
       else {
@@ -1952,23 +1957,29 @@ router.post('/version-1/applicants/second-applicant-upload', function(req, res) 
 
   router.post('/version-1/children/orders-placement-date', function(req, res) {
     var errors = []
-    if (req.body['day'] === '' || req.body['month'] === '' || req.body['year'] === '') {
+    if (req.body['placement-day'] === '' || req.body['placement-month'] === '' || req.body['placement-year'] === '') {
       errors.push({
       text: 'Developers: please refer to ADOP-281 for different error messages',
       href: '#order-date'
       })
     }
-      if (req.body['submit-button'] === 'save-and-continue') {
-        if (errors.length === 0) {
-          res.redirect('/version-1/children/orders-summary')
-        }
-        else {
-          res.render('.//version-1/children/orders-placement-date', { errors: errors })
-        }
+
+    count = req.session.data.childOrderCount
+
+    if (req.body['submit-button'] === 'save-and-continue') {
+      if (errors.length === 0) {
+        req.session.data.childOrderDay[count] = req.body['placement-day']
+        req.session.data.childOrderMonth[count] = req.body['placement-month']
+        req.session.data.childOrderYear[count] = req.body['placement-year']
+        res.redirect('/version-1/children/orders-summary')
       }
       else {
-        res.redirect('/version-1/task-list')
+        res.render('.//version-1/children/orders-placement-date', { errors: errors })
       }
+    }
+    else {
+      res.redirect('/version-1/task-list')
+    }
   })
 
 
@@ -1981,7 +1992,10 @@ router.post('/version-1/applicants/second-applicant-upload', function(req, res) 
       })
     }
 
-    if (req.body['submit-button'] === 'save-and-continue') {
+    if (req.body['submit-button'] === 'continue') {
+      res.redirect('/version-1/children/orders-summary')
+    }
+    else if (req.body['submit-button'] === 'save-and-continue') {
       if (errors.length === 0) {
         if (req.body['add-another'] === 'Yes') {
           res.redirect('/version-1/children/orders-order-type')
