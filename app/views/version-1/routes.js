@@ -832,7 +832,7 @@ router.post('/version-1/applicants/second-applicant-upload', function(req, res) 
     }
       if (req.body['submit-button'] === 'save-and-continue') {
         if (errors.length === 0) {
-          res.redirect('/version-1/children/child-gender')
+          res.redirect('/version-1/children/child-sex')
         }
         else {
           res.render('.//version-1/children/child-date-birth', { errors: errors })
@@ -844,12 +844,12 @@ router.post('/version-1/applicants/second-applicant-upload', function(req, res) 
   })
 
 
-  router.post('/version-1/children/child-gender', function(req, res) {
+  router.post('/version-1/children/child-sex', function(req, res) {
     var errors = []
-    if (req.body['child-gender'] === undefined) {
+    if (req.body['child-sex'] === undefined) {
       errors.push({
       text: 'Please select an answer',
-      href: '#child-gender'
+      href: '#child-sex'
       })
     }
 
@@ -858,7 +858,7 @@ router.post('/version-1/applicants/second-applicant-upload', function(req, res) 
         res.redirect('/version-1/children/child-nationality')
       }
       else {
-        res.render('.//version-1/children/child-gender', { errors: errors })
+        res.render('.//version-1/children/child-sex', { errors: errors })
       }
     }
     else {
@@ -1531,18 +1531,14 @@ router.post('/version-1/applicants/second-applicant-upload', function(req, res) 
 
 
   // ********************** Adoption agency or local authority **********************
-
-
-  router.post('/version-1/children/applicant-adoption-agency-name', function(req, res) {
+  router.post('/version-1/children/applicant-adoption-agency-or-social-worker', function(req, res) {
     var errors = []
-    if (req.body['agency-name'] === '') {
+    if (req.body['agency'] === undefined) {
       errors.push({
       text: 'Please select an answer',
-      href: '#agency-name'
+      href: '#agency'
       })
     }
-
-    req.session.data.numberApplicants = req.body['angency']
 
     if (req.body['submit-button'] === 'save-and-continue') {
       if (errors.length === 0) {
@@ -1550,11 +1546,11 @@ router.post('/version-1/applicants/second-applicant-upload', function(req, res) 
           res.redirect('/version-1/children/applicant-adoption-agency-details')
         }
         else {
-          res.redirect('/version-1/children/applicant-social-worker-name')
+          res.redirect('/version-1/children/child-social-worker-details')
         }
       }
       else {
-        res.render('.//version-1/children/applicant-adoption-agency-name', { errors: errors })
+        res.render('.//version-1/children/applicant-adoption-agency-or-social-worker', { errors: errors })
       }
     }
     else {
@@ -1563,7 +1559,7 @@ router.post('/version-1/applicants/second-applicant-upload', function(req, res) 
   })
 
 
-  router.post('/version-1/children/applicant-adoption-agency', function(req, res) {
+  router.post('/version-1/children/applicant-adoption-agency-details', function(req, res) {
     var errors = []
     if (req.body['applicant-agency-name'] === '') {
       errors.push({
@@ -1589,41 +1585,6 @@ router.post('/version-1/applicants/second-applicant-upload', function(req, res) 
         res.redirect('/version-1/task-list')
       }
       else {
-        res.render('.//version-1/children/applicant-adoption-agency', { errors: errors })
-      }
-    }
-    else {
-      res.redirect('/version-1/task-list')
-    }
-  })
-
-
-  router.post('/version-1/children/children/applicant-adoption-agency-details', function(req, res) {
-    var errors = []
-    if (req.body['agency-name'] === '') {
-      errors.push({
-      text: 'Enter a name',
-      href: '#agency-name'
-      })
-    }
-    if (req.body['phone-number'] === '') {
-      errors.push({
-      text: 'Enter a telephone number',
-      href: '#phone-number'
-      })
-    }
-    if (req.body['contact-name'] === '') {
-      errors.push({
-      text: 'Enter a name',
-      href: '#contact-name'
-      })
-    }
-
-    if (req.body['submit-button'] === 'save-and-continue') {
-      if (errors.length === 0) {
-        res.redirect('/version-1/children/child-adoption-agency-name')
-      }
-      else {
         res.render('.//version-1/children/applicant-adoption-agency-details', { errors: errors })
       }
     }
@@ -1633,7 +1594,7 @@ router.post('/version-1/applicants/second-applicant-upload', function(req, res) 
   })
 
 
-  router.post('/version-1/children/applicant-social-worker-name', function(req, res) {
+  router.post('/version-1/children/child-social-worker-details', function(req, res) {
     var errors = []
     if (req.body['applicant-social-worker-name'] === '') {
       errors.push({
@@ -1647,7 +1608,7 @@ router.post('/version-1/applicants/second-applicant-upload', function(req, res) 
         res.redirect('/version-1/children/applicant-social-worker-email')
       }
       else {
-        res.render('.//version-1/children/applicant-social-worker-name', { errors: errors })
+        res.render('.//version-1/children/child-social-worker-details', { errors: errors })
       }
     }
     else {
@@ -1656,166 +1617,224 @@ router.post('/version-1/applicants/second-applicant-upload', function(req, res) 
   })
 
 
-  router.post('/version-1/children/applicant-social-worker-email', function(req, res) {
-    var errors = []
-    if (req.body['applicant-social-worker-email'] === '') {
-      errors.push({
-      text: 'Enter an email address',
-      href: '#applicant-social-worker-email'
-      })
-    }
+  // router.post('/version-1/children/children/applicant-adoption-agency-details', function(req, res) {
+  //   var errors = []
+  //   if (req.body['agency-name'] === '') {
+  //     errors.push({
+  //     text: 'Enter a name',
+  //     href: '#agency-name'
+  //     })
+  //   }
+  //   if (req.body['phone-number'] === '') {
+  //     errors.push({
+  //     text: 'Enter a telephone number',
+  //     href: '#phone-number'
+  //     })
+  //   }
+  //   if (req.body['contact-name'] === '') {
+  //     errors.push({
+  //     text: 'Enter a name',
+  //     href: '#contact-name'
+  //     })
+  //   }
 
-    if (req.body['submit-button'] === 'save-and-continue') {
-      if (errors.length === 0) {
-        res.redirect('/version-1/children/applicant-social-worker-team-email')
-      }
-      else {
-        res.render('.//version-1/children/applicant-social-worker-email', { errors: errors })
-      }
-    }
-    else {
-      res.redirect('/version-1/task-list')
-    }
-  })
+  //   if (req.body['submit-button'] === 'save-and-continue') {
+  //     if (errors.length === 0) {
+  //       res.redirect('/version-1/children/child-adoption-agency-name')
+  //     }
+  //     else {
+  //       res.render('.//version-1/children/applicant-adoption-agency-details', { errors: errors })
+  //     }
+  //   }
+  //   else {
+  //     res.redirect('/version-1/task-list')
+  //   }
+  // })
+  
 
+  // router.post('/version-1/children/applicant-social-worker-name', function(req, res) {
+  //   var errors = []
+  //   if (req.body['applicant-social-worker-name'] === '') {
+  //     errors.push({
+  //     text: 'Enter the name of the social worker',
+  //     href: '#applicant-social-worker-name'
+  //     })
+  //   }
 
-  router.post('/version-1/children/applicant-social-worker-team-email', function(req, res) {
-    var errors = []
-    if (req.body['applicant-social-worker-team-email'] === undefined) {
-      errors.push({
-      text: 'Select an answer',
-      href: '#no-radio-chosen'
-      })
-    }
-    else if (req.body['team-email'] === '') {
-      errors.push({
-        text: 'Enter a valid email address',
-        href: '#no-team-email'
-      })
-    }
-
-    if (req.body['submit-button'] === 'save-and-continue') {
-      if (errors.length === 0) {
-        res.redirect('/version-1/children/applicant-social-worker-number')
-      }
-      else {
-        res.render('.//version-1/children/applicant-social-worker-team-email', { errors: errors })
-      }
-    }
-    else {
-      res.redirect('/version-1/task-list')
-    }
-  })
-
-
-  router.post('/version-1/children/applicant-social-worker-number', function(req, res) {
-    var errors = []
-    if (req.body['applicant-social-worker-number'] === undefined) {
-      errors.push({
-      text: 'Select an answer',
-      href: '#no-radio-chosen'
-      })
-    }
-    else if (req.body['applicant-social-worker-number'] === '') {
-      errors.push({
-        text: 'Enter a number',
-        href: '#no-number'
-      })
-    }
-
-    if (req.body['submit-button'] === 'save-and-continue') {
-      if (errors.length === 0) {
-        res.redirect('/version-1/children/applicant-social-worker-address')
-      }
-      else {
-        res.render('.//version-1/children/applicant-social-worker-number', { errors: errors })
-      }
-    }
-    else {
-      res.redirect('/version-1/task-list')
-    }
-  })
+  //   if (req.body['submit-button'] === 'save-and-continue') {
+  //     if (errors.length === 0) {
+  //       res.redirect('/version-1/children/applicant-social-worker-email')
+  //     }
+  //     else {
+  //       res.render('.//version-1/children/applicant-social-worker-name', { errors: errors })
+  //     }
+  //   }
+  //   else {
+  //     res.redirect('/version-1/task-list')
+  //   }
+  // })
 
 
-  router.post('/version-1/children/applicant-social-worker-address', function(req, res) {
-    var errors = []
-    if (req.body['applicant-social-worker-address'] === "") {
-      errors.push({
-      text: 'Enter a valid postcode',
-      href: '#applicant-social-worker-address'
-      })
-    }
+  // router.post('/version-1/children/applicant-social-worker-email', function(req, res) {
+  //   var errors = []
+  //   if (req.body['applicant-social-worker-email'] === '') {
+  //     errors.push({
+  //     text: 'Enter an email address',
+  //     href: '#applicant-social-worker-email'
+  //     })
+  //   }
 
-    if (req.body['submit-button'] === 'save-and-continue') {
-      if (errors.length === 0) {
-        res.redirect('/version-1/children/applicant-social-worker-find-address')
-      }
-      else {
-        res.render('.//version-1/children/applicant-social-worker-address', { errors: errors })
-      }
-    }
-    else {
-      res.redirect('/version-1/task-list')
-    }
-  })
-
-
-  router.post('/version-1/children/applicant-social-worker-find-address', function(req, res) {
-    var errors = []
-    if (req.body['applicant-social-worker-choose-address'] === 'address-found') {
-      errors.push({
-      text: 'Select an address',
-      href: '#applicant-social-worker-find-address'
-      })
-    }
-
-    if (req.body['submit-button'] === 'save-and-continue') {
-      if (errors.length === 0) {
-        res.redirect('/version-1/children/child-adoption-agency-name')
-      }
-      else {
-        res.render('.//version-1/children/applicant-social-worker-find-address', { errors: errors })
-      }
-    }
-    else {
-      res.redirect('/version-1/task-list')
-    }
-  })
+  //   if (req.body['submit-button'] === 'save-and-continue') {
+  //     if (errors.length === 0) {
+  //       res.redirect('/version-1/children/applicant-social-worker-team-email')
+  //     }
+  //     else {
+  //       res.render('.//version-1/children/applicant-social-worker-email', { errors: errors })
+  //     }
+  //   }
+  //   else {
+  //     res.redirect('/version-1/task-list')
+  //   }
+  // })
 
 
-  router.post('/version-1/children/applicant-social-worker-enter-address-manually', function(req, res) {
-    var errors = []
-    if (req.body['address-line-1'] === '') {
-      errors.push({
-      text: 'Enter the first line of the address',
-      href: '#first-line'
-      })
-    }
-    if (req.body['address-town'] === '') {
-      errors.push({
-      text: 'Enter the town or city',
-      href: '#town'
-      })
-    }
-    if (req.body['address-postcode'] === '') {
-      errors.push({
-      text: 'Enter the postcode',
-      href: '#postcode'
-      })
-    }
+  // router.post('/version-1/children/applicant-social-worker-team-email', function(req, res) {
+  //   var errors = []
+  //   if (req.body['applicant-social-worker-team-email'] === undefined) {
+  //     errors.push({
+  //     text: 'Select an answer',
+  //     href: '#no-radio-chosen'
+  //     })
+  //   }
+  //   else if (req.body['team-email'] === '') {
+  //     errors.push({
+  //       text: 'Enter a valid email address',
+  //       href: '#no-team-email'
+  //     })
+  //   }
 
-    if (req.body['submit-button'] === 'save-and-continue') {
-      if (errors.length === 0) {
-        res.redirect('/version-1/children/child-adoption-agency-name')
-      }
-      else {
-        res.render('.//version-1/children/applicant-social-worker-enter-address-manually', { errors: errors })
-      }
-    }
-    else {
-      res.redirect('/version-1/task-list')
-    }
-  })
+  //   if (req.body['submit-button'] === 'save-and-continue') {
+  //     if (errors.length === 0) {
+  //       res.redirect('/version-1/children/applicant-social-worker-number')
+  //     }
+  //     else {
+  //       res.render('.//version-1/children/applicant-social-worker-team-email', { errors: errors })
+  //     }
+  //   }
+  //   else {
+  //     res.redirect('/version-1/task-list')
+  //   }
+  // })
+
+
+  // router.post('/version-1/children/applicant-social-worker-number', function(req, res) {
+  //   var errors = []
+  //   if (req.body['applicant-social-worker-number'] === undefined) {
+  //     errors.push({
+  //     text: 'Select an answer',
+  //     href: '#no-radio-chosen'
+  //     })
+  //   }
+  //   else if (req.body['applicant-social-worker-number'] === '') {
+  //     errors.push({
+  //       text: 'Enter a number',
+  //       href: '#no-number'
+  //     })
+  //   }
+
+  //   if (req.body['submit-button'] === 'save-and-continue') {
+  //     if (errors.length === 0) {
+  //       res.redirect('/version-1/children/applicant-social-worker-address')
+  //     }
+  //     else {
+  //       res.render('.//version-1/children/applicant-social-worker-number', { errors: errors })
+  //     }
+  //   }
+  //   else {
+  //     res.redirect('/version-1/task-list')
+  //   }
+  // })
+
+
+  // router.post('/version-1/children/applicant-social-worker-address', function(req, res) {
+  //   var errors = []
+  //   if (req.body['applicant-social-worker-address'] === "") {
+  //     errors.push({
+  //     text: 'Enter a valid postcode',
+  //     href: '#applicant-social-worker-address'
+  //     })
+  //   }
+
+  //   if (req.body['submit-button'] === 'save-and-continue') {
+  //     if (errors.length === 0) {
+  //       res.redirect('/version-1/children/applicant-social-worker-find-address')
+  //     }
+  //     else {
+  //       res.render('.//version-1/children/applicant-social-worker-address', { errors: errors })
+  //     }
+  //   }
+  //   else {
+  //     res.redirect('/version-1/task-list')
+  //   }
+  // })
+
+
+  // router.post('/version-1/children/applicant-social-worker-find-address', function(req, res) {
+  //   var errors = []
+  //   if (req.body['applicant-social-worker-choose-address'] === 'address-found') {
+  //     errors.push({
+  //     text: 'Select an address',
+  //     href: '#applicant-social-worker-find-address'
+  //     })
+  //   }
+
+  //   if (req.body['submit-button'] === 'save-and-continue') {
+  //     if (errors.length === 0) {
+  //       res.redirect('/version-1/children/child-adoption-agency-name')
+  //     }
+  //     else {
+  //       res.render('.//version-1/children/applicant-social-worker-find-address', { errors: errors })
+  //     }
+  //   }
+  //   else {
+  //     res.redirect('/version-1/task-list')
+  //   }
+  // })
+
+
+  // router.post('/version-1/children/applicant-social-worker-enter-address-manually', function(req, res) {
+  //   var errors = []
+  //   if (req.body['address-line-1'] === '') {
+  //     errors.push({
+  //     text: 'Enter the first line of the address',
+  //     href: '#first-line'
+  //     })
+  //   }
+  //   if (req.body['address-town'] === '') {
+  //     errors.push({
+  //     text: 'Enter the town or city',
+  //     href: '#town'
+  //     })
+  //   }
+  //   if (req.body['address-postcode'] === '') {
+  //     errors.push({
+  //     text: 'Enter the postcode',
+  //     href: '#postcode'
+  //     })
+  //   }
+
+  //   if (req.body['submit-button'] === 'save-and-continue') {
+  //     if (errors.length === 0) {
+  //       res.redirect('/version-1/children/child-adoption-agency-name')
+  //     }
+  //     else {
+  //       res.render('.//version-1/children/applicant-social-worker-enter-address-manually', { errors: errors })
+  //     }
+  //   }
+  //   else {
+  //     res.redirect('/version-1/task-list')
+  //   }
+  // })
 
 //************************ Child's adoption agency or local authority *****************************
 

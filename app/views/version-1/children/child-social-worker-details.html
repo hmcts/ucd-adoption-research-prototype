@@ -16,7 +16,6 @@ Apply to adopt a child
 
       {% set nameError = '' %}
       {% set phoneError = '' %}
-      {% set contactError = '' %}
 
       {% if errors | length > 0 %}
         {{ govukErrorSummary({
@@ -30,64 +29,54 @@ Apply to adopt a child
           {% if error.href == '#phone' %}
             {% set phoneError = error.text %}
           {% endif %}
-          {% if error.href == '#contact' %}
-            {% set contactError = error.text %}
-          {% endif %}
         {% endfor %}
       {% endif %}
 
-      <form action="/version-1/children/applicant-adoption-agency" method="post" class="form">
+      <form action="/version-1/children/child-social-worker-details" method="post" class="form">
         <fieldset class="govuk-fieldset">
           <legend class="govuk-fieldset__legend govuk-fieldset__legend--l">
             <span class="govuk-caption-l">{{ data['socialworker'] }}</span>
             <h1 class="govuk-fieldset__heading">
-              Adoption agency or local authority details
+              Details about the child's social worker
             </h1>
           </legend>
           
           <div class="govuk-form-group">
             <label class="govuk-label" for="name">
-              Name of adoption agency or local authority
+              Social worker's name
             </label>
             {% if nameError != '' %}
             <span id="contact-error" class="govuk-error-message">
               <span class="govuk-visually-hidden">Error:</span> {{ nameError }}
             </span>
             {% endif %}
-
-            <input class="govuk-input govuk-!-width-two-thirds {% if (nameError != '') %} govuk-input--error{% endif %}" id="applicant-agency-name" name="applicant-agency-name" type="text" value="{{ data['applicant-agency-name'] }}">
+            <input class="govuk-input govuk-!-width-two-thirds {% if (nameError != '') %} govuk-input--error{% endif %}" id="child-social-worker-name" name="child-social-worker-name" type="text" value="{{ data['child-social-worker-name'] }}">
           </div>
         
+          <div class="govuk-form-group">
+            <label class="govuk-label" for="contact">
+              Social worker's email address (if known)
+            </label>
+            <input class="govuk-input govuk-!-width-two-thirds" id="child-social-worker-email" name="child-social-worker-email" type="text" value="{{ data['child-social-worker-email'] }}">
+          </div>
         
           <div class="govuk-form-group">
             <label class="govuk-label" for="phone-number">
-              Phone number
+              Social worker's phone number
             </label>
             {% if phoneError != '' %}
             <span id="contact-error" class="govuk-error-message">
               <span class="govuk-visually-hidden">Error:</span> {{ phoneError }}
             </span>
             {% endif %}
-            <input class="govuk-input govuk-input--width-10 {% if (phoneError != '') %} govuk-input--error{% endif %}" id="applicant-phone-number" name="applicant-phone-number" type="text" autocomplete="address-level2" value="{{ data['applicant-phone-number'] }}">
+            <input class="govuk-input govuk-input--width-10 {% if (phoneError != '') %} govuk-input--error{% endif %}" id="child-social-worker-phone-number" name="child-social-worker-phone-number" type="text" autocomplete="address-level2" value="{{ data['child-social-worker-phone-number'] }}">
           </div>
                 
           <div class="govuk-form-group">
             <label class="govuk-label" for="contact">
-              Name of your contact
+              Social worker's team email address (if you known it)
             </label>
-            {% if contactError != '' %}
-            <span id="contact-error" class="govuk-error-message">
-              <span class="govuk-visually-hidden">Error:</span> {{ contactError }}
-            </span>
-            {% endif %}
-            <input class="govuk-input govuk-!-width-two-thirds {% if (contactError != '') %} govuk-input--error{% endif %}" id="applicant-contact" name="applicant-contact" type="text" value="{{ data['applicant-contact'] }}">
-          </div>
-
-          <div class="govuk-form-group">
-            <label class="govuk-label" for="contact">
-              Email address of your contact (optional)
-            </label>
-            <input class="govuk-input govuk-!-width-two-thirds" id="applicant-email" name="applicant-email" type="text" value="{{ data['applicant-email'] }}">
+            <input class="govuk-input govuk-!-width-two-thirds" id="child-social-worker-team-email" name="child-social-worker-team-email" type="text" value="{{ data['child-social-worker-team-email'] }}">
           </div>
 
                         
