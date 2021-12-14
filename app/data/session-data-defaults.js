@@ -57,6 +57,7 @@ module.exports = {
   "child": "The child's details",
   "mother": "Birth mother's details",
   "father": "Birth father's details",
+  "other-parent": "Other parent or guardian details",
   "socialworker": "Your adoption agency or local authority details",
   "childsocialworker": "The child's adoption agency or local authority details",
   "solicitor": "Your solicitor"
