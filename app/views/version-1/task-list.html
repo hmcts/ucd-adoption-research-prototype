@@ -208,7 +208,7 @@ Task list
                     </span>
                     {% if data['other-parent-address'] or data['otherParentCompleted'] == 1 %}
                         <strong class="govuk-tag  app-task-list__tag" id="eligibility-completed">Completed</strong>
-                    {% elseif data['other-parent'] %}
+                    {% elseif data['other-parent-exists'] %}
                         <strong class="govuk-tag govuk-tag--blue app-task-list__tag">in progress</strong>
                     {% else %}
                         <strong class="govuk-tag govuk-tag--grey app-task-list__tag">not started</strong>
@@ -221,8 +221,10 @@ Task list
                         Adoption agency, social worker and solicitor details
                     </a>
                     </span>
-                    {% if data['birth-father'] %}
+                    {% if data['solicitorCompleted'] == 1 %}
                         <strong class="govuk-tag  app-task-list__tag" id="eligibility-completed">Completed</strong>
+                    {% elseif data['agency'] %}
+                        <strong class="govuk-tag govuk-tag--blue app-task-list__tag">in progress</strong>
                     {% else %}
                         <strong class="govuk-tag govuk-tag--grey app-task-list__tag">not started</strong>
                     {% endif %}
