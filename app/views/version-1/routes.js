@@ -996,8 +996,6 @@ router.post('/version-1/applicants/second-applicant-upload', function(req, res) 
       })
     }
 
-    req.session.data.numberApplicants = req.body['mother-alive']
-
     if (req.body['submit-button'] === 'save-and-continue') {
       if (errors.length === 0) {
         if (req.body['mother-alive'] === 'yes') {
@@ -1238,7 +1236,8 @@ router.post('/version-1/applicants/second-applicant-upload', function(req, res) 
     if (req.body['submit-button'] === 'save-and-continue') {
       if (errors.length === 0) {
         if (req.body['father-in-certificate'] == 'no') {
-          res.redirect('/version-1/task-list')
+          req.session.data.fatherAddress = 1
+          res.redirect('/version-1/children/other-parent-exists')
         }
         else {
           res.redirect('/version-1/children/father-name')
@@ -1299,8 +1298,6 @@ router.post('/version-1/applicants/second-applicant-upload', function(req, res) 
       href: '#father-no-reason'
       })
     }
-
-    req.session.data.numberApplicants = req.body['father-alive']
 
     if (req.body['submit-button'] === 'save-and-continue') {
       if (errors.length === 0) {
@@ -1521,6 +1518,186 @@ router.post('/version-1/applicants/second-applicant-upload', function(req, res) 
       }
       else {
         res.render('.//version-1/children/father-manual-address', { errors: errors })
+      }
+    }
+    else {
+      res.redirect('/version-1/task-list')
+    }
+  })
+
+
+
+  // ********************** Other parent or guardian details **********************
+  router.post('/version-1/children/other-parent-exists', function(req, res) {
+    console.log("father alive: ", req.body['other-parent-exists'])
+    var errors = []
+    if (req.body['other-parent-exists'] === undefined) {
+      errors.push({
+      text: 'Please answer the question',
+      href: '#other-parent'
+      })
+    }
+    else if (req.body['other-parent-exists'] === 'unsure' && req.body['reason-not-sure'] === '') {
+      console.log("father no reason")
+      errors.push({
+      text: 'Enter more detail',
+      href: '#other-parent-no-reason'
+      })
+    }
+
+    if (req.body['submit-button'] === 'save-and-continue') {
+      if (errors.length === 0) {
+        if (req.body['other-parent-exists'] === 'yes') {
+          res.redirect('/version-1/children/other-parent-name')
+        }
+        else {
+          req.session.data.otherParentCompleted = 1
+          res.redirect('/version-1/task-list')
+        }
+      }
+      else {
+        res.render('.//version-1/children/other-parent-exists', { errors: errors })
+      }
+    }
+    else {
+        res.redirect('/version-1/task-list')
+    }
+  })
+
+
+  router.post('/version-1/children/other-parent-name', function(req, res) {
+    var errors = []
+    if (req.body['other-parent-first-names'] === '') {
+      errors.push({
+      text: 'Enter their first names',
+      href: '#first-names'
+      })
+    }
+    if (req.body['other-parent-last-names'] === '') {
+      errors.push({
+      text: 'Enter their last names',
+      href: '#last-names'
+      })
+    }
+
+    if (req.body['submit-button'] === 'save-and-continue') {
+      if (errors.length === 0) {
+        res.redirect('/version-1/children/other-parent-have-address')
+      }
+      else {
+        res.render('.//version-1/children/other-parent-name', { errors: errors })
+      }
+    }
+    else {
+      res.redirect('/version-1/task-list')
+    }
+  })
+
+
+  router.post('/version-1/children/other-parent-have-address', function(req, res) {
+    var errors = []
+    if (req.body['other-parent-have-address'] === undefined) {
+      errors.push({
+      text: 'Please answer the question',
+      href: '#other-parent-have-address'
+      })
+    }
+
+    if (req.body['submit-button'] === 'save-and-continue') {
+      if (errors.length === 0) {
+        if (req.body['other-parent-have-address'] == 'no') {
+          req.session.data.otherParentCompleted = 1
+          res.redirect('/version-1/task-list')
+        }
+        else {
+          res.redirect('/version-1/children/other-parent-address-postcode')
+        }
+      }
+      else {
+          res.render('.//version-1/children/other-parent-have-address', { errors: errors })
+      }
+    }
+    else {
+      res.redirect('/version-1/task-list')
+    }
+  })
+
+
+  router.post('/version-1/children/other-parent-address-postcode', function(req, res) {
+    var errors = []
+    if (req.body['other-parent-postcode'] === "") {
+      errors.push({
+      text: 'Enter a valid postcode',
+      href: '#other-parent-address-postcode'
+      })
+    }
+    if (req.body['submit-button'] === 'save-and-continue') {
+      if (errors.length === 0) {
+        res.redirect('/version-1/children/other-parent-find-address')
+      }
+      else {
+        res.render('.//version-1/children/other-parent-address-postcode', { errors: errors })
+      }
+    }
+    else {
+      res.redirect('/version-1/task-list')
+    }
+  })
+
+
+  router.post('/version-1/children/other-parent-find-address', function(req, res) {
+    console.log(req.body['submit-button'])
+    var errors = []
+    if (req.body['other-parent-choose-address'] === 'address-found') {
+      errors.push({
+      text: 'Select an address',
+      href: '#other-parent-find-address'
+      })
+    }
+
+    if (req.body['submit-button'] === 'save-and-continue') {
+      if (errors.length === 0) {
+        req.session.data.otherParentCompleted = 1
+        res.redirect('/version-1/task-list')
+      }
+      else {
+        res.render('.//version-1/children/other-parent-find-address', { errors: errors })
+      }
+    }
+    else {
+      res.redirect('/version-1/task-list')
+    }
+  })
+
+
+  router.post('/version-1/children/other-parent-manual-address', function(req, res) {
+    var errors = []
+    if (req.body['address-line-1'] === '') {
+      errors.push({
+      text: 'Enter the first line of the address',
+      href: '#first-line'
+      })
+    }
+    if (req.body['address-town'] === '') {
+      errors.push({
+      text: 'Enter the town or city',
+      href: '#town'
+      })
+    }
+    if (req.body['address-postcode'] === '') {
+      errors.push({
+      text: 'Enter the postcode',
+      href: '#postcode'
+      })
+    }
+
+    if (req.body['submit-button'] === 'save-and-continue') {
+      if (errors.length === 0) {
+        req.session.data.otherParentCompleted = 1
+        res.redirect('/version-1/task-list')
+      }
+      else {
+        res.render('.//version-1/children/other-parent-manual-address', { errors: errors })
       }
     }
     else {
@@ -2045,8 +2222,6 @@ router.post('/version-1/children/child-social-worker-enter-address-manually', fu
       href: '#solicitor-helping'
       })
     }
-
-    req.session.data.numberApplicants = req.body['solicitor-helping']
 
     if (req.body['submit-button'] === 'save-and-continue') {
       if (errors.length === 0) {
