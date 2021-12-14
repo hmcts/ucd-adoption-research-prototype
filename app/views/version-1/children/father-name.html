@@ -1,7 +1,7 @@
 {% extends "layout-signed-in.html" %}
 
 {% block pageTitle %}
-Apply to adopt a child
+Apply to adopt a father
 {% endblock %}
 
 {% block beforeContent %}
@@ -14,49 +14,73 @@ Apply to adopt a child
   <div class="govuk-grid-row">
     <div class="govuk-grid-column-two-thirds">
 
-      {% set nameError = '' %}
-  
+      {% set firstNamesError = '' %}
+      {% set lastNamesError = '' %}
+
+
       {% if errors | length > 0 %}
-      {{ govukErrorSummary({
-        titleText: "There is a problem",
-        errorList: errors
-      }) }}
-      {% for error in errors %}
-        {% if error.href == '#father-name' %}
-          {% set nameError = error.text %}
-        {% endif %}
-      {% endfor %}
+        {{ govukErrorSummary({
+          titleText: "There is a problem",
+          errorList: errors
+        }) }}
+        {% for error in errors %}
+          {% if error.href == '#first-names' %}
+            {% set firstNamesError = error.text %}
+          {% endif %}
+          {% if error.href == '#last-names' %}
+            {% set lastNamesError = error.text %}
+          {% endif %}
+        {% endfor %}
       {% endif %}
 
-
       <form action="/version-1/children/father-name" method="post" class="form">
-
-        <div class="govuk-form-group {% if (nameError != '')%} govuk-form-group--error {% endif%}">
+        <fieldset class="govuk-fieldset">
           <legend class="govuk-fieldset__legend govuk-fieldset__legend--l">
-          <span class="govuk-caption-l">{{ data['father'] }}</span>
-          <h1 class="govuk-fieldset__heading">
-            What is the full name of the child's birth father?
-          </h1>
+            <span class="govuk-caption-l">{{ data['father'] }}</span>
+            <h1 class="govuk-fieldset__heading">
+              What is the full name of the child's birth father?
+            </h1>
           </legend>
           <div id="namehint" class="govuk-hint">
             This will be on the child's full birth certificate. Ask the adoption agency or social worker if you're not sure.
           </div>
-  
-          {% if (nameError != '')%}
-          <span id="name-error" class="govuk-error-message">
-            <span class="govuk-visually-hidden">Error:</span> {{ nameError }}
-          </span>
-          {% endif%}
 
-          <input class="govuk-input {% if (nameError != '')%} govuk-input--error {% endif%}" id="father-name" name="father-name" type="text" autocomplete="name" spellcheck="false"
-            value="{{ data['father-name'] }}">
-        </div>
+          <div class="govuk-form-group">
+            <label class="govuk-label" for="firstNames">
+              First names<span class="govuk-visually-hidden">First names</span>
+              <div id="namehint" class="govuk-hint">
+                (Include any given or middle names)
+              </div>
+            </label>
+            {% if firstNamesError != '' %}
+            <span id="contact-error" class="govuk-error-message">
+              <span class="govuk-visually-hidden">Error:</span> {{ firstNamesError }}
+            </span>
+            {% endif %}
 
-          <!-- Buttons -->
-          {% include "../../includes/buttons.html" %}
+            <input class="govuk-input {% if (firstNamesError != '') %} govuk-input--error{% endif %}" id="father-first-names" name="father-first-names" type="text" autocomplete="name" value="{{ data['father-first-names'] }}"></div>
 
+        
+          <div class="govuk-form-group">
+            <label class="govuk-label" for="lastNames">
+              Last names<span class="govuk-visually-hidden">Last names</span>
+              <div id="namehint" class="govuk-hint">
+                (Include surname or family names)
+              </div>
+            </label>
+            {% if lastNamesError != '' %}
+            <span id="contact-error" class="govuk-error-message">
+              <span class="govuk-visually-hidden">Error:</span> {{ lastNamesError }}
+            </span>
+            {% endif %}
+            <input class="govuk-input {% if (lastNamesError != '') %} govuk-input--error{% endif %}" id="father-last-names" name="father-last-names" type="text" autocomplete="address-level2" value="{{ data['father-last-names'] }}"></div>
+
+
+        </fieldset>
+
+        <!-- Buttons -->
+        {% include "../../includes/buttons.html" %}
         </form>
-
       </div>
     </div>
   </main>

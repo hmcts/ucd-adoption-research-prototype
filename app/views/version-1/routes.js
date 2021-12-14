@@ -1024,7 +1024,7 @@ router.post('/version-1/applicants/second-applicant-upload', function(req, res) 
     if (req.body['mother-british'] === undefined && req.body['mother-irish'] === undefined && req.body['mother-other'] === undefined && req.body['mother-unsure'] === undefined) {
       console.log("error")
       errors.push({
-      text: 'Select a nationality or \'Not sure\'',
+      text: 'Select if they are British, Irish, citizen of a different country or not sure',
       href: '#checkbox-error'
       })
     }
@@ -1120,27 +1120,27 @@ router.post('/version-1/applicants/second-applicant-upload', function(req, res) 
   })
 
 
-  router.post('/version-1/children/mother-why-no-address', function(req, res) {
-    var errors = []
-    if (req.body['mother-why-no-address'] === '') {
-      errors.push({
-      text: 'Enter your occupation',
-      href: '#mother-why-no-address'
-      })
-    }
+  // router.post('/version-1/children/mother-why-no-address', function(req, res) {
+  //   var errors = []
+  //   if (req.body['mother-why-no-address'] === '') {
+  //     errors.push({
+  //     text: 'Enter your occupation',
+  //     href: '#mother-why-no-address'
+  //     })
+  //   }
 
-    if (req.body['submit-button'] === 'save-and-continue') {
-      if (errors.length === 0) {
-        res.redirect('/version-1/task-list')
-      }
-      else {
-          res.render('.//version-1/children/mother-why-no-address', { errors: errors })
-      }
-    }
-    else {
-      res.redirect('/version-1/task-list')
-    }
-  })
+  //   if (req.body['submit-button'] === 'save-and-continue') {
+  //     if (errors.length === 0) {
+  //       res.redirect('/version-1/task-list')
+  //     }
+  //     else {
+  //         res.render('.//version-1/children/mother-why-no-address', { errors: errors })
+  //     }
+  //   }
+  //   else {
+  //     res.redirect('/version-1/task-list')
+  //   }
+  // })
 
 
   router.post('/version-1/children/mother-address-postcode', function(req, res) {
@@ -1328,7 +1328,7 @@ router.post('/version-1/applicants/second-applicant-upload', function(req, res) 
     if (req.body['father-british'] === undefined && req.body['father-irish'] === undefined && req.body['father-other'] === undefined && req.body['father-unsure'] === undefined) {
       console.log("error")
       errors.push({
-      text: 'Select a nationality or \'Not sure\'',
+      text: 'Select if they are British, Irish, citizen of a different country or not sure',
       href: '#checkbox-error'
       })
     }
@@ -1376,7 +1376,7 @@ router.post('/version-1/applicants/second-applicant-upload', function(req, res) 
     var errors = []
     if (req.body['father-occupation'] === '') {
       errors.push({
-      text: 'Enter your occupation',
+      text: 'Enter an occupation',
       href: '#father-occupation'
       })
     }
@@ -1397,9 +1397,9 @@ router.post('/version-1/applicants/second-applicant-upload', function(req, res) 
 
   router.post('/version-1/children/father-have-address', function(req, res) {
     var errors = []
-    if (req.body['father-have-address'] === '') {
+    if (req.body['father-have-address'] === undefined) {
       errors.push({
-      text: 'Enter your occupation',
+      text: 'Please answer the question',
       href: '#father-have-address'
       })
     }
@@ -1407,7 +1407,7 @@ router.post('/version-1/applicants/second-applicant-upload', function(req, res) 
     if (req.body['submit-button'] === 'save-and-continue') {
       if (errors.length === 0) {
         if (req.body['father-have-address'] == 'no') {
-          res.redirect('/version-1/children/father-why-no-address')
+          res.redirect('/version-1/task-list')
         }
         else {
           res.redirect('/version-1/children/father-address-postcode')
@@ -1423,27 +1423,27 @@ router.post('/version-1/applicants/second-applicant-upload', function(req, res) 
   })
 
 
-  router.post('/version-1/children/father-why-no-address', function(req, res) {
-    var errors = []
-    if (req.body['father-why-no-address'] === '') {
-      errors.push({
-      text: 'Enter your occupation',
-      href: '#father-why-no-address'
-      })
-    }
+  // router.post('/version-1/children/father-why-no-address', function(req, res) {
+  //   var errors = []
+  //   if (req.body['father-why-no-address'] === '') {
+  //     errors.push({
+  //     text: 'Enter your occupation',
+  //     href: '#father-why-no-address'
+  //     })
+  //   }
 
-    if (req.body['submit-button'] === 'save-and-continue') {
-      if (errors.length === 0) {
-        res.redirect('/version-1/task-list')
-      }
-      else {
-          res.render('.//version-1/children/father-why-no-address', { errors: errors })
-      }
-    }
-    else {
-      res.redirect('/version-1/task-list')
-    }
-  })
+  //   if (req.body['submit-button'] === 'save-and-continue') {
+  //     if (errors.length === 0) {
+  //       res.redirect('/version-1/task-list')
+  //     }
+  //     else {
+  //         res.render('.//version-1/children/father-why-no-address', { errors: errors })
+  //     }
+  //   }
+  //   else {
+  //     res.redirect('/version-1/task-list')
+  //   }
+  // })
 
 
   router.post('/version-1/children/father-address-postcode', function(req, res) {
