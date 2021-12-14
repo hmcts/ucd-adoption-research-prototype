@@ -29,7 +29,7 @@ Apply to adopt a child
       {% endif %}
 
 
-      <form action="/version-1/children/applicant-adoption-agency-name" method="post" class="form">
+      <form action="/version-1/children/applicant-adoption-agency-or-social-worker" method="post" class="form">
 
         <div class="govuk-form-group {% if (agencyError != '')%} govuk-form-group--error {% endif %}">
         <legend class="govuk-fieldset__legend govuk-fieldset__legend--l">
@@ -66,11 +66,12 @@ Apply to adopt a child
             </div>
           </fieldset>
         </div>
+        </div>
 
         <!-- Buttons -->
           {% include "../../includes/buttons.html" %}
 
-
+        </div>
       </form>
   </div>
 </div>
