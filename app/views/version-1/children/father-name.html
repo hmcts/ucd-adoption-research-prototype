@@ -1,7 +1,7 @@
 {% extends "layout-signed-in.html" %}
 
 {% block pageTitle %}
-Apply to adopt a father
+Apply to adopt a child
 {% endblock %}
 
 {% block beforeContent %}
@@ -60,7 +60,7 @@ Apply to adopt a father
 
             <input class="govuk-input {% if (firstNamesError != '') %} govuk-input--error{% endif %}" id="father-first-names" name="father-first-names" type="text" autocomplete="name" value="{{ data['father-first-names'] }}"></div>
 
-        
+
           <div class="govuk-form-group">
             <label class="govuk-label" for="lastNames">
               Last names<span class="govuk-visually-hidden">Last names</span>
