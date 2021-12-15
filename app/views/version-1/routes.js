@@ -131,30 +131,38 @@ module.exports = (router) => {
 
 
 
-  
-  // ********************** First applicant personal details **********************
-  router.post('/version-1/applicants/first-applicant-name', function(req, res) {
-    var errors = []
-    if (req.body['first-applicant-name'] === '') {
-      errors.push({
-      text: 'Enter your full name',
-      href: '#first-applicant-name'
-      })
-    }
 
-    if (req.body['submit-button'] === 'save-and-continue') {
-      if (errors.length === 0) {
-        res.redirect('/version-1/applicants/first-applicant-other-names')
+  // ********************** First applicant personal details **********************
+
+
+
+    router.post('/version-1/applicants/first-applicant-name', function(req, res) {
+      var errors = []
+      if (req.body['first-applicant-names'] === '') {
+        errors.push({
+        text: 'Enter your first names',
+        href: '#first-names'
+        })
+      }
+      if (req.body['first-applicant-last-names'] === '') {
+        errors.push({
+        text: 'Enter your last names',
+        href: '#last-names'
+        })
+      }
+
+      if (req.body['submit-button'] === 'save-and-continue') {
+        if (errors.length === 0) {
+          res.redirect('/version-1/applicants/first-applicant-other-names')
+        }
+        else {
+          res.render('.//version-1/applicants/first-applicant-name', { errors: errors })
+        }
       }
       else {
-        res.render('.//version-1/applicants/first-applicant-name', { errors: errors })
+        res.redirect('/version-1/task-list')
       }
-    }
-    else {
-      res.redirect('/version-1/task-list')
-    }
-  })
-
+    })
 
   router.post('/version-1/applicants/first-applicant-other-names', function(req, res) {
     var errors = []
@@ -295,8 +303,8 @@ module.exports = (router) => {
 
 
 
-  
-  
+
+
   // ********************** First applicant contact details **********************
   router.post('/version-1/applicants/first-applicant-address', function(req, res) {
     var errors = []
@@ -449,17 +457,23 @@ module.exports = (router) => {
     }
   })
 
-  
-  
-  
-  
+
+
+
+
   // ********************** Second applicant personal details **********************
   router.post('/version-1/applicants/second-applicant-name', function(req, res) {
     var errors = []
-    if (req.body['second-applicant-name'] === '') {
+    if (req.body['second-applicant-names'] === '') {
       errors.push({
-      text: 'Enter your full name',
-      href: '#second-applicant-name'
+      text: 'Enter your first names',
+      href: '#first-names'
+      })
+    }
+    if (req.body['second-applicant-last-names'] === '') {
+      errors.push({
+      text: 'Enter your last names',
+      href: '#last-names'
       })
     }
 
@@ -884,7 +898,7 @@ router.post('/version-1/applicants/second-applicant-upload', function(req, res) 
     }
   })
 
-  
+
   router.post('/version-1/children/child-nationality', function(req, res) {
     var errors = []
 
@@ -2061,7 +2075,7 @@ router.post('/version-1/applicants/second-applicant-upload', function(req, res) 
     }
 
     count = req.session.data.childOrderCount
-    
+
     if (req.body['submit-button'] === 'save-and-continue') {
       if (errors.length === 0) {
         req.session.data.childOrderNumber[count] = req.body['order-case-number']
@@ -2087,7 +2101,7 @@ router.post('/version-1/applicants/second-applicant-upload', function(req, res) 
     }
 
     count = req.session.data.childOrderCount
-    
+
     if (req.body['submit-button'] === 'save-and-continue') {
       if (errors.length === 0) {
         req.session.data.childOrderCourt[count] = req.body['order-court-name']
@@ -2137,7 +2151,7 @@ router.post('/version-1/applicants/second-applicant-upload', function(req, res) 
 
 
 
-  
+
 
 
 
@@ -2226,7 +2240,7 @@ router.post('/version-1/applicants/second-applicant-upload', function(req, res) 
   //     res.redirect('/version-1/task-list')
   //   }
   // })
-  
+
 
   // router.post('/version-1/children/applicant-social-worker-name', function(req, res) {
   //   var errors = []
@@ -2686,7 +2700,7 @@ router.post('/version-1/applicants/second-applicant-upload', function(req, res) 
   //     href: '#solicitor-address'
   //     })
   //   }
-  
+
   //   if (req.body['submit-button'] === 'save-and-continue') {
   //     if (errors.length === 0) {
   //       res.redirect('/version-1/children/solicitor-find-address')
@@ -2699,7 +2713,7 @@ router.post('/version-1/applicants/second-applicant-upload', function(req, res) 
   //     res.redirect('/version-1/task-list')
   //   }
   // })
-  
+
   // router.post('/version-1/children/solicitor-enter-address-manually', function(req, res) {
   //   var errors = []
   //   if (req.body['address-line-1'] === '') {
@@ -2720,7 +2734,7 @@ router.post('/version-1/applicants/second-applicant-upload', function(req, res) 
   //     href: '#postcode'
   //     })
   //   }
-  
+
   //   if (req.body['submit-button'] === 'save-and-continue') {
   //     if (errors.length === 0) {
   //       res.redirect('/version-1/task-list')
@@ -2733,7 +2747,7 @@ router.post('/version-1/applicants/second-applicant-upload', function(req, res) 
   //     res.redirect('/version-1/task-list')
   //   }
   // })
-  
+
   // router.post('/version-1/children/solicitor-find-address', function(req, res) {
   //   var errors = []
   //   if (req.body['solicitor-choose-address'] === 'address-found') {
@@ -2742,7 +2756,7 @@ router.post('/version-1/applicants/second-applicant-upload', function(req, res) 
   //     href: '#solicitor-find-address'
   //     })
   //   }
-  
+
   //   if (req.body['submit-button'] === 'save-and-continue') {
   //     if (errors.length === 0) {
   //       res.redirect('/version-1/task-list')
@@ -2755,8 +2769,8 @@ router.post('/version-1/applicants/second-applicant-upload', function(req, res) 
   //     res.redirect('/version-1/task-list')
   //   }
   // })
-  
-  
+
+
   // router.post('/version-1/children/solicitor-number', function(req, res) {
   //   var errors = []
   //   if (req.body['solicitor-number'] === undefined) {
@@ -2771,7 +2785,7 @@ router.post('/version-1/applicants/second-applicant-upload', function(req, res) 
   //       href: '#no-number'
   //     })
   //   }
-  
+
   //   if (req.body['submit-button'] === 'save-and-continue') {
   //     if (errors.length === 0) {
   //       res.redirect('/version-1/children/solicitor-address')
@@ -2784,8 +2798,8 @@ router.post('/version-1/applicants/second-applicant-upload', function(req, res) 
   //     res.redirect('/version-1/task-list')
   //   }
   // })
-  
-  
+
+
   // router.post('/version-1/children/applicant-adoption-agency-or-social-worker', function(req, res) {
   //   var errors = []
   //   if (req.body['agency'] === undefined) {
