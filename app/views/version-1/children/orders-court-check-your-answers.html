@@ -15,6 +15,7 @@ Apply to adopt a child
     <div class="govuk-grid-column-two-thirds">
 
       {% set nameError = '' %}
+      {% set orderId = 'id' %}
 
       {% if errors | length > 0 %}
       {{ govukErrorSummary({
@@ -31,7 +32,7 @@ Apply to adopt a child
       <legend class="govuk-fieldset__legend govuk-fieldset__legend--l">
         <span class="govuk-caption-l">{{ data['child'] }}</span>
         <h1 class="govuk-fieldset__heading">
-          Orders already in place
+          Orders already in place 
         </h1>
       </legend>
 
@@ -42,13 +43,13 @@ Apply to adopt a child
             Type of order
           </dt>
           <dd class="govuk-summary-list__value">
-            Placement order
+            {{ data['childOrderType'][data['id']]}}
           </dd>
           <dd class="govuk-summary-list__actions">
-            <!-- <a href="#">
+            <a href="#">
               Change
               <span class="govuk-visually-hidden"> placement order</span>
-            </a> -->
+            </a>
           </dd>
         </div>
 
@@ -57,7 +58,7 @@ Apply to adopt a child
             Order case or serial number
           </dt>
           <dd class="govuk-summary-list__value">
-            {{ data['placement-case-number'] }}
+            {{ data['childOrderNumber'][data['id']]}}
           </dd>
           <dd class="govuk-summary-list__actions">
             <a href="orders-placement-case-number.html">
@@ -72,7 +73,7 @@ Apply to adopt a child
             Court
           </dt>
           <dd class="govuk-summary-list__value">
-            {{ data['placement-court-name'] }}
+            {{ data['childOrderCourt'][data['id']]}}
           </dd>
           <dd class="govuk-summary-list__actions">
             <a href="orders-placement-court.html">
@@ -87,7 +88,7 @@ Apply to adopt a child
             Order date
           </dt>
           <dd class="govuk-summary-list__value">
-            {{ data['placement-day'] }} {{ data['monthName'][data['childOrderMonth'][0]] }} {{ data['placement-year'] }} 
+            {{ data['childOrderDay'][data['id']] }} {{ data['monthName'][data['childOrderMonth'][data['id']]] }} {{ data['childOrderYear'][data['id']] }} 
           </dd>
           <dd class="govuk-summary-list__actions">
             <a href="orders-placement-date.html">

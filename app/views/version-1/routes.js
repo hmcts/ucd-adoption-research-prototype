@@ -1706,7 +1706,7 @@ router.post('/version-1/applicants/second-applicant-upload', function(req, res) 
     }
     if (req.body['applicant-phone-number'] === '') {
       errors.push({
-      text: 'Enter a telephone number',
+      text: 'Enter a UK telephone number',
       href: '#phone'
       })
     }
@@ -1770,7 +1770,7 @@ router.post('/version-1/applicants/second-applicant-upload', function(req, res) 
     }
     if (req.body['applicant-phone-number-2'] === '') {
       errors.push({
-      text: 'Enter a telephone number',
+      text: 'Enter a UK telephone number',
       href: '#phone'
       })
     }
@@ -1805,7 +1805,7 @@ router.post('/version-1/applicants/second-applicant-upload', function(req, res) 
     }
     if (req.body['child-social-worker-phone-number'] === '') {
       errors.push({
-      text: 'Enter a telephone number',
+      text: 'Enter a UK telephone number',
       href: '#phone'
       })
     }
@@ -1875,7 +1875,7 @@ router.post('/version-1/applicants/second-applicant-upload', function(req, res) 
     }
     if (req.body['solicitor-phone-number'] === '') {
       errors.push({
-      text: 'Enter a telephone number',
+      text: 'Enter a UK telephone number',
       href: '#phone'
       })
     }
@@ -1915,7 +1915,10 @@ router.post('/version-1/applicants/second-applicant-upload', function(req, res) 
       if (errors.length === 0) {
         req.session.data.childOrderCount = count
         req.session.data.childOrderType[count] = "Placement order"
+        req.session.data.childOrderId[count] = count
         req.session.data.childOrderNumber[count] = req.body['placement-case-number']
+        req.session.data.childOrderCompleted[count] = "No"
+        req.session.data.childOrderInProgress = "Yes"
         res.redirect('/version-1/children/orders-placement-court')
       }
       else {
@@ -1923,15 +1926,15 @@ router.post('/version-1/applicants/second-applicant-upload', function(req, res) 
       }
     }
     else {
+      req.session.data.childOrderInProgress = "Yes"
       res.redirect('/version-1/task-list')
     }
-    console.log("Placement: ", req.session.data.childOrderType[count])
   })
 
 
   router.post('/version-1/children/orders-placement-court', function(req, res) {
     var errors = []
-    if (req.body['court-name'] === '') {
+    if (req.body['placement-court-name'] === '') {
       errors.push({
       text: 'Enter the name of the court',
       href: '#court-name'
@@ -1943,6 +1946,7 @@ router.post('/version-1/applicants/second-applicant-upload', function(req, res) 
     if (req.body['submit-button'] === 'save-and-continue') {
       if (errors.length === 0) {
         req.session.data.childOrderCourt[count] = req.body['placement-court-name']
+        req.session.data.childOrderCompleted[count] = "No"
         res.redirect('/version-1/children/orders-placement-date')
       }
       else {
@@ -1971,6 +1975,7 @@ router.post('/version-1/applicants/second-applicant-upload', function(req, res) 
         req.session.data.childOrderDay[count] = req.body['placement-day']
         req.session.data.childOrderMonth[count] = req.body['placement-month']
         req.session.data.childOrderYear[count] = req.body['placement-year']
+        req.session.data.childOrderCompleted[count] = "Yes"
         res.redirect('/version-1/children/orders-summary')
       }
       else {
@@ -1980,6 +1985,7 @@ router.post('/version-1/applicants/second-applicant-upload', function(req, res) 
     else {
       res.redirect('/version-1/task-list')
     }
+    console.log("Month: ", req.session.data.childOrderMonth[count])
   })
 
 
@@ -2024,8 +2030,15 @@ router.post('/version-1/applicants/second-applicant-upload', function(req, res) 
       })
     }
 
+    count = req.session.data.childOrderCount + 1
+    req.session.data.childOrderCount = count
+
     if (req.body['submit-button'] === 'save-and-continue') {
       if (errors.length === 0) {
+        req.session.data.childOrderCount = count
+        req.session.data.childOrderId[count] = count
+        req.session.data.childOrderType[count] = req.body['order-type']
+        req.session.data.childOrderCompleted[count] = "No"
         res.redirect('/version-1/children/orders-order-case-number')
       }
       else {
@@ -2040,15 +2053,18 @@ router.post('/version-1/applicants/second-applicant-upload', function(req, res) 
 
   router.post('/version-1/children/orders-order-case-number', function(req, res) {
     var errors = []
-    if (req.body['order-number'] === '') {
+    if (req.body['order-case-number'] === '') {
       errors.push({
       text: 'Please answer the question',
       href: '#order-number'
       })
     }
 
+    count = req.session.data.childOrderCount
+    
     if (req.body['submit-button'] === 'save-and-continue') {
       if (errors.length === 0) {
+        req.session.data.childOrderNumber[count] = req.body['order-case-number']
         res.redirect('/version-1/children/orders-order-court')
       }
       else {
@@ -2070,8 +2086,11 @@ router.post('/version-1/applicants/second-applicant-upload', function(req, res) 
       })
     }
 
+    count = req.session.data.childOrderCount
+    
     if (req.body['submit-button'] === 'save-and-continue') {
       if (errors.length === 0) {
+        req.session.data.childOrderCourt[count] = req.body['order-court-name']
         res.redirect('/version-1/children/orders-order-date')
       }
       else {
@@ -2086,23 +2105,30 @@ router.post('/version-1/applicants/second-applicant-upload', function(req, res) 
 
   router.post('/version-1/children/orders-order-date', function(req, res) {
     var errors = []
-    if (req.body['day'] === '' || req.body['month'] === '' || req.body['year'] === '') {
+    if (req.body['order-day'] === '' || req.body['order-month'] === '' || req.body['order-year'] === '') {
       errors.push({
       text: 'Developers: please refer to ADOP-281 for different error messages',
       href: '#order-date'
       })
     }
-      if (req.body['submit-button'] === 'save-and-continue') {
-        if (errors.length === 0) {
-          res.redirect('/version-1/children/orders-summary-2')
-        }
-        else {
-          res.render('.//version-1/children/orders-order-date', { errors: errors })
-        }
+
+    count = req.session.data.childOrderCount
+
+    if (req.body['submit-button'] === 'save-and-continue') {
+      if (errors.length === 0) {
+        req.session.data.childOrderDay[count] = req.body['order-day']
+        req.session.data.childOrderMonth[count] = req.body['order-month']
+        req.session.data.childOrderYear[count] = req.body['order-year']
+        req.session.data.childOrderCompleted[count] = "Yes"
+        res.redirect('/version-1/children/orders-summary')
       }
       else {
-        res.redirect('/version-1/task-list')
+        res.render('.//version-1/children/orders-order-date', { errors: errors })
       }
+    }
+    else {
+      res.redirect('/version-1/task-list')
+    }
   })
 
 
