@@ -133,7 +133,7 @@ module.exports = (router) => {
     var errors = []
     if (req.body['day'] === '' || req.body['month'] === '' || req.body['year'] === '') {
       errors.push({
-      text: 'Developers: please refer to ADOP-149 for different error messages',
+      text: 'Developers: please refer to ADOP-90 for different error messages',
       href: '#date-child-moved-in'
       })
     }
