@@ -2008,7 +2008,7 @@ router.post('/version-1/applicants/second-applicant-upload', function(req, res) 
     if (req.body['add-another'] === undefined) {
       errors.push({
       text: 'Please select an answer',
-      href: '#agency'
+      href: '#add-another'
       })
     }
 
@@ -2026,7 +2026,7 @@ router.post('/version-1/applicants/second-applicant-upload', function(req, res) 
         }
       }
       else {
-        res.render('.//version-1/children/children/orders-summary', { errors: errors })
+        res.render('.//version-1/children/orders-summary', { errors: errors })
       }
     }
     else {

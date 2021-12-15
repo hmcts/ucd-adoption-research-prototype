@@ -71,6 +71,7 @@ module.exports = {
   "socialworker": "Your adoption agency or local authority details",
   "childsocialworker": "The child's adoption agency or local authority details",
   "solicitor": "Your solicitor",
+  "sibling": "Sibling details",
 
 
   "monthName": [
