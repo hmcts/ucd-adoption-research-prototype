@@ -128,6 +128,27 @@ module.exports = (router) => {
     }
   })
 
+  router.post('/version-1/applicants/date-child-moved-in', function(req, res) {
+    console.log("Day: ", req.body['day'])
+    var errors = []
+    if (req.body['day'] === '' || req.body['month'] === '' || req.body['year'] === '') {
+      errors.push({
+      text: 'Developers: please refer to ADOP-149 for different error messages',
+      href: '#date-child-moved-in'
+      })
+    }
+      if (req.body['submit-button'] === 'save-and-continue') {
+        if (errors.length === 0) {
+          res.redirect('/version-1/task-list')
+        }
+        else {
+          res.render('.//version-1/applicants/date-child-moved-in', { errors: errors })
+        }
+      }
+      else {
+        res.redirect('/version-1/task-list')
+      }
+  })
 
 
 
