@@ -70,7 +70,24 @@ module.exports = {
   "other-parent": "Other parent or guardian details",
   "socialworker": "Your adoption agency or local authority details",
   "childsocialworker": "The child's adoption agency or local authority details",
-  "solicitor": "Your solicitor"
+  "solicitor": "Your solicitor",
+
+
+  "monthName": [
+    "",
+    "January",
+    "February", 
+    "March",
+    "April", 
+    "May",
+    "June", 
+    "July",
+    "August", 
+    "September",
+    "October", 
+    "November",
+    "December" 
+]
 
 
 ,}

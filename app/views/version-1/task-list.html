@@ -232,9 +232,16 @@ Task list
 
                 <li class="app-task-list__item">
                     <span class="app-task-list__task-name">
+                    {% if (data['childOrderInProgress'] === "Yes") %}
+                    <a href="children/orders-summary.html" aria-describedby="eligibility-completed">
+                        Placement and court orders
+                    </a>
+                    {% else %}
                     <a href="children/orders-placement-case-number.html" aria-describedby="eligibility-completed">
                         Placement and court orders
-                    </a></span>
+                    </a>
+                    {% endif %}
+                    </span>
                     {% if data['placement-x'] %}
                         <strong class="govuk-tag  app-task-list__tag" id="eligibility-completed">Completed</strong>
                     {% elseif data['placement-case-number'] %}
