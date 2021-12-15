@@ -14,39 +14,38 @@ Apply to adopt a child
   <div class="govuk-grid-row">
     <div class="govuk-grid-column-two-thirds">
 
-      {% set occupationError = '' %}
-  
+      {% set nameError = '' %}
+
       {% if errors | length > 0 %}
       {{ govukErrorSummary({
         titleText: "There is a problem",
         errorList: errors
       }) }}
       {% for error in errors %}
-        {% if error.href == '#father-occupation' %}
-          {% set occupationError = error.text %}
+        {% if error.href == '#order-court-name' %}
+          {% set nameError = error.text %}
         {% endif %}
       {% endfor %}
       {% endif %}
 
 
-      <form action="/version-1/children/father-occupation" method="post" class="form">
+      <form action="/version-1/children/orders-order-court" method="post" class="form">
 
-        <div class="govuk-form-group {% if (occupationError != '')%} govuk-form-group--error {% endif%}">
+        <div class="govuk-form-group {% if (nameError != '')%} govuk-form-group--error {% endif%}">
           <legend class="govuk-fieldset__legend govuk-fieldset__legend--l">
-          <span class="govuk-caption-l">{{ data['father'] }}</span>
+          <span class="govuk-caption-l">{{ data['child'] }}</span>
           <h1 class="govuk-fieldset__heading">
-            What is the occupation of the child's birth father?
+            Which court made the order?
           </h1>
           </legend>
 
-          {% if (occupationError != '')%}
+          {% if (nameError != '')%}
           <span id="name-error" class="govuk-error-message">
-            <span class="govuk-visually-hidden">Error:</span> {{ occupationError }}
+            <span class="govuk-visually-hidden">Error:</span> {{ nameError }}
           </span>
           {% endif%}
 
-          <input class="govuk-input {% if (occupationError != '')%} govuk-input--error {% endif%}" id="father-occupation" name="father-occupation" type="text" autocomplete="name" spellcheck="false"
-            value="{{ data['father-occupation'] }}">
+          <input class="govuk-input {% if (nameError != '')%} govuk-input--error {% endif%}" id="order-court-name" name="order-court-name" type="text" spellcheck="false">
         </div>
 
           <!-- Buttons -->

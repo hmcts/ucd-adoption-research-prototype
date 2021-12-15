@@ -14,7 +14,7 @@ Apply to adopt a child
   <div class="govuk-grid-row">
     <div class="govuk-grid-column-two-thirds">
 
-      {% set nameError = '' %}
+      {% set numberError = '' %}
 
       {% if errors | length > 0 %}
       {{ govukErrorSummary({
@@ -22,31 +22,33 @@ Apply to adopt a child
         errorList: errors
       }) }}
       {% for error in errors %}
-        {% if error.href == '#court-name' %}
-          {% set nameError = error.text %}
+        {% if error.href == '#case-number' %}
+          {% set numberError = error.text %}
         {% endif %}
       {% endfor %}
       {% endif %}
 
 
-      <form action="/version-1/children/orders-placement-court" method="post" class="form">
+      <form action="/version-1/children/orders-order-case-number" method="post" class="form">
 
-        <div class="govuk-form-group {% if (nameError != '')%} govuk-form-group--error {% endif%}">
+        <div class="govuk-form-group {% if (numberError != '')%} govuk-form-group--error {% endif%}">
           <legend class="govuk-fieldset__legend govuk-fieldset__legend--l">
           <span class="govuk-caption-l">{{ data['child'] }}</span>
           <h1 class="govuk-fieldset__heading">
-            Which court made the placement order?
+            What is the serial or case number on the order?
           </h1>
           </legend>
+          <!-- <div id="case-hint" class="govuk-hint">
+            This is on the top right of the order. Ask the adoption agency or social worker if you're not sure.
+          </div> -->
 
-          {% if (nameError != '')%}
-          <span id="name-error" class="govuk-error-message">
-            <span class="govuk-visually-hidden">Error:</span> {{ nameError }}
+          {% if (numberError != '')%}
+          <span id="number-error" class="govuk-error-message">
+            <span class="govuk-visually-hidden">Error:</span> {{ numberError }}
           </span>
           {% endif%}
 
-          <input class="govuk-input {% if (nameError != '')%} govuk-input--error {% endif%}" id="placement-court-name" name="placement-court-name" type="text" spellcheck="false"
-            value="{{ data['placement-court-name'] }}">
+          <input class="govuk-input govuk-input--width-10 {% if (numberError != '')%} govuk-input--error {% endif%}" id="order-case-number" name="order-case-number" type="number" spellcheck="false">
         </div>
 
           <!-- Buttons -->

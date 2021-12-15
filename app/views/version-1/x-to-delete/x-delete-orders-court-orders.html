@@ -1,0 +1,109 @@
+{% extends "layout-signed-in.html" %}
+
+{% block pageTitle %}
+Apply to adopt a child
+{% endblock %}
+
+{% block beforeContent %}
+<a class="govuk-back-link" href="javascript:history.back()">Back</a>
+{% endblock %}
+
+{% block content %}
+
+<div class="govuk-width-container">
+  <div class="govuk-grid-row">
+    <div class="govuk-grid-column-two-thirds">
+
+      {% set checkboxError = '' %}
+      {% set numberOfOrdersError = '' %}
+  
+      {% if errors | length > 0 %}
+      {{ govukErrorSummary({
+        titleText: "There is a problem",
+        errorList: errors
+      }) }}
+      {% for error in errors %}
+        {% if error.href == '#court-orders' %}
+          {% set checkboxError = error.text %}
+        {% endif %}
+        {% if error.href == '#mother-no-reason' %}
+            {% set numberOfOrdersError = error.text %}
+        {% endif %}
+        {% endfor %}
+      {% endif %}
+
+
+      <form action="/version-1/children/orders-court-orders" method="post" class="form">
+        
+        <div class="govuk-form-group {% if (checkboxError != '')%} govuk-form-group--error {% endif %}">
+        <legend class="govuk-fieldset__legend govuk-fieldset__legend--l">
+          <span class="govuk-caption-l">{{ data['child'] }}</span>
+          <h1 class="govuk-fieldset__heading">
+            Are there any court orders already in place for the child?
+          </h1>
+        </legend>
+        <div id="courthint" class="govuk-hint">
+          For example, a care order or supervision order. Your adoption agency or social worker can provide this information for you.
+        </div>
+
+
+        {% if (checkboxError != '')%}
+          <span class="govuk-error-message govuk-form">
+            <span class="govuk-visually-hidden">Error:</span> {{ checkboxError }}
+          </span>
+        {% endif %}
+
+        <div class="govuk-form-group">
+          <fieldset class="govuk-fieldset" role="group" aria-describedby="court orders already in place">
+
+            <div class="govuk-radios govuk-radios--conditional" data-module="govuk-radios">
+              <div class="govuk-radios__item">
+                <input class="govuk-radios__input" id="yes" name="court-orders" type="radio" value="yes" data-aria-controls="conditional-contact" {% if (data['court-orders'] === "yes") %} checked {% endif %}>
+                <label class="govuk-label govuk-radios__label" for="yes">
+                  Yes
+                </label>
+              </div>
+              <div class="govuk-radios__conditional govuk-radios__conditional--hidden " id="conditional-contact">
+                <div class="govuk-form-group">
+                    <label class="govuk-label" for="contact-by-email">
+                    Provide more details. For example, 'the birth mother is uncontactable'. Your adoption agency or social worker can help you to complete this section.
+                  </label>
+                  {% if (numberOfOrdersError != '')%}
+                  <span class="govuk-error-message govuk-form">
+                    <span class="govuk-visually-hidden">Error:</span> {{ numberOfOrdersError }}
+                  </span>
+                {% endif %}
+                  <input class="govuk-input{% if (numberOfOrdersError != '') %} govuk-input--error{% endif %}" id="reason-not-sure" name="reason-not-sure" type="text" spellcheck="false" value="{{data['reason-not-sure']}}">
+                </div>
+              </div>
+
+
+              <div class="govuk-radios govuk-radios--conditional" data-module="govuk-radios">
+                <div class="govuk-radios__item">
+                  <input class="govuk-radios__input" id="no" name="court-orders" type="radio" value="no" {% if (data['court-orders'] === "no") %} checked {% endif %}>
+                  <label class="govuk-label govuk-radios__label" for="no">
+                    No
+                  </label>
+                </div>
+  
+                <div class="govuk-radios govuk-radios--conditional " data-module="govuk-radios">
+                  <div class="govuk-radios__item">
+                    <input class="govuk-radios__input" id="unsure" name="court-orders" type="radio" value="unsure"  {% if (data['court-orders'] === "unsure") %} checked {% endif %}>
+                    <label class="govuk-label govuk-radios__label" for="unsure">
+                      Not sure
+                    </label>
+                  </div>
+                </div>
+            </div>
+          </fieldset>
+        </div>
+      </div>
+      <!-- Buttons -->
+        {% include "../../includes/buttons.html" %}
+
+
+      </form>   
+  </div>
+</div>
+
+{% endblock %}

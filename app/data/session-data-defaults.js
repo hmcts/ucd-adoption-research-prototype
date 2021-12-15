@@ -48,6 +48,16 @@ module.exports = {
   "childNationalities": [],
   "childNationalityCount": 0,
 
+  "childOrderId": [],
+  "childOrderType": [],
+  "childOrderNumber": [],
+  "childOrderCourt": [],
+  "childOrderDay": [],
+  "childOrderMonth": [],
+  "childOrderYear": [],
+  "childOrderCompleted": [],
+  "childOrderCount": 0,
+
 
   "numberChildren": 0,
   "numberApplicants": 0,
@@ -55,11 +65,29 @@ module.exports = {
   "firstApplicant": "Primary applicant",
   "secondApplicant": "Second applicant",
   "child": "The child's details",
-  "mother": "Their birth mother's details",
-  "father": "Their birth father's details",
+  "mother": "Birth mother's details",
+  "father": "Birth father's details",
+  "other-parent": "Other parent or guardian details",
   "socialworker": "Your adoption agency or local authority details",
   "childsocialworker": "The child's adoption agency or local authority details",
-  "solicitor": "Your solicitor"
+  "solicitor": "Your solicitor",
+
+
+  "monthName": [
+    "",
+    "January",
+    "February", 
+    "March",
+    "April", 
+    "May",
+    "June", 
+    "July",
+    "August", 
+    "September",
+    "October", 
+    "November",
+    "December" 
+]
 
 
 ,}

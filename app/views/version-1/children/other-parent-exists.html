@@ -14,7 +14,7 @@ Apply to adopt a child
   <div class="govuk-grid-row">
     <div class="govuk-grid-column-two-thirds">
 
-      {% set aliveError = '' %}
+      {% set existsError = '' %}
       {% set notSureError = '' %}
   
       {% if errors | length > 0 %}
@@ -23,29 +23,29 @@ Apply to adopt a child
         errorList: errors
       }) }}
       {% for error in errors %}
-        {% if error.href == '#mother-alive' %}
-          {% set aliveError = error.text %}
+        {% if error.href == '#other-parent' %}
+          {% set existsError = error.text %}
         {% endif %}
-        {% if error.href == '#mother-no-reason' %}
+        {% if error.href == '#other-parent-no-reason' %}
             {% set notSureError = error.text %}
         {% endif %}
         {% endfor %}
       {% endif %}
 
 
-      <form action="/version-1/children/mother-alive" method="post" class="form">
+      <form action="/version-1/children/other-parent-exists" method="post" class="form">
         
-        <div class="govuk-form-group {% if (aliveError != '')%} govuk-form-group--error {% endif %}">
+        <div class="govuk-form-group {% if (existsError != '')%} govuk-form-group--error {% endif %}">
         <legend class="govuk-fieldset__legend govuk-fieldset__legend--l">
-          <span class="govuk-caption-l">{{ data['mother'] }}</span>
+          <span class="govuk-caption-l">{{ data['other-parent'] }}</span>
           <h1 class="govuk-fieldset__heading">
-            Is the child's birth mother still alive?
+            Is there another person who has parental responsibility for the child?
           </h1>
         </legend>
 
-        {% if (aliveError != '')%}
+        {% if (existsError != '')%}
           <span class="govuk-error-message govuk-form">
-            <span class="govuk-visually-hidden">Error:</span> {{ aliveError }}
+            <span class="govuk-visually-hidden">Error:</span> {{ existsError }}
           </span>
         {% endif %}
 
@@ -54,7 +54,7 @@ Apply to adopt a child
 
             <div class="govuk-radios govuk-radios--conditional" data-module="govuk-radios">
               <div class="govuk-radios__item">
-                <input class="govuk-radios__input" id="yes" name="mother-alive" type="radio" value="yes" {% if (data['mother-alive'] === "yes") %} checked {% endif %}>
+                <input class="govuk-radios__input" id="yes" name="other-parent-exists" type="radio" value="yes" {% if (data['other-parent-exists'] === "yes") %} checked {% endif %}>
                 <label class="govuk-label govuk-radios__label" for="yes">
                   Yes
                 </label>
@@ -62,7 +62,7 @@ Apply to adopt a child
 
               <div class="govuk-radios govuk-radios--conditional" data-module="govuk-radios">
                 <div class="govuk-radios__item">
-                  <input class="govuk-radios__input" id="no" name="mother-alive" type="radio" value="no" {% if (data['mother-alive'] === "no") %} checked {% endif %}>
+                  <input class="govuk-radios__input" id="no" name="other-parent-exists" type="radio" value="no" {% if (data['other-parent-exists'] === "no") %} checked {% endif %}>
                   <label class="govuk-label govuk-radios__label" for="no">
                     No
                   </label>
@@ -70,7 +70,7 @@ Apply to adopt a child
   
                 <div class="govuk-radios govuk-radios--conditional " data-module="govuk-radios">
                 <div class="govuk-radios__item">
-                  <input class="govuk-radios__input" id="unsure" name="mother-alive" type="radio" value="unsure" data-aria-controls="conditional-contact" {% if (data['mother-alive'] === "unsure") %} checked {% endif %}>
+                  <input class="govuk-radios__input" id="unsure" name="other-parent-exists" type="radio" value="unsure" data-aria-controls="conditional-contact" {% if (data['other-parent-exists'] === "unsure") %} checked {% endif %}>
                   <label class="govuk-label govuk-radios__label" for="unsure">
                     Not sure
                   </label>
@@ -79,7 +79,7 @@ Apply to adopt a child
                   <!-- <div class="govuk-form-group{% if (notSureError != '')%} govuk-form-group--error{% endif %}"> -->
                   <div class="govuk-form-group">
                       <label class="govuk-label" for="contact-by-email">
-                      Provide more details. For example, 'the birth mother is uncontactable'. Your adoption agency or social worker can help you to complete this section.
+                        Provide more details. For example, 'step parent is uncontactable'. Your adoption agency or social worker can help you to complete this section.
                     </label>
                     {% if (notSureError != '')%}
                     <span class="govuk-error-message govuk-form">
