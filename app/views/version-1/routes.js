@@ -2091,7 +2091,7 @@ router.post('/version-1/applicants/second-applicant-upload', function(req, res) 
     if (req.body['order-case-number'] === '') {
       errors.push({
       text: 'Please answer the question',
-      href: '#order-number'
+      href: '#case-number'
       })
     }
 
@@ -2169,9 +2169,307 @@ router.post('/version-1/applicants/second-applicant-upload', function(req, res) 
 
 
 
+  // ********************** Sibling details **********************
+  router.post('/version-1/children/sibling-exists', function(req, res) {
+    console.log("father alive: ", req.body['sibling-exists'])
+    var errors = []
+    if (req.body['sibling-exists'] === undefined) {
+      errors.push({
+      text: 'Please answer the question',
+      href: '#sibling'
+      })
+    }
+    else if (req.body['sibling-exists'] === 'unsure' && req.body['reason-not-sure'] === '') {
+      errors.push({
+      text: 'Enter more detail',
+      href: '#sibling-no-reason'
+      })
+    }
+
+    if (req.body['submit-button'] === 'save-and-continue') {
+      if (errors.length === 0) {
+        if (req.body['sibling-exists'] === 'yes') {
+          res.redirect('/version-1/children/sibling-court-order-exists')
+        }
+        else {
+          req.session.data.siblingCompleted = 1
+          res.redirect('/version-1/task-list')
+        }
+      }
+      else {
+        res.render('.//version-1/children/sibling-exists', { errors: errors })
+      }
+    }
+    else {
+        res.redirect('/version-1/task-list')
+    }
+  })
 
 
+  router.post('/version-1/children/sibling-court-order-exists', function(req, res) {
+    console.log("father alive: ", req.body['sibling-court-order-exists'])
+    var errors = []
+    if (req.body['sibling-court-order-exists'] === undefined) {
+      errors.push({
+      text: 'Please answer the question',
+      href: '#ourt-order-checkbox'
+      })
+    }
+    else if (req.body['sibling-court-order-exists'] === 'unsure' && req.body['reason-not-sure'] === '') {
+      errors.push({
+      text: 'Enter more detail',
+      href: '#sibling-court-order-no-reason'
+      })
+    }
 
+    if (req.body['submit-button'] === 'save-and-continue') {
+      if (errors.length === 0) {
+        if (req.body['sibling-court-order-exists'] === 'yes') {
+          res.redirect('/version-1/children/sibling-name')
+        }
+        else {
+          req.session.data.siblingCompleted = 1
+          res.redirect('/version-1/task-list')
+        }
+      }
+      else {
+        res.render('.//version-1/children/sibling-court-order-exists', { errors: errors })
+      }
+    }
+    else {
+        res.redirect('/version-1/task-list')
+    }
+  })
+
+
+  router.post('/version-1/children/sibling-name', function(req, res) {
+    var errors = []
+    if (req.body['sibling-first-names'] === '') {
+      errors.push({
+      text: 'Enter their first names',
+      href: '#first-names'
+      })
+    }
+    if (req.body['sibling-last-names'] === '') {
+      errors.push({
+      text: 'Enter their last names',
+      href: '#last-names'
+      })
+    }
+
+    count = req.session.data.siblingOrderCount
+
+    if (req.body['submit-button'] === 'save-and-continue') {
+      if (errors.length === 0) {
+        req.session.data.siblingOrderId[count] = count
+        req.session.data.uniqueSiblingId[count] = count
+        req.session.data.uniqueSiblingFirstNames[count] = req.body['sibling-first-names']
+        req.session.data.uniqueSiblingLastNames[count] = req.body['sibling-last-names']
+        req.session.data.siblingFirstNames[count] = req.body['sibling-first-names']
+        req.session.data.siblingLastNames[count] = req.body['sibling-last-names']
+        req.session.data.numberOfSiblings = 1
+        res.redirect('/version-1/children/sibling-order-type')
+      }
+      else {
+        res.render('.//version-1/children/sibling-name', { errors: errors })
+      }
+    }
+    else {
+      res.redirect('/version-1/task-list')
+    }
+  })
+
+
+  router.post('/version-1/children/sibling-order-type', function(req, res) {
+    var errors = []
+    if (req.body['sibling-order-type'] === '') {
+      errors.push({
+      text: 'Please answer the question',
+      href: '#order-type'
+      })
+    }
+
+    count = req.session.data.siblingOrderCount
+
+    if (req.body['submit-button'] === 'save-and-continue') {
+      if (errors.length === 0) {
+        req.session.data.siblingOrderId[count] = count
+        req.session.data.siblingOrderType[count] = req.body['sibling-order-type']
+        req.session.data.siblingOrderCompleted[count] = "No"
+        res.redirect('/version-1/children/sibling-order-case-number')
+      }
+      else {
+        res.render('.//version-1/children/sibling-order-type', { errors: errors })
+      }
+    }
+    else {
+      res.redirect('/version-1/task-list')
+    }
+  })
+
+
+  router.post('/version-1/children/sibling-order-case-number', function(req, res) {
+    var errors = []
+    if (req.body['sibling-order-case-number'] === '') {
+      errors.push({
+      text: 'Please answer the question',
+      href: '#case-number'
+      })
+    }
+
+    count = req.session.data.siblingOrderCount
+
+    if (req.body['submit-button'] === 'save-and-continue') {
+      if (errors.length === 0) {
+        req.session.data.siblingOrderNumber[count] = req.body['sibling-order-case-number']
+        res.redirect('/version-1/children/sibling-order-court')
+      }
+      else {
+        res.render('.//version-1/children/sibling-order-case-number', { errors: errors })
+      }
+    }
+    else {
+      res.redirect('/version-1/task-list')
+    }
+  })
+
+
+  router.post('/version-1/children/sibling-order-court', function(req, res) {
+    var errors = []
+    if (req.body['sibling-order-court-name'] === '') {
+      errors.push({
+      text: 'Please answer the question',
+      href: '#order-court-name'
+      })
+    }
+
+    count = req.session.data.siblingOrderCount
+
+    if (req.body['submit-button'] === 'save-and-continue') {
+      if (errors.length === 0) {
+        req.session.data.siblingOrderCourt[count] = req.body['sibling-order-court-name']
+        res.redirect('/version-1/children/sibling-order-date')
+      }
+      else {
+        res.render('.//version-1/children/sibling-order-court', { errors: errors })
+      }
+    }
+    else {
+      res.redirect('/version-1/task-list')
+    }
+  })
+
+
+  router.post('/version-1/children/sibling-order-date', function(req, res) {
+    var errors = []
+    if (req.body['sibling-day'] === '' || req.body['sibling-month'] === '' || req.body['sibling-year'] === '') {
+      errors.push({
+      text: 'Developers: please refer to ADOP-281 for different error messages',
+      href: '#order-date'
+      })
+    }
+
+    count = req.session.data.siblingOrderCount
+
+    if (req.body['submit-button'] === 'save-and-continue') {
+      if (errors.length === 0) {
+        req.session.data.siblingOrderDay[count] = req.body['sibling-day']
+        req.session.data.siblingOrderMonth[count] = req.body['sibling-month']
+        req.session.data.siblingOrderYear[count] = req.body['sibling-year']
+        req.session.data.siblingOrderCompleted[count] = "Yes"
+        res.redirect('/version-1/children/sibling-summary')
+      }
+      else {
+        res.render('.//version-1/children/sibling-order-date', { errors: errors })
+      }
+    }
+    else {
+      res.redirect('/version-1/task-list')
+    }
+  })
+
+
+  router.post('/version-1/children/sibling-summary', function(req, res) {
+    var errors = []
+    if (req.body['sibling-add-another'] === undefined) {
+      errors.push({
+      text: 'Please select an answer',
+      href: '#add-another'
+      })
+    }
+
+    if (req.body['submit-button'] === 'continue') {
+      res.redirect('/version-1/children/sibling-summary')
+    }
+    else if (req.body['submit-button'] === 'save-and-continue') {
+      if (errors.length === 0) {
+        if (req.body['sibling-add-another'] === 'Yes') {
+          res.redirect('/version-1/children/sibling-choose-sibling')
+        }
+        else {
+          req.session.data.AddToListFinished = 1
+          res.redirect('/version-1/task-list')
+        }
+      }
+      else {
+        res.render('.//version-1/children/sibling-summary', { errors: errors })
+      }
+    }
+    else {
+        res.redirect('/version-1/task-list')
+    }
+    console.log("Sibling array: ", req.session.data.siblingLastNames)
+  })
+
+
+  
+  router.post('/version-1/children/sibling-choose-sibling', function(req, res) {
+    var errors = []
+    if (req.body['what-sibling'] === undefined) {
+      errors.push({
+      text: 'Please answer the question',
+      href: '#what-sibling'
+      })
+    }
+    else if (req.body['what-sibling'] === 'add-new-sibling') {
+      if (req.body['add-sibling-first-names'] === '') {
+        errors.push({
+        text: 'Enter their first names',
+        href: '#first-names'
+        })
+      }
+      if (req.body['add-sibling-last-names'] === '') {
+        errors.push({
+        text: 'Enter their last names',
+        href: '#last-names'
+        })
+      }
+    }
+    
+    count = req.session.data.siblingOrderCount + 1
+    sib = req.session.data.numberOfSiblings
+
+    if (req.body['submit-button'] === 'save-and-continue') {
+      if (errors.length === 0) {
+        if (req.body['what-sibling'] === 'add-new-sibling') {
+          req.session.data.uniqueSiblingId[sib] = sib
+          req.session.data.uniqueSiblingFirstNames[count] = req.body['add-sibling-first-names']
+          req.session.data.uniqueSiblingLastNames[count] = req.body['add-sibling-last-names']
+          req.session.data.numberOfSiblings = req.session.data.numberOfSiblings + 1
+        }
+        req.session.data.siblingOrderId[count] = count
+        req.session.data.siblingFirstNames[count] = req.body['add-sibling-first-names']
+        req.session.data.siblingLastNames[count] = req.body['add-sibling-last-names']
+        res.redirect('/version-1/children/sibling-order-type')
+      }
+      else {
+        res.render('.//version-1/children/sibling-choose-sibling', { errors: errors })
+      }
+    }
+    else {
+      res.redirect('/version-1/task-list')
+    }
+  })
 
 
 

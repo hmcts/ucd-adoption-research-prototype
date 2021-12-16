@@ -58,6 +58,22 @@ module.exports = {
   "childOrderCompleted": [],
   "childOrderCount": 0,
 
+  "siblingOrderId": [],
+  "siblingFirstNames": [],
+  "siblingLastNames": [],
+  "siblingOrderType": [],
+  "siblingOrderNumber": [],
+  "siblingOrderCourt": [],
+  "siblingOrderDay": [],
+  "siblingOrderMonth": [],
+  "siblingOrderYear": [],
+  "siblingOrderCompleted": [],
+  "siblingOrderCount": 0,
+
+  "uniqueSiblingId": [],
+  "uniqueSiblingFirstNames": [],
+  "uniqueSiblingLastNames": [],
+  "numberOfSiblings": 0,
 
   "numberChildren": 0,
   "numberApplicants": 0,
