@@ -1743,6 +1743,12 @@ router.post('/version-1/applicants/second-applicant-upload', function(req, res) 
       href: '#contact'
       })
     }
+    if (req.body['applicant-email'] === '') {
+      errors.push({
+      text: 'Devs: "Enter an email address" [if left blank] or "Enter an email address in the correct format, like name@example.com" [if in the wrong format] ',
+      href: '#email'
+      })
+    }
 
     if (req.body['submit-button'] === 'save-and-continue') {
       if (errors.length === 0) {
@@ -1807,6 +1813,12 @@ router.post('/version-1/applicants/second-applicant-upload', function(req, res) 
       href: '#contact'
       })
     }
+    if (req.body['applicant-email-2'] === '') {
+      errors.push({
+      text: 'Devs: "Enter an email address" [if left blank] or "Enter an email address in the correct format, like name@example.com" [if in the wrong format] ',
+      href: '#email'
+      })
+    }
 
     if (req.body['submit-button'] === 'save-and-continue') {
       if (errors.length === 0) {
@@ -1834,6 +1846,12 @@ router.post('/version-1/applicants/second-applicant-upload', function(req, res) 
       errors.push({
       text: 'Enter a UK telephone number',
       href: '#phone'
+      })
+    }
+    if (req.body['child-social-worker-email'] === '') {
+      errors.push({
+      text: 'Devs: "Enter an email address" [if left blank] or "Enter an email address in the correct format, like name@example.com" [if in the wrong format] ',
+      href: '#email'
       })
     }
 

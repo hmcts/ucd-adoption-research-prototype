@@ -16,6 +16,7 @@ Apply to adopt a child
 
       {% set nameError = '' %}
       {% set phoneError = '' %}
+      {% set emailError = '' %}
 
       {% if errors | length > 0 %}
         {{ govukErrorSummary({
@@ -29,6 +30,9 @@ Apply to adopt a child
           {% if error.href == '#phone' %}
             {% set phoneError = error.text %}
           {% endif %}
+          {% if error.href == '#email' %}
+            {% set emailError = error.text %}
+          {% endif %}
         {% endfor %}
       {% endif %}
 
@@ -40,6 +44,9 @@ Apply to adopt a child
               Details about the child's social worker
             </h1>
           </legend>
+          <div id="case-hint" class="govuk-hint">
+            You can get these details from your adoption agency or local authority. 
+          </div>
           
           <div class="govuk-form-group">
             <label class="govuk-label" for="name">
@@ -67,9 +74,14 @@ Apply to adopt a child
                 
           <div class="govuk-form-group">
             <label class="govuk-label" for="contact">
-              Social worker's email address (if known)
+              Social worker's email address 
             </label>
-            <input class="govuk-input govuk-!-width-two-thirds" id="child-social-worker-email" name="child-social-worker-email" type="text" value="{{ data['child-social-worker-email'] }}">
+            {% if emailError != '' %}
+            <span id="contact-error" class="govuk-error-message">
+              <span class="govuk-visually-hidden">Error:</span> {{ emailError }}
+            </span>
+            {% endif %}
+            <input class="govuk-input govuk-!-width-two-thirds {% if (emailError != '') %} govuk-input--error{% endif %}" id="child-social-worker-email" name="child-social-worker-email" type="text" value="{{ data['child-social-worker-email'] }}">
           </div>
         
           <div class="govuk-form-group">
