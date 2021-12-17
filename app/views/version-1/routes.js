@@ -36,8 +36,6 @@ module.exports = (router) => {
       href: '#married'
       })
     }
-    console.log("Test")
-    console.log("Error: ", req.body['child-married'])
 
     if (errors.length === 0) {
       if (req.body['child-married'] === 'Yes') {
@@ -129,7 +127,6 @@ module.exports = (router) => {
   })
 
   router.post('/version-1/applicants/date-child-moved-in', function(req, res) {
-    console.log("Day: ", req.body['day'])
     var errors = []
     if (req.body['day'] === '' || req.body['month'] === '' || req.body['year'] === '') {
       errors.push({
@@ -187,9 +184,6 @@ module.exports = (router) => {
 
   router.post('/version-1/applicants/first-applicant-other-names', function(req, res) {
     var errors = []
-    console.log("First applicant previous names: ", req.session.data.firstApplicantPreviousNames)
-    console.log("First applicant previous name radio: ", req.body['first-applicant-previous-full-name'])
-    console.log("name count: ", req.session.data.firstApplicantNameCount)
 
     if (req.body['first-applicant-other-names'] === undefined) {
       // if (req.body['first-applicant-other-names'] === undefined && req.session.data.firstApplicantPreviousNames === '') {
@@ -199,7 +193,6 @@ module.exports = (router) => {
       })
     }
     else if (req.body['first-applicant-other-names'] === "Yes" && req.session.data.firstApplicantNameCount === 0) {
-      console.log("no name added error: ", req.session.data.firstApplicantPreviousNames)
       errors.push({
       text: 'Enter a name or choose no',
       href: '#first-applicant-no-name'
@@ -221,7 +214,6 @@ module.exports = (router) => {
     else if (req.body['submit-button'] === 'save-and-continue') {
       if (errors.length === 0) {
         req.session.data.firstApplicantPreviousNames[count] = req.body['first-applicant-previous-full-name']
-        console.log("Previous names: ", req.session.data.firstApplicantPreviousNames[count])
         res.redirect('/version-1/applicants/first-applicant-date-birth')
       }
       else {
@@ -235,7 +227,6 @@ module.exports = (router) => {
 
 
   router.post('/version-1/applicants/first-applicant-date-birth', function(req, res) {
-    console.log("Day: ", req.body['day'])
     var errors = []
     if (req.body['day'] === '' || req.body['month'] === '' || req.body['year'] === '') {
       errors.push({
@@ -261,14 +252,14 @@ module.exports = (router) => {
     var errors = []
 
     if (req.body['first-applicant-british'] === undefined && req.body['first-applicant-irish'] === undefined &&req.body['first-applicant-other'] === undefined) {
-      console.log("error")
+      // console.log("error")
       errors.push({
       text: 'Select if you are British, Irish or a citizen of a different country',
       href: '#first-applicant-nationality'
       })
     }
     else if (req.body['first-applicant-other'] !== undefined && req.session.data.firstApplicantNationalityCount === 0) {
-      console.log("no nationality added error: ", req.session.data.firstApplicantNationalities)
+      // console.log("no nationality added error: ", req.session.data.firstApplicantNationalities)
       errors.push({
       text: 'This is not a valid entry',
       href: '#first-applicant-no-nationality'
@@ -515,7 +506,7 @@ module.exports = (router) => {
   router.post('/version-1/applicants/second-applicant-other-names', function(req, res) {
     var errors = []
     count = req.session.data.secondApplicantNameCount
-    console.log("Previous names: ", req.body['second-applicant-previous-full-name'])
+    // console.log("Previous names: ", req.body['second-applicant-previous-full-name'])
 
     if (req.body['second-applicant-other-names'] === undefined) {
       // if (req.body['second-applicant-other-names'] === undefined && req.session.data.secondApplicantPreviousNames === '') {
@@ -525,7 +516,7 @@ module.exports = (router) => {
       })
     }
     else if (req.body['second-applicant-other-names'] === "Yes" && req.session.data.secondApplicantNameCount === 0) {
-      console.log("no name added error: ", req.session.data.secondApplicantPreviousNames)
+      // console.log("no name added error: ", req.session.data.secondApplicantPreviousNames)
       errors.push({
       text: 'Enter a name or choose no',
       href: '#second-applicant-no-name'
@@ -546,7 +537,7 @@ module.exports = (router) => {
     else if (req.body['submit-button'] === 'save-and-continue') {
       if (errors.length === 0) {
         req.session.data.secondApplicantPreviousNames[count] = req.body['second-applicant-previous-full-name']
-        console.log("Previous names: ", req.session.data.secondApplicantPreviousNames[count])
+        // console.log("Previous names: ", req.session.data.secondApplicantPreviousNames[count])
         res.redirect('/version-1/applicants/second-applicant-date-birth')
       }
       else {
@@ -560,7 +551,7 @@ module.exports = (router) => {
 
 
   router.post('/version-1/applicants/second-applicant-date-birth', function(req, res) {
-    console.log("Day: ", req.body['day'])
+    // console.log("Day: ", req.body['day'])
     var errors = []
     if (req.body['day'] === '' || req.body['month'] === '' || req.body['year'] === '') {
       errors.push({
@@ -586,14 +577,14 @@ module.exports = (router) => {
     var errors = []
 
     if (req.body['second-applicant-british'] === undefined && req.body['second-applicant-irish'] === undefined &&req.body['second-applicant-other'] === undefined) {
-      console.log("error")
+      // console.log("error")
       errors.push({
       text: 'Select if you are British, Irish or a citizen of a different country',
       href: '#second-applicant-nationality'
       })
     }
     else if (req.body['second-applicant-other'] !== undefined && req.session.data.secondApplicantNationalityCount === 0) {
-      console.log("no nationality added error: ", req.session.data.secondApplicantNationalities)
+      // console.log("no nationality added error: ", req.session.data.secondApplicantNationalities)
       errors.push({
       text: 'This is not a valid entry',
       href: '#second-applicant-no-nationality'
@@ -664,7 +655,7 @@ router.post('/version-1/applicants/second-applicant-same-address', function(req,
   if (errors.length === 0) {
    if (req.body['submit-button'] === 'save-and-continue') {
       if (req.body['same-address'] === "Yes") {
-        console.log("Test: ",req.body['same-address'])
+        // console.log("Test: ",req.body['same-address'])
         req.session.data.secondApplicantAddress = 1
         res.redirect('/version-1/applicants/second-applicant-contact')
       }
@@ -875,7 +866,7 @@ router.post('/version-1/applicants/second-applicant-upload', function(req, res) 
 
 
   router.post('/version-1/children/child-date-birth', function(req, res) {
-    console.log("Day: ", req.body['day'])
+    // console.log("Day: ", req.body['day'])
     var errors = []
     if (req.body['day'] === '' || req.body['month'] === '' || req.body['year'] === '') {
       errors.push({
@@ -924,21 +915,21 @@ router.post('/version-1/applicants/second-applicant-upload', function(req, res) 
     var errors = []
 
     if (req.body['child-british'] === undefined && req.body['child-irish'] === undefined && req.body['child-other'] === undefined && req.body['child-unsure'] === undefined) {
-      console.log("error")
+      // console.log("error")
       errors.push({
       text: 'Select a nationality or \'Not sure\'',
       href: '#checkbox-error'
       })
     }
     else if ((req.body['child-british'] !== undefined || req.body['child-irish'] !== undefined || req.body['child-other'] !== undefined) && req.body['child-unsure'] !== undefined) {
-      console.log("error")
+      // console.log("error")
       errors.push({
       text: 'Select a nationality or \'Not sure\'',
       href: '#checkbox-error'
       })
     }
     else if (req.body['child-other'] !== undefined && req.session.data.childNationalityCount === 0) {
-      console.log("no nationality added error: ", req.session.data.childNationalities)
+      // console.log("no nationality added error: ", req.session.data.childNationalities)
       errors.push({
       text: 'This is not a valid entry',
       href: '#no-country'
@@ -1039,7 +1030,7 @@ router.post('/version-1/applicants/second-applicant-upload', function(req, res) 
 
 
   router.post('/version-1/children/mother-alive', function(req, res) {
-    console.log("Mother alive: ", req.body['mother-alive'])
+    // console.log("Mother alive: ", req.body['mother-alive'])
     var errors = []
     if (req.body['mother-alive'] === undefined) {
       errors.push({
@@ -1048,7 +1039,7 @@ router.post('/version-1/applicants/second-applicant-upload', function(req, res) 
       })
     }
     else if (req.body['mother-alive'] === 'unsure' && req.body['reason-not-sure'] === '') {
-      console.log("Mother no reason")
+      // console.log("Mother no reason")
       errors.push({
       text: 'Enter more detail',
       href: '#mother-no-reason'
@@ -1079,21 +1070,21 @@ router.post('/version-1/applicants/second-applicant-upload', function(req, res) 
     var errors = []
 
     if (req.body['mother-british'] === undefined && req.body['mother-irish'] === undefined && req.body['mother-other'] === undefined && req.body['mother-unsure'] === undefined) {
-      console.log("error")
+      // console.log("error")
       errors.push({
       text: 'Select if they are British, Irish, citizen of a different country or not sure',
       href: '#checkbox-error'
       })
     }
     else if ((req.body['mother-british'] !== undefined || req.body['mother-irish'] !== undefined || req.body['mother-other'] !== undefined) && req.body['mother-unsure'] !== undefined) {
-      console.log("error")
+      // console.log("error")
       errors.push({
       text: 'Select a nationality or \'Not sure\'',
       href: '#checkbox-error'
       })
     }
     else if (req.body['mother-other'] !== undefined && req.session.data.motherNationalityCount === 0) {
-      console.log("no nationality added error: ", req.session.data.motherNationalities)
+      // console.log("no nationality added error: ", req.session.data.motherNationalities)
       errors.push({
       text: 'This is not a valid entry',
       href: '#no-country'
@@ -1200,7 +1191,7 @@ router.post('/version-1/applicants/second-applicant-upload', function(req, res) 
 
 
   router.post('/version-1/children/mother-find-address', function(req, res) {
-    console.log(req.body['submit-button'])
+    // console.log(req.body['submit-button'])
     var errors = []
     if (req.body['mother-choose-address'] === 'address-found') {
       errors.push({
@@ -1323,7 +1314,7 @@ router.post('/version-1/applicants/second-applicant-upload', function(req, res) 
 
 
   router.post('/version-1/children/father-alive', function(req, res) {
-    console.log("father alive: ", req.body['father-alive'])
+    // console.log("father alive: ", req.body['father-alive'])
     var errors = []
     if (req.body['father-alive'] === undefined) {
       errors.push({
@@ -1332,7 +1323,7 @@ router.post('/version-1/applicants/second-applicant-upload', function(req, res) 
       })
     }
     else if (req.body['father-alive'] === 'unsure' && req.body['reason-not-sure'] === '') {
-      console.log("father no reason")
+      // console.log("father no reason")
       errors.push({
       text: 'Enter more detail',
       href: '#father-no-reason'
@@ -1363,21 +1354,21 @@ router.post('/version-1/applicants/second-applicant-upload', function(req, res) 
     var errors = []
 
     if (req.body['father-british'] === undefined && req.body['father-irish'] === undefined && req.body['father-other'] === undefined && req.body['father-unsure'] === undefined) {
-      console.log("error")
+      // console.log("error")
       errors.push({
       text: 'Select if they are British, Irish, citizen of a different country or not sure',
       href: '#checkbox-error'
       })
     }
     else if ((req.body['father-british'] !== undefined || req.body['father-irish'] !== undefined || req.body['father-other'] !== undefined) && req.body['father-unsure'] !== undefined) {
-      console.log("error")
+      // console.log("error")
       errors.push({
       text: 'Select a nationality or \'Not sure\'',
       href: '#checkbox-error'
       })
     }
     else if (req.body['father-other'] !== undefined && req.session.data.fatherNationalityCount === 0) {
-      console.log("no nationality added error: ", req.session.data.fatherNationalities)
+      // console.log("no nationality added error: ", req.session.data.fatherNationalities)
       errors.push({
       text: 'This is not a valid entry',
       href: '#no-country'
@@ -1483,7 +1474,7 @@ router.post('/version-1/applicants/second-applicant-upload', function(req, res) 
 
 
   router.post('/version-1/children/father-find-address', function(req, res) {
-    console.log(req.body['submit-button'])
+    // console.log(req.body['submit-button'])
     var errors = []
     if (req.body['father-choose-address'] === 'address-found') {
       errors.push({
@@ -1549,7 +1540,7 @@ router.post('/version-1/applicants/second-applicant-upload', function(req, res) 
 
   // ********************** Other parent or guardian details **********************
   router.post('/version-1/children/other-parent-exists', function(req, res) {
-    console.log("father alive: ", req.body['other-parent-exists'])
+    // console.log("father alive: ", req.body['other-parent-exists'])
     var errors = []
     if (req.body['other-parent-exists'] === undefined) {
       errors.push({
@@ -1558,7 +1549,7 @@ router.post('/version-1/applicants/second-applicant-upload', function(req, res) 
       })
     }
     else if (req.body['other-parent-exists'] === 'unsure' && req.body['reason-not-sure'] === '') {
-      console.log("father no reason")
+      // console.log("father no reason")
       errors.push({
       text: 'Enter more detail',
       href: '#other-parent-no-reason'
@@ -1666,7 +1657,7 @@ router.post('/version-1/applicants/second-applicant-upload', function(req, res) 
 
 
   router.post('/version-1/children/other-parent-find-address', function(req, res) {
-    console.log(req.body['submit-button'])
+    // console.log(req.body['submit-button'])
     var errors = []
     if (req.body['other-parent-choose-address'] === 'address-found') {
       errors.push({
@@ -1767,7 +1758,7 @@ router.post('/version-1/applicants/second-applicant-upload', function(req, res) 
 
 
   router.post('/version-1/children/applicant-other-adoption-agency', function(req, res) {
-    console.log("Mother alive: ", req.body['other-adoption-agency'])
+    // console.log("Mother alive: ", req.body['other-adoption-agency'])
     var errors = []
     if (req.body['other-adoption-agency'] === undefined) {
       errors.push({
@@ -1865,7 +1856,7 @@ router.post('/version-1/applicants/second-applicant-upload', function(req, res) 
 
  // ********************** Solicitor details **********************
   router.post('/version-1/children/solicitor-helping', function(req, res) {
-    console.log("Mother alive: ", req.body['solicitor-helping'])
+    // console.log("Mother alive: ", req.body['solicitor-helping'])
     var errors = []
     if (req.body['solicitor-helping'] === undefined) {
       errors.push({
@@ -2020,7 +2011,7 @@ router.post('/version-1/applicants/second-applicant-upload', function(req, res) 
     else {
       res.redirect('/version-1/task-list')
     }
-    console.log("Month: ", req.session.data.childOrderMonth[count])
+    // console.log("Month: ", req.session.data.childOrderMonth[count])
   })
 
 
@@ -2171,7 +2162,7 @@ router.post('/version-1/applicants/second-applicant-upload', function(req, res) 
 
   // ********************** Sibling details **********************
   router.post('/version-1/children/sibling-exists', function(req, res) {
-    console.log("father alive: ", req.body['sibling-exists'])
+    // console.log("father alive: ", req.body['sibling-exists'])
     var errors = []
     if (req.body['sibling-exists'] === undefined) {
       errors.push({
@@ -2207,7 +2198,7 @@ router.post('/version-1/applicants/second-applicant-upload', function(req, res) 
 
 
   router.post('/version-1/children/sibling-court-order-exists', function(req, res) {
-    console.log("father alive: ", req.body['sibling-court-order-exists'])
+    // console.log("father alive: ", req.body['sibling-court-order-exists'])
     var errors = []
     if (req.body['sibling-court-order-exists'] === undefined) {
       errors.push({
@@ -2289,11 +2280,16 @@ router.post('/version-1/applicants/second-applicant-upload', function(req, res) 
       })
     }
 
-    count = req.session.data.siblingOrderCount
+    arrayLength = req.session.data.siblingOrderId.length
+    if (arrayLength == 1) {
+      count = 0
+    }
+    else {
+      count = req.session.data.siblingOrderId.length - 1
+    }
 
     if (req.body['submit-button'] === 'save-and-continue') {
       if (errors.length === 0) {
-        req.session.data.siblingOrderId[count] = count
         req.session.data.siblingOrderType[count] = req.body['sibling-order-type']
         req.session.data.siblingOrderCompleted[count] = "No"
         res.redirect('/version-1/children/sibling-order-case-number')
@@ -2308,6 +2304,7 @@ router.post('/version-1/applicants/second-applicant-upload', function(req, res) 
   })
 
 
+
   router.post('/version-1/children/sibling-order-case-number', function(req, res) {
     var errors = []
     if (req.body['sibling-order-case-number'] === '') {
@@ -2317,7 +2314,13 @@ router.post('/version-1/applicants/second-applicant-upload', function(req, res) 
       })
     }
 
-    count = req.session.data.siblingOrderCount
+    arrayLength = req.session.data.siblingOrderId.length
+    if (arrayLength == 1) {
+      count = 0
+    }
+    else {
+      count = req.session.data.siblingOrderId.length - 1
+    }
 
     if (req.body['submit-button'] === 'save-and-continue') {
       if (errors.length === 0) {
@@ -2343,7 +2346,13 @@ router.post('/version-1/applicants/second-applicant-upload', function(req, res) 
       })
     }
 
-    count = req.session.data.siblingOrderCount
+    arrayLength = req.session.data.siblingOrderId.length
+    if (arrayLength == 1) {
+      count = 0
+    }
+    else {
+      count = req.session.data.siblingOrderId.length - 1
+    }
 
     if (req.body['submit-button'] === 'save-and-continue') {
       if (errors.length === 0) {
@@ -2369,7 +2378,13 @@ router.post('/version-1/applicants/second-applicant-upload', function(req, res) 
       })
     }
 
-    count = req.session.data.siblingOrderCount
+    arrayLength = req.session.data.siblingOrderId.length
+    if (arrayLength == 1) {
+      count = 0
+    }
+    else {
+      count = req.session.data.siblingOrderId.length - 1
+    }
 
     if (req.body['submit-button'] === 'save-and-continue') {
       if (errors.length === 0) {
@@ -2378,6 +2393,7 @@ router.post('/version-1/applicants/second-applicant-upload', function(req, res) 
         req.session.data.siblingOrderYear[count] = req.body['sibling-year']
         req.session.data.siblingOrderCompleted[count] = "Yes"
         res.redirect('/version-1/children/sibling-summary')
+        req.session.data.siblingOrderCount = req.session.data.siblingOrderCount + 1
       }
       else {
         res.render('.//version-1/children/sibling-order-date', { errors: errors })
@@ -2418,7 +2434,7 @@ router.post('/version-1/applicants/second-applicant-upload', function(req, res) 
     else {
         res.redirect('/version-1/task-list')
     }
-    console.log("Sibling array: ", req.session.data.siblingLastNames)
+    // // console.log("Sibling array: ", req.session.data.siblingLastNames)
   })
 
 
@@ -2446,20 +2462,28 @@ router.post('/version-1/applicants/second-applicant-upload', function(req, res) 
       }
     }
     
-    count = req.session.data.siblingOrderCount + 1
+    count = req.session.data.siblingOrderId.length
     sib = req.session.data.numberOfSiblings
 
     if (req.body['submit-button'] === 'save-and-continue') {
       if (errors.length === 0) {
         if (req.body['what-sibling'] === 'add-new-sibling') {
+          console.log("new sibling")
           req.session.data.uniqueSiblingId[sib] = sib
-          req.session.data.uniqueSiblingFirstNames[count] = req.body['add-sibling-first-names']
-          req.session.data.uniqueSiblingLastNames[count] = req.body['add-sibling-last-names']
+          req.session.data.uniqueSiblingFirstNames[sib] = req.body['add-sibling-first-names']
+          req.session.data.uniqueSiblingLastNames[sib] = req.body['add-sibling-last-names']
+          req.session.data.siblingFirstNames[count] = req.body['add-sibling-first-names']
+          req.session.data.siblingLastNames[count] = req.body['add-sibling-last-names']
           req.session.data.numberOfSiblings = req.session.data.numberOfSiblings + 1
         }
+        else {
+          console.log("existing sibling")
+          id = req.body['what-sibling']
+          req.session.data.siblingFirstNames[count] = req.session.data.siblingFirstNames[id]
+          req.session.data.siblingLastNames[count] = req.session.data.siblingLastNames[id]
+        }
+        req.session.data.siblingOrderCompleted[count] = "No"
         req.session.data.siblingOrderId[count] = count
-        req.session.data.siblingFirstNames[count] = req.body['add-sibling-first-names']
-        req.session.data.siblingLastNames[count] = req.body['add-sibling-last-names']
         res.redirect('/version-1/children/sibling-order-type')
       }
       else {
@@ -2469,6 +2493,14 @@ router.post('/version-1/applicants/second-applicant-upload', function(req, res) 
     else {
       res.redirect('/version-1/task-list')
     }
+    console.log("Sibling array: ", req.session.data.uniqueSiblingFirstNames)
+    console.log("siblingFirstNames array: ", req.session.data.siblingFirstNames)
+    console.log("uniqueSiblingID array: ", req.session.data.uniqueSiblingId)
+    console.log("siblingOrderId array: ", req.session.data.siblingOrderId)
+    console.log("Number of siblings: ", req.session.data.numberOfSiblings)
+    console.log("siblingFirstNames[id]: ", req.session.data.siblingFirstNames[id])
+    console.log("id: ", id)
+    console.log("count: ", count)
   })
 
 
@@ -3249,7 +3281,7 @@ router.post('/version-1/applicants/second-applicant-upload', function(req, res) 
 //     req.session.data.unavailable = req.body['exclusion-dates']
 //     if (req.body['submit-button'] === 'add') {
 //       count = req.session.data.dateCount
-//       console.log("count start", count)
+//       // console.log("count start", count)
 //       req.session.data.dayFrom = req.body['date-from-day']
 //       req.session.data.monthFrom = req.body['date-from-month']
 //       req.session.data.yearFrom = req.body['date-from-year']
@@ -3261,11 +3293,11 @@ router.post('/version-1/applicants/second-applicant-upload', function(req, res) 
 //       req.session.data.startDate[count] = req.body['date-from-day'] + " " + req.session.data.shortMonthName[req.body['date-from-month']] + " " + req.body['date-from-year']
 //       req.session.data.endDate[count] = req.body['date-to-day'] + " " + req.session.data.shortMonthName[req.body['date-to-month']] + " " + req.body['date-to-year']
 
-//       console.log("From", req.session.data.startDate[count]);
-//       console.log("unavailable", req.session.data.unavailable)
+//       // console.log("From", req.session.data.startDate[count]);
+//       // console.log("unavailable", req.session.data.unavailable)
 
 //       req.session.data.dateCount = count + 1
-//       console.log("dateCount", req.session.data.dateCount)
+//       // console.log("dateCount", req.session.data.dateCount)
 
 //       res.redirect('/damages/default-judgments/5-hearing-details#unavailable-dates')
 //       }
@@ -3293,7 +3325,7 @@ router.post('/version-1/applicants/second-applicant-upload', function(req, res) 
 
 // // Examples from HMRC
 // router.post('/sps/work-in-progress/how-to-verify', function(req, res) {
-//     console.log("route", req.session.data.route)
+//     // console.log("route", req.session.data.route)
 //       if (req.body['verifyOrChange'] === 'verify') {
 //           res.redirect('/sps/work-in-progress/confirmation-email-sent')
 //       } else {

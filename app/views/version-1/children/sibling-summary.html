@@ -45,7 +45,7 @@ Apply to adopt a child
       <dl class="govuk-summary-list govuk-!-margin-bottom-9 govuk-!-margin-top-0">
         {% for id in data['siblingOrderId'] %}
 
-          {% if (data['uniqueSiblingFirstNames'][sib] == data['siblingFirstNames'][id]) %}
+          {% if (data['uniqueSiblingFirstNames'][sib] === data['siblingFirstNames'][id]) %}
                     
             <div class="govuk-summary-list__row">
               <dt class="govuk-summary-list__value">
@@ -59,15 +59,9 @@ Apply to adopt a child
                 {% endif %}
               </dd>
               <dd class="govuk-summary-list__actions">
-                {% if id == 0 %}
-                <a class="govuk-link" href="orders-placement-check-your-answers.html">
+                <a class="govuk-link" href="sibling-check-your-answers.html?id={{data['siblingOrderId'][id]}}">
                   Change<span class="govuk-visually-hidden"> order</span>
                 </a>
-                {% else %}
-                <a class="govuk-link" href="orders-court-check-your-answers.html?id={{data['siblingOrderId'][id]}}">
-                  Change<span class="govuk-visually-hidden"> order</span>
-                </a>
-                {% endif %}
               </dd>
               <dd class="govuk-summary-list__actions">
                 <a class="govuk-link" href="#">
