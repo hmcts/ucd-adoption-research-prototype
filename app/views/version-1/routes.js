@@ -124,6 +124,7 @@ module.exports = (router) => {
     else {
         res.redirect('/version-1/task-list')
     }
+    console.log("Applicants: ", req.session.data.numberApplicants)
   })
 
   router.post('/version-1/applicants/date-child-moved-in', function(req, res) {

@@ -20,6 +20,9 @@ Example usage:
 module.exports = {
 
   // Insert values here
+  "numberChildren": 0,
+  "numberApplicants": "",
+
   "idFirstApplicant": [],
   "firstApplicantPreviousNames": [],
   "firstApplicantNameCount": 0,
@@ -74,9 +77,6 @@ module.exports = {
   "uniqueSiblingFirstNames": [],
   "uniqueSiblingLastNames": [],
   "numberOfSiblings": 0,
-
-  "numberChildren": 0,
-  "numberApplicants": 0,
 
   "firstApplicant": "Primary applicant",
   "secondApplicant": "Second applicant",
