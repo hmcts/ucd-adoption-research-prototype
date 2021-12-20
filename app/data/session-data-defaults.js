@@ -20,6 +20,9 @@ Example usage:
 module.exports = {
 
   // Insert values here
+  "numberChildren": 0,
+  "numberApplicants": "",
+
   "idFirstApplicant": [],
   "firstApplicantPreviousNames": [],
   "firstApplicantNameCount": 0,
@@ -58,19 +61,33 @@ module.exports = {
   "childOrderCompleted": [],
   "childOrderCount": 0,
 
+  "siblingOrderId": [],
+  "siblingFirstNames": [],
+  "siblingLastNames": [],
+  "siblingOrderType": [],
+  "siblingOrderNumber": [],
+  "siblingOrderCourt": [],
+  "siblingOrderDay": [],
+  "siblingOrderMonth": [],
+  "siblingOrderYear": [],
+  "siblingOrderCompleted": [],
+  "siblingOrderCount": 0,
 
-  "numberChildren": 0,
-  "numberApplicants": 0,
+  "uniqueSiblingId": [],
+  "uniqueSiblingFirstNames": [],
+  "uniqueSiblingLastNames": [],
+  "numberOfSiblings": 0,
 
   "firstApplicant": "Primary applicant",
   "secondApplicant": "Second applicant",
   "child": "The child's details",
   "mother": "Birth mother's details",
   "father": "Birth father's details",
-  "other-parent": "Other parent or guardian details",
+  "other-parent": "Other parent's details",
   "socialworker": "Your adoption agency or local authority details",
   "childsocialworker": "The child's adoption agency or local authority details",
   "solicitor": "Your solicitor",
+  "sibling": "Sibling details",
 
 
   "monthName": [

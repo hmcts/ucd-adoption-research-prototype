@@ -17,6 +17,7 @@ Apply to adopt a child
       {% set nameError = '' %}
       {% set phoneError = '' %}
       {% set contactError = '' %}
+      {% set emailError = '' %}
 
       {% if errors | length > 0 %}
         {{ govukErrorSummary({
@@ -32,6 +33,9 @@ Apply to adopt a child
           {% endif %}
           {% if error.href == '#contact' %}
             {% set contactError = error.text %}
+          {% endif %}
+          {% if error.href == '#email' %}
+            {% set emailError = error.text %}
           {% endif %}
         {% endfor %}
       {% endif %}
@@ -85,9 +89,14 @@ Apply to adopt a child
 
           <div class="govuk-form-group">
             <label class="govuk-label" for="contact">
-              Email address of your contact (if known)
+              Email address of your contact
             </label>
-            <input class="govuk-input govuk-!-width-two-thirds" id="applicant-email" name="applicant-email" type="email" value="{{ data['applicant-email'] }}">
+            {% if emailError != '' %}
+            <span id="contact-error" class="govuk-error-message">
+              <span class="govuk-visually-hidden">Error:</span> {{ emailError }}
+            </span>
+            {% endif %}
+            <input class="govuk-input govuk-!-width-two-thirds {% if (emailError != '') %} govuk-input--error{% endif %}" id="applicant-email" name="applicant-email" type="email" value="{{ data['applicant-email'] }}">
           </div>
 
                         

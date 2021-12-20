@@ -1,7 +1,7 @@
 {% extends "layout-signed-in.html" %}
 
 {% block pageTitle %}
-Apply to adopt a child
+Sibling name
 {% endblock %}
 
 {% block beforeContent %}
@@ -33,15 +33,17 @@ Apply to adopt a child
         {% endfor %}
       {% endif %}
 
-      <form action="/version-1/applicants/second-applicant-name" method="post" class="form">
+      <form action="/version-1/children/sibling-name" method="post" class="form">
         <fieldset class="govuk-fieldset">
           <legend class="govuk-fieldset__legend govuk-fieldset__legend--l">
-            <span class="govuk-caption-l">{{ data['secondApplicant'] }}</span>
+            <span class="govuk-caption-l">{{ data['sibling'] }}</span>
             <h1 class="govuk-fieldset__heading">
-              What's your full name?
+              Which siblings or half siblings have a court order in place?
             </h1>
           </legend>
-
+          <div id="namehint" class="govuk-hint">
+            We need details of all siblings or half siblings with a court order in place. You will be asked to complete details for each of them in turn.
+          </div>
 
           <div class="govuk-form-group">
             <label class="govuk-label" for="firstNames">
@@ -56,9 +58,10 @@ Apply to adopt a child
             </span>
             {% endif %}
 
-            <input class="govuk-input {% if (firstNamesError != '') %} govuk-input--error{% endif %}" id="second-applicant-names" name="second-applicant-names" type="text" autocomplete="name" value="{{ data['second-applicant-names'] }}"></div>
+            <input class="govuk-input {% if (firstNamesError != '') %} govuk-input--error{% endif %}" id="sibling-first-names" name="sibling-first-names" type="text" autocomplete="name" value="{{ data['sibling-first-names'] }}">
+          </div>
 
-
+        
           <div class="govuk-form-group">
             <label class="govuk-label" for="lastNames">
               Last names<span class="govuk-visually-hidden">Last names</span>
@@ -71,7 +74,8 @@ Apply to adopt a child
               <span class="govuk-visually-hidden">Error:</span> {{ lastNamesError }}
             </span>
             {% endif %}
-            <input class="govuk-input {% if (lastNamesError != '') %} govuk-input--error{% endif %}" id="second-applicant-last-names" name="second-applicant-last-names" type="text" autocomplete="address-level2" value="{{ data['second-applicant-last-names'] }}"></div>
+            <input class="govuk-input {% if (lastNamesError != '') %} govuk-input--error{% endif %}" id="sibling-last-names" name="sibling-last-names" type="text"  value="{{ data['sibling-last-names'] }}">
+          </div>
 
 
         </fieldset>
