@@ -2319,6 +2319,39 @@ router.post('/version-1/applicants/second-applicant-upload', function(req, res) 
   })
 
 
+  router.post('/version-1/children/sibling-change-name', function(req, res) {
+    var errors = []
+    if (req.body['sibling-first-names'] === '') {
+      errors.push({
+      text: 'Enter their first names',
+      href: '#first-names'
+      })
+    }
+    if (req.body['sibling-last-names'] === '') {
+      errors.push({
+      text: 'Enter their last names',
+      href: '#last-names'
+      })
+    }
+
+    count = req.session.data.siblingOrderCount
+
+    if (errors.length === 0) {
+      // req.session.data.siblingOrderId[count] = count
+      // req.session.data.uniqueSiblingId[count] = count
+      // req.session.data.uniqueSiblingFirstNames[count] = req.body['sibling-first-names']
+      // req.session.data.uniqueSiblingLastNames[count] = req.body['sibling-last-names']
+      // req.session.data.siblingFirstNames[count] = req.body['sibling-first-names']
+      // req.session.data.siblingLastNames[count] = req.body['sibling-last-names']
+      // req.session.data.numberOfSiblings = 1
+      res.redirect('/version-1/children/sibling-summary')
+    }
+    else {
+      res.render('.//version-1/children/sibling-change-name', { errors: errors })
+    }
+  })
+
+
   router.post('/version-1/children/sibling-order-type', function(req, res) {
     var errors = []
     if (req.body['sibling-order-type'] === '') {
@@ -2553,6 +2586,45 @@ router.post('/version-1/applicants/second-applicant-upload', function(req, res) 
   })
 
 
+
+  router.post('/version-1/children/sibling-remove-court-order', function(req, res) {
+    var errors = []
+    if (req.body['remove-court-order'] === undefined) {
+      errors.push({
+      text: 'Please answer the question',
+      href: '#remove-court-order'
+      })
+    }
+
+    id = req.body['order-id']
+    console.log("order-id: ",id)
+    console.log(req.session.data.siblingOrderId)
+
+    if (errors.length === 0) {
+      for (let index = 0; index < req.session.data.siblingOrderId.length; index++) {
+        const element = req.session.data.siblingOrderId[index];
+        console.log ("Element: ", element)
+        if (element == id) { 
+          console.log("in removal area")
+          req.session.data.siblingOrderId.splice(index, 1); 
+        }
+      }
+      // for( var i = 0; i < req.session.data.siblingOrderId.length; i++) { 
+      //   if ( req.session.data.siblingOrderId[i] === id) { 
+      //     req.session.data.siblingOrderId.splice(i, 1); 
+      //     console.log(req.session.data.siblingOrderId)
+      //     console.log("i: ",i)
+      //     i--; 
+      //   }
+      // }      
+      console.log(req.session.data.siblingOrderId)
+      res.redirect('/version-1/children/sibling-summary')
+    }
+    else {
+      res.render('.//version-1/children/sibling-remove-order-court', { errors: errors })
+    }
+
+  })
 
 
 
