@@ -155,7 +155,7 @@ Task list
                         <strong class="govuk-tag govuk-tag--grey app-task-list__tag">not started</strong>
                     {% endif %}
                 </li>
-               
+
                 {% endif %}
 
 
@@ -288,7 +288,7 @@ Task list
                 <li class="app-task-list__item">
                     <span class="app-task-list__task-name">
                         {% if data['numberOfSiblings'] > 0  %}
-                            <a href="children/sibling-summary.html" aria-describedby="eligibility-completed">        
+                            <a href="children/sibling-summary.html" aria-describedby="eligibility-completed">
                         {% else %}
                             <a href="children/sibling-exists.html" aria-describedby="eligibility-completed">
                         {% endif %}
@@ -366,6 +366,7 @@ Task list
 
               <li class="app-task-list__item">
                 <span class="app-task-list__task-name">
+                    <a href="check-pay-and-submit/check-your-answers.html" aria-describedby="eligibility-completed">
                   <p>Check, pay and submit your application</p>
                 </span>
                 {% if data['birth-father'] %}
