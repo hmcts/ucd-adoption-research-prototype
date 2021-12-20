@@ -2483,6 +2483,7 @@ router.post('/version-1/applicants/second-applicant-upload', function(req, res) 
     
     count = req.session.data.siblingOrderId.length
     sib = req.session.data.numberOfSiblings
+    id = req.body['what-sibling']
 
     if (req.body['submit-button'] === 'save-and-continue') {
       if (errors.length === 0) {
@@ -2497,9 +2498,9 @@ router.post('/version-1/applicants/second-applicant-upload', function(req, res) 
         }
         else {
           console.log("existing sibling")
-          id = req.body['what-sibling']
-          req.session.data.siblingFirstNames[count] = req.session.data.siblingFirstNames[id]
-          req.session.data.siblingLastNames[count] = req.session.data.siblingLastNames[id]
+//          id = req.body['what-sibling']
+          req.session.data.siblingFirstNames[count] = req.session.data.uniqueSiblingFirstNames[id]
+          req.session.data.siblingLastNames[count] = req.session.data.uniqueSiblingLastNames[id]
         }
         req.session.data.siblingOrderCompleted[count] = "No"
         req.session.data.siblingOrderId[count] = count
@@ -2517,8 +2518,9 @@ router.post('/version-1/applicants/second-applicant-upload', function(req, res) 
     console.log("uniqueSiblingID array: ", req.session.data.uniqueSiblingId)
     console.log("siblingOrderId array: ", req.session.data.siblingOrderId)
     console.log("Number of siblings: ", req.session.data.numberOfSiblings)
-    console.log("siblingFirstNames[id]: ", req.session.data.siblingFirstNames[sib])
+    console.log("siblingFirstNames[id]: ", req.session.data.siblingFirstNames[id])
     console.log("count: ", count)
+    console.log("id: ", id)
   })
 
 
