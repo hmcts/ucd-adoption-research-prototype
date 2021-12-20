@@ -1,3 +1,5 @@
+const { uniqueSiblingFirstNames } = require("../../data/session-data-defaults");
+
 module.exports = (router) => {
 
 // ******************************************** ELIGIBILITY ********************************************
@@ -1284,6 +1286,9 @@ router.post('/version-1/applicants/second-applicant-upload', function(req, res) 
 
 
 
+
+
+
   // ********************** Birth father's details **********************
   router.post('/version-1/children/father-in-certificate', function(req, res) {
     var errors = []
@@ -2364,15 +2369,25 @@ router.post('/version-1/applicants/second-applicant-upload', function(req, res) 
     }
 
     count = req.session.data.siblingOrderCount
+    sib = req.body['sibling-id']
 
     if (errors.length === 0) {
-      // req.session.data.siblingOrderId[count] = count
-      // req.session.data.uniqueSiblingId[count] = count
-      // req.session.data.uniqueSiblingFirstNames[count] = req.body['sibling-first-names']
-      // req.session.data.uniqueSiblingLastNames[count] = req.body['sibling-last-names']
-      // req.session.data.siblingFirstNames[count] = req.body['sibling-first-names']
-      // req.session.data.siblingLastNames[count] = req.body['sibling-last-names']
-      // req.session.data.numberOfSiblings = 1
+      uniqueFirstOriginal = req.session.data.uniqueSiblingFirstNames[sib]
+      uniqueLastOriginal = req.session.data.uniqueSiblingLastNames[sib]
+      req.session.data.uniqueSiblingFirstNames[sib] = req.body['sibling-first-names']
+      req.session.data.uniqueSiblingLastNames[sib] = req.body['sibling-last-names']
+
+      for (let index = 0; index < req.session.data.siblingOrderId.length; index++) {
+        fn = req.session.data.siblingFirstNames[index]
+        ln = req.session.data.siblingLastNames[index]
+        if (fn = uniqueFirstOriginal) {
+          req.session.data.siblingFirstNames[index] = req.body['sibling-first-names']
+        }
+        if (ln = uniqueLastOriginal) {
+          req.session.data.siblingLastNames[index] = req.body['sibling-last-names']
+        }
+      }
+
       res.redirect('/version-1/children/sibling-summary')
     }
     else {
@@ -2548,7 +2563,7 @@ router.post('/version-1/applicants/second-applicant-upload', function(req, res) 
   })
 
 
-
+  
   router.post('/version-1/children/sibling-choose-sibling', function(req, res) {
     var errors = []
     if (req.body['what-sibling'] === undefined) {
@@ -2571,7 +2586,7 @@ router.post('/version-1/applicants/second-applicant-upload', function(req, res) 
         })
       }
     }
-
+    
     count = req.session.data.siblingOrderId.length
     sib = req.session.data.numberOfSiblings
     id = req.body['what-sibling']
@@ -2634,19 +2649,24 @@ router.post('/version-1/applicants/second-applicant-upload', function(req, res) 
         const element = req.session.data.siblingOrderId[index];
         console.log ("Element: ", element)
         if (element == id) { 
-          console.log("in removal area")
-          req.session.data.siblingOrderId.splice(index, 1); 
+          delete req.session.data.siblingOrderId[index]; 
+          delete req.session.data.siblingFirstNames[index]; 
+          delete req.session.data.siblingLastNames[index]; 
+          delete req.session.data.siblingOrderType[index]; 
+          delete req.session.data.siblingOrderNumber[index]; 
+          delete req.session.data.siblingOrderCourt[index]; 
+          delete req.session.data.siblingOrderDay[index]; 
+          delete req.session.data.siblingOrderMonth[index]; 
+          delete req.session.data.siblingOrderYear[index]; 
+          delete req.session.data.siblingOrderCompleted[index]; 
         }
       }
-      // for( var i = 0; i < req.session.data.siblingOrderId.length; i++) { 
-      //   if ( req.session.data.siblingOrderId[i] === id) { 
-      //     req.session.data.siblingOrderId.splice(i, 1); 
-      //     console.log(req.session.data.siblingOrderId)
-      //     console.log("i: ",i)
-      //     i--; 
-      //   }
-      // }      
       console.log(req.session.data.siblingOrderId)
+      console.log(req.session.data.siblingFirstNames)
+      console.log(req.session.data.siblingLastNames)
+      console.log(req.session.data.siblingOrderType)
+      console.log(req.session.data.siblingOrderNumber)
+      console.log(req.session.data.siblingOrderCourt)
       res.redirect('/version-1/children/sibling-summary')
     }
     else {
@@ -2657,11 +2677,6 @@ router.post('/version-1/applicants/second-applicant-upload', function(req, res) 
 
 
 
-//******************************** Check , pay and submit *****************************************************************
-
-router.post('/version-1/check-pay-and-submit/check-your-answers', function(req, res) {
-  res.redirect('/version-1/check-pay-and-submit/declaration')
-})
 
 
 // ***************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************
