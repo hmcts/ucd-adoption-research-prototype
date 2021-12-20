@@ -1563,6 +1563,35 @@ router.post('/version-1/applicants/second-applicant-upload', function(req, res) 
     }
   })
 
+  router.post('/version-1/children/father-manual-address-international', function(req, res) {
+    var errors = []
+    if (req.body['address-line-1'] === '') {
+      errors.push({
+      text: 'Enter the first line of the address',
+      href: '#first-line'
+      })
+    }
+    if (req.body['country'] === '') {
+      errors.push({
+      text: 'Enter the country',
+      href: '#country'
+      })
+    }
+
+
+    if (req.body['submit-button'] === 'save-and-continue') {
+      if (errors.length === 0) {
+        req.session.data.motherAddress = 1
+        res.redirect('/version-1/task-list')
+      }
+      else {
+        res.render('.//version-1/children/father-manual-address-international', { errors: errors })
+      }
+    }
+    else {
+      res.redirect('/version-1/task-list')
+    }
+  })
 
 
 
