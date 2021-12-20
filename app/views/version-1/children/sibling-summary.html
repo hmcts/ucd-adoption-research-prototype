@@ -41,7 +41,7 @@ Apply to adopt a child
       {% for sib in data['uniqueSiblingId'] %}
 
       <!-- <h2 class="govuk-heading-m govuk-!-margin-top-7">Sibling: {{ data['uniqueSiblingFirstNames'][sib] }} {{ data['uniqueSiblingLastNames'][sib] }} </h2> -->
-      <p class="govuk-!-margin-top-7 govuk-!-margin-bottom-0"><span class="govuk-!-font-weight-bold">Sibling: </span>{{ data['uniqueSiblingFirstNames'][sib] }} {{ data['uniqueSiblingLastNames'][sib] }} </p><p class="govuk-!-margin-top-0"><a class="govuk-link" href="sibling-check-your-answers.html?id={{data['siblingOrderId'][id]}}">
+      <p class="govuk-!-margin-top-7 govuk-!-margin-bottom-0"><span class="govuk-!-font-weight-bold">Sibling: </span>{{ data['uniqueSiblingFirstNames'][sib] }} {{ data['uniqueSiblingLastNames'][sib] }} </p><p class="govuk-!-margin-top-0"><a class="govuk-link" href="sibling-change-name.html?id={{data['uniqueSiblingId'][sib]}}">
         Change name</a></p>
 </p>                 
       <dl class="govuk-summary-list govuk-!-margin-bottom-9 govuk-!-margin-top-0">
@@ -66,7 +66,7 @@ Apply to adopt a child
                 </a>
               </dd>
               <dd class="govuk-summary-list__actions">
-                <a class="govuk-link" href="#">
+                <a class="govuk-link" href="sibling-remove-court-order.html?id={{data['siblingOrderId'][id]}}">
                   Remove<span class="govuk-visually-hidden"> order</span>
                 </a>
               </dd>
