@@ -88,22 +88,22 @@ module.exports = {
   "childsocialworker": "The child's adoption agency or local authority details",
   "solicitor": "Your solicitor",
   "sibling": "Sibling details",
-
+  "checkpaysubmit": "Review your application, pay and send",
 
   "monthName": [
     "",
     "January",
-    "February", 
+    "February",
     "March",
-    "April", 
+    "April",
     "May",
-    "June", 
+    "June",
     "July",
-    "August", 
+    "August",
     "September",
-    "October", 
+    "October",
     "November",
-    "December" 
+    "December"
 ]
 
 
