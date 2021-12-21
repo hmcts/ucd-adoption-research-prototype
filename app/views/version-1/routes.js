@@ -2638,30 +2638,16 @@ router.post('/version-1/applicants/second-applicant-upload', function(req, res) 
       })
     }
 
-    arrayLength = req.session.data.siblingOrderId.length
-    if (arrayLength == 1) {
-      count = 0
+    if (errors.length === 0) {
+      req.session.data.siblingOrderDay[req.body['sibling-id']] = req.body['sibling-day']
+      req.session.data.siblingOrderMonth[req.body['sibling-id']] = req.body['sibling-month']
+      req.session.data.siblingOrderYear[req.body['sibling-id']] = req.body['sibling-year']
+      res.redirect('/version-1/children/sibling-check-your-answers')
     }
     else {
-      count = req.session.data.siblingOrderId.length - 1
+      res.render('.//version-1/children/sibling-change-order-date', { errors: errors })
     }
 
-    if (req.body['submit-button'] === 'save-and-continue') {
-      if (errors.length === 0) {
-        req.session.data.siblingOrderDay[count] = req.body['sibling-day']
-        req.session.data.siblingOrderMonth[count] = req.body['sibling-month']
-        req.session.data.siblingOrderYear[count] = req.body['sibling-year']
-        req.session.data.siblingOrderCompleted[count] = "Yes"
-        res.redirect('/version-1/children/sibling-summary')
-        req.session.data.siblingOrderCount = req.session.data.siblingOrderCount + 1
-      }
-      else {
-        res.render('.//version-1/children/sibling-order-date', { errors: errors })
-      }
-    }
-    else {
-      res.redirect('/version-1/task-list')
-    }
   })
 
 
@@ -2784,25 +2770,19 @@ router.post('/version-1/applicants/second-applicant-upload', function(req, res) 
         const element = req.session.data.siblingOrderId[index];
         console.log ("Element: ", element)
 
-        if (element == id) {
-          console.log("in removal area")
-          req.session.data.siblingOrderId.splice(index, 1);
+        if (element == id) { 
+          delete req.session.data.siblingOrderId[index]; 
+          delete req.session.data.siblingFirstNames[index]; 
+          delete req.session.data.siblingLastNames[index]; 
+          delete req.session.data.siblingOrderType[index]; 
+          delete req.session.data.siblingOrderNumber[index]; 
+          delete req.session.data.siblingOrderCourt[index]; 
+          delete req.session.data.siblingOrderDay[index]; 
+          delete req.session.data.siblingOrderMonth[index]; 
+          delete req.session.data.siblingOrderYear[index]; 
+          delete req.session.data.siblingOrderCompleted[index]; 
         }
       }
-
-      if (element == id) { 
-        delete req.session.data.siblingOrderId[index]; 
-        delete req.session.data.siblingFirstNames[index]; 
-        delete req.session.data.siblingLastNames[index]; 
-        delete req.session.data.siblingOrderType[index]; 
-        delete req.session.data.siblingOrderNumber[index]; 
-        delete req.session.data.siblingOrderCourt[index]; 
-        delete req.session.data.siblingOrderDay[index]; 
-        delete req.session.data.siblingOrderMonth[index]; 
-        delete req.session.data.siblingOrderYear[index]; 
-        delete req.session.data.siblingOrderCompleted[index]; 
-      }
-
       console.log(req.session.data.siblingOrderId)
       console.log(req.session.data.siblingFirstNames)
       console.log(req.session.data.siblingLastNames)
@@ -2814,7 +2794,6 @@ router.post('/version-1/applicants/second-applicant-upload', function(req, res) 
     else {
       res.render('.//version-1/children/sibling-remove-order-court', { errors: errors })
     }
-
   })
 
 
