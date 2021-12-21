@@ -2374,20 +2374,26 @@ router.post('/version-1/applicants/second-applicant-upload', function(req, res) 
     if (errors.length === 0) {
       uniqueFirstOriginal = req.session.data.uniqueSiblingFirstNames[sib]
       uniqueLastOriginal = req.session.data.uniqueSiblingLastNames[sib]
+      console.log(uniqueFirstOriginal)
+      console.log(uniqueLastOriginal)
       req.session.data.uniqueSiblingFirstNames[sib] = req.body['sibling-first-names']
       req.session.data.uniqueSiblingLastNames[sib] = req.body['sibling-last-names']
+      console.log(req.session.data.uniqueSiblingFirstNames[sib])
+      console.log(req.session.data.uniqueSiblingLastNames[sib])
 
       for (let index = 0; index < req.session.data.siblingOrderId.length; index++) {
         fn = req.session.data.siblingFirstNames[index]
         ln = req.session.data.siblingLastNames[index]
-        if (fn = uniqueFirstOriginal) {
+        console.log(fn)
+        console.log(ln)
+        if (fn == uniqueFirstOriginal) {
           req.session.data.siblingFirstNames[index] = req.body['sibling-first-names']
         }
-        if (ln = uniqueLastOriginal) {
+        if (ln == uniqueLastOriginal) {
           req.session.data.siblingLastNames[index] = req.body['sibling-last-names']
         }
       }
-
+      console.log(req.session.data.siblingFirstNames)
       res.redirect('/version-1/children/sibling-summary')
     }
     else {
@@ -2429,6 +2435,27 @@ router.post('/version-1/applicants/second-applicant-upload', function(req, res) 
   })
 
 
+  router.post('/version-1/children/sibling-change-order-type', function(req, res) {
+    var errors = []
+    if (req.body['sibling-new-order-type'] === '') {
+      errors.push({
+      text: 'Please answer the question',
+      href: '#order-type'
+      })
+    }
+    console.log(req.session.data.siblingOrderType[req.body['sibling-id']])
+    console.log(req.body['sibling-new-order-type'])
+
+    if (errors.length === 0) {
+      req.session.data.siblingOrderType[req.body['sibling-id']] = req.body['sibling-new-order-type']
+      res.redirect('/version-1/children/sibling-check-your-answers')
+    }
+    else {
+      res.render('.//version-1/children/sibling-change-order-type', { errors: errors })
+    }
+  })
+
+
 
   router.post('/version-1/children/sibling-order-case-number', function(req, res) {
     var errors = []
@@ -2458,6 +2485,27 @@ router.post('/version-1/applicants/second-applicant-upload', function(req, res) 
     }
     else {
       res.redirect('/version-1/task-list')
+    }
+  })
+  
+
+  router.post('/version-1/children/sibling-change-order-case-number', function(req, res) {
+    var errors = []
+    if (req.body['sibling-new-case-number'] === '') {
+      errors.push({
+      text: 'Please answer the question',
+      href: '#case-number'
+      })
+    }
+    console.log(req.session.data.siblingOrderType[req.body['sibling-id']])
+    console.log(req.body['sibling-new-case-number'])
+
+    if (errors.length === 0) {
+      req.session.data.siblingOrderNumber[req.body['sibling-id']] = req.body['sibling-new-case-number']
+      res.redirect('/version-1/children/sibling-check-your-answers')
+    }
+    else {
+      res.render('.//version-1/children/sibling-change-case-number', { errors: errors })
     }
   })
 
@@ -2490,6 +2538,27 @@ router.post('/version-1/applicants/second-applicant-upload', function(req, res) 
     }
     else {
       res.redirect('/version-1/task-list')
+    }
+  })
+
+
+  router.post('/version-1/children/sibling-change-order-court', function(req, res) {
+    var errors = []
+    if (req.body['sibling-new-court-name'] === '') {
+      errors.push({
+      text: 'Please answer the question',
+      href: '#order-court-name'
+      })
+    }
+    console.log(req.session.data.siblingOrderType[req.body['sibling-id']])
+    console.log(req.body['sibling-new-court-name'])
+
+    if (errors.length === 0) {
+      req.session.data.siblingOrderCourt[req.body['sibling-id']] = req.body['sibling-new-court-name']
+      res.redirect('/version-1/children/sibling-check-your-answers')
+    }
+    else {
+      res.render('.//version-1/children/sibling-change-court', { errors: errors })
     }
   })
 
