@@ -2789,27 +2789,18 @@ router.post('/version-1/applicants/second-applicant-upload', function(req, res) 
           req.session.data.siblingOrderId.splice(index, 1);
         }
       }
-      // for( var i = 0; i < req.session.data.siblingOrderId.length; i++) {
-      //   if ( req.session.data.siblingOrderId[i] === id) {
-      //     req.session.data.siblingOrderId.splice(i, 1);
-      //     console.log(req.session.data.siblingOrderId)
-      //     console.log("i: ",i)
-      //     i--;
-      //   }
-      // }
 
-        if (element == id) { 
-          delete req.session.data.siblingOrderId[index]; 
-          delete req.session.data.siblingFirstNames[index]; 
-          delete req.session.data.siblingLastNames[index]; 
-          delete req.session.data.siblingOrderType[index]; 
-          delete req.session.data.siblingOrderNumber[index]; 
-          delete req.session.data.siblingOrderCourt[index]; 
-          delete req.session.data.siblingOrderDay[index]; 
-          delete req.session.data.siblingOrderMonth[index]; 
-          delete req.session.data.siblingOrderYear[index]; 
-          delete req.session.data.siblingOrderCompleted[index]; 
-        }
+      if (element == id) { 
+        delete req.session.data.siblingOrderId[index]; 
+        delete req.session.data.siblingFirstNames[index]; 
+        delete req.session.data.siblingLastNames[index]; 
+        delete req.session.data.siblingOrderType[index]; 
+        delete req.session.data.siblingOrderNumber[index]; 
+        delete req.session.data.siblingOrderCourt[index]; 
+        delete req.session.data.siblingOrderDay[index]; 
+        delete req.session.data.siblingOrderMonth[index]; 
+        delete req.session.data.siblingOrderYear[index]; 
+        delete req.session.data.siblingOrderCompleted[index]; 
       }
 
       console.log(req.session.data.siblingOrderId)
