@@ -2518,7 +2518,7 @@ router.post('/version-1/applicants/second-applicant-upload', function(req, res) 
       res.redirect('/version-1/task-list')
     }
   })
-  
+
 
   router.post('/version-1/children/sibling-change-order-case-number', function(req, res) {
     var errors = []
@@ -2685,7 +2685,7 @@ router.post('/version-1/applicants/second-applicant-upload', function(req, res) 
   })
 
 
-  
+
   router.post('/version-1/children/sibling-choose-sibling', function(req, res) {
     var errors = []
     if (req.body['what-sibling'] === undefined) {
@@ -2708,7 +2708,7 @@ router.post('/version-1/applicants/second-applicant-upload', function(req, res) 
         })
       }
     }
-    
+
     count = req.session.data.siblingOrderId.length
     sib = req.session.data.numberOfSiblings
     id = req.body['what-sibling']
@@ -2842,6 +2842,22 @@ router.post('/version-1/applicants/second-applicant-upload', function(req, res) 
       res.render('.//version-1/children/sibling-remove-order-court', { errors: errors })
     }
   })
+
+
+
+
+
+//**************************************** Check, Pay and Submit ************************************************************
+
+router.post('/version-1/check-pay-and-submit/check-your-answers', function(req, res) {
+  res.redirect('/version-1/check-pay-and-submit/declaration')
+    })
+
+
+    router.post('/version-1/check-pay-and-submit/declaration', function(req, res) {
+      res.redirect('/version-1/check-pay-and-submit/payment')
+        })
+
 
 
 
