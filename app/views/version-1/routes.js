@@ -1776,6 +1776,36 @@ router.post('/version-1/applicants/second-applicant-upload', function(req, res) 
   })
 
 
+  router.post('/version-1/children/other-parent-manual-address-international', function(req, res) {
+    var errors = []
+    if (req.body['address-line-1'] === '') {
+      errors.push({
+      text: 'Enter the first line of the address',
+      href: '#first-line'
+      })
+    }
+    if (req.body['country'] === '') {
+      errors.push({
+      text: 'Enter the country',
+      href: '#country'
+      })
+    }
+
+
+    if (req.body['submit-button'] === 'save-and-continue') {
+      if (errors.length === 0) {
+        req.session.data.motherAddress = 1
+        res.redirect('/version-1/task-list')
+      }
+      else {
+        res.render('.//version-1/children/other-parent-manual-address-international', { errors: errors })
+      }
+    }
+    else {
+      res.redirect('/version-1/task-list')
+    }
+  })
+
 
 
 
@@ -2633,19 +2663,19 @@ router.post('/version-1/applicants/second-applicant-upload', function(req, res) 
       for (let index = 0; index < req.session.data.siblingOrderId.length; index++) {
         const element = req.session.data.siblingOrderId[index];
         console.log ("Element: ", element)
-        if (element == id) { 
+        if (element == id) {
           console.log("in removal area")
-          req.session.data.siblingOrderId.splice(index, 1); 
+          req.session.data.siblingOrderId.splice(index, 1);
         }
       }
-      // for( var i = 0; i < req.session.data.siblingOrderId.length; i++) { 
-      //   if ( req.session.data.siblingOrderId[i] === id) { 
-      //     req.session.data.siblingOrderId.splice(i, 1); 
+      // for( var i = 0; i < req.session.data.siblingOrderId.length; i++) {
+      //   if ( req.session.data.siblingOrderId[i] === id) {
+      //     req.session.data.siblingOrderId.splice(i, 1);
       //     console.log(req.session.data.siblingOrderId)
       //     console.log("i: ",i)
-      //     i--; 
+      //     i--;
       //   }
-      // }      
+      // }
       console.log(req.session.data.siblingOrderId)
       res.redirect('/version-1/children/sibling-summary')
     }
