@@ -2629,6 +2629,42 @@ router.post('/version-1/applicants/second-applicant-upload', function(req, res) 
   })
 
 
+  router.post('/version-1/children/sibling-change-order-date', function(req, res) {
+    var errors = []
+    if (req.body['sibling-day'] === '' || req.body['sibling-month'] === '' || req.body['sibling-year'] === '') {
+      errors.push({
+      text: 'Developers: please refer to ADOP-281 for different error messages',
+      href: '#order-date'
+      })
+    }
+
+    arrayLength = req.session.data.siblingOrderId.length
+    if (arrayLength == 1) {
+      count = 0
+    }
+    else {
+      count = req.session.data.siblingOrderId.length - 1
+    }
+
+    if (req.body['submit-button'] === 'save-and-continue') {
+      if (errors.length === 0) {
+        req.session.data.siblingOrderDay[count] = req.body['sibling-day']
+        req.session.data.siblingOrderMonth[count] = req.body['sibling-month']
+        req.session.data.siblingOrderYear[count] = req.body['sibling-year']
+        req.session.data.siblingOrderCompleted[count] = "Yes"
+        res.redirect('/version-1/children/sibling-summary')
+        req.session.data.siblingOrderCount = req.session.data.siblingOrderCount + 1
+      }
+      else {
+        res.render('.//version-1/children/sibling-order-date', { errors: errors })
+      }
+    }
+    else {
+      res.redirect('/version-1/task-list')
+    }
+  })
+
+
   router.post('/version-1/children/sibling-summary', function(req, res) {
     var errors = []
     if (req.body['sibling-add-another'] === undefined) {
