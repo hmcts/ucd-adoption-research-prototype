@@ -2453,6 +2453,7 @@ router.post('/version-1/applicants/second-applicant-upload', function(req, res) 
       if (errors.length === 0) {
         req.session.data.siblingOrderType[count] = req.body['sibling-order-type']
         req.session.data.siblingOrderCompleted[count] = "No"
+        req.session.data.siblingOrderCount++
         res.redirect('/version-1/children/sibling-order-case-number')
       }
       else {
@@ -2617,7 +2618,8 @@ router.post('/version-1/applicants/second-applicant-upload', function(req, res) 
         req.session.data.siblingOrderYear[count] = req.body['sibling-year']
         req.session.data.siblingOrderCompleted[count] = "Yes"
         res.redirect('/version-1/children/sibling-summary')
-        req.session.data.siblingOrderCount = req.session.data.siblingOrderCount + 1
+//        req.session.data.siblingOrderCount = req.session.data.siblingOrderCount + 1
+        
       }
       else {
         res.render('.//version-1/children/sibling-order-date', { errors: errors })
@@ -2669,7 +2671,7 @@ router.post('/version-1/applicants/second-applicant-upload', function(req, res) 
           res.redirect('/version-1/children/sibling-choose-sibling')
         }
         else {
-          req.session.data.AddToListFinished = 1
+          req.session.data.siblingOrderCompleted = 1
           res.redirect('/version-1/task-list')
         }
       }
@@ -2680,7 +2682,6 @@ router.post('/version-1/applicants/second-applicant-upload', function(req, res) 
     else {
         res.redirect('/version-1/task-list')
     }
-    // // console.log("Sibling array: ", req.session.data.siblingLastNames)
   })
 
 
@@ -2725,7 +2726,6 @@ router.post('/version-1/applicants/second-applicant-upload', function(req, res) 
         }
         else {
           console.log("existing sibling")
-//          id = req.body['what-sibling']
           req.session.data.siblingFirstNames[count] = req.session.data.uniqueSiblingFirstNames[id]
           req.session.data.siblingLastNames[count] = req.session.data.uniqueSiblingLastNames[id]
         }
@@ -2753,6 +2753,7 @@ router.post('/version-1/applicants/second-applicant-upload', function(req, res) 
 
 
   router.post('/version-1/children/sibling-remove-court-order', function(req, res) {
+    var occ = 0
     var errors = []
     if (req.body['remove-court-order'] === undefined) {
       errors.push({
@@ -2762,34 +2763,80 @@ router.post('/version-1/applicants/second-applicant-upload', function(req, res) 
     }
 
     id = req.body['order-id']
+    fn = req.session.data.siblingFirstNames[id]
+    ln = req.session.data.siblingLastNames[id]
     console.log("order-id: ",id)
-    console.log(req.session.data.siblingOrderId)
+    console.log("count: ",req.session.data.siblingOrderCount)
 
     if (errors.length === 0) {
       for (let index = 0; index < req.session.data.siblingOrderId.length; index++) {
-        const element = req.session.data.siblingOrderId[index];
-        console.log ("Element: ", element)
-
-        if (element == id) {
-          delete req.session.data.siblingOrderId[index];
-          delete req.session.data.siblingFirstNames[index];
-          delete req.session.data.siblingLastNames[index];
-          delete req.session.data.siblingOrderType[index];
-          delete req.session.data.siblingOrderNumber[index];
-          delete req.session.data.siblingOrderCourt[index];
-          delete req.session.data.siblingOrderDay[index];
-          delete req.session.data.siblingOrderMonth[index];
-          delete req.session.data.siblingOrderYear[index];
-          delete req.session.data.siblingOrderCompleted[index];
+        if (req.session.data.siblingOrderId[index] == id) { 
+          console.log("index: ", index)
+          // req.session.data.siblingOrderId.splice(index, 1); 
+          // req.session.data.siblingFirstNames.splice(index, 1); 
+          // req.session.data.siblingLastNames.splice(index, 1); 
+          // req.session.data.siblingOrderType.splice(index, 1); 
+          // req.session.data.siblingOrderNumber.splice(index, 1); 
+          // req.session.data.siblingOrderCourt.splice(index, 1); 
+          // req.session.data.siblingOrderDay.splice(index, 1); 
+          // req.session.data.siblingOrderMonth.splice(index, 1); 
+          // req.session.data.siblingOrderYear.splice(index, 1); 
+          // req.session.data.siblingOrderCompleted.splice(index, 1); 
+          delete req.session.data.siblingOrderId[index]; 
+          delete req.session.data.siblingFirstNames[index]; 
+          delete req.session.data.siblingLastNames[index]; 
+          delete req.session.data.siblingOrderType[index]; 
+          delete req.session.data.siblingOrderNumber[index]; 
+          delete req.session.data.siblingOrderCourt[index]; 
+          delete req.session.data.siblingOrderDay[index]; 
+          delete req.session.data.siblingOrderMonth[index]; 
+          delete req.session.data.siblingOrderYear[index]; 
+          delete req.session.data.siblingOrderCompleted[index]; 
+          req.session.data.siblingOrderCount--
         }
       }
-      console.log(req.session.data.siblingOrderId)
-      console.log(req.session.data.siblingFirstNames)
-      console.log(req.session.data.siblingLastNames)
-      console.log(req.session.data.siblingOrderType)
-      console.log(req.session.data.siblingOrderNumber)
-      console.log(req.session.data.siblingOrderCourt)
-      res.redirect('/version-1/children/sibling-summary')
+      console.log("sibling first names orders: ", req.session.data.siblingFirstNames)
+      console.log("sibling unique first names: ", req.session.data.uniqueSiblingFirstNames)
+      console.log("sibling order count: ", req.session.data.siblingOrderCount)
+      console.log("sibling first names: ", fn)
+      for (let index2 = 0; index2 < req.session.data.uniqueSiblingId.length; index2++) {
+        console.log(req.session.data.uniqueSiblingFirstNames[index2])
+        if (fn == req.session.data.uniqueSiblingFirstNames[index2] && ln == req.session.data.uniqueSiblingLastNames[index2]) {
+          occ++
+          console.log("Occurrence inside: ", occ)
+        }
+      }
+      console.log("Occurrence: ", occ)
+      if (occ == 0) {
+        for (let index3 = 0; index3 < req.session.data.uniqueSiblingId.length; index3++) {
+          console.log("sibling first names orders index3: ", req.session.data.uniqueSiblingFirstNames[index3])
+          console.log("sibling last names orders index3: ", req.session.data.uniqueSiblingLastNames[index3])
+          if (fn == req.session.data.uniqueSiblingFirstNames[index3] && ln == req.session.data.uniqueSiblingLastNames[index3]) {
+            console.log("In for: ", fn)
+            console.log("In for: ", ln)
+            delete req.session.data.uniqueSiblingId[index3]
+            delete req.session.data.uniqueSiblingFirstNames[index3]
+            delete req.session.data.uniqueSiblingLastNames[index3]
+            // req.session.data.uniqueSiblingId.splice(index3, 1)
+            // req.session.data.uniqueSiblingFirstNames.splice(index3, 1)
+            // req.session.data.uniqueSiblingLastNames.splice(index3, 1)
+          }
+        }
+      }
+      console.log("sibling unique first names: ", req.session.data.uniqueSiblingFirstNames)
+
+      // console.log(req.session.data.siblingOrderId)
+      // console.log(req.session.data.siblingFirstNames)
+      // console.log(req.session.data.siblingLastNames)
+      // console.log(req.session.data.siblingOrderType)
+      // console.log(req.session.data.siblingOrderNumber)
+      // console.log(req.session.data.siblingOrderCourt)
+      if (req.session.data.siblingOrderCount > 0) {
+        res.redirect('/version-1/children/sibling-summary')
+      }
+      else {
+        res.redirect('/version-1/children/sibling-court-order-exists')
+      }
     }
     else {
       res.render('.//version-1/children/sibling-remove-order-court', { errors: errors })
