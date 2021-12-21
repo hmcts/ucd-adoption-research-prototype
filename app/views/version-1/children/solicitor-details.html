@@ -44,7 +44,7 @@ Apply to adopt a child
               Solicitor details
             </h1>
           </legend>
-          
+
           <div class="govuk-form-group">
             <label class="govuk-label" for="name">
               Name of firm
@@ -57,8 +57,8 @@ Apply to adopt a child
 
             <input class="govuk-input govuk-!-width-two-thirds {% if (nameError != '') %} govuk-input--error{% endif %}" id="solicitor-company-name" name="solicitor-company-name" type="text" value="{{ data['solicitor-company-name'] }}">
           </div>
-        
-          <div class="govuk-form-group">
+
+            <div class="govuk-form-group {% if (solicitorNameError != '') %} govuk-form-group--error{% endif %}">
             <label class="govuk-label" for="contact">
               Solicitor's name
             </label>
@@ -69,7 +69,7 @@ Apply to adopt a child
             {% endif %}
             <input class="govuk-input govuk-!-width-two-thirds {% if (solicitorNameError != '') %} govuk-input--error{% endif %}" id="solicitor-name" name="solicitor-name" type="text" value="{{ data['solicitor-name'] }}">
           </div>
-        
+
           <div class="govuk-form-group">
             <label class="govuk-label" for="phone-number">
               Phone number
@@ -88,8 +88,8 @@ Apply to adopt a child
             </label>
             <input class="govuk-input govuk-!-width-two-thirds {% if (phoneError != '') %} govuk-input--error{% endif %}" id="solicitor-email-address" name="solicitor-email-address" type="email" value="{{ data['solicitor-email-address'] }}">
           </div>
-        
-                        
+
+
         </fieldset>
 
         <!-- Buttons -->
