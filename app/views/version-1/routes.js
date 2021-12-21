@@ -2517,7 +2517,7 @@ router.post('/version-1/applicants/second-applicant-upload', function(req, res) 
       res.redirect('/version-1/task-list')
     }
   })
-  
+
 
   router.post('/version-1/children/sibling-change-order-case-number', function(req, res) {
     var errors = []
@@ -2684,7 +2684,7 @@ router.post('/version-1/applicants/second-applicant-upload', function(req, res) 
   })
 
 
-  
+
   router.post('/version-1/children/sibling-choose-sibling', function(req, res) {
     var errors = []
     if (req.body['what-sibling'] === undefined) {
@@ -2707,7 +2707,7 @@ router.post('/version-1/applicants/second-applicant-upload', function(req, res) 
         })
       }
     }
-    
+
     count = req.session.data.siblingOrderId.length
     sib = req.session.data.numberOfSiblings
     id = req.body['what-sibling']
@@ -2770,17 +2770,17 @@ router.post('/version-1/applicants/second-applicant-upload', function(req, res) 
         const element = req.session.data.siblingOrderId[index];
         console.log ("Element: ", element)
 
-        if (element == id) { 
-          delete req.session.data.siblingOrderId[index]; 
-          delete req.session.data.siblingFirstNames[index]; 
-          delete req.session.data.siblingLastNames[index]; 
-          delete req.session.data.siblingOrderType[index]; 
-          delete req.session.data.siblingOrderNumber[index]; 
-          delete req.session.data.siblingOrderCourt[index]; 
-          delete req.session.data.siblingOrderDay[index]; 
-          delete req.session.data.siblingOrderMonth[index]; 
-          delete req.session.data.siblingOrderYear[index]; 
-          delete req.session.data.siblingOrderCompleted[index]; 
+        if (element == id) {
+          delete req.session.data.siblingOrderId[index];
+          delete req.session.data.siblingFirstNames[index];
+          delete req.session.data.siblingLastNames[index];
+          delete req.session.data.siblingOrderType[index];
+          delete req.session.data.siblingOrderNumber[index];
+          delete req.session.data.siblingOrderCourt[index];
+          delete req.session.data.siblingOrderDay[index];
+          delete req.session.data.siblingOrderMonth[index];
+          delete req.session.data.siblingOrderYear[index];
+          delete req.session.data.siblingOrderCompleted[index];
         }
       }
       console.log(req.session.data.siblingOrderId)
@@ -2795,6 +2795,22 @@ router.post('/version-1/applicants/second-applicant-upload', function(req, res) 
       res.render('.//version-1/children/sibling-remove-order-court', { errors: errors })
     }
   })
+
+
+
+
+
+//**************************************** Check, Pay and Submit ************************************************************
+
+router.post('/version-1/check-pay-and-submit/check-your-answers', function(req, res) {
+  res.redirect('/version-1/check-pay-and-submit/declaration')
+    })
+
+
+    router.post('/version-1/check-pay-and-submit/declaration', function(req, res) {
+      res.redirect('/version-1/check-pay-and-submit/payment')
+        })
+
 
 
 
