@@ -1,3 +1,5 @@
+const { uniqueSiblingFirstNames } = require("../../data/session-data-defaults");
+
 module.exports = (router) => {
 
 // ******************************************** ELIGIBILITY ********************************************
@@ -1284,6 +1286,9 @@ router.post('/version-1/applicants/second-applicant-upload', function(req, res) 
 
 
 
+
+
+
   // ********************** Birth father's details **********************
   router.post('/version-1/children/father-in-certificate', function(req, res) {
     var errors = []
@@ -2394,15 +2399,31 @@ router.post('/version-1/applicants/second-applicant-upload', function(req, res) 
     }
 
     count = req.session.data.siblingOrderCount
+    sib = req.body['sibling-id']
 
     if (errors.length === 0) {
-      // req.session.data.siblingOrderId[count] = count
-      // req.session.data.uniqueSiblingId[count] = count
-      // req.session.data.uniqueSiblingFirstNames[count] = req.body['sibling-first-names']
-      // req.session.data.uniqueSiblingLastNames[count] = req.body['sibling-last-names']
-      // req.session.data.siblingFirstNames[count] = req.body['sibling-first-names']
-      // req.session.data.siblingLastNames[count] = req.body['sibling-last-names']
-      // req.session.data.numberOfSiblings = 1
+      uniqueFirstOriginal = req.session.data.uniqueSiblingFirstNames[sib]
+      uniqueLastOriginal = req.session.data.uniqueSiblingLastNames[sib]
+      console.log(uniqueFirstOriginal)
+      console.log(uniqueLastOriginal)
+      req.session.data.uniqueSiblingFirstNames[sib] = req.body['sibling-first-names']
+      req.session.data.uniqueSiblingLastNames[sib] = req.body['sibling-last-names']
+      console.log(req.session.data.uniqueSiblingFirstNames[sib])
+      console.log(req.session.data.uniqueSiblingLastNames[sib])
+
+      for (let index = 0; index < req.session.data.siblingOrderId.length; index++) {
+        fn = req.session.data.siblingFirstNames[index]
+        ln = req.session.data.siblingLastNames[index]
+        console.log(fn)
+        console.log(ln)
+        if (fn == uniqueFirstOriginal) {
+          req.session.data.siblingFirstNames[index] = req.body['sibling-first-names']
+        }
+        if (ln == uniqueLastOriginal) {
+          req.session.data.siblingLastNames[index] = req.body['sibling-last-names']
+        }
+      }
+      console.log(req.session.data.siblingFirstNames)
       res.redirect('/version-1/children/sibling-summary')
     }
     else {
@@ -2444,6 +2465,27 @@ router.post('/version-1/applicants/second-applicant-upload', function(req, res) 
   })
 
 
+  router.post('/version-1/children/sibling-change-order-type', function(req, res) {
+    var errors = []
+    if (req.body['sibling-new-order-type'] === '') {
+      errors.push({
+      text: 'Please answer the question',
+      href: '#order-type'
+      })
+    }
+    console.log(req.session.data.siblingOrderType[req.body['sibling-id']])
+    console.log(req.body['sibling-new-order-type'])
+
+    if (errors.length === 0) {
+      req.session.data.siblingOrderType[req.body['sibling-id']] = req.body['sibling-new-order-type']
+      res.redirect('/version-1/children/sibling-check-your-answers')
+    }
+    else {
+      res.render('.//version-1/children/sibling-change-order-type', { errors: errors })
+    }
+  })
+
+
 
   router.post('/version-1/children/sibling-order-case-number', function(req, res) {
     var errors = []
@@ -2473,6 +2515,27 @@ router.post('/version-1/applicants/second-applicant-upload', function(req, res) 
     }
     else {
       res.redirect('/version-1/task-list')
+    }
+  })
+  
+
+  router.post('/version-1/children/sibling-change-order-case-number', function(req, res) {
+    var errors = []
+    if (req.body['sibling-new-case-number'] === '') {
+      errors.push({
+      text: 'Please answer the question',
+      href: '#case-number'
+      })
+    }
+    console.log(req.session.data.siblingOrderType[req.body['sibling-id']])
+    console.log(req.body['sibling-new-case-number'])
+
+    if (errors.length === 0) {
+      req.session.data.siblingOrderNumber[req.body['sibling-id']] = req.body['sibling-new-case-number']
+      res.redirect('/version-1/children/sibling-check-your-answers')
+    }
+    else {
+      res.render('.//version-1/children/sibling-change-case-number', { errors: errors })
     }
   })
 
@@ -2505,6 +2568,27 @@ router.post('/version-1/applicants/second-applicant-upload', function(req, res) 
     }
     else {
       res.redirect('/version-1/task-list')
+    }
+  })
+
+
+  router.post('/version-1/children/sibling-change-order-court', function(req, res) {
+    var errors = []
+    if (req.body['sibling-new-court-name'] === '') {
+      errors.push({
+      text: 'Please answer the question',
+      href: '#order-court-name'
+      })
+    }
+    console.log(req.session.data.siblingOrderType[req.body['sibling-id']])
+    console.log(req.body['sibling-new-court-name'])
+
+    if (errors.length === 0) {
+      req.session.data.siblingOrderCourt[req.body['sibling-id']] = req.body['sibling-new-court-name']
+      res.redirect('/version-1/children/sibling-check-your-answers')
+    }
+    else {
+      res.render('.//version-1/children/sibling-change-court', { errors: errors })
     }
   })
 
@@ -2578,7 +2662,7 @@ router.post('/version-1/applicants/second-applicant-upload', function(req, res) 
   })
 
 
-
+  
   router.post('/version-1/children/sibling-choose-sibling', function(req, res) {
     var errors = []
     if (req.body['what-sibling'] === undefined) {
@@ -2601,7 +2685,7 @@ router.post('/version-1/applicants/second-applicant-upload', function(req, res) 
         })
       }
     }
-
+    
     count = req.session.data.siblingOrderId.length
     sib = req.session.data.numberOfSiblings
     id = req.body['what-sibling']
@@ -2663,6 +2747,7 @@ router.post('/version-1/applicants/second-applicant-upload', function(req, res) 
       for (let index = 0; index < req.session.data.siblingOrderId.length; index++) {
         const element = req.session.data.siblingOrderId[index];
         console.log ("Element: ", element)
+
         if (element == id) {
           console.log("in removal area")
           req.session.data.siblingOrderId.splice(index, 1);
@@ -2676,7 +2761,27 @@ router.post('/version-1/applicants/second-applicant-upload', function(req, res) 
       //     i--;
       //   }
       // }
+
+        if (element == id) { 
+          delete req.session.data.siblingOrderId[index]; 
+          delete req.session.data.siblingFirstNames[index]; 
+          delete req.session.data.siblingLastNames[index]; 
+          delete req.session.data.siblingOrderType[index]; 
+          delete req.session.data.siblingOrderNumber[index]; 
+          delete req.session.data.siblingOrderCourt[index]; 
+          delete req.session.data.siblingOrderDay[index]; 
+          delete req.session.data.siblingOrderMonth[index]; 
+          delete req.session.data.siblingOrderYear[index]; 
+          delete req.session.data.siblingOrderCompleted[index]; 
+        }
+      }
+
       console.log(req.session.data.siblingOrderId)
+      console.log(req.session.data.siblingFirstNames)
+      console.log(req.session.data.siblingLastNames)
+      console.log(req.session.data.siblingOrderType)
+      console.log(req.session.data.siblingOrderNumber)
+      console.log(req.session.data.siblingOrderCourt)
       res.redirect('/version-1/children/sibling-summary')
     }
     else {
@@ -2687,11 +2792,6 @@ router.post('/version-1/applicants/second-applicant-upload', function(req, res) 
 
 
 
-//******************************** Check , pay and submit *****************************************************************
-
-router.post('/version-1/check-pay-and-submit/check-your-answers', function(req, res) {
-  res.redirect('/version-1/check-pay-and-submit/declaration')
-})
 
 
 // ***************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************
