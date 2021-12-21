@@ -2629,6 +2629,42 @@ router.post('/version-1/applicants/second-applicant-upload', function(req, res) 
   })
 
 
+  router.post('/version-1/children/sibling-change-order-date', function(req, res) {
+    var errors = []
+    if (req.body['sibling-day'] === '' || req.body['sibling-month'] === '' || req.body['sibling-year'] === '') {
+      errors.push({
+      text: 'Developers: please refer to ADOP-281 for different error messages',
+      href: '#order-date'
+      })
+    }
+
+    arrayLength = req.session.data.siblingOrderId.length
+    if (arrayLength == 1) {
+      count = 0
+    }
+    else {
+      count = req.session.data.siblingOrderId.length - 1
+    }
+
+    if (req.body['submit-button'] === 'save-and-continue') {
+      if (errors.length === 0) {
+        req.session.data.siblingOrderDay[count] = req.body['sibling-day']
+        req.session.data.siblingOrderMonth[count] = req.body['sibling-month']
+        req.session.data.siblingOrderYear[count] = req.body['sibling-year']
+        req.session.data.siblingOrderCompleted[count] = "Yes"
+        res.redirect('/version-1/children/sibling-summary')
+        req.session.data.siblingOrderCount = req.session.data.siblingOrderCount + 1
+      }
+      else {
+        res.render('.//version-1/children/sibling-order-date', { errors: errors })
+      }
+    }
+    else {
+      res.redirect('/version-1/task-list')
+    }
+  })
+
+
   router.post('/version-1/children/sibling-summary', function(req, res) {
     var errors = []
     if (req.body['sibling-add-another'] === undefined) {
@@ -2753,27 +2789,18 @@ router.post('/version-1/applicants/second-applicant-upload', function(req, res) 
           req.session.data.siblingOrderId.splice(index, 1);
         }
       }
-      // for( var i = 0; i < req.session.data.siblingOrderId.length; i++) {
-      //   if ( req.session.data.siblingOrderId[i] === id) {
-      //     req.session.data.siblingOrderId.splice(i, 1);
-      //     console.log(req.session.data.siblingOrderId)
-      //     console.log("i: ",i)
-      //     i--;
-      //   }
-      // }
 
-        if (element == id) { 
-          delete req.session.data.siblingOrderId[index]; 
-          delete req.session.data.siblingFirstNames[index]; 
-          delete req.session.data.siblingLastNames[index]; 
-          delete req.session.data.siblingOrderType[index]; 
-          delete req.session.data.siblingOrderNumber[index]; 
-          delete req.session.data.siblingOrderCourt[index]; 
-          delete req.session.data.siblingOrderDay[index]; 
-          delete req.session.data.siblingOrderMonth[index]; 
-          delete req.session.data.siblingOrderYear[index]; 
-          delete req.session.data.siblingOrderCompleted[index]; 
-        }
+      if (element == id) { 
+        delete req.session.data.siblingOrderId[index]; 
+        delete req.session.data.siblingFirstNames[index]; 
+        delete req.session.data.siblingLastNames[index]; 
+        delete req.session.data.siblingOrderType[index]; 
+        delete req.session.data.siblingOrderNumber[index]; 
+        delete req.session.data.siblingOrderCourt[index]; 
+        delete req.session.data.siblingOrderDay[index]; 
+        delete req.session.data.siblingOrderMonth[index]; 
+        delete req.session.data.siblingOrderYear[index]; 
+        delete req.session.data.siblingOrderCompleted[index]; 
       }
 
       console.log(req.session.data.siblingOrderId)
