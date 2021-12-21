@@ -45,7 +45,7 @@ Apply to adopt a child
             </h1>
           </legend>
 
-          <div class="govuk-form-group">
+          <div class="govuk-form-group {% if (firstLineError != '') %} govuk-form-group--error{% endif %}">
             <label class="govuk-label" for="address-line-1">
               Building and street <span class="govuk-visually-hidden">line 1 of 2</span>
             </label>
@@ -63,7 +63,7 @@ Apply to adopt a child
             </label>
             <input class="govuk-input" id="address-line-2" name="address-line-2" type="text" autocomplete="address-line2" value="{{ data['address-line-2'] }}"></div>
 
-          <div class="govuk-form-group">
+            <div class="govuk-form-group {% if (townError != '') %} govuk-form-group--error{% endif %}">
             <label class="govuk-label" for="address-town">
               Town or city
             </label>
@@ -80,7 +80,7 @@ Apply to adopt a child
             </label>
             <input class="govuk-input govuk-!-width-two-thirds" id="address-county" name="address-county" type="text" value="{{ data['address-county'] }}"></div>
 
-          <div class="govuk-form-group">
+          <div class="govuk-form-group {% if (postcodeError != '') %} govuk-form-group--error{% endif %}">
             <label class="govuk-label" for="address-postcode">
               Postcode
             </label>
