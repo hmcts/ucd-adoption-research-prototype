@@ -49,7 +49,7 @@ Apply to adopt a child
             </h1>
           </legend>
 
-          <div class="govuk-form-group">
+          <div class="govuk-form-group {% if (nameError != '') %} govuk-form-group--error{% endif %}">
             <label class="govuk-label" for="name">
               Name of firm
             </label>
@@ -74,7 +74,7 @@ Apply to adopt a child
             <input class="govuk-input govuk-!-width-two-thirds {% if (solicitorNameError != '') %} govuk-input--error{% endif %}" id="solicitor-name" name="solicitor-name" type="text" value="{{ data['solicitor-name'] }}">
           </div>
 
-          <div class="govuk-form-group">
+        <div class="govuk-form-group {% if (phoneError != '') %} govuk-form-group--error{% endif %}">
             <label class="govuk-label" for="phone-number">
               Phone number
             </label>
@@ -86,7 +86,7 @@ Apply to adopt a child
             <input class="govuk-input govuk-input--width-10 {% if (phoneError != '') %} govuk-input--error{% endif %}" id="solicitor-phone-number" name="solicitor-phone-number" type="number" value="{{ data['solicitor-phone-number'] }}">
           </div>
 
-          <div class="govuk-form-group">
+          <div class="govuk-form-group {% if (emailError != '') %} govuk-form-group--error{% endif %}">
             <label class="govuk-label" for="contact">
               Solicitor's email address
             </label>

@@ -33,7 +33,7 @@ Apply to adopt a child
         {% endfor %}
       {% endif %}
 
-      <form action="/version-1/children/mother-manual-address-international" method="post" class="form">
+      <form action="/version-1/children/other-parent-manual-address-international" method="post" class="form">
         <fieldset class="govuk-fieldset">
           <legend class="govuk-fieldset__legend govuk-fieldset__legend--l">
             <span class="govuk-caption-l">{{ data['other-parent'] }}</span>
@@ -42,7 +42,7 @@ Apply to adopt a child
             </h1>
           </legend>
 
-          <div class="govuk-form-group">
+          <div class="govuk-form-group {% if (firstLineError != '') %} govuk-form-group--error{% endif %}">
             <label class="govuk-label" for="address-line-1">
               Address line 1 <span class="govuk-visually-hidden">line 1 of 3</span>
             </label>
@@ -91,7 +91,7 @@ Apply to adopt a child
               <input class="govuk-input govuk-input--width-10" id="address-postcode" name="address-postcode" type="text" value="{{ data['address-postcode'] }}"></div>
 
 
-            <div class="govuk-form-group">
+            <div class="govuk-form-group {% if (countryError != '') %} govuk-form-group--error{% endif %}">
               <label class="govuk-label" for="address-line-1">
               Country <span class="govuk-visually-hidden">country</span>
               </label>
