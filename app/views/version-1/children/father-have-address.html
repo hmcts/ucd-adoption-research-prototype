@@ -15,7 +15,7 @@ Apply to adopt a child
     <div class="govuk-grid-column-two-thirds">
 
       {% set haveAddressError = '' %}
-  
+
       {% if errors | length > 0 %}
       {{ govukErrorSummary({
         titleText: "There is a problem",
@@ -30,12 +30,12 @@ Apply to adopt a child
 
 
       <form action="/version-1/children/father-have-address" method="post" class="form">
-        
+
         <div class="govuk-form-group {% if (haveAddressError != '')%} govuk-form-group--error {% endif %}">
         <legend class="govuk-fieldset__legend govuk-fieldset__legend--l">
           <span class="govuk-caption-l">{{ data['father'] }}</span>
           <h1 class="govuk-fieldset__heading">
-            Do you know the last known address of the child's birth father?
+            Do you have the birth father’s last known address?
           </h1>
         </legend>
         <div id="namehint" class="govuk-hint">
@@ -72,7 +72,7 @@ Apply to adopt a child
           {% include "../../includes/buttons.html" %}
 
 
-      </form>   
+      </form>
   </div>
 </div>
 
