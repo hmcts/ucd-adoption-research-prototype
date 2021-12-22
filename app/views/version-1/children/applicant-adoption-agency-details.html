@@ -48,8 +48,8 @@ Apply to adopt a child
               Adoption agency or local authority details
             </h1>
           </legend>
-          
-          <div class="govuk-form-group">
+
+          <div class="govuk-form-group {% if (nameError != '') %} govuk-form-group--error{% endif %}">
             <label class="govuk-label" for="name">
               Name of adoption agency or local authority
             </label>
@@ -61,9 +61,9 @@ Apply to adopt a child
 
             <input class="govuk-input govuk-!-width-two-thirds {% if (nameError != '') %} govuk-input--error{% endif %}" id="applicant-agency-name" name="applicant-agency-name" type="text" value="{{ data['applicant-agency-name'] }}">
           </div>
-        
-        
-          <div class="govuk-form-group">
+
+
+          <div class="govuk-form-group {% if (phoneError != '') %} govuk-form-group--error{% endif %}">
             <label class="govuk-label" for="phone-number">
               Phone number
             </label>
@@ -74,8 +74,8 @@ Apply to adopt a child
             {% endif %}
             <input class="govuk-input govuk-input--width-10 {% if (phoneError != '') %} govuk-input--error{% endif %}" id="applicant-phone-number" name="applicant-phone-number" type="number" autocomplete="address-level2" value="{{ data['applicant-phone-number'] }}">
           </div>
-                
-          <div class="govuk-form-group">
+
+          <div class="govuk-form-group {% if (contactError != '') %} govuk-form-group--error{% endif %}">
             <label class="govuk-label" for="contact">
               Name of your contact
             </label>
@@ -87,7 +87,7 @@ Apply to adopt a child
             <input class="govuk-input govuk-!-width-two-thirds {% if (contactError != '') %} govuk-input--error{% endif %}" id="applicant-contact" name="applicant-contact" type="text" value="{{ data['applicant-contact'] }}">
           </div>
 
-          <div class="govuk-form-group">
+          <div class="govuk-form-group {% if (emailError != '') %} govuk-form-group--error{% endif %}">
             <label class="govuk-label" for="contact">
               Email address of your contact
             </label>
@@ -99,7 +99,7 @@ Apply to adopt a child
             <input class="govuk-input govuk-!-width-two-thirds {% if (emailError != '') %} govuk-input--error{% endif %}" id="applicant-email" name="applicant-email" type="email" value="{{ data['applicant-email'] }}">
           </div>
 
-                        
+
         </fieldset>
 
         <!-- Buttons -->

@@ -17,7 +17,7 @@ Apply to adopt a child
       {% set whatSiblingError = '' %}
       {% set noFirstNamesError = '' %}
       {% set noLastNamesError = '' %}
-  
+
       {% if errors | length > 0 %}
       {{ govukErrorSummary({
         titleText: "There is a problem",
@@ -38,7 +38,7 @@ Apply to adopt a child
 
 
       <form action="/version-1/children/sibling-choose-sibling" method="post" class="form">
-        
+
         <div class="govuk-form-group {% if (whatSiblingError != '')%} govuk-form-group--error {% endif %}">
         <legend class="govuk-fieldset__legend govuk-fieldset__legend--l">
           <span class="govuk-caption-l">{{ data['sibling'] }}</span>
@@ -62,11 +62,11 @@ Apply to adopt a child
                   <!-- <input class="govuk-radios__input" id="{{data['uniqueSiblingId'][sib]}}" name="what-sibling" type="radio" value="{{ data['uniqueSiblingId'][sib] }}" {% if (data['what-sibling'] === data['uniqueSiblingId'][sib]) %} checked {% endif %}> -->
                   <input class="govuk-radios__input" id="{{data['uniqueSiblingId'][sib]}}" name="what-sibling" type="radio" value="{{ data['uniqueSiblingId'][sib] }}">
                   <label class="govuk-label govuk-radios__label" for="first">
-                    {{ data['uniqueSiblingFirstNames'][sib] }} {{ data['uniqueSiblingLastNames'][sib] }} 
+                    {{ data['uniqueSiblingFirstNames'][sib] }} {{ data['uniqueSiblingLastNames'][sib] }}
                   </label>
-                </div> 
+                </div>
                 {% endfor %}
-  
+
                 <div class="govuk-radios__item">
                   <input class="govuk-radios__input" id="add-new-sibling" name="what-sibling" type="radio" value="add-new-sibling" data-aria-controls="conditional-contact">
                   <label class="govuk-label govuk-radios__label" for="add-new-sibling">
@@ -75,7 +75,7 @@ Apply to adopt a child
                 </div>
                 <div class="govuk-radios__conditional govuk-radios__conditional--hidden " id="conditional-contact">
                   <!-- <div class="govuk-form-group{% if (notSureError != '')%} govuk-form-group--error{% endif %}"> -->
-                    <div class="govuk-form-group">
+                    <div class="govuk-form-group {% if (noFirstNamesError != '') %} govuk-form-group--error{% endif %}">
                       <label class="govuk-label" for="firstNames">
                         First names<span class="govuk-visually-hidden">First names</span>
                         <div id="namehint" class="govuk-hint">
@@ -86,11 +86,11 @@ Apply to adopt a child
                       <span id="contact-error" class="govuk-error-message">
                         <span class="govuk-visually-hidden">Error:</span> {{ noFirstNamesError }}
                       </span>
-                      {% endif %}         
+                      {% endif %}
                       <input class="govuk-input {% if (noFirstNamesError != '') %} govuk-input--error{% endif %}" id="sibling-first-names" name="add-sibling-first-names" type="text">
                     </div>
-                            
-                    <div class="govuk-form-group">
+
+                    <div class="govuk-form-group {% if (noLastNamesError != '') %} govuk-form-group--error{% endif %}">
                       <label class="govuk-label" for="lastNames">
                         Last names<span class="govuk-visually-hidden">Last names</span>
                         <div id="namehint" class="govuk-hint">
@@ -104,7 +104,7 @@ Apply to adopt a child
                       {% endif %}
                       <input class="govuk-input {% if (noLastNamesError != '') %} govuk-input--error{% endif %}" id="add-sibling-last-names" name="add-sibling-last-names" type="text">
                     </div>
-          
+
                 </div>
             </div>
           </fieldset>
@@ -114,7 +114,7 @@ Apply to adopt a child
         {% include "../../includes/buttons.html" %}
 
 
-      </form>   
+      </form>
   </div>
 </div>
 
