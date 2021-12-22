@@ -1360,7 +1360,7 @@ router.post('/version-1/applicants/second-applicant-upload', function(req, res) 
     else if (req.body['father-alive'] === 'unsure' && req.body['reason-not-sure'] === '') {
       // console.log("father no reason")
       errors.push({
-      text: 'Enter more detail',
+      text: 'Enter more details',
       href: '#father-no-reason'
       })
     }
@@ -1490,7 +1490,7 @@ router.post('/version-1/applicants/second-applicant-upload', function(req, res) 
     var errors = []
     if (req.body['father-postcode'] === "") {
       errors.push({
-      text: 'Enter a valid postcode',
+      text: 'Enter a real postcode',
       href: '#father-address-postcode'
       })
     }
@@ -2619,7 +2619,7 @@ router.post('/version-1/applicants/second-applicant-upload', function(req, res) 
         req.session.data.siblingOrderCompleted[count] = "Yes"
         res.redirect('/version-1/children/sibling-summary')
 //        req.session.data.siblingOrderCount = req.session.data.siblingOrderCount + 1
-        
+
       }
       else {
         res.render('.//version-1/children/sibling-order-date', { errors: errors })
@@ -2770,28 +2770,28 @@ router.post('/version-1/applicants/second-applicant-upload', function(req, res) 
 
     if (errors.length === 0) {
       for (let index = 0; index < req.session.data.siblingOrderId.length; index++) {
-        if (req.session.data.siblingOrderId[index] == id) { 
+        if (req.session.data.siblingOrderId[index] == id) {
           console.log("index: ", index)
-          // req.session.data.siblingOrderId.splice(index, 1); 
-          // req.session.data.siblingFirstNames.splice(index, 1); 
-          // req.session.data.siblingLastNames.splice(index, 1); 
-          // req.session.data.siblingOrderType.splice(index, 1); 
-          // req.session.data.siblingOrderNumber.splice(index, 1); 
-          // req.session.data.siblingOrderCourt.splice(index, 1); 
-          // req.session.data.siblingOrderDay.splice(index, 1); 
-          // req.session.data.siblingOrderMonth.splice(index, 1); 
-          // req.session.data.siblingOrderYear.splice(index, 1); 
-          // req.session.data.siblingOrderCompleted.splice(index, 1); 
-          delete req.session.data.siblingOrderId[index]; 
-          delete req.session.data.siblingFirstNames[index]; 
-          delete req.session.data.siblingLastNames[index]; 
-          delete req.session.data.siblingOrderType[index]; 
-          delete req.session.data.siblingOrderNumber[index]; 
-          delete req.session.data.siblingOrderCourt[index]; 
-          delete req.session.data.siblingOrderDay[index]; 
-          delete req.session.data.siblingOrderMonth[index]; 
-          delete req.session.data.siblingOrderYear[index]; 
-          delete req.session.data.siblingOrderCompleted[index]; 
+          // req.session.data.siblingOrderId.splice(index, 1);
+          // req.session.data.siblingFirstNames.splice(index, 1);
+          // req.session.data.siblingLastNames.splice(index, 1);
+          // req.session.data.siblingOrderType.splice(index, 1);
+          // req.session.data.siblingOrderNumber.splice(index, 1);
+          // req.session.data.siblingOrderCourt.splice(index, 1);
+          // req.session.data.siblingOrderDay.splice(index, 1);
+          // req.session.data.siblingOrderMonth.splice(index, 1);
+          // req.session.data.siblingOrderYear.splice(index, 1);
+          // req.session.data.siblingOrderCompleted.splice(index, 1);
+          delete req.session.data.siblingOrderId[index];
+          delete req.session.data.siblingFirstNames[index];
+          delete req.session.data.siblingLastNames[index];
+          delete req.session.data.siblingOrderType[index];
+          delete req.session.data.siblingOrderNumber[index];
+          delete req.session.data.siblingOrderCourt[index];
+          delete req.session.data.siblingOrderDay[index];
+          delete req.session.data.siblingOrderMonth[index];
+          delete req.session.data.siblingOrderYear[index];
+          delete req.session.data.siblingOrderCompleted[index];
           req.session.data.siblingOrderCount--
         }
       }
