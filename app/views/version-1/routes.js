@@ -108,7 +108,7 @@ module.exports = (router) => {
     var errors = []
     if (req.body['number-of-applicants'] === undefined) {
       errors.push({
-      text: 'Select the number of people applying to adopt',
+      text: 'Select an option which best describes who is applying',
       href: '#number-of-applicants'
       })
     }
@@ -2015,6 +2015,12 @@ router.post('/version-1/applicants/second-applicant-upload', function(req, res) 
       errors.push({
       text: 'Enter a UK telephone number',
       href: '#phone'
+      })
+    }
+    if (req.body['solicitor-email'] === '') {
+      errors.push({
+      text: 'Enter an email address',
+      href: '#email'
       })
     }
 
