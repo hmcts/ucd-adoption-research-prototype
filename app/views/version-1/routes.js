@@ -131,7 +131,7 @@ module.exports = (router) => {
 
   router.post('/version-1/applicants/date-child-moved-in', function(req, res) {
     var errors = []
-    if (req.body['day'] === '' || req.body['month'] === '' || req.body['year'] === '') {
+    if (req.body['day-moved-in'] === '' || req.body['month-moved-in'] === '' || req.body['year-moved-in'] === '') {
       errors.push({
       text: 'Developers: please refer to ADOP-90 for different error messages',
       href: '#date-child-moved-in'
@@ -139,6 +139,7 @@ module.exports = (router) => {
     }
       if (req.body['submit-button'] === 'save-and-continue') {
         if (errors.length === 0) {
+          req.session.data.dateMovedIn = 1
           res.redirect('/version-1/task-list')
         }
         else {
@@ -185,50 +186,114 @@ module.exports = (router) => {
       }
     })
 
-  router.post('/version-1/applicants/first-applicant-other-names', function(req, res) {
-    var errors = []
-
-    if (req.body['first-applicant-other-names'] === undefined) {
-      // if (req.body['first-applicant-other-names'] === undefined && req.session.data.firstApplicantPreviousNames === '') {
-      errors.push({
-      text: 'Please answer the question',
-      href: '#first-applicant-other-names'
-      })
-    }
-    else if (req.body['first-applicant-other-names'] === "Yes" && req.session.data.firstApplicantNameCount === 0) {
-      errors.push({
-      text: 'Enter a name or choose no',
-      href: '#first-applicant-no-name'
-      })
-    }
-
-    count = req.session.data.firstApplicantNameCount
-    if (req.body['submit-button'] === 'add') {
-      if (req.body['first-applicant-previous-full-name'] !== '') {
-        req.session.data.firstApplicantPreviousNames[count] = req.body['first-applicant-previous-full-name']
-        req.session.data.idFirstApplicant[count] = count
-        req.session.data.firstApplicantNameCount = count + 1
-        res.redirect('/version-1/applicants/first-applicant-other-names')
+    // router.post('/version-1/applicants/first-applicant-other-names', function(req, res) {
+    //   var errors = []
+  
+    //   if (req.body['first-applicant-other-names'] === undefined) {
+    //     // if (req.body['first-applicant-other-names'] === undefined && req.session.data.firstApplicantPreviousNames === '') {
+    //     errors.push({
+    //     text: 'Please answer the question',
+    //     href: '#first-applicant-other-names'
+    //     })
+    //   }
+    //   else if (req.body['first-applicant-other-names'] === "Yes" && req.session.data.firstApplicantNameCount === 0) {
+    //     errors.push({
+    //     text: 'Enter a name or choose no',
+    //     href: '#first-applicant-no-name'
+    //     })
+    //   }
+  
+    //   count = req.session.data.firstApplicantNameCount
+    //   if (req.body['submit-button'] === 'add') {
+    //     if (req.body['first-applicant-previous-full-name'] !== '') {
+    //       req.session.data.firstApplicantPreviousNames[count] = req.body['first-applicant-previous-full-name']
+    //       req.session.data.idFirstApplicant[count] = count
+    //       req.session.data.firstApplicantNameCount = count + 1
+    //       res.redirect('/version-1/applicants/first-applicant-other-names')
+    //     }
+    //     else {
+    //       res.render('.//version-1/applicants/first-applicant-other-names', { errors: errors })
+    //     }
+    //   }
+    //   else if (req.body['submit-button'] === 'save-and-continue') {
+    //     if (errors.length === 0) {
+    //       req.session.data.firstApplicantPreviousNames[count] = req.body['first-applicant-previous-full-name']
+    //       res.redirect('/version-1/applicants/first-applicant-date-birth')
+    //     }
+    //     else {
+    //       res.render('.//version-1/applicants/first-applicant-other-names', { errors: errors })
+    //     }
+    //   }
+    //   else {
+    //     res.redirect('/version-1/task-list')
+    //   }
+    // })
+  
+    router.post('/version-1/applicants/first-applicant-other-names', function(req, res) {
+      var errors = []
+      console.log("First names: ", req.body['first-applicant-previous-first-names'])
+      console.log("Last names: ", req.body['first-applicant-previous-last-names'])
+  
+      if (req.body['first-applicant-other-names'] === undefined) {
+        errors.push({
+        text: 'Please answer the question',
+        href: '#first-applicant-other-names'
+        })
+      }
+      else if (req.body['first-applicant-other-names'] === "Yes") {
+        if (req.body['first-applicant-previous-first-names'].length === 0 && req.body['first-applicant-previous-last-names'].length === 0) {
+          errors.push({
+            text: 'Enter your first names',
+            href: '#first-applicant-no-names'
+          })
+          errors.push({
+            text: 'Enter your last names',
+            href: '#first-applicant-no-names'
+          })
+        }
+        else if (req.body['first-applicant-previous-first-names'].length === 0) {
+          errors.push({
+            text: 'Enter your first names',
+            href: '#first-applicant-no-first-names'
+          })
+        }
+        else if (req.body['first-applicant-previous-last-names'].length === 0) {
+          errors.push({
+            text: 'Enter your last names',
+            href: '#first-applicant-no-last-names'
+          })
+        }
+      }
+  
+      count = req.session.data.firstApplicantNameCount
+      if (req.body['submit-button'] === 'add') {
+        if (req.body['first-applicant-previous-first-names'] !== '' && req.body['first-applicant-previous-last-names'] !== '') {
+          req.session.data.firstApplicantPreviousFirstNames[count] = req.body['first-applicant-previous-first-names']
+          req.session.data.firstApplicantPreviousLastNames[count] = req.body['first-applicant-previous-last-names']
+          req.session.data.idFirstApplicant[count] = count
+          req.session.data.firstApplicantNameCount = count + 1
+          res.redirect('/version-1/applicants/first-applicant-other-names')
+        }
+        else {
+          res.render('.//version-1/applicants/first-applicant-other-names', { errors: errors })
+        }
+      }
+      else if (req.body['submit-button'] === 'save-and-continue') {
+        if (errors.length === 0) {
+          req.session.data.firstApplicantPreviousFirstNames[count] = req.body['first-applicant-previous-first-names']
+          req.session.data.firstApplicantPreviousLastNames[count] = req.body['first-applicant-previous-last-names']
+          res.redirect('/version-1/applicants/first-applicant-date-birth')
+        }
+        else {
+          res.render('.//version-1/applicants/first-applicant-other-names', { errors: errors })
+        }
       }
       else {
-        res.render('.//version-1/applicants/first-applicant-other-names', { errors: errors })
+        res.redirect('/version-1/task-list')
       }
-    }
-    else if (req.body['submit-button'] === 'save-and-continue') {
-      if (errors.length === 0) {
-        req.session.data.firstApplicantPreviousNames[count] = req.body['first-applicant-previous-full-name']
-        res.redirect('/version-1/applicants/first-applicant-date-birth')
-      }
-      else {
-        res.render('.//version-1/applicants/first-applicant-other-names', { errors: errors })
-      }
-    }
-    else {
-      res.redirect('/version-1/task-list')
-    }
-  })
-
-
+    })
+  
+    
   router.post('/version-1/applicants/first-applicant-date-birth', function(req, res) {
     var errors = []
     if (req.body['day'] === '' || req.body['month'] === '' || req.body['year'] === '') {
