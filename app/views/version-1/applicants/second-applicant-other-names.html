@@ -17,7 +17,8 @@ Apply to adopt a child
       <div class="govuk-grid-column-two-thirds">
 
         {% set noRadioSelectedError = '' %}
-        {% set noNameError = '' %}
+        {% set noFirstNamesError = '' %}
+        {% set noLastNamesError = '' %}
     
         {% if errors | length > 0 %}
           {{ govukErrorSummary({
@@ -28,8 +29,11 @@ Apply to adopt a child
             {% if error.href == '#second-applicant-other-names' %}
               {% set noRadioSelectedError = error.text %}
             {% endif %}
-            {% if error.href == '#second-applicant-no-name' %}
-              {% set noNameError = error.text %}
+            {% if error.href == '#second-applicant-no-first-names' %}
+              {% set noFirstNamesError = error.text %}
+            {% endif %}
+            {% if error.href == '#second-applicant-no-last-names' %}
+              {% set noLastNamesError = error.text %}
             {% endif %}
           {% endfor %}
         {% endif %}
@@ -71,12 +75,12 @@ Apply to adopt a child
                     
                     {% if (data['secondApplicantNameCount'] > 0) %}
 
-                    {% for id in data['idFirstApplicant']|reverse %}
+                    {% for id in data['idSecondApplicant']|reverse %}
                     
                       <dl class="govuk-summary-list govuk-!-margin-bottom-4 ">                    
                         <div class="govuk-summary-list__row">
                           <dt class="govuk-summary-list__key">
-                            {{data['secondApplicantPreviousNames'][id]}}
+                            {{data['secondApplicantPreviousFirstNames'][id]}} {{data['secondApplicantPreviousLastNames'][id]}}
                           </dt>
                           <dd class="govuk-summary-list__actions">
                             <a class="govuk-link" href="#">
@@ -99,17 +103,29 @@ Apply to adopt a child
   
                         <div class="govuk-form-group">
                           <label class="govuk-label" for="other">
-                            Add your previous full name
+                            Add your previous first names
                           </label>
-                          {% if noNameError != '' %}
+                          {% if noFirstNamesError != '' %}
                           <span class="govuk-error-message govuk-form">
-                            <span class="govuk-visually-hidden">Error:</span> {{ noNameError }}
+                            <span class="govuk-visually-hidden">Error:</span> {{ noFirstNamesError }}
                           </span>
-                        {% endif %}
-              
-                          <input class="govuk-input govuk-!-width-two-thirds {% if noNameError != '' %} govuk-input--error {% endif %}" id="second-applicant-previous-full-name" name="second-applicant-previous-full-name" type="text">
+                           {% endif %}
+                          <input class="govuk-input govuk-!-width-two-thirds {% if noFirstNamesError != '' %} govuk-input--error {% endif %}" id="second-applicant-previous-first-names" name="second-applicant-previous-first-names" type="text"">
                         </div>
-                          <button class="govuk-button govuk-button--secondary govuk-!-margin-top-5" data-module="govuk-button" name="submit-button" value="add">Add</button>
+                        
+                        <div class="govuk-form-group">
+                          <label class="govuk-label" for="other">
+                            Add your previous last names
+                          </label>
+                          {% if noLastNamesError != '' %}
+                          <span class="govuk-error-message govuk-form">
+                            <span class="govuk-visually-hidden">Error:</span> {{ noLastNamesError }}
+                          </span>
+                           {% endif %}
+                          <input class="govuk-input govuk-!-width-two-thirds {% if noLastNamesError != '' %} govuk-input--error {% endif %}" id="second-applicant-previous-last-names" name="second-applicant-previous-last-names" type="text"">
+                        </div>
+
+                        <button class="govuk-button govuk-button--secondary govuk-!-margin-top-5" data-module="govuk-button" name="submit-button" value="add">Add</button>
                       </details>
   
                   </div>                               
