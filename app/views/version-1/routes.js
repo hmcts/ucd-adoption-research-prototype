@@ -2689,7 +2689,7 @@ router.post('/version-1/applicants/second-applicant-upload', function(req, res) 
     if (req.body['sibling-add-another'] === undefined) {
       errors.push({
       text: 'Please select an answer',
-      href: '#add-another'
+      href: '#sibling-add-another'
       })
     }
 
