@@ -189,7 +189,7 @@ module.exports = (router) => {
 
     router.post('/version-1/applicants/first-applicant-other-names', function(req, res) {
       var errors = []
-  
+
       if (req.body['first-applicant-other-names'] === undefined) {
         errors.push({
         text: 'Please answer the question',
@@ -210,7 +210,7 @@ module.exports = (router) => {
           })
         }
       }
-  
+
       count = req.session.data.firstApplicantNameCount
       if (req.body['submit-button'] === 'add') {
         if (req.body['first-applicant-previous-first-names'] !== '' && req.body['first-applicant-previous-last-names'] !== '') {
@@ -242,8 +242,8 @@ module.exports = (router) => {
         res.redirect('/version-1/task-list')
       }
     })
-  
-    
+
+
   router.post('/version-1/applicants/first-applicant-date-birth', function(req, res) {
     var errors = []
     if (req.body['day'] === '' || req.body['month'] === '' || req.body['year'] === '') {
@@ -2886,7 +2886,7 @@ router.post('/version-1/check-pay-and-submit/check-your-answers', function(req, 
 
 
     router.post('/version-1/check-pay-and-submit/declaration', function(req, res) {
-      res.redirect('/version-1/check-pay-and-submit/payment')
+      res.redirect('/version-1/check-pay-and-submit/need-help-with-fees')
         })
 
 
