@@ -1,0 +1,73 @@
+{% extends "layout-signed-in.html" %}
+
+{% block pageTitle %}
+Apply to adopt a child
+{% endblock %}
+
+{% block beforeContent %}
+<a class="govuk-back-link" href="javascript:history.back()">Back</a>
+{% endblock %}
+
+{% block content %}
+
+<div class="govuk-width-container">
+  <div class="govuk-grid-row">
+    <div class="govuk-grid-column-two-thirds">
+
+      {% set helpwithfeesrefError = '' %}
+
+      {% if errors | length > 0 %}
+      {{ govukErrorSummary({
+        titleText: "There is a problem",
+        errorList: errors
+      }) }}
+      {% for error in errors %}
+        {% if error.href == '#help-with-fees-ref' %}
+          {% set helpwithfeesrefError = error.text %}
+        {% endif %}
+      {% endfor %}
+      {% endif %}
+
+      <form action="/version-1/check-pay-and-submit/need-help-with-fees-ref" method="post" class="form">
+        <div class="govuk-form-group {% if (helpwithfeesError != '')%} govuk-form-group--error {% endif %}">
+        <legend class="govuk-fieldset__legend govuk-fieldset__legend--l">
+            <span class="govuk-caption-l">{{ data['checkpaysubmit'] }}</span>
+        <h1 class="govuk-fieldset__heading">
+          Do you have a help with fees reference number?
+        </h1>
+        </legend>
+
+        {% if helpwithfeesrefError != '' %}
+          <span class="govuk-error-message govuk-form">
+            <span class="govuk-visually-hidden">Error:</span> {{ helpwithfeesrefError }}
+          </span>
+        {% endif %}
+
+          <fieldset class="govuk-fieldset" role="group" aria-describedby="help-with-fees-ref">
+        <div class="govuk-radios" data-module="govuk-radios">
+            <div class="govuk-radios__item">
+              <input class="govuk-radios__input" id="help-with-fees-ref" name="help-with-fees-ref" type="radio" value="yes">
+              <label class="govuk-label govuk-radios__label" for="help-with-fees-ref-1">
+                Yes
+              </label>
+            </div>
+            <div class="govuk-radios__item">
+              <input class="govuk-radios__input" id="help-with-fees-ref-2" name="help-with-fees-ref" type="radio" value="no">
+              <label class="govuk-label govuk-radios__label" for="help-with-fees-ref-2">
+                No
+              </label>
+            </div>
+
+
+
+        <div class="govuk-button-group govuk-!-margin-top-6">
+          <button class="govuk-button" data-module="govuk-button" name="continue" value="save-and-continue">
+            Continue
+          </button>
+        </div>
+    </form>
+    </div>
+  </div>
+</div>
+
+{% endblock %}
