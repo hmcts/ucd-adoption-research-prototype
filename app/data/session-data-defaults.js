@@ -25,10 +25,14 @@ module.exports = {
 
   "idFirstApplicant": [],
   "firstApplicantPreviousNames": [],
+  "firstApplicantPreviousFirstNames": [],
+  "firstApplicantPreviousLastNames": [],
   "firstApplicantNameCount": 0,
 
   "idSecondApplicant": [],
   "secondApplicantPreviousNames": [],
+  "secondApplicantPreviousFirstNames": [],
+  "secondApplicantPreviousLastNames": [],
   "secondApplicantNameCount": 0,
 
   "firstApplicantNationalityId": [],

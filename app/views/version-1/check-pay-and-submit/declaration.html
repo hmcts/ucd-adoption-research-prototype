@@ -14,15 +14,13 @@ Apply to adopt a child
   <div class="govuk-grid-row">
     <div class="govuk-grid-column-two-thirds">
 
-
-
       <form action="/version-1/check-pay-and-submit/declaration" method="post" class="form">
 
-          <legend class="govuk-fieldset__legend govuk-fieldset__legend--l">
-              <span class="govuk-caption-l">{{ data['checkpaysubmit'] }}</span>
-          <h1 class="govuk-fieldset__heading">
-            Declaration
-          </h1>
+        <legend class="govuk-fieldset__legend govuk-fieldset__legend--l">
+            <span class="govuk-caption-l">{{ data['checkpaysubmit'] }}</span>
+        <h1 class="govuk-fieldset__heading">
+          Declaration
+        </h1>
         </legend>
         <p class="govuk-body">By sending your application you confirm that:</p>
         <ul class="govuk-list govuk-list--bullet">
@@ -38,21 +36,15 @@ Apply to adopt a child
             You could be held in contempt of court if you say something on your application that you do not honestly believe is true.
           </strong>
         </div>
-        </div>
-        </div>
-        </div>
 
         <div class="govuk-button-group govuk-!-margin-top-6">
-            <button class="govuk-button" data-module="govuk-button" name="continue" value="save-and-continue">
-              Confirm and send application
-            </button>
-          </div>
-
-        </form>
-
-      </div>
+          <button class="govuk-button" data-module="govuk-button" name="continue" value="save-and-continue">
+            Confirm and send application
+          </button>
+        </div>
+    </form>
     </div>
-  </main>
+  </div>
 </div>
 
 {% endblock %}
