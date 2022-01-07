@@ -17,11 +17,15 @@ Apply to adopt a child
           Upload your documents
         </h1>
         <form action="" method="post">
-          <p class="govuk-body">You need to upload a digital photo or scan of the following documents:</p>
+          <p class="govuk-body">You need to upload a digital photo or scan of the following, if applicable:</p>
           <ul class="govuk-list govuk-list--bullet">
-            <li>your passport </li>
-            <li>your driving licence </li>
-            <li>your blah blah </li>
+            <li>passport photo page for each applicant</li>
+            <li>photo driving licence for each applicant</li>
+          </ul>
+          <p class="govuk-body">If relevant you may also need to upload:</p>
+          <ul class="govuk-list govuk-list--bullet">
+            <li>a copy of any UK visas</li>
+            <li>passport pages that have UK immigration entry stamps</li>
           </ul>
 
           <div class="govuk-inset-text">
@@ -118,35 +122,35 @@ Apply to adopt a child
 
                   <div class="govuk-form-group">
                       <div class="govuk-checkboxes__item">
-                        <input class="govuk-checkboxes__input" id="cant-upload" name="cant-upload" type="checkbox" value="My marriage certificate" {{ checked("cant-upload", "My marriage certificate") }}>
+                        <input class="govuk-checkboxes__input" id="passport" name="cant-upload" type="checkbox" value="passport" {{ checked("cant-upload", "My passport photo page") }}>
                         <label class="govuk-label govuk-checkboxes__label" for="cant-upload">
-                          My photo ID
+                          Passport photo page
                         </label>
                       </div>
 
                       <div class="govuk-checkboxes__item">
-                        <input class="govuk-checkboxes__input" id="cant-upload-2" name="cant-upload" type="checkbox" value="My original foreign marriage certificate"  {{ checked("cant-upload", "My original foreign marriage certificate") }}>
+                        <input class="govuk-checkboxes__input" id="driving-licence" name="cant-upload" type="checkbox" value="driving-licence"  {{ checked("cant-upload", "My original foreign marriage certificate") }}>
                         <label class="govuk-label govuk-checkboxes__label" for="cant-upload-2">
-                          My driving licence
+                          Driving licence
                         </label>
                       </div>
 
                       <div class="govuk-checkboxes__item">
-                        <input class="govuk-checkboxes__input" id="cant-upload-3" name="cant-upload" type="checkbox" value="A certified translation of my foreign marriage certificate"  {{ checked("cant-upload", "A certified translation of my foreign marriage certificate") }}>
+                        <input class="govuk-checkboxes__input" id="visa" name="cant-upload" type="checkbox" value="visa"  {{ checked("cant-upload", "A certified translation of my foreign marriage certificate") }}>
                         <label class="govuk-label govuk-checkboxes__label" for="cant-upload-3">
-                          My blah blah
+                          UK visa
                         </label>
                       </div>
 
                       <div class="govuk-checkboxes__item">
-                        <input class="govuk-checkboxes__input" id="cant-upload-4" name="cant-upload" type="checkbox" value="Proof that I changed my name"  {{ checked("cant-upload", "Proof that I changed my name ") }}>
+                        <input class="govuk-checkboxes__input" id="stamps" name="cant-upload" type="checkbox" value="stamps"  {{ checked("cant-upload", "Proof that I changed my name ") }}>
                         <label class="govuk-label govuk-checkboxes__label" for="cant-upload-4">
-                          My other blah blah 
+                          Passport pages showing immigration stamps
                         </label>
                       </div>
                     <div>
                   <p class="govuk-body">
-                  <br>  You can post or email your documents to the court. If you post them you must send the original documents or certified copies. You will not receive them back. You’ll receive details of how to send them after you have submitted your application.
+                  <br>  You can post or email your documents to the court. If you post them you must send the original documents or certified copies. You will not receive them back. You'll receive details of how to send them after you have submitted your application.
                   </p>
                     <br>
                     <p class="govuk-body">
