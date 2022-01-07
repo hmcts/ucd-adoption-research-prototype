@@ -2680,7 +2680,6 @@ router.post('/version-1/applicants/second-applicant-upload', function(req, res) 
     else {
       res.render('.//version-1/children/sibling-change-order-date', { errors: errors })
     }
-
   })
 
 
@@ -2873,6 +2872,52 @@ router.post('/version-1/applicants/second-applicant-upload', function(req, res) 
       res.render('.//version-1/children/sibling-remove-order-court', { errors: errors })
     }
   })
+
+
+// ******************************************** SECTION 4. UPLOADS ********************************************
+// ************************************************************************************************************************************
+
+  // ********************** Uploads  **********************
+  router.post('/version-1/upload/applicants-documents-upload', function(req, res) {
+    // var errors = []
+    // if (req.body['sibling-new-court-name'] === '') {
+    //   errors.push({
+    //   text: 'Please answer the question',
+    //   href: '#order-court-name'
+    //   })
+    // }
+
+//    if (errors.length === 0) {
+  if (req.body['submit-button'] === 'save-and-continue') {
+      req.session.data.applicantsUpload = 1
+      res.redirect('/version-1/task-list')
+    }
+    else {
+      res.redirect('/version-1/task-list')
+    }
+  })
+
+
+  router.post('/version-1/upload/child-documents-upload', function(req, res) {
+    // var errors = []
+    // if (req.body['sibling-new-court-name'] === '') {
+    //   errors.push({
+    //   text: 'Please answer the question',
+    //   href: '#order-court-name'
+    //   })
+    // }
+
+//    if (errors.length === 0) {
+  if (req.body['submit-button'] === 'save-and-continue') {
+      req.session.data.childUpload = 1
+      res.redirect('/version-1/task-list')
+    }
+    else {
+      res.redirect('/version-1/task-list')
+    }
+  })
+
+
 
 
 
