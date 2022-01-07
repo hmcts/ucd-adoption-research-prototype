@@ -2926,8 +2926,16 @@ router.post('/version-1/check-pay-and-submit/check-your-answers', function(req, 
             })
           }
 
+          else if (req.body['help-with-fees-ref'] === "yes" && req.body['ref'].length === 0) {
+
+              errors.push({
+                text: 'Enter your reference number',
+                href: '#no-number'
+              })
+            }
+
           if (errors.length === 0) {
-            if (req.body['help-with-fees-ref'] === "Yes") {
+            if (req.body['help-with-fees-ref'] === "yes") {
               res.redirect('/version-1/check-pay-and-submit/payment')
             }
             else {
@@ -2944,6 +2952,13 @@ router.post('/version-1/check-pay-and-submit/check-your-answers', function(req, 
           res.redirect('/version-1/task-list')
             })
 
+            router.post('/version-1/check-pay-and-submit/payment', function(req, res) {
+              res.redirect('/version-1/check-pay-and-submit/process-payment')
+                })
+
+                router.post('/version-1/check-pay-and-submit/process-payment', function(req, res) {
+                  res.redirect('/version-1/check-pay-and-submit/confirmation')
+                    })
 // ***************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************
 // ************************************* Old functions not in use any more ************************************* //
   // router.post('/version-1/children/mother-why-no-address', function(req, res) {
