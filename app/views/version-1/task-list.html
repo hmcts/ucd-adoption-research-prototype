@@ -331,20 +331,22 @@ Task list
 
               <li class="app-task-list__item">
                 <span class="app-task-list__task-name">
-                  <p>Upload applicants' documents</p>
+                    <a href="upload/applicants-documents-upload.html" aria-describedby="eligibility-completed">    
+                  <p>Upload applicants' documents</p></a>
                 </span>
-                {% if data['birth-father'] %}
-                <strong class="govuk-tag  app-task-list__tag" id="eligibility-completed">Completed</strong>
-                    {% else %}
+                {% if data['applicantsUpload'] %}
+                    <strong class="govuk-tag  app-task-list__tag" id="eligibility-completed">Completed</strong>
+                {% else %}
                     <strong class="govuk-tag govuk-tag--grey app-task-list__tag">cannot start yet</strong>
                 {% endif %}
 
               </li>
               <li class="app-task-list__item">
                 <span class="app-task-list__task-name">
-                  <p>Upload child's documents</p>
+                    <a href="upload/child-documents-upload.html" aria-describedby="eligibility-completed">    
+                        <p>Upload child's documents</p></a>
                 </span>
-                {% if data['birth-father'] %}
+                {% if data['childUpload'] %}
                 <strong class="govuk-tag  app-task-list__tag" id="eligibility-completed">Completed</strong>
                     {% else %}
                     <strong class="govuk-tag govuk-tag--grey app-task-list__tag">cannot start yet</strong>
@@ -367,11 +369,11 @@ Task list
               <li class="app-task-list__item">
                 <span class="app-task-list__task-name">
                     <a href="check-pay-and-submit/check-your-answers.html" aria-describedby="eligibility-completed">
-                  <p>Check, pay and submit your application</p>
+                  <p>Check, pay and submit your application</p></a>
                 </span>
                 {% if data['birth-father'] %}
-                <strong class="govuk-tag  app-task-list__tag" id="eligibility-completed">Completed</strong>
-                    {% else %}
+                    <strong class="govuk-tag  app-task-list__tag" id="eligibility-completed">Completed</strong>
+                {% else %}
                     <strong class="govuk-tag govuk-tag--grey app-task-list__tag">cannot start yet</strong>
                 {% endif %}
 
