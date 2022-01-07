@@ -2921,89 +2921,91 @@ router.post('/version-1/applicants/second-applicant-upload', function(req, res) 
 
 
 
+// ******************************************** SECTION 5. CHECK, PAY AND SUBMIT ********************************************
+// ************************************************************************************************************************************
 
 
 //**************************************** Check, Pay and Submit ************************************************************
 
-router.post('/version-1/check-pay-and-submit/check-your-answers', function(req, res) {
-  res.redirect('/version-1/check-pay-and-submit/declaration')
-    })
+  router.post('/version-1/check-pay-and-submit/check-your-answers', function(req, res) {
+    res.redirect('/version-1/check-pay-and-submit/declaration')
+  })
 
 
-    router.post('/version-1/check-pay-and-submit/declaration', function(req, res) {
-      res.redirect('/version-1/check-pay-and-submit/need-help-with-fees')
-        })
+  router.post('/version-1/check-pay-and-submit/declaration', function(req, res) {
+    res.redirect('/version-1/check-pay-and-submit/need-help-with-fees')
+  })
 
-    //    router.post('/version-1/check-pay-and-submit/payment', function(req, res) {
-      //    res.redirect('/version-1/check-pay-and-submit/confirmation')
-      //      })
+//    router.post('/version-1/check-pay-and-submit/payment', function(req, res) {
+  //    res.redirect('/version-1/check-pay-and-submit/confirmation')
+  //      })
 
 
- router.post('/version-1/check-pay-and-submit/need-help-with-fees', function(req, res) {
-         var errors = []
-         if (req.body['help-with-fees'] === undefined) {
-            errors.push({
-            text: "Please answer the question",
-            href: '#help-with-fees'
-            })
-          }
+  router.post('/version-1/check-pay-and-submit/need-help-with-fees', function(req, res) {
+    var errors = []
+    if (req.body['help-with-fees'] === undefined) {
+      errors.push({
+      text: "Please answer the question",
+      href: '#help-with-fees'
+      })
+    }
 
-          if (errors.length === 0) {
-            if (req.body['help-with-fees'] === "yes") {
-              res.redirect('/version-1/check-pay-and-submit/need-help-with-fees-ref')
-            }
-            else {
-              res.redirect('/version-1/check-pay-and-submit/payment')
-            }
-          }
-          else {
-              res.render('.//version-1/check-pay-and-submit/need-help-with-fees', { errors: errors })
-          }
+    if (errors.length === 0) {
+      if (req.body['help-with-fees'] === "yes") {
+        res.redirect('/version-1/check-pay-and-submit/need-help-with-fees-ref')
+      }
+      else {
+        res.redirect('/version-1/check-pay-and-submit/payment')
+      }
+    }
+    else {
+        res.render('.//version-1/check-pay-and-submit/need-help-with-fees', { errors: errors })
+    }
+  })
 
-        })
+     
+  router.post('/version-1/check-pay-and-submit/need-help-with-fees-ref', function(req, res) {
+    var errors = []
+    if (req.body['help-with-fees-ref'] === undefined) {
+      errors.push({
+      text: "Please answer the question",
+      href: '#help-with-fees-ref'
+      })
+    }
+    else if (req.body['help-with-fees-ref'] === "yes" && req.body['ref'].length === 0) {
+      errors.push({
+        text: 'Enter your reference number',
+        href: '#no-number'
+      })
+    }
 
-        router.post('/version-1/check-pay-and-submit/need-help-with-fees-ref', function(req, res) {
-          var errors = []
-          if (req.body['help-with-fees-ref'] === undefined) {
-            errors.push({
-            text: "Please answer the question",
-            href: '#help-with-fees-ref'
-            })
-          }
+    if (errors.length === 0) {
+      if (req.body['help-with-fees-ref'] === "yes") {
+        res.redirect('/version-1/check-pay-and-submit/payment')
+      }
+      else {
+        res.redirect('/version-1/check-pay-and-submit/get-hwf-reference')
+      }
+    }
+    else {
+        res.render('.//version-1/check-pay-and-submit/need-help-with-fees-ref', { errors: errors })
+    }
+  })
 
-          else if (req.body['help-with-fees-ref'] === "yes" && req.body['ref'].length === 0) {
+  
+  router.post('/version-1/check-pay-and-submit/get-hwf-reference', function(req, res) {
+    res.redirect('/version-1/task-list')
+  })
 
-              errors.push({
-                text: 'Enter your reference number',
-                href: '#no-number'
-              })
-            }
 
-          if (errors.length === 0) {
-            if (req.body['help-with-fees-ref'] === "yes") {
-              res.redirect('/version-1/check-pay-and-submit/payment')
-            }
-            else {
-              res.redirect('/version-1/check-pay-and-submit/get-hwf-reference')
-            }
-          }
-          else {
-              res.render('.//version-1/check-pay-and-submit/need-help-with-fees-ref', { errors: errors })
-          }
+  router.post('/version-1/check-pay-and-submit/payment', function(req, res) {
+    res.redirect('/version-1/check-pay-and-submit/process-payment')
+  })
 
-        })
 
-        router.post('/version-1/check-pay-and-submit/get-hwf-reference', function(req, res) {
-          res.redirect('/version-1/task-list')
-            })
-
-            router.post('/version-1/check-pay-and-submit/payment', function(req, res) {
-              res.redirect('/version-1/check-pay-and-submit/process-payment')
-                })
-
-                router.post('/version-1/check-pay-and-submit/process-payment', function(req, res) {
-                  res.redirect('/version-1/check-pay-and-submit/confirmation')
-                    })
+  router.post('/version-1/check-pay-and-submit/process-payment', function(req, res) {
+    res.redirect('/version-1/check-pay-and-submit/confirmation')
+  })
 // ***************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************
 // ************************************* Old functions not in use any more ************************************* //
   // router.post('/version-1/children/mother-why-no-address', function(req, res) {

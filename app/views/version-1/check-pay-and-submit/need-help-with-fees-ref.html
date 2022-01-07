@@ -50,7 +50,7 @@ Apply to adopt a child
           <fieldset class="govuk-fieldset" role="group" aria-describedby="help-with-fees-ref">
             <div class="govuk-radios" data-module="govuk-radios">
               <div class="govuk-radios__item">
-                <input class="govuk-radios__input" id="yes" name="help-with-fees-ref" type="radio" value="yes" data-aria-controls="conditional-ref" {% if data[‘help-with-fees-ref’] == ‘yes’ %} checked {% endif %}>
+                <input class="govuk-radios__input" id="yes" name="help-with-fees-ref" type="radio" value="yes" data-aria-controls="conditional-ref" {% if data['help-with-fees-ref'] == 'yes' %} checked {% endif %}>
                 <label class="govuk-label govuk-radios__label" for="ref">
                   Yes
                 </label>
@@ -71,7 +71,7 @@ Apply to adopt a child
 
               </div>
               <div class="govuk-radios__item">
-                <input class="govuk-radios__input" id="no" name="help-with-fees-ref" type="radio" value="no" data-aria-controls="conditional-ref-no">
+                <input class="govuk-radios__input" id="no" name="help-with-fees-ref" type="radio" value="no" data-aria-controls="conditional-ref-no" {% if data['help-with-fees-ref'] == 'no' %} checked {% endif %}>
                 <label class="govuk-label govuk-radios__label" for="ref-no">
                   No
                 </label>
