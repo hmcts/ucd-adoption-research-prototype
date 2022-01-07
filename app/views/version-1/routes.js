@@ -2886,60 +2886,63 @@ router.post('/version-1/check-pay-and-submit/check-your-answers', function(req, 
 
 
     router.post('/version-1/check-pay-and-submit/declaration', function(req, res) {
-      res.redirect('/version-1/check-pay-and-submit/payment')
+      res.redirect('/version-1/check-pay-and-submit/need-help-with-fees')
         })
 
-        router.post('/version-1/check-pay-and-submit/payment', function(req, res) {
-          res.redirect('/version-1/check-pay-and-submit/confirmation')
+    //    router.post('/version-1/check-pay-and-submit/payment', function(req, res) {
+      //    res.redirect('/version-1/check-pay-and-submit/confirmation')
+      //      })
+
+
+ router.post('/version-1/check-pay-and-submit/need-help-with-fees', function(req, res) {
+         var errors = []
+         if (req.body['help-with-fees'] === undefined) {
+            errors.push({
+            text: "Please answer the question",
+            href: '#help-with-fees'
             })
-            
+          }
 
-//  router.post('/version-1/check-pay-and-submit/need-help-with-fees', function(req, res) {
-//          var errors = []
-//          if (req.body['help-with-fees'] === undefined) {
-//            errors.push({
-//            text: "Please answer the question",
-//            href: '#help-with-fees'
-//            })
-//          }
-//
-//          if (errors.length === 0) {
-//            if (req.body['help-with-fees'] === "yes") {
-//              res.redirect('/version-1/check-pay-and-submit/need-help-with-fees-ref')
-//            }
-//            else {
-//              res.redirect('/version-1/check-pay-and-submit/payment')
-//            }
-//          }
-//          else {
-//              res.render('.//version-1/check-pay-and-submit/need-help-with-fees', { errors: errors })
-//          }
-//
-//        })
-//
-//        router.post('/version-1/check-pay-and-submit/need-help-with-fees-ref', function(req, res) {
-//          var errors = []
-//          if (req.body['help-with-fees-ref'] === undefined) {
-//            errors.push({
-//            text: "Please answer the question",
-//            href: '#help-with-fees-ref'
-//            })
-//          }
-//
-//          if (errors.length === 0) {
-//            if (req.body['help-with-fees-ref'] === "Yes") {
-//              res.redirect('/version-1/check-pay-and-submit/need-help-with-fees-ref')
-//            }
-//            else {
-//              res.redirect('/version-1/check-pay-and-submit/apply-help-with-fees')
-//            }
-//          }
-//          else {
-//              res.render('.//version-1/check-pay-and-submit/need-help-with-fees-ref', { errors: errors })
-  //        }
+          if (errors.length === 0) {
+            if (req.body['help-with-fees'] === "yes") {
+              res.redirect('/version-1/check-pay-and-submit/need-help-with-fees-ref')
+            }
+            else {
+              res.redirect('/version-1/check-pay-and-submit/payment')
+            }
+          }
+          else {
+              res.render('.//version-1/check-pay-and-submit/need-help-with-fees', { errors: errors })
+          }
 
-//        })
+        })
 
+        router.post('/version-1/check-pay-and-submit/need-help-with-fees-ref', function(req, res) {
+          var errors = []
+          if (req.body['help-with-fees-ref'] === undefined) {
+            errors.push({
+            text: "Please answer the question",
+            href: '#help-with-fees-ref'
+            })
+          }
+
+          if (errors.length === 0) {
+            if (req.body['help-with-fees-ref'] === "Yes") {
+              res.redirect('/version-1/check-pay-and-submit/payment')
+            }
+            else {
+              res.redirect('/version-1/check-pay-and-submit/get-hwf-reference')
+            }
+          }
+          else {
+              res.render('.//version-1/check-pay-and-submit/need-help-with-fees-ref', { errors: errors })
+          }
+
+        })
+
+        router.post('/version-1/check-pay-and-submit/get-hwf-reference', function(req, res) {
+          res.redirect('/version-1/task-list')
+            })
 
 // ***************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************
 // ************************************* Old functions not in use any more ************************************* //

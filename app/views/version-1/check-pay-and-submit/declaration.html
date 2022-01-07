@@ -25,25 +25,31 @@ Apply to adopt a child
 
         {% if data['numberApplicants'] == 1 %}
         <p class="govuk-body">By sending your application you confirm that as far as you know, the information you've provided is true.</p>
+
         {% else %}
         <p class="govuk-body">By sending your application you confirm that:</p>
         <ul class="govuk-list govuk-list--bullet">
           <li>as far as you know, the information you've provided is true</li>
           <li>the other applicant has agreed that you can make this application for them</li>
+
         </ul>
-        {% endif %}
+
+              {% endif %}
 
         <div class="govuk-warning-text">
-          <span class="govuk-warning-text__icon" aria-hidden="true">!</span>
-          <strong class="govuk-warning-text__text">
-            <span class="govuk-warning-text__assistive">Warning</span>
-            You could be held in contempt of court if you say something on your application that you do not honestly believe is true.
-          </strong>
-        </div>
+    <span class="govuk-warning-text__icon" aria-hidden="true">!</span>
+    <strong class="govuk-warning-text__text">
+      <span class="govuk-warning-text__assistive">Warning</span>
+      You could be held in contempt of court if you say something on your application that you do not honestly believe is true.
+      Confirm and send application.
+    </strong>
+
+  </div>
+
 
         <div class="govuk-button-group govuk-!-margin-top-6">
           <button class="govuk-button" data-module="govuk-button" name="continue" value="save-and-continue">
-            Confirm and send application
+            Pay and submit application
           </button>
         </div>
     </form>
