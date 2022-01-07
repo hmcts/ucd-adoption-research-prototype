@@ -29,7 +29,7 @@ Apply to adopt a child
       {% endif %}
 
       <form action="/version-1/check-pay-and-submit/need-help-with-fees-ref" method="post" class="form">
-        <div class="govuk-form-group {% if (helpwithfeesError != '')%} govuk-form-group--error {% endif %}">
+        <div class="govuk-form-group {% if (helpwithfeesrefError != '')%} govuk-form-group--error {% endif %}">
         <legend class="govuk-fieldset__legend govuk-fieldset__legend--l">
             <span class="govuk-caption-l">{{ data['checkpaysubmit'] }}</span>
         <h1 class="govuk-fieldset__heading">
@@ -44,18 +44,29 @@ Apply to adopt a child
         {% endif %}
 
           <fieldset class="govuk-fieldset" role="group" aria-describedby="help-with-fees-ref">
-        <div class="govuk-radios" data-module="govuk-radios">
-            <div class="govuk-radios__item">
-              <input class="govuk-radios__input" id="help-with-fees-ref" name="help-with-fees-ref" type="radio" value="yes">
-              <label class="govuk-label govuk-radios__label" for="help-with-fees-ref-1">
-                Yes
-              </label>
-            </div>
-            <div class="govuk-radios__item">
-              <input class="govuk-radios__input" id="help-with-fees-ref-2" name="help-with-fees-ref" type="radio" value="no">
-              <label class="govuk-label govuk-radios__label" for="help-with-fees-ref-2">
-                No
-              </label>
+            <div class="govuk-radios" data-module="govuk-radios">
+              <div class="govuk-radios__item">
+                <input class="govuk-radios__input" id="ref" name="ref" type="radio" value="ref" data-aria-controls="conditional-ref">
+                <label class="govuk-label govuk-radios__label" for="ref">
+                  Yes
+                </label>
+              </div>
+              <div class="govuk-radios__conditional govuk-radios__conditional--hidden" id="conditional-ref">
+                <div class="govuk-form-group">
+                  <label class="govuk-label" for="ref">
+                    Enter your reference number:
+                  </label>
+                  <input class="govuk-input govuk-!-width-one-third" id="contact-by-email" name="contact-by-email" type="email" spellcheck="false" autocomplete="email"></div>
+
+              </div>
+              <div class="govuk-radios__item">
+                <input class="govuk-radios__input" id="ref-no" name="ref" type="radio" value="ref" data-aria-controls="conditional-ref-no">
+                <label class="govuk-label govuk-radios__label" for="ref-no">
+                  No
+                </label>
+              </div>
+
+              </fieldset>
             </div>
 
 
