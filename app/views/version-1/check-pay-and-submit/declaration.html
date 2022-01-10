@@ -14,12 +14,27 @@ Apply to adopt a child
   <div class="govuk-grid-row">
     <div class="govuk-grid-column-two-thirds">
 
+      {% set nonameError = '' %}
+
+      {% if errors | length > 0 %}
+      {{ govukErrorSummary({
+        titleText: "There is a problem",
+        errorList: errors
+      }) }}
+      {% for error in errors %}
+      {% if error.href == '#no-name' %}
+        {% set nonameError = error.text %}
+      {% endif %}
+    {% endfor %}
+    {% endif %}
+
+
       <form action="/version-1/check-pay-and-submit/declaration" method="post" class="form">
 
         <legend class="govuk-fieldset__legend govuk-fieldset__legend--l">
             <span class="govuk-caption-l">{{ data['checkpaysubmit'] }}</span>
         <h1 class="govuk-fieldset__heading">
-          Declaration
+          Send your application
         </h1>
         </legend>
 
@@ -36,12 +51,22 @@ Apply to adopt a child
 
               {% endif %}
 
+               <div class="govuk-form-group {% if (nonameError != '') %} govuk-form-group--error{% endif %}">
+                <label class="govuk-label" for="width-20">
+                  Enter your name
+                </label>
+                {% if nonameError != '' %}
+                  <span class="govuk-error-message govuk-form">
+                    <span class="govuk-visually-hidden">Error:</span> {{ nonameError }}
+                  </span>
+                {% endif %}
+                <input class="govuk-input govuk-input--width-20" id="name" name="name" type="text"></div>
+
         <div class="govuk-warning-text">
     <span class="govuk-warning-text__icon" aria-hidden="true">!</span>
     <strong class="govuk-warning-text__text">
       <span class="govuk-warning-text__assistive">Warning</span>
       You could be held in contempt of court if you say something on your application that you do not honestly believe is true.
-      Confirm and send application.
     </strong>
 
   </div>
@@ -49,7 +74,7 @@ Apply to adopt a child
 
         <div class="govuk-button-group govuk-!-margin-top-6">
           <button class="govuk-button" data-module="govuk-button" name="continue" value="save-and-continue">
-            Pay and submit application
+            Confirm and send application
           </button>
         </div>
     </form>
