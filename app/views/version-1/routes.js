@@ -88,7 +88,7 @@ module.exports = (router) => {
 
     if (errors.length === 0) {
       if (req.body['lived-uk'] === "Yes") {
-        res.redirect('/version-1/registration/start1')
+        res.redirect('/version-1/eligibility/do-you-need-help-with-fees')
       }
       else {
         res.redirect('/version-1/eligibility/cannot-apply-lived-uk')
@@ -96,6 +96,52 @@ module.exports = (router) => {
     }
     else {
         res.render('.//version-1/eligibility/lived-uk', { errors: errors })
+    }
+  })
+
+
+  router.post('/version-1/eligibility/do-you-need-help-with-fees', function(req, res) {
+    var errors = []
+    if (req.body['need-help-with-fees'] === undefined) {
+      errors.push({
+      text: 'Please answer the question',
+      href: '#need-help-with-fees'
+      })
+    }
+
+    if (errors.length === 0) {
+      if (req.body['need-help-with-fees'] === "Yes") {
+        res.redirect('/version-1/eligibility/apply-for-help-with-fees')
+      }
+      else {
+        res.redirect('/version-1/registration/start1')
+      }
+    }
+    else {
+        res.render('.//version-1/eligibility/do-you-need-help-with-fees', { errors: errors })
+    }
+  })
+
+
+  router.post('/version-1/eligibility/apply-for-help-with-fees', function(req, res) {
+    var errors = []
+    if (req.body['apply-help-with-fees'] === undefined) {
+      errors.push({
+      text: 'Please answer the question',
+      href: '#apply-help-with-fees'
+      })
+    }
+
+    if (errors.length === 0) {
+      if (req.body['need-help-with-fees'] === "Yes") {
+        res.redirect('/version-1/eligibility/apply-help-with-fees')
+      }
+      else {
+        res.redirect('/version-1/registration/start1')
+      }
+    }
+    else {
+        res.render('.//version-1/eligibility/apply-help-with-fees', { errors: errors })
     }
   })
 

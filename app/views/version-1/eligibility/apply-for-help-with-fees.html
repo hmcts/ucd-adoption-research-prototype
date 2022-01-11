@@ -24,14 +24,14 @@ Apply to adopt a child
         errorList: errors
       }) }}
       {% for error in errors %}
-        {% if error.href == '#need-help-with-fees' %}
+        {% if error.href == '#apply-help-with-fees' %}
           {% set helpWithFeesError = error.text %}
         {% endif %}
       {% endfor %}
       {% endif %}
 
 
-        <form action="/version-1/eligibility/apply-for-help-with-fees" method="post" class="form">
+        <form action="/version-1/registration/start1" method="post" class="form">
 
           <div class="govuk-form-group {% if (helpWithFeesError != '')%} govuk-form-group--error {% endif %}">
             <legend class="govuk-fieldset__legend govuk-fieldset__legend--l">
@@ -51,36 +51,6 @@ Apply to adopt a child
 
             <p>Once you select continue, you will be asked to create an account for your application to adopt.</p>
 
-            {% if helpWithFeesError != '' %}
-              <span class="govuk-error-message govuk-form">
-                <span class="govuk-visually-hidden">Error:</span> {{ helpWithFeesError }}
-              </span>
-            {% endif %}
-
-            <div class="govuk-form-group">
-              <fieldset class="govuk-fieldset" role="group" aria-describedby="do-you-need-help-with-fees">
-
-                <div class="govuk-radios govuk-radios--conditional" data-module="govuk-radios">
-                  <div class="govuk-radios__item">
-                    <input class="govuk-radios__input" id="yes" name="need-help-with-fees" type="radio"
-                      value="Yes">
-                    <label class="govuk-label govuk-radios__label" for="yes">
-                      Yes
-                    </label>
-                  </div>
-
-                  <div class="govuk-radios govuk-radios--conditional" data-module="govuk-radios">
-                    <div class="govuk-radios__item">
-                      <input class="govuk-radios__input" id="no" name="need-help-with-fees" type="radio" value="No" data-aria-controls="conditional-contact">
-                      <label class="govuk-label govuk-radios__label" for="need-help-with-fees">
-                        No
-                      </label>
-                    </div>
-                  </div>
-              </fieldset>
-            </div>
-          </div>
-          <p>If you select no you will be asked to create an account for your application to adopt.</p>
 
           <button class="govuk-button" data-module="govuk-button">
             Continue
