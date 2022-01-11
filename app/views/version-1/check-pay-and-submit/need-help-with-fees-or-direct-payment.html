@@ -33,7 +33,7 @@ Apply to adopt a child
         <legend class="govuk-fieldset__legend govuk-fieldset__legend--l">
             <span class="govuk-caption-l">{{ data['checkpaysubmit'] }}</span>
         <h1 class="govuk-fieldset__heading">
-          Do you want help paying your fee?
+          Have you applied for Help with Fees?
         </h1>
         </legend>
         <p class="govuk-body">If you have little or no savings, are on certain benefits or have a low income you may be able to get help with paying the <b>£183</b> fee.</p>
@@ -46,19 +46,39 @@ Apply to adopt a child
           <fieldset class="govuk-fieldset" role="group" aria-describedby="help-with-fees">
         <div class="govuk-radios" data-module="govuk-radios">
             <div class="govuk-radios__item">
-              <input class="govuk-radios__input" id="help-with-fees" name="help-with-fees" type="radio" value="yes">
+              <input class="govuk-radios__input" id="help-with-fees" name="help-with-fees" type="radio" value="yes" data-aria-controls="conditional-ref" >
               <label class="govuk-label govuk-radios__label" for="help-with-fees-1">
                 Yes
               </label>
               </div>
 
-            <div class="govuk-radios__item">
-              <input class="govuk-radios__input" id="help-with-fees-2" name="help-with-fees" type="radio" value="no">
-              <label class="govuk-label govuk-radios__label" for="help-with-fees-2">
-                No
-              </label>
-            </div>
-          </div>
+              <div class="govuk-radios__conditional govuk-radios__conditional--hidden" id="conditional-ref">
+                <div class="govuk-form-group">
+
+                  <label class="govuk-label" for="ref">
+                    Enter your reference number:
+                  </label>
+                  {% if nonumberError != '' %}
+                    <span class="govuk-error-message govuk-form">
+                      <span class="govuk-visually-hidden">Error:</span> {{ nonumberError }}
+                    </span>
+                  {% endif %}
+                  <input class="govuk-input govuk-!-width-one-third" id="ref" name="ref" type="text" spellcheck="false" autocomplete="ref"></div>
+              </div>
+
+              <div class="govuk-radios__item">
+                <input class="govuk-radios__input" id="help-with-fees-2" name="help-with-fees" type="radio" value="no">
+                <label class="govuk-label govuk-radios__label" for="help-with-fees-2">
+                  No, but I want to apply now
+                </label>
+              </div>
+              <div class="govuk-radios__item">
+                <input class="govuk-radios__input" id="help-with-fees-2" name="help-with-fees" type="radio" value="no">
+                <label class="govuk-label govuk-radios__label" for="help-with-fees-2">
+                  No, I'm going to pay in full
+                </label>
+              </div>
+              </div>
         </div>
 
         <div class="govuk-button-group govuk-!-margin-top-6">
