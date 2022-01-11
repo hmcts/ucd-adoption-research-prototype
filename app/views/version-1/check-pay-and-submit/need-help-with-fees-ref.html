@@ -37,9 +37,10 @@ Apply to adopt a child
         <legend class="govuk-fieldset__legend govuk-fieldset__legend--l">
             <span class="govuk-caption-l">{{ data['checkpaysubmit'] }}</span>
         <h1 class="govuk-fieldset__heading">
-          Do you have a help with fees reference number?
+          Have you applied for help with fees?
         </h1>
         </legend>
+          <p class="govuk-body">If you have little or no savings, are on certain benefits or have a low income you may be able to get help with paying the <b>£183</b> fee.</p>
 
         {% if helpwithfeesrefError != '' %}
           <span class="govuk-error-message govuk-form">
@@ -67,18 +68,36 @@ Apply to adopt a child
                       <span class="govuk-visually-hidden">Error:</span> {{ nonumberError }}
                     </span>
                   {% endif %}
-                  <input class="govuk-input govuk-!-width-one-third" id="ref" name="ref" type="text" spellcheck="false" autocomplete="ref"></div>
+                  <input class="govuk-input govuk-!-width-one-third {% if (nonumberError != '') %} govuk-form-group--error{% endif %}" id="ref" name="ref" type="text" spellcheck="false" autocomplete="ref">
+                </div>
 
               </div>
+
+
+
+
               <div class="govuk-radios__item">
                 <input class="govuk-radios__input" id="no" name="help-with-fees-ref" type="radio" value="no" data-aria-controls="conditional-ref-no" {% if data['help-with-fees-ref'] == 'no' %} checked {% endif %}>
                 <label class="govuk-label govuk-radios__label" for="ref-no">
-                  No
+                  No, but I want to
                 </label>
               </div>
+          
+
+                  <div class="govuk-radios govuk-radios--conditional" data-module="govuk-radios">
+                    <div class="govuk-radios__item">
+                      <input class="govuk-radios__input" id="pay-in-full" name="help-with-fees-ref" type="radio"
+                                  value="pay-in-full">
+                        <label class="govuk-label govuk-radios__label" for="pay-in-full">
+                                  No, I am paying in full
+                        </label>
+                      </div>
+                    </div>
+
+
 
               </fieldset>
-            </div>
+
 
 
 

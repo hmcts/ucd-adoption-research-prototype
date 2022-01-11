@@ -2947,35 +2947,14 @@ router.post('/version-1/applicants/second-applicant-upload', function(req, res) 
       })
     }
     if (errors.length === 0) {
-        res.redirect('/version-1/check-pay-and-submit/need-help-with-fees')
+        res.redirect('/version-1/check-pay-and-submit/need-help-with-fees-ref')
       }
     else {
         res.render('.//version-1/check-pay-and-submit/declaration', { errors: errors })
     }
   })
 
-  router.post('/version-1/check-pay-and-submit/need-help-with-fees', function(req, res) {
-    var errors = []
-    if (req.body['help-with-fees'] === undefined) {
-      errors.push({
-      text: "Please answer the question",
-      href: '#help-with-fees'
-      })
-    }
-
-    if (errors.length === 0) {
-      if (req.body['help-with-fees'] === "yes") {
-        res.redirect('/version-1/check-pay-and-submit/need-help-with-fees-ref')
-      }
-      else {
-        res.redirect('/version-1/check-pay-and-submit/process-payment')
-      }
-    }
-    else {
-        res.render('.//version-1/check-pay-and-submit/need-help-with-fees', { errors: errors })
-    }
-  })
-
+  
 
   router.post('/version-1/check-pay-and-submit/need-help-with-fees-ref', function(req, res) {
     var errors = []
@@ -2994,10 +2973,13 @@ router.post('/version-1/applicants/second-applicant-upload', function(req, res) 
 
     if (errors.length === 0) {
       if (req.body['help-with-fees-ref'] === "yes") {
-        res.redirect('/version-1/check-pay-and-submit/process-payment')
+        res.redirect('/version-1/check-pay-and-submit/help-with-fees-send-app')
+      }
+      else if (req.body['help-with-fees-ref'] === "no") {
+        res.redirect('/version-1/check-pay-and-submit/get-hwf-reference')
       }
       else {
-        res.redirect('/version-1/check-pay-and-submit/get-hwf-reference')
+        res.redirect('/version-1/check-pay-and-submit/process-payment')
       }
     }
     else {
@@ -3007,14 +2989,14 @@ router.post('/version-1/applicants/second-applicant-upload', function(req, res) 
 
 
   router.post('/version-1/check-pay-and-submit/get-hwf-reference', function(req, res) {
-    res.redirect('/version-1/check-pay-and-submit/process-payment')
+    res.redirect('/version-1/check-pay-and-submit/help-with-fees-send-app')
   })
 
 
-  router.post('/version-1/check-pay-and-submit/payment', function(req, res) {
-    res.redirect('/version-1/check-pay-and-submit/process-payment')
-  })
 
+  router.post('/version-1/check-pay-and-submit/help-with-fees-send-app', function(req, res) {
+    res.redirect('/version-1/check-pay-and-submit/hwf-confirmation')
+  })
 
   router.post('/version-1/check-pay-and-submit/process-payment', function(req, res) {
     res.redirect('/version-1/check-pay-and-submit/confirmation')

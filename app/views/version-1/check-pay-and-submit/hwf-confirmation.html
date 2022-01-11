@@ -1,0 +1,55 @@
+{% extends "layout-signed-in.html" %}
+
+{% block pageTitle %}
+Apply to adopt a child
+{% endblock %}
+
+{% block beforeContent %}
+<a class="govuk-back-link" href="javascript:history.back()">Back</a>
+{% endblock %}
+
+{% block content %}
+
+<div class="govuk-width-container">
+  <div class="govuk-grid-row">
+    <div class="govuk-grid-column-two-thirds">
+
+      <form action="/version-1/check-pay-and-submit/hwf-confirmation" method="post" class="form">
+
+                <div class="govuk-panel govuk-panel--confirmation">
+                  <h1 class="govuk-panel__title">
+                    Application submitted
+                  </h1>
+                  <div class="govuk-panel__body">
+                    Your reference number<br><strong>HDJ2123F</strong>
+                  </div>
+                </div>
+
+                <p class="govuk-body">We have sent you a confirmation email. If you have not received this, you should check your junk or spam folder.</p>
+
+                <h2 class="govuk-heading-m">What happens next</h2>
+
+                <p class="govuk-body">
+                  The court reviews your application and informs the birth parents, if applicable, of your application to adopt.
+                </p>
+                <p class="govuk-body">
+                  There will be a number of court hearings involving the local authority and social workers. You do not have to attend these. If the birth parents oppose the adoption, they may be present at some of the hearings.
+                </p>
+
+                <p class="govuk-body">
+                  If your application is successful there will be a final adoption ceremony that you and the child are invited to.
+                </p>
+
+                <p class="govuk-body">
+                Once the adoption order is granted, an adoption certificate is created. This replaces the child's birth certificate. It can be ordered from the General Registrar's Office for a small fee.
+              </p>
+                <p class="govuk-body">
+                  <a href="#" class="govuk-link">What did you think of this service?</a> (takes 30 seconds)
+                </p>
+
+    </form>
+    </div>
+  </div>
+</div>
+
+{% endblock %}
