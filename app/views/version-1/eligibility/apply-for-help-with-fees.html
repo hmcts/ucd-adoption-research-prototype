@@ -1,0 +1,96 @@
+{% extends "layout-signed-in.html" %}
+
+{% block pageTitle %}
+Apply to adopt a child
+{% endblock %}
+
+{% block beforeContent %}
+<a class="govuk-back-link" href="javascript:history.back()">Back</a>
+{% endblock %}
+
+
+{% block content %}
+
+<div class="govuk-width-container">
+
+    <div class="govuk-grid-row">
+      <div class="govuk-grid-column-two-thirds">
+
+      {% set helpWithFeesError = '' %}
+
+      {% if errors | length > 0 %}
+      {{ govukErrorSummary({
+        titleText: "There is a problem",
+        errorList: errors
+      }) }}
+      {% for error in errors %}
+        {% if error.href == '#need-help-with-fees' %}
+          {% set helpWithFeesError = error.text %}
+        {% endif %}
+      {% endfor %}
+      {% endif %}
+
+
+        <form action="/version-1/eligibility/apply-for-help-with-fees" method="post" class="form">
+
+          <div class="govuk-form-group {% if (helpWithFeesError != '')%} govuk-form-group--error {% endif %}">
+            <legend class="govuk-fieldset__legend govuk-fieldset__legend--l">
+            <span class="govuk-caption-l">Help with fees</span>
+            <h1 class="govuk-fieldset__heading">
+              Apply for help with fees
+            </h1>
+            </legend>
+
+            <p class="govuk-body">You will now be taken to the help with fees application service. This will open in a new tab. You must return to this page to continue with your application to adopt. Your application for help with fees will be processed before the court can look at your application to adopt. This can taken several weeks.</p>
+
+            <p><a href="https://www.gov.uk/get-help-with-court-fees" target="_blank">Get help paying court and tribunal fees - GOV.UK (www.gov.uk)</a></p>
+
+            <p>When you are asked for your form number, you should enter 'A58'.</p>
+            
+            <p>Keep your application reference number safe. You will need to enter this number once you have completed your application to adopt.</p>
+
+            <p>Once you select continue, you will be asked to create an account for your application to adopt.</p>
+
+            {% if helpWithFeesError != '' %}
+              <span class="govuk-error-message govuk-form">
+                <span class="govuk-visually-hidden">Error:</span> {{ helpWithFeesError }}
+              </span>
+            {% endif %}
+
+            <div class="govuk-form-group">
+              <fieldset class="govuk-fieldset" role="group" aria-describedby="do-you-need-help-with-fees">
+
+                <div class="govuk-radios govuk-radios--conditional" data-module="govuk-radios">
+                  <div class="govuk-radios__item">
+                    <input class="govuk-radios__input" id="yes" name="need-help-with-fees" type="radio"
+                      value="Yes">
+                    <label class="govuk-label govuk-radios__label" for="yes">
+                      Yes
+                    </label>
+                  </div>
+
+                  <div class="govuk-radios govuk-radios--conditional" data-module="govuk-radios">
+                    <div class="govuk-radios__item">
+                      <input class="govuk-radios__input" id="no" name="need-help-with-fees" type="radio" value="No" data-aria-controls="conditional-contact">
+                      <label class="govuk-label govuk-radios__label" for="need-help-with-fees">
+                        No
+                      </label>
+                    </div>
+                  </div>
+              </fieldset>
+            </div>
+          </div>
+          <p>If you select no you will be asked to create an account for your application to adopt.</p>
+
+          <button class="govuk-button" data-module="govuk-button">
+            Continue
+          </button>
+
+
+        </form>
+      </div>
+    </div>
+  </main>
+</div>
+
+{% endblock %}
