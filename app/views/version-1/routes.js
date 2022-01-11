@@ -2932,14 +2932,27 @@ router.post('/version-1/applicants/second-applicant-upload', function(req, res) 
   })
 
 
-  router.post('/version-1/check-pay-and-submit/declaration', function(req, res) {
-    res.redirect('/version-1/check-pay-and-submit/need-help-with-fees')
-  })
+
 
 //    router.post('/version-1/check-pay-and-submit/payment', function(req, res) {
   //    res.redirect('/version-1/check-pay-and-submit/confirmation')
   //      })
 
+  router.post('/version-1/check-pay-and-submit/declaration', function(req, res) {
+    var errors = []
+    if (req.body['name'] === '') {
+      errors.push({
+      text: "Please enter your full name",
+      href: '#no-name'
+      })
+    }
+    if (errors.length === 0) {
+        res.redirect('/version-1/check-pay-and-submit/need-help-with-fees')
+      }
+    else {
+        res.render('.//version-1/check-pay-and-submit/declaration', { errors: errors })
+    }
+  })
 
   router.post('/version-1/check-pay-and-submit/need-help-with-fees', function(req, res) {
     var errors = []
@@ -2955,7 +2968,7 @@ router.post('/version-1/applicants/second-applicant-upload', function(req, res) 
         res.redirect('/version-1/check-pay-and-submit/need-help-with-fees-ref')
       }
       else {
-        res.redirect('/version-1/check-pay-and-submit/payment')
+        res.redirect('/version-1/check-pay-and-submit/process-payment')
       }
     }
     else {
@@ -2963,7 +2976,7 @@ router.post('/version-1/applicants/second-applicant-upload', function(req, res) 
     }
   })
 
-     
+
   router.post('/version-1/check-pay-and-submit/need-help-with-fees-ref', function(req, res) {
     var errors = []
     if (req.body['help-with-fees-ref'] === undefined) {
@@ -2981,7 +2994,7 @@ router.post('/version-1/applicants/second-applicant-upload', function(req, res) 
 
     if (errors.length === 0) {
       if (req.body['help-with-fees-ref'] === "yes") {
-        res.redirect('/version-1/check-pay-and-submit/payment')
+        res.redirect('/version-1/check-pay-and-submit/process-payment')
       }
       else {
         res.redirect('/version-1/check-pay-and-submit/get-hwf-reference')
@@ -2992,9 +3005,9 @@ router.post('/version-1/applicants/second-applicant-upload', function(req, res) 
     }
   })
 
-  
+
   router.post('/version-1/check-pay-and-submit/get-hwf-reference', function(req, res) {
-    res.redirect('/version-1/task-list')
+    res.redirect('/version-1/check-pay-and-submit/process-payment')
   })
 
 
