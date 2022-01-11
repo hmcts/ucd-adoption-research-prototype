@@ -100,6 +100,8 @@ module.exports = (router) => {
   })
 
 
+  
+
 // ******************************************** SECTION 1. APPLICANTS ********************************************
 // ************************************************************************************************************************************
 
@@ -2939,27 +2941,60 @@ router.post('/version-1/applicants/second-applicant-upload', function(req, res) 
   //      })
 
   router.post('/version-1/check-pay-and-submit/declaration', function(req, res) {
+    console.log(req.session.data.numberApplicants)
     var errors = []
-    if (req.body['name'] === '') {
-      errors.push({
-      text: "Please enter your full name",
-      href: '#no-name'
-      })
+    if (req.session.data.numberApplicants === 1) {
+      if (req.body['checkbox-true'] === undefined) {
+        console.log(req.body['checkbox-true'])
+        errors.push({
+        text: "You must accept the whatever Lisa",
+        href: '#checkbox-true'
+        })
+      }
+      if (req.body['your-full-name'] === '') {
+        errors.push({
+        text: "Please enter your full name",
+        href: '#your-name'
+        })
+      }
     }
+
+    else {
+      if (req.body['your-full-name'] === '') {
+        errors.push({
+        text: "Please enter your full name",
+        href: '#your-name'
+        })
+      }
+      if (req.body['your-full-name'] === '') {
+        errors.push({
+        text: "Please enter your full name",
+        href: '#your-name'
+        })
+      }
+      if (req.body['partner-full-name'] === '') {
+        errors.push({
+        text: "Please enter the second applicant's full name",
+        href: '#partner-name'
+        })
+      }
+    }
+    
     if (req.body['submit-button'] === 'save-and-continue') {
       if (errors.length === 0) {
         res.redirect('/version-1/check-pay-and-submit/need-help-with-fees-ref')
       }
       else {
+        console.log(req.session.data.numberApplicants)
         res.render('.//version-1/check-pay-and-submit/declaration', { errors: errors })
       }
     }
     else {
       res.redirect('/version-1/task-list')
     }
-    })
+  })
 
-
+  
 
   router.post('/version-1/check-pay-and-submit/need-help-with-fees-ref', function(req, res) {
     var errors = []
