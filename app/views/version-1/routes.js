@@ -2946,15 +2946,20 @@ router.post('/version-1/applicants/second-applicant-upload', function(req, res) 
       href: '#no-name'
       })
     }
-    if (errors.length === 0) {
+    if (req.body['submit-button'] === 'save-and-continue') {
+      if (errors.length === 0) {
         res.redirect('/version-1/check-pay-and-submit/need-help-with-fees-ref')
       }
-    else {
+      else {
         res.render('.//version-1/check-pay-and-submit/declaration', { errors: errors })
+      }
     }
-  })
+    else {
+      res.redirect('/version-1/task-list')
+    }
+    })
 
-  
+
 
   router.post('/version-1/check-pay-and-submit/need-help-with-fees-ref', function(req, res) {
     var errors = []

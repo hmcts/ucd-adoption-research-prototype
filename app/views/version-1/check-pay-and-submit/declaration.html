@@ -16,6 +16,7 @@ Apply to adopt a child
 
       {% set nonameError = '' %}
 
+
       {% if errors | length > 0 %}
       {{ govukErrorSummary({
         titleText: "There is a problem",
@@ -34,47 +35,86 @@ Apply to adopt a child
         <legend class="govuk-fieldset__legend govuk-fieldset__legend--l">
             <span class="govuk-caption-l">{{ data['checkpaysubmit'] }}</span>
         <h1 class="govuk-fieldset__heading">
-          Send your application
+          Statement of truth
         </h1>
         </legend>
+        <p class="govuk-body">I understand that proceedings for contempt of court may be brought against anyone who makes, or causes to be made, a false statement in a document verified by a statement of truth without an honest belief in the truth.</p>
 
         {% if data['numberApplicants'] == 1 %}
-        <p class="govuk-body">By sending your application you confirm that as far as you know, the information you've provided is true.</p>
 
+        <div class="govuk-checkboxes__item">
+              <input class="govuk-checkboxes__input" id="app-1" name="declaration" type="checkbox" value="declaration">
+              <label class="govuk-label govuk-checkboxes__label" for="app-1">
+                I believe that the facts stated in this form and any continuation sheet are true.
+              </label>
+            </div>
+            <div class="govuk-form-group {% if (nonameError != '') %} govuk-form-group--error{% endif %}">
+             <label class="govuk-label" for="width-20">
+               Enter your full name
+             </label>
+             {% if nonameError != '' %}
+               <span class="govuk-error-message govuk-form">
+                 <span class="govuk-visually-hidden">Error:</span> {{ nonameError }}
+               </span>
+
+             {% endif %}
+
+             <input class="govuk-input govuk-input--width-20" id="name" name="name" type="text"></div>
         {% else %}
-        <p class="govuk-body">By sending your application you confirm that:</p>
-        <ul class="govuk-list govuk-list--bullet">
-          <li>as far as you know, the information you've provided is true</li>
-          <li>the other applicant has agreed that you can make this application for them</li>
+        <div class="govuk-checkboxes__item">
+              <input class="govuk-checkboxes__input" id="app-1" name="declaration" type="checkbox" value="declaration">
+              <label class="govuk-label govuk-checkboxes__label" for="app-1">
+                I believe that the facts stated in this form and any continuation sheet are true.
+              </label>
+            </div>
+            <div class="govuk-checkboxes__item">
+                  <input class="govuk-checkboxes__input" id="app-2" name="declaration" type="checkbox" value="declaration">
+                  <label class="govuk-label govuk-checkboxes__label" for="app-2">
+                    The primary applicant believes that the facts stated in this form and any continuation sheet are true.
+                    I am authorised by the second applicant to sign this statement.
+                  </label>
+                </div>
 
-        </ul>
+
+
+                       <div class="govuk-form-group {% if (nonameError != '') %} govuk-form-group--error{% endif %}">
+                        <label class="govuk-label" for="width-20">
+                          Enter your full name
+                        </label>
+                        {% if nonameError != '' %}
+                          <span class="govuk-error-message govuk-form">
+                            <span class="govuk-visually-hidden">Error:</span> {{ nonameError }}
+                          </span>
+                        {% endif %}
+                        <input class="govuk-input govuk-input--width-20" id="name2" name="name" type="text">
+                      </div>
+
+                        <div class="govuk-form-group">
+                         <label class="govuk-label" for="width-20">
+                           Enter the second applicant's full name
+                         </label>
+                         {% if nonameError != '' %}
+                           <span class="govuk-error-message govuk-form">
+                             <span class="govuk-visually-hidden">Error:</span> {{ noname2Error }}
+                           </span>
+                         {% endif %}
+                         <input class="govuk-input govuk-input--width-20" id="name2" name="name" type="text">
+                       </div>
 
               {% endif %}
 
-               <div class="govuk-form-group {% if (nonameError != '') %} govuk-form-group--error{% endif %}">
-                <label class="govuk-label" for="width-20">
-                  Enter your name
-                </label>
-                {% if nonameError != '' %}
-                  <span class="govuk-error-message govuk-form">
-                    <span class="govuk-visually-hidden">Error:</span> {{ nonameError }}
-                  </span>
-                {% endif %}
-                <input class="govuk-input govuk-input--width-20" id="name" name="name" type="text"></div>
 
-        <div class="govuk-warning-text">
-    <span class="govuk-warning-text__icon" aria-hidden="true">!</span>
-    <strong class="govuk-warning-text__text">
-      <span class="govuk-warning-text__assistive">Warning</span>
-      You could be held in contempt of court if you say something on your application that you do not honestly believe is true.
-    </strong>
-
-  </div>
+      <p class="govuk-body">Once you submit your application, you cannot make any further changes. You can select 'Save as draft' to review your application before you submit.</p>
 
 
-        <div class="govuk-button-group govuk-!-margin-top-6">
-          <button class="govuk-button" data-module="govuk-button" name="continue" value="save-and-continue">
-            Confirm and send application
+
+
+      <div class="govuk-button-group govuk-!-margin-top-6">
+          <button class="govuk-button" data-module="govuk-button" name="submit-button" value="save-and-continue">
+            Confirm
+          </button>
+          <button class="govuk-button govuk-button--secondary" data-module="govuk-button" name="submit-button" value="save-as-draft">
+            Save as draft
           </button>
         </div>
     </form>
