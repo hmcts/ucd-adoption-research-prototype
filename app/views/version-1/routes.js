@@ -2966,14 +2966,14 @@ router.post('/version-1/applicants/second-applicant-upload', function(req, res) 
   //      })
 
   router.post('/version-1/check-pay-and-submit/declaration', function(req, res) {
-    console.log(req.session.data.numberApplicants)
+    console.log(req.body['statement-truth'])
     var errors = []
     if (req.session.data.numberApplicants === 1) {
-      if (req.body['checkbox-true'] === undefined) {
-        console.log(req.body['checkbox-true'])
+      if (req.body['statement-truth'] === undefined) {
+        console.log("Statement of truth: ", req.body['statement-truth'])
         errors.push({
         text: "You must accept the whatever Lisa",
-        href: '#checkbox-true'
+        href: '#statement-truth'
         })
       }
       if (req.body['your-full-name'] === '') {
@@ -3010,7 +3010,6 @@ router.post('/version-1/applicants/second-applicant-upload', function(req, res) 
         res.redirect('/version-1/check-pay-and-submit/need-help-with-fees-ref')
       }
       else {
-        console.log(req.session.data.numberApplicants)
         res.render('.//version-1/check-pay-and-submit/declaration', { errors: errors })
       }
     }
