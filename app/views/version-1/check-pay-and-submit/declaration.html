@@ -14,7 +14,8 @@ Apply to adopt a child
   <div class="govuk-grid-row">
     <div class="govuk-grid-column-two-thirds">
 
-      {% set nonameError = '' %}
+      {% set yourNameError = '' %}
+      {% set checkboxTrueError = '' %}
 
 
       {% if errors | length > 0 %}
@@ -23,8 +24,11 @@ Apply to adopt a child
         errorList: errors
       }) }}
       {% for error in errors %}
-      {% if error.href == '#no-name' %}
-        {% set nonameError = error.text %}
+      {% if error.href == '#your-name' %}
+        {% set yourNameError = error.text %}
+      {% endif %}
+      {% if error.href == '#checkbox-true' %}
+        {% set checkboxTrueError = error.text %}
       {% endif %}
     {% endfor %}
     {% endif %}
@@ -41,34 +45,44 @@ Apply to adopt a child
         <p class="govuk-body">I understand that proceedings for contempt of court may be brought against anyone who makes, or causes to be made, a false statement in a document verified by a statement of truth without an honest belief in the truth.</p>
 
         {% if data['numberApplicants'] == 1 %}
+        
+
+        
+        <div class="govuk-form-group {% if (checkboxTrueError != '') %} govuk-form-group--error{% endif %}">
 
         <div class="govuk-checkboxes__item">
-              <input class="govuk-checkboxes__input" id="app-1" name="declaration" type="checkbox" value="declaration">
+          {% if checkboxTrueError != '' %}
+          <span class="govuk-error-message govuk-form">
+            <span class="govuk-visually-hidden">Error:</span> {{ checkboxTrueError }}
+          </span>
+          {% endif %}
+                <input class="govuk-checkboxes__input" id="app-1" name="checkbox-true" type="checkbox">
               <label class="govuk-label govuk-checkboxes__label" for="app-1">
                 I believe that the facts stated in this form and any continuation sheet are true.
               </label>
             </div>
-            <div class="govuk-form-group {% if (nonameError != '') %} govuk-form-group--error{% endif %}">
+        </div>
+            <div class="govuk-form-group {% if (yourNameError != '') %} govuk-form-group--error{% endif %}">
              <label class="govuk-label" for="width-20">
                Enter your full name
              </label>
-             {% if nonameError != '' %}
+             {% if yourNameError != '' %}
                <span class="govuk-error-message govuk-form">
-                 <span class="govuk-visually-hidden">Error:</span> {{ nonameError }}
+                 <span class="govuk-visually-hidden">Error:</span> {{ yourNameError }}
                </span>
-
              {% endif %}
 
-             <input class="govuk-input govuk-input--width-20" id="name" name="name" type="text"></div>
+
+             <input class="govuk-input govuk-input--width-20" id="name" name="your-full-name" type="text"></div>
         {% else %}
         <div class="govuk-checkboxes__item">
-              <input class="govuk-checkboxes__input" id="app-1" name="declaration" type="checkbox" value="declaration">
+              <input class="govuk-checkboxes__input" id="app-1" name="checkbox-true" type="checkbox">
               <label class="govuk-label govuk-checkboxes__label" for="app-1">
                 I believe that the facts stated in this form and any continuation sheet are true.
               </label>
             </div>
             <div class="govuk-checkboxes__item">
-                  <input class="govuk-checkboxes__input" id="app-2" name="declaration" type="checkbox" value="declaration">
+                  <input class="govuk-checkboxes__input" id="app-2" name="declaration" type="checkbox-partner">
                   <label class="govuk-label govuk-checkboxes__label" for="app-2">
                     The primary applicant believes that the facts stated in this form and any continuation sheet are true.
                     I am authorised by the second applicant to sign this statement.
@@ -77,28 +91,28 @@ Apply to adopt a child
 
 
 
-                       <div class="govuk-form-group {% if (nonameError != '') %} govuk-form-group--error{% endif %}">
+                       <div class="govuk-form-group {% if (yourNameError != '') %} govuk-form-group--error{% endif %}">
                         <label class="govuk-label" for="width-20">
                           Enter your full name
                         </label>
-                        {% if nonameError != '' %}
+                        {% if yourNameError != '' %}
                           <span class="govuk-error-message govuk-form">
-                            <span class="govuk-visually-hidden">Error:</span> {{ nonameError }}
+                            <span class="govuk-visually-hidden">Error:</span> {{ yourNameError }}
                           </span>
                         {% endif %}
-                        <input class="govuk-input govuk-input--width-20" id="name2" name="name" type="text">
+                        <input class="govuk-input govuk-input--width-20" id="name2" name="your-full-name" type="text">
                       </div>
 
                         <div class="govuk-form-group">
                          <label class="govuk-label" for="width-20">
                            Enter the second applicant's full name
                          </label>
-                         {% if nonameError != '' %}
+                         {% if yourNameError != '' %}
                            <span class="govuk-error-message govuk-form">
                              <span class="govuk-visually-hidden">Error:</span> {{ noname2Error }}
                            </span>
                          {% endif %}
-                         <input class="govuk-input govuk-input--width-20" id="name2" name="name" type="text">
+                         <input class="govuk-input govuk-input--width-20" id="name2" name="partner-full-name" type="text">
                        </div>
 
               {% endif %}

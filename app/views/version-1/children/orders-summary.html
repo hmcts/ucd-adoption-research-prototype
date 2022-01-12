@@ -54,6 +54,13 @@ Apply to adopt a child
             {% endif %}
           </dd>
           <dd class="govuk-summary-list__actions">
+            {% if id != 0 %}
+            <a class="govuk-link" href="#">
+              Remove<span class="govuk-visually-hidden"> order</span>
+            </a>
+            {% endif %}
+          </dd>
+          <dd class="govuk-summary-list__actions">
             {% if id == 0 %}
             <a class="govuk-link" href="orders-placement-check-your-answers.html">
               Change<span class="govuk-visually-hidden"> order</span>
@@ -61,13 +68,6 @@ Apply to adopt a child
             {% else %}
             <a class="govuk-link" href="orders-court-check-your-answers.html?id={{data['childOrderId'][id]}}">
               Change<span class="govuk-visually-hidden"> order</span>
-            </a>
-            {% endif %}
-          </dd>
-          <dd class="govuk-summary-list__actions">
-            {% if id != 0 %}
-            <a class="govuk-link" href="#">
-              Remove<span class="govuk-visually-hidden"> order</span>
             </a>
             {% endif %}
           </dd>

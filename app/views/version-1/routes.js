@@ -88,7 +88,7 @@ module.exports = (router) => {
 
     if (errors.length === 0) {
       if (req.body['lived-uk'] === "Yes") {
-        res.redirect('/version-1/registration/start1')
+        res.redirect('/version-1/eligibility/do-you-need-help-with-fees')
       }
       else {
         res.redirect('/version-1/eligibility/cannot-apply-lived-uk')
@@ -99,6 +99,33 @@ module.exports = (router) => {
     }
   })
 
+
+  router.post('/version-1/eligibility/do-you-need-help-with-fees', function(req, res) {
+    var errors = []
+    if (req.body['need-help-with-fees'] === undefined) {
+      errors.push({
+      text: 'Please answer the question',
+      href: '#need-help-with-fees'
+      })
+    }
+
+    if (errors.length === 0) {
+      if (req.body['need-help-with-fees'] === "Yes") {
+        res.redirect('/version-1/eligibility/apply-for-help-with-fees')
+      }
+      else {
+        res.redirect('/version-1/registration/start1')
+      }
+    }
+    else {
+        res.render('.//version-1/eligibility/do-you-need-help-with-fees', { errors: errors })
+    }
+  })
+
+
+
+
+  
 
 // ******************************************** SECTION 1. APPLICANTS ********************************************
 // ************************************************************************************************************************************
@@ -2939,27 +2966,60 @@ router.post('/version-1/applicants/second-applicant-upload', function(req, res) 
   //      })
 
   router.post('/version-1/check-pay-and-submit/declaration', function(req, res) {
+    console.log(req.session.data.numberApplicants)
     var errors = []
-    if (req.body['name'] === '') {
-      errors.push({
-      text: "Please enter your full name",
-      href: '#no-name'
-      })
+    if (req.session.data.numberApplicants === 1) {
+      if (req.body['checkbox-true'] === undefined) {
+        console.log(req.body['checkbox-true'])
+        errors.push({
+        text: "You must accept the whatever Lisa",
+        href: '#checkbox-true'
+        })
+      }
+      if (req.body['your-full-name'] === '') {
+        errors.push({
+        text: "Please enter your full name",
+        href: '#your-name'
+        })
+      }
     }
+
+    else {
+      if (req.body['your-full-name'] === '') {
+        errors.push({
+        text: "Please enter your full name",
+        href: '#your-name'
+        })
+      }
+      if (req.body['your-full-name'] === '') {
+        errors.push({
+        text: "Please enter your full name",
+        href: '#your-name'
+        })
+      }
+      if (req.body['partner-full-name'] === '') {
+        errors.push({
+        text: "Please enter the second applicant's full name",
+        href: '#partner-name'
+        })
+      }
+    }
+    
     if (req.body['submit-button'] === 'save-and-continue') {
       if (errors.length === 0) {
         res.redirect('/version-1/check-pay-and-submit/need-help-with-fees-ref')
       }
       else {
+        console.log(req.session.data.numberApplicants)
         res.render('.//version-1/check-pay-and-submit/declaration', { errors: errors })
       }
     }
     else {
       res.redirect('/version-1/task-list')
     }
-    })
+  })
 
-
+  
 
   router.post('/version-1/check-pay-and-submit/need-help-with-fees-ref', function(req, res) {
     var errors = []
