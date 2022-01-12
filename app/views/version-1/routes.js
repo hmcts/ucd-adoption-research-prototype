@@ -2221,7 +2221,7 @@ router.post('/version-1/applicants/second-applicant-upload', function(req, res) 
     var errors = []
     if (req.body['order-type'] === '') {
       errors.push({
-      text: 'Please answer the question',
+      text: 'Enter the type of order',
       href: '#order-type'
       })
     }
@@ -2251,7 +2251,7 @@ router.post('/version-1/applicants/second-applicant-upload', function(req, res) 
     var errors = []
     if (req.body['order-case-number'] === '') {
       errors.push({
-      text: 'Please answer the question',
+      text: 'Enter the serial or case number',
       href: '#case-number'
       })
     }
@@ -2277,7 +2277,7 @@ router.post('/version-1/applicants/second-applicant-upload', function(req, res) 
     var errors = []
     if (req.body['order-court-name'] === '') {
       errors.push({
-      text: 'Please answer the question',
+      text: 'Enter the name of the court',
       href: '#order-court-name'
       })
     }
@@ -2494,7 +2494,7 @@ router.post('/version-1/applicants/second-applicant-upload', function(req, res) 
     var errors = []
     if (req.body['sibling-order-type'] === '') {
       errors.push({
-      text: 'Please answer the question',
+      text: 'Enter the type of order',
       href: '#order-type'
       })
     }
@@ -2966,25 +2966,32 @@ router.post('/version-1/applicants/second-applicant-upload', function(req, res) 
   //      })
 
   router.post('/version-1/check-pay-and-submit/declaration', function(req, res) {
-    console.log(req.body['statement-truth'])
+    console.log("Number of applicants: ", req.session.data.numberApplicants)
     var errors = []
-    if (req.session.data.numberApplicants === 1) {
-      if (req.body['statement-truth'] === undefined) {
+    if (req.session.data.numberApplicants === '1') {
+      console.log("In")
+      if (req.body['statement-truth'] == undefined) {
         console.log("Statement of truth: ", req.body['statement-truth'])
         errors.push({
-        text: "You must accept the whatever Lisa",
+        text: "Confirm your statement of truth",
         href: '#statement-truth'
         })
       }
       if (req.body['your-full-name'] === '') {
         errors.push({
-        text: "Please enter your full name",
+        text: "Enter a full name",
         href: '#your-name'
         })
       }
     }
-
     else {
+      if (req.body['statement-truth'] == undefined) {
+        console.log("Statement of truth: ", req.body['statement-truth'])
+        errors.push({
+        text: "Confirm your statement of truth",
+        href: '#statement-truth'
+        })
+      }
       if (req.body['your-full-name'] === '') {
         errors.push({
         text: "Please enter your full name",

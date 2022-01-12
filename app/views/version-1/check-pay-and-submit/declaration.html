@@ -73,24 +73,35 @@ Apply to adopt a child
                 <span class="govuk-visually-hidden">Error:</span> {{ yourNameError }}
               </span>
             {% endif %}
-            <input class="govuk-input govuk-input--width-20 {% if (yourNameError != '') %} govuk-input--error{% endif %}" id="name" name="your-full-name" type="text">
+            <input class="govuk-input govuk-!-width-three-quarters {% if (yourNameError != '') %} govuk-input--error{% endif %}" id="name" name="your-full-name" type="text">
           </div>
+         </div>
+
 
         <!-- 2 applicants -->
         {% else %}
-        <div class="govuk-checkboxes__item">
-              <input class="govuk-checkboxes__input" id="app-1" name="statement-truth" type="checkbox">
+        <div class="govuk-form-group {% if (statementTruthError != '') %} govuk-form-group--error{% endif %}">
+
+          <div class="govuk-checkboxes" data-module="govuk-checkboxes">
+            <div class="govuk-checkboxes__item">
+              {% if statementTruthError != '' %}
+              <span class="govuk-error-message govuk-form">
+                <span class="govuk-visually-hidden">Error:</span> {{ statementTruthError }}
+              </span>
+              {% endif %}
+              <input class="govuk-checkboxes__input" id="app-1" name="statement-truth" type="checkbox" value="statement-truth">
               <label class="govuk-label govuk-checkboxes__label" for="app-1">
                 I believe that the facts stated in this form and any continuation sheet are true.
               </label>
             </div>
-            <div class="govuk-checkboxes__item">
-                  <input class="govuk-checkboxes__input" id="app-2" name="declaration" type="checkbox-partner">
-                  <label class="govuk-label govuk-checkboxes__label" for="app-2">
-                    The primary applicant believes that the facts stated in this form and any continuation sheet are true.
-                    I am authorised by the second applicant to sign this statement.
-                  </label>
-                </div>
+          </div>
+          <div class="govuk-checkboxes__item">
+            <input class="govuk-checkboxes__input" id="app-2" name="declaration" type="checkbox-partner">
+            <label class="govuk-label govuk-checkboxes__label" for="app-2">
+              The primary applicant believes that the facts stated in this form and any continuation sheet are true.
+              I am authorised by the second applicant to sign this statement.
+            </label>
+          </div>
 
 
 
