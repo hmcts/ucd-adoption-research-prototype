@@ -3025,7 +3025,7 @@ router.post('/version-1/applicants/second-applicant-upload', function(req, res) 
     var errors = []
     if (req.body['help-with-fees-ref'] === undefined) {
       errors.push({
-      text: "Please answer the question",
+      text: "Select an option",
       href: '#help-with-fees-ref'
       })
     }
