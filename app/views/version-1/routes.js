@@ -2999,9 +2999,30 @@ router.post('/version-1/applicants/second-applicant-upload', function(req, res) 
 
 
 
+
+
+
   router.post('/version-1/check-pay-and-submit/help-with-fees-send-app', function(req, res) {
-    res.redirect('/version-1/check-pay-and-submit/hwf-confirmation')
-  })
+    var errors = []
+    if (req.body['ref'] === '') {
+      errors.push({
+      text: "Enter you reference number",
+      href: '#no-ref'
+      })
+    }
+    if (req.body['submit-button'] === 'save-and-continue') {
+      if (errors.length === 0) {
+        res.redirect('/version-1/check-pay-and-submit/hwf-confirmation')
+      }
+      else {
+        res.render('.//version-1/check-pay-and-submit/help-with-fees-send-app', { errors: errors })
+      }
+    }
+    else {
+      res.redirect('/version-1/task-list')
+    }
+    })
+
 
   router.post('/version-1/check-pay-and-submit/process-payment', function(req, res) {
     res.redirect('/version-1/check-pay-and-submit/confirmation')

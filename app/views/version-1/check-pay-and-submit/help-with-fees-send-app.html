@@ -14,6 +14,21 @@ Apply to adopt a child
   <div class="govuk-grid-row">
     <div class="govuk-grid-column-two-thirds">
 
+      {% set noRefError = '' %}
+
+
+      {% if errors | length > 0 %}
+      {{ govukErrorSummary({
+        titleText: "There is a problem",
+        errorList: errors
+      }) }}
+      {% for error in errors %}
+      {% if error.href == '#no-ref' %}
+        {% set noRefError = error.text %}
+      {% endif %}
+    {% endfor %}
+    {% endif %}
+
       <form action="/version-1/check-pay-and-submit/help-with-fees-send-app" method="post" class="form">
 
         <legend class="govuk-fieldset__legend govuk-fieldset__legend--l">
@@ -23,9 +38,7 @@ Apply to adopt a child
         </h1>
         </legend>
 
-        <p class="govuk-body">You can send your application to adopt but it will not be looked at until the court has processed your Help with fees application.</p>
-
-        
+        <p class="govuk-body">As you are applying for help with fees, your application to adopt cannot be looked at until the court has processed your help with fees application. They will contact you if your claim is successful, or if you have some or all of the fees to pay. </p>
 
 
           <div class="govuk-button-group govuk-!-margin-top-6">
