@@ -125,7 +125,7 @@ module.exports = (router) => {
 
 
 
-  
+
 
 // ******************************************** SECTION 1. APPLICANTS ********************************************
 // ************************************************************************************************************************************
@@ -3004,7 +3004,7 @@ router.post('/version-1/applicants/second-applicant-upload', function(req, res) 
         })
       }
     }
-    
+
     if (req.body['submit-button'] === 'save-and-continue') {
       if (errors.length === 0) {
         res.redirect('/version-1/check-pay-and-submit/need-help-with-fees-ref')
@@ -3018,7 +3018,7 @@ router.post('/version-1/applicants/second-applicant-upload', function(req, res) 
     }
   })
 
-  
+
 
   router.post('/version-1/check-pay-and-submit/need-help-with-fees-ref', function(req, res) {
     var errors = []
@@ -3071,7 +3071,7 @@ router.post('/version-1/applicants/second-applicant-upload', function(req, res) 
     }
     if (req.body['submit-button'] === 'save-and-continue') {
       if (errors.length === 0) {
-        res.redirect('/version-1/check-pay-and-submit/hwf-confirmation')
+        res.redirect('/version-1/check-pay-and-submit/confirmation')
       }
       else {
         res.render('.//version-1/check-pay-and-submit/help-with-fees-send-app', { errors: errors })
