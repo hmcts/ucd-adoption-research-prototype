@@ -2966,10 +2966,8 @@ router.post('/version-1/applicants/second-applicant-upload', function(req, res) 
   //      })
 
   router.post('/version-1/check-pay-and-submit/declaration', function(req, res) {
-    console.log("Number of applicants: ", req.session.data.numberApplicants)
     var errors = []
     if (req.session.data.numberApplicants === '1') {
-      console.log("In")
       if (req.body['statement-truth'] == undefined) {
         console.log("Statement of truth: ", req.body['statement-truth'])
         errors.push({
@@ -2998,16 +2996,10 @@ router.post('/version-1/applicants/second-applicant-upload', function(req, res) 
         href: '#your-name'
         })
       }
-      if (req.body['your-full-name'] === '') {
+      if (req.body['authorised'] === undefined && req.body['partner-full-name'] === '') {
         errors.push({
-        text: "Please enter your full name",
-        href: '#your-name'
-        })
-      }
-      if (req.body['partner-full-name'] === '') {
-        errors.push({
-        text: "Please enter the second applicant's full name",
-        href: '#partner-name'
+        text: "Error message Lisa",
+        href: '#partner'
         })
       }
     }
