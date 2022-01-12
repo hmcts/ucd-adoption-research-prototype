@@ -3051,11 +3051,27 @@ router.post('/version-1/applicants/second-applicant-upload', function(req, res) 
   })
 
 
+
+
+
   router.post('/version-1/check-pay-and-submit/get-hwf-reference', function(req, res) {
-    res.redirect('/version-1/check-pay-and-submit/help-with-fees-send-app')
-  })
+    var errors = []
+    if (req.body['ref'] === '') {
+      errors.push({
+      text: "Enter your reference number",
+      href: '#no-help-ref'
+      })
+    }
+    if (req.body['submit-button'] === 'save-and-continue') {
+      if (errors.length === 0) {
+        res.redirect('/version-1/check-pay-and-submit/help-with-fees-send-app')
+      }
+      else {
+        res.render('.//version-1/check-pay-and-submit/get-hwf-reference', { errors: errors })
+      }
+    }
 
-
+    })
 
 
 
