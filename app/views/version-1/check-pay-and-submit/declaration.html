@@ -15,7 +15,7 @@ Apply to adopt a child
     <div class="govuk-grid-column-two-thirds">
 
       {% set yourNameError = '' %}
-      {% set checkboxTrueError = '' %}
+      {% set statementTruthError = '' %}
 
 
       {% if errors | length > 0 %}
@@ -27,8 +27,8 @@ Apply to adopt a child
       {% if error.href == '#your-name' %}
         {% set yourNameError = error.text %}
       {% endif %}
-      {% if error.href == '#checkbox-true' %}
-        {% set checkboxTrueError = error.text %}
+      {% if error.href == '#statement-truth' %}
+        {% set statementTruthError = error.text %}
       {% endif %}
     {% endfor %}
     {% endif %}
@@ -44,39 +44,42 @@ Apply to adopt a child
         </legend>
         <p class="govuk-body">I understand that proceedings for contempt of court may be brought against anyone who makes, or causes to be made, a false statement in a document verified by a statement of truth without an honest belief in the truth.</p>
 
+
+        <!-- 1 applicant -->
         {% if data['numberApplicants'] == 1 %}
-        
+          <div class="govuk-form-group {% if (statementTruthError != '') %} govuk-form-group--error{% endif %}">
 
-        
-        <div class="govuk-form-group {% if (checkboxTrueError != '') %} govuk-form-group--error{% endif %}">
-
-        <div class="govuk-checkboxes__item">
-          {% if checkboxTrueError != '' %}
-          <span class="govuk-error-message govuk-form">
-            <span class="govuk-visually-hidden">Error:</span> {{ checkboxTrueError }}
-          </span>
-          {% endif %}
-                <input class="govuk-checkboxes__input" id="app-1" name="checkbox-true" type="checkbox">
+          <div class="govuk-checkboxes" data-module="govuk-checkboxes">
+            <div class="govuk-checkboxes__item">
+              {% if statementTruthError != '' %}
+              <span class="govuk-error-message govuk-form">
+                <span class="govuk-visually-hidden">Error:</span> {{ statementTruthError }}
+              </span>
+              {% endif %}
+              <input class="govuk-checkboxes__input" id="app-1" name="statement-truth" type="checkbox" value="statement-truth">
               <label class="govuk-label govuk-checkboxes__label" for="app-1">
                 I believe that the facts stated in this form and any continuation sheet are true.
               </label>
             </div>
-        </div>
-            <div class="govuk-form-group {% if (yourNameError != '') %} govuk-form-group--error{% endif %}">
-             <label class="govuk-label" for="width-20">
-               Enter your full name
-             </label>
-             {% if yourNameError != '' %}
-               <span class="govuk-error-message govuk-form">
-                 <span class="govuk-visually-hidden">Error:</span> {{ yourNameError }}
-               </span>
-             {% endif %}
+          </div>
 
+          <div class="govuk-form-group {% if (yourNameError != '') %} govuk-form-group--error{% endif %}">
+            <label class="govuk-label govuk-!-margin-top-6" for="width-20">
+              Enter your full name
+            </label>
 
-             <input class="govuk-input govuk-input--width-20" id="name" name="your-full-name" type="text"></div>
-        {% else %}
+            {% if yourNameError != '' %}
+              <span class="govuk-error-message govuk-form">
+                <span class="govuk-visually-hidden">Error:</span> {{ yourNameError }}
+              </span>
+            {% endif %}
+            <input class="govuk-input govuk-input--width-20 {% if (yourNameError != '') %} govuk-input--error{% endif %}" id="name" name="your-full-name" type="text">
+          </div>
+
+            <!-- 2 applicants -->
+          {% else %}
         <div class="govuk-checkboxes__item">
-              <input class="govuk-checkboxes__input" id="app-1" name="checkbox-true" type="checkbox">
+              <input class="govuk-checkboxes__input" id="app-1" name="statement-truth" type="checkbox">
               <label class="govuk-label govuk-checkboxes__label" for="app-1">
                 I believe that the facts stated in this form and any continuation sheet are true.
               </label>
