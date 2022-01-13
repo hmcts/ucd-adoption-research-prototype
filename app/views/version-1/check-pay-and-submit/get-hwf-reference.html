@@ -46,6 +46,7 @@ Apply to adopt a child
         <p class="govuk-body">When asked for your form number, you should enter 'A58'.</p>
           <p class="govuk-body">Once you have applied for help with fees you will get a reference number. You should return to this tab and enter the reference number. You cannot send your application without this reference.</p>
 
+          <div class="govuk-form-group {% if (noHelpRefError != '') %} govuk-form-group--error{% endif %}">
           <label class="govuk-label" for="ref">
             Enter your help with fees reference number:
           </label>
@@ -54,17 +55,17 @@ Apply to adopt a child
             <span class="govuk-visually-hidden">Error:</span> {{ noHelpRefError }}
           </span>
           {% endif%}
-          <input class="govuk-input govuk-!-width-one-third" id="ref" name="ref" type="text" spellcheck="false" autocomplete="ref">
-
+          <input class="govuk-input govuk-!-width-one-third {% if (noHelpRefError != '') %} govuk-input--error{% endif %}" id="ref" name="ref" type="text" spellcheck="false" autocomplete="ref">
         </div>
-            </div>
+
+
 
 
           <div class="govuk-button-group govuk-!-margin-top-6">
           <button class="govuk-button" data-module="govuk-button" name="continue" value="save-and-continue">
             Continue
           </button>
-
+          </div>
 
         </form>
     </div>
