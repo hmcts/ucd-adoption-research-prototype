@@ -202,6 +202,7 @@ module.exports = (router) => {
 
       if (req.body['submit-button'] === 'save-and-continue') {
         if (errors.length === 0) {
+          req.session.data.firstApplicantPersonalDetailsStatus = 'in progress'
           res.redirect('/version-1/applicants/first-applicant-other-names')
         }
         else {
@@ -347,6 +348,7 @@ module.exports = (router) => {
 
     if (req.body['submit-button'] === 'save-and-continue') {
       if (errors.length === 0) {
+        req.session.data.firstApplicantPersonalDetailsStatus = 'completed'
         res.redirect('/version-1/task-list')
       }
       else {
@@ -373,6 +375,7 @@ module.exports = (router) => {
     }
     if (req.body['submit-button'] === 'save-and-continue') {
       if (errors.length === 0) {
+        req.session.data.firstApplicantContactDetailsStatus = 'in progress'
         res.redirect('/version-1/applicants/first-applicant-find-address')
       }
       else {
@@ -431,6 +434,7 @@ module.exports = (router) => {
 
     if (req.body['submit-button'] === 'save-and-continue') {
       if (errors.length === 0) {
+        req.session.data.firstApplicantContactDetailsStatus = 'in progress'
         res.redirect('/version-1/applicants/first-applicant-contact')
       }
       else {
@@ -476,6 +480,7 @@ module.exports = (router) => {
 
     if (req.body['submit-button'] === 'save-and-continue') {
       if (errors.length === 0) {
+        req.session.data.firstApplicantContactDetailsStatus = 'completed'
         res.redirect('/version-1/task-list')
       }
       else {
@@ -486,34 +491,6 @@ module.exports = (router) => {
       res.redirect('/version-1/task-list')
     }
   })
-
-
-
-
-  // ********************** First applicant upload **********************
-  router.post('/version-1/applicants/first-applicant-upload', function(req, res) {
-    var errors = []
-    if (req.body['first-applicant-upload'] === '') {
-      errors.push({
-      text: 'Error message',
-      href: '#first-applicant-upload'
-      })
-    }
-
-    if (req.body['submit-button'] === 'save-and-continue') {
-      if (errors.length === 0) {
-        req.session.data.upload = 1
-        res.redirect('/version-1/task-list')
-      }
-      else {
-        res.render('.//version-1/applicants/first-applicant-upload', { errors: errors })
-      }
-    }
-    else {
-      res.redirect('/version-1/task-list')
-    }
-  })
-
 
 
 
@@ -536,6 +513,7 @@ module.exports = (router) => {
 
     if (req.body['submit-button'] === 'save-and-continue') {
       if (errors.length === 0) {
+        req.session.data.secondApplicantPersonalDetailsStatus = 'in progress'
         res.redirect('/version-1/applicants/second-applicant-other-names')
       }
       else {
@@ -682,6 +660,7 @@ module.exports = (router) => {
 
     if (req.body['submit-button'] === 'save-and-continue') {
       if (errors.length === 0) {
+        req.session.data.secondApplicantPersonalDetailsStatus = 'completed'
         res.redirect('/version-1/task-list')
       }
       else {
@@ -710,8 +689,7 @@ router.post('/version-1/applicants/second-applicant-same-address', function(req,
   if (errors.length === 0) {
    if (req.body['submit-button'] === 'save-and-continue') {
       if (req.body['same-address'] === "Yes") {
-        // console.log("Test: ",req.body['same-address'])
-        req.session.data.secondApplicantAddress = 1
+        req.session.data.secondApplicantContactDetailsStatus = 'in progress'
         res.redirect('/version-1/applicants/second-applicant-contact')
       }
       else {
@@ -739,6 +717,7 @@ router.post('/version-1/applicants/second-applicant-address', function(req, res)
   }
   if (req.body['submit-button'] === 'save-and-continue') {
     if (errors.length === 0) {
+      req.session.data.secondApplicantContactDetailsStatus = 'in progress'
       res.redirect('/version-1/applicants/second-applicant-find-address')
     }
     else {
@@ -797,6 +776,7 @@ router.post('/version-1/applicants/second-applicant-enter-address-manually', fun
 
   if (req.body['submit-button'] === 'save-and-continue') {
     if (errors.length === 0) {
+      req.session.data.secondApplicantContactDetailsStatus = 'in progress'
       res.redirect('/version-1/applicants/second-applicant-contact')
     }
     else {
@@ -843,6 +823,7 @@ router.post('/version-1/applicants/second-applicant-contact', function(req, res)
     // req.session.data.secondApplicantContactCheckbox = req.body['second-applicant-contact-options']
   if (req.body['submit-button'] === 'save-and-continue') {
     if (errors.length === 0) {
+      req.session.data.secondApplicantContactDetailsStatus = 'completed'
       res.redirect('/version-1/task-list')
     }
     else {
@@ -908,6 +889,7 @@ router.post('/version-1/applicants/second-applicant-upload', function(req, res) 
 
     if (req.body['submit-button'] === 'save-and-continue') {
       if (errors.length === 0) {
+        req.session.data.childDetailsStatus = 'in progress'
         res.redirect('/version-1/children/child-date-birth')
       }
       else {
@@ -994,7 +976,7 @@ router.post('/version-1/applicants/second-applicant-upload', function(req, res) 
     count = req.session.data.childNationalityCount
     if (req.body['submit-button'] === 'save-and-continue') {
       if (errors.length === 0) {
-        req.session.data.birthCertificateCompleted = 1
+        req.session.data.childDetailsStatus = 'completed'
         req.session.data.childNationalities[count] = req.body['child-different-country']
         res.redirect('/version-1/task-list')
       }

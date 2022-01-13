@@ -64,9 +64,9 @@ Task list
                         Your personal details
                     </a>
                     </a></span>
-                    {% if data['first-applicant-occupation'] %}
+                    {% if data['firstApplicantPersonalDetailsStatus'] === 'completed' %}
                         <strong class="govuk-tag  app-task-list__tag" id="eligibility-completed">Completed</strong>
-                    {% elseif data['first-applicant-name'] %}
+                    {% elseif data['firstApplicantPersonalDetailsStatus'] === 'in progress' %}
                         <strong class="govuk-tag govuk-tag--blue app-task-list__tag">in progress</strong>
                     {% else %}
                         <strong class="govuk-tag govuk-tag--grey app-task-list__tag">not started</strong>
@@ -80,9 +80,9 @@ Task list
                         Your contact details
                     </a>
                     </a></span>
-                    {% if data['first-applicant-email-address'] or data['first-applicant-phone'] %}
+                    {% if data['firstApplicantContactDetailsStatus'] === 'completed' %}
                         <strong class="govuk-tag  app-task-list__tag" id="eligibility-completed">Completed</strong>
-                    {% elseif data['first-applicant-address'] %}
+                    {% elseif data['firstApplicantContactDetailsStatus'] === 'in progress' %}
                         <strong class="govuk-tag govuk-tag--blue app-task-list__tag">in progress</strong>
                     {% else %}
                         <strong class="govuk-tag govuk-tag--grey app-task-list__tag">not started</strong>
@@ -97,9 +97,9 @@ Task list
                         Your personal details
                     </a>
                     </a></span>
-                    {% if data['second-applicant-occupation'] %}
+                    {% if data['secondApplicantPersonalDetailsStatus'] === 'completed' %}
                         <strong class="govuk-tag  app-task-list__tag" id="eligibility-completed">Completed</strong>
-                    {% elseif data['second-applicant-name'] %}
+                    {% elseif data['secondApplicantPersonalDetailsStatus'] === 'in progress' %}
                         <strong class="govuk-tag govuk-tag--blue app-task-list__tag">in progress</strong>
                     {% else %}
                         <strong class="govuk-tag govuk-tag--grey app-task-list__tag">not started</strong>
@@ -113,9 +113,9 @@ Task list
                         Your contact details
                     </a>
                     </a></span>
-                    {% if data['second-applicant-email-address'] or data['second-applicant-phone'] %}
+                    {% if data['secondApplicantContactDetailsStatus'] === 'completed' %}
                         <strong class="govuk-tag  app-task-list__tag" id="eligibility-completed">Completed</strong>
-                    {% elseif data['second-applicant-address'] or data['secondApplicantAddress'] %}
+                    {% elseif data['secondApplicantContactDetailsStatus'] === 'in progress' %}
                         <strong class="govuk-tag govuk-tag--blue app-task-list__tag">in progress</strong>
                     {% else %}
                         <strong class="govuk-tag govuk-tag--grey app-task-list__tag">not started</strong>
@@ -131,9 +131,9 @@ Task list
                         Your personal details
                     </a>
                     </a></span>
-                    {% if data['first-applicant-occupation'] %}
+                    {% if data['firstApplicantContactDetailsStatus'] === 'completed' %}
                         <strong class="govuk-tag  app-task-list__tag" id="eligibility-completed">Completed</strong>
-                    {% elseif data['first-applicant-name'] %}
+                    {% elseif data['firstApplicantContactDetailsStatus'] === 'in progress' %}
                         <strong class="govuk-tag govuk-tag--blue app-task-list__tag">in progress</strong>
                     {% else %}
                         <strong class="govuk-tag govuk-tag--grey app-task-list__tag">not started</strong>
@@ -147,9 +147,9 @@ Task list
                         Your contact details
                     </a>
                     </a></span>
-                    {% if data['first-applicant-email-address'] or data['first-applicant-phone'] %}
+                    {% if data['firstApplicantContactDetailsStatus'] === 'completed' %}
                         <strong class="govuk-tag  app-task-list__tag" id="eligibility-completed">Completed</strong>
-                    {% elseif data['first-applicant-address'] %}
+                    {% elseif data['firstApplicantContactDetailsStatus'] === 'in progress' %}
                         <strong class="govuk-tag govuk-tag--blue app-task-list__tag">in progress</strong>
                     {% else %}
                         <strong class="govuk-tag govuk-tag--grey app-task-list__tag">not started</strong>
@@ -175,9 +175,9 @@ Task list
                   <a href="children/child-name.html" aria-describedby="eligibility-completed">
                         Birth certificate details
                     </a></span>
-                    {% if data['birthCertificateCompleted'] %}
+                    {% if data['childDetailsStatus'] === 'completed' %}
                         <strong class="govuk-tag  app-task-list__tag" id="eligibility-completed">Completed</strong>
-                    {% elseif data['child-first-names'] or data['child-last-names'] %}
+                    {% elseif data['childDetailsStatus'] === 'in progress' %}
                         <strong class="govuk-tag govuk-tag--blue app-task-list__tag">in progress</strong>
                     {% else %}
                         <strong class="govuk-tag govuk-tag--grey app-task-list__tag">not started</strong>
