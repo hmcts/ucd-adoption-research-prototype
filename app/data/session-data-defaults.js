@@ -92,6 +92,7 @@ module.exports = {
   "childsocialworker": "The child's adoption agency or local authority details",
   "solicitor": "Your solicitor",
   "sibling": "Sibling details",
+  "court": "Court details",
   "checkpaysubmit": "Review your application, pay and send",
 
   "monthName": [

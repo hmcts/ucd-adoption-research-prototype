@@ -2917,7 +2917,24 @@ router.post('/version-1/applicants/second-applicant-upload', function(req, res) 
     }
   })
 
+  router.post('/version-1/children/family-court-finder', function(req, res) {
+    var errors = []
+    if (req.body['court-name'] === '') {
+      errors.push({
+      text: "Enter the name of the court",
+      href: '#no-court-name'
+      })
+    }
+    if (req.body['continue'] === 'save-and-continue') {
+      if (errors.length === 0) {
+        res.redirect('/version-1/task-list')
+      }
+      else {
+        res.render('.//version-1/children/family-court-finder', { errors: errors })
+      }
+    }
 
+    })
 // ******************************************** SECTION 4. UPLOADS ********************************************
 // ************************************************************************************************************************************
 
