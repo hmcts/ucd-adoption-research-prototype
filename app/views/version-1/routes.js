@@ -1202,7 +1202,12 @@ router.post('/version-1/applicants/second-applicant-upload', function(req, res) 
       href: '#mother-have-address'
       })
     }
-
+    else if (req.body['mother-have-address'] === 'no' && req.body['reason-mother'] === '') {
+      errors.push({
+      text: 'Provide a reason',
+      href: '#reason-mother'
+      })
+    }
     if (req.body['submit-button'] === 'save-and-continue') {
       if (errors.length === 0) {
         if (req.body['mother-have-address'] === 'no') {
@@ -1518,6 +1523,12 @@ router.post('/version-1/applicants/second-applicant-upload', function(req, res) 
       href: '#father-have-address'
       })
     }
+    else if (req.body['father-have-address'] === 'no' && req.body['reason-father'] === '') {
+      errors.push({
+      text: 'Provide a reason',
+      href: '#reason-father'
+      })
+    }
 
     if (req.body['submit-button'] === 'save-and-continue') {
       if (errors.length === 0) {
@@ -1727,6 +1738,12 @@ router.post('/version-1/applicants/second-applicant-upload', function(req, res) 
       errors.push({
       text: 'Please answer the question',
       href: '#other-parent-have-address'
+      })
+    }
+    else if (req.body['other-parent-have-address'] === 'no' && req.body['reason-other-parent'] === '') {
+      errors.push({
+      text: 'Provide a reason',
+      href: '#other-parent-reason'
       })
     }
 
