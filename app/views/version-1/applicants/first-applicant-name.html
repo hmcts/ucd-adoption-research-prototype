@@ -56,7 +56,7 @@ Apply to adopt a child
             </span>
             {% endif %}
 
-            <input class="govuk-input {% if (firstNamesError != '') %} govuk-input--error{% endif %}" id="first-applicant-names" name="first-applicant-names" type="text" autocomplete="name" value="{{ data['first-applicant-names'] }}"></div>
+            <input class="govuk-input {% if (firstNamesError != '') %} govuk-input--error{% endif %}" id="first-applicant-names" name="first-applicant-names" type="text" autocomplete="given-name" value="{{ data['first-applicant-names'] }}"></div>
 
 
           <div class="govuk-form-group {% if (lastNamesError != '') %} govuk-form-group--error{% endif %}">
@@ -71,7 +71,7 @@ Apply to adopt a child
               <span class="govuk-visually-hidden">Error:</span> {{ lastNamesError }}
             </span>
             {% endif %}
-            <input class="govuk-input {% if (lastNamesError != '') %} govuk-input--error{% endif %}" id="first-applicant-last-names" name="first-applicant-last-names" type="text" autocomplete="address-level2" value="{{ data['first-applicant-last-names'] }}"></div>
+            <input class="govuk-input {% if (lastNamesError != '') %} govuk-input--error{% endif %}" id="first-applicant-last-names" name="first-applicant-last-names" type="text" autocomplete="family-name" value="{{ data['first-applicant-last-names'] }}"></div>
 
 
         </fieldset>

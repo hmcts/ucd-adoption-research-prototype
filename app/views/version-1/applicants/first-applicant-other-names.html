@@ -114,7 +114,7 @@ Apply to adopt a child
                             <span class="govuk-visually-hidden">Error:</span> {{ noFirstNamesError }}
                           </span>
                            {% endif %}
-                          <input class="govuk-input govuk-!-width-two-thirds {% if noFirstNamesError != '' %} govuk-input--error {% endif %}" id="first-applicant-previous-first-names" name="first-applicant-previous-first-names" type="text"">
+                          <input class="govuk-input govuk-!-width-two-thirds {% if noFirstNamesError != '' %} govuk-input--error {% endif %}" id="first-applicant-previous-first-names" name="first-applicant-previous-first-names" type="text" autocomplete="given-name">
                         </div>
                         
                         <div class="govuk-form-group">
@@ -126,7 +126,7 @@ Apply to adopt a child
                             <span class="govuk-visually-hidden">Error:</span> {{ noLastNamesError }}
                           </span>
                            {% endif %}
-                          <input class="govuk-input govuk-!-width-two-thirds {% if noLastNamesError != '' %} govuk-input--error {% endif %}" id="first-applicant-previous-last-names" name="first-applicant-previous-last-names" type="text"">
+                          <input class="govuk-input govuk-!-width-two-thirds {% if noLastNamesError != '' %} govuk-input--error {% endif %}" id="first-applicant-previous-last-names" name="first-applicant-previous-last-names" autocomplete="family-name" type="text"">
                         </div>
 
                         <button class="govuk-button govuk-button--secondary govuk-!-margin-top-5" data-module="govuk-button" name="submit-button" value="add">Add</button>
