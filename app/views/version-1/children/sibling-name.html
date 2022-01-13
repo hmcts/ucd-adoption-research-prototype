@@ -58,7 +58,7 @@ Sibling name
             </span>
             {% endif %}
 
-            <input class="govuk-input {% if (firstNamesError != '') %} govuk-input--error{% endif %}" id="sibling-first-names" name="sibling-first-names" type="text" autocomplete="name" value="{{ data['sibling-first-names'] }}">
+            <input class="govuk-input {% if (firstNamesError != '') %} govuk-input--error{% endif %}" id="sibling-first-names" name="sibling-first-names" type="text" autocomplete="given-name" value="{{ data['sibling-first-names'] }}">
           </div>
 
 
@@ -74,7 +74,7 @@ Sibling name
               <span class="govuk-visually-hidden">Error:</span> {{ lastNamesError }}
             </span>
             {% endif %}
-            <input class="govuk-input {% if (lastNamesError != '') %} govuk-input--error{% endif %}" id="sibling-last-names" name="sibling-last-names" type="text"  value="{{ data['sibling-last-names'] }}">
+            <input class="govuk-input {% if (lastNamesError != '') %} govuk-input--error{% endif %}" id="sibling-last-names" name="sibling-last-names" type="text" autocomplete="family-name"  value="{{ data['sibling-last-names'] }}">
           </div>
 
 

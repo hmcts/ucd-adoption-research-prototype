@@ -58,7 +58,7 @@ Apply to adopt a father
             </span>
             {% endif %}
 
-            <input class="govuk-input {% if (firstNamesError != '') %} govuk-input--error{% endif %}" id="other-parent-first-names" name="other-parent-first-names" type="text" autocomplete="name" value="{{ data['other-parent-first-names'] }}"></div>
+            <input class="govuk-input {% if (firstNamesError != '') %} govuk-input--error{% endif %}" id="other-parent-first-names" name="other-parent-first-names" type="text" autocomplete="given-name" value="{{ data['other-parent-first-names'] }}"></div>
 
 
           <div class="govuk-form-group {% if (lastNamesError != '') %} govuk-form-group--error{% endif %}">
@@ -73,7 +73,7 @@ Apply to adopt a father
               <span class="govuk-visually-hidden">Error:</span> {{ lastNamesError }}
             </span>
             {% endif %}
-            <input class="govuk-input {% if (lastNamesError != '') %} govuk-input--error{% endif %}" id="other-parent-last-names" name="other-parent-last-names" type="text" autocomplete="address-level2" value="{{ data['other-parent-last-names'] }}"></div>
+            <input class="govuk-input {% if (lastNamesError != '') %} govuk-input--error{% endif %}" id="other-parent-last-names" name="other-parent-last-names" type="text" autocomplete="family-name" value="{{ data['other-parent-last-names'] }}"></div>
 
 
         </fieldset>

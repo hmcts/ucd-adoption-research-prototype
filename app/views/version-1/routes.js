@@ -273,7 +273,7 @@ module.exports = (router) => {
 
   router.post('/version-1/applicants/first-applicant-date-birth', function(req, res) {
     var errors = []
-    if (req.body['day'] === '' || req.body['month'] === '' || req.body['year'] === '') {
+    if (req.body['first-applicant-day'] === '' || req.body['first-applicant-month'] === '' || req.body['first-applicant-year'] === '') {
       errors.push({
       text: 'Developers: please refer to ADOP-149 for different error messages',
       href: '#first-applicant-date-birth'
@@ -608,7 +608,7 @@ module.exports = (router) => {
   router.post('/version-1/applicants/second-applicant-date-birth', function(req, res) {
     // console.log("Day: ", req.body['day'])
     var errors = []
-    if (req.body['day'] === '' || req.body['month'] === '' || req.body['year'] === '') {
+    if (req.body['second-applicant-day'] === '' || req.body['second-applicant-month'] === '' || req.body['second-applicant-year'] === '') {
       errors.push({
       text: 'Developers: please refer to ADOP-149 for different error messages',
       href: '#second-applicant-date-birth'
@@ -923,7 +923,7 @@ router.post('/version-1/applicants/second-applicant-upload', function(req, res) 
   router.post('/version-1/children/child-date-birth', function(req, res) {
     // console.log("Day: ", req.body['day'])
     var errors = []
-    if (req.body['day'] === '' || req.body['month'] === '' || req.body['year'] === '') {
+    if (req.body['child-birth-day'] === '' || req.body['child-birth-month'] === '' || req.body['child-birth-year'] === '') {
       errors.push({
       text: 'Developers: please refer to ADOP-203 for different error messages',
       href: '#child-date-birth'
