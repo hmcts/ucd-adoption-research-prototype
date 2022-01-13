@@ -56,21 +56,21 @@ Apply to adopt a child
                 <label class="govuk-label govuk-date-input__label" for="day">
                   Day
                 </label>
-                <input class="govuk-input govuk-date-input__input govuk-input--width-2 {% if (dobError != '')%} govuk-input--error {% endif%}" id="day" name="day" type="text" pattern="[0-9]*" inputmode="numeric" value="{{ data['day'] }}"></div>
+                <input class="govuk-input govuk-date-input__input govuk-input--width-2 {% if (dobError != '')%} govuk-input--error {% endif%}" id="day" name="child-birth-day" type="text" pattern="[0-9]*" inputmode="numeric" value="{{ data['child-birth-day'] }}"></div>
             </div>
             <div class="govuk-date-input__item">
               <div class="govuk-form-group">
                 <label class="govuk-label govuk-date-input__label" for="month">
                   Month
                 </label>
-                <input class="govuk-input govuk-date-input__input govuk-input--width-2 {% if (dobError != '')%} govuk-input--error {% endif%}" id="month" name="month" type="text" pattern="[0-9]*" inputmode="numeric" value="{{ data['month'] }}"></div>
+                <input class="govuk-input govuk-date-input__input govuk-input--width-2 {% if (dobError != '')%} govuk-input--error {% endif%}" id="month" name="child-birth-month" type="text" pattern="[0-9]*" inputmode="numeric" value="{{ data['child-birth-month'] }}"></div>
             </div>
             <div class="govuk-date-input__item">
               <div class="govuk-form-group">
                 <label class="govuk-label govuk-date-input__label" for="year">
                   Year
                 </label>
-                <input class="govuk-input govuk-date-input__input govuk-input--width-4 {% if (dobError != '')%} govuk-input--error {% endif%}" id="year" name="year" type="text" pattern="[0-9]*" inputmode="numeric" value="{{ data['year'] }}"></div>
+                <input class="govuk-input govuk-date-input__input govuk-input--width-4 {% if (dobError != '')%} govuk-input--error {% endif%}" id="year" name="child-birth-year" type="text" pattern="[0-9]*" inputmode="numeric" value="{{ data['child-birth-year'] }}"></div>
             </div>
 
         </div>
