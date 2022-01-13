@@ -3062,7 +3062,7 @@ router.post('/version-1/applicants/second-applicant-upload', function(req, res) 
       href: '#no-help-ref'
       })
     }
-    if (req.body['submit-button'] === 'save-and-continue') {
+    if (req.body['continue'] === 'save-and-continue') {
       if (errors.length === 0) {
         res.redirect('/version-1/check-pay-and-submit/help-with-fees-send-app')
       }
