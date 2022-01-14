@@ -1020,6 +1020,7 @@ router.post('/version-1/applicants/second-applicant-upload', function(req, res) 
 
     if (req.body['submit-button'] === 'save-and-continue') {
       if (errors.length === 0) {
+        req.session.data.adoptionCertificateStatus = 'completed'
         res.redirect('/version-1/task-list')
       }
       else {
@@ -2923,15 +2924,6 @@ router.post('/version-1/applicants/second-applicant-upload', function(req, res) 
       else {
         req.session.data.familyCourtStatus = 'in progress'
         res.redirect('/version-1/task-list')
-      }
-    }
-
-    if (req.body['continue'] === 'save-and-continue') {
-      if (errors.length === 0) {
-        res.redirect('/version-1/task-list')
-      }
-      else {
-        res.render('.//version-1/children/family-court-finder', { errors: errors })
       }
     }
 
