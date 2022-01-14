@@ -339,8 +339,9 @@ Task list
                 </span>
                 {% else %}
                 <span class="app-task-list__task-name">
-                  Upload applicants' documents
-                </span>
+                    <a href="upload/applicants-documents-upload.html" class="not-underlined">
+                        Upload applicants' documents</a>
+                      </span>
                 {% endif %}
                 {% if data['applicantsUpload'] %}
                     <strong class="govuk-tag  app-task-list__tag" id="eligibility-completed">Completed</strong>
@@ -355,9 +356,9 @@ Task list
               </li>
               <li class="app-task-list__item">
                 <span class="app-task-list__task-name">
-                    <!-- <a href="upload/child-documents-upload.html" aria-describedby="eligibility-completed"> -->
+                    <a href="upload/child-documents-upload.html" class="not-underlined">
                         Upload child's documents
-                    <!-- </a> -->
+                    </a>
                 </span>
                 {% if data['childUpload'] %}
                 <strong class="govuk-tag  app-task-list__tag" id="eligibility-completed">Completed</strong>
@@ -381,8 +382,8 @@ Task list
 
               <li class="app-task-list__item">
                 <span class="app-task-list__task-name">
-                    <a href="check-pay-and-submit/check-your-answers.html" aria-describedby="eligibility-completed">
-                  <p>Check, pay and submit your application</p></a>
+                    <a href="check-pay-and-submit/check-your-answers.html" class="not-underlined">
+                  Check, pay and submit your application</a>
                 </span>
                 {% if data['birth-father'] %}
                     <strong class="govuk-tag  app-task-list__tag" id="eligibility-completed">Completed</strong>
