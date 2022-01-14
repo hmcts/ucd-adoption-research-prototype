@@ -308,8 +308,10 @@ Task list
                     <a href="children/family-court-finder.html" aria-describedby="eligibility-completed">
                         Family court finder
                     </a></span>
-                    {% if data['date-x'] %}
+                    {% if data['familyCourtStatus'] === 'completed' %}
                         <strong class="govuk-tag  app-task-list__tag" id="eligibility-completed">Completed</strong>
+                    {% elseif data['familyCourtStatus'] === 'in progress' %}
+                        <strong class="govuk-tag govuk-tag--blue app-task-list__tag">in progress</strong>
                     {% else %}
                         <strong class="govuk-tag govuk-tag--grey app-task-list__tag">not started</strong>
                     {% endif %}
