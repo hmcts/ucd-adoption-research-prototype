@@ -2119,6 +2119,7 @@ router.post('/version-1/applicants/second-applicant-upload', function(req, res) 
     count = req.session.data.childOrderCount
 
     if (req.body['submit-button'] === 'save-and-continue') {
+      req.session.data.placementStatus = 'in progress'
       if (errors.length === 0) {
         req.session.data.childOrderCount = count
         req.session.data.childOrderType[count] = "Placement order"
@@ -2133,8 +2134,13 @@ router.post('/version-1/applicants/second-applicant-upload', function(req, res) 
       }
     }
     else {
-      req.session.data.childOrderInProgress = "Yes"
-      res.redirect('/version-1/task-list')
+      if (req.body['placement-case-number'] === '') {
+        res.redirect('/version-1/task-list')
+      }
+      else {
+        req.session.data.placementStatus = 'in progress'
+        res.redirect('/version-1/task-list')
+      }
     }
   })
 
@@ -2161,7 +2167,13 @@ router.post('/version-1/applicants/second-applicant-upload', function(req, res) 
       }
     }
     else {
-      res.redirect('/version-1/task-list')
+      if (req.body['placement-court-name'] === '') {
+        res.redirect('/version-1/task-list')
+      }
+      else {
+        req.session.data.placementStatus = 'in progress'
+        res.redirect('/version-1/task-list')
+      }
     }
   })
 
@@ -2179,6 +2191,7 @@ router.post('/version-1/applicants/second-applicant-upload', function(req, res) 
 
     if (req.body['submit-button'] === 'save-and-continue') {
       if (errors.length === 0) {
+        req.session.data.childOrderIncomplete = 0
         req.session.data.childOrderDay[count] = req.body['placement-day']
         req.session.data.childOrderMonth[count] = req.body['placement-month']
         req.session.data.childOrderYear[count] = req.body['placement-year']
@@ -2214,7 +2227,12 @@ router.post('/version-1/applicants/second-applicant-upload', function(req, res) 
           res.redirect('/version-1/children/orders-order-type')
         }
         else {
-          req.session.data.AddToListFinished = 1
+          if (req.session.data.childOrderIncomplete === 0) {
+            req.session.data.placementStatus = 'completed'
+          }
+          else {
+            req.session.data.placementStatus = 'in progress'
+          }
           res.redirect('/version-1/task-list')
         }
       }
@@ -2339,6 +2357,45 @@ router.post('/version-1/applicants/second-applicant-upload', function(req, res) 
   })
 
 
+  router.post('/version-1/children/orders-remove-court-order', function(req, res) {
+    var occ = 0
+    var errors = []
+    if (req.body['child-remove-court-order'] === undefined) {
+      errors.push({
+      text: 'Please answer the question',
+      href: '#no-answer'
+      })
+    }
+
+    id = req.body['child-order-id']
+    console.log("child-order-id: ",id)
+
+    if (errors.length === 0) {
+      for (let index = 0; index < req.session.data.childOrderId.length; index++) {
+        if (req.session.data.childOrderId[index] == id) {
+          console.log("index: ", index)
+          delete req.session.data.childOrderId[index];
+          delete req.session.data.childOrderType[index];
+          delete req.session.data.childOrderNumber[index];
+          delete req.session.data.childOrderCourt[index];
+          delete req.session.data.childOrderDay[index];
+          delete req.session.data.childOrderMonth[index];
+          delete req.session.data.childOrderYear[index];
+          delete req.session.data.childOrderCompleted[index];
+          req.session.data.childOrderCount--
+        }
+      }
+      console.log("child first names orders: ", req.session.data.childFirstNames)
+      console.log("child order count: ", req.session.data.childOrderCount)
+
+      res.redirect('/version-1/children/orders-summary')
+    }
+    else {
+      res.render('.//version-1/children/orders-remove-order-court', { errors: errors })
+    }
+  })
+
+
 
 
   // ********************** Sibling details **********************
@@ -2361,10 +2418,11 @@ router.post('/version-1/applicants/second-applicant-upload', function(req, res) 
     if (req.body['submit-button'] === 'save-and-continue') {
       if (errors.length === 0) {
         if (req.body['sibling-exists'] === 'yes') {
+          req.session.data.siblingStatus = 'in progress'
           res.redirect('/version-1/children/sibling-court-order-exists')
         }
         else {
-          req.session.data.siblingCompleted = 1
+          req.session.data.siblingStatus = 'completed'
           res.redirect('/version-1/task-list')
         }
       }
@@ -2384,7 +2442,7 @@ router.post('/version-1/applicants/second-applicant-upload', function(req, res) 
     if (req.body['sibling-court-order-exists'] === undefined) {
       errors.push({
       text: 'Please answer the question',
-      href: '#ourt-order-checkbox'
+      href: '#court-order-checkbox'
       })
     }
     else if (req.body['sibling-court-order-exists'] === 'unsure' && req.body['reason-not-sure'] === '') {
@@ -2400,7 +2458,7 @@ router.post('/version-1/applicants/second-applicant-upload', function(req, res) 
           res.redirect('/version-1/children/sibling-name')
         }
         else {
-          req.session.data.siblingCompleted = 1
+          req.session.data.siblingStatus = 'completed'
           res.redirect('/version-1/task-list')
         }
       }
@@ -2682,6 +2740,7 @@ router.post('/version-1/applicants/second-applicant-upload', function(req, res) 
 
     if (req.body['submit-button'] === 'save-and-continue') {
       if (errors.length === 0) {
+        req.session.data.siblingOrderIncomplete = 0
         req.session.data.siblingOrderDay[count] = req.body['sibling-day']
         req.session.data.siblingOrderMonth[count] = req.body['sibling-month']
         req.session.data.siblingOrderYear[count] = req.body['sibling-year']
@@ -2739,7 +2798,12 @@ router.post('/version-1/applicants/second-applicant-upload', function(req, res) 
           res.redirect('/version-1/children/sibling-choose-sibling')
         }
         else {
-          req.session.data.siblingOrderCompleted = 1
+          if (req.session.data.siblingOrderIncomplete === 0) {
+            req.session.data.siblingStatus = 'completed'
+          }
+          else {
+            req.session.data.siblingStatus = 'in progress'
+          }
           res.redirect('/version-1/task-list')
         }
       }
@@ -2911,6 +2975,10 @@ router.post('/version-1/applicants/second-applicant-upload', function(req, res) 
     }
   })
 
+
+
+
+  // ********************** Family court finder **********************
   router.post('/version-1/children/family-court-finder', function(req, res) {
     var errors = []
     if (req.body['court-name'] === '') {
@@ -2937,8 +3005,12 @@ router.post('/version-1/applicants/second-applicant-upload', function(req, res) 
         res.redirect('/version-1/task-list')
       }
     }
+  })
 
-    })
+
+
+  
+
 // ******************************************** SECTION 4. UPLOADS ********************************************
 // ************************************************************************************************************************************
 
