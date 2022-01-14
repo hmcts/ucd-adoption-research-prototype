@@ -3152,7 +3152,7 @@ router.post('/version-1/applicants/second-applicant-upload', function(req, res) 
         res.redirect('/version-1/check-pay-and-submit/get-hwf-reference')
       }
       else {
-        res.redirect('/version-1/check-pay-and-submit/process-payment')
+        res.redirect('https://products.payments.service.gov.uk/pay/02133e4814ea416cb7a1e540b49a8545')
       }
     }
     else {
