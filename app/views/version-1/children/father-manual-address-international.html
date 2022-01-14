@@ -52,7 +52,7 @@ Apply to adopt a child
             </span>
             {% endif %}
 
-            <input class="govuk-input {% if (firstlineError != '') %} govuk-input--error{% endif %}" id="address-line-1" name="address-line-1" type="text" autocomplete="address-line1" value="{{ data['address-line-1'] }}">
+            <input class="govuk-input {% if (firstlineError != '') %} govuk-input--error{% endif %}" id="address-line-1" name="father-address-line-1" type="text" autocomplete="address-line1" value="{{ data['father-address-line-1'] }}">
            </div>
 
           <div class="govuk-form-group">
@@ -60,14 +60,14 @@ Apply to adopt a child
               Address line 2 (Optional)
               <span class="govuk-visually-hidden">Building and street line 2 of 3</span>
             </label>
-            <input class="govuk-input" id="address-line-2" name="address-line-2" type="text" autocomplete="address-line2" value="{{ data['address-line-2'] }}"></div>
+            <input class="govuk-input" id="address-line-2" name="father-address-line-2" type="text" autocomplete="address-line2" value="{{ data['father-address-line-2'] }}"></div>
 
             <div class="govuk-form-group">
               <label class="govuk-label" for="address-line-3">
                 Address line 3 (Optional)
                 <span class="govuk-visually-hidden">Building and street line 3 of 3</span>
               </label>
-              <input class="govuk-input" id="address-line-3" name="address-line-3" type="text" autocomplete="address-line3" value="{{ data['address-line-3'] }}"></div>
+              <input class="govuk-input" id="address-line-3" name="father-address-line-3" type="text" autocomplete="address-line3" value="{{ data['father-address-line-3'] }}"></div>
 
 
 
@@ -76,20 +76,20 @@ Apply to adopt a child
                 Town or city (Optional)
                 <span class="govuk-visually-hidden">Town or city</span>
               </label>
-              <input class="govuk-input govuk-!-width-two-thirds" id="town" name="town" type="text" autocomplete="town" value="{{ data['town'] }}"></div>
+              <input class="govuk-input govuk-!-width-two-thirds" id="town" name="father-town" type="text" autocomplete="town" value="{{ data['father-town'] }}"></div>
 
 
           <div class="govuk-form-group">
             <label class="govuk-label" for="address-county">
               County, district, state or province (Optional)
             </label>
-            <input class="govuk-input govuk-!-width-two-thirds" id="address-county" name="address-county" type="text" value="{{ data['address-county'] }}"></div>
+            <input class="govuk-input govuk-!-width-two-thirds" id="address-county" name="father-address-county" type="text" value="{{ data['father-address-county'] }}"></div>
 
             <div class="govuk-form-group">
               <label class="govuk-label" for="address-county">
                 Postcode, zip code or area code (Optional)
               </label>
-              <input class="govuk-input govuk-input--width-10" id="address-postcode" name="address-postcode" type="text" value="{{ data['address-postcode'] }}"></div>
+              <input class="govuk-input govuk-input--width-10" id="address-postcode" name="father-address-postcode" type="text" value="{{ data['father-address-postcode'] }}"></div>
 
 
             <div class="govuk-form-group {% if (countryError != '') %} govuk-form-group--error{% endif %}">
@@ -102,7 +102,7 @@ Apply to adopt a child
               </span>
               {% endif %}
 
-          <input class="govuk-input {% if (countryError != '') %} govuk-input--error{% endif %}" id="country" name="country" type="text" autocomplete="country" value="{{ data['country'] }}"></div>
+          <input class="govuk-input {% if (countryError != '') %} govuk-input--error{% endif %}" id="country" name="father-country" type="text" autocomplete="country" value="{{ data['father-country'] }}"></div>
 
 
 

@@ -413,19 +413,19 @@ module.exports = (router) => {
 
   router.post('/version-1/applicants/first-applicant-enter-address-manually', function(req, res) {
     var errors = []
-    if (req.body['address-line-1'] === '') {
+    if (req.body['first-applicant-address-line-1'] === '') {
       errors.push({
       text: 'Enter the first line of the address',
       href: '#first-line'
       })
     }
-    if (req.body['address-town'] === '') {
+    if (req.body['first-applicant-address-town'] === '') {
       errors.push({
       text: 'Enter the town or city',
       href: '#town'
       })
     }
-    if (req.body['address-postcode'] === '') {
+    if (req.body['first-applicant-address-postcode'] === '') {
       errors.push({
       text: 'Enter the postcode',
       href: '#postcode'
@@ -755,19 +755,19 @@ router.post('/version-1/applicants/second-applicant-find-address', function(req,
 
 router.post('/version-1/applicants/second-applicant-enter-address-manually', function(req, res) {
   var errors = []
-  if (req.body['address-line-1'] === '') {
+  if (req.body['second-applicant-address-line-1'] === '') {
     errors.push({
     text: 'Enter the first line of the address',
     href: '#first-line'
     })
   }
-  if (req.body['address-town'] === '') {
+  if (req.body['second-applicant-address-town'] === '') {
     errors.push({
     text: 'Enter the town or city',
     href: '#town'
     })
   }
-  if (req.body['address-postcode'] === '') {
+  if (req.body['second-applicant-address-postcode'] === '') {
     errors.push({
     text: 'Enter the postcode',
     href: '#postcode'
@@ -1028,7 +1028,13 @@ router.post('/version-1/applicants/second-applicant-upload', function(req, res) 
       }
     }
     else {
-      res.redirect('/version-1/task-list')
+      if (req.body['certificate-first-names'] === '' && req.body['certificate-last-names'] === '') {
+        res.redirect('/version-1/task-list')
+      }
+      else {
+        req.session.data.adoptionCertificateStatus = 'in progress'
+        res.redirect('/version-1/task-list')
+      }
     }
   })
 
@@ -1581,19 +1587,19 @@ router.post('/version-1/applicants/second-applicant-upload', function(req, res) 
 
   router.post('/version-1/children/father-manual-address', function(req, res) {
     var errors = []
-    if (req.body['address-line-1'] === '') {
+    if (req.body['father-address-line-1'] === '') {
       errors.push({
       text: 'Enter the first line of the address',
       href: '#first-line'
       })
     }
-    if (req.body['address-town'] === '') {
+    if (req.body['father-address-town'] === '') {
       errors.push({
       text: 'Enter the town or city',
       href: '#town'
       })
     }
-    if (req.body['address-postcode'] === '') {
+    if (req.body['father-address-postcode'] === '') {
       errors.push({
       text: 'Enter the postcode',
       href: '#postcode'
@@ -1616,13 +1622,13 @@ router.post('/version-1/applicants/second-applicant-upload', function(req, res) 
 
   router.post('/version-1/children/father-manual-address-international', function(req, res) {
     var errors = []
-    if (req.body['address-line-1'] === '') {
+    if (req.body['father-address-line-1'] === '') {
       errors.push({
       text: 'Enter the first line of the address',
       href: '#first-line'
       })
     }
-    if (req.body['country'] === '') {
+    if (req.body['father-country'] === '') {
       errors.push({
       text: 'Enter the country',
       href: '#country'
@@ -1799,19 +1805,19 @@ router.post('/version-1/applicants/second-applicant-upload', function(req, res) 
 
   router.post('/version-1/children/other-parent-manual-address', function(req, res) {
     var errors = []
-    if (req.body['address-line-1'] === '') {
+    if (req.body['other-parent-address-line-1'] === '') {
       errors.push({
       text: 'Enter the first line of the address',
       href: '#first-line'
       })
     }
-    if (req.body['address-town'] === '') {
+    if (req.body['other-parent-address-town'] === '') {
       errors.push({
       text: 'Enter the town or city',
       href: '#town'
       })
     }
-    if (req.body['address-postcode'] === '') {
+    if (req.body['other-parent-address-postcode'] === '') {
       errors.push({
       text: 'Enter the postcode',
       href: '#postcode'
@@ -1835,13 +1841,13 @@ router.post('/version-1/applicants/second-applicant-upload', function(req, res) 
 
   router.post('/version-1/children/other-parent-manual-address-international', function(req, res) {
     var errors = []
-    if (req.body['address-line-1'] === '') {
+    if (req.body['other-parent-address-line-1'] === '') {
       errors.push({
       text: 'Enter the first line of the address',
       href: '#first-line'
       })
     }
-    if (req.body['country'] === '') {
+    if (req.body['other-parent-country'] === '') {
       errors.push({
       text: 'Enter the country',
       href: '#country'
