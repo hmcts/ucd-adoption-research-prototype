@@ -192,10 +192,10 @@ Task list
                         Adoption certificate details
                     </a></span>
 
-                    {% if data['certificate-first-names'] and data['certificate-last-names'] %}
+                    {% if data['adoptionCertificateStatus'] === 'completed' %}
                         <strong class="govuk-tag  app-task-list__tag" id="eligibility-completed">Completed</strong>
-                    {% elseif data['certificate-first-names'] or data['certificate-last-names'] %}
-                        <strong class="govuk-tag govuk-tag--blue app-task-list__tag" id="eligibility-completed">in progress</strong>
+                    {% elseif data['adoptionCertificateStatus'] === 'in progress' %}
+                        <strong class="govuk-tag govuk-tag--blue app-task-list__tag">in progress</strong>
                     {% else %}
                         <strong class="govuk-tag govuk-tag--grey app-task-list__tag">not started</strong>
                     {% endif %}
