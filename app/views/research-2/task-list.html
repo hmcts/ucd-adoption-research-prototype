@@ -17,10 +17,10 @@ Task list
 
     <ol class="app-task-list">
 
-        <!-- **************************************** 1. Add applicants' details **************************************** -->
+        <!-- **************************************** 1. Add application' details **************************************** -->
         <li>
             <h2 class="app-task-list__section">
-            <span class="app-task-list__section-number">1. </span>Add your details
+            <span class="app-task-list__section-number">1. </span>Add application details
             </h2>
             <ul class="app-task-list__items">
 
@@ -53,6 +53,31 @@ Task list
                     {% endif %}
                 </li>
 
+                <!-- Family court finder -->
+                <li class="app-task-list__item">
+                    <span class="app-task-list__task-name">
+                    <a href="children/family-court-finder.html" aria-describedby="eligibility-completed">
+                        Family court finder
+                    </a></span>
+                    {% if data['familyCourtStatus'] === 'completed' %}
+                        <strong class="govuk-tag  app-task-list__tag" id="eligibility-completed">Completed</strong>
+                    {% elseif data['familyCourtStatus'] === 'in progress' %}
+                        <strong class="govuk-tag govuk-tag--blue app-task-list__tag">in progress</strong>
+                    {% else %}
+                        <strong class="govuk-tag govuk-tag--grey app-task-list__tag">not started</strong>
+                    {% endif %}
+                </li>
+
+                
+            </ul>
+        </li>
+
+        <!-- **************************************** 2. Add application' details **************************************** -->
+        <li>
+            <h2 class="app-task-list__section">
+            <span class="app-task-list__section-number">2. </span>Add applicant's details
+            </h2>
+            <ul class="app-task-list__items">
 
                 <!-- Two applicants -->
                 {% if data['numberApplicants'] != 1 %}
@@ -162,10 +187,10 @@ Task list
             </ul>
         </li>
 
-        <!-- **************************************** 2. Add the child's details **************************************** -->
+        <!-- **************************************** 3. Add the child's details **************************************** -->
         <li>
             <h2 class="app-task-list__section">
-            <span class="app-task-list__section-number">2. </span>Add the child's details
+            <span class="app-task-list__section-number">3. </span>Add the child's details
             </h2>
             <ul class="app-task-list__items">
 
@@ -189,7 +214,7 @@ Task list
                 <li class="app-task-list__item">
                     <span class="app-task-list__task-name">
                   <a href="children/child-adoption-certificate.html" aria-describedby="eligibility-completed">
-                        Adoption certificate details
+                        Child's name after adoption
                     </a></span>
 
                     {% if data['adoptionCertificateStatus'] === 'completed' %}
@@ -237,7 +262,7 @@ Task list
                 <li class="app-task-list__item">
                     <span class="app-task-list__task-name">
                     <a href="children/other-parent-exists.html" aria-describedby="eligibility-completed">
-                        Other parent's details
+                        Other guardian's details
                     </a>
                     </span>
                     {% if data['otherParentStatus'] === 'completed' %}
@@ -303,20 +328,6 @@ Task list
                     {% endif %}
                 </li>
 
-                <li class="app-task-list__item">
-                    <span class="app-task-list__task-name">
-                    <a href="children/family-court-finder.html" aria-describedby="eligibility-completed">
-                        Family court finder
-                    </a></span>
-                    {% if data['familyCourtStatus'] === 'completed' %}
-                        <strong class="govuk-tag  app-task-list__tag" id="eligibility-completed">Completed</strong>
-                    {% elseif data['familyCourtStatus'] === 'in progress' %}
-                        <strong class="govuk-tag govuk-tag--blue app-task-list__tag">in progress</strong>
-                    {% else %}
-                        <strong class="govuk-tag govuk-tag--grey app-task-list__tag">not started</strong>
-                    {% endif %}
-                </li>
-
             </ul>
             </li>
 
@@ -324,7 +335,7 @@ Task list
         <!-- **************************************** 3. Upload **************************************** -->
         <li>
             <h2 class="app-task-list__section">
-              <span class="app-task-list__section-number">3. </span>Upload documents
+              <span class="app-task-list__section-number">4. </span>Upload documents
             </h2>
             <ul class="app-task-list__items">
               <!-- <div class="govuk-inset-text home-office-inset-text">
@@ -365,7 +376,7 @@ Task list
         <!-- **************************************** 4. Review application, pay and send **************************************** -->
         <li>
             <h2 class="app-task-list__section">
-              <span class="app-task-list__section-number">4. </span>Review, pay and submit
+              <span class="app-task-list__section-number">5. </span>Review, pay and submit
             </h2>
             <ul class="app-task-list__items">
               <!-- <div class="govuk-inset-text home-office-inset-text">
