@@ -1,0 +1,48 @@
+{% extends "layout-signed-in.html" %}
+
+{% block pageTitle %}
+Apply to adopt a child
+{% endblock %}
+
+{% block beforeContent %}
+<a class="govuk-back-link" href="javascript:history.back()">Back</a>
+{% endblock %}
+
+
+{% block content %}
+<div class="govuk-grid-row">
+  <div class="govuk-grid-column-two-thirds">
+
+    {% if query.hasError == "yes" %}
+    <div class="govuk-error-summary" aria-labelledby="error-summary-title" role="alert" tabindex="-1" data-module="govuk-error-summary">
+      <h2 class="govuk-error-summary__title" id="error-summary-title">
+        There is a problem
+      </h2>
+      <div class="govuk-error-summary__body">
+        <ul class="govuk-list govuk-error-summary__list">
+          <li>
+            <a href="#passport-issued-day">No match for "{{query.errorValue}}". Select a country from the list.</a>
+          </li>
+        </ul>
+      </div>
+    </div>
+    {% endif %}
+
+    <form method="POST" class="js-form" autocomplete="on" novalidate="novalidate" id="gf-form">
+      <fieldset class="govuk-fieldset" aria-describedby="changed-name-hint">
+        <legend class="govuk-fieldset__legend govuk-fieldset__legend--l govuk-!-margin-bottom-6">
+          <h1 class="govuk-fieldset__heading">
+            What is your country of birth?</h1>
+        </legend>
+        <!-- load an autocomple country select -->
+        {% block countrySelect %}{% include "country-select.html" %}{% endblock %}
+      </fieldset>
+
+      <button value="Save and continue" class="govuk-button" data-module="govuk-button">
+        Save and continue
+      </button>
+    </form>
+    {% block pageFooter %}{% include "../../includes/page-footer.html" %}{% endblock %}
+  </div>
+</div>
+{% endblock %}
