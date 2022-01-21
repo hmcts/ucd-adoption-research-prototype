@@ -14,9 +14,9 @@ Apply to adopt a child
   <div class="govuk-grid-row">
     <div class="govuk-grid-column-two-thirds">
 
-      {% set contactError = '' %}
       {% set emailError = '' %}
       {% set phoneError = '' %}
+      {% set consentError = '' %}
 
       {% if errors | length > 0 %}
       {{ govukErrorSummary({
@@ -24,14 +24,14 @@ Apply to adopt a child
         errorList: errors
       }) }}
       {% for error in errors %}
-        {% if error.href == '#first-applicant-contact' %}
-          {% set contactError = error.text %}
-        {% endif %}
         {% if error.href == '#first-applicant-email' %}
           {% set emailError = error.text %} 
         {% endif %}
         {% if error.href == '#first-applicant-phone-number' %} 
           {% set phoneError = error.text %}
+        {% endif %}
+        {% if error.href == '#first-applicant-consent' %}
+          {% set consentError = error.text %}
         {% endif %}
       {% endfor %}
       {% endif %}
@@ -39,7 +39,7 @@ Apply to adopt a child
 
       <form action="/research-2/applicants/first-applicant-contact" method="post" class="form">
 
-        <div class="govuk-form-group {% if (contactError != '')%} govuk-form-group--error {% endif%}">
+        <div class="govuk-form-group">
           <legend class="govuk-fieldset__legend govuk-fieldset__legend--l">
             <span class="govuk-caption-l">{{ data['firstApplicant'] }}</span>
             <h1 class="govuk-fieldset__heading">
@@ -48,8 +48,9 @@ Apply to adopt a child
           </legend>
 
           <span id="passport-issued-hint" class="govuk-hint">
-            This is so we can contact you with updates or questions about your application.
+            We need both a contact email and telephone number for you. 
           </span>
+          <p>We will email you updates and information about your application to adopt. You will only be contacted by telephone if the social worker or court staff need to contact you quickly.</p>
 
             <fieldset class="govuk-fieldset" aria-describedby="citizenship-conditional-hint">
               {% if (phoneError != '' or emailError != '') %}
@@ -64,52 +65,53 @@ Apply to adopt a child
               </span>
               {% endif %}
 
-              <div class="govuk-checkboxes" data-module="govuk-checkboxes">
-                <!-- Email address -->
-                <div class="govuk-checkboxes__item">
-                  <input class="govuk-checkboxes__input" id="email" name="first-applicant-email-checkbox" type="checkbox"
-                    data-aria-controls="conditional-citizenship-conditional" {% if (data['first-applicant-email-checkbox'] != undefined) %} checked {% endif %}>
-                  <label class="govuk-label govuk-checkboxes__label" for="citizenship-conditional">
-                    Email address
-                  </label>
-                  {% if emailError != '' %}
-                  <span id="contact-error" class="govuk-error-message">
-                    <span class="govuk-visually-hidden">Error:</span> {{ emailError }}
-                  </span>
-                  {% endif %}
-                </div>
-                <div class="govuk-checkboxes__conditional govuk-checkboxes__conditional--hidden"
-                  id="conditional-citizenship-conditional">
-                  <div class="govuk-form-group">
-                    <input class="govuk-input govuk-input--width-20 {% if emailError !== '' %} govuk-input--error {% endif %}" id="contact-by-enmail" name="first-applicant-email-address"
-                      type="email" value="{{ data['first-applicant-email-address'] }}">
-                  </div>
-                </div>                
-                
-                <!-- Phone number -->
-                <div class="govuk-checkboxes__item">
-                  <input class="govuk-checkboxes__input" id="phone" name="first-applicant-phone" type="checkbox"
-                    data-aria-controls="conditional-citizenship-conditional-2" {% if (data['first-applicant-phone'] != undefined) %} checked {% endif %}>
-                  <label class="govuk-label govuk-checkboxes__label" for="citizenship-conditional-2">
-                    UK phone number (for phone calls)
-                  </label>
-                  {% if phoneError != '' %}
-                  <span id="contact-error" class="govuk-error-message">
-                    <span class="govuk-visually-hidden">Error:</span> {{ phoneError }}
-                  </span>
-                  {% endif %}
-                </div>
-                <div class="govuk-checkboxes__conditional govuk-checkboxes__conditional--hidden"
-                  id="conditional-citizenship-conditional-2">
-                  <div class="govuk-form-group">
-                    <input class="govuk-input govuk-input--width-20 {% if phoneError !== '' %} govuk-input--error {% endif %}" id="contact-by-phone" name="first-applicant-phone-number"
-                      type="tel" value="{{ data['first-applicant-phone-number'] }}">
+              <div class="govuk-form-group {% if (emailError != '') %} govuk-form-group--error{% endif %}">
+                <label class="govuk-label" for="name">
+                  Email address
+                </label>
+                {% if emailError != '' %}
+                <span id="contact-error" class="govuk-error-message">
+                  <span class="govuk-visually-hidden">Error:</span> {{ emailError }}
+                </span>
+                {% endif %}
+    
+                <input class="govuk-input govuk-!-width-two-thirds {% if (emailError != '') %} govuk-input--error{% endif %}" id="first-applicant-email-address" name="first-applicant-email-address" type="text" value="{{ data['first-applicant-email-address'] }}">
+              </div>
+    
+    
+              <div class="govuk-form-group {% if (phoneError != '') %} govuk-form-group--error{% endif %}">
+                <label class="govuk-label" for="phone-number">
+                  Phone number
+                </label>
+                {% if phoneError != '' %}
+                <span id="contact-error" class="govuk-error-message">
+                  <span class="govuk-visually-hidden">Error:</span> {{ phoneError }}
+                </span>
+                {% endif %}
+                <input class="govuk-input govuk-input--width-10 {% if (phoneError != '') %} govuk-input--error{% endif %}" id="first-applicant-phone-number" name="first-applicant-phone-number" type="number" autocomplete="address-level2" value="{{ data['first-applicant-phone-number'] }}">
+              </div>
+
+              <div class="govuk-form-group {% if (consentError != '') %} govuk-form-group--error{% endif %}">
+                {% if consentError != '' %}
+                <span class="govuk-error-message govuk-form">
+                  <span class="govuk-visually-hidden">Error:</span> {{ consentError }}
+                </span>
+                {% endif %}
+      
+                <div class="govuk-checkboxes" data-module="govuk-checkboxes">
+                  <div class="govuk-checkboxes__item">
+                      <input class="govuk-checkboxes__input {% if (consentError != '') %} govuk-input--error{% endif %}" id="first-applicant-contact-consent" name="first-applicant-contact-consent" type="checkbox" value="Yes" {% if (data['first-applicant-contact-consent'] != undefined) %} checked {% endif %}>
+                    <label class="govuk-label govuk-checkboxes__label" for="first-applicant-contact-consent">
+                      I agree that the adoption service can send me notifications by email.
+                    </label>
                   </div>
                 </div>
               </div>
+                    
+              </div>
             </fieldset>
           </div>
-
+        </div>
 
           <!-- Buttons -->
           {% include "../../includes/buttons.html" %}

@@ -139,6 +139,13 @@ module.exports = (router) => {
       href: '#number-of-applicants'
       })
     }
+    else if (req.body['number-of-applicants'] === "other" && req.body['other-relationship-description'].length == 0 ) {
+      errors.push({
+        text: 'Provide details of your relationship with the other applicant',
+        href: '#other-explanation'
+        })
+  
+    }
 
     req.session.data.numberApplicants = req.body['number-of-applicants']
 
@@ -449,32 +456,22 @@ module.exports = (router) => {
 
   router.post('/research-2/applicants/first-applicant-contact', function(req, res) {
     var errors = []
-    if (req.body['first-applicant-email-checkbox'] === undefined && req.body['first-applicant-phone'] === undefined) {
+    if (req.body['first-applicant-email-address'] === '') {
       errors.push({
-      text: 'Enter your telephone number or email address',
-      href: '#first-applicant-contact'
-      })
-    }
-    else if (req.body['first-applicant-email-checkbox'] !== undefined && req.body['first-applicant-email-address'] === '' && req.body['first-applicant-phone'] !== undefined && req.body['first-applicant-phone-number'] === '') {
-      errors.push({
-        text: 'Enter an email address in the correct format, like name@example.com',
-        href: '#first-applicant-email'
-        })
-        errors.push({
-          text: 'Enter a UK telephone number',
-          href: '#first-applicant-phone-number'
-          })
-    }
-    else if (req.body['first-applicant-email-checkbox'] !== undefined && req.body['first-applicant-email-address'] === '') {
-      errors.push({
-        text: 'Enter an email address in the correct format, like name@example.com',
+        text: 'Enter your email address',
         href: '#first-applicant-email'
         })
     }
-    else if (req.body['first-applicant-phone'] !== undefined && req.body['first-applicant-phone-number'] === '') {
+    if (req.body['first-applicant-phone-number'] === '') {
       errors.push({
-        text: 'Enter a UK telephone number',
+        text: 'Enter your telephone number',
         href: '#first-applicant-phone-number'
+        })
+    }
+    if (req.body['first-applicant-contact-consent'] === undefined) {
+      errors.push({
+        text: 'You must agree to receive updates by email',
+        href: '#first-applicant-consent'
         })
     }
 
