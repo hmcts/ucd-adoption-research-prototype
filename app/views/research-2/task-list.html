@@ -53,11 +53,26 @@ Task list
                     {% endif %}
                 </li>
 
-                <!-- Family court finder -->
+                <li class="app-task-list__item">
+                    <span class="app-task-list__task-name">
+                    <a href="children/applicant-adoption-agency-details.html" aria-describedby="eligibility-completed">
+                        Adoption agency and social worker
+                    </a>
+                    </span>
+                    {% if data['agencyStatus'] === 'completed' %}
+                        <strong class="govuk-tag  app-task-list__tag" id="eligibility-completed">Completed</strong>
+                    {% elseif data['agencyStatus'] === 'in progress' %}
+                        <strong class="govuk-tag govuk-tag--blue app-task-list__tag">in progress</strong>
+                    {% else %}
+                        <strong class="govuk-tag govuk-tag--grey app-task-list__tag">not started</strong>
+                    {% endif %}
+                </li>
+
+                <!-- Choose your family court -->
                 <li class="app-task-list__item">
                     <span class="app-task-list__task-name">
                     <a href="children/family-court-finder.html" aria-describedby="eligibility-completed">
-                        Family court finder
+                        Choose your family court 
                     </a></span>
                     {% if data['familyCourtStatus'] === 'completed' %}
                         <strong class="govuk-tag  app-task-list__tag" id="eligibility-completed">Completed</strong>
@@ -68,7 +83,6 @@ Task list
                     {% endif %}
                 </li>
 
-                
             </ul>
         </li>
 
@@ -190,7 +204,7 @@ Task list
         <!-- **************************************** 3. Add the child's details **************************************** -->
         <li>
             <h2 class="app-task-list__section">
-            <span class="app-task-list__section-number">3. </span>Add the child's details
+            <span class="app-task-list__section-number">3. </span>Add child's details
             </h2>
             <ul class="app-task-list__items">
 
@@ -262,27 +276,12 @@ Task list
                 <li class="app-task-list__item">
                     <span class="app-task-list__task-name">
                     <a href="children/other-parent-exists.html" aria-describedby="eligibility-completed">
-                        Other guardian's details
+                        Other person with parental responsibility
                     </a>
                     </span>
                     {% if data['otherParentStatus'] === 'completed' %}
                         <strong class="govuk-tag  app-task-list__tag" id="eligibility-completed">Completed</strong>
                     {% elseif data['otherParentStatus'] === 'in progress' %}
-                        <strong class="govuk-tag govuk-tag--blue app-task-list__tag">in progress</strong>
-                    {% else %}
-                        <strong class="govuk-tag govuk-tag--grey app-task-list__tag">not started</strong>
-                    {% endif %}
-                </li>
-
-                <li class="app-task-list__item">
-                    <span class="app-task-list__task-name">
-                    <a href="children/applicant-adoption-agency-details.html" aria-describedby="eligibility-completed">
-                        Adoption agency, social worker and solicitor details
-                    </a>
-                    </span>
-                    {% if data['agencyStatus'] === 'completed' %}
-                        <strong class="govuk-tag  app-task-list__tag" id="eligibility-completed">Completed</strong>
-                    {% elseif data['agencyStatus'] === 'in progress' %}
                         <strong class="govuk-tag govuk-tag--blue app-task-list__tag">in progress</strong>
                     {% else %}
                         <strong class="govuk-tag govuk-tag--grey app-task-list__tag">not started</strong>
@@ -317,7 +316,7 @@ Task list
                     {% else %}
                         <a href="children/sibling-exists.html" aria-describedby="eligibility-completed">
                     {% endif %}
-                        Sibling details</a>
+                        Sibling court order details</a>
                     </span>
                     {% if data['siblingStatus'] === 'completed' %}
                         <strong class="govuk-tag  app-task-list__tag" id="eligibility-completed">Completed</strong>
