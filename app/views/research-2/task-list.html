@@ -342,13 +342,20 @@ Task list
               <p class="govuk-body-l"></p>
 
               <li class="app-task-list__item">
+                {% if (data['numberApplicants'] === '1' and data['number-of-applicants'] and data['firstApplicantPersonalDetailsStatus'] === 'completed' and data['firstApplicantContactDetailsStatus'] === 'completed') or (data['numberApplicants'] !== '1' and data['number-of-applicants'] and data['dateMovedIn'] and data['firstApplicantPersonalDetailsStatus'] === 'completed' and data['firstApplicantContactDetailsStatus'] === 'completed' and data['secondApplicantPersonalDetailsStatus'] === 'completed' and data['secondApplicantContactDetailsStatus'] === 'completed')%}
                 <span class="app-task-list__task-name">
                     <a href="upload/applicants-documents-upload.html" aria-describedby="eligibility-completed">
-                  <p>Upload applicants' documents</p></a>
+                  Upload applicants' documents</a>
                 </span>
+                {% else %}
+                <span class="app-task-list__task-name">
+                    <a href="upload/applicants-documents-upload.html" class="not-underlined">
+                        Upload applicants' documents</a>
+                      </span>
+                {% endif %}
                 {% if data['applicantsUpload'] %}
                     <strong class="govuk-tag  app-task-list__tag" id="eligibility-completed">Completed</strong>
-                {% elseif data['numberApplicants'] === '1' and data['number-of-applicants'] and data['dateMovedIn'] and data['firstApplicantPersonalDetailsStatus'] === 'completed' and data['firstApplicantContactDetailsStatus'] === 'completed'%}
+                {% elseif data['numberApplicants'] === '1' and data['number-of-applicants'] and data['firstApplicantPersonalDetailsStatus'] === 'completed' and data['firstApplicantContactDetailsStatus'] === 'completed'%}
                     <strong class="govuk-tag govuk-tag--grey app-task-list__tag">not started</strong>
                 {% elseif data['numberApplicants'] !== '1' and data['number-of-applicants'] and data['dateMovedIn'] and data['firstApplicantPersonalDetailsStatus'] === 'completed' and data['firstApplicantContactDetailsStatus'] === 'completed' and data['secondApplicantPersonalDetailsStatus'] === 'completed' and data['secondApplicantContactDetailsStatus'] === 'completed'%}
                     <strong class="govuk-tag govuk-tag--grey app-task-list__tag">not started</strong>
@@ -359,8 +366,9 @@ Task list
               </li>
               <li class="app-task-list__item">
                 <span class="app-task-list__task-name">
-                    <a href="upload/child-documents-upload.html" aria-describedby="eligibility-completed">
-                        <p>Upload child's documents</p></a>
+                    <a href="upload/child-documents-upload.html" class="not-underlined">
+                        Upload child's documents
+                    </a>
                 </span>
                 {% if data['childUpload'] %}
                 <strong class="govuk-tag  app-task-list__tag" id="eligibility-completed">Completed</strong>
@@ -384,7 +392,7 @@ Task list
 
               <li class="app-task-list__item">
                 <span class="app-task-list__task-name">
-                    <a href="check-pay-and-submit/check-your-answers.html" aria-describedby="eligibility-completed">
+                    <a href="check-pay-and-submit/check-your-answers.html" aria-describedby="eligibility-completed" class="not-underlined">
                   <p>Check, pay and submit your application</p></a>
                 </span>
                 {% if data['birth-father'] %}

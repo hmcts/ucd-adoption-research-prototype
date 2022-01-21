@@ -53,17 +53,6 @@ Apply to adopt a child
           <p>We will email you updates and information about your application to adopt. You will only be contacted by telephone if the social worker or court staff need to contact you quickly.</p>
 
             <fieldset class="govuk-fieldset" aria-describedby="citizenship-conditional-hint">
-              {% if (phoneError != '' or emailError != '') %}
-              <span id="contact-error" class="govuk-error-message">
-                <span class="govuk-visually-hidden">Error:</span> 
-                <p>{{ emailError }}</p>
-                <p>{{ phoneError }}</p>
-              </span>
-              {% elseif contactError != '' %}
-              <span id="contact-error" class="govuk-error-message">
-                <span class="govuk-visually-hidden">Error:</span> {{ contactError }}
-              </span>
-              {% endif %}
 
               <div class="govuk-form-group {% if (emailError != '') %} govuk-form-group--error{% endif %}">
                 <label class="govuk-label" for="name">
