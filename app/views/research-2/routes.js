@@ -788,36 +788,25 @@ router.post('/research-2/applicants/second-applicant-enter-address-manually', fu
 
 router.post('/research-2/applicants/second-applicant-contact', function(req, res) {
   var errors = []
-    if (req.body['second-applicant-email-checkbox'] === undefined && req.body['second-applicant-phone'] === undefined) {
-      errors.push({
-      text: 'Enter your telephone number or email address',
-      href: '#second-applicant-contact'
+  if (req.body['second-applicant-email-address'] === '') {
+    errors.push({
+      text: 'Enter your email address',
+      href: '#second-applicant-email'
       })
-    }
-    else if (req.body['second-applicant-email-checkbox'] !== undefined && req.body['second-applicant-email-address'] === '' && req.body['second-applicant-phone'] !== undefined && req.body['second-applicant-phone-number'] === '') {
-      errors.push({
-        text: 'Enter an email address in the correct format, like name@example.com',
-        href: '#second-applicant-email'
-        })
-        errors.push({
-          text: 'Enter a UK telephone number',
-          href: '#second-applicant-phone-number'
-          })
-    }
-    else if (req.body['second-applicant-email-checkbox'] !== undefined && req.body['second-applicant-email-address'] === '') {
-      errors.push({
-        text: 'Enter an email address in the correct format, like name@example.com',
-        href: '#second-applicant-email'
-        })
-    }
-    else if (req.body['second-applicant-phone'] !== undefined && req.body['second-applicant-phone-number'] === '') {
-      errors.push({
-        text: 'Enter a UK telephone number',
-        href: '#second-applicant-phone-number'
-        })
-    }
+  }
+  if (req.body['second-applicant-phone-number'] === '') {
+    errors.push({
+      text: 'Enter your telephone number',
+      href: '#second-applicant-phone-number'
+      })
+  }
+  if (req.body['second-applicant-contact-consent'] === undefined) {
+    errors.push({
+      text: 'You must agree to receive updates by email',
+      href: '#second-applicant-consent'
+      })
+  }
 
-    // req.session.data.secondApplicantContactCheckbox = req.body['second-applicant-contact-options']
   if (req.body['submit-button'] === 'save-and-continue') {
     if (errors.length === 0) {
       req.session.data.secondApplicantContactDetailsStatus = 'completed'
@@ -831,6 +820,7 @@ router.post('/research-2/applicants/second-applicant-contact', function(req, res
     res.redirect('/research-2/task-list')
   }
 })
+
 
 
 
