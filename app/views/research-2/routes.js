@@ -2000,7 +2000,8 @@ router.post('/research-2/applicants/second-applicant-upload', function(req, res)
 
     if (req.body['submit-button'] === 'save-and-continue') {
       if (errors.length === 0) {
-        res.redirect('/research-2/children/solicitor-helping')
+        req.session.data.agencyStatus = 'completed'
+        res.redirect('/research-2/task-list')
       }
       else {
         res.render('.//research-2/children/child-social-worker-details', { errors: errors })
