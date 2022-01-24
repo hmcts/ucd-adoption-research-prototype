@@ -36,10 +36,10 @@ Apply to adopt a child
         {% endfor %}
       {% endif %}
 
-      <form action="/research-2/children/child-social-worker-details" method="post" class="form">
+      <form action="/research-2/application/child-social-worker-details" method="post" class="form">
         <fieldset class="govuk-fieldset">
           <legend class="govuk-fieldset__legend govuk-fieldset__legend--l">
-            <span class="govuk-caption-l">{{ data['socialworker'] }}</span>
+            <span class="govuk-caption-l">{{ data['applicationSection'] }}</span>
             <h1 class="govuk-fieldset__heading">
               Details about the child's social worker
             </h1>
@@ -69,7 +69,7 @@ Apply to adopt a child
               <span class="govuk-visually-hidden">Error:</span> {{ phoneError }}
             </span>
             {% endif %}
-            <input class="govuk-input govuk-input--width-10 {% if (phoneError != '') %} govuk-input--error{% endif %}" id="child-social-worker-phone-number" name="child-social-worker-phone-number" type="text" autocomplete="address-level2" value="{{ data['child-social-worker-phone-number'] }}">
+            <input class="govuk-input govuk-input--width-10 {% if (phoneError != '') %} govuk-input--error{% endif %}" id="child-social-worker-phone-number" name="child-social-worker-phone-number" type="text" autocomplete="tel" value="{{ data['child-social-worker-phone-number'] }}">
           </div>
 
           <div class="govuk-form-group {% if (emailError != '') %} govuk-form-group--error{% endif %}">

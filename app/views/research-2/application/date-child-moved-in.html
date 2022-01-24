@@ -29,11 +29,11 @@ Apply to adopt a child
       {% endif %}
 
 
-      <form action="/research-2/applicants/date-child-moved-in" method="post" class="form">
+      <form action="/research-2/application/date-child-moved-in" method="post" class="form">
 
         <div class="govuk-form-group {% if (dateError != '')%} govuk-form-group--error {% endif%}">
           <legend class="govuk-fieldset__legend govuk-fieldset__legend--l">
-          <span class="govuk-caption-l">Applicant details</span>
+          <span class="govuk-caption-l">{{ data['applicationSection'] }}</span>
           <h1 class="govuk-fieldset__heading">
             When did the child move in with you?
           </h1>

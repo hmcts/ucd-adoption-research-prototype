@@ -84,6 +84,7 @@ module.exports = {
   "uniqueSiblingLastNames": [],
   "numberOfSiblings": 0,
 
+  "applicationSection": "Application details",
   "firstApplicant": "Primary applicant",
   "secondApplicant": "Second applicant",
   "child": "The child's details",
