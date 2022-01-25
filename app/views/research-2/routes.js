@@ -65,7 +65,7 @@ module.exports = (router) => {
 
     if (errors.length === 0) {
       if (req.body['under-21'] === "Yes") {
-        res.redirect('/research-2/eligibility/lived-uk')
+        res.redirect('/research-2/eligibility/domicile')
       }
       else {
         res.redirect('/research-2/eligibility/cannot-apply-under-21')
@@ -73,6 +73,29 @@ module.exports = (router) => {
     }
     else {
         res.render('.//research-2/eligibility/under-21', { errors: errors })
+    }
+  })
+
+
+  router.post('/research-2/eligibility/domicile', function(req, res) {
+    var errors = []
+    if (req.body['domicile'] === undefined) {
+      errors.push({
+      text: 'Please answer the question',
+      href: '#domicile'
+      })
+    }
+
+    if (errors.length === 0) {
+      if (req.body['domicile'] === "Yes") {
+        res.redirect('/research-2/eligibility/lived-uk')
+      }
+      else {
+        res.redirect('/research-2/eligibility/cannot-apply-domicile')
+      }
+    }
+    else {
+        res.render('.//research-2/eligibility/domicile', { errors: errors })
     }
   })
 
