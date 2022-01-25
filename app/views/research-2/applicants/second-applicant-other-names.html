@@ -19,6 +19,8 @@ Apply to adopt a child
         {% set noRadioSelectedError = '' %}
         {% set noFirstNamesError = '' %}
         {% set noLastNamesError = '' %}
+        {% set noAddedFirstNamesError = '' %}
+        {% set noAddedLastNamesError = '' %}
     
         {% if errors | length > 0 %}
           {{ govukErrorSummary({
@@ -29,11 +31,21 @@ Apply to adopt a child
             {% if error.href == '#second-applicant-other-names' %}
               {% set noRadioSelectedError = error.text %}
             {% endif %}
+            <!-- {% if error.href == '#second-applicant-no-names' %}
+              {% set noFirstNamesError = error.text %}
+              {% set noLastNamesError = error.text %}
+            {% endif %} -->
             {% if error.href == '#second-applicant-no-first-names' %}
               {% set noFirstNamesError = error.text %}
             {% endif %}
             {% if error.href == '#second-applicant-no-last-names' %}
               {% set noLastNamesError = error.text %}
+            {% endif %}
+            {% if error.href == '#second-applicant-no-additional-first-names' %}
+              {% set noAddedFirstNamesError = error.text %}
+            {% endif %}
+            {% if error.href == '#second-applicant-no-additional-last-names' %}
+              {% set noAddedLastNamesError = error.text %}
             {% endif %}
           {% endfor %}
         {% endif %}
@@ -91,7 +103,7 @@ Apply to adopt a child
                       </dl>
                       {% endfor %}
                     
-                      <details class="govuk-details" data-module="govuk-details">
+                      <details class="govuk-details" data-module="govuk-details" {% if noAddedFirstNamesError != '' or noAddedLastNamesError != '' %}open{% endif %}>
                         <summary class="govuk-details__summary">
                           <span class="govuk-details__summary-text">
                             Add another name
@@ -103,14 +115,19 @@ Apply to adopt a child
   
                         <div class="govuk-form-group">
                           <label class="govuk-label" for="other">
-                            Add your previous first names
+                            Add your previous second names
                           </label>
                           {% if noFirstNamesError != '' %}
                           <span class="govuk-error-message govuk-form">
                             <span class="govuk-visually-hidden">Error:</span> {{ noFirstNamesError }}
                           </span>
                            {% endif %}
-                          <input class="govuk-input govuk-!-width-two-thirds {% if noFirstNamesError != '' %} govuk-input--error {% endif %}" id="second-applicant-previous-first-names" name="second-applicant-previous-first-names" type="text" autocomplete="given-name">
+                           {% if noAddedFirstNamesError != '' %}
+                           <span class="govuk-error-message govuk-form">
+                             <span class="govuk-visually-hidden">Error:</span> {{ noAddedFirstNamesError }}
+                           </span>
+                            {% endif %}
+                           <input class="govuk-input govuk-!-width-two-thirds {% if noFirstNamesError != '' or noAddedFirstNamesError != ''  %} govuk-input--error {% endif %}" id="second-applicant-previous-first-names" name="second-applicant-previous-first-names" type="text" autocomplete="given-name">
                         </div>
                         
                         <div class="govuk-form-group">
@@ -122,7 +139,12 @@ Apply to adopt a child
                             <span class="govuk-visually-hidden">Error:</span> {{ noLastNamesError }}
                           </span>
                            {% endif %}
-                          <input class="govuk-input govuk-!-width-two-thirds {% if noLastNamesError != '' %} govuk-input--error {% endif %}" id="second-applicant-previous-last-names" name="second-applicant-previous-last-names" type="text" autocomplete="family-name">
+                           {% if noAddedLastNamesError != '' %}
+                           <span class="govuk-error-message govuk-form">
+                             <span class="govuk-visually-hidden">Error:</span> {{ noAddedLastNamesError }}
+                           </span>
+                            {% endif %}
+                          <input class="govuk-input govuk-!-width-two-thirds {% if noLastNamesError != '' or noAddedLastNamesError != '' %} govuk-input--error {% endif %}" id="second-applicant-previous-last-names" name="second-applicant-previous-last-names" autocomplete="family-name" type="text"">
                         </div>
 
                         <button class="govuk-button govuk-button--secondary govuk-!-margin-top-5" data-module="govuk-button" name="submit-button" value="add">Add</button>

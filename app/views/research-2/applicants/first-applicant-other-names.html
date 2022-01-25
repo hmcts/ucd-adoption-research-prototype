@@ -19,6 +19,8 @@ Apply to adopt a child
         {% set noRadioSelectedError = '' %}
         {% set noFirstNamesError = '' %}
         {% set noLastNamesError = '' %}
+        {% set noAddedFirstNamesError = '' %}
+        {% set noAddedLastNamesError = '' %}
     
         {% if errors | length > 0 %}
           {{ govukErrorSummary({
@@ -38,6 +40,12 @@ Apply to adopt a child
             {% endif %}
             {% if error.href == '#first-applicant-no-last-names' %}
               {% set noLastNamesError = error.text %}
+            {% endif %}
+            {% if error.href == '#first-applicant-no-additional-first-names' %}
+              {% set noAddedFirstNamesError = error.text %}
+            {% endif %}
+            {% if error.href == '#first-applicant-no-additional-last-names' %}
+              {% set noAddedLastNamesError = error.text %}
             {% endif %}
           {% endfor %}
         {% endif %}
@@ -95,7 +103,7 @@ Apply to adopt a child
                       </dl>
                       {% endfor %}
                     
-                      <details class="govuk-details" data-module="govuk-details">
+                      <details class="govuk-details" data-module="govuk-details" {% if noAddedFirstNamesError != '' or noAddedLastNamesError != '' %}open{% endif %}>
                         <summary class="govuk-details__summary">
                           <span class="govuk-details__summary-text">
                             Add another name
@@ -114,7 +122,12 @@ Apply to adopt a child
                             <span class="govuk-visually-hidden">Error:</span> {{ noFirstNamesError }}
                           </span>
                            {% endif %}
-                          <input class="govuk-input govuk-!-width-two-thirds {% if noFirstNamesError != '' %} govuk-input--error {% endif %}" id="first-applicant-previous-first-names" name="first-applicant-previous-first-names" type="text" autocomplete="given-name">
+                           {% if noAddedFirstNamesError != '' %}
+                           <span class="govuk-error-message govuk-form">
+                             <span class="govuk-visually-hidden">Error:</span> {{ noAddedFirstNamesError }}
+                           </span>
+                            {% endif %}
+                           <input class="govuk-input govuk-!-width-two-thirds {% if noFirstNamesError != '' or noAddedFirstNamesError != ''  %} govuk-input--error {% endif %}" id="first-applicant-previous-first-names" name="first-applicant-previous-first-names" type="text" autocomplete="given-name">
                         </div>
                         
                         <div class="govuk-form-group">
@@ -126,7 +139,12 @@ Apply to adopt a child
                             <span class="govuk-visually-hidden">Error:</span> {{ noLastNamesError }}
                           </span>
                            {% endif %}
-                          <input class="govuk-input govuk-!-width-two-thirds {% if noLastNamesError != '' %} govuk-input--error {% endif %}" id="first-applicant-previous-last-names" name="first-applicant-previous-last-names" autocomplete="family-name" type="text"">
+                           {% if noAddedLastNamesError != '' %}
+                           <span class="govuk-error-message govuk-form">
+                             <span class="govuk-visually-hidden">Error:</span> {{ noAddedLastNamesError }}
+                           </span>
+                            {% endif %}
+                          <input class="govuk-input govuk-!-width-two-thirds {% if noLastNamesError != '' or noAddedLastNamesError != '' %} govuk-input--error {% endif %}" id="first-applicant-previous-last-names" name="first-applicant-previous-last-names" autocomplete="family-name" type="text"">
                         </div>
 
                         <button class="govuk-button govuk-button--secondary govuk-!-margin-top-5" data-module="govuk-button" name="submit-button" value="add">Add</button>
