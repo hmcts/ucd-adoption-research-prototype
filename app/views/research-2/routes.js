@@ -428,6 +428,20 @@ module.exports = (router) => {
         })
       }
     }
+    if (req.body['submit-button'] === 'add') {
+      if (req.body['first-applicant-previous-first-names'].length === 0  && req.session.data.firstApplicantNameCount >= 1) {
+        errors.push({
+          text: 'Enter your first names',
+          href: '#first-applicant-no-additional-first-names'
+        })
+      }
+      if (req.body['first-applicant-previous-last-names'].length === 0 && req.session.data.firstApplicantNameCount >= 1) {
+        errors.push({
+          text: 'Enter your last names',
+          href: '#first-applicant-no-additional-last-names'
+        })
+      }
+    }
 
     count = req.session.data.firstApplicantNameCount
     if (req.body['submit-button'] === 'add') {
@@ -726,6 +740,20 @@ module.exports = (router) => {
         errors.push({
           text: 'Enter your last names',
           href: '#second-applicant-no-last-names'
+        })
+      }
+    }
+    if (req.body['submit-button'] === 'add') {
+      if (req.body['second-applicant-previous-first-names'].length === 0  && req.session.data.secondApplicantNameCount >= 1) {
+        errors.push({
+          text: 'Enter your first names',
+          href: '#second-applicant-no-additional-first-names'
+        })
+      }
+      if (req.body['second-applicant-previous-last-names'].length === 0 && req.session.data.secondApplicantNameCount >= 1) {
+        errors.push({
+          text: 'Enter your last names',
+          href: '#second-applicant-no-additional-last-names'
         })
       }
     }
