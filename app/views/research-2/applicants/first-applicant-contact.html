@@ -87,16 +87,32 @@ Apply to adopt a child
                 </span>
                 {% endif %}
       
-                <div class="govuk-checkboxes" data-module="govuk-checkboxes">
-                  <div class="govuk-checkboxes__item">
-                      <input class="govuk-checkboxes__input {% if (consentError != '') %} govuk-input--error{% endif %}" id="first-applicant-contact-consent" name="first-applicant-contact-consent" type="checkbox" value="Yes" {% if (data['first-applicant-contact-consent'] != undefined) %} checked {% endif %}>
-                    <label class="govuk-label govuk-checkboxes__label" for="first-applicant-contact-consent">
-                      I agree that the adoption service can send me notifications by email.
+                <label class="govuk-label" for="consent">
+                  The court may want to use your email to serve you court orders. Are you happy to be served court orders by email? 
+                </label>
+
+                <div class="govuk-radios" data-module="govuk-radios" {% if (consentError != '') %} govuk-input--error{% endif %}>
+                  <div class="govuk-radios__item">
+                    <input class="govuk-radios__input" id="Yes" name="first-applicant-served-email" type="radio" value="Yes" {% if (data['served-email'] === "Yes") %} checked {% endif %}>
+                    <label class="govuk-label govuk-radios__label" for="served-email">
+                      Yes
                     </label>
                   </div>
+
+                  <div class="govuk-radios__item">
+                    <input class="govuk-radios__input" id="No" name="first-applicant-served-email" type="radio" value="No"  data-aria-controls="conditional-contact" {% if (data['served-email'] === "No") %} checked {% endif %}>
+                    <label class="govuk-label govuk-radios__label" for="served-email">
+                      No
+                    </label>
+                  </div>
+                  <div class="govuk-radios__conditional govuk-radios__conditional--hidden" id="conditional-contact">
+                    <div class="govuk-form-group">
+                      <p>You will be served all court orders by post.</p>         
+                    </div>                               
+                  </div>
+
                 </div>
-              </div>
-                    
+              </div>                    
               </div>
             </fieldset>
           </div>
@@ -107,8 +123,6 @@ Apply to adopt a child
 
 
         </form>
-      </div>
-    </div>
   </main>
 </div>
 
