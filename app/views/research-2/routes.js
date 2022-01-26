@@ -688,9 +688,9 @@ module.exports = (router) => {
         href: '#first-applicant-phone-number'
         })
     }
-    if (req.body['first-applicant-contact-consent'] === undefined) {
+    if (req.body['first-applicant-served-email'] === undefined) {
       errors.push({
-        text: 'You must agree to receive updates by email',
+        text: 'Please answer the question',
         href: '#first-applicant-consent'
         })
     }
@@ -1034,9 +1034,9 @@ module.exports = (router) => {
         href: '#second-applicant-phone-number'
         })
     }
-    if (req.body['second-applicant-contact-consent'] === undefined) {
+    if (req.body['second-applicant-served-email'] === undefined) {
       errors.push({
-        text: 'You must agree to receive updates by email',
+        text: 'Please answer the question',
         href: '#second-applicant-consent'
         })
     }
