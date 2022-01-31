@@ -3034,7 +3034,13 @@ router.post('/research-jan2022-proposed-changes/eligibility/under-18', function(
 //**************************************** Check, Pay and Submit ************************************************************
 
   router.post('/research-jan2022-proposed-changes/check-pay-and-submit/check-your-answers', function(req, res) {
-    res.redirect('/research-jan2022-proposed-changes/check-pay-and-submit/declaration')
+    req.session.data.reviewStatus = 'in progress'
+    if (req.body['submit-button'] === 'save-and-continue') {
+      res.redirect('/research-jan2022-proposed-changes/check-pay-and-submit/declaration')
+    }
+    else {
+      res.redirect('/research-jan2022-proposed-changes/task-list')
+    }    
   })
 
 
@@ -3129,8 +3135,6 @@ router.post('/research-jan2022-proposed-changes/eligibility/under-18', function(
         res.render('.//research-jan2022-proposed-changes/check-pay-and-submit/need-help-with-fees-ref', { errors: errors })
     }
   })
-
-
 
 
 
