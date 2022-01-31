@@ -99,6 +99,7 @@ module.exports = {
   "court": "Court details",
   "checkpaysubmit": "Review your application, pay and send",
   "paySubmit": "Pay and submit your application",
+  "reviewApplication": "Review your application",
 
   "monthName": [
     "",
