@@ -1,0 +1,95 @@
+{% extends "layout-signed-in.html" %}
+
+{% block pageTitle %}
+Apply to adopt a child
+{% endblock %}
+
+{% block beforeContent %}
+<a class="govuk-back-link" href="javascript:history.back()">Back</a>
+{% endblock %}
+
+{% block content %}
+
+<div class="govuk-width-container">
+  <div class="govuk-grid-row">
+    <div class="govuk-grid-column-two-thirds">
+
+      {% set dateError = '' %}
+  
+      {% if errors | length > 0 %}
+      {{ govukErrorSummary({
+        titleText: "There is a problem",
+        errorList: errors
+      }) }}
+      {% for error in errors %}
+        {% if error.href == '#order-date' %}
+          {% set dateError = error.text %}
+        {% endif %}
+      {% endfor %}
+      {% endif %}
+
+
+      <form action="/research-jan2022-proposed-changes/children/sibling-change-order-date" method="post" class="form">
+
+        <div class="govuk-form-group {% if (dateError != '')%} govuk-form-group--error {% endif%}">
+          <legend class="govuk-fieldset__legend govuk-fieldset__legend--l">
+          <span class="govuk-caption-l">{{ data['sibling'] }}</span>
+          <h1 class="govuk-fieldset__heading">
+            What date is on the order?
+          </h1>
+          </legend>
+          <div id="date-of-birth-hint" class="govuk-hint">
+            For example, 31 3 2020
+          </div>
+
+
+          <div class="govuk-form-group  {% if (dateError != '')%} govuk-form-group--error {% endif%}">
+            {% if (dateError != '')%}
+            <span id="national-insurance-number-error" class="govuk-error-message">
+              <span class="govuk-visually-hidden">Error:</span> {{ dateError }}
+            </span>
+            {% endif%}
+
+            <div class="govuk-date-input" id="dob">
+              <div class="govuk-date-input__item">
+                <div class="govuk-form-group">
+                  <label class="govuk-label govuk-date-input__label" for="day">
+                    Day
+                  </label>
+                  <input class="govuk-input govuk-date-input__input govuk-input--width-2 {% if (dateError != '')%} govuk-input--error {% endif%}" id="sibling-day" name="sibling-day" type="number" pattern="[0-9]*" inputmode="numeric" value="{{ data['siblingOrderDay'][data['id']] }}">
+                </div>
+              </div>
+              <div class="govuk-date-input__item">
+                <div class="govuk-form-group">
+                  <label class="govuk-label govuk-date-input__label" for="month">
+                    Month
+                  </label>
+                  <input class="govuk-input govuk-date-input__input govuk-input--width-2 {% if (dateError != '')%} govuk-input--error {% endif%}" id="sibling-month" name="sibling-month" type="number" pattern="[0-9]*" inputmode="numeric" value="{{ data['siblingOrderMonth'][data['id']] }}">
+                </div>
+              </div>
+              <div class="govuk-date-input__item">
+                <div class="govuk-form-group">
+                  <label class="govuk-label govuk-date-input__label" for="year">
+                    Year
+                  </label>
+                  <input class="govuk-input govuk-date-input__input govuk-input--width-4 {% if (dateError != '')%} govuk-input--error {% endif%}" id="sibling-year" name="sibling-year" type="number" pattern="[0-9]*" inputmode="numeric" value="{{ data['siblingOrderYear'][data['id']] }}">
+                </div>
+              </div>
+
+            </div>
+        </div>
+        </div>
+
+        <input type="hidden" name="sibling-id" value="{{ data['id'] }}">
+
+        <button type="submit" class="govuk-button" data-module="govuk-button" name="submit-button" value="continue">
+          Continue
+        </button>
+
+        </form>
+
+    </div>
+  </div>
+</div>
+
+{% endblock %}
