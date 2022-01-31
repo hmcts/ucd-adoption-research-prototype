@@ -361,7 +361,7 @@ router.post('/research-jan2022-proposed-changes/eligibility/under-18', function(
 
 
   // ********************** Family court finder **********************
-  router.post('/research-jan2022-proposed-changes/application/family-court-finder', function(req, res) {
+  router.post('/research-jan2022-proposed-changes/children/family-court-finder', function(req, res) {
     console.log(req.body['placementCourtName'])
     var errors = []
     if (req.body['same-family-court'] === undefined) {
@@ -386,7 +386,7 @@ router.post('/research-jan2022-proposed-changes/eligibility/under-18', function(
         res.redirect('/research-jan2022-proposed-changes/task-list')
       }
       else {
-        res.render('.//research-jan2022-proposed-changes/application/family-court-finder', { errors: errors })
+        res.render('.//research-jan2022-proposed-changes/children/family-court-finder', { errors: errors })
       }
     }
     else {
@@ -535,7 +535,7 @@ router.post('/research-jan2022-proposed-changes/eligibility/under-18', function(
   router.post('/research-jan2022-proposed-changes/applicants/first-applicant-nationality', function(req, res) {
     var errors = []
 
-    if (req.body['first-applicant-british'] === undefined && req.body['first-applicant-irish'] === undefined &&req.body['first-applicant-other'] === undefined) {
+    if (req.body['first-applicant-british'] === undefined && req.body['first-applicant-irish'] === undefined && req.body['first-applicant-other'] === undefined) {
       // console.log("error")
       errors.push({
       text: 'Select if you are British, Irish or a citizen of a different country',

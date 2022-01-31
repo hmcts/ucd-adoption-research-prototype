@@ -315,12 +315,12 @@ Task list
                 <!-- Choose your family court -->
                 <li class="app-task-list__item">
                     <span class="app-task-list__task-name">
-                        {% if data['placement-court-name'] %}
-                        <a href="application/family-court-finder.html" aria-describedby="eligibility-completed">
+                        {% if data['placement-court-name'] or data['familyCourtStatus'] === 'completed' or data['familyCourtStatus'] === 'in progress'%}
+                        <a href="children/family-court-finder.html" aria-describedby="eligibility-completed">
                             Choose your family court 
                         </a>
                         {% else %} 
-                        <a href="application/family-court-finder.html" class="not-underlined">
+                        <a href="children/family-court-finder.html" class="not-underlined">
                             Choose your family court 
                         </a>
                         {% endif %}
