@@ -1,0 +1,61 @@
+{% extends "layout-signed-in.html" %}
+
+{% block pageTitle %}
+Apply to adopt a child
+{% endblock %}
+
+{% block beforeContent %}
+<a class="govuk-back-link" href="javascript:history.back()">Back</a>
+{% endblock %}
+
+{% block content %}
+
+<div class="govuk-width-container">
+  <div class="govuk-grid-row">
+    <div class="govuk-grid-column-two-thirds">
+
+      {% set nameError = '' %}
+
+      {% if errors | length > 0 %}
+      {{ govukErrorSummary({
+        titleText: "There is a problem",
+        errorList: errors
+      }) }}
+      {% for error in errors %}
+        {% if error.href == '#order-court-name' %}
+          {% set nameError = error.text %}
+        {% endif %}
+      {% endfor %}
+      {% endif %}
+
+
+      <form action="/research-jan2022-proposed-changes/children/sibling-order-court" method="post" class="form">
+
+        <div class="govuk-form-group {% if (nameError != '')%} govuk-form-group--error {% endif%}">
+          <legend class="govuk-fieldset__legend govuk-fieldset__legend--l">
+          <span class="govuk-caption-l">{{ data['child'] }}</span>
+          <h1 class="govuk-fieldset__heading">
+            Which court made the order?
+          </h1>
+          </legend>
+
+          {% if (nameError != '')%}
+          <span id="name-error" class="govuk-error-message">
+            <span class="govuk-visually-hidden">Error:</span> {{ nameError }}
+          </span>
+          {% endif%}
+
+          <input class="govuk-input {% if (nameError != '')%} govuk-input--error {% endif%}" id="sibling-order-court-name" name="sibling-order-court-name" type="text" spellcheck="false">
+        </div>
+
+          <!-- Buttons -->
+          {% include "../../includes/buttons.html" %}
+
+        </form>
+
+      </div>
+    </div>
+  </main>
+</div>
+
+{% endblock %}

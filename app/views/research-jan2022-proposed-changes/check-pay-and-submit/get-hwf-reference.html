@@ -1,0 +1,75 @@
+{% extends "layout-signed-in.html" %}
+
+{% block pageTitle %}
+Apply to adopt a child
+{% endblock %}
+
+{% block beforeContent %}
+<a class="govuk-back-link" href="javascript:history.back()">Back</a>
+{% endblock %}
+
+{% block content %}
+
+<div class="govuk-width-container">
+  <div class="govuk-grid-row">
+    <div class="govuk-grid-column-two-thirds">
+
+      {% set noHelpRefError = '' %}
+
+      {% if errors | length > 0 %}
+      {{ govukErrorSummary({
+        titleText: "There is a problem",
+        errorList: errors
+      }) }}
+      {% for error in errors %}
+        {% if error.href == '#no-help-ref' %}
+          {% set noHelpRefError = error.text %}
+        {% endif %}
+      {% endfor %}
+      {% endif %}
+
+
+      <form action="/research-jan2022-proposed-changes/check-pay-and-submit/get-hwf-reference" method="post" class="form">
+
+        <legend class="govuk-fieldset__legend govuk-fieldset__legend--l">
+            <span class="govuk-caption-l">{{ data['checkpaysubmit'] }}</span>
+        <h1 class="govuk-fieldset__heading">
+            Apply for help with fees before you continue
+        </h1>
+        </legend>
+
+
+        <p class="govuk-body">You can apply for help with fees before you send your application to adopt. The link will open in a new tab.</p>
+        <p <a href="https://www.gov.uk/get-help-with-court-fees" target="_blank">Get help paying court and tribunal fees - GOV.UK (www.gov.uk)</a>
+        </p>
+
+        <p class="govuk-body">When asked for your form number, you should enter 'A58'.</p>
+          <p class="govuk-body">Once you have applied for help with fees you will get a reference number. You should return to this tab and enter the reference number. You cannot send your application without this reference.</p>
+
+          <div class="govuk-form-group {% if (noHelpRefError != '') %} govuk-form-group--error{% endif %}">
+          <label class="govuk-label" for="ref">
+            Enter your help with fees reference number:
+          </label>
+          {% if (noHelpRefError != '')%}
+          <span id="number-error" class="govuk-error-message">
+            <span class="govuk-visually-hidden">Error:</span> {{ noHelpRefError }}
+          </span>
+          {% endif%}
+          <input class="govuk-input govuk-!-width-one-third {% if (noHelpRefError != '') %} govuk-input--error{% endif %}" id="ref" name="ref" type="text" spellcheck="false" autocomplete="ref">
+        </div>
+
+
+
+
+          <div class="govuk-button-group govuk-!-margin-top-6">
+          <button class="govuk-button" data-module="govuk-button" name="continue" value="save-and-continue">
+            Continue
+          </button>
+          </div>
+
+        </form>
+    </div>
+  </div>
+</div>
+
+{% endblock %}
