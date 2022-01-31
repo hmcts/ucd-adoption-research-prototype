@@ -362,15 +362,26 @@ router.post('/research-jan2022-proposed-changes/eligibility/under-18', function(
 
   // ********************** Family court finder **********************
   router.post('/research-jan2022-proposed-changes/application/family-court-finder', function(req, res) {
+    console.log(req.body['placementCourtName'])
     var errors = []
-    if (req.body['court-name'] === '') {
+    if (req.body['same-family-court'] === undefined) {
+      errors.push({
+        text: "Please answer the question",
+        href: '#no-radio'
+        })  
+    }
+    else if (req.body['familyCourtName'] === '' && req.body['same-family-court'] === 'No') {
       errors.push({
       text: "Enter the name of the court",
       href: '#no-court-name'
       })
     }
+
     if (req.body['submit-button'] === 'save-and-continue') {
       if (errors.length === 0) {
+        if (req.body['same-family-court'] === 'Yes') {
+          req.session.data.familyCourtName = req.body['placementCourtName']
+        }
         req.session.data.familyCourtStatus = 'completed'
         res.redirect('/research-jan2022-proposed-changes/task-list')
       }
@@ -3074,7 +3085,8 @@ router.post('/research-jan2022-proposed-changes/eligibility/under-18', function(
 
     if (req.body['submit-button'] === 'save-and-continue') {
       if (errors.length === 0) {
-        res.redirect('/research-jan2022-proposed-changes/check-pay-and-submit/need-help-with-fees-ref')
+        req.session.data.reviewStatus = 'completed'
+        res.redirect('/research-jan2022-proposed-changes/task-list')
       }
       else {
         res.render('.//research-jan2022-proposed-changes/check-pay-and-submit/declaration', { errors: errors })
