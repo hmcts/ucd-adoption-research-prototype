@@ -38,7 +38,7 @@ Apply to adopt a child
         <div class="govuk-form-group {% if (nationalityError != '')%} govuk-form-group--error {% endif%}">
           <fieldset class="govuk-fieldset" aria-describedby="nationality-hint">
             <legend class="govuk-fieldset__legend govuk-fieldset__legend--l">
-              <span class="govuk-caption-l">{{ data['firstApplicantProposal'] }}</span>
+              <span class="govuk-caption-l">{% if data['numberApplicants'] !== '1' %}{{ data['firstApplicantProposal'] }}{% else %} {{ data['oneApplicant'] }}{% endif %}</span>
               <h1 class="govuk-fieldset__heading">
                 What is your nationality?
               </h1>

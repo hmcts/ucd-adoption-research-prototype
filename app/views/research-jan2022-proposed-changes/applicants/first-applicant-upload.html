@@ -32,9 +32,9 @@ Apply to adopt a child
 
         <div class="govuk-form-group {% if (uploadError != '')%} govuk-form-group--error {% endif%}">
           <legend class="govuk-fieldset__legend govuk-fieldset__legend--l">
-          <span class="govuk-caption-l">{{ data['firstApplicantProposal'] }}</span>
+          <span class="govuk-caption-l">{% if data['numberApplicants'] !== '1' %}{{ data['firstApplicantProposal'] }}{% else %} {{ data['oneApplicant'] }}{% endif %}</span>
           <h1 class="govuk-fieldset__heading">
-            Upload photo id for {% if (data['first-applicant-name']) %} {{ data['first-applicant-name']}} {% else %}{{ data['firstApplicantProposal'] }}{% endif %} 
+            Upload photo id for {% if (data['first-applicant-name']) %} {{ data['first-applicant-name']}} {% else %}{% if data['numberApplicants'] !== '1' %}{{ data['firstApplicantProposal'] }}{% else %} {{ data['oneApplicant'] }}{% endif %}{% endif %} 
 
           </h1>
           </legend>
