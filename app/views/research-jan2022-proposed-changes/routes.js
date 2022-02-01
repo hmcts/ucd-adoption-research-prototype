@@ -1163,6 +1163,12 @@ router.post('/research-jan2022-proposed-changes/eligibility/under-18', function(
       href: '#child-sex'
       })
     }
+    else if (req.body['child-sex'] === 'Other' && req.body['other-sex'] === '') {
+      errors.push({
+        text: 'Enter what is written on the birth certificate',
+        href: '#other-sex'
+        })  
+    }
 
     if (req.body['submit-button'] === 'save-and-continue') {
       if (errors.length === 0) {

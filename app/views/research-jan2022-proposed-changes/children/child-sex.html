@@ -15,6 +15,7 @@ Apply to adopt a child
     <div class="govuk-grid-column-two-thirds">
 
       {% set sexError = '' %}
+      {% set noOtherError = '' %}
 
       {% if errors | length > 0 %}
       {{ govukErrorSummary({
@@ -24,6 +25,9 @@ Apply to adopt a child
       {% for error in errors %}
         {% if error.href == '#child-sex' %}
           {% set sexError = error.text %}
+        {% endif %}
+        {% if error.href == '#other-sex' %}
+          {% set noOtherError = error.text %}
         {% endif %}
       {% endfor %}
       {% endif %}
@@ -44,9 +48,9 @@ Apply to adopt a child
                 <span class="govuk-visually-hidden">Error:</span> {{ sexError }}
               </span>
             {% endif %}
-            <div id="child-sex-hint" class="govuk-hint">
-              You should state exactly what is listed on the birth certificate. If the child's sex is listed as 'diverse', which means their biological sex could not be determined, you should choose the 'intersex' option.
-            </div>
+            <!-- <div id="child-sex-hint" class="govuk-hint">
+              You should state exactly what is listed on the birth certificate. If the child's sex is listed as 'diverse', which means their biological sex could not be determined, you should choose the 'other' option.
+            </div> -->
 
             <div class="govuk-radios" data-module="govuk-radios">
               <div class="govuk-radios__item">
@@ -62,12 +66,24 @@ Apply to adopt a child
                 </label>
               </div>
               <div class="govuk-radios__item">
-                <input class="govuk-radios__input" id="intersex" name="child-sex" type="radio" value="Intersex" {% if (data['child-sex'] === "Intersex") %} checked {% endif %}>
+                <input class="govuk-radios__input" id="other" name="child-sex" type="radio" value="Other" data-aria-controls="conditional-contact" {% if (data['child-sex'] === "Other") %} checked {% endif %}>
                 <label class="govuk-label govuk-radios__label" for="child-sex">
-                  Intersex
+                  Other
                 </label>
               </div>
+              <div class="govuk-radios__conditional govuk-radios__conditional--hidden " id="conditional-contact">
+                <label class="govuk-label" for="other-sex">
+                  You should state exactly what is listed on the birth certificate.
+                </label>
+                {% if (noOtherError != '')%}
+                  <span class="govuk-error-message govuk-form">
+                    <span class="govuk-visually-hidden">Error:</span> {{ noOtherError }}
+                  </span>
+                {% endif %}
+                <input class="govuk-input{% if (noOtherError != '') %} govuk-input--error{% endif %}" id="other-sex" name="other-sex" type="text" spellcheck="false" value="{{data['other-sex']}}">
+              </div>
             </div>
+
 
           </fieldset>
         </div>
