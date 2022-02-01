@@ -39,7 +39,7 @@ Apply to adopt a child
           </h1>
         </legend>
         <div id="date-of-birth-hint" class="govuk-hint">
-          Enter the date when they started living with you continuously. For example, 31 3 2020. You can begin your application at any time, but you can only submit 10 weeks after the date the child started living continuously with you.
+          Enter the date when they started living with you continuously. For example, 31 3 2020. 
         </div>
 
 
@@ -71,6 +71,13 @@ Apply to adopt a child
                   Year
                 </label>
                 <input class="govuk-input govuk-date-input__input govuk-input--width-4 {% if (dateError != '')%} govuk-input--error {% endif%}" id="year-moved-in" name="year-moved-in" type="text" pattern="[0-9]*" inputmode="numeric" value="{{ data['year-moved-in'] }}"></div>
+            </div>
+            <div class="govuk-warning-text govuk-!-margin-top-6">
+              <span class="govuk-warning-text__icon" aria-hidden="true">!</span>
+              <strong class="govuk-warning-text__text">
+                <span class="govuk-warning-text__assistive">Warning</span>
+                You can begin your application at any time, but you can only submit 10 weeks after the date the child started living continuously with you.
+              </strong>
             </div>
 
         </div>

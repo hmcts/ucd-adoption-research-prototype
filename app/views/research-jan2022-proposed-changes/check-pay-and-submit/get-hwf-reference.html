@@ -47,7 +47,13 @@ Apply to adopt a child
 
         <p class="govuk-body">When asked for your form number, you should enter 'A58'.</p>
 
-          <p class="govuk-body">Once you have applied for help with fees you will get a reference number. You should return to this tab and enter the reference number. You cannot send your application without this reference.</p>
+        <div class="govuk-warning-text">
+          <span class="govuk-warning-text__icon" aria-hidden="true">!</span>
+          <strong class="govuk-warning-text__text">
+            <span class="govuk-warning-text__assistive">Warning</span>
+            Once you have applied for help with fees you will get a reference number. You should return to this tab and enter the reference number. You cannot send your application without this reference.
+          </strong>
+        </div>
 
           <div class="govuk-form-group {% if (noHelpRefError != '') %} govuk-form-group--error{% endif %}">
           <label class="govuk-label" for="ref">
