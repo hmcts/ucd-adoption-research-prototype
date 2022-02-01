@@ -39,7 +39,7 @@ Apply to adopt a child
       <form action="/research-jan2022-proposed-changes/applicants/first-applicant-enter-address-manually" method="post" class="form">
         <fieldset class="govuk-fieldset">
           <legend class="govuk-fieldset__legend govuk-fieldset__legend--l">
-            <span class="govuk-caption-l">{{ data['firstApplicantProposal'] }}</span>
+            <span class="govuk-caption-l">{% if data['numberApplicants'] !== '1' %}{{ data['firstApplicantProposal'] }}{% else %} {{ data['oneApplicant'] }}{% endif %}</span>
             <h1 class="govuk-fieldset__heading">
               What's your address?
             </h1>

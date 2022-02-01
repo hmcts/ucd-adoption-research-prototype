@@ -85,6 +85,7 @@ module.exports = {
   "numberOfSiblings": 0,
 
   "applicationSection": "Application details",
+  "oneApplicant": "Applicant",
   "firstApplicant": "Primary applicant",
   "firstApplicantProposal": "First applicant",
   "secondApplicant": "Second applicant",
