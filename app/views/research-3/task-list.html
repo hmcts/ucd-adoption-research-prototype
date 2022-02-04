@@ -71,7 +71,7 @@ Task list
             </ul>
         </li>
 
-        <!-- **************************************** 2. Add application' details **************************************** -->
+        <!-- **************************************** 2. Add applicant's details **************************************** -->
         <li>
             <h2 class="app-task-list__section">
             <span class="app-task-list__section-number">2. </span>Add applicant's details
@@ -80,7 +80,7 @@ Task list
 
                 <!-- Two applicants -->
                 {% if data['numberApplicants'] != 1 %}
-                <p class="govuk-!-font-weight-bold govuk-!-margin-top-7 govuk-!-margin-bottom-2">{{ data['firstApplicantProposal'] }}</p>
+                <p class="govuk-!-font-weight-bold govuk-!-margin-top-7 govuk-!-margin-bottom-2">{{ data['firstApplicant'] }}</p>
                 <!-- First applicant - personal details -->
                 <li class="app-task-list__item">
                     <span class="app-task-list__task-name">
@@ -392,7 +392,7 @@ Task list
             
               <li class="app-task-list__item">
                 <span class="app-task-list__task-name">
-                    <a href="check-pay-and-submit/need-help-with-fees-ref.html" aria-describedby="eligibility-completed" class="not-underlined">
+                    <a href="https://products.payments.service.gov.uk/pay/02133e4814ea416cb7a1e540b49a8545" aria-describedby="eligibility-completed" class="not-underlined">
                         Pay and submit your application
                     </a>
                 </span>

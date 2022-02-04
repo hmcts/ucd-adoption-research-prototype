@@ -6,76 +6,7 @@ module.exports = (router) => {
 // ************************************************************************************************************************************
 
 // ********************** Eligibility **********************
-router.post('/research-jan2022-proposed-changes/eligibility/under-21', function(req, res) {
-  var errors = []
-  if (req.body['under-21'] === undefined) {
-    errors.push({
-    text: 'Please answer the question',
-    href: '#under-21'
-    })
-  }
-
-  if (errors.length === 0) {
-    if (req.body['under-21'] === "Yes") {
-      res.redirect('/research-jan2022-proposed-changes/eligibility/domicile')
-    }
-    else {
-      res.redirect('/research-jan2022-proposed-changes/eligibility/cannot-apply-under-21')
-    }
-  }
-  else {
-      res.render('.//research-jan2022-proposed-changes/eligibility/under-21', { errors: errors })
-  }
-})
-
-
-router.post('/research-jan2022-proposed-changes/eligibility/domicile', function(req, res) {
-  var errors = []
-  if (req.body['domicile'] === undefined) {
-    errors.push({
-    text: 'Please answer the question',
-    href: '#domicile'
-    })
-  }
-
-  if (errors.length === 0) {
-    if (req.body['domicile'] === "Yes") {
-      res.redirect('/research-jan2022-proposed-changes/eligibility/lived-uk')
-    }
-    else {
-      res.redirect('/research-jan2022-proposed-changes/eligibility/cannot-apply-domicile')
-    }
-  }
-  else {
-      res.render('.//research-jan2022-proposed-changes/eligibility/domicile', { errors: errors })
-  }
-})
-
-
-router.post('/research-jan2022-proposed-changes/eligibility/lived-uk', function(req, res) {
-  var errors = []
-  if (req.body['lived-uk'] === undefined) {
-    errors.push({
-    text: 'Please answer the question',
-    href: '#lived-uk'
-    })
-  }
-
-  if (errors.length === 0) {
-    if (req.body['lived-uk'] === "Yes") {
-      res.redirect('/research-jan2022-proposed-changes/eligibility/under-18')
-    }
-    else {
-      res.redirect('/research-jan2022-proposed-changes/eligibility/cannot-apply-lived-uk')
-    }
-  }
-  else {
-      res.render('.//research-jan2022-proposed-changes/eligibility/lived-uk', { errors: errors })
-  }
-})
-
-
-router.post('/research-jan2022-proposed-changes/eligibility/under-18', function(req, res) {
+  router.post('/research-3/eligibility/under-18', function(req, res) {
     var errors = []
     if (req.body['child-under-18'] === undefined) {
       errors.push({
@@ -86,20 +17,20 @@ router.post('/research-jan2022-proposed-changes/eligibility/under-18', function(
 
     if (errors.length === 0) {
       if (req.body['child-under-18'] === "Yes") {
-        res.redirect('/research-jan2022-proposed-changes/eligibility/married')
+        res.redirect('/research-3/eligibility/married')
       }
       else {
-        res.redirect('/research-jan2022-proposed-changes/eligibility/cannot-apply-over-18')
+        res.redirect('/research-3/eligibility/cannot-apply-over-18')
       }
     }
     else {
-        res.render('.//research-jan2022-proposed-changes/eligibility/under-18', { errors: errors })
+        res.render('.//research-3/eligibility/under-18', { errors: errors })
     }
 
   })
 
 
-  router.post('/research-jan2022-proposed-changes/eligibility/married', function(req, res) {
+  router.post('/research-3/eligibility/married', function(req, res) {
     var errors = []
     if (req.body['child-married'] === undefined) {
       errors.push({
@@ -110,20 +41,89 @@ router.post('/research-jan2022-proposed-changes/eligibility/under-18', function(
 
     if (errors.length === 0) {
       if (req.body['child-married'] === 'Yes') {
-        res.redirect('/research-jan2022-proposed-changes/eligibility/cannot-apply-married')
+        res.redirect('/research-3/eligibility/cannot-apply-married')
       }
       else {
-        res.redirect('/research-jan2022-proposed-changes/registration/start1')
+        res.redirect('/research-3/eligibility/under-21')
       }
     }
     else {
-        res.render('.//research-jan2022-proposed-changes/eligibility/married', { errors: errors })
+        res.render('.//research-3/eligibility/married', { errors: errors })
     }
 
   })
 
 
-  router.post('/research-jan2022-proposed-changes/eligibility/do-you-need-help-with-fees', function(req, res) {
+  router.post('/research-3/eligibility/under-21', function(req, res) {
+    var errors = []
+    if (req.body['under-21'] === undefined) {
+      errors.push({
+      text: 'Please answer the question',
+      href: '#under-21'
+      })
+    }
+
+    if (errors.length === 0) {
+      if (req.body['under-21'] === "Yes") {
+        res.redirect('/research-3/eligibility/domicile')
+      }
+      else {
+        res.redirect('/research-3/eligibility/cannot-apply-under-21')
+      }
+    }
+    else {
+        res.render('.//research-3/eligibility/under-21', { errors: errors })
+    }
+  })
+
+
+  router.post('/research-3/eligibility/domicile', function(req, res) {
+    var errors = []
+    if (req.body['domicile'] === undefined) {
+      errors.push({
+      text: 'Please answer the question',
+      href: '#domicile'
+      })
+    }
+
+    if (errors.length === 0) {
+      if (req.body['domicile'] === "Yes") {
+        res.redirect('/research-3/eligibility/lived-uk')
+      }
+      else {
+        res.redirect('/research-3/eligibility/cannot-apply-domicile')
+      }
+    }
+    else {
+        res.render('.//research-3/eligibility/domicile', { errors: errors })
+    }
+  })
+
+
+  router.post('/research-3/eligibility/lived-uk', function(req, res) {
+    var errors = []
+    if (req.body['lived-uk'] === undefined) {
+      errors.push({
+      text: 'Please answer the question',
+      href: '#lived-uk'
+      })
+    }
+
+    if (errors.length === 0) {
+      if (req.body['lived-uk'] === "Yes") {
+        res.redirect('/research-3/registration/start1')
+      }
+      else {
+        res.redirect('/research-3/eligibility/cannot-apply-lived-uk')
+      }
+    }
+    else {
+        res.render('.//research-3/eligibility/lived-uk', { errors: errors })
+    }
+  })
+
+
+  router.post('/research-3/eligibility/do-you-need-help-with-fees', function(req, res) {
     var errors = []
     if (req.body['need-help-with-fees'] === undefined) {
       errors.push({
@@ -134,14 +134,14 @@ router.post('/research-jan2022-proposed-changes/eligibility/under-18', function(
 
     if (errors.length === 0) {
       if (req.body['need-help-with-fees'] === "Yes") {
-        res.redirect('/research-jan2022-proposed-changes/eligibility/apply-for-help-with-fees')
+        res.redirect('/research-3/eligibility/apply-for-help-with-fees')
       }
       else {
-        res.redirect('/research-jan2022-proposed-changes/registration/start1')
+        res.redirect('/research-3/registration/start1')
       }
     }
     else {
-        res.render('.//research-jan2022-proposed-changes/eligibility/do-you-need-help-with-fees', { errors: errors })
+        res.render('.//research-3/eligibility/do-you-need-help-with-fees', { errors: errors })
     }
   })
 
@@ -154,7 +154,7 @@ router.post('/research-jan2022-proposed-changes/eligibility/under-18', function(
 // ************************************************************************************************************************************
 
   // ********************** Number of applicants **********************
-  router.post('/research-jan2022-proposed-changes/application/number-of-applicants', function(req, res) {
+  router.post('/research-3/application/number-of-applicants', function(req, res) {
     var errors = []
     if (req.body['number-of-applicants'] === undefined) {
       errors.push({
@@ -174,21 +174,21 @@ router.post('/research-jan2022-proposed-changes/eligibility/under-18', function(
 
     if (req.body['submit-button'] === 'save-and-continue') {
       if (errors.length === 0) {
-        res.redirect('/research-jan2022-proposed-changes/task-list')
+        res.redirect('/research-3/task-list')
       }
       else {
-        res.render('.//research-jan2022-proposed-changes/application/number-of-applicants', { errors: errors })
+        res.render('.//research-3/application/number-of-applicants', { errors: errors })
       }
     }
     else {
-        res.redirect('/research-jan2022-proposed-changes/task-list')
+        res.redirect('/research-3/task-list')
     }
     console.log("Applicants: ", req.session.data.numberApplicants)
   })
 
 
   // ********************** Date child moved in **********************
-  router.post('/research-jan2022-proposed-changes/application/date-child-moved-in', function(req, res) {
+  router.post('/research-3/application/date-child-moved-in', function(req, res) {
     var errors = []
     if (req.body['day-moved-in'] === '' || req.body['month-moved-in'] === '' || req.body['year-moved-in'] === '') {
       errors.push({
@@ -199,20 +199,20 @@ router.post('/research-jan2022-proposed-changes/eligibility/under-18', function(
       if (req.body['submit-button'] === 'save-and-continue') {
         if (errors.length === 0) {
           req.session.data.dateMovedIn = 1
-          res.redirect('/research-jan2022-proposed-changes/task-list')
+          res.redirect('/research-3/task-list')
         }
         else {
-          res.render('.//research-jan2022-proposed-changes/application/date-child-moved-in', { errors: errors })
+          res.render('.//research-3/application/date-child-moved-in', { errors: errors })
         }
       }
       else {
-        res.redirect('/research-jan2022-proposed-changes/task-list')
+        res.redirect('/research-3/task-list')
       }
   })
 
 
   // ********************** Adoption agency or local authority **********************
-  router.post('/research-jan2022-proposed-changes/application/applicant-adoption-agency-details', function(req, res) {
+  router.post('/research-3/application/applicant-adoption-agency-details', function(req, res) {
     var errors = []
     if (req.body['applicant-agency-name'] === '') {
       errors.push({
@@ -242,19 +242,19 @@ router.post('/research-jan2022-proposed-changes/eligibility/under-18', function(
     if (req.body['submit-button'] === 'save-and-continue') {
       if (errors.length === 0) {
         req.session.data.agencyStatus = 'in progress'
-        res.redirect('/research-jan2022-proposed-changes/application/applicant-other-adoption-agency')
+        res.redirect('/research-3/application/applicant-other-adoption-agency')
       }
       else {
-        res.render('.//research-jan2022-proposed-changes/application/applicant-adoption-agency-details', { errors: errors })
+        res.render('.//research-3/application/applicant-adoption-agency-details', { errors: errors })
       }
     }
     else {
-      res.redirect('/research-jan2022-proposed-changes/task-list')
+      res.redirect('/research-3/task-list')
     }
   })
 
 
-  router.post('/research-jan2022-proposed-changes/application/applicant-other-adoption-agency', function(req, res) {
+  router.post('/research-3/application/applicant-other-adoption-agency', function(req, res) {
     // console.log("Mother alive: ", req.body['other-adoption-agency'])
     var errors = []
     if (req.body['other-adoption-agency'] === undefined) {
@@ -267,23 +267,23 @@ router.post('/research-jan2022-proposed-changes/eligibility/under-18', function(
     if (req.body['submit-button'] === 'save-and-continue') {
       if (errors.length === 0) {
         if (req.body['other-adoption-agency'] === 'yes') {
-          res.redirect('/research-jan2022-proposed-changes/application/applicant-adoption-agency-details-2')
+          res.redirect('/research-3/application/applicant-adoption-agency-details-2')
         }
         else {
-          res.redirect('/research-jan2022-proposed-changes/application/child-social-worker-details')
+          res.redirect('/research-3/application/child-social-worker-details')
         }
       }
       else {
-        res.render('.//research-jan2022-proposed-changes/application/applicant-other-adoption-agency', { errors: errors })
+        res.render('.//research-3/application/applicant-other-adoption-agency', { errors: errors })
       }
     }
     else {
-        res.redirect('/research-jan2022-proposed-changes/task-list')
+        res.redirect('/research-3/task-list')
     }
   })
 
 
-  router.post('/research-jan2022-proposed-changes/application/applicant-adoption-agency-details-2', function(req, res) {
+  router.post('/research-3/application/applicant-adoption-agency-details-2', function(req, res) {
     var errors = []
     if (req.body['applicant-agency-name-2'] === '') {
       errors.push({
@@ -312,19 +312,19 @@ router.post('/research-jan2022-proposed-changes/eligibility/under-18', function(
 
     if (req.body['submit-button'] === 'save-and-continue') {
       if (errors.length === 0) {
-        res.redirect('/research-jan2022-proposed-changes/application/child-social-worker-details')
+        res.redirect('/research-3/application/child-social-worker-details')
       }
       else {
-        res.render('.//research-jan2022-proposed-changes/application/applicant-adoption-agency-details-2', { errors: errors })
+        res.render('.//research-3/application/applicant-adoption-agency-details-2', { errors: errors })
       }
     }
     else {
-      res.redirect('/research-jan2022-proposed-changes/task-list')
+      res.redirect('/research-3/task-list')
     }
   })
 
 
-  router.post('/research-jan2022-proposed-changes/application/child-social-worker-details', function(req, res) {
+  router.post('/research-3/application/child-social-worker-details', function(req, res) {
     var errors = []
     if (req.body['child-social-worker-name'] === '') {
       errors.push({
@@ -348,20 +348,20 @@ router.post('/research-jan2022-proposed-changes/eligibility/under-18', function(
     if (req.body['submit-button'] === 'save-and-continue') {
       if (errors.length === 0) {
         req.session.data.agencyStatus = 'completed'
-        res.redirect('/research-jan2022-proposed-changes/task-list')
+        res.redirect('/research-3/task-list')
       }
       else {
-        res.render('.//research-jan2022-proposed-changes/application/child-social-worker-details', { errors: errors })
+        res.render('.//research-3/application/child-social-worker-details', { errors: errors })
       }
     }
     else {
-      res.redirect('/research-jan2022-proposed-changes/task-list')
+      res.redirect('/research-3/task-list')
     }
   })
 
 
   // ********************** Family court finder **********************
-  router.post('/research-jan2022-proposed-changes/children/family-court-finder', function(req, res) {
+  router.post('/research-3/children/family-court-finder', function(req, res) {
     console.log(req.body['placementCourtName'])
     var errors = []
     if (req.body['same-family-court'] === undefined) {
@@ -383,19 +383,19 @@ router.post('/research-jan2022-proposed-changes/eligibility/under-18', function(
           req.session.data.familyCourtName = req.body['placementCourtName']
         }
         req.session.data.familyCourtStatus = 'completed'
-        res.redirect('/research-jan2022-proposed-changes/task-list')
+        res.redirect('/research-3/task-list')
       }
       else {
-        res.render('.//research-jan2022-proposed-changes/children/family-court-finder', { errors: errors })
+        res.render('.//research-3/children/family-court-finder', { errors: errors })
       }
     }
     else {
       if (req.body['court-name'] === '') {
-        res.redirect('/research-jan2022-proposed-changes/task-list')
+        res.redirect('/research-3/task-list')
       }
       else {
         req.session.data.familyCourtStatus = 'in progress'
-        res.redirect('/research-jan2022-proposed-changes/task-list')
+        res.redirect('/research-3/task-list')
       }
     }
   })
@@ -409,7 +409,7 @@ router.post('/research-jan2022-proposed-changes/eligibility/under-18', function(
 // ************************************************************************************************************************************
 
   // ********************** First applicant personal details **********************
-  router.post('/research-jan2022-proposed-changes/applicants/first-applicant-name', function(req, res) {
+  router.post('/research-3/applicants/first-applicant-name', function(req, res) {
     var errors = []
     if (req.body['first-applicant-names'] === '') {
       errors.push({
@@ -427,19 +427,19 @@ router.post('/research-jan2022-proposed-changes/eligibility/under-18', function(
     if (req.body['submit-button'] === 'save-and-continue') {
       if (errors.length === 0) {
         req.session.data.firstApplicantPersonalDetailsStatus = 'in progress'
-        res.redirect('/research-jan2022-proposed-changes/applicants/first-applicant-other-names')
+        res.redirect('/research-3/applicants/first-applicant-other-names')
       }
       else {
-        res.render('.//research-jan2022-proposed-changes/applicants/first-applicant-name', { errors: errors })
+        res.render('.//research-3/applicants/first-applicant-name', { errors: errors })
       }
     }
     else {
-      res.redirect('/research-jan2022-proposed-changes/task-list')
+      res.redirect('/research-3/task-list')
     }
   })
 
 
-  router.post('/research-jan2022-proposed-changes/applicants/first-applicant-other-names', function(req, res) {
+  router.post('/research-3/applicants/first-applicant-other-names', function(req, res) {
     var errors = []
 
     if (req.body['first-applicant-other-names'] === undefined) {
@@ -484,10 +484,10 @@ router.post('/research-jan2022-proposed-changes/eligibility/under-18', function(
         req.session.data.firstApplicantPreviousLastNames[count] = req.body['first-applicant-previous-last-names']
         req.session.data.idFirstApplicant[count] = count
         req.session.data.firstApplicantNameCount = count + 1
-        res.redirect('/research-jan2022-proposed-changes/applicants/first-applicant-other-names')
+        res.redirect('/research-3/applicants/first-applicant-other-names')
       }
       else {
-        res.render('.//research-jan2022-proposed-changes/applicants/first-applicant-other-names', { errors: errors })
+        res.render('.//research-3/applicants/first-applicant-other-names', { errors: errors })
       }
     }
     else if (req.body['submit-button'] === 'save-and-continue') {
@@ -498,19 +498,19 @@ router.post('/research-jan2022-proposed-changes/eligibility/under-18', function(
           req.session.data.idFirstApplicant[count] = count
           req.session.data.firstApplicantNameCount = count + 1
         }
-        res.redirect('/research-jan2022-proposed-changes/applicants/first-applicant-date-birth')
+        res.redirect('/research-3/applicants/first-applicant-date-birth')
       }
       else {
-        res.render('.//research-jan2022-proposed-changes/applicants/first-applicant-other-names', { errors: errors })
+        res.render('.//research-3/applicants/first-applicant-other-names', { errors: errors })
       }
     }
     else {
-      res.redirect('/research-jan2022-proposed-changes/task-list')
+      res.redirect('/research-3/task-list')
     }
   })
 
 
-  router.post('/research-jan2022-proposed-changes/applicants/first-applicant-date-birth', function(req, res) {
+  router.post('/research-3/applicants/first-applicant-date-birth', function(req, res) {
     var errors = []
     if (req.body['first-applicant-day'] === '' || req.body['first-applicant-month'] === '' || req.body['first-applicant-year'] === '') {
       errors.push({
@@ -520,19 +520,19 @@ router.post('/research-jan2022-proposed-changes/eligibility/under-18', function(
     }
       if (req.body['submit-button'] === 'save-and-continue') {
         if (errors.length === 0) {
-          res.redirect('/research-jan2022-proposed-changes/applicants/first-applicant-occupation')
+          res.redirect('/research-3/applicants/first-applicant-occupation')
         }
         else {
-          res.render('.//research-jan2022-proposed-changes/applicants/first-applicant-date-birth', { errors: errors })
+          res.render('.//research-3/applicants/first-applicant-date-birth', { errors: errors })
         }
       }
       else {
-        res.redirect('/research-jan2022-proposed-changes/task-list')
+        res.redirect('/research-3/task-list')
       }
   })
 
 
-  router.post('/research-jan2022-proposed-changes/applicants/first-applicant-nationality', function(req, res) {
+  router.post('/research-3/applicants/first-applicant-nationality', function(req, res) {
     var errors = []
 
     if (req.body['first-applicant-british'] === undefined && req.body['first-applicant-irish'] === undefined && req.body['first-applicant-other'] === undefined) {
@@ -554,28 +554,28 @@ router.post('/research-jan2022-proposed-changes/eligibility/under-18', function(
     if (req.body['submit-button'] === 'save-and-continue') {
       if (errors.length === 0) {
         req.session.data.firstApplicantNationalities[count] = req.body['first-applicant-different-country']
-        res.redirect('/research-jan2022-proposed-changes/applicants/first-applicant-occupation')
+        res.redirect('/research-3/applicants/first-applicant-occupation')
       }
       else {
-        res.render('.//research-jan2022-proposed-changes/applicants/first-applicant-nationality', { errors: errors })
+        res.render('.//research-3/applicants/first-applicant-nationality', { errors: errors })
       }
     }
     else if (req.body['submit-button'] === 'save-as-draft') {
-      res.redirect('/research-jan2022-proposed-changes/task-list')
+      res.redirect('/research-3/task-list')
     }
     else if (req.body['submit-button'] === 'add' && req.body['first-applicant-different-country'] !== '') {
       req.session.data.firstApplicantNationalities[count] = req.body['first-applicant-different-country']
       req.session.data.firstApplicantNationalityId[count] = count
       req.session.data.firstApplicantNationalityCount = count + 1
-      res.redirect('/research-jan2022-proposed-changes/applicants/first-applicant-nationality')
+      res.redirect('/research-3/applicants/first-applicant-nationality')
     }
     else {
-      res.render('.//research-jan2022-proposed-changes/applicants/first-applicant-nationality', { errors: errors })
+      res.render('.//research-3/applicants/first-applicant-nationality', { errors: errors })
     }
   })
 
 
-  router.post('/research-jan2022-proposed-changes/applicants/first-applicant-occupation', function(req, res) {
+  router.post('/research-3/applicants/first-applicant-occupation', function(req, res) {
     var errors = []
     if (req.body['first-applicant-occupation'] === '') {
       errors.push({
@@ -587,14 +587,14 @@ router.post('/research-jan2022-proposed-changes/eligibility/under-18', function(
     if (req.body['submit-button'] === 'save-and-continue') {
       if (errors.length === 0) {
         req.session.data.firstApplicantPersonalDetailsStatus = 'completed'
-        res.redirect('/research-jan2022-proposed-changes/task-list')
+        res.redirect('/research-3/task-list')
       }
       else {
-          res.render('.//research-jan2022-proposed-changes/applicants/first-applicant-occupation', { errors: errors })
+          res.render('.//research-3/applicants/first-applicant-occupation', { errors: errors })
       }
     }
     else {
-      res.redirect('/research-jan2022-proposed-changes/task-list')
+      res.redirect('/research-3/task-list')
     }
   })
 
@@ -603,7 +603,7 @@ router.post('/research-jan2022-proposed-changes/eligibility/under-18', function(
 
 
   // ********************** First applicant contact details **********************
-  router.post('/research-jan2022-proposed-changes/applicants/first-applicant-address', function(req, res) {
+  router.post('/research-3/applicants/first-applicant-address', function(req, res) {
     var errors = []
     if (req.body['first-applicant-address'] === "") {
       errors.push({
@@ -614,19 +614,19 @@ router.post('/research-jan2022-proposed-changes/eligibility/under-18', function(
     if (req.body['submit-button'] === 'save-and-continue') {
       if (errors.length === 0) {
         req.session.data.firstApplicantContactDetailsStatus = 'in progress'
-        res.redirect('/research-jan2022-proposed-changes/applicants/first-applicant-find-address')
+        res.redirect('/research-3/applicants/first-applicant-find-address')
       }
       else {
-        res.render('.//research-jan2022-proposed-changes/applicants/first-applicant-address', { errors: errors })
+        res.render('.//research-3/applicants/first-applicant-address', { errors: errors })
       }
     }
     else {
-      res.redirect('/research-jan2022-proposed-changes/task-list')
+      res.redirect('/research-3/task-list')
     }
   })
 
 
-  router.post('/research-jan2022-proposed-changes/applicants/first-applicant-find-address', function(req, res) {
+  router.post('/research-3/applicants/first-applicant-find-address', function(req, res) {
     var errors = []
     if (req.body['first-applicant-choose-address'] === 'address-found') {
       errors.push({
@@ -637,19 +637,19 @@ router.post('/research-jan2022-proposed-changes/eligibility/under-18', function(
 
     if (req.body['submit-button'] === 'save-and-continue') {
       if (errors.length === 0) {
-        res.redirect('/research-jan2022-proposed-changes/applicants/first-applicant-contact')
+        res.redirect('/research-3/applicants/first-applicant-contact')
       }
       else {
-        res.render('.//research-jan2022-proposed-changes/applicants/first-applicant-find-address', { errors: errors })
+        res.render('.//research-3/applicants/first-applicant-find-address', { errors: errors })
       }
     }
     else {
-      res.redirect('/research-jan2022-proposed-changes/task-list')
+      res.redirect('/research-3/task-list')
     }
   })
 
 
-  router.post('/research-jan2022-proposed-changes/applicants/first-applicant-enter-address-manually', function(req, res) {
+  router.post('/research-3/applicants/first-applicant-enter-address-manually', function(req, res) {
     var errors = []
     if (req.body['first-applicant-address-line-1'] === '') {
       errors.push({
@@ -673,19 +673,19 @@ router.post('/research-jan2022-proposed-changes/eligibility/under-18', function(
     if (req.body['submit-button'] === 'save-and-continue') {
       if (errors.length === 0) {
         req.session.data.firstApplicantContactDetailsStatus = 'in progress'
-        res.redirect('/research-jan2022-proposed-changes/applicants/first-applicant-contact')
+        res.redirect('/research-3/applicants/first-applicant-contact')
       }
       else {
-        res.render('.//research-jan2022-proposed-changes/applicants/first-applicant-enter-address-manually', { errors: errors })
+        res.render('.//research-3/applicants/first-applicant-enter-address-manually', { errors: errors })
       }
     }
     else {
-      res.redirect('/research-jan2022-proposed-changes/task-list')
+      res.redirect('/research-3/task-list')
     }
   })
 
 
-  router.post('/research-jan2022-proposed-changes/applicants/first-applicant-contact', function(req, res) {
+  router.post('/research-3/applicants/first-applicant-contact', function(req, res) {
     var errors = []
     if (req.body['first-applicant-email-address'] === '') {
       errors.push({
@@ -709,14 +709,14 @@ router.post('/research-jan2022-proposed-changes/eligibility/under-18', function(
     if (req.body['submit-button'] === 'save-and-continue') {
       if (errors.length === 0) {
         req.session.data.firstApplicantContactDetailsStatus = 'completed'
-        res.redirect('/research-jan2022-proposed-changes/task-list')
+        res.redirect('/research-3/task-list')
       }
       else {
-        res.render('.//research-jan2022-proposed-changes/applicants/first-applicant-contact', { errors: errors })
+        res.render('.//research-3/applicants/first-applicant-contact', { errors: errors })
       }
     }
     else {
-      res.redirect('/research-jan2022-proposed-changes/task-list')
+      res.redirect('/research-3/task-list')
     }
   })
 
@@ -724,7 +724,7 @@ router.post('/research-jan2022-proposed-changes/eligibility/under-18', function(
 
 
   // ********************** Second applicant personal details **********************
-  router.post('/research-jan2022-proposed-changes/applicants/second-applicant-name', function(req, res) {
+  router.post('/research-3/applicants/second-applicant-name', function(req, res) {
     var errors = []
     if (req.body['second-applicant-names'] === '') {
       errors.push({
@@ -742,19 +742,19 @@ router.post('/research-jan2022-proposed-changes/eligibility/under-18', function(
     if (req.body['submit-button'] === 'save-and-continue') {
       if (errors.length === 0) {
         req.session.data.secondApplicantPersonalDetailsStatus = 'in progress'
-        res.redirect('/research-jan2022-proposed-changes/applicants/second-applicant-other-names')
+        res.redirect('/research-3/applicants/second-applicant-other-names')
       }
       else {
-        res.render('.//research-jan2022-proposed-changes/applicants/second-applicant-name', { errors: errors })
+        res.render('.//research-3/applicants/second-applicant-name', { errors: errors })
       }
     }
     else {
-      res.redirect('/research-jan2022-proposed-changes/task-list')
+      res.redirect('/research-3/task-list')
     }
   })
 
 
-  router.post('/research-jan2022-proposed-changes/applicants/second-applicant-other-names', function(req, res) {
+  router.post('/research-3/applicants/second-applicant-other-names', function(req, res) {
     var errors = []
 
     if (req.body['second-applicant-other-names'] === undefined) {
@@ -799,10 +799,10 @@ router.post('/research-jan2022-proposed-changes/eligibility/under-18', function(
         req.session.data.secondApplicantPreviousLastNames[count] = req.body['second-applicant-previous-last-names']
         req.session.data.idSecondApplicant[count] = count
         req.session.data.secondApplicantNameCount = count + 1
-        res.redirect('/research-jan2022-proposed-changes/applicants/second-applicant-other-names')
+        res.redirect('/research-3/applicants/second-applicant-other-names')
       }
       else {
-        res.render('.//research-jan2022-proposed-changes/applicants/second-applicant-other-names', { errors: errors })
+        res.render('.//research-3/applicants/second-applicant-other-names', { errors: errors })
       }
     }
     else if (req.body['submit-button'] === 'save-and-continue') {
@@ -813,19 +813,19 @@ router.post('/research-jan2022-proposed-changes/eligibility/under-18', function(
           req.session.data.idSecondApplicant[count] = count
           req.session.data.secondApplicantNameCount = count + 1
         }
-        res.redirect('/research-jan2022-proposed-changes/applicants/second-applicant-date-birth')
+        res.redirect('/research-3/applicants/second-applicant-date-birth')
       }
       else {
-        res.render('.//research-jan2022-proposed-changes/applicants/second-applicant-other-names', { errors: errors })
+        res.render('.//research-3/applicants/second-applicant-other-names', { errors: errors })
       }
     }
     else {
-      res.redirect('/research-jan2022-proposed-changes/task-list')
+      res.redirect('/research-3/task-list')
     }
   })
 
 
-  router.post('/research-jan2022-proposed-changes/applicants/second-applicant-date-birth', function(req, res) {
+  router.post('/research-3/applicants/second-applicant-date-birth', function(req, res) {
     // console.log("Day: ", req.body['day'])
     var errors = []
     if (req.body['second-applicant-day'] === '' || req.body['second-applicant-month'] === '' || req.body['second-applicant-year'] === '') {
@@ -836,19 +836,19 @@ router.post('/research-jan2022-proposed-changes/eligibility/under-18', function(
     }
       if (req.body['submit-button'] === 'save-and-continue') {
         if (errors.length === 0) {
-          res.redirect('/research-jan2022-proposed-changes/applicants/second-applicant-occupation')
+          res.redirect('/research-3/applicants/second-applicant-occupation')
         }
         else {
-          res.render('.//research-jan2022-proposed-changes/applicants/second-applicant-date-birth', { errors: errors })
+          res.render('.//research-3/applicants/second-applicant-date-birth', { errors: errors })
         }
       }
       else {
-        res.redirect('/research-jan2022-proposed-changes/task-list')
+        res.redirect('/research-3/task-list')
       }
   })
 
 
-  router.post('/research-jan2022-proposed-changes/applicants/second-applicant-nationality', function(req, res) {
+  router.post('/research-3/applicants/second-applicant-nationality', function(req, res) {
     var errors = []
 
     if (req.body['second-applicant-british'] === undefined && req.body['second-applicant-irish'] === undefined &&req.body['second-applicant-other'] === undefined) {
@@ -870,28 +870,28 @@ router.post('/research-jan2022-proposed-changes/eligibility/under-18', function(
     if (req.body['submit-button'] === 'save-and-continue') {
       if (errors.length === 0) {
         req.session.data.secondApplicantNationalities[count] = req.body['second-applicant-different-country']
-        res.redirect('/research-jan2022-proposed-changes/applicants/second-applicant-occupation')
+        res.redirect('/research-3/applicants/second-applicant-occupation')
       }
       else {
-        res.render('.//research-jan2022-proposed-changes/applicants/second-applicant-nationality', { errors: errors })
+        res.render('.//research-3/applicants/second-applicant-nationality', { errors: errors })
       }
     }
     else if (req.body['submit-button'] === 'save-as-draft') {
-      res.redirect('/research-jan2022-proposed-changes/task-list')
+      res.redirect('/research-3/task-list')
     }
     else if (req.body['submit-button'] === 'add' && req.body['second-applicant-different-country'] !== '') {
       req.session.data.secondApplicantNationalities[count] = req.body['second-applicant-different-country']
       req.session.data.secondApplicantNationalityId[count] = count
       req.session.data.secondApplicantNationalityCount = count + 1
-      res.redirect('/research-jan2022-proposed-changes/applicants/second-applicant-nationality')
+      res.redirect('/research-3/applicants/second-applicant-nationality')
     }
     else {
-      res.render('.//research-jan2022-proposed-changes/applicants/second-applicant-nationality', { errors: errors })
+      res.render('.//research-3/applicants/second-applicant-nationality', { errors: errors })
     }
   })
 
 
-  router.post('/research-jan2022-proposed-changes/applicants/second-applicant-occupation', function(req, res) {
+  router.post('/research-3/applicants/second-applicant-occupation', function(req, res) {
     var errors = []
     if (req.body['second-applicant-occupation'] === '') {
       errors.push({
@@ -903,14 +903,14 @@ router.post('/research-jan2022-proposed-changes/eligibility/under-18', function(
     if (req.body['submit-button'] === 'save-and-continue') {
       if (errors.length === 0) {
         req.session.data.secondApplicantPersonalDetailsStatus = 'completed'
-        res.redirect('/research-jan2022-proposed-changes/task-list')
+        res.redirect('/research-3/task-list')
       }
       else {
-          res.render('.//research-jan2022-proposed-changes/applicants/second-applicant-occupation', { errors: errors })
+          res.render('.//research-3/applicants/second-applicant-occupation', { errors: errors })
       }
     }
     else {
-      res.redirect('/research-jan2022-proposed-changes/task-list')
+      res.redirect('/research-3/task-list')
     }
   })
 
@@ -919,7 +919,7 @@ router.post('/research-jan2022-proposed-changes/eligibility/under-18', function(
 
 
   // ********************** Second applicant contact details **********************
-  router.post('/research-jan2022-proposed-changes/applicants/second-applicant-same-address', function(req, res) {
+  router.post('/research-3/applicants/second-applicant-same-address', function(req, res) {
     var errors = []
     if (req.body['same-address'] === undefined) {
       errors.push({
@@ -932,24 +932,24 @@ router.post('/research-jan2022-proposed-changes/eligibility/under-18', function(
     if (req.body['submit-button'] === 'save-and-continue') {
         if (req.body['same-address'] === "Yes") {
           req.session.data.secondApplicantContactDetailsStatus = 'in progress'
-          res.redirect('/research-jan2022-proposed-changes/applicants/second-applicant-contact')
+          res.redirect('/research-3/applicants/second-applicant-contact')
         }
         else {
-          res.redirect('/research-jan2022-proposed-changes/applicants/second-applicant-address')
+          res.redirect('/research-3/applicants/second-applicant-address')
         }
       }
       else {
-        res.redirect('/research-jan2022-proposed-changes/task-list')
+        res.redirect('/research-3/task-list')
       }
     }
     else {
-        res.render('.//research-jan2022-proposed-changes/applicants/second-applicant-same-address', { errors: errors })
+        res.render('.//research-3/applicants/second-applicant-same-address', { errors: errors })
     }
 
   })
 
 
-  router.post('/research-jan2022-proposed-changes/applicants/second-applicant-address', function(req, res) {
+  router.post('/research-3/applicants/second-applicant-address', function(req, res) {
     var errors = []
     if (req.body['second-applicant-address'] === "") {
       errors.push({
@@ -960,19 +960,19 @@ router.post('/research-jan2022-proposed-changes/eligibility/under-18', function(
     if (req.body['submit-button'] === 'save-and-continue') {
       if (errors.length === 0) {
         req.session.data.secondApplicantContactDetailsStatus = 'in progress'
-        res.redirect('/research-jan2022-proposed-changes/applicants/second-applicant-find-address')
+        res.redirect('/research-3/applicants/second-applicant-find-address')
       }
       else {
-        res.render('.//research-jan2022-proposed-changes/applicants/second-applicant-address', { errors: errors })
+        res.render('.//research-3/applicants/second-applicant-address', { errors: errors })
       }
     }
     else {
-      res.redirect('/research-jan2022-proposed-changes/task-list')
+      res.redirect('/research-3/task-list')
     }
   })
 
 
-  router.post('/research-jan2022-proposed-changes/applicants/second-applicant-find-address', function(req, res) {
+  router.post('/research-3/applicants/second-applicant-find-address', function(req, res) {
     var errors = []
     if (req.body['second-applicant-choose-address'] === 'address-found') {
       errors.push({
@@ -983,19 +983,19 @@ router.post('/research-jan2022-proposed-changes/eligibility/under-18', function(
 
     if (req.body['submit-button'] === 'save-and-continue') {
       if (errors.length === 0) {
-        res.redirect('/research-jan2022-proposed-changes/applicants/second-applicant-contact')
+        res.redirect('/research-3/applicants/second-applicant-contact')
       }
       else {
-        res.render('.//research-jan2022-proposed-changes/applicants/second-applicant-find-address', { errors: errors })
+        res.render('.//research-3/applicants/second-applicant-find-address', { errors: errors })
       }
     }
     else {
-      res.redirect('/research-jan2022-proposed-changes/task-list')
+      res.redirect('/research-3/task-list')
     }
   })
 
 
-  router.post('/research-jan2022-proposed-changes/applicants/second-applicant-enter-address-manually', function(req, res) {
+  router.post('/research-3/applicants/second-applicant-enter-address-manually', function(req, res) {
     var errors = []
     if (req.body['second-applicant-address-line-1'] === '') {
       errors.push({
@@ -1019,19 +1019,19 @@ router.post('/research-jan2022-proposed-changes/eligibility/under-18', function(
     if (req.body['submit-button'] === 'save-and-continue') {
       if (errors.length === 0) {
         req.session.data.secondApplicantContactDetailsStatus = 'in progress'
-        res.redirect('/research-jan2022-proposed-changes/applicants/second-applicant-contact')
+        res.redirect('/research-3/applicants/second-applicant-contact')
       }
       else {
-        res.render('.//research-jan2022-proposed-changes/applicants/second-applicant-enter-address-manually', { errors: errors })
+        res.render('.//research-3/applicants/second-applicant-enter-address-manually', { errors: errors })
       }
     }
     else {
-      res.redirect('/research-jan2022-proposed-changes/task-list')
+      res.redirect('/research-3/task-list')
     }
   })
 
 
-  router.post('/research-jan2022-proposed-changes/applicants/second-applicant-contact', function(req, res) {
+  router.post('/research-3/applicants/second-applicant-contact', function(req, res) {
     var errors = []
     if (req.body['second-applicant-email-address'] === '') {
       errors.push({
@@ -1055,14 +1055,14 @@ router.post('/research-jan2022-proposed-changes/eligibility/under-18', function(
     if (req.body['submit-button'] === 'save-and-continue') {
       if (errors.length === 0) {
         req.session.data.secondApplicantContactDetailsStatus = 'completed'
-        res.redirect('/research-jan2022-proposed-changes/task-list')
+        res.redirect('/research-3/task-list')
       }
       else {
-        res.render('.//research-jan2022-proposed-changes/applicants/second-applicant-contact', { errors: errors })
+        res.render('.//research-3/applicants/second-applicant-contact', { errors: errors })
       }
     }
     else {
-      res.redirect('/research-jan2022-proposed-changes/task-list')
+      res.redirect('/research-3/task-list')
     }
   })
 
@@ -1072,7 +1072,7 @@ router.post('/research-jan2022-proposed-changes/eligibility/under-18', function(
 
 
   // ********************** Second applicant upload **********************
-  router.post('/research-jan2022-proposed-changes/applicants/second-applicant-upload', function(req, res) {
+  router.post('/research-3/applicants/second-applicant-upload', function(req, res) {
     var errors = []
     if (req.body['second-applicant-upload'] === '') {
       errors.push({
@@ -1084,14 +1084,14 @@ router.post('/research-jan2022-proposed-changes/eligibility/under-18', function(
     if (req.body['submit-button'] === 'save-and-continue') {
       if (errors.length === 0) {
         req.session.data.secondupload = 1
-        res.redirect('/research-jan2022-proposed-changes/task-list')
+        res.redirect('/research-3/task-list')
       }
       else {
-        res.render('.//research-jan2022-proposed-changes/applicants/second-applicant-upload', { errors: errors })
+        res.render('.//research-3/applicants/second-applicant-upload', { errors: errors })
       }
     }
     else {
-      res.redirect('/research-jan2022-proposed-changes/task-list')
+      res.redirect('/research-3/task-list')
     }
   })
 
@@ -1102,7 +1102,7 @@ router.post('/research-jan2022-proposed-changes/eligibility/under-18', function(
 // ************************************************************************************************************************************
 
 // ******************************************** Child's details ********************************************
-  router.post('/research-jan2022-proposed-changes/children/child-name', function(req, res) {
+  router.post('/research-3/children/child-name', function(req, res) {
     var errors = []
     if (req.body['child-first-names'] === '') {
       errors.push({
@@ -1120,19 +1120,19 @@ router.post('/research-jan2022-proposed-changes/eligibility/under-18', function(
     if (req.body['submit-button'] === 'save-and-continue') {
       if (errors.length === 0) {
         req.session.data.childDetailsStatus = 'in progress'
-        res.redirect('/research-jan2022-proposed-changes/children/child-date-birth')
+        res.redirect('/research-3/children/child-date-birth')
       }
       else {
-        res.render('.//research-jan2022-proposed-changes/children/child-name', { errors: errors })
+        res.render('.//research-3/children/child-name', { errors: errors })
       }
     }
     else {
-      res.redirect('/research-jan2022-proposed-changes/task-list')
+      res.redirect('/research-3/task-list')
     }
   })
 
 
-  router.post('/research-jan2022-proposed-changes/children/child-date-birth', function(req, res) {
+  router.post('/research-3/children/child-date-birth', function(req, res) {
     // console.log("Day: ", req.body['day'])
     var errors = []
     if (req.body['child-birth-day'] === '' || req.body['child-birth-month'] === '' || req.body['child-birth-year'] === '') {
@@ -1143,19 +1143,19 @@ router.post('/research-jan2022-proposed-changes/eligibility/under-18', function(
     }
       if (req.body['submit-button'] === 'save-and-continue') {
         if (errors.length === 0) {
-          res.redirect('/research-jan2022-proposed-changes/children/child-sex')
+          res.redirect('/research-3/children/child-sex')
         }
         else {
-          res.render('.//research-jan2022-proposed-changes/children/child-date-birth', { errors: errors })
+          res.render('.//research-3/children/child-date-birth', { errors: errors })
         }
       }
       else {
-        res.redirect('/research-jan2022-proposed-changes/task-list')
+        res.redirect('/research-3/task-list')
       }
   })
 
 
-  router.post('/research-jan2022-proposed-changes/children/child-sex', function(req, res) {
+  router.post('/research-3/children/child-sex', function(req, res) {
     var errors = []
     if (req.body['child-sex'] === undefined) {
       errors.push({
@@ -1172,19 +1172,19 @@ router.post('/research-jan2022-proposed-changes/eligibility/under-18', function(
 
     if (req.body['submit-button'] === 'save-and-continue') {
       if (errors.length === 0) {
-        res.redirect('/research-jan2022-proposed-changes/children/child-nationality')
+        res.redirect('/research-3/children/child-nationality')
       }
       else {
-        res.render('.//research-jan2022-proposed-changes/children/child-sex', { errors: errors })
+        res.render('.//research-3/children/child-sex', { errors: errors })
       }
     }
     else {
-      res.redirect('/research-jan2022-proposed-changes/task-list')
+      res.redirect('/research-3/task-list')
     }
   })
 
 
-  router.post('/research-jan2022-proposed-changes/children/child-nationality', function(req, res) {
+  router.post('/research-3/children/child-nationality', function(req, res) {
     var errors = []
 
     if (req.body['child-british'] === undefined && req.body['child-irish'] === undefined && req.body['child-other'] === undefined && req.body['child-unsure'] === undefined) {
@@ -1214,23 +1214,23 @@ router.post('/research-jan2022-proposed-changes/eligibility/under-18', function(
       if (errors.length === 0) {
         req.session.data.childDetailsStatus = 'completed'
         req.session.data.childNationalities[count] = req.body['child-different-country']
-        res.redirect('/research-jan2022-proposed-changes/task-list')
+        res.redirect('/research-3/task-list')
       }
       else {
-        res.render('.//research-jan2022-proposed-changes/children/child-nationality', { errors: errors })
+        res.render('.//research-3/children/child-nationality', { errors: errors })
       }
     }
     else if (req.body['submit-button'] === 'save-as-draft') {
-      res.redirect('/research-jan2022-proposed-changes/task-list')
+      res.redirect('/research-3/task-list')
     }
     else if (req.body['submit-button'] === 'add' && req.body['child-different-country'] !== '') {
       req.session.data.childNationalities[count] = req.body['child-different-country']
       req.session.data.childNationalityId[count] = count
       req.session.data.childNationalityCount = count + 1
-      res.redirect('/research-jan2022-proposed-changes/children/child-nationality')
+      res.redirect('/research-3/children/child-nationality')
     }
     else {
-      res.render('.//research-jan2022-proposed-changes/children/child-nationality', { errors: errors })
+      res.render('.//research-3/children/child-nationality', { errors: errors })
     }
   })
 
@@ -1239,7 +1239,7 @@ router.post('/research-jan2022-proposed-changes/eligibility/under-18', function(
 
 
   // ********************** Child's adoption certificate details **********************
-  router.post('/research-jan2022-proposed-changes/children/child-adoption-certificate', function(req, res) {
+  router.post('/research-3/children/child-adoption-certificate', function(req, res) {
     var errors = []
     if (req.body['certificate-first-names'] === '') {
       errors.push({
@@ -1257,19 +1257,19 @@ router.post('/research-jan2022-proposed-changes/eligibility/under-18', function(
     if (req.body['submit-button'] === 'save-and-continue') {
       if (errors.length === 0) {
         req.session.data.adoptionCertificateStatus = 'completed'
-        res.redirect('/research-jan2022-proposed-changes/task-list')
+        res.redirect('/research-3/task-list')
       }
       else {
-        res.render('.//research-jan2022-proposed-changes/children/child-adoption-certificate', { errors: errors })
+        res.render('.//research-3/children/child-adoption-certificate', { errors: errors })
       }
     }
     else {
       if (req.body['certificate-first-names'] === '' && req.body['certificate-last-names'] === '') {
-        res.redirect('/research-jan2022-proposed-changes/task-list')
+        res.redirect('/research-3/task-list')
       }
       else {
         req.session.data.adoptionCertificateStatus = 'in progress'
-        res.redirect('/research-jan2022-proposed-changes/task-list')
+        res.redirect('/research-3/task-list')
       }
     }
   })
@@ -1277,7 +1277,7 @@ router.post('/research-jan2022-proposed-changes/eligibility/under-18', function(
 
 
   // ********************** Birth mother's details **********************
-  router.post('/research-jan2022-proposed-changes/children/mother-name', function(req, res) {
+  router.post('/research-3/children/mother-name', function(req, res) {
     var errors = []
     if (req.body['mother-first-names'] === '') {
       errors.push({
@@ -1295,19 +1295,19 @@ router.post('/research-jan2022-proposed-changes/eligibility/under-18', function(
     if (req.body['submit-button'] === 'save-and-continue') {
       if (errors.length === 0) {
         req.session.data.motherStatus = 'in progress'
-        res.redirect('/research-jan2022-proposed-changes/children/mother-alive')
+        res.redirect('/research-3/children/mother-alive')
       }
       else {
-        res.render('.//research-jan2022-proposed-changes/children/mother-name', { errors: errors })
+        res.render('.//research-3/children/mother-name', { errors: errors })
       }
     }
     else {
-      res.redirect('/research-jan2022-proposed-changes/task-list')
+      res.redirect('/research-3/task-list')
     }
   })
 
 
-  router.post('/research-jan2022-proposed-changes/children/mother-alive', function(req, res) {
+  router.post('/research-3/children/mother-alive', function(req, res) {
     // console.log("Mother alive: ", req.body['mother-alive'])
     var errors = []
     if (req.body['mother-alive'] === undefined) {
@@ -1327,24 +1327,24 @@ router.post('/research-jan2022-proposed-changes/eligibility/under-18', function(
     if (req.body['submit-button'] === 'save-and-continue') {
       if (errors.length === 0) {
         if (req.body['mother-alive'] === 'Yes') {
-          res.redirect('/research-jan2022-proposed-changes/children/mother-nationality')
+          res.redirect('/research-3/children/mother-nationality')
         }
         else {
           req.session.data.motherStatus = 'completed'
-          res.redirect('/research-jan2022-proposed-changes/task-list')
+          res.redirect('/research-3/task-list')
         }
       }
       else {
-        res.render('.//research-jan2022-proposed-changes/children/mother-alive', { errors: errors })
+        res.render('.//research-3/children/mother-alive', { errors: errors })
       }
     }
     else {
-        res.redirect('/research-jan2022-proposed-changes/task-list')
+        res.redirect('/research-3/task-list')
     }
   })
 
 
-  router.post('/research-jan2022-proposed-changes/children/mother-nationality', function(req, res) {
+  router.post('/research-3/children/mother-nationality', function(req, res) {
     var errors = []
 
     if (req.body['mother-british'] === undefined && req.body['mother-irish'] === undefined && req.body['mother-other'] === undefined && req.body['mother-unsure'] === undefined) {
@@ -1373,28 +1373,28 @@ router.post('/research-jan2022-proposed-changes/eligibility/under-18', function(
     if (req.body['submit-button'] === 'save-and-continue') {
       if (errors.length === 0) {
         req.session.data.motherNationalities[count] = req.body['mother-different-country']
-        res.redirect('/research-jan2022-proposed-changes/children/mother-occupation')
+        res.redirect('/research-3/children/mother-occupation')
       }
       else {
-        res.render('.//research-jan2022-proposed-changes/children/mother-nationality', { errors: errors })
+        res.render('.//research-3/children/mother-nationality', { errors: errors })
       }
     }
     else if (req.body['submit-button'] === 'save-as-draft') {
-      res.redirect('/research-jan2022-proposed-changes/task-list')
+      res.redirect('/research-3/task-list')
     }
     else if (req.body['submit-button'] === 'add' && req.body['mother-different-country'] !== '') {
       req.session.data.motherNationalities[count] = req.body['mother-different-country']
       req.session.data.motherNationalityId[count] = count
       req.session.data.motherNationalityCount = count + 1
-      res.redirect('/research-jan2022-proposed-changes/children/mother-nationality')
+      res.redirect('/research-3/children/mother-nationality')
     }
     else {
-      res.render('.//research-jan2022-proposed-changes/children/mother-nationality', { errors: errors })
+      res.render('.//research-3/children/mother-nationality', { errors: errors })
     }
   })
 
 
-  router.post('/research-jan2022-proposed-changes/children/mother-occupation', function(req, res) {
+  router.post('/research-3/children/mother-occupation', function(req, res) {
     var errors = []
     if (req.body['mother-occupation'] === '') {
       errors.push({
@@ -1405,19 +1405,19 @@ router.post('/research-jan2022-proposed-changes/eligibility/under-18', function(
 
     if (req.body['submit-button'] === 'save-and-continue') {
       if (errors.length === 0) {
-        res.redirect('/research-jan2022-proposed-changes/children/mother-have-address')
+        res.redirect('/research-3/children/mother-have-address')
       }
       else {
-          res.render('.//research-jan2022-proposed-changes/children/mother-occupation', { errors: errors })
+          res.render('.//research-3/children/mother-occupation', { errors: errors })
       }
     }
     else {
-      res.redirect('/research-jan2022-proposed-changes/task-list')
+      res.redirect('/research-3/task-list')
     }
   })
 
 
-  router.post('/research-jan2022-proposed-changes/children/mother-have-address', function(req, res) {
+  router.post('/research-3/children/mother-have-address', function(req, res) {
     var errors = []
     if (req.body['mother-have-address'] === undefined) {
       errors.push({
@@ -1435,23 +1435,23 @@ router.post('/research-jan2022-proposed-changes/eligibility/under-18', function(
       if (errors.length === 0) {
         if (req.body['mother-have-address'] === 'No') {
           req.session.data.motherStatus = 'completed'
-          res.redirect('/research-jan2022-proposed-changes/task-list')
+          res.redirect('/research-3/task-list')
         }
         else {
-          res.redirect('/research-jan2022-proposed-changes/children/mother-address-postcode')
+          res.redirect('/research-3/children/mother-address-postcode')
         }
       }
       else {
-          res.render('.//research-jan2022-proposed-changes/children/mother-have-address', { errors: errors })
+          res.render('.//research-3/children/mother-have-address', { errors: errors })
       }
     }
     else {
-      res.redirect('/research-jan2022-proposed-changes/task-list')
+      res.redirect('/research-3/task-list')
     }
   })
 
 
-  router.post('/research-jan2022-proposed-changes/children/mother-address-postcode', function(req, res) {
+  router.post('/research-3/children/mother-address-postcode', function(req, res) {
     var errors = []
     if (req.body['mother-postcode'] === "") {
       errors.push({
@@ -1461,19 +1461,19 @@ router.post('/research-jan2022-proposed-changes/eligibility/under-18', function(
     }
     if (req.body['submit-button'] === 'save-and-continue') {
       if (errors.length === 0) {
-        res.redirect('/research-jan2022-proposed-changes/children/mother-find-address')
+        res.redirect('/research-3/children/mother-find-address')
       }
       else {
-        res.render('.//research-jan2022-proposed-changes/children/mother-address-postcode', { errors: errors })
+        res.render('.//research-3/children/mother-address-postcode', { errors: errors })
       }
     }
     else {
-      res.redirect('/research-jan2022-proposed-changes/task-list')
+      res.redirect('/research-3/task-list')
     }
   })
 
 
-  router.post('/research-jan2022-proposed-changes/children/mother-find-address', function(req, res) {
+  router.post('/research-3/children/mother-find-address', function(req, res) {
     // console.log(req.body['submit-button'])
     var errors = []
     if (req.body['mother-choose-address'] === 'address-found') {
@@ -1486,19 +1486,19 @@ router.post('/research-jan2022-proposed-changes/eligibility/under-18', function(
     if (req.body['submit-button'] === 'save-and-continue') {
       if (errors.length === 0) {
         req.session.data.motherStatus = 'completed'
-        res.redirect('/research-jan2022-proposed-changes/task-list')
+        res.redirect('/research-3/task-list')
       }
       else {
-        res.render('.//research-jan2022-proposed-changes/children/mother-find-address', { errors: errors })
+        res.render('.//research-3/children/mother-find-address', { errors: errors })
       }
     }
     else {
-      res.redirect('/research-jan2022-proposed-changes/task-list')
+      res.redirect('/research-3/task-list')
     }
   })
 
 
-  router.post('/research-jan2022-proposed-changes/children/mother-manual-address', function(req, res) {
+  router.post('/research-3/children/mother-manual-address', function(req, res) {
     var errors = []
     if (req.body['address-line-1'] === '') {
       errors.push({
@@ -1522,18 +1522,18 @@ router.post('/research-jan2022-proposed-changes/eligibility/under-18', function(
     if (req.body['submit-button'] === 'save-and-continue') {
       if (errors.length === 0) {
         req.session.data.motherStatus = 'completed'
-        res.redirect('/research-jan2022-proposed-changes/task-list')
+        res.redirect('/research-3/task-list')
       }
       else {
-        res.render('.//research-jan2022-proposed-changes/children/mother-manual-address', { errors: errors })
+        res.render('.//research-3/children/mother-manual-address', { errors: errors })
       }
     }
     else {
-      res.redirect('/research-jan2022-proposed-changes/task-list')
+      res.redirect('/research-3/task-list')
     }
   })
 
-  router.post('/research-jan2022-proposed-changes/children/mother-manual-address-international', function(req, res) {
+  router.post('/research-3/children/mother-manual-address-international', function(req, res) {
     var errors = []
     if (req.body['address-line-1'] === '') {
       errors.push({
@@ -1552,14 +1552,14 @@ router.post('/research-jan2022-proposed-changes/eligibility/under-18', function(
     if (req.body['submit-button'] === 'save-and-continue') {
       if (errors.length === 0) {
         req.session.data.motherStatus = 'completed'
-        res.redirect('/research-jan2022-proposed-changes/task-list')
+        res.redirect('/research-3/task-list')
       }
       else {
-        res.render('.//research-jan2022-proposed-changes/children/mother-manual-address-international', { errors: errors })
+        res.render('.//research-3/children/mother-manual-address-international', { errors: errors })
       }
     }
     else {
-      res.redirect('/research-jan2022-proposed-changes/task-list')
+      res.redirect('/research-3/task-list')
     }
   })
 
@@ -1567,7 +1567,7 @@ router.post('/research-jan2022-proposed-changes/eligibility/under-18', function(
 
 
   // ********************** Birth father's details **********************
-  router.post('/research-jan2022-proposed-changes/children/father-in-certificate', function(req, res) {
+  router.post('/research-3/children/father-in-certificate', function(req, res) {
     var errors = []
     if (req.body['father-in-certificate'] === undefined) {
       errors.push({
@@ -1580,23 +1580,23 @@ router.post('/research-jan2022-proposed-changes/eligibility/under-18', function(
       if (errors.length === 0) {
         if (req.body['father-in-certificate'] == 'No') {
           req.session.data.fatherStatus = 'completed'
-          res.redirect('/research-jan2022-proposed-changes/children/other-parent-exists')
+          res.redirect('/research-3/children/other-parent-exists')
         }
         else {
-          res.redirect('/research-jan2022-proposed-changes/children/father-name')
+          res.redirect('/research-3/children/father-name')
         }
       }
       else {
-          res.render('.//research-jan2022-proposed-changes/children/father-in-certificate', { errors: errors })
+          res.render('.//research-3/children/father-in-certificate', { errors: errors })
       }
     }
     else {
-      res.redirect('/research-jan2022-proposed-changes/task-list')
+      res.redirect('/research-3/task-list')
     }
   })
 
 
-  router.post('/research-jan2022-proposed-changes/children/father-name', function(req, res) {
+  router.post('/research-3/children/father-name', function(req, res) {
     var errors = []
     if (req.body['father-first-names'] === '') {
       errors.push({
@@ -1614,19 +1614,19 @@ router.post('/research-jan2022-proposed-changes/eligibility/under-18', function(
     if (req.body['submit-button'] === 'save-and-continue') {
       if (errors.length === 0) {
         req.session.data.fatherStatus = 'in progress'
-        res.redirect('/research-jan2022-proposed-changes/children/father-alive')
+        res.redirect('/research-3/children/father-alive')
       }
       else {
-        res.render('.//research-jan2022-proposed-changes/children/father-name', { errors: errors })
+        res.render('.//research-3/children/father-name', { errors: errors })
       }
     }
     else {
-      res.redirect('/research-jan2022-proposed-changes/task-list')
+      res.redirect('/research-3/task-list')
     }
   })
 
 
-  router.post('/research-jan2022-proposed-changes/children/father-alive', function(req, res) {
+  router.post('/research-3/children/father-alive', function(req, res) {
     // console.log("father alive: ", req.body['father-alive'])
     var errors = []
     if (req.body['father-alive'] === undefined) {
@@ -1646,24 +1646,24 @@ router.post('/research-jan2022-proposed-changes/eligibility/under-18', function(
     if (req.body['submit-button'] === 'save-and-continue') {
       if (errors.length === 0) {
         if (req.body['father-alive'] === 'Yes') {
-          res.redirect('/research-jan2022-proposed-changes/children/father-nationality')
+          res.redirect('/research-3/children/father-nationality')
         }
         else {
           req.session.data.fatherStatus = 'completed'
-          res.redirect('/research-jan2022-proposed-changes/task-list')
+          res.redirect('/research-3/task-list')
         }
       }
       else {
-        res.render('.//research-jan2022-proposed-changes/children/father-alive', { errors: errors })
+        res.render('.//research-3/children/father-alive', { errors: errors })
       }
     }
     else {
-        res.redirect('/research-jan2022-proposed-changes/task-list')
+        res.redirect('/research-3/task-list')
     }
   })
 
 
-  router.post('/research-jan2022-proposed-changes/children/father-nationality', function(req, res) {
+  router.post('/research-3/children/father-nationality', function(req, res) {
     var errors = []
 
     if (req.body['father-british'] === undefined && req.body['father-irish'] === undefined && req.body['father-other'] === undefined && req.body['father-unsure'] === undefined) {
@@ -1692,28 +1692,28 @@ router.post('/research-jan2022-proposed-changes/eligibility/under-18', function(
     if (req.body['submit-button'] === 'save-and-continue') {
       if (errors.length === 0) {
         req.session.data.fatherNationalities[count] = req.body['father-different-country']
-        res.redirect('/research-jan2022-proposed-changes/children/father-occupation')
+        res.redirect('/research-3/children/father-occupation')
       }
       else {
-        res.render('.//research-jan2022-proposed-changes/children/father-nationality', { errors: errors })
+        res.render('.//research-3/children/father-nationality', { errors: errors })
       }
     }
     else if (req.body['submit-button'] === 'save-as-draft') {
-      res.redirect('/research-jan2022-proposed-changes/task-list')
+      res.redirect('/research-3/task-list')
     }
     else if (req.body['submit-button'] === 'add' && req.body['father-different-country'] !== '') {
       req.session.data.fatherNationalities[count] = req.body['father-different-country']
       req.session.data.fatherNationalityId[count] = count
       req.session.data.fatherNationalityCount = count + 1
-      res.redirect('/research-jan2022-proposed-changes/children/father-nationality')
+      res.redirect('/research-3/children/father-nationality')
     }
     else {
-      res.render('.//research-jan2022-proposed-changes/children/father-nationality', { errors: errors })
+      res.render('.//research-3/children/father-nationality', { errors: errors })
     }
   })
 
 
-  router.post('/research-jan2022-proposed-changes/children/father-occupation', function(req, res) {
+  router.post('/research-3/children/father-occupation', function(req, res) {
     var errors = []
     if (req.body['father-occupation'] === '') {
       errors.push({
@@ -1724,19 +1724,19 @@ router.post('/research-jan2022-proposed-changes/eligibility/under-18', function(
 
     if (req.body['submit-button'] === 'save-and-continue') {
       if (errors.length === 0) {
-        res.redirect('/research-jan2022-proposed-changes/children/father-have-address')
+        res.redirect('/research-3/children/father-have-address')
       }
       else {
-          res.render('.//research-jan2022-proposed-changes/children/father-occupation', { errors: errors })
+          res.render('.//research-3/children/father-occupation', { errors: errors })
       }
     }
     else {
-      res.redirect('/research-jan2022-proposed-changes/task-list')
+      res.redirect('/research-3/task-list')
     }
   })
 
 
-  router.post('/research-jan2022-proposed-changes/children/father-have-address', function(req, res) {
+  router.post('/research-3/children/father-have-address', function(req, res) {
     var errors = []
     if (req.body['father-have-address'] === undefined) {
       errors.push({
@@ -1755,23 +1755,23 @@ router.post('/research-jan2022-proposed-changes/eligibility/under-18', function(
       if (errors.length === 0) {
         if (req.body['father-have-address'] == 'No') {
           req.session.data.fatherStatus = 'completed'
-          res.redirect('/research-jan2022-proposed-changes/task-list')
+          res.redirect('/research-3/task-list')
         }
         else {
-          res.redirect('/research-jan2022-proposed-changes/children/father-address-postcode')
+          res.redirect('/research-3/children/father-address-postcode')
         }
       }
       else {
-          res.render('.//research-jan2022-proposed-changes/children/father-have-address', { errors: errors })
+          res.render('.//research-3/children/father-have-address', { errors: errors })
       }
     }
     else {
-      res.redirect('/research-jan2022-proposed-changes/task-list')
+      res.redirect('/research-3/task-list')
     }
   })
 
 
-  router.post('/research-jan2022-proposed-changes/children/father-address-postcode', function(req, res) {
+  router.post('/research-3/children/father-address-postcode', function(req, res) {
     var errors = []
     if (req.body['father-postcode'] === "") {
       errors.push({
@@ -1781,19 +1781,19 @@ router.post('/research-jan2022-proposed-changes/eligibility/under-18', function(
     }
     if (req.body['submit-button'] === 'save-and-continue') {
       if (errors.length === 0) {
-        res.redirect('/research-jan2022-proposed-changes/children/father-find-address')
+        res.redirect('/research-3/children/father-find-address')
       }
       else {
-        res.render('.//research-jan2022-proposed-changes/children/father-address-postcode', { errors: errors })
+        res.render('.//research-3/children/father-address-postcode', { errors: errors })
       }
     }
     else {
-      res.redirect('/research-jan2022-proposed-changes/task-list')
+      res.redirect('/research-3/task-list')
     }
   })
 
 
-  router.post('/research-jan2022-proposed-changes/children/father-find-address', function(req, res) {
+  router.post('/research-3/children/father-find-address', function(req, res) {
     // console.log(req.body['submit-button'])
     var errors = []
     if (req.body['father-choose-address'] === 'address-found') {
@@ -1806,19 +1806,19 @@ router.post('/research-jan2022-proposed-changes/eligibility/under-18', function(
     if (req.body['submit-button'] === 'save-and-continue') {
       if (errors.length === 0) {
         req.session.data.fatherStatus = 'completed'
-        res.redirect('/research-jan2022-proposed-changes/task-list')
+        res.redirect('/research-3/task-list')
       }
       else {
-        res.render('.//research-jan2022-proposed-changes/children/father-find-address', { errors: errors })
+        res.render('.//research-3/children/father-find-address', { errors: errors })
       }
     }
     else {
-      res.redirect('/research-jan2022-proposed-changes/task-list')
+      res.redirect('/research-3/task-list')
     }
   })
 
 
-  router.post('/research-jan2022-proposed-changes/children/father-manual-address', function(req, res) {
+  router.post('/research-3/children/father-manual-address', function(req, res) {
     var errors = []
     if (req.body['father-address-line-1'] === '') {
       errors.push({
@@ -1842,18 +1842,18 @@ router.post('/research-jan2022-proposed-changes/eligibility/under-18', function(
     if (req.body['submit-button'] === 'save-and-continue') {
       if (errors.length === 0) {
         req.session.data.fatherStatus = 'completed'
-        res.redirect('/research-jan2022-proposed-changes/task-list')
+        res.redirect('/research-3/task-list')
       }
       else {
-        res.render('.//research-jan2022-proposed-changes/children/father-manual-address', { errors: errors })
+        res.render('.//research-3/children/father-manual-address', { errors: errors })
       }
     }
     else {
-      res.redirect('/research-jan2022-proposed-changes/task-list')
+      res.redirect('/research-3/task-list')
     }
   })
 
-  router.post('/research-jan2022-proposed-changes/children/father-manual-address-international', function(req, res) {
+  router.post('/research-3/children/father-manual-address-international', function(req, res) {
     var errors = []
     if (req.body['father-address-line-1'] === '') {
       errors.push({
@@ -1872,14 +1872,14 @@ router.post('/research-jan2022-proposed-changes/eligibility/under-18', function(
     if (req.body['submit-button'] === 'save-and-continue') {
       if (errors.length === 0) {
         req.session.data.fatherStatus = 'completed'
-        res.redirect('/research-jan2022-proposed-changes/task-list')
+        res.redirect('/research-3/task-list')
       }
       else {
-        res.render('.//research-jan2022-proposed-changes/children/father-manual-address-international', { errors: errors })
+        res.render('.//research-3/children/father-manual-address-international', { errors: errors })
       }
     }
     else {
-      res.redirect('/research-jan2022-proposed-changes/task-list')
+      res.redirect('/research-3/task-list')
     }
   })
 
@@ -1888,7 +1888,7 @@ router.post('/research-jan2022-proposed-changes/eligibility/under-18', function(
 
 
   // ********************** Other parent or guardian details **********************
-  router.post('/research-jan2022-proposed-changes/children/other-parent-exists', function(req, res) {
+  router.post('/research-3/children/other-parent-exists', function(req, res) {
     // console.log("father alive: ", req.body['other-parent-exists'])
     var errors = []
     if (req.body['other-parent-exists'] === undefined) {
@@ -1908,24 +1908,24 @@ router.post('/research-jan2022-proposed-changes/eligibility/under-18', function(
     if (req.body['submit-button'] === 'save-and-continue') {
       if (errors.length === 0) {
         if (req.body['other-parent-exists'] === 'Yes') {
-          res.redirect('/research-jan2022-proposed-changes/children/other-parent-name')
+          res.redirect('/research-3/children/other-parent-name')
         }
         else {
           req.session.data.otherParentStatus = 'completed'
-          res.redirect('/research-jan2022-proposed-changes/task-list')
+          res.redirect('/research-3/task-list')
         }
       }
       else {
-        res.render('.//research-jan2022-proposed-changes/children/other-parent-exists', { errors: errors })
+        res.render('.//research-3/children/other-parent-exists', { errors: errors })
       }
     }
     else {
-        res.redirect('/research-jan2022-proposed-changes/task-list')
+        res.redirect('/research-3/task-list')
     }
   })
 
 
-  router.post('/research-jan2022-proposed-changes/children/other-parent-name', function(req, res) {
+  router.post('/research-3/children/other-parent-name', function(req, res) {
     var errors = []
     if (req.body['other-parent-first-names'] === '') {
       errors.push({
@@ -1943,19 +1943,19 @@ router.post('/research-jan2022-proposed-changes/eligibility/under-18', function(
     if (req.body['submit-button'] === 'save-and-continue') {
       if (errors.length === 0) {
         req.session.data.otherParentStatus = 'in progress'
-        res.redirect('/research-jan2022-proposed-changes/children/other-parent-have-address')
+        res.redirect('/research-3/children/other-parent-have-address')
       }
       else {
-        res.render('.//research-jan2022-proposed-changes/children/other-parent-name', { errors: errors })
+        res.render('.//research-3/children/other-parent-name', { errors: errors })
       }
     }
     else {
-      res.redirect('/research-jan2022-proposed-changes/task-list')
+      res.redirect('/research-3/task-list')
     }
   })
 
 
-  router.post('/research-jan2022-proposed-changes/children/other-parent-have-address', function(req, res) {
+  router.post('/research-3/children/other-parent-have-address', function(req, res) {
     var errors = []
     if (req.body['other-parent-have-address'] === undefined) {
       errors.push({
@@ -1974,23 +1974,23 @@ router.post('/research-jan2022-proposed-changes/eligibility/under-18', function(
       if (errors.length === 0) {
         if (req.body['other-parent-have-address'] == 'No') {
           req.session.data.otherParentStatus = 'completed'
-          res.redirect('/research-jan2022-proposed-changes/task-list')
+          res.redirect('/research-3/task-list')
         }
         else {
-          res.redirect('/research-jan2022-proposed-changes/children/other-parent-address-postcode')
+          res.redirect('/research-3/children/other-parent-address-postcode')
         }
       }
       else {
-          res.render('.//research-jan2022-proposed-changes/children/other-parent-have-address', { errors: errors })
+          res.render('.//research-3/children/other-parent-have-address', { errors: errors })
       }
     }
     else {
-      res.redirect('/research-jan2022-proposed-changes/task-list')
+      res.redirect('/research-3/task-list')
     }
   })
 
 
-  router.post('/research-jan2022-proposed-changes/children/other-parent-address-postcode', function(req, res) {
+  router.post('/research-3/children/other-parent-address-postcode', function(req, res) {
     var errors = []
     if (req.body['other-parent-postcode'] === "") {
       errors.push({
@@ -2000,19 +2000,19 @@ router.post('/research-jan2022-proposed-changes/eligibility/under-18', function(
     }
     if (req.body['submit-button'] === 'save-and-continue') {
       if (errors.length === 0) {
-        res.redirect('/research-jan2022-proposed-changes/children/other-parent-find-address')
+        res.redirect('/research-3/children/other-parent-find-address')
       }
       else {
-        res.render('.//research-jan2022-proposed-changes/children/other-parent-address-postcode', { errors: errors })
+        res.render('.//research-3/children/other-parent-address-postcode', { errors: errors })
       }
     }
     else {
-      res.redirect('/research-jan2022-proposed-changes/task-list')
+      res.redirect('/research-3/task-list')
     }
   })
 
 
-  router.post('/research-jan2022-proposed-changes/children/other-parent-find-address', function(req, res) {
+  router.post('/research-3/children/other-parent-find-address', function(req, res) {
     // console.log(req.body['submit-button'])
     var errors = []
     if (req.body['other-parent-choose-address'] === 'address-found') {
@@ -2025,19 +2025,19 @@ router.post('/research-jan2022-proposed-changes/eligibility/under-18', function(
     if (req.body['submit-button'] === 'save-and-continue') {
       if (errors.length === 0) {
         req.session.data.otherParentStatus = 'completed'
-        res.redirect('/research-jan2022-proposed-changes/task-list')
+        res.redirect('/research-3/task-list')
       }
       else {
-        res.render('.//research-jan2022-proposed-changes/children/other-parent-find-address', { errors: errors })
+        res.render('.//research-3/children/other-parent-find-address', { errors: errors })
       }
     }
     else {
-      res.redirect('/research-jan2022-proposed-changes/task-list')
+      res.redirect('/research-3/task-list')
     }
   })
 
 
-  router.post('/research-jan2022-proposed-changes/children/other-parent-manual-address', function(req, res) {
+  router.post('/research-3/children/other-parent-manual-address', function(req, res) {
     var errors = []
     if (req.body['other-parent-address-line-1'] === '') {
       errors.push({
@@ -2061,19 +2061,19 @@ router.post('/research-jan2022-proposed-changes/eligibility/under-18', function(
     if (req.body['submit-button'] === 'save-and-continue') {
       if (errors.length === 0) {
         req.session.data.otherParentStatus = 'completed'
-        res.redirect('/research-jan2022-proposed-changes/task-list')
+        res.redirect('/research-3/task-list')
       }
       else {
-        res.render('.//research-jan2022-proposed-changes/children/other-parent-manual-address', { errors: errors })
+        res.render('.//research-3/children/other-parent-manual-address', { errors: errors })
       }
     }
     else {
-      res.redirect('/research-jan2022-proposed-changes/task-list')
+      res.redirect('/research-3/task-list')
     }
   })
 
 
-  router.post('/research-jan2022-proposed-changes/children/other-parent-manual-address-international', function(req, res) {
+  router.post('/research-3/children/other-parent-manual-address-international', function(req, res) {
     var errors = []
     if (req.body['other-parent-address-line-1'] === '') {
       errors.push({
@@ -2092,14 +2092,14 @@ router.post('/research-jan2022-proposed-changes/eligibility/under-18', function(
     if (req.body['submit-button'] === 'save-and-continue') {
       if (errors.length === 0) {
         req.session.data.otherParentStatus = 'completed'
-        res.redirect('/research-jan2022-proposed-changes/task-list')
+        res.redirect('/research-3/task-list')
       }
       else {
-        res.render('.//research-jan2022-proposed-changes/children/other-parent-manual-address-international', { errors: errors })
+        res.render('.//research-3/children/other-parent-manual-address-international', { errors: errors })
       }
     }
     else {
-      res.redirect('/research-jan2022-proposed-changes/task-list')
+      res.redirect('/research-3/task-list')
     }
   })
 
@@ -2113,7 +2113,7 @@ router.post('/research-jan2022-proposed-changes/eligibility/under-18', function(
 
 
   // ************************************* Placement and court orders ************************************* //
-  router.post('/research-jan2022-proposed-changes/children/orders-placement-case-number', function(req, res) {
+  router.post('/research-3/children/orders-placement-case-number', function(req, res) {
     var errors = []
     if (req.body['placement-case-number'] === '') {
       errors.push({
@@ -2133,25 +2133,25 @@ router.post('/research-jan2022-proposed-changes/eligibility/under-18', function(
         req.session.data.childOrderNumber[count] = req.body['placement-case-number']
         req.session.data.childOrderCompleted[count] = "No"
         req.session.data.childOrderInProgress = "Yes"
-        res.redirect('/research-jan2022-proposed-changes/children/orders-placement-court')
+        res.redirect('/research-3/children/orders-placement-court')
       }
       else {
-        res.render('.//research-jan2022-proposed-changes/children/orders-placement-case-number', { errors: errors })
+        res.render('.//research-3/children/orders-placement-case-number', { errors: errors })
       }
     }
     else {
       if (req.body['placement-case-number'] === '') {
-        res.redirect('/research-jan2022-proposed-changes/task-list')
+        res.redirect('/research-3/task-list')
       }
       else {
         req.session.data.placementStatus = 'in progress'
-        res.redirect('/research-jan2022-proposed-changes/task-list')
+        res.redirect('/research-3/task-list')
       }
     }
   })
 
 
-  router.post('/research-jan2022-proposed-changes/children/orders-placement-court', function(req, res) {
+  router.post('/research-3/children/orders-placement-court', function(req, res) {
     var errors = []
     if (req.body['placement-court-name'] === '') {
       errors.push({
@@ -2166,25 +2166,25 @@ router.post('/research-jan2022-proposed-changes/eligibility/under-18', function(
       if (errors.length === 0) {
         req.session.data.childOrderCourt[count] = req.body['placement-court-name']
         req.session.data.childOrderCompleted[count] = "No"
-        res.redirect('/research-jan2022-proposed-changes/children/orders-placement-date')
+        res.redirect('/research-3/children/orders-placement-date')
       }
       else {
-        res.render('.//research-jan2022-proposed-changes/children/orders-placement-court', { errors: errors })
+        res.render('.//research-3/children/orders-placement-court', { errors: errors })
       }
     }
     else {
       if (req.body['placement-court-name'] === '') {
-        res.redirect('/research-jan2022-proposed-changes/task-list')
+        res.redirect('/research-3/task-list')
       }
       else {
         req.session.data.placementStatus = 'in progress'
-        res.redirect('/research-jan2022-proposed-changes/task-list')
+        res.redirect('/research-3/task-list')
       }
     }
   })
 
 
-  router.post('/research-jan2022-proposed-changes/children/orders-placement-date', function(req, res) {
+  router.post('/research-3/children/orders-placement-date', function(req, res) {
     var errors = []
     if (req.body['placement-day'] === '' || req.body['placement-month'] === '' || req.body['placement-year'] === '') {
       errors.push({
@@ -2202,20 +2202,20 @@ router.post('/research-jan2022-proposed-changes/eligibility/under-18', function(
         req.session.data.childOrderMonth[count] = req.body['placement-month']
         req.session.data.childOrderYear[count] = req.body['placement-year']
         req.session.data.childOrderCompleted[count] = "Yes"
-        res.redirect('/research-jan2022-proposed-changes/children/orders-summary')
+        res.redirect('/research-3/children/orders-summary')
       }
       else {
-        res.render('.//research-jan2022-proposed-changes/children/orders-placement-date', { errors: errors })
+        res.render('.//research-3/children/orders-placement-date', { errors: errors })
       }
     }
     else {
-      res.redirect('/research-jan2022-proposed-changes/task-list')
+      res.redirect('/research-3/task-list')
     }
     // console.log("Month: ", req.session.data.childOrderMonth[count])
   })
 
 
-  router.post('/research-jan2022-proposed-changes/children/orders-summary', function(req, res) {
+  router.post('/research-3/children/orders-summary', function(req, res) {
     var errors = []
     if (req.body['add-another'] === undefined) {
       errors.push({
@@ -2225,12 +2225,12 @@ router.post('/research-jan2022-proposed-changes/eligibility/under-18', function(
     }
 
     if (req.body['submit-button'] === 'continue') {
-      res.redirect('/research-jan2022-proposed-changes/children/orders-summary')
+      res.redirect('/research-3/children/orders-summary')
     }
     else if (req.body['submit-button'] === 'save-and-continue') {
       if (errors.length === 0) {
         if (req.body['add-another'] === 'Yes') {
-          res.redirect('/research-jan2022-proposed-changes/children/orders-order-type')
+          res.redirect('/research-3/children/orders-order-type')
         }
         else {
           if (req.session.data.childOrderIncomplete === 0) {
@@ -2239,20 +2239,20 @@ router.post('/research-jan2022-proposed-changes/eligibility/under-18', function(
           else {
             req.session.data.placementStatus = 'in progress'
           }
-          res.redirect('/research-jan2022-proposed-changes/task-list')
+          res.redirect('/research-3/task-list')
         }
       }
       else {
-        res.render('.//research-jan2022-proposed-changes/children/orders-summary', { errors: errors })
+        res.render('.//research-3/children/orders-summary', { errors: errors })
       }
     }
     else {
-        res.redirect('/research-jan2022-proposed-changes/task-list')
+        res.redirect('/research-3/task-list')
     }
   })
 
 
-  router.post('/research-jan2022-proposed-changes/children/orders-order-type', function(req, res) {
+  router.post('/research-3/children/orders-order-type', function(req, res) {
     var errors = []
     if (req.body['order-type'] === '') {
       errors.push({
@@ -2270,19 +2270,19 @@ router.post('/research-jan2022-proposed-changes/eligibility/under-18', function(
         req.session.data.childOrderId[count] = count
         req.session.data.childOrderType[count] = req.body['order-type']
         req.session.data.childOrderCompleted[count] = "No"
-        res.redirect('/research-jan2022-proposed-changes/children/orders-order-case-number')
+        res.redirect('/research-3/children/orders-order-case-number')
       }
       else {
-        res.render('.//research-jan2022-proposed-changes/children/orders-order-type', { errors: errors })
+        res.render('.//research-3/children/orders-order-type', { errors: errors })
       }
     }
     else {
-      res.redirect('/research-jan2022-proposed-changes/task-list')
+      res.redirect('/research-3/task-list')
     }
   })
 
 
-  router.post('/research-jan2022-proposed-changes/children/orders-order-case-number', function(req, res) {
+  router.post('/research-3/children/orders-order-case-number', function(req, res) {
     var errors = []
     if (req.body['order-case-number'] === '') {
       errors.push({
@@ -2296,19 +2296,19 @@ router.post('/research-jan2022-proposed-changes/eligibility/under-18', function(
     if (req.body['submit-button'] === 'save-and-continue') {
       if (errors.length === 0) {
         req.session.data.childOrderNumber[count] = req.body['order-case-number']
-        res.redirect('/research-jan2022-proposed-changes/children/orders-order-court')
+        res.redirect('/research-3/children/orders-order-court')
       }
       else {
-        res.render('.//research-jan2022-proposed-changes/children/orders-order-case-number', { errors: errors })
+        res.render('.//research-3/children/orders-order-case-number', { errors: errors })
       }
     }
     else {
-      res.redirect('/research-jan2022-proposed-changes/task-list')
+      res.redirect('/research-3/task-list')
     }
   })
 
 
-  router.post('/research-jan2022-proposed-changes/children/orders-order-court', function(req, res) {
+  router.post('/research-3/children/orders-order-court', function(req, res) {
     var errors = []
     if (req.body['order-court-name'] === '') {
       errors.push({
@@ -2322,19 +2322,19 @@ router.post('/research-jan2022-proposed-changes/eligibility/under-18', function(
     if (req.body['submit-button'] === 'save-and-continue') {
       if (errors.length === 0) {
         req.session.data.childOrderCourt[count] = req.body['order-court-name']
-        res.redirect('/research-jan2022-proposed-changes/children/orders-order-date')
+        res.redirect('/research-3/children/orders-order-date')
       }
       else {
-        res.render('.//research-jan2022-proposed-changes/children/orders-order-court', { errors: errors })
+        res.render('.//research-3/children/orders-order-court', { errors: errors })
       }
     }
     else {
-      res.redirect('/research-jan2022-proposed-changes/task-list')
+      res.redirect('/research-3/task-list')
     }
   })
 
 
-  router.post('/research-jan2022-proposed-changes/children/orders-order-date', function(req, res) {
+  router.post('/research-3/children/orders-order-date', function(req, res) {
     var errors = []
     if (req.body['order-day'] === '' || req.body['order-month'] === '' || req.body['order-year'] === '') {
       errors.push({
@@ -2351,19 +2351,19 @@ router.post('/research-jan2022-proposed-changes/eligibility/under-18', function(
         req.session.data.childOrderMonth[count] = req.body['order-month']
         req.session.data.childOrderYear[count] = req.body['order-year']
         req.session.data.childOrderCompleted[count] = "Yes"
-        res.redirect('/research-jan2022-proposed-changes/children/orders-summary')
+        res.redirect('/research-3/children/orders-summary')
       }
       else {
-        res.render('.//research-jan2022-proposed-changes/children/orders-order-date', { errors: errors })
+        res.render('.//research-3/children/orders-order-date', { errors: errors })
       }
     }
     else {
-      res.redirect('/research-jan2022-proposed-changes/task-list')
+      res.redirect('/research-3/task-list')
     }
   })
 
 
-  router.post('/research-jan2022-proposed-changes/children/orders-remove-court-order', function(req, res) {
+  router.post('/research-3/children/orders-remove-court-order', function(req, res) {
     var occ = 0
     var errors = []
     if (req.body['child-remove-court-order'] === undefined) {
@@ -2394,10 +2394,10 @@ router.post('/research-jan2022-proposed-changes/eligibility/under-18', function(
       console.log("child first names orders: ", req.session.data.childFirstNames)
       console.log("child order count: ", req.session.data.childOrderCount)
 
-      res.redirect('/research-jan2022-proposed-changes/children/orders-summary')
+      res.redirect('/research-3/children/orders-summary')
     }
     else {
-      res.render('.//research-jan2022-proposed-changes/children/orders-remove-order-court', { errors: errors })
+      res.render('.//research-3/children/orders-remove-order-court', { errors: errors })
     }
   })
 
@@ -2405,7 +2405,7 @@ router.post('/research-jan2022-proposed-changes/eligibility/under-18', function(
 
 
   // ********************** Sibling details **********************
-  router.post('/research-jan2022-proposed-changes/children/sibling-exists', function(req, res) {
+  router.post('/research-3/children/sibling-exists', function(req, res) {
     // console.log("father alive: ", req.body['sibling-exists'])
     var errors = []
     if (req.body['sibling-exists'] === undefined) {
@@ -2425,24 +2425,24 @@ router.post('/research-jan2022-proposed-changes/eligibility/under-18', function(
       if (errors.length === 0) {
         if (req.body['sibling-exists'] === 'yes') {
           req.session.data.siblingStatus = 'in progress'
-          res.redirect('/research-jan2022-proposed-changes/children/sibling-court-order-exists')
+          res.redirect('/research-3/children/sibling-court-order-exists')
         }
         else {
           req.session.data.siblingStatus = 'completed'
-          res.redirect('/research-jan2022-proposed-changes/task-list')
+          res.redirect('/research-3/task-list')
         }
       }
       else {
-        res.render('.//research-jan2022-proposed-changes/children/sibling-exists', { errors: errors })
+        res.render('.//research-3/children/sibling-exists', { errors: errors })
       }
     }
     else {
-        res.redirect('/research-jan2022-proposed-changes/task-list')
+        res.redirect('/research-3/task-list')
     }
   })
 
 
-  router.post('/research-jan2022-proposed-changes/children/sibling-court-order-exists', function(req, res) {
+  router.post('/research-3/children/sibling-court-order-exists', function(req, res) {
     // console.log("father alive: ", req.body['sibling-court-order-exists'])
     var errors = []
     if (req.body['sibling-court-order-exists'] === undefined) {
@@ -2461,24 +2461,24 @@ router.post('/research-jan2022-proposed-changes/eligibility/under-18', function(
     if (req.body['submit-button'] === 'save-and-continue') {
       if (errors.length === 0) {
         if (req.body['sibling-court-order-exists'] === 'yes') {
-          res.redirect('/research-jan2022-proposed-changes/children/sibling-name')
+          res.redirect('/research-3/children/sibling-name')
         }
         else {
           req.session.data.siblingStatus = 'completed'
-          res.redirect('/research-jan2022-proposed-changes/task-list')
+          res.redirect('/research-3/task-list')
         }
       }
       else {
-        res.render('.//research-jan2022-proposed-changes/children/sibling-court-order-exists', { errors: errors })
+        res.render('.//research-3/children/sibling-court-order-exists', { errors: errors })
       }
     }
     else {
-        res.redirect('/research-jan2022-proposed-changes/task-list')
+        res.redirect('/research-3/task-list')
     }
   })
 
 
-  router.post('/research-jan2022-proposed-changes/children/sibling-name', function(req, res) {
+  router.post('/research-3/children/sibling-name', function(req, res) {
     var errors = []
     if (req.body['sibling-first-names'] === '') {
       errors.push({
@@ -2504,19 +2504,19 @@ router.post('/research-jan2022-proposed-changes/eligibility/under-18', function(
         req.session.data.siblingFirstNames[count] = req.body['sibling-first-names']
         req.session.data.siblingLastNames[count] = req.body['sibling-last-names']
         req.session.data.numberOfSiblings = 1
-        res.redirect('/research-jan2022-proposed-changes/children/sibling-order-type')
+        res.redirect('/research-3/children/sibling-order-type')
       }
       else {
-        res.render('.//research-jan2022-proposed-changes/children/sibling-name', { errors: errors })
+        res.render('.//research-3/children/sibling-name', { errors: errors })
       }
     }
     else {
-      res.redirect('/research-jan2022-proposed-changes/task-list')
+      res.redirect('/research-3/task-list')
     }
   })
 
 
-  router.post('/research-jan2022-proposed-changes/children/sibling-change-name', function(req, res) {
+  router.post('/research-3/children/sibling-change-name', function(req, res) {
     var errors = []
     if (req.body['sibling-first-names'] === '') {
       errors.push({
@@ -2557,15 +2557,15 @@ router.post('/research-jan2022-proposed-changes/eligibility/under-18', function(
         }
       }
       console.log(req.session.data.siblingFirstNames)
-      res.redirect('/research-jan2022-proposed-changes/children/sibling-summary')
+      res.redirect('/research-3/children/sibling-summary')
     }
     else {
-      res.render('.//research-jan2022-proposed-changes/children/sibling-change-name', { errors: errors })
+      res.render('.//research-3/children/sibling-change-name', { errors: errors })
     }
   })
 
 
-  router.post('/research-jan2022-proposed-changes/children/sibling-order-type', function(req, res) {
+  router.post('/research-3/children/sibling-order-type', function(req, res) {
     var errors = []
     if (req.body['sibling-order-type'] === '') {
       errors.push({
@@ -2587,19 +2587,19 @@ router.post('/research-jan2022-proposed-changes/eligibility/under-18', function(
         req.session.data.siblingOrderType[count] = req.body['sibling-order-type']
         req.session.data.siblingOrderCompleted[count] = "No"
         req.session.data.siblingOrderCount++
-        res.redirect('/research-jan2022-proposed-changes/children/sibling-order-case-number')
+        res.redirect('/research-3/children/sibling-order-case-number')
       }
       else {
-        res.render('.//research-jan2022-proposed-changes/children/sibling-order-type', { errors: errors })
+        res.render('.//research-3/children/sibling-order-type', { errors: errors })
       }
     }
     else {
-      res.redirect('/research-jan2022-proposed-changes/task-list')
+      res.redirect('/research-3/task-list')
     }
   })
 
 
-  router.post('/research-jan2022-proposed-changes/children/sibling-change-order-type', function(req, res) {
+  router.post('/research-3/children/sibling-change-order-type', function(req, res) {
     var errors = []
     if (req.body['sibling-new-order-type'] === '') {
       errors.push({
@@ -2612,16 +2612,16 @@ router.post('/research-jan2022-proposed-changes/eligibility/under-18', function(
 
     if (errors.length === 0) {
       req.session.data.siblingOrderType[req.body['sibling-id']] = req.body['sibling-new-order-type']
-      res.redirect('/research-jan2022-proposed-changes/children/sibling-check-your-answers')
+      res.redirect('/research-3/children/sibling-check-your-answers')
     }
     else {
-      res.render('.//research-jan2022-proposed-changes/children/sibling-change-order-type', { errors: errors })
+      res.render('.//research-3/children/sibling-change-order-type', { errors: errors })
     }
   })
 
 
 
-  router.post('/research-jan2022-proposed-changes/children/sibling-order-case-number', function(req, res) {
+  router.post('/research-3/children/sibling-order-case-number', function(req, res) {
     var errors = []
     if (req.body['sibling-order-case-number'] === '') {
       errors.push({
@@ -2641,19 +2641,19 @@ router.post('/research-jan2022-proposed-changes/eligibility/under-18', function(
     if (req.body['submit-button'] === 'save-and-continue') {
       if (errors.length === 0) {
         req.session.data.siblingOrderNumber[count] = req.body['sibling-order-case-number']
-        res.redirect('/research-jan2022-proposed-changes/children/sibling-order-court')
+        res.redirect('/research-3/children/sibling-order-court')
       }
       else {
-        res.render('.//research-jan2022-proposed-changes/children/sibling-order-case-number', { errors: errors })
+        res.render('.//research-3/children/sibling-order-case-number', { errors: errors })
       }
     }
     else {
-      res.redirect('/research-jan2022-proposed-changes/task-list')
+      res.redirect('/research-3/task-list')
     }
   })
 
 
-  router.post('/research-jan2022-proposed-changes/children/sibling-change-order-case-number', function(req, res) {
+  router.post('/research-3/children/sibling-change-order-case-number', function(req, res) {
     var errors = []
     if (req.body['sibling-new-case-number'] === '') {
       errors.push({
@@ -2666,15 +2666,15 @@ router.post('/research-jan2022-proposed-changes/eligibility/under-18', function(
 
     if (errors.length === 0) {
       req.session.data.siblingOrderNumber[req.body['sibling-id']] = req.body['sibling-new-case-number']
-      res.redirect('/research-jan2022-proposed-changes/children/sibling-check-your-answers')
+      res.redirect('/research-3/children/sibling-check-your-answers')
     }
     else {
-      res.render('.//research-jan2022-proposed-changes/children/sibling-change-case-number', { errors: errors })
+      res.render('.//research-3/children/sibling-change-case-number', { errors: errors })
     }
   })
 
 
-  router.post('/research-jan2022-proposed-changes/children/sibling-order-court', function(req, res) {
+  router.post('/research-3/children/sibling-order-court', function(req, res) {
     var errors = []
     if (req.body['sibling-order-court-name'] === '') {
       errors.push({
@@ -2694,19 +2694,19 @@ router.post('/research-jan2022-proposed-changes/eligibility/under-18', function(
     if (req.body['submit-button'] === 'save-and-continue') {
       if (errors.length === 0) {
         req.session.data.siblingOrderCourt[count] = req.body['sibling-order-court-name']
-        res.redirect('/research-jan2022-proposed-changes/children/sibling-order-date')
+        res.redirect('/research-3/children/sibling-order-date')
       }
       else {
-        res.render('.//research-jan2022-proposed-changes/children/sibling-order-court', { errors: errors })
+        res.render('.//research-3/children/sibling-order-court', { errors: errors })
       }
     }
     else {
-      res.redirect('/research-jan2022-proposed-changes/task-list')
+      res.redirect('/research-3/task-list')
     }
   })
 
 
-  router.post('/research-jan2022-proposed-changes/children/sibling-change-order-court', function(req, res) {
+  router.post('/research-3/children/sibling-change-order-court', function(req, res) {
     var errors = []
     if (req.body['sibling-new-court-name'] === '') {
       errors.push({
@@ -2719,15 +2719,15 @@ router.post('/research-jan2022-proposed-changes/eligibility/under-18', function(
 
     if (errors.length === 0) {
       req.session.data.siblingOrderCourt[req.body['sibling-id']] = req.body['sibling-new-court-name']
-      res.redirect('/research-jan2022-proposed-changes/children/sibling-check-your-answers')
+      res.redirect('/research-3/children/sibling-check-your-answers')
     }
     else {
-      res.render('.//research-jan2022-proposed-changes/children/sibling-change-court', { errors: errors })
+      res.render('.//research-3/children/sibling-change-court', { errors: errors })
     }
   })
 
 
-  router.post('/research-jan2022-proposed-changes/children/sibling-order-date', function(req, res) {
+  router.post('/research-3/children/sibling-order-date', function(req, res) {
     var errors = []
     if (req.body['sibling-day'] === '' || req.body['sibling-month'] === '' || req.body['sibling-year'] === '') {
       errors.push({
@@ -2751,21 +2751,21 @@ router.post('/research-jan2022-proposed-changes/eligibility/under-18', function(
         req.session.data.siblingOrderMonth[count] = req.body['sibling-month']
         req.session.data.siblingOrderYear[count] = req.body['sibling-year']
         req.session.data.siblingOrderCompleted[count] = "Yes"
-        res.redirect('/research-jan2022-proposed-changes/children/sibling-summary')
+        res.redirect('/research-3/children/sibling-summary')
 //        req.session.data.siblingOrderCount = req.session.data.siblingOrderCount + 1
 
       }
       else {
-        res.render('.//research-jan2022-proposed-changes/children/sibling-order-date', { errors: errors })
+        res.render('.//research-3/children/sibling-order-date', { errors: errors })
       }
     }
     else {
-      res.redirect('/research-jan2022-proposed-changes/task-list')
+      res.redirect('/research-3/task-list')
     }
   })
 
 
-  router.post('/research-jan2022-proposed-changes/children/sibling-change-order-date', function(req, res) {
+  router.post('/research-3/children/sibling-change-order-date', function(req, res) {
     var errors = []
     if (req.body['sibling-day'] === '' || req.body['sibling-month'] === '' || req.body['sibling-year'] === '') {
       errors.push({
@@ -2778,15 +2778,15 @@ router.post('/research-jan2022-proposed-changes/eligibility/under-18', function(
       req.session.data.siblingOrderDay[req.body['sibling-id']] = req.body['sibling-day']
       req.session.data.siblingOrderMonth[req.body['sibling-id']] = req.body['sibling-month']
       req.session.data.siblingOrderYear[req.body['sibling-id']] = req.body['sibling-year']
-      res.redirect('/research-jan2022-proposed-changes/children/sibling-check-your-answers')
+      res.redirect('/research-3/children/sibling-check-your-answers')
     }
     else {
-      res.render('.//research-jan2022-proposed-changes/children/sibling-change-order-date', { errors: errors })
+      res.render('.//research-3/children/sibling-change-order-date', { errors: errors })
     }
   })
 
 
-  router.post('/research-jan2022-proposed-changes/children/sibling-summary', function(req, res) {
+  router.post('/research-3/children/sibling-summary', function(req, res) {
     var errors = []
     if (req.body['sibling-add-another'] === undefined) {
       errors.push({
@@ -2796,12 +2796,12 @@ router.post('/research-jan2022-proposed-changes/eligibility/under-18', function(
     }
 
     if (req.body['submit-button'] === 'continue') {
-      res.redirect('/research-jan2022-proposed-changes/children/sibling-summary')
+      res.redirect('/research-3/children/sibling-summary')
     }
     else if (req.body['submit-button'] === 'save-and-continue') {
       if (errors.length === 0) {
         if (req.body['sibling-add-another'] === 'Yes') {
-          res.redirect('/research-jan2022-proposed-changes/children/sibling-choose-sibling')
+          res.redirect('/research-3/children/sibling-choose-sibling')
         }
         else {
           if (req.session.data.siblingOrderIncomplete === 0) {
@@ -2810,21 +2810,21 @@ router.post('/research-jan2022-proposed-changes/eligibility/under-18', function(
           else {
             req.session.data.siblingStatus = 'in progress'
           }
-          res.redirect('/research-jan2022-proposed-changes/task-list')
+          res.redirect('/research-3/task-list')
         }
       }
       else {
-        res.render('.//research-jan2022-proposed-changes/children/sibling-summary', { errors: errors })
+        res.render('.//research-3/children/sibling-summary', { errors: errors })
       }
     }
     else {
-        res.redirect('/research-jan2022-proposed-changes/task-list')
+        res.redirect('/research-3/task-list')
     }
   })
 
 
 
-  router.post('/research-jan2022-proposed-changes/children/sibling-choose-sibling', function(req, res) {
+  router.post('/research-3/children/sibling-choose-sibling', function(req, res) {
     var errors = []
     if (req.body['what-sibling'] === undefined) {
       errors.push({
@@ -2869,14 +2869,14 @@ router.post('/research-jan2022-proposed-changes/eligibility/under-18', function(
         }
         req.session.data.siblingOrderCompleted[count] = "No"
         req.session.data.siblingOrderId[count] = count
-        res.redirect('/research-jan2022-proposed-changes/children/sibling-order-type')
+        res.redirect('/research-3/children/sibling-order-type')
       }
       else {
-        res.render('.//research-jan2022-proposed-changes/children/sibling-choose-sibling', { errors: errors })
+        res.render('.//research-3/children/sibling-choose-sibling', { errors: errors })
       }
     }
     else {
-      res.redirect('/research-jan2022-proposed-changes/task-list')
+      res.redirect('/research-3/task-list')
     }
     console.log("Sibling array: ", req.session.data.uniqueSiblingFirstNames)
     console.log("siblingFirstNames array: ", req.session.data.siblingFirstNames)
@@ -2890,7 +2890,7 @@ router.post('/research-jan2022-proposed-changes/eligibility/under-18', function(
 
 
 
-  router.post('/research-jan2022-proposed-changes/children/sibling-remove-court-order', function(req, res) {
+  router.post('/research-3/children/sibling-remove-court-order', function(req, res) {
     var occ = 0
     var errors = []
     if (req.body['remove-court-order'] === undefined) {
@@ -2970,14 +2970,14 @@ router.post('/research-jan2022-proposed-changes/eligibility/under-18', function(
       // console.log(req.session.data.siblingOrderNumber)
       // console.log(req.session.data.siblingOrderCourt)
       if (req.session.data.siblingOrderCount > 0) {
-        res.redirect('/research-jan2022-proposed-changes/children/sibling-summary')
+        res.redirect('/research-3/children/sibling-summary')
       }
       else {
-        res.redirect('/research-jan2022-proposed-changes/children/sibling-court-order-exists')
+        res.redirect('/research-3/children/sibling-court-order-exists')
       }
     }
     else {
-      res.render('.//research-jan2022-proposed-changes/children/sibling-remove-order-court', { errors: errors })
+      res.render('.//research-3/children/sibling-remove-order-court', { errors: errors })
     }
   })
 
@@ -2990,7 +2990,7 @@ router.post('/research-jan2022-proposed-changes/eligibility/under-18', function(
 // ************************************************************************************************************************************
 
   // ********************** Uploads  **********************
-  router.post('/research-jan2022-proposed-changes/upload/applicants-documents-upload', function(req, res) {
+  router.post('/research-3/upload/applicants-documents-upload', function(req, res) {
     // var errors = []
     // if (req.body['sibling-new-court-name'] === '') {
     //   errors.push({
@@ -3002,15 +3002,15 @@ router.post('/research-jan2022-proposed-changes/eligibility/under-18', function(
 //    if (errors.length === 0) {
   if (req.body['submit-button'] === 'save-and-continue') {
       req.session.data.applicantsUpload = 1
-      res.redirect('/research-jan2022-proposed-changes/task-list')
+      res.redirect('/research-3/task-list')
     }
     else {
-      res.redirect('/research-jan2022-proposed-changes/task-list')
+      res.redirect('/research-3/task-list')
     }
   })
 
 
-  router.post('/research-jan2022-proposed-changes/upload/child-documents-upload', function(req, res) {
+  router.post('/research-3/upload/child-documents-upload', function(req, res) {
     // var errors = []
     // if (req.body['sibling-new-court-name'] === '') {
     //   errors.push({
@@ -3022,10 +3022,10 @@ router.post('/research-jan2022-proposed-changes/eligibility/under-18', function(
 //    if (errors.length === 0) {
   if (req.body['submit-button'] === 'save-and-continue') {
       req.session.data.childUpload = 1
-      res.redirect('/research-jan2022-proposed-changes/task-list')
+      res.redirect('/research-3/task-list')
     }
     else {
-      res.redirect('/research-jan2022-proposed-changes/task-list')
+      res.redirect('/research-3/task-list')
     }
   })
 
@@ -3039,24 +3039,24 @@ router.post('/research-jan2022-proposed-changes/eligibility/under-18', function(
 
 //**************************************** Check, Pay and Submit ************************************************************
 
-  router.post('/research-jan2022-proposed-changes/check-pay-and-submit/check-your-answers', function(req, res) {
+  router.post('/research-3/check-pay-and-submit/check-your-answers', function(req, res) {
     req.session.data.reviewStatus = 'in progress'
     if (req.body['submit-button'] === 'save-and-continue') {
-      res.redirect('/research-jan2022-proposed-changes/check-pay-and-submit/declaration')
+      res.redirect('/research-3/check-pay-and-submit/declaration')
     }
     else {
-      res.redirect('/research-jan2022-proposed-changes/task-list')
+      res.redirect('/research-3/task-list')
     }    
   })
 
 
 
 
-//    router.post('/research-jan2022-proposed-changes/check-pay-and-submit/payment', function(req, res) {
-  //    res.redirect('/research-jan2022-proposed-changes/check-pay-and-submit/confirmation')
+//    router.post('/research-3/check-pay-and-submit/payment', function(req, res) {
+  //    res.redirect('/research-3/check-pay-and-submit/confirmation')
   //      })
 
-  router.post('/research-jan2022-proposed-changes/check-pay-and-submit/declaration', function(req, res) {
+  router.post('/research-3/check-pay-and-submit/declaration', function(req, res) {
     var errors = []
     if (req.session.data.numberApplicants === '1') {
       if (req.body['statement-truth1'] == undefined) {
@@ -3098,20 +3098,20 @@ router.post('/research-jan2022-proposed-changes/eligibility/under-18', function(
     if (req.body['submit-button'] === 'save-and-continue') {
       if (errors.length === 0) {
         req.session.data.reviewStatus = 'completed'
-        res.redirect('/research-jan2022-proposed-changes/task-list')
+        res.redirect('/research-3/task-list')
       }
       else {
-        res.render('.//research-jan2022-proposed-changes/check-pay-and-submit/declaration', { errors: errors })
+        res.render('.//research-3/check-pay-and-submit/declaration', { errors: errors })
       }
     }
     else {
-      res.redirect('/research-jan2022-proposed-changes/task-list')
+      res.redirect('/research-3/task-list')
     }
   })
 
 
 
-  router.post('/research-jan2022-proposed-changes/check-pay-and-submit/need-help-with-fees-ref', function(req, res) {
+  router.post('/research-3/check-pay-and-submit/need-help-with-fees-ref', function(req, res) {
     var errors = []
     if (req.body['help-with-fees-ref'] === undefined) {
       errors.push({
@@ -3128,23 +3128,23 @@ router.post('/research-jan2022-proposed-changes/eligibility/under-18', function(
 
     if (errors.length === 0) {
       if (req.body['help-with-fees-ref'] === "yes") {
-        res.redirect('/research-jan2022-proposed-changes/check-pay-and-submit/help-with-fees-send-app')
+        res.redirect('/research-3/check-pay-and-submit/help-with-fees-send-app')
       }
       else if (req.body['help-with-fees-ref'] === "no") {
-        res.redirect('/research-jan2022-proposed-changes/check-pay-and-submit/get-hwf-reference')
+        res.redirect('/research-3/check-pay-and-submit/get-hwf-reference')
       }
       else {
         res.redirect('https://products.payments.service.gov.uk/pay/02133e4814ea416cb7a1e540b49a8545')
       }
     }
     else {
-        res.render('.//research-jan2022-proposed-changes/check-pay-and-submit/need-help-with-fees-ref', { errors: errors })
+        res.render('.//research-3/check-pay-and-submit/need-help-with-fees-ref', { errors: errors })
     }
   })
 
 
 
-  router.post('/research-jan2022-proposed-changes/check-pay-and-submit/get-hwf-reference', function(req, res) {
+  router.post('/research-3/check-pay-and-submit/get-hwf-reference', function(req, res) {
     var errors = []
     if (req.body['ref'] === '') {
       errors.push({
@@ -3154,10 +3154,10 @@ router.post('/research-jan2022-proposed-changes/eligibility/under-18', function(
     }
     if (req.body['continue'] === 'save-and-continue') {
       if (errors.length === 0) {
-        res.redirect('/research-jan2022-proposed-changes/check-pay-and-submit/help-with-fees-send-app')
+        res.redirect('/research-3/check-pay-and-submit/help-with-fees-send-app')
       }
       else {
-        res.render('.//research-jan2022-proposed-changes/check-pay-and-submit/get-hwf-reference', { errors: errors })
+        res.render('.//research-3/check-pay-and-submit/get-hwf-reference', { errors: errors })
       }
     }
 
@@ -3166,7 +3166,7 @@ router.post('/research-jan2022-proposed-changes/eligibility/under-18', function(
 
 
 
-  router.post('/research-jan2022-proposed-changes/check-pay-and-submit/help-with-fees-send-app', function(req, res) {
+  router.post('/research-3/check-pay-and-submit/help-with-fees-send-app', function(req, res) {
     var errors = []
     if (req.body['ref'] === '') {
       errors.push({
@@ -3176,25 +3176,25 @@ router.post('/research-jan2022-proposed-changes/eligibility/under-18', function(
     }
     if (req.body['submit-button'] === 'save-and-continue') {
       if (errors.length === 0) {
-        res.redirect('/research-jan2022-proposed-changes/check-pay-and-submit/confirmation')
+        res.redirect('/research-3/check-pay-and-submit/confirmation')
       }
       else {
-        res.render('.//research-jan2022-proposed-changes/check-pay-and-submit/help-with-fees-send-app', { errors: errors })
+        res.render('.//research-3/check-pay-and-submit/help-with-fees-send-app', { errors: errors })
       }
     }
     else {
-      res.redirect('/research-jan2022-proposed-changes/task-list')
+      res.redirect('/research-3/task-list')
     }
     })
 
 
-  router.post('/research-jan2022-proposed-changes/check-pay-and-submit/process-payment', function(req, res) {
-    res.redirect('/research-jan2022-proposed-changes/check-pay-and-submit/confirmation')
+  router.post('/research-3/check-pay-and-submit/process-payment', function(req, res) {
+    res.redirect('/research-3/check-pay-and-submit/confirmation')
   })
 // ***************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************
 // ************************************* Old functions not in use any more ************************************* //
 
-  // router.post('/research-jan2022-proposed-changes/children/solicitor-helping', function(req, res) {
+  // router.post('/research-3/children/solicitor-helping', function(req, res) {
   //   // console.log("Mother alive: ", req.body['solicitor-helping'])
   //   var errors = []
   //   if (req.body['solicitor-helping'] === undefined) {
@@ -3207,24 +3207,24 @@ router.post('/research-jan2022-proposed-changes/eligibility/under-18', function(
   //   if (req.body['submit-button'] === 'save-and-continue') {
   //     if (errors.length === 0) {
   //       if (req.body['solicitor-helping'] === 'yes') {
-  //         res.redirect('/research-jan2022-proposed-changes/children/solicitor-details')
+  //         res.redirect('/research-3/children/solicitor-details')
   //       }
   //       else {
   //         req.session.data.agencyStatus = 'completed'
-  //         res.redirect('/research-jan2022-proposed-changes/task-list')
+  //         res.redirect('/research-3/task-list')
   //       }
   //     }
   //     else {
-  //       res.render('.//research-jan2022-proposed-changes/children/solicitor-helping', { errors: errors })
+  //       res.render('.//research-3/children/solicitor-helping', { errors: errors })
   //     }
   //   }
   //   else {
-  //       res.redirect('/research-jan2022-proposed-changes/task-list')
+  //       res.redirect('/research-3/task-list')
   //   }
   // })
 
 
-  // router.post('/research-jan2022-proposed-changes/children/solicitor-details', function(req, res) {
+  // router.post('/research-3/children/solicitor-details', function(req, res) {
   //   var errors = []
   //   if (req.body['solicitor-company-name'] === '') {
   //     errors.push({
@@ -3254,20 +3254,20 @@ router.post('/research-jan2022-proposed-changes/eligibility/under-18', function(
   //   if (req.body['submit-button'] === 'save-and-continue') {
   //     if (errors.length === 0) {
   //       req.session.data.agencyStatus = 'completed'
-  //       res.redirect('/research-jan2022-proposed-changes/task-list')
+  //       res.redirect('/research-3/task-list')
   //     }
   //     else {
-  //       res.render('.//research-jan2022-proposed-changes/children/solicitor-details', { errors: errors })
+  //       res.render('.//research-3/children/solicitor-details', { errors: errors })
   //     }
   //   }
   //   else {
-  //     res.redirect('/research-jan2022-proposed-changes/task-list')
+  //     res.redirect('/research-3/task-list')
   //   }
   // })
 
 
 
-  // router.post('/research-jan2022-proposed-changes/children/mother-why-no-address', function(req, res) {
+  // router.post('/research-3/children/mother-why-no-address', function(req, res) {
   //   var errors = []
   //   if (req.body['mother-why-no-address'] === '') {
   //     errors.push({
@@ -3278,19 +3278,19 @@ router.post('/research-jan2022-proposed-changes/eligibility/under-18', function(
 
   //   if (req.body['submit-button'] === 'save-and-continue') {
   //     if (errors.length === 0) {
-  //       res.redirect('/research-jan2022-proposed-changes/task-list')
+  //       res.redirect('/research-3/task-list')
   //     }
   //     else {
-  //         res.render('.//research-jan2022-proposed-changes/children/mother-why-no-address', { errors: errors })
+  //         res.render('.//research-3/children/mother-why-no-address', { errors: errors })
   //     }
   //   }
   //   else {
-  //     res.redirect('/research-jan2022-proposed-changes/task-list')
+  //     res.redirect('/research-3/task-list')
   //   }
   // })
 
 
-  // router.post('/research-jan2022-proposed-changes/children/father-why-no-address', function(req, res) {
+  // router.post('/research-3/children/father-why-no-address', function(req, res) {
   //   var errors = []
   //   if (req.body['father-why-no-address'] === '') {
   //     errors.push({
@@ -3301,20 +3301,20 @@ router.post('/research-jan2022-proposed-changes/eligibility/under-18', function(
 
   //   if (req.body['submit-button'] === 'save-and-continue') {
   //     if (errors.length === 0) {
-  //       res.redirect('/research-jan2022-proposed-changes/task-list')
+  //       res.redirect('/research-3/task-list')
   //     }
   //     else {
-  //         res.render('.//research-jan2022-proposed-changes/children/father-why-no-address', { errors: errors })
+  //         res.render('.//research-3/children/father-why-no-address', { errors: errors })
   //     }
   //   }
   //   else {
-  //     res.redirect('/research-jan2022-proposed-changes/task-list')
+  //     res.redirect('/research-3/task-list')
   //   }
   // })
 
 
 
-  // router.post('/research-jan2022-proposed-changes/children/children/applicant-adoption-agency-details', function(req, res) {
+  // router.post('/research-3/children/children/applicant-adoption-agency-details', function(req, res) {
   //   var errors = []
   //   if (req.body['agency-name'] === '') {
   //     errors.push({
@@ -3337,19 +3337,19 @@ router.post('/research-jan2022-proposed-changes/eligibility/under-18', function(
 
   //   if (req.body['submit-button'] === 'save-and-continue') {
   //     if (errors.length === 0) {
-  //       res.redirect('/research-jan2022-proposed-changes/children/child-adoption-agency-name')
+  //       res.redirect('/research-3/children/child-adoption-agency-name')
   //     }
   //     else {
-  //       res.render('.//research-jan2022-proposed-changes/children/applicant-adoption-agency-details', { errors: errors })
+  //       res.render('.//research-3/children/applicant-adoption-agency-details', { errors: errors })
   //     }
   //   }
   //   else {
-  //     res.redirect('/research-jan2022-proposed-changes/task-list')
+  //     res.redirect('/research-3/task-list')
   //   }
   // })
 
 
-  // router.post('/research-jan2022-proposed-changes/children/applicant-social-worker-name', function(req, res) {
+  // router.post('/research-3/children/applicant-social-worker-name', function(req, res) {
   //   var errors = []
   //   if (req.body['applicant-social-worker-name'] === '') {
   //     errors.push({
@@ -3360,19 +3360,19 @@ router.post('/research-jan2022-proposed-changes/eligibility/under-18', function(
 
   //   if (req.body['submit-button'] === 'save-and-continue') {
   //     if (errors.length === 0) {
-  //       res.redirect('/research-jan2022-proposed-changes/children/applicant-social-worker-email')
+  //       res.redirect('/research-3/children/applicant-social-worker-email')
   //     }
   //     else {
-  //       res.render('.//research-jan2022-proposed-changes/children/applicant-social-worker-name', { errors: errors })
+  //       res.render('.//research-3/children/applicant-social-worker-name', { errors: errors })
   //     }
   //   }
   //   else {
-  //     res.redirect('/research-jan2022-proposed-changes/task-list')
+  //     res.redirect('/research-3/task-list')
   //   }
   // })
 
 
-  // router.post('/research-jan2022-proposed-changes/children/applicant-social-worker-email', function(req, res) {
+  // router.post('/research-3/children/applicant-social-worker-email', function(req, res) {
   //   var errors = []
   //   if (req.body['applicant-social-worker-email'] === '') {
   //     errors.push({
@@ -3383,19 +3383,19 @@ router.post('/research-jan2022-proposed-changes/eligibility/under-18', function(
 
   //   if (req.body['submit-button'] === 'save-and-continue') {
   //     if (errors.length === 0) {
-  //       res.redirect('/research-jan2022-proposed-changes/children/applicant-social-worker-team-email')
+  //       res.redirect('/research-3/children/applicant-social-worker-team-email')
   //     }
   //     else {
-  //       res.render('.//research-jan2022-proposed-changes/children/applicant-social-worker-email', { errors: errors })
+  //       res.render('.//research-3/children/applicant-social-worker-email', { errors: errors })
   //     }
   //   }
   //   else {
-  //     res.redirect('/research-jan2022-proposed-changes/task-list')
+  //     res.redirect('/research-3/task-list')
   //   }
   // })
 
 
-  // router.post('/research-jan2022-proposed-changes/children/applicant-social-worker-team-email', function(req, res) {
+  // router.post('/research-3/children/applicant-social-worker-team-email', function(req, res) {
   //   var errors = []
   //   if (req.body['applicant-social-worker-team-email'] === undefined) {
   //     errors.push({
@@ -3412,19 +3412,19 @@ router.post('/research-jan2022-proposed-changes/eligibility/under-18', function(
 
   //   if (req.body['submit-button'] === 'save-and-continue') {
   //     if (errors.length === 0) {
-  //       res.redirect('/research-jan2022-proposed-changes/children/applicant-social-worker-number')
+  //       res.redirect('/research-3/children/applicant-social-worker-number')
   //     }
   //     else {
-  //       res.render('.//research-jan2022-proposed-changes/children/applicant-social-worker-team-email', { errors: errors })
+  //       res.render('.//research-3/children/applicant-social-worker-team-email', { errors: errors })
   //     }
   //   }
   //   else {
-  //     res.redirect('/research-jan2022-proposed-changes/task-list')
+  //     res.redirect('/research-3/task-list')
   //   }
   // })
 
 
-  // router.post('/research-jan2022-proposed-changes/children/applicant-social-worker-number', function(req, res) {
+  // router.post('/research-3/children/applicant-social-worker-number', function(req, res) {
   //   var errors = []
   //   if (req.body['applicant-social-worker-number'] === undefined) {
   //     errors.push({
@@ -3441,19 +3441,19 @@ router.post('/research-jan2022-proposed-changes/eligibility/under-18', function(
 
   //   if (req.body['submit-button'] === 'save-and-continue') {
   //     if (errors.length === 0) {
-  //       res.redirect('/research-jan2022-proposed-changes/children/applicant-social-worker-address')
+  //       res.redirect('/research-3/children/applicant-social-worker-address')
   //     }
   //     else {
-  //       res.render('.//research-jan2022-proposed-changes/children/applicant-social-worker-number', { errors: errors })
+  //       res.render('.//research-3/children/applicant-social-worker-number', { errors: errors })
   //     }
   //   }
   //   else {
-  //     res.redirect('/research-jan2022-proposed-changes/task-list')
+  //     res.redirect('/research-3/task-list')
   //   }
   // })
 
 
-  // router.post('/research-jan2022-proposed-changes/children/applicant-social-worker-address', function(req, res) {
+  // router.post('/research-3/children/applicant-social-worker-address', function(req, res) {
   //   var errors = []
   //   if (req.body['applicant-social-worker-address'] === "") {
   //     errors.push({
@@ -3464,19 +3464,19 @@ router.post('/research-jan2022-proposed-changes/eligibility/under-18', function(
 
   //   if (req.body['submit-button'] === 'save-and-continue') {
   //     if (errors.length === 0) {
-  //       res.redirect('/research-jan2022-proposed-changes/children/applicant-social-worker-find-address')
+  //       res.redirect('/research-3/children/applicant-social-worker-find-address')
   //     }
   //     else {
-  //       res.render('.//research-jan2022-proposed-changes/children/applicant-social-worker-address', { errors: errors })
+  //       res.render('.//research-3/children/applicant-social-worker-address', { errors: errors })
   //     }
   //   }
   //   else {
-  //     res.redirect('/research-jan2022-proposed-changes/task-list')
+  //     res.redirect('/research-3/task-list')
   //   }
   // })
 
 
-  // router.post('/research-jan2022-proposed-changes/children/applicant-social-worker-find-address', function(req, res) {
+  // router.post('/research-3/children/applicant-social-worker-find-address', function(req, res) {
   //   var errors = []
   //   if (req.body['applicant-social-worker-choose-address'] === 'address-found') {
   //     errors.push({
@@ -3487,19 +3487,19 @@ router.post('/research-jan2022-proposed-changes/eligibility/under-18', function(
 
   //   if (req.body['submit-button'] === 'save-and-continue') {
   //     if (errors.length === 0) {
-  //       res.redirect('/research-jan2022-proposed-changes/children/child-adoption-agency-name')
+  //       res.redirect('/research-3/children/child-adoption-agency-name')
   //     }
   //     else {
-  //       res.render('.//research-jan2022-proposed-changes/children/applicant-social-worker-find-address', { errors: errors })
+  //       res.render('.//research-3/children/applicant-social-worker-find-address', { errors: errors })
   //     }
   //   }
   //   else {
-  //     res.redirect('/research-jan2022-proposed-changes/task-list')
+  //     res.redirect('/research-3/task-list')
   //   }
   // })
 
 
-  // router.post('/research-jan2022-proposed-changes/children/applicant-social-worker-enter-address-manually', function(req, res) {
+  // router.post('/research-3/children/applicant-social-worker-enter-address-manually', function(req, res) {
   //   var errors = []
   //   if (req.body['address-line-1'] === '') {
   //     errors.push({
@@ -3522,20 +3522,20 @@ router.post('/research-jan2022-proposed-changes/eligibility/under-18', function(
 
   //   if (req.body['submit-button'] === 'save-and-continue') {
   //     if (errors.length === 0) {
-  //       res.redirect('/research-jan2022-proposed-changes/children/child-adoption-agency-name')
+  //       res.redirect('/research-3/children/child-adoption-agency-name')
   //     }
   //     else {
-  //       res.render('.//research-jan2022-proposed-changes/children/applicant-social-worker-enter-address-manually', { errors: errors })
+  //       res.render('.//research-3/children/applicant-social-worker-enter-address-manually', { errors: errors })
   //     }
   //   }
   //   else {
-  //     res.redirect('/research-jan2022-proposed-changes/task-list')
+  //     res.redirect('/research-3/task-list')
   //   }
   // })
 
 //************************ Child's adoption agency or local authority *****************************
 
-// router.post('/research-jan2022-proposed-changes/children/child-adoption-agency-name', function(req, res) {
+// router.post('/research-3/children/child-adoption-agency-name', function(req, res) {
 //   var errors = []
 //   if (req.body['child-adoption-agency-name'] === '') {
 //     errors.push({
@@ -3546,20 +3546,20 @@ router.post('/research-jan2022-proposed-changes/eligibility/under-18', function(
 
 //   if (req.body['submit-button'] === 'save-and-continue') {
 //     if (errors.length === 0) {
-//       res.redirect('/research-jan2022-proposed-changes/children/child-social-worker-name')
+//       res.redirect('/research-3/children/child-social-worker-name')
 //     }
 //     else {
-//       res.render('.//research-jan2022-proposed-changes/children/child-adoption-agency-name', { errors: errors })
+//       res.render('.//research-3/children/child-adoption-agency-name', { errors: errors })
 //     }
 //   }
 //   else {
-//     res.redirect('/research-jan2022-proposed-changes/task-list')
+//     res.redirect('/research-3/task-list')
 //   }
 // })
 
 
 
-// router.post('/research-jan2022-proposed-changes/children/child-social-worker-name', function(req, res) {
+// router.post('/research-3/children/child-social-worker-name', function(req, res) {
 //   var errors = []
 //   if (req.body['child-social-worker-name'] === '') {
 //     errors.push({
@@ -3570,18 +3570,18 @@ router.post('/research-jan2022-proposed-changes/eligibility/under-18', function(
 
 //   if (req.body['submit-button'] === 'save-and-continue') {
 //     if (errors.length === 0) {
-//       res.redirect('/research-jan2022-proposed-changes/children/child-social-worker-email')
+//       res.redirect('/research-3/children/child-social-worker-email')
 //     }
 //     else {
-//       res.render('.//research-jan2022-proposed-changes/children/child-social-worker-name', { errors: errors })
+//       res.render('.//research-3/children/child-social-worker-name', { errors: errors })
 //     }
 //   }
 //   else {
-//     res.redirect('/research-jan2022-proposed-changes/task-list')
+//     res.redirect('/research-3/task-list')
 //   }
 // })
 
-// router.post('/research-jan2022-proposed-changes/children/child-social-worker-email', function(req, res) {
+// router.post('/research-3/children/child-social-worker-email', function(req, res) {
 //   var errors = []
 //   if (req.body['child-social-worker-email'] === '') {
 //     errors.push({
@@ -3592,20 +3592,20 @@ router.post('/research-jan2022-proposed-changes/eligibility/under-18', function(
 
 //   if (req.body['submit-button'] === 'save-and-continue') {
 //     if (errors.length === 0) {
-//       res.redirect('/research-jan2022-proposed-changes/children/child-social-worker-team-email')
+//       res.redirect('/research-3/children/child-social-worker-team-email')
 //     }
 //     else {
-//       res.render('.//research-jan2022-proposed-changes/children/child-social-worker-email', { errors: errors })
+//       res.render('.//research-3/children/child-social-worker-email', { errors: errors })
 //     }
 //   }
 //   else {
-//     res.redirect('/research-jan2022-proposed-changes/task-list')
+//     res.redirect('/research-3/task-list')
 //   }
 // })
 
 //TO FIX - MULTIPLE ERROR MESSAGE NEEDED
 
-  // router.post('/research-jan2022-proposed-changes/children/child-social-worker-team-email', function(req, res) {
+  // router.post('/research-3/children/child-social-worker-team-email', function(req, res) {
   //   var errors = []
   //   if (req.body['child-social-worker-team-email'] === undefined) {
   //     errors.push({
@@ -3622,20 +3622,20 @@ router.post('/research-jan2022-proposed-changes/eligibility/under-18', function(
 
   //   if (req.body['submit-button'] === 'save-and-continue') {
   //     if (errors.length === 0) {
-  //       res.redirect('/research-jan2022-proposed-changes/children/child-social-worker-number')
+  //       res.redirect('/research-3/children/child-social-worker-number')
   //     }
   //     else {
-  //       res.render('.//research-jan2022-proposed-changes/children/child-social-worker-team-email', { errors: errors })
+  //       res.render('.//research-3/children/child-social-worker-team-email', { errors: errors })
   //     }
   //   }
   //   else {
-  //     res.redirect('/research-jan2022-proposed-changes/task-list')
+  //     res.redirect('/research-3/task-list')
   //   }
   // })
 
 
 //TO FIX - MULTIPLE ERROR MESSAGE NEEDED
-// router.post('/research-jan2022-proposed-changes/children/child-social-worker-number', function(req, res) {
+// router.post('/research-3/children/child-social-worker-number', function(req, res) {
 //   var errors = []
 //   if (req.body['child-social-worker-number'] === undefined) {
 //     errors.push({
@@ -3652,19 +3652,19 @@ router.post('/research-jan2022-proposed-changes/eligibility/under-18', function(
 
 //   if (req.body['submit-button'] === 'save-and-continue') {
 //     if (errors.length === 0) {
-//       res.redirect('/research-jan2022-proposed-changes/children/child-social-worker-address')
+//       res.redirect('/research-3/children/child-social-worker-address')
 //     }
 //     else {
-//       res.render('.//research-jan2022-proposed-changes/children/child-social-worker-number', { errors: errors })
+//       res.render('.//research-3/children/child-social-worker-number', { errors: errors })
 //     }
 //   }
 //   else {
-//     res.redirect('/research-jan2022-proposed-changes/task-list')
+//     res.redirect('/research-3/task-list')
 //   }
 // })
 
 
-// router.post('/research-jan2022-proposed-changes/children/child-social-worker-address', function(req, res) {
+// router.post('/research-3/children/child-social-worker-address', function(req, res) {
 //   var errors = []
 //   if (req.body['child-social-worker-address'] === "") {
 //     errors.push({
@@ -3675,18 +3675,18 @@ router.post('/research-jan2022-proposed-changes/eligibility/under-18', function(
 
 //   if (req.body['submit-button'] === 'save-and-continue') {
 //     if (errors.length === 0) {
-//       res.redirect('/research-jan2022-proposed-changes/children/child-social-worker-find-address')
+//       res.redirect('/research-3/children/child-social-worker-find-address')
 //     }
 //     else {
-//       res.render('.//research-jan2022-proposed-changes/children/child-social-worker-address', { errors: errors })
+//       res.render('.//research-3/children/child-social-worker-address', { errors: errors })
 //     }
 //   }
 //   else {
-//     res.redirect('/research-jan2022-proposed-changes/task-list')
+//     res.redirect('/research-3/task-list')
 //   }
 // })
 
-// router.post('/research-jan2022-proposed-changes/children/child-social-worker-find-address', function(req, res) {
+// router.post('/research-3/children/child-social-worker-find-address', function(req, res) {
 //   var errors = []
 //   if (req.body['child-social-worker-choose-address'] === 'address-found') {
 //     errors.push({
@@ -3697,19 +3697,19 @@ router.post('/research-jan2022-proposed-changes/eligibility/under-18', function(
 
 //   if (req.body['submit-button'] === 'save-and-continue') {
 //     if (errors.length === 0) {
-//       res.redirect('/research-jan2022-proposed-changes/children/solicitor-helping')
+//       res.redirect('/research-3/children/solicitor-helping')
 //     }
 //     else {
-//       res.render('.//research-jan2022-proposed-changes/children/child-social-worker-find-address', { errors: errors })
+//       res.render('.//research-3/children/child-social-worker-find-address', { errors: errors })
 //     }
 //   }
 //   else {
-//     res.redirect('/research-jan2022-proposed-changes/task-list')
+//     res.redirect('/research-3/task-list')
 //   }
 // })
 
 
-// router.post('/research-jan2022-proposed-changes/children/child-social-worker-enter-address-manually', function(req, res) {
+// router.post('/research-3/children/child-social-worker-enter-address-manually', function(req, res) {
 //   var errors = []
 //   if (req.body['child-social-worker-address-line-1'] === '' || req.body['child-social-worker-postcode'] === ''){
 //     errors.push({
@@ -3720,19 +3720,19 @@ router.post('/research-jan2022-proposed-changes/eligibility/under-18', function(
 
 //   if (req.body['submit-button'] === 'save-and-continue') {
 //     if (errors.length === 0) {
-//       res.redirect('/research-jan2022-proposed-changes/solicitor-helping')
+//       res.redirect('/research-3/solicitor-helping')
 //     }
 //     else {
-//       res.render('.//research-jan2022-proposed-changes/children/child-social-worker-enter-address-manually', { errors: errors })
+//       res.render('.//research-3/children/child-social-worker-enter-address-manually', { errors: errors })
 //     }
 //   }
 //   else {
-//     res.redirect('/research-jan2022-proposed-changes/task-list')
+//     res.redirect('/research-3/task-list')
 //   }
 // })
 
 
-  // router.post('/research-jan2022-proposed-changes/children/solicitor-firm-name', function(req, res) {
+  // router.post('/research-3/children/solicitor-firm-name', function(req, res) {
   //   var errors = []
   //   if (req.body['solicitor-firm-name'] === '') {
   //     errors.push({
@@ -3743,18 +3743,18 @@ router.post('/research-jan2022-proposed-changes/eligibility/under-18', function(
 
   //   if (req.body['submit-button'] === 'save-and-continue') {
   //     if (errors.length === 0) {
-  //       res.redirect('/research-jan2022-proposed-changes/children/solicitor-name')
+  //       res.redirect('/research-3/children/solicitor-name')
   //     }
   //     else {
-  //       res.render('.//research-jan2022-proposed-changes/children/solicitor-firm-name', { errors: errors })
+  //       res.render('.//research-3/children/solicitor-firm-name', { errors: errors })
   //     }
   //   }
   //   else {
-  //     res.redirect('/research-jan2022-proposed-changes/task-list')
+  //     res.redirect('/research-3/task-list')
   //   }
   // })
 
-  // router.post('/research-jan2022-proposed-changes/children/solicitor-name', function(req, res) {
+  // router.post('/research-3/children/solicitor-name', function(req, res) {
   //   var errors = []
   //   if (req.body['solicitor-name'] === '') {
   //     errors.push({
@@ -3765,18 +3765,18 @@ router.post('/research-jan2022-proposed-changes/eligibility/under-18', function(
 
   //   if (req.body['submit-button'] === 'save-and-continue') {
   //     if (errors.length === 0) {
-  //       res.redirect('/research-jan2022-proposed-changes/children/solicitor-email')
+  //       res.redirect('/research-3/children/solicitor-email')
   //     }
   //     else {
-  //       res.render('.//research-jan2022-proposed-changes/children/solicitor-name', { errors: errors })
+  //       res.render('.//research-3/children/solicitor-name', { errors: errors })
   //     }
   //   }
   //   else {
-  //     res.redirect('/research-jan2022-proposed-changes/task-list')
+  //     res.redirect('/research-3/task-list')
   //   }
   // })
 
-  // router.post('/research-jan2022-proposed-changes/children/solicitor-email', function(req, res) {
+  // router.post('/research-3/children/solicitor-email', function(req, res) {
   //   var errors = []
   //   if (req.body['solicitor-email'] === '') {
   //     errors.push({
@@ -3787,19 +3787,19 @@ router.post('/research-jan2022-proposed-changes/eligibility/under-18', function(
 
   //   if (req.body['submit-button'] === 'save-and-continue') {
   //     if (errors.length === 0) {
-  //       res.redirect('/research-jan2022-proposed-changes/children/solicitor-number')
+  //       res.redirect('/research-3/children/solicitor-number')
   //     }
   //     else {
-  //       res.render('.//research-jan2022-proposed-changes/children/solicitor-email', { errors: errors })
+  //       res.render('.//research-3/children/solicitor-email', { errors: errors })
   //     }
   //   }
   //   else {
-  //     res.redirect('/research-jan2022-proposed-changes/task-list')
+  //     res.redirect('/research-3/task-list')
   //   }
   // })
 
 
-  // router.post('/research-jan2022-proposed-changes/children/solicitor-address', function(req, res) {
+  // router.post('/research-3/children/solicitor-address', function(req, res) {
   //   var errors = []
   //   if (req.body['solicitor-address'] === "") {
   //     errors.push({
@@ -3810,18 +3810,18 @@ router.post('/research-jan2022-proposed-changes/eligibility/under-18', function(
 
   //   if (req.body['submit-button'] === 'save-and-continue') {
   //     if (errors.length === 0) {
-  //       res.redirect('/research-jan2022-proposed-changes/children/solicitor-find-address')
+  //       res.redirect('/research-3/children/solicitor-find-address')
   //     }
   //     else {
-  //       res.render('.//research-jan2022-proposed-changes/children/solicitor-address', { errors: errors })
+  //       res.render('.//research-3/children/solicitor-address', { errors: errors })
   //     }
   //   }
   //   else {
-  //     res.redirect('/research-jan2022-proposed-changes/task-list')
+  //     res.redirect('/research-3/task-list')
   //   }
   // })
 
-  // router.post('/research-jan2022-proposed-changes/children/solicitor-enter-address-manually', function(req, res) {
+  // router.post('/research-3/children/solicitor-enter-address-manually', function(req, res) {
   //   var errors = []
   //   if (req.body['address-line-1'] === '') {
   //     errors.push({
@@ -3844,18 +3844,18 @@ router.post('/research-jan2022-proposed-changes/eligibility/under-18', function(
 
   //   if (req.body['submit-button'] === 'save-and-continue') {
   //     if (errors.length === 0) {
-  //       res.redirect('/research-jan2022-proposed-changes/task-list')
+  //       res.redirect('/research-3/task-list')
   //     }
   //     else {
-  //       res.render('.//research-jan2022-proposed-changes/children/solicitor-enter-address-manually', { errors: errors })
+  //       res.render('.//research-3/children/solicitor-enter-address-manually', { errors: errors })
   //     }
   //   }
   //   else {
-  //     res.redirect('/research-jan2022-proposed-changes/task-list')
+  //     res.redirect('/research-3/task-list')
   //   }
   // })
 
-  // router.post('/research-jan2022-proposed-changes/children/solicitor-find-address', function(req, res) {
+  // router.post('/research-3/children/solicitor-find-address', function(req, res) {
   //   var errors = []
   //   if (req.body['solicitor-choose-address'] === 'address-found') {
   //     errors.push({
@@ -3866,19 +3866,19 @@ router.post('/research-jan2022-proposed-changes/eligibility/under-18', function(
 
   //   if (req.body['submit-button'] === 'save-and-continue') {
   //     if (errors.length === 0) {
-  //       res.redirect('/research-jan2022-proposed-changes/task-list')
+  //       res.redirect('/research-3/task-list')
   //     }
   //     else {
-  //       res.render('.//research-jan2022-proposed-changes/children/solicitor-find-address', { errors: errors })
+  //       res.render('.//research-3/children/solicitor-find-address', { errors: errors })
   //     }
   //   }
   //   else {
-  //     res.redirect('/research-jan2022-proposed-changes/task-list')
+  //     res.redirect('/research-3/task-list')
   //   }
   // })
 
 
-  // router.post('/research-jan2022-proposed-changes/children/solicitor-number', function(req, res) {
+  // router.post('/research-3/children/solicitor-number', function(req, res) {
   //   var errors = []
   //   if (req.body['solicitor-number'] === undefined) {
   //     errors.push({
@@ -3895,19 +3895,19 @@ router.post('/research-jan2022-proposed-changes/eligibility/under-18', function(
 
   //   if (req.body['submit-button'] === 'save-and-continue') {
   //     if (errors.length === 0) {
-  //       res.redirect('/research-jan2022-proposed-changes/children/solicitor-address')
+  //       res.redirect('/research-3/children/solicitor-address')
   //     }
   //     else {
-  //       res.render('.//research-jan2022-proposed-changes/children/solicitor-number', { errors: errors })
+  //       res.render('.//research-3/children/solicitor-number', { errors: errors })
   //     }
   //   }
   //   else {
-  //     res.redirect('/research-jan2022-proposed-changes/task-list')
+  //     res.redirect('/research-3/task-list')
   //   }
   // })
 
 
-  // router.post('/research-jan2022-proposed-changes/children/applicant-adoption-agency-or-social-worker', function(req, res) {
+  // router.post('/research-3/children/applicant-adoption-agency-or-social-worker', function(req, res) {
   //   var errors = []
   //   if (req.body['agency'] === undefined) {
   //     errors.push({
@@ -3919,18 +3919,18 @@ router.post('/research-jan2022-proposed-changes/eligibility/under-18', function(
   //   if (req.body['submit-button'] === 'save-and-continue') {
   //     if (errors.length === 0) {
   //       if (req.body['agency'] === 'yes') {
-  //         res.redirect('/research-jan2022-proposed-changes/children/child-')
+  //         res.redirect('/research-3/children/child-')
   //       }
   //       else {
-  //         res.redirect('/research-jan2022-proposed-changes/children/child-social-worker-details')
+  //         res.redirect('/research-3/children/child-social-worker-details')
   //       }
   //     }
   //     else {
-  //       res.render('.//research-jan2022-proposed-changes/children/applicant-adoption-agency-or-social-worker', { errors: errors })
+  //       res.render('.//research-3/children/applicant-adoption-agency-or-social-worker', { errors: errors })
   //     }
   //   }
   //   else {
-  //       res.redirect('/research-jan2022-proposed-changes/task-list')
+  //       res.redirect('/research-3/task-list')
   //   }
   // })
 
@@ -3943,7 +3943,7 @@ router.post('/research-jan2022-proposed-changes/eligibility/under-18', function(
 
 
 
-//   router.post('/research-jan2022-proposed-changes/eligibility/10-weeks', function(req, res) {
+//   router.post('/research-3/eligibility/10-weeks', function(req, res) {
 //     var errors = []
 //     if (req.body['10-weeks'] === undefined) {
 //       errors.push({
@@ -3953,14 +3953,14 @@ router.post('/research-jan2022-proposed-changes/eligibility/under-18', function(
 //     }
 
 //     if (errors.length === 0) {
-//         res.redirect('/research-jan2022-proposed-changes/eligibility/under-18')
+//         res.redirect('/research-3/eligibility/under-18')
 //     }
 //     else {
-//         res.render('.//research-jan2022-proposed-changes/eligibility/10-weeks', { errors: errors })
+//         res.render('.//research-3/eligibility/10-weeks', { errors: errors })
 //     }
 //   })
 
-//   router.post('/research-jan2022-proposed-changes/applicants/number-of-children', function(req, res) {
+//   router.post('/research-3/applicants/number-of-children', function(req, res) {
 //     var errors = []
 //     if (req.body['number-children'] === undefined) {
 //       errors.push({
@@ -3984,19 +3984,19 @@ router.post('/research-jan2022-proposed-changes/eligibility/under-18', function(
 
 //     if (req.body['submit-button'] === 'save-and-continue') {
 //       if (errors.length === 0) {
-//         res.redirect('/research-jan2022-proposed-changes/applicants/number-of-applicants')
+//         res.redirect('/research-3/applicants/number-of-applicants')
 //       }
 //       else {
-//         res.render('.//research-jan2022-proposed-changes/applicants/number-of-children', { errors: errors })
+//         res.render('.//research-3/applicants/number-of-children', { errors: errors })
 //       }
 //     }
 //     else {
-//       res.redirect('/research-jan2022-proposed-changes/task-list')
+//       res.redirect('/research-3/task-list')
 //     }
 //   })
 
 
-//   router.post('/research-jan2022-proposed-changes/applicants/first-applicant-gender', function(req, res) {
+//   router.post('/research-3/applicants/first-applicant-gender', function(req, res) {
 //     var errors = []
 //     if (req.body['first-applicant-gender'] === '') {
 //       errors.push({
@@ -4006,14 +4006,14 @@ router.post('/research-jan2022-proposed-changes/eligibility/under-18', function(
 //     }
 //       if (req.body['submit-button'] === 'save-and-continue') {
 //         if (errors.length === 0) {
-//           res.redirect('/research-jan2022-proposed-changes/applicants/first-applicant-nationality')
+//           res.redirect('/research-3/applicants/first-applicant-nationality')
 //         }
 //         else {
-//             res.render('.//research-jan2022-proposed-changes/applicants/first-applicant-gender', { errors: errors })
+//             res.render('.//research-3/applicants/first-applicant-gender', { errors: errors })
 //           }
 //       }
 //       else {
-//         res.redirect('/research-jan2022-proposed-changes/task-list')
+//         res.redirect('/research-3/task-list')
 //       }
 //   })
 

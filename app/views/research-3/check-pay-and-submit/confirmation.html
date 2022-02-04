@@ -1,0 +1,53 @@
+{% extends "layout-signed-in.html" %}
+
+{% block pageTitle %}
+Apply to adopt a child
+{% endblock %}
+
+{% block beforeContent %}
+<a class="govuk-back-link" href="javascript:history.back()">Back</a>
+{% endblock %}
+
+{% block content %}
+
+<div class="govuk-width-container">
+  <div class="govuk-grid-row">
+    <div class="govuk-grid-column-two-thirds">
+
+      <form action="/research-3/check-pay-and-submit/confirmation" method="post" class="form">
+
+        <div class="govuk-panel govuk-panel--confirmation">
+          <h1 class="govuk-panel__title">
+            Application submitted
+          </h1>
+          <div class="govuk-panel__body">
+            Your reference number<br><strong>HDJ2123F</strong>
+          </div>
+        </div>
+
+        <p class="govuk-body">If you have applied for 'Help with Fees', that application will need to be processed first. The court let you know if you have been successful or if you need to pay for all, or some, of your fees.</p>
+        
+        <p class="govuk-body">We have sent you a confirmation email. If you have not received this, you should check your junk or spam folder.</p>
+
+        <h2 class="govuk-heading-m">What happens next</h2>
+
+        <p class="govuk-body">
+          The court reviews your application and informs the birth parents, if applicable, of your application to adopt. Your personal details are kept strictly confidential.
+        </p>
+
+        <p class="govuk-body">Once the adoption order is granted, an adoption certificate is created. This replaces the child's birth certificate. It can be ordered from the General Register Office for a small fee.</p>
+        
+        <p class="govuk-body">
+          If you have any questions about the process, you should contact your social worker or adoption agency who will also be able to provide you with updates.
+        </p>
+
+        <p class="govuk-body">
+          <a href="#" class="govuk-link">Print your application</a> 
+        </p>
+        
+      </form>
+    </div>
+  </div>
+</div>
+
+{% endblock %}

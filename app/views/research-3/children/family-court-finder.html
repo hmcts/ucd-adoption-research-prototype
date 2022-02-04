@@ -1,0 +1,113 @@
+{% extends "layout-signed-in.html" %}
+
+{% block pageTitle %}
+Apply to adopt a child
+{% endblock %}
+
+{% block beforeContent %}
+<a class="govuk-back-link" href="javascript:history.back()">Back</a>
+{% endblock %}
+
+{% block content %}
+
+<div class="govuk-width-container">
+  <div class="govuk-grid-row">
+    <div class="govuk-grid-column-two-thirds">
+
+      {% set noRadioError = '' %}
+      {% set noCourtError = '' %}
+
+      {% if errors | length > 0 %}
+      {{ govukErrorSummary({
+        titleText: "There is a problem",
+        errorList: errors
+      }) }}
+      {% for error in errors %}
+        {% if error.href == '#no-court-name' %}
+          {% set noCourtError = error.text %}
+        {% endif %}
+        {% if error.href == '#no-radio' %}
+          {% set noRadioError = error.text %}
+        {% endif %}
+      {% endfor %}
+      {% endif %}
+
+
+      <form action="/research-3/children/family-court-finder" method="post" class="form">
+
+        <legend class="govuk-fieldset__legend govuk-fieldset__legend--l">
+            <span class="govuk-caption-l">{{ data['child'] }}</span>
+        <h1 class="govuk-fieldset__heading">
+            Choose a family court
+        </h1>
+        </legend>
+
+
+        <p class="govuk-body">There may be court hearings related to your application to adopt. The birth parents may be present at these. You do not have to attend these hearings.</p>
+
+        <p class="govuk-body">You have told us that the court which issued the placement order was <span class="govuk-!-font-weight-bold">{% if data['placement-court-name'] %} {{data['placement-court-name'] }}{% else %}Bromley Family Court{% endif %}</span>.</p>
+
+        <label class="govuk-label" for="consent">Do you want the hearings to be heard in the same court?</label>
+        <span id="passport-issued-hint" class="govuk-hint">
+          You should discuss this with your social worker or adoption agency. 
+        </span>
+
+
+        <div class="govuk-radios" data-module="govuk-radios" {% if (noRadioError != '') %} govuk-input--error{% endif %}>
+          <div class="govuk-form-group {% if (noRadioError != '') %} govuk-form-group--error{% endif %}">
+            {% if consentError != '' %}
+            <span class="govuk-error-message govuk-form">
+              <span class="govuk-visually-hidden">Error:</span> {{ noRadioError }}
+            </span>
+            {% endif %}
+
+          <div class="govuk-radios__item">
+            <input class="govuk-radios__input" id="Yes" name="same-family-court" type="radio" value="Yes" {% if (data['same-family-court'] === "Yes") %} checked {% endif %}>
+            <label class="govuk-label govuk-radios__label" for="same-family-court">
+              Yes
+            </label>
+          </div>
+
+          <div class="govuk-radios__item">
+            <input class="govuk-radios__input" id="No" name="same-family-court" type="radio" value="No"  data-aria-controls="conditional-contact" {% if (data['same-family-court'] === "No") %} checked {% endif %}>
+            <label class="govuk-label govuk-radios__label" for="same-family-court">
+              No
+            </label>
+          </div>
+          <div class="govuk-radios__conditional govuk-radios__conditional--hidden" id="conditional-contact">
+            <div class="govuk-form-group">
+              <p><a class="govuk-link" href="https://www.find-court-tribunal.service.gov.uk/services/childcare-and-parenting/adoption/search-by-postcode" target="_blank">Choose your family court</a></p>
+              <p class="govuk-body">Find the family court  in the town or region you want your application heard. The link will open in a new tab. Return to this tab to enter the court name.</p> 
+              <p>Note that your request will be submitted to the judge. The judge has the final decision about where court hearings will take place.</p>      
+              <div class="govuk-form-group {% if (noCourtError != '') %} govuk-form-group--error{% endif %}"> 
+                <label class="govuk-label" for="ref">
+                  Enter the full name of the court
+                </label>
+                {% if (noCourtError != '')%}
+                <span id="number-error" class="govuk-error-message">Enter the name of the court
+                </span>
+                {% endif%}
+                <input class="govuk-input govuk-!-width-two-third {% if (noCourtError != '') %} govuk-input--error{% endif %}" id="familyCourtName" name="familyCourtName" type="text" spellcheck="false" value="{{data['familyCourtName']}}">
+              </div>
+            </div>                               
+          </div>
+        </div>
+        <input type="hidden" name="placementCourtName" value="{% if data['placement-court-name'] %} {{data['placement-court-name'] }}{% else %}Bromley Family Court{% endif %}">
+
+        <!-- Buttons -->
+        {% include "../../includes/buttons.html" %}
+
+
+
+          <!-- <div class="govuk-button-group govuk-!-margin-top-6">
+          <button class="govuk-button" data-module="govuk-button" name="continue" value="save-and-continue">
+            Save
+          </button>
+          </div> -->
+
+      </form>
+    </div>
+  </div>
+</div>
+
+{% endblock %}
