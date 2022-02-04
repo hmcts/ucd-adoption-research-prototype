@@ -116,7 +116,12 @@ module.exports = {
     "October",
     "November",
     "December"
-]
+],
+
+"firstApplicantPersonalDetailsStatusR3": "completed",
+"firstApplicantContactDetailsStatusR3": "completed",
+"secondApplicantPersonalDetailsStatusR3": "completed",
+"secondApplicantContactDetailsStatusR3": "completed"
 
 
 ,}
