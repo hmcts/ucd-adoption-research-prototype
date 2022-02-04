@@ -1,0 +1,105 @@
+{% extends "layout-signed-in.html" %}
+
+{% block pageTitle %}
+Apply to adopt a child
+{% endblock %}
+
+{% block beforeContent %}
+<a class="govuk-back-link" href="javascript:history.back()">Back</a>
+{% endblock %}
+
+{% block content %}
+
+<div class="govuk-width-container">
+  <div class="govuk-grid-row">
+    <div class="govuk-grid-column-two-thirds">
+
+      {% set aliveError = '' %}
+      {% set notSureError = '' %}
+  
+      {% if errors | length > 0 %}
+      {{ govukErrorSummary({
+        titleText: "There is a problem",
+        errorList: errors
+      }) }}
+      {% for error in errors %}
+        {% if error.href == '#mother-alive' %}
+          {% set aliveError = error.text %}
+        {% endif %}
+        {% if error.href == '#mother-no-reason' %}
+            {% set notSureError = error.text %}
+        {% endif %}
+        {% endfor %}
+      {% endif %}
+
+
+      <form action="/research-3/children/mother-alive" method="post" class="form">
+        
+        <div class="govuk-form-group {% if (aliveError != '')%} govuk-form-group--error {% endif %}">
+        <legend class="govuk-fieldset__legend govuk-fieldset__legend--l">
+          <span class="govuk-caption-l">{{ data['mother'] }}</span>
+          <h1 class="govuk-fieldset__heading">
+            Is the child's birth mother still alive?
+          </h1>
+        </legend>
+
+        {% if (aliveError != '')%}
+          <span class="govuk-error-message govuk-form">
+            <span class="govuk-visually-hidden">Error:</span> {{ aliveError }}
+          </span>
+        {% endif %}
+
+        <div class="govuk-form-group">
+          <fieldset class="govuk-fieldset" role="group" aria-describedby="how-many-people-are-applying-to-adopt">
+
+            <div class="govuk-radios govuk-radios--conditional" data-module="govuk-radios">
+              <div class="govuk-radios__item">
+                <input class="govuk-radios__input" id="yes" name="mother-alive" type="radio" value="Yes" {% if (data['mother-alive'] === "Yes") %} checked {% endif %}>
+                <label class="govuk-label govuk-radios__label" for="yes">
+                  Yes
+                </label>
+              </div>
+
+              <div class="govuk-radios govuk-radios--conditional" data-module="govuk-radios">
+                <div class="govuk-radios__item">
+                  <input class="govuk-radios__input" id="no" name="mother-alive" type="radio" value="No" {% if (data['mother-alive'] === "No") %} checked {% endif %}>
+                  <label class="govuk-label govuk-radios__label" for="no">
+                    No
+                  </label>
+                </div>
+  
+                <div class="govuk-radios govuk-radios--conditional " data-module="govuk-radios">
+                <div class="govuk-radios__item">
+                  <input class="govuk-radios__input" id="unsure" name="mother-alive" type="radio" value="Not sure" data-aria-controls="conditional-contact" {% if (data['mother-alive'] === "Not sure") %} checked {% endif %}>
+                  <label class="govuk-label govuk-radios__label" for="unsure">
+                    Not sure
+                  </label>
+                </div>
+                <div class="govuk-radios__conditional govuk-radios__conditional--hidden " id="conditional-contact">
+                  <!-- <div class="govuk-form-group{% if (notSureError != '')%} govuk-form-group--error{% endif %}"> -->
+                  <div class="govuk-form-group">
+                      <label class="govuk-label" for="contact-by-email">
+                      Provide more details. For example, 'the birth mother is uncontactable'. Your adoption agency or social worker can help you to complete this section.
+                    </label>
+                    {% if (notSureError != '')%}
+                    <span class="govuk-error-message govuk-form">
+                      <span class="govuk-visually-hidden">Error:</span> {{ notSureError }}
+                    </span>
+                  {% endif %}
+          
+                    <input class="govuk-input{% if (notSureError != '') %} govuk-input--error{% endif %}" id="mother-reason-not-sure" name="mother-reason-not-sure" type="text" spellcheck="false" value="{{data['mother-reason-not-sure']}}">
+                  </div>
+                </div>
+            </div>
+          </fieldset>
+        </div>
+      </div>
+      <!-- Buttons -->
+        {% include "../../includes/buttons.html" %}
+
+
+      </form>   
+  </div>
+</div>
+
+{% endblock %}
