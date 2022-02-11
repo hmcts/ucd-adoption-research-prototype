@@ -1041,7 +1041,7 @@ module.exports = (router) => {
     }
     if (req.body['second-applicant-phone-number'] === '') {
       errors.push({
-        text: 'Enter your telephone number',
+        text: 'Enter a UK telephone number',
         href: '#second-applicant-phone-number'
         })
     }
