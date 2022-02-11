@@ -368,7 +368,7 @@ module.exports = (router) => {
       errors.push({
         text: "Please answer the question",
         href: '#no-radio'
-        })  
+        })
     }
     else if (req.body['familyCourtName'] === '' && req.body['same-family-court'] === 'No') {
       errors.push({
@@ -695,7 +695,7 @@ module.exports = (router) => {
     }
     if (req.body['first-applicant-phone-number'] === '') {
       errors.push({
-        text: 'Enter your telephone number',
+        text: 'Enter a UK telephone number',
         href: '#first-applicant-phone-number'
         })
     }
@@ -1167,7 +1167,7 @@ module.exports = (router) => {
       errors.push({
         text: 'Enter what is written on the birth certificate',
         href: '#other-sex'
-        })  
+        })
     }
 
     if (req.body['submit-button'] === 'save-and-continue') {
@@ -2984,7 +2984,7 @@ module.exports = (router) => {
 
 
 
-  
+
 
 // ******************************************** SECTION 4. UPLOADS ********************************************
 // ************************************************************************************************************************************
@@ -3046,7 +3046,7 @@ module.exports = (router) => {
     }
     else {
       res.redirect('/research-3/task-list')
-    }    
+    }
   })
 
 
