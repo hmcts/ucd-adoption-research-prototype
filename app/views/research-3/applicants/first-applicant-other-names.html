@@ -55,7 +55,7 @@ Apply to adopt a child
 
           <div class="govuk-form-group {% if (noRadioSelectedError != '')%} govuk-form-group--error {% endif%}">
             <legend class="govuk-fieldset__legend govuk-fieldset__legend--l">
-            <span class="govuk-caption-l">{{ data['firstApplicant'] }}</span>
+            <span class="govuk-caption-l">{{ data['firstApplicantProposal'] }}</span>
             <h1 class="govuk-fieldset__heading">
               Have you ever legally been known by any other names?
             </h1>
@@ -85,14 +85,14 @@ Apply to adopt a child
 
                   <div class="govuk-radios__conditional govuk-radios__conditional--hidden" id="conditional-contact">
 
-                    {% if (data['firstApplicantNameCount'] > 0) %}
+                    {% if (data['firstApplicantProposalNameCount'] > 0) %}
 
-                    {% for id in data['idFirstApplicant']|reverse %}
+                    {% for id in data['idfirstApplicantProposal']|reverse %}
 
                       <dl class="govuk-summary-list govuk-!-margin-bottom-4 ">
                         <div class="govuk-summary-list__row">
                           <dt class="govuk-summary-list__key">
-                            {{data['firstApplicantPreviousFirstNames'][id]}} {{data['firstApplicantPreviousLastNames'][id]}}
+                            {{data['firstApplicantProposalPreviousFirstNames'][id]}} {{data['firstApplicantProposalPreviousLastNames'][id]}}
                           </dt>
                           <dd class="govuk-summary-list__actions">
                             <a class="govuk-link" href="#">

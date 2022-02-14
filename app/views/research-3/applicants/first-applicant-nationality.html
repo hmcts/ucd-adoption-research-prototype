@@ -38,7 +38,7 @@ Apply to adopt a child
         <div class="govuk-form-group {% if (nationalityError != '')%} govuk-form-group--error {% endif%}">
           <fieldset class="govuk-fieldset" aria-describedby="nationality-hint">
             <legend class="govuk-fieldset__legend govuk-fieldset__legend--l">
-              <span class="govuk-caption-l">{% if data['numberApplicants'] !== '1' %}{{ data['firstApplicant'] }}{% else %} {{ data['oneApplicant'] }}{% endif %}</span>
+              <span class="govuk-caption-l">{% if data['numberApplicants'] !== '1' %}{{ data['firstApplicantProposal'] }}{% else %} {{ data['oneApplicant'] }}{% endif %}</span>
               <h1 class="govuk-fieldset__heading">
                 What is your nationality?
               </h1>
@@ -81,14 +81,14 @@ Apply to adopt a child
                 id="conditional-citizenship-conditional-2">
                 <div class="govuk-form-group {% if (nationalityError != '')%} govuk-form-group--error {% endif%}">
 
-                  {% if (data['firstApplicantNationalityCount'] > 0) %}
+                  {% if (data['firstApplicantProposalNationalityCount'] > 0) %}
 
-                  {% for id in data['firstApplicantNationalityId']|reverse %}
+                  {% for id in data['firstApplicantProposalNationalityId']|reverse %}
                   
                     <dl class="govuk-summary-list govuk-!-margin-bottom-4 ">                    
                       <div class="govuk-summary-list__row">
                         <dt class="govuk-summary-list__key">
-                          {{data['firstApplicantNationalities'][id]}}
+                          {{data['firstApplicantProposalNationalities'][id]}}
                         </dt>
                         <dd class="govuk-summary-list__actions">
                           <a class="govuk-link" href="#">
