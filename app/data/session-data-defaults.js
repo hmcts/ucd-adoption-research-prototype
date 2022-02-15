@@ -102,6 +102,18 @@ module.exports = {
   "paySubmit": "Pay and submit your application",
   "reviewApplication": "Review your application",
 
+
+  "firstApplicantPersonalDetailsStatusR3": "completed",
+  "firstApplicantContactDetailsStatusR3": "completed",
+  "secondApplicantPersonalDetailsStatusR3": "completed",
+  "secondApplicantContactDetailsStatusR3": "completed",
+  
+  
+
+
+
+
+
   "monthName": [
     "",
     "January",
@@ -116,12 +128,7 @@ module.exports = {
     "October",
     "November",
     "December"
-],
-
-"firstApplicantPersonalDetailsStatusR3": "completed",
-"firstApplicantContactDetailsStatusR3": "completed",
-"secondApplicantPersonalDetailsStatusR3": "completed",
-"secondApplicantContactDetailsStatusR3": "completed"
+]
 
 
 ,}
