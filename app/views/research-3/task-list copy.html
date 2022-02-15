@@ -84,9 +84,9 @@ Task list
                         Your personal details
                     </a>
                     </a></span>
-                    {% if data['firstApplicantPersonalDetailsStatusR3'] === 'completed' %}
+                    {% if data['firstApplicantPersonalDetailsStatus'] === 'completed' %}
                         <strong class="govuk-tag  app-task-list__tag" id="eligibility-completed">Completed</strong>
-                    {% elseif data['firstApplicantPersonalDetailsStatusR3'] === 'in progress' %}
+                    {% elseif data['firstApplicantPersonalDetailsStatus'] === 'in progress' %}
                         <strong class="govuk-tag govuk-tag--blue app-task-list__tag">in progress</strong>
                     {% else %}
                         <strong class="govuk-tag govuk-tag--grey app-task-list__tag">not started</strong>
@@ -100,9 +100,9 @@ Task list
                         Your contact details
                     </a>
                     </a></span>
-                    {% if data['firstApplicantContactDetailsStatusR3'] === 'completed' %}
+                    {% if data['firstApplicantContactDetailsStatus'] === 'completed' %}
                         <strong class="govuk-tag  app-task-list__tag" id="eligibility-completed">Completed</strong>
-                    {% elseif data['firstApplicantContactDetailsStatusR3'] === 'in progress' %}
+                    {% elseif data['firstApplicantContactDetailsStatus'] === 'in progress' %}
                         <strong class="govuk-tag govuk-tag--blue app-task-list__tag">in progress</strong>
                     {% else %}
                         <strong class="govuk-tag govuk-tag--grey app-task-list__tag">not started</strong>
@@ -117,9 +117,9 @@ Task list
                         Your personal details
                     </a>
                     </a></span>
-                    {% if data['secondApplicantPersonalDetailsStatusR3'] === 'completed' %}
+                    {% if data['secondApplicantPersonalDetailsStatus'] === 'completed' %}
                         <strong class="govuk-tag  app-task-list__tag" id="eligibility-completed">Completed</strong>
-                    {% elseif data['secondApplicantPersonalDetailsStatusR3'] === 'in progress' %}
+                    {% elseif data['secondApplicantPersonalDetailsStatus'] === 'in progress' %}
                         <strong class="govuk-tag govuk-tag--blue app-task-list__tag">in progress</strong>
                     {% else %}
                         <strong class="govuk-tag govuk-tag--grey app-task-list__tag">not started</strong>
@@ -133,9 +133,9 @@ Task list
                         Your contact details
                     </a>
                     </a></span>
-                    {% if data['secondApplicantContactDetailsStatusR3'] === 'completed' %}
+                    {% if data['secondApplicantContactDetailsStatus'] === 'completed' %}
                         <strong class="govuk-tag  app-task-list__tag" id="eligibility-completed">Completed</strong>
-                    {% elseif data['secondApplicantContactDetailsStatusR3'] === 'in progress' %}
+                    {% elseif data['secondApplicantContactDetailsStatus'] === 'in progress' %}
                         <strong class="govuk-tag govuk-tag--blue app-task-list__tag">in progress</strong>
                     {% else %}
                         <strong class="govuk-tag govuk-tag--grey app-task-list__tag">not started</strong>
@@ -375,22 +375,18 @@ Task list
 
               <li class="app-task-list__item">
                 <span class="app-task-list__task-name">
-                    <a href="check-pay-and-submit/check-your-answers.html" aria-describedby="eligibility-completed" {% if data['submitStatus'] !== 'in progress' %} class="not-underlined" {% endif %}>
-                        Review, pay and submit your application
+                    <a href="check-pay-and-submit/check-your-answers.html" aria-describedby="eligibility-completed" class="not-underlined">
+                        Review your application
                     </a>
                 </span>
-                {% if data['submitStatus'] === 'completed' %}
+                {% if data['reviewStatus'] === 'completed' %}
                     <strong class="govuk-tag  app-task-list__tag" id="eligibility-completed">Completed</strong>
-                {% elseif data['submitStatus'] === 'in progress' %}
-                    <strong class="govuk-tag govuk-tag--blue app-task-list__tag">in progress</strong>
-                {% elseif data['submitStatus'] === 'not started' %}
-                    <strong class="govuk-tag govuk-tag--grey app-task-list__tag">not started</strong>
                 {% else %}
                     <strong class="govuk-tag govuk-tag--grey app-task-list__tag">cannot start yet</strong>
                 {% endif %}
               </li>
             
-              <!-- <li class="app-task-list__item">
+              <li class="app-task-list__item">
                 <span class="app-task-list__task-name">
                     <a href="https://products.payments.service.gov.uk/pay/02133e4814ea416cb7a1e540b49a8545" aria-describedby="eligibility-completed" class="not-underlined">
                         Pay and submit your application
@@ -401,7 +397,7 @@ Task list
                 {% else %}
                     <strong class="govuk-tag govuk-tag--grey app-task-list__tag">cannot start yet</strong>
                 {% endif %}
-              </li> -->
+              </li>
             
             </ul>
           </li>
