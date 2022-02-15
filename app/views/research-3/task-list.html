@@ -292,7 +292,7 @@ Task list
 
                 <li class="app-task-list__item">
                     <span class="app-task-list__task-name">
-                    {% if (data['siblingStatus'] === 'in progress' or data['siblingStatus'] === 'completed') %}
+                    {% if (data['numberOfSiblings'] !== 0 and (data['siblingStatus'] === 'in progress' or data['siblingStatus'] === 'completed')) %}
                         <a href="children/sibling-summary.html" aria-describedby="eligibility-completed">
                     {% else %}
                         <a href="children/sibling-exists.html" aria-describedby="eligibility-completed">
@@ -349,14 +349,14 @@ Task list
 
               <li class="app-task-list__item">
                 <span class="app-task-list__task-name">
-                    <a href="upload/child-documents-upload.html" class="not-underlined">
+                    <a href="upload/child-documents-upload.html">
                         Upload documents
                     </a>
                 </span>
                 {% if data['childUpload'] %}
-                <strong class="govuk-tag  app-task-list__tag" id="eligibility-completed">Completed</strong>
-                    {% else %}
-                    <strong class="govuk-tag govuk-tag--grey app-task-list__tag">cannot start yet</strong>
+                    <strong class="govuk-tag  app-task-list__tag" id="eligibility-completed">Completed</strong>
+                {% else %}
+                    <strong class="govuk-tag govuk-tag--grey app-task-list__tag">not started</strong>
                 {% endif %}
 
               </li>
