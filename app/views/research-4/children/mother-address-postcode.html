@@ -1,0 +1,70 @@
+{% extends "layout-signed-in.html" %}
+
+{% block pageTitle %}
+Apply to adopt a child
+{% endblock %}
+
+{% block beforeContent %}
+<a class="govuk-back-link" href="javascript:history.back()">Back</a>
+{% endblock %}
+
+{% block content %}
+
+<div class="govuk-width-container">
+  <div class="govuk-grid-row">
+    <div class="govuk-grid-column-two-thirds">
+
+      {% set postcodeError = '' %}
+
+      {% if errors | length > 0 %}
+      {{ govukErrorSummary({
+        titleText: "There is a problem",
+        errorList: errors
+      }) }}
+      {% for error in errors %}
+        {% if error.href == '#mother-address-postcode' %}
+          {% set postcodeError = error.text %}
+        {% endif %}
+      {% endfor %}
+      {% endif %}
+
+
+        <form action="/research-4/children/mother-address-postcode" method="post" class="form">
+
+          <div class="govuk-form-group {% if (postcodeError != '')%} govuk-form-group--error {% endif%}">
+            <legend class="govuk-fieldset__legend govuk-fieldset__legend--l">
+              <span class="govuk-caption-l">{{ data['mother'] }}</span>
+              <h1 class="govuk-fieldset__heading">
+                What is the birth mother's current address?
+              </h1>
+            </legend>
+
+            <label class="govuk-label govuk-label--m" for="postcode">
+              Postcode
+            </label>
+
+              {% if (postcodeError != '')%}
+              <span id="gender-error" class="govuk-error-message">
+                <span class="govuk-visually-hidden">Error:</span> {{ postcodeError }}
+              </span>
+              {% endif%}
+
+            <input class="govuk-input govuk-input--width-10" id="width-10" name="mother-postcode" type="text" value="{{data['mother-postcode'] }}">
+
+          </div>
+          <div class="govuk-form-group">
+            <p><a href="mother-manual-address.html">Or enter address manually</a></p>
+          </div>
+
+
+          <!-- Buttons -->
+          {% include "../../includes/buttons0.html" %}
+
+        </form>
+
+      </div>
+    </div>
+  </main>
+</div>
+
+{% endblock %}

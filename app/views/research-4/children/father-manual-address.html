@@ -1,0 +1,108 @@
+{% extends "layout-signed-in.html" %}
+
+{% block pageTitle %}
+Apply to adopt a child
+{% endblock %}
+
+{% block beforeContent %}
+<a class="govuk-back-link" href="javascript:history.back()">Back</a>
+{% endblock %}
+
+{% block content %}
+
+<div class="govuk-width-container">
+  <div class="govuk-grid-row">
+    <div class="govuk-grid-column-two-thirds">
+
+      {% set firstlineError = '' %}
+      {% set townError = '' %}
+      {% set postcodeError = '' %}
+
+      {% if errors | length > 0 %}
+        {{ govukErrorSummary({
+          titleText: "There is a problem",
+          errorList: errors
+        }) }}
+        {% for error in errors %}
+          {% if error.href == '#first-line' %}
+            {% set firstlineError = error.text %}
+          {% endif %}
+          {% if error.href == '#town' %}
+            {% set townError = error.text %}
+          {% endif %}
+          {% if error.href == '#postcode' %}
+            {% set postcodeError = error.text %}
+          {% endif %}
+        {% endfor %}
+      {% endif %}
+
+      <form action="/research-4/children/father-manual-address" method="post" class="form">
+        <fieldset class="govuk-fieldset">
+          <legend class="govuk-fieldset__legend govuk-fieldset__legend--l">
+            <span class="govuk-caption-l">{{ data['father'] }}</span>
+            <h1 class="govuk-fieldset__heading">
+              What is the birth father's current address?
+            </h1>
+          </legend>
+
+          <div class="govuk-form-group {% if (firstlineError != '') %} govuk-form-group--error{% endif %}">
+            <label class="govuk-label" for="address-line-1">
+              Building and street <span class="govuk-visually-hidden">line 1 of 2</span>
+            </label>
+            {% if firstlineError != '' %}
+            <span id="contact-error" class="govuk-error-message">
+              <span class="govuk-visually-hidden">Error:</span> {{ firstlineError }}
+            </span>
+            {% endif %}
+
+            <input class="govuk-input {% if (firstlineError != '') %} govuk-input--error{% endif %}" id="address-line-1" name="father-address-line-1" type="text" autocomplete="address-line1" value="{{ data['father-address-line-1'] }}"></div>
+
+          <div class="govuk-form-group">
+            <label class="govuk-label" for="address-line-2">
+              <span class="govuk-visually-hidden">Building and street line 2 of 2</span>
+            </label>
+            <input class="govuk-input" id="address-line-2" name="father-address-line-2" type="text" autocomplete="address-line2" value="{{ data['father-address-line-2'] }}"></div>
+
+          <div class="govuk-form-group {% if (townError != '') %} govuk-form-group--error{% endif %}">
+            <label class="govuk-label" for="address-town">
+              Town or city
+            </label>
+            {% if townError != '' %}
+            <span id="contact-error" class="govuk-error-message">
+              <span class="govuk-visually-hidden">Error:</span> {{ townError }}
+            </span>
+            {% endif %}
+            <input class="govuk-input govuk-!-width-two-thirds {% if (townError != '') %} govuk-input--error{% endif %}" id="address-town" name="father-address-town" type="text" autocomplete="address-level2" value="{{ data['father-address-town'] }}"></div>
+
+          <div class="govuk-form-group">
+            <label class="govuk-label" for="address-county">
+              County
+            </label>
+            <input class="govuk-input govuk-!-width-two-thirds" id="address-county" name="father-address-county" type="text" value="{{ data['father-address-county'] }}"></div>
+
+          <div class="govuk-form-group {% if (postcodeError != '') %} govuk-form-group--error{% endif %}">
+            <label class="govuk-label" for="address-postcode">
+              Postcode
+            </label>
+            {% if postcodeError != '' %}
+            <span id="contact-error" class="govuk-error-message">
+              <span class="govuk-visually-hidden">Error:</span> {{ postcodeError }}
+            </span>
+            {% endif %}
+            <input class="govuk-input govuk-input--width-10 {% if (postcodeError != '') %} govuk-input--error{% endif %}" id="address-postcode" name="father-address-postcode" type="text" autocomplete="postal-code"  value="{{ data['father-address-postcode'] }}"></div>
+
+            <div class="govuk-form-group">
+              <p><a href="father-manual-address-international.html">Enter an international address</a></p>
+            </div>
+
+        </fieldset>
+
+        <!-- Buttons -->
+        {% include "../../includes/buttons.html" %}
+        </form>
+      </div>
+    </div>
+  </main>
+</div>
+
+{% endblock %}

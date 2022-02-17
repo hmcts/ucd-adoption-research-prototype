@@ -1,0 +1,117 @@
+{% extends "layout-signed-in.html" %}
+
+{% block pageTitle %}
+Apply to adopt a child
+{% endblock %}
+
+{% block beforeContent %}
+<a class="govuk-back-link" href="javascript:history.back()">Back</a>
+{% endblock %}
+
+{% block content %}
+
+<div class="govuk-width-container">
+  <div class="govuk-grid-row">
+    <div class="govuk-grid-column-two-thirds">
+
+      {% set numberApplicantsError = '' %}
+      {% set explanationError = '' %}
+  
+      {% if errors | length > 0 %}
+      {{ govukErrorSummary({
+        titleText: "There is a problem",
+        errorList: errors
+      }) }}
+      {% for error in errors %}
+      {% if error.href == '#number-of-applicants' %}
+        {% set numberApplicantsError = error.text %}
+      {% endif %}
+      {% if error.href == '#other-explanation' %}
+        {% set explanationError = error.text %}
+       {% endif %}
+      {% endfor %}
+      {% endif %}
+
+
+      <form action="/research-4/application/number-of-applicants" method="post" class="form">
+        
+        <div class="govuk-form-group {% if (numberApplicantsError != '')%} govuk-form-group--error {% endif %}">
+        <legend class="govuk-fieldset__legend govuk-fieldset__legend--l">
+          <span class="govuk-caption-l">{{ data['applicationSection'] }}</span>
+          <h1 class="govuk-fieldset__heading">
+            Are you applying on your own, or with someone else?
+          </h1>
+        </legend>
+
+        {% if (numberApplicantsError != '')%}
+          <span class="govuk-error-message govuk-form">
+            <span class="govuk-visually-hidden">Error:</span> {{ numberApplicantsError }}
+          </span>
+        {% endif %}
+
+        <div class="govuk-form-group">
+          <fieldset class="govuk-fieldset" role="group" aria-describedby="how-many-people-are-applying-to-adopt">
+
+            <div class="govuk-radios govuk-radios--conditional" data-module="govuk-radios">
+              <div class="govuk-radios__item">
+                <input class="govuk-radios__input" id="1" name="number-of-applicants" type="radio" value="1" {% if (data['number-of-applicants'] === "1") %} checked {% endif %}>
+                <label class="govuk-label govuk-radios__label" for="1">
+                  I'm applying on my own
+                </label>
+                <div id="sign-in-item-hint" class="govuk-hint govuk-radios__hint">
+                  For example, as a single parent.
+                </div>
+              </div>
+
+              <div class="govuk-radios govuk-radios--conditional" data-module="govuk-radios">
+                <div class="govuk-radios__item">
+                  <input class="govuk-radios__input" id="partner" name="number-of-applicants" type="radio" value="partner" checked>
+                  <label class="govuk-label govuk-radios__label" for="partner">
+                    I'm applying with my spouse or civil partner
+                  </label>
+                  <div id="sign-in-item-hint" class="govuk-hint govuk-radios__hint">
+                    For example, as a married couple with joint parenting responsibilities.
+                  </div>
+                  </div>
+  
+                <div class="govuk-radios govuk-radios--conditional" data-module="govuk-radios">
+                <div class="govuk-radios__item">
+                  <input class="govuk-radios__input" id="other" name="number-of-applicants" type="radio" value="other" data-aria-controls="conditional-contact" {% if (data['number-of-applicants'] === "other") %} checked {% endif %}>
+                  <label class="govuk-label govuk-radios__label" for="other">
+                    I'm applying with someone who is not my spouse or civil partner
+                  </label>
+                  <div id="sign-in-item-hint" class="govuk-hint govuk-radios__hint">
+                    For example, with a long-term partner but not in a legally binding relationship.
+                  </div>
+                  <div class="govuk-radios__conditional govuk-radios__conditional--hidden " id="conditional-contact">
+                    <div class="govuk-form-group">
+                        <label class="govuk-label" for="contact-by-email">
+                          Give a brief overview of what your relationship is with the other applicant.
+                      </label>
+                      {% if (explanationError != '')%}
+                      <span class="govuk-error-message govuk-form">
+                        <span class="govuk-visually-hidden">Error:</span> {{ explanationError }}
+                      </span>
+                    {% endif %}
+                      <textarea class="govuk-textarea{% if (explanationError != '') %} govuk-input--error{% endif %}" id="other-relationship-description" name="other-relationship-description" rows="2" aria-describedby="more-detail-hint" value="{{data['other-relationship-description']}}"></textarea>
+                  </div>
+                    </div>
+                  </div>                  
+                </div>
+                           
+            </div>
+          </fieldset>
+        </div>
+        {% if numberApplicantsError != '' %}
+          </div>
+        {% endif %}
+
+        <!-- Buttons -->
+          {% include "../../includes/buttons.html" %}
+
+
+      </form>   
+  </div>
+</div>
+
+{% endblock %}

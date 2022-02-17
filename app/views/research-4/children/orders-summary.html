@@ -1,0 +1,122 @@
+{% extends "layout-signed-in.html" %}
+
+{% block pageTitle %}
+Apply to adopt a child
+{% endblock %}
+
+{% block beforeContent %}
+<a class="govuk-back-link" href="javascript:history.back()">Back</a>
+{% endblock %}
+
+{% block content %}
+
+<div class="govuk-width-container">
+  <div class="govuk-grid-row">
+    <div class="govuk-grid-column-two-thirds">
+
+      {% set summaryError = '' %}
+
+      {% if errors | length > 0 %}
+      {{ govukErrorSummary({
+        titleText: "There is a problem",
+        errorList: errors
+      }) }}
+      {% for error in errors %}
+        {% if error.href == '#add-another' %}
+          {% set summaryError = error.text %}
+        {% endif %}
+      {% endfor %}
+      {% endif %}
+
+      <legend class="govuk-fieldset__legend govuk-fieldset__legend--l">
+        <span class="govuk-caption-l">{{ data['child'] }}</span>
+        <h1 class="govuk-fieldset__heading">
+          Orders already in place
+        </h1>
+      </legend>
+      <!-- <div id="add-another-hint" class="govuk-hint">
+        We need details of all orders already in place. Your social worker or adoption agency can help provide these details.
+      </div> -->
+
+      
+      <dl class="govuk-summary-list govuk-!-margin-bottom-9 govuk-!-margin-top-9">
+        {% for id in data['childOrderId'] %}
+                  
+        <div class="govuk-summary-list__row">
+          <dt class="govuk-summary-list__value">
+            {{ data['childOrderType'][id]}}
+          </dt>
+          <dd class="govuk-summary-list__actions">
+            {% if data['childOrderCompleted'][id] == "No" %}
+            <strong class="govuk-tag govuk-tag--yellow">
+              Incomplete
+            </strong>
+            {% endif %}
+          </dd>
+          <dd class="govuk-summary-list__actions">
+            {% if id != 0 %}
+            <a class="govuk-link" href="orders-remove-court-order.html?id={{data['childOrderId'][id]}}">
+              Remove<span class="govuk-visually-hidden"> order</span>
+            </a>
+            {% endif %}
+          </dd>
+          <dd class="govuk-summary-list__actions">
+            {% if id == 0 %}
+            <a class="govuk-link" href="orders-placement-check-your-answers.html">
+              Change<span class="govuk-visually-hidden"> order</span>
+            </a>
+            {% else %}
+            <a class="govuk-link" href="orders-court-check-your-answers.html?id={{data['childOrderId'][id]}}">
+              Change<span class="govuk-visually-hidden"> order</span>
+            </a>
+            {% endif %}
+          </dd>
+        </div>
+        {% endfor %}
+
+      </dl>
+
+        <form action="/research-4/children/orders-summary" method="post" class="form">
+        
+          <div class="govuk-form-group  {% if (summaryError != '')%} govuk-form-group--error {% endif %}">
+            <fieldset class="govuk-fieldset" aria-describedby="add-another-hint">
+              <legend class="govuk-fieldset__legend govuk-fieldset__legend govuk-fieldset__legend--m">
+                Do you want to add another order?
+              </legend>
+              <div id="add-another-hint" class="govuk-hint">
+                For example, a care order or supervision order. Your adoption agency or social worker can provide this information for you.
+              </div>
+              {% if (summaryError != '')%}
+              <span class="govuk-error-message govuk-form">
+                <span class="govuk-visually-hidden">Error:</span> {{ summaryError }}
+              </span>
+            {% endif %}
+    
+              <div class="govuk-radios govuk-radios--inline">
+                <div class="govuk-radios__item">
+                  <input class="govuk-radios__input" id="add-another" name="add-another" type="radio" value="Yes">
+                  <label class="govuk-label govuk-radios__label" for="add-another">
+                    Yes
+                  </label>
+                </div>
+                <div class="govuk-radios__item">
+                  <input class="govuk-radios__input" id="add-another-2" name="add-another" type="radio" value="No">
+                  <label class="govuk-label govuk-radios__label" for="add-another-2">
+                    No
+                  </label>
+                </div>
+              </div>
+        
+            </fieldset>
+          </div>
+        
+          <!-- Buttons -->
+          {% include "../../includes/buttons.html" %}
+        </form>
+
+      </div>
+    </div>
+  </main>
+</div>
+
+{% endblock %}
