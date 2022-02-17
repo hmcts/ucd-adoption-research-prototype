@@ -1,0 +1,47 @@
+{% extends "layout-signed-in.html" %}
+
+{% block pageTitle %}
+Apply to adopt a child
+{% endblock %}
+
+{% block beforeContent %}
+<a class="govuk-back-link" href="javascript:history.back()">Back</a>
+{% endblock %}
+
+{% block content %}
+
+<div class="govuk-width-container">
+  <div class="govuk-grid-row">
+    <div class="govuk-grid-column-two-thirds">
+
+      <form action="/version-1/check-pay-and-submit/confirmation" method="post" class="form">
+
+        <div class="govuk-panel govuk-panel--confirmation">
+          <h1 class="govuk-panel__title">
+            Application submitted
+          </h1>
+          <div class="govuk-panel__body">
+            Your reference number<br><strong>1234-5678-9012-3456</strong>
+          </div>
+        </div>
+        
+        <p class="govuk-body">We have sent you a confirmation email. If you have not received this, you should check your junk or spam folder.</p>
+
+        <h2 class="govuk-heading-m">What happens next</h2>
+
+        <p class="govuk-body">
+          The court reviews your application and informs the birth parents, if applicable, of your application to adopt. Your personal details are kept strictly confidential.
+        </p>
+
+        <p class="govuk-body">Once the adoption order is granted, an adoption certificate is created. This replaces the child's birth certificate. It can be ordered from the General Register Office for a small fee.</p>
+        
+        <p class="govuk-body">
+          <a href="#" class="govuk-link">Print your application</a> 
+        </p>
+        
+      </form>
+    </div>
+  </div>
+</div>
+
+{% endblock %}
