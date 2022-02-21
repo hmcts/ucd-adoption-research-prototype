@@ -3098,7 +3098,7 @@ module.exports = (router) => {
 
     if (req.body['submit-button'] === 'save-and-continue') {
       if (errors.length === 0) {
-        req.session.data.submitStatus = 'completed'
+//        req.session.data.submitStatus = 'completed'
         res.redirect('https://products.payments.service.gov.uk/pay/02133e4814ea416cb7a1e540b49a8545')
       }
       else {
