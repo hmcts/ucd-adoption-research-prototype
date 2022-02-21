@@ -2640,6 +2640,7 @@ module.exports = (router) => {
 
     if (req.body['submit-button'] === 'save-and-continue') {
       if (errors.length === 0) {
+        req.session.data.siblingOrderIncomplete = 0
         req.session.data.siblingOrderNumber[count] = req.body['sibling-order-case-number']
         req.session.data.siblingOrderCompleted[count] = "Yes"
         res.redirect('/research-4/children/sibling-summary')
@@ -2694,6 +2695,7 @@ module.exports = (router) => {
 
     if (req.body['submit-button'] === 'save-and-continue') {
       if (errors.length === 0) {
+        req.session.data.siblingOrderIncomplete = 0
         req.session.data.siblingOrderCourt[count] = req.body['sibling-order-court-name']
         res.redirect('/research-4/children/sibling-order-date')
       }
@@ -2788,6 +2790,7 @@ module.exports = (router) => {
 
 
   router.post('/research-4/children/sibling-summary', function(req, res) {
+    console.log("sibling incomplete: ", req.session.data.siblingOrderIncomplete)
     var errors = []
     if (req.body['sibling-add-another'] === undefined) {
       errors.push({
