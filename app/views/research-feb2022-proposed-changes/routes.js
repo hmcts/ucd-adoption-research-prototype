@@ -220,12 +220,6 @@ module.exports = (router) => {
       href: '#name'
       })
     }
-    if (req.body['applicant-phone-number'] === '') {
-      errors.push({
-      text: 'Enter a UK telephone number',
-      href: '#phone'
-      })
-    }
     if (req.body['applicant-contact'] === '') {
       errors.push({
       text: 'Enter a name',
@@ -289,12 +283,6 @@ module.exports = (router) => {
       errors.push({
       text: 'Enter a name',
       href: '#name'
-      })
-    }
-    if (req.body['applicant-phone-number-2'] === '') {
-      errors.push({
-      text: 'Enter a UK telephone number',
-      href: '#phone'
       })
     }
     if (req.body['applicant-contact-2'] === '') {
