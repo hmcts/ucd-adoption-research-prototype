@@ -1,0 +1,103 @@
+{% extends "layout-signed-in.html" %}
+
+{% block pageTitle %}
+Apply to adopt a child
+{% endblock %}
+
+{% block beforeContent %}
+<a class="govuk-back-link" href="javascript:history.back()">Back</a>
+{% endblock %}
+
+{% block content %}
+
+<div class="govuk-width-container">
+  <div class="govuk-grid-row">
+    <div class="govuk-grid-column-two-thirds">
+
+      {% set haveAddressError = '' %}
+      {% set reasonOtherParentError = '' %}
+
+      {% if errors | length > 0 %}
+      {{ govukErrorSummary({
+        titleText: "There is a problem",
+        errorList: errors
+      }) }}
+      {% for error in errors %}
+        {% if error.href == '#other-parent-have-address' %}
+          {% set haveAddressError = error.text %}
+        {% endif %}
+        {% if error.href == '#other-parent-reason' %}
+            {% set reasonOtherParentError = error.text %}
+        {% endif %}
+      {% endfor %}
+      {% endif %}
+
+
+      <form action="/research-5/x-ui/children/other-parent-have-address" method="post" class="form">
+
+        <div class="govuk-form-group {% if (haveAddressError != '')%} govuk-form-group--error {% endif %}">
+        <legend class="govuk-fieldset__legend govuk-fieldset__legend--l">
+          <span class="govuk-caption-l">{{ data['other-parent'] }}</span>
+          <h1 class="govuk-fieldset__heading">
+            Do you have the address of the other person with parental responsibility for the child?
+          </h1>
+        </legend>
+        <div id="namehint" class="govuk-hint">
+          Ask the adoption agency or social worker if you're not sure.
+        </div>
+
+        {% if (haveAddressError != '')%}
+          <span class="govuk-error-message govuk-form">
+            <span class="govuk-visually-hidden">Error:</span> {{ haveAddressError }}
+          </span>
+        {% endif %}
+
+        <div class="govuk-form-group">
+          <fieldset class="govuk-fieldset" role="group" aria-describedby="how-many-people-are-applying-to-adopt">
+
+            <div class="govuk-radios govuk-radios--conditional" data-module="govuk-radios">
+              <div class="govuk-radios__item">
+                <input class="govuk-radios__input" id="yes" name="other-parent-have-address" type="radio" value="Yes" {% if (data['other-parent-have-address'] === "Yes") %} checked {% endif %}>
+                <label class="govuk-label govuk-radios__label" for="yes">
+                  Yes
+                </label>
+              </div>
+
+              <div class="govuk-radios govuk-radios--conditional " data-module="govuk-radios">
+              <div class="govuk-radios__item">
+                <input class="govuk-radios__input" id="no" name="other-parent-have-address" type="radio" value="No" data-aria-controls="conditional-contact" {% if (data['other-parent-have-address'] === "No") %} checked {% endif %}>
+                <label class="govuk-label govuk-radios__label" for="no">
+                  No
+                </label>
+              </div>
+
+              <div class="govuk-radios__conditional govuk-radios__conditional--hidden " id="conditional-contact">
+                <!-- <div class="govuk-form-group{% if (reasonOtherParentError != '')%} govuk-form-group--error{% endif %}"> -->
+                <div class="govuk-form-group">
+                    <label class="govuk-label" for="contact-by-email">
+                    Give a reason why the address is not known, for example 'no fixed address'.
+                  </label>
+                  {% if (reasonOtherParentError != '')%}
+                  <span class="govuk-error-message govuk-form">
+                    <span class="govuk-visually-hidden">Error:</span> {{ reasonOtherParentError }}
+                  </span>
+                {% endif %}
+
+                  <input class="govuk-input {% if (reasonOtherParentError != '') %} govuk-input--error{% endif %}" id="reason-other-parent" name="reason-other-parent" type="text" spellcheck="false" value="{{data['reason-other-parent']}}">
+                </div>
+
+
+            </div>
+          </fieldset>
+        </div>
+        </div>
+
+        <!-- Buttons -->
+          {% include "../../includes/buttons.html" %}
+
+
+      </form>
+  </div>
+</div>
+
+{% endblock %}

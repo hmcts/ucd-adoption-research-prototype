@@ -1,0 +1,113 @@
+{% extends "layout-signed-in.html" %}
+
+{% block pageTitle %}
+Apply to adopt a child
+{% endblock %}
+
+{% block beforeContent %}
+<a class="govuk-back-link" href="javascript:history.back()">Back</a>
+{% endblock %}
+
+{% block content %}
+
+<div class="govuk-width-container">
+  <div class="govuk-grid-row">
+    <div class="govuk-grid-column-two-thirds">
+
+      {% set nameError = '' %}
+      {% set phoneError = '' %}
+      {% set contactError = '' %}
+      {% set emailError = '' %}
+
+      {% if errors | length > 0 %}
+        {{ govukErrorSummary({
+          titleText: "There is a problem",
+          errorList: errors
+        }) }}
+        {% for error in errors %}
+          {% if error.href == '#name' %}
+            {% set nameError = error.text %}
+          {% endif %}
+          {% if error.href == '#phone' %}
+            {% set phoneError = error.text %}
+          {% endif %}
+          {% if error.href == '#contact' %}
+            {% set contactError = error.text %}
+          {% endif %}
+          {% if error.href == '#email' %}
+            {% set emailError = error.text %}
+          {% endif %}
+        {% endfor %}
+      {% endif %}
+
+      <form action="/research-5/x-ui/children/applicant-adoption-agency-details" method="post" class="form">
+        <fieldset class="govuk-fieldset">
+          <legend class="govuk-fieldset__legend govuk-fieldset__legend--l">
+            <span class="govuk-caption-l">{{ data['socialworker'] }}</span>
+            <h1 class="govuk-fieldset__heading">
+              Adoption agency or local authority details
+            </h1>
+          </legend>
+
+          <div class="govuk-form-group {% if (nameError != '') %} govuk-form-group--error{% endif %}">
+            <label class="govuk-label" for="name">
+              Name of adoption agency or local authority
+            </label>
+            {% if nameError != '' %}
+            <span id="contact-error" class="govuk-error-message">
+              <span class="govuk-visually-hidden">Error:</span> {{ nameError }}
+            </span>
+            {% endif %}
+
+            <input class="govuk-input govuk-!-width-two-thirds {% if (nameError != '') %} govuk-input--error{% endif %}" id="applicant-agency-name" name="applicant-agency-name" type="text" value="{{ data['applicant-agency-name'] }}">
+          </div>
+
+
+          <div class="govuk-form-group {% if (phoneError != '') %} govuk-form-group--error{% endif %}">
+            <label class="govuk-label" for="phone-number">
+              Phone number
+            </label>
+            {% if phoneError != '' %}
+            <span id="contact-error" class="govuk-error-message">
+              <span class="govuk-visually-hidden">Error:</span> {{ phoneError }}
+            </span>
+            {% endif %}
+            <input class="govuk-input govuk-input--width-10 {% if (phoneError != '') %} govuk-input--error{% endif %}" id="applicant-phone-number" name="applicant-phone-number" type="number" autocomplete="address-level2" value="{{ data['applicant-phone-number'] }}">
+          </div>
+
+          <div class="govuk-form-group {% if (contactError != '') %} govuk-form-group--error{% endif %}">
+            <label class="govuk-label" for="contact">
+              Name of your contact
+            </label>
+            {% if contactError != '' %}
+            <span id="contact-error" class="govuk-error-message">
+              <span class="govuk-visually-hidden">Error:</span> {{ contactError }}
+            </span>
+            {% endif %}
+            <input class="govuk-input govuk-!-width-two-thirds {% if (contactError != '') %} govuk-input--error{% endif %}" id="applicant-contact" name="applicant-contact" type="text" value="{{ data['applicant-contact'] }}">
+          </div>
+
+          <div class="govuk-form-group {% if (emailError != '') %} govuk-form-group--error{% endif %}">
+            <label class="govuk-label" for="contact">
+              Email address of your contact
+            </label>
+            {% if emailError != '' %}
+            <span id="contact-error" class="govuk-error-message">
+              <span class="govuk-visually-hidden">Error:</span> {{ emailError }}
+            </span>
+            {% endif %}
+            <input class="govuk-input govuk-!-width-two-thirds {% if (emailError != '') %} govuk-input--error{% endif %}" id="applicant-email" name="applicant-email" type="email" value="{{ data['applicant-email'] }}">
+          </div>
+
+
+        </fieldset>
+
+        <!-- Buttons -->
+        {% include "../../includes/buttons.html" %}
+        </form>
+      </div>
+    </div>
+  </main>
+</div>
+
+{% endblock %}
