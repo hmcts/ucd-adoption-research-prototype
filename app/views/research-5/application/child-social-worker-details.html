@@ -1,0 +1,105 @@
+{% extends "layout-signed-in.html" %}
+
+{% block pageTitle %}
+Apply to adopt a child
+{% endblock %}
+
+{% block beforeContent %}
+<a class="govuk-back-link" href="javascript:history.back()">Back</a>
+{% endblock %}
+
+{% block content %}
+
+<div class="govuk-width-container">
+  <div class="govuk-grid-row">
+    <div class="govuk-grid-column-two-thirds">
+
+      {% set nameError = '' %}
+      {% set phoneError = '' %}
+      {% set emailError = '' %}
+
+      {% if errors | length > 0 %}
+        {{ govukErrorSummary({
+          titleText: "There is a problem",
+          errorList: errors
+        }) }}
+        {% for error in errors %}
+          {% if error.href == '#name' %}
+            {% set nameError = error.text %}
+          {% endif %}
+          {% if error.href == '#phone' %}
+            {% set phoneError = error.text %}
+          {% endif %}
+          {% if error.href == '#email' %}
+            {% set emailError = error.text %}
+          {% endif %}
+        {% endfor %}
+      {% endif %}
+
+      <form action="/research-5/application/child-social-worker-details" method="post" class="form">
+        <fieldset class="govuk-fieldset">
+          <legend class="govuk-fieldset__legend govuk-fieldset__legend--l">
+            <span class="govuk-caption-l">{{ data['applicationSection'] }}</span>
+            <h1 class="govuk-fieldset__heading">
+              Details about the child's social worker
+            </h1>
+          </legend>
+          <div id="case-hint" class="govuk-hint">
+            You can get these details from your adoption agency or local authority.
+          </div>
+
+          <div class="govuk-form-group {% if (nameError != '') %} govuk-form-group--error{% endif %}">
+            <label class="govuk-label" for="name">
+              Social worker's name
+            </label>
+            {% if nameError != '' %}
+            <span id="contact-error" class="govuk-error-message">
+              <span class="govuk-visually-hidden">Error:</span> {{ nameError }}
+            </span>
+            {% endif %}
+            <input class="govuk-input govuk-!-width-two-thirds {% if (nameError != '') %} govuk-input--error{% endif %}" id="child-social-worker-name" name="child-social-worker-name" type="text" value="{{ data['child-social-worker-name'] }}">
+          </div>
+
+          <div class="govuk-form-group {% if (phoneError != '') %} govuk-form-group--error{% endif %}">
+            <label class="govuk-label" for="phone-number">
+              Social worker's phone number
+            </label>
+            {% if phoneError != '' %}
+            <span id="contact-error" class="govuk-error-message">
+              <span class="govuk-visually-hidden">Error:</span> {{ phoneError }}
+            </span>
+            {% endif %}
+            <input class="govuk-input govuk-input--width-10 {% if (phoneError != '') %} govuk-input--error{% endif %}" id="child-social-worker-phone-number" name="child-social-worker-phone-number" type="text" autocomplete="tel" value="{{ data['child-social-worker-phone-number'] }}">
+          </div>
+
+          <div class="govuk-form-group {% if (emailError != '') %} govuk-form-group--error{% endif %}">
+            <label class="govuk-label" for="contact">
+              Social worker's email address
+            </label>
+            {% if emailError != '' %}
+            <span id="contact-error" class="govuk-error-message">
+              <span class="govuk-visually-hidden">Error:</span> {{ emailError }}
+            </span>
+            {% endif %}
+            <input class="govuk-input govuk-!-width-two-thirds {% if (emailError != '') %} govuk-input--error{% endif %}" id="child-social-worker-email" name="child-social-worker-email" type="text" value="{{ data['child-social-worker-email'] }}">
+          </div>
+
+          <div class="govuk-form-group">
+            <label class="govuk-label" for="contact">
+              Social worker's team email address (if known)
+            </label>
+            <input class="govuk-input govuk-!-width-two-thirds" id="child-social-worker-team-email" name="child-social-worker-team-email" type="text" value="{{ data['child-social-worker-team-email'] }}">
+          </div>
+
+
+        </fieldset>
+
+        <!-- Buttons -->
+        {% include "../../includes/buttons.html" %}
+        </form>
+      </div>
+    </div>
+  </main>
+</div>
+
+{% endblock %}
