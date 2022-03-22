@@ -12,3 +12,4 @@ require('./views/research-jan2022-proposed-changes/routes.js')(router);
 require('./views/research-3/routes.js')(router);
 require('./views/research-4/routes.js')(router);
 require('./views/research-feb2022-proposed-changes/routes.js')(router);
+require('./views/research-5/routes.js')(router);

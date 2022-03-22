@@ -1,0 +1,305 @@
+{% block header %}
+{% include "includes/sw-header.html" %}
+{% endblock %}
+
+
+<html lang="en" class="govuk-template ">
+  <div style=" max-width:1300px; margin: 0 auto;">
+      <div style=" max-width:1300px;  min-width:1300px;  margin: 20px 0px 0px 0px;  ">
+          <main class="govuk-main-wrapper " id="main-content" role="main" style="padding-top: 25px;">
+              <div class="govuk-width-container">
+                <div class="govuk-grid-row" style="width:1300px; margin-left: -90px;">
+                    <div class="" style="display: flex; justify-content: space-between; ">
+                        <div>
+                          <h1 class="govuk-heading-xl">#1234-5678-0921-2722  &nbsp;&nbsp;&nbsp; </h1>
+                            <!-- <span class="govuk-caption-l" style="padding-top: 0px">1234-5678-9012-3456</span>
+                            <span style="margin-bottom:50px; padding-top: 25px;"><a href="#">Print</a></span>
+                            <button class="govuk-button govuk-button--secondary" data-module="govuk-button">
+                                Print
+                            </button> -->
+                        </div>
+                        <form action="/research-5/x-ui/case-worker/index" method="post" class="form">
+                          <div style="display: flex; align-items:right; padding-top: 0px;">
+                              <p class="govuk-!-margin-top-2">Next step &nbsp;</p>
+                      
+                              <select class="govuk-select" id="sort" name="next-steps">
+                                  <option value="select-action" selected="">Select action</option>
+                                  <option value="manage-documents">Manage documents</option>
+                                  <option value="send-a-message">Send message</option>
+                                  <option value="case-issue">Case issue</option>
+                                  <option value="notes">Add a case note</option>
+                              </select>
+                      
+                              <div>
+                                  <button class="govuk-button govuk-!-margin-left-1" data-module="govuk-button" name="go-button">Go</button>
+                              </div>
+                          </div>
+                      </form>
+                    </div>
+
+                    <div class="govuk-tabs" data-module="govuk-tabs">
+
+                      <h2 class="govuk-tabs__title">
+                        Contents
+                      </h2>
+
+                      <!-- ****************************** START OF TABS ****************************** -->
+                      <ul class="govuk-tabs__list">
+                        <li class="govuk-tabs__list-item">
+                          <a class="govuk-tabs__tab" href="index.html">
+                            Summary
+                          </a>
+                        </li>
+                        
+                        <li class="govuk-tabs__list-item">
+                            <a class="govuk-tabs__tab" href="case-worker-prospective-parents.html">
+                                Applicants
+                            </a>
+                        </li>
+    
+                        <li class="govuk-tabs__list-item">
+                            <a class="govuk-tabs__tab" href="case-worker-other-parties.html">
+                              Other parties
+                            </a>
+                          </li>
+  
+                          <li class="govuk-tabs__list-item govuk-tabs__list-item--selected">
+                            <a class="govuk-tabs__tab" href="case-worker-documents.html">
+                                Documents
+                            </a>
+                        </li>
+                        
+                        <li class="govuk-tabs__list-item">
+                            <a class="govuk-tabs__tab" href="case-worker-messages.html">
+                                Messages
+                            </a>
+                        </li>
+                        
+                        <li class="govuk-tabs__list-item">
+                            <a class="govuk-tabs__tab" href="case-worker-notes.html">
+                                  Notes
+                            </a>
+                          </li>
+
+                        <li class="govuk-tabs__list-item">
+                            <a class="govuk-tabs__tab" href="case-worker-history.html">
+                                History
+                            </a>
+                        </li>
+
+                        <li class="govuk-tabs__list-item">
+                            <a class="govuk-tabs__tab" href="case-worker-payments.html">
+                                Payments
+                            </a>
+                        </li>
+
+                        <!-- <li class="govuk-tabs__list-item">
+                            <a class="govuk-tabs__tab" href="case-worker-payments.html">
+                                Hearings
+                            </a>
+                        </li>
+
+                        <li class="govuk-tabs__list-item">
+                            <a class="govuk-tabs__tab" href="case-worker-payments.html">
+                                Orders
+                            </a>
+                        </li> -->
+        
+                    </ul>
+
+                      <!-- ****************************** END OF TABS ****************************** -->
+
+                      <div class="govuk-tabs__panel" id="1">
+
+                        <dl class="govuk-summary-list">
+                          <div class="govuk-summary-list__row">
+                            <dt class="govuk-summary-list__value">
+                              Application
+                            </dt>
+                            <dd class="govuk-summary-list__value">
+                              <a href="">fullapplication1233434.pdf</a>
+                            </dd>
+                            <dd class="govuk-summary-list__value">
+                              &nbsp;
+                            </dd>
+                          </div>
+                        </dl>
+
+                          <dl class="govuk-summary-list">
+                            <div class="govuk-summary-list__row">
+                            <dd class="govuk-summary-list__value">
+                              <a href="case-worker-manage-documents.html">Manage documents</a>
+                            </dd>
+                            <dd class="govuk-summary-list__value">
+                              &nbsp;
+                            </dd>
+                            <dd class="govuk-summary-list__value">
+                              &nbsp;
+                            </dd>
+                          </div>
+                        </dl>
+
+                        <details class="govuk-details" data-module="govuk-details">
+                          <summary class="govuk-details__summary">
+                            <span class="govuk-details__summary-text">
+                              Applicants' statements and application documents
+                            </span>
+                          </summary>
+                          <div class="govuk-details__text">
+                            <details class="govuk-details" data-module="govuk-details">
+                              <summary class="govuk-details__summary">
+                                <span class="govuk-details__summary-text">
+                                  PassportAgatha.pdf
+                                </span>
+                              </summary>
+                              <div class="govuk-details__text">
+                                <dl class="govuk-summary-list">
+                                  <div class="govuk-summary-list__row">
+                                    <dt class="govuk-summary-list__value">
+                                      Uploaded by
+                                    </dt>
+                                    <dd class="govuk-summary-list__value">
+                                      <a href="">test@gmail.com</a>
+                                    </dd>
+                                    <dd class="govuk-summary-list__value">
+                                      &nbsp;
+                                    </dd>
+                                  </div>
+        
+                                  <div class="govuk-summary-list__row">
+                                    <dt class="govuk-summary-list__value">
+                                      Date
+                                    </dt>
+                                    <dd class="govuk-summary-list__value">
+                                      12 June 2021
+                                    </dd>
+                                    <dd class="govuk-summary-list__value">
+                                      &nbsp;
+                                    </dd>
+                                  </div>
+
+                                  <div class="govuk-summary-list__row">
+                                    <dt class="govuk-summary-list__value">
+                                      Document
+                                    </dt>
+                                    <dd class="govuk-summary-list__value">
+                                      <a href="">PassportAgatha.pdf</a>
+                                    </dd>
+                                    <dd class="govuk-summary-list__value">
+                                      &nbsp;
+                                    </dd>
+                                  </div>
+                                </dl>
+                              </div>
+                            </details>
+
+                              </div>
+                        </details>
+
+                        <details class="govuk-details" data-module="govuk-details">
+                          <summary class="govuk-details__summary">
+                            <span class="govuk-details__summary-text">
+                              Annex A
+                            </span>
+                          </summary>
+                          <div class="govuk-details__text">
+                            <details class="govuk-details" data-module="govuk-details">
+                              <summary class="govuk-details__summary">
+                                <span class="govuk-details__summary-text">
+                                  annexA.pdf
+                                </span>
+                              </summary>
+                              <div class="govuk-details__text">
+                                <dl class="govuk-summary-list">
+                                  <div class="govuk-summary-list__row">
+                                    <dt class="govuk-summary-list__value">
+                                      Uploaded by
+                                    </dt>
+                                    <dd class="govuk-summary-list__value">
+                                      <a href="">maryjones@gmail.com</a>
+                                    </dd>
+                                    <dd class="govuk-summary-list__value">
+                                      &nbsp;
+                                    </dd>
+                                  </div>
+        
+                                  <div class="govuk-summary-list__row">
+                                    <dt class="govuk-summary-list__value">
+                                      Date
+                                    </dt>
+                                    <dd class="govuk-summary-list__value">
+                                      8 February 2022
+                                    </dd>
+                                    <dd class="govuk-summary-list__value">
+                                      &nbsp;
+                                    </dd>
+                                  </div>
+
+                                  <div class="govuk-summary-list__row">
+                                    <dt class="govuk-summary-list__value">
+                                      Document
+                                    </dt>
+                                    <dd class="govuk-summary-list__value">
+                                      <a href="">annexA.pdf</a>
+                                    </dd>
+                                    <dd class="govuk-summary-list__value">
+                                      &nbsp;
+                                    </dd>
+                                  </div>
+                                </dl>
+                              </div>
+                            </details>
+
+                              </div>
+                        </details>                        
+
+                        <!-- <dl class="govuk-summary-list">
+                          <div class="govuk-summary-list__row">
+                            <dt class="govuk-summary-list__value">
+                              Hearing details
+                            </dt>
+                            <dd class="govuk-summary-list__value">
+                              <a href="">hearingdetails.pdf</a>
+                            </dd>
+                            <dd class="govuk-summary-list__value">
+                              &nbsp;
+                            </dd>
+                          </div>
+
+                          <div class="govuk-summary-list__row">
+                            <dt class="govuk-summary-list__value">
+                              Birth certificate
+                            </dt>
+                            <dd class="govuk-summary-list__value">
+                              <a href="">document4.pdf</a>
+                            </dd>
+                            <dd class="govuk-summary-list__value">
+                              &nbsp;
+                            </dd>
+                          </div>
+                        </dl> -->
+
+                        <!-- <dl class="govuk-summary-list">
+                          <div class="govuk-summary-list__row">
+                            <dd class="govuk-summary-list__value">
+                              <a href="">Manage documents</a>
+                            </dd>
+                            <dd class="govuk-summary-list__value">
+                              &nbsp;
+                            </dd>
+                          </div> -->
+                        
+                          <!-- <p><a href="">Manage documents</a></p> -->
+
+                      </div>
+                    </div>
+                </div>
+              </div>
+          </main>
+      </div>
+  </div>
+</html>
+
+{% block footer %}
+{% include "includes/newfooter.html" %}
+{% endblock %}
