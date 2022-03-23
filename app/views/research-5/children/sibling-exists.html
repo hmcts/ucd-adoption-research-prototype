@@ -57,24 +57,24 @@ Sibing details
 
             <div class="govuk-radios govuk-radios--conditional" data-module="govuk-radios">
               <div class="govuk-radios__item">
-                <input class="govuk-radios__input" id="Yes" name="sibling-exists" type="radio" value="Yes" {% if (data['sibling-exists'] === "Yes") %} checked {% endif %}>
-                <label class="govuk-label govuk-radios__label" for="Yes">
+                <input class="govuk-radios__input" id="yes" name="sibling-exists" type="radio" value="yes" {% if (data['sibling-exists'] === "yes") %} checked {% endif %}>
+                <label class="govuk-label govuk-radios__label" for="yes">
                   Yes
                 </label>
               </div>
 
               <div class="govuk-radios govuk-radios--conditional" data-module="govuk-radios">
                 <div class="govuk-radios__item">
-                  <input class="govuk-radios__input" id="No" name="sibling-exists" type="radio" value="No" {% if (data['sibling-exists'] === "No") %} checked {% endif %}>
-                  <label class="govuk-label govuk-radios__label" for="No">
+                  <input class="govuk-radios__input" id="no" name="sibling-exists" type="radio" value="no" {% if (data['sibling-exists'] === "no") %} checked {% endif %}>
+                  <label class="govuk-label govuk-radios__label" for="no">
                     No
                   </label>
                 </div>
   
                 <div class="govuk-radios govuk-radios--conditional " data-module="govuk-radios">
                 <div class="govuk-radios__item">
-                  <input class="govuk-radios__input" id="Not Sure" name="sibling-exists" type="radio" value="Not Sure" data-aria-controls="conditional-contact" {% if (data['sibling-exists'] === "Not Sure") %} checked {% endif %}>
-                  <label class="govuk-label govuk-radios__label" for="Not Sure">
+                  <input class="govuk-radios__input" id="unsure" name="sibling-exists" type="radio" value="unsure" data-aria-controls="conditional-contact" {% if (data['sibling-exists'] === "unsure") %} checked {% endif %}>
+                  <label class="govuk-label govuk-radios__label" for="unsure">
                     Not sure
                   </label>
                 </div>

@@ -25,9 +25,9 @@ Apply to adopt a child
       }) }}
       {% for error in errors %}
         {% if error.href == '#second-applicant-email' %}
-          {% set emailError = error.text %} 
+          {% set emailError = error.text %}
         {% endif %}
-        {% if error.href == '#second-applicant-phone-number' %} 
+        {% if error.href == '#second-applicant-phone-number' %}
           {% set phoneError = error.text %}
         {% endif %}
         {% if error.href == '#second-applicant-consent' %}
@@ -48,7 +48,7 @@ Apply to adopt a child
           </legend>
 
           <span id="passport-issued-hint" class="govuk-hint">
-            We need both a contact email and telephone number for you. 
+            We need both a contact email and telephone number for you.
           </span>
           <p>We will email you updates and information about your application to adopt. You will only be contacted by telephone if the social worker or court staff need to contact you quickly.</p>
 
@@ -63,21 +63,21 @@ Apply to adopt a child
                   <span class="govuk-visually-hidden">Error:</span> {{ emailError }}
                 </span>
                 {% endif %}
-    
-                <input class="govuk-input govuk-!-width-two-thirds {% if (emailError != '') %} govuk-input--error{% endif %}" id="second-applicant-email-address" name="second-applicant-email-address" type="text" value="{{ data['second-applicant-email-address'] }}">
+
+                <input class="govuk-input govuk-!-width-two-thirds {% if (emailError != '') %} govuk-input--error{% endif %}" id="second-applicant-email-address" name="second-applicant-email-address" type="text" value="arthur.doyle@gmail.com">
               </div>
-    
-    
+
+
               <div class="govuk-form-group {% if (phoneError != '') %} govuk-form-group--error{% endif %}">
                 <label class="govuk-label" for="phone-number">
-                  Phone number
+                UK Phone number
                 </label>
                 {% if phoneError != '' %}
                 <span id="contact-error" class="govuk-error-message">
                   <span class="govuk-visually-hidden">Error:</span> {{ phoneError }}
                 </span>
                 {% endif %}
-                <input class="govuk-input govuk-input--width-10 {% if (phoneError != '') %} govuk-input--error{% endif %}" id="second-applicant-phone-number" name="second-applicant-phone-number" type="number" autocomplete="tel" value="{{ data['second-applicant-phone-number'] }}">
+                <input class="govuk-input govuk-input--width-10 {% if (phoneError != '') %} govuk-input--error{% endif %}" id="second-applicant-phone-number" name="second-applicant-phone-number" type="number" autocomplete="tel" value="07766779709">
               </div>
 
               <div class="govuk-form-group {% if (consentError != '') %} govuk-form-group--error{% endif %}">
@@ -86,14 +86,14 @@ Apply to adopt a child
                   <span class="govuk-visually-hidden">Error:</span> {{ consentError }}
                 </span>
                 {% endif %}
-      
+
                 <label class="govuk-label" for="consent">
-                  The court may want to use your email to serve you court orders. Are you happy to be served court orders by email? 
+                  The court may want to use your email to serve you court orders. Are you happy to be served court orders by email?
                 </label>
 
                 <div class="govuk-radios" data-module="govuk-radios" {% if (consentError != '') %} govuk-input--error{% endif %}>
                   <div class="govuk-radios__item">
-                    <input class="govuk-radios__input" id="Yes" name="second-applicant-served-email" type="radio" value="Yes" {% if (data['served-email'] === "Yes") %} checked {% endif %}>
+                    <input class="govuk-radios__input" id="Yes" name="second-applicant-served-email" type="radio" value="Yes" checked>
                     <label class="govuk-label govuk-radios__label" for="served-email">
                       Yes
                     </label>
@@ -107,12 +107,12 @@ Apply to adopt a child
                   </div>
                   <div class="govuk-radios__conditional govuk-radios__conditional--hidden" id="conditional-contact">
                     <div class="govuk-form-group">
-                      <p>You will be served all court orders by post.</p>         
-                    </div>                               
+                      <p>You will be served all court orders by post.</p>
+                    </div>
                   </div>
 
                 </div>
-              </div>                    
+              </div>
               </div>
             </fieldset>
           </div>

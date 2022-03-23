@@ -25,9 +25,9 @@ Apply to adopt a child
       }) }}
       {% for error in errors %}
         {% if error.href == '#second-applicant-email' %}
-          {% set emailError = error.text %}
+          {% set emailError = error.text %} 
         {% endif %}
-        {% if error.href == '#second-applicant-phone-number' %}
+        {% if error.href == '#second-applicant-phone-number' %} 
           {% set phoneError = error.text %}
         {% endif %}
         {% if error.href == '#second-applicant-consent' %}
@@ -48,7 +48,7 @@ Apply to adopt a child
           </legend>
 
           <span id="passport-issued-hint" class="govuk-hint">
-            We need both a contact email and telephone number for you.
+            We need both a contact email and telephone number for you. 
           </span>
           <p>We will email you updates and information about your application to adopt. You will only be contacted by telephone if the social worker or court staff need to contact you quickly.</p>
 
@@ -63,14 +63,14 @@ Apply to adopt a child
                   <span class="govuk-visually-hidden">Error:</span> {{ emailError }}
                 </span>
                 {% endif %}
-
+    
                 <input class="govuk-input govuk-!-width-two-thirds {% if (emailError != '') %} govuk-input--error{% endif %}" id="second-applicant-email-address" name="second-applicant-email-address" type="text" value="{{ data['second-applicant-email-address'] }}">
               </div>
-
-
+    
+    
               <div class="govuk-form-group {% if (phoneError != '') %} govuk-form-group--error{% endif %}">
                 <label class="govuk-label" for="phone-number">
-                UK Phone number
+                  Phone number
                 </label>
                 {% if phoneError != '' %}
                 <span id="contact-error" class="govuk-error-message">
@@ -86,7 +86,7 @@ Apply to adopt a child
                   <span class="govuk-visually-hidden">Error:</span> {{ consentError }}
                 </span>
                 {% endif %}
-
+      
                 <div class="govuk-checkboxes" data-module="govuk-checkboxes">
                   <div class="govuk-checkboxes__item">
                       <input class="govuk-checkboxes__input {% if (consentError != '') %} govuk-input--error{% endif %}" id="second-applicant-contact-consent" name="second-applicant-contact-consent" type="checkbox" value="Yes" {% if (data['second-applicant-contact-consent'] != undefined) %} checked {% endif %}>
@@ -96,7 +96,7 @@ Apply to adopt a child
                   </div>
                 </div>
               </div>
-
+                    
               </div>
             </fieldset>
           </div>

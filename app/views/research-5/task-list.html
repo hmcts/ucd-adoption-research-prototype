@@ -32,11 +32,7 @@ Task list
                     </a>
                     </span>
 
-                    {% if (data['number-of-applicants']) %}
-                        <strong class="govuk-tag app-task-list__tag" id="eligibility-completed">completed</strong>
-                    {% else %}
-                        <strong class="govuk-tag govuk-tag--grey app-task-list__tag">not started</strong>
-                    {% endif %}
+                    <strong class="govuk-tag app-task-list__tag" id="eligibility-completed">completed</strong>
                 </li>
 
                 <!-- Date child moved in with you -->
@@ -46,11 +42,7 @@ Task list
                         Date child moved in with you
                     </a>
                     </span>
-                    {% if data['dateMovedIn'] %}
                         <strong class="govuk-tag  app-task-list__tag" id="eligibility-completed">Completed</strong>
-                    {% else %}
-                        <strong class="govuk-tag govuk-tag--grey app-task-list__tag">not started</strong>
-                    {% endif %}
                 </li>
 
                 <li class="app-task-list__item">
@@ -58,14 +50,8 @@ Task list
                     <a href="application/applicant-adoption-agency-details.html" aria-describedby="eligibility-completed">
                         Adoption agency and social worker
                     </a>
-                    </span>
-                    {% if data['agencyStatus'] === 'completed' %}
-                        <strong class="govuk-tag  app-task-list__tag" id="eligibility-completed">Completed</strong>
-                    {% elseif data['agencyStatus'] === 'in progress' %}
-                        <strong class="govuk-tag govuk-tag--blue app-task-list__tag">in progress</strong>
-                    {% else %}
-                        <strong class="govuk-tag govuk-tag--grey app-task-list__tag">not started</strong>
-                    {% endif %}
+                    </span>                        
+                    <strong class="govuk-tag  app-task-list__tag" id="eligibility-completed">Completed</strong>
                 </li>
 
             </ul>
@@ -80,7 +66,7 @@ Task list
 
                 <!-- Two applicants -->
                 {% if data['numberApplicants'] != 1 %}
-                <p class="govuk-!-font-weight-bold govuk-!-margin-top-7 govuk-!-margin-bottom-2">{{ data['firstApplicant'] }}</p>
+                <p class="govuk-!-font-weight-bold govuk-!-margin-top-7 govuk-!-margin-bottom-2">{{ data['firstApplicantProposal'] }}</p>
                 <!-- First applicant - personal details -->
                 <li class="app-task-list__item">
                     <span class="app-task-list__task-name">
@@ -88,9 +74,9 @@ Task list
                         Your personal details
                     </a>
                     </a></span>
-                    {% if data['firstApplicantPersonalDetailsStatus'] === 'completed' %}
+                    {% if data['firstApplicantPersonalDetailsStatusR3'] === 'completed' %}
                         <strong class="govuk-tag  app-task-list__tag" id="eligibility-completed">Completed</strong>
-                    {% elseif data['firstApplicantPersonalDetailsStatus'] === 'in progress' %}
+                    {% elseif data['firstApplicantPersonalDetailsStatusR3'] === 'in progress' %}
                         <strong class="govuk-tag govuk-tag--blue app-task-list__tag">in progress</strong>
                     {% else %}
                         <strong class="govuk-tag govuk-tag--grey app-task-list__tag">not started</strong>
@@ -104,9 +90,9 @@ Task list
                         Your contact details
                     </a>
                     </a></span>
-                    {% if data['firstApplicantContactDetailsStatus'] === 'completed' %}
+                    {% if data['firstApplicantContactDetailsStatusR3'] === 'completed' %}
                         <strong class="govuk-tag  app-task-list__tag" id="eligibility-completed">Completed</strong>
-                    {% elseif data['firstApplicantContactDetailsStatus'] === 'in progress' %}
+                    {% elseif data['firstApplicantContactDetailsStatusR3'] === 'in progress' %}
                         <strong class="govuk-tag govuk-tag--blue app-task-list__tag">in progress</strong>
                     {% else %}
                         <strong class="govuk-tag govuk-tag--grey app-task-list__tag">not started</strong>
@@ -121,9 +107,9 @@ Task list
                         Your personal details
                     </a>
                     </a></span>
-                    {% if data['secondApplicantPersonalDetailsStatus'] === 'completed' %}
+                    {% if data['secondApplicantPersonalDetailsStatusR3'] === 'completed' %}
                         <strong class="govuk-tag  app-task-list__tag" id="eligibility-completed">Completed</strong>
-                    {% elseif data['secondApplicantPersonalDetailsStatus'] === 'in progress' %}
+                    {% elseif data['secondApplicantPersonalDetailsStatusR3'] === 'in progress' %}
                         <strong class="govuk-tag govuk-tag--blue app-task-list__tag">in progress</strong>
                     {% else %}
                         <strong class="govuk-tag govuk-tag--grey app-task-list__tag">not started</strong>
@@ -137,9 +123,9 @@ Task list
                         Your contact details
                     </a>
                     </a></span>
-                    {% if data['secondApplicantContactDetailsStatus'] === 'completed' %}
+                    {% if data['secondApplicantContactDetailsStatusR3'] === 'completed' %}
                         <strong class="govuk-tag  app-task-list__tag" id="eligibility-completed">Completed</strong>
-                    {% elseif data['secondApplicantContactDetailsStatus'] === 'in progress' %}
+                    {% elseif data['secondApplicantContactDetailsStatusR3'] === 'in progress' %}
                         <strong class="govuk-tag govuk-tag--blue app-task-list__tag">in progress</strong>
                     {% else %}
                         <strong class="govuk-tag govuk-tag--grey app-task-list__tag">not started</strong>
@@ -199,13 +185,7 @@ Task list
                   <a href="children/child-name.html" aria-describedby="eligibility-completed">
                         Birth certificate details
                     </a></span>
-                    {% if data['childDetailsStatus'] === 'completed' %}
                         <strong class="govuk-tag  app-task-list__tag" id="eligibility-completed">Completed</strong>
-                    {% elseif data['childDetailsStatus'] === 'in progress' %}
-                        <strong class="govuk-tag govuk-tag--blue app-task-list__tag">in progress</strong>
-                    {% else %}
-                        <strong class="govuk-tag govuk-tag--grey app-task-list__tag">not started</strong>
-                    {% endif %}
 
                     <br>
 
@@ -216,13 +196,7 @@ Task list
                         Child's name after adoption
                     </a></span>
 
-                    {% if data['adoptionCertificateStatus'] === 'completed' %}
                         <strong class="govuk-tag  app-task-list__tag" id="eligibility-completed">Completed</strong>
-                    {% elseif data['adoptionCertificateStatus'] === 'in progress' %}
-                        <strong class="govuk-tag govuk-tag--blue app-task-list__tag">in progress</strong>
-                    {% else %}
-                        <strong class="govuk-tag govuk-tag--grey app-task-list__tag">not started</strong>
-                    {% endif %}
 
                     <br>
 
@@ -234,13 +208,7 @@ Task list
                         Birth mother details
                     </a>
                     </span>
-                    {% if data['motherStatus'] === 'completed' %}
                         <strong class="govuk-tag  app-task-list__tag" id="eligibility-completed">Completed</strong>
-                    {% elseif data['motherStatus'] === 'in progress' %}
-                        <strong class="govuk-tag govuk-tag--blue app-task-list__tag">in progress</strong>
-                    {% else %}
-                        <strong class="govuk-tag govuk-tag--grey app-task-list__tag">not started</strong>
-                    {% endif %}
                 </li>
 
                 <li class="app-task-list__item">
@@ -249,13 +217,7 @@ Task list
                         Birth father details
                     </a>
                     </span>
-                    {% if data['fatherStatus'] === 'completed' %}
                         <strong class="govuk-tag  app-task-list__tag" id="eligibility-completed">Completed</strong>
-                    {% elseif data['fatherStatus'] === 'in progress' %}
-                        <strong class="govuk-tag govuk-tag--blue app-task-list__tag">in progress</strong>
-                    {% else %}
-                        <strong class="govuk-tag govuk-tag--grey app-task-list__tag">not started</strong>
-                    {% endif %}
                 </li>
 
                 <li class="app-task-list__item">
@@ -264,13 +226,7 @@ Task list
                         Other person with parental responsibility
                     </a>
                     </span>
-                    {% if data['otherParentStatus'] === 'completed' %}
                         <strong class="govuk-tag  app-task-list__tag" id="eligibility-completed">Completed</strong>
-                    {% elseif data['otherParentStatus'] === 'in progress' %}
-                        <strong class="govuk-tag govuk-tag--blue app-task-list__tag">in progress</strong>
-                    {% else %}
-                        <strong class="govuk-tag govuk-tag--grey app-task-list__tag">not started</strong>
-                    {% endif %}
                 </li>
 
                 <li class="app-task-list__item">
@@ -285,31 +241,19 @@ Task list
                     </a>
                     {% endif %}
                     </span>
-                    {% if data['placementStatus'] === 'completed' %}
                         <strong class="govuk-tag  app-task-list__tag" id="eligibility-completed">Completed</strong>
-                    {% elseif data['placementStatus'] === 'in progress' %}
-                        <strong class="govuk-tag govuk-tag--blue app-task-list__tag">in progress</strong>
-                    {% else %}
-                        <strong class="govuk-tag govuk-tag--grey app-task-list__tag">not started</strong>
-                    {% endif %}
                 </li>
 
                 <li class="app-task-list__item">
                     <span class="app-task-list__task-name">
-                    {% if (data['siblingStatus'] === 'in progress' or data['siblingStatus'] === 'completed') %}
+                    {% if (data['numberOfSiblings'] !== 0 and (data['siblingStatus'] === 'in progress' or data['siblingStatus'] === 'completed')) %}
                         <a href="children/sibling-summary.html" aria-describedby="eligibility-completed">
                     {% else %}
                         <a href="children/sibling-exists.html" aria-describedby="eligibility-completed">
                     {% endif %}
                         Sibling court order details</a>
                     </span>
-                    {% if data['siblingStatus'] === 'completed' %}
                         <strong class="govuk-tag  app-task-list__tag" id="eligibility-completed">Completed</strong>
-                    {% elseif data['siblingStatus'] === 'in progress' %}
-                        <strong class="govuk-tag govuk-tag--blue app-task-list__tag">in progress</strong>
-                    {% else %}
-                        <strong class="govuk-tag govuk-tag--grey app-task-list__tag">not started</strong>
-                    {% endif %}
                 </li>
 
                 <!-- Choose your family court -->
@@ -320,25 +264,16 @@ Task list
                             Choose your family court 
                         </a>
                         {% else %} 
-                        <a href="children/family-court-finder.html" class="not-underlined">
+                        <a href="children/family-court-finder.html">
                             Choose your family court 
                         </a>
                         {% endif %}
                     </span>
  
-                    {% if data['familyCourtStatus'] === 'completed' %}
                         <strong class="govuk-tag  app-task-list__tag" id="eligibility-completed">Completed</strong>
-                    {% elseif data['familyCourtStatus'] === 'in progress' %}
-                        <strong class="govuk-tag govuk-tag--blue app-task-list__tag">in progress</strong>
-                    {% elseif data['placement-court-name'] %}
-                        <strong class="govuk-tag govuk-tag--grey app-task-list__tag">not started</strong>
-                    {% else %}
-                        <strong class="govuk-tag govuk-tag--grey app-task-list__tag">cannot start yet</strong>
-                    {% endif %}
                 </li>
 
             </ul>
-
             </li>
 
 
@@ -358,12 +293,7 @@ Task list
                         Upload documents
                     </a>
                 </span>
-                {% if data['childUpload'] %}
-                <strong class="govuk-tag  app-task-list__tag" id="eligibility-completed">Completed</strong>
-                    {% else %}
-                    <strong class="govuk-tag govuk-tag--grey app-task-list__tag">not started</strong>
-                {% endif %}
-
+                    <strong class="govuk-tag  app-task-list__tag" id="eligibility-completed">Completed</strong>
               </li>
             </ul>
           </li>
@@ -380,23 +310,11 @@ Task list
 
               <li class="app-task-list__item">
                 <span class="app-task-list__task-name">
-                    <a href="check-pay-and-submit/check-your-answers.html">
+                    <a href="check-pay-and-submit/check-your-answers.html" aria-describedby="eligibility-completed" >
                         Review, pay and submit your application
                     </a>
-                    <!-- <a href="check-pay-and-submit/check-your-answers.html" aria-describedby="eligibility-completed" {% if data['submitStatus'] !== 'in progress' %} class="not-underlined" {% endif %}>
-                        Review, pay and submit your application
-                    </a> -->
                 </span>
-                {% if data['submitStatus'] === 'completed' %}
-                    <strong class="govuk-tag  app-task-list__tag" id="eligibility-completed">Completed</strong>
-                {% elseif data['submitStatus'] === 'in progress' %}
-                    <strong class="govuk-tag govuk-tag--blue app-task-list__tag">in progress</strong>
-                {% elseif data['submitStatus'] === 'not started' %}
                     <strong class="govuk-tag govuk-tag--grey app-task-list__tag">not started</strong>
-                {% else %}
-                    <strong class="govuk-tag govuk-tag--grey app-task-list__tag">not started</strong>
-                <!-- <strong class="govuk-tag govuk-tag--grey app-task-list__tag">cannot start yet</strong> -->
-                {% endif %}
               </li>
             
               <!-- <li class="app-task-list__item">

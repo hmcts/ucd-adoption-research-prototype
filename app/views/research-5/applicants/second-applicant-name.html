@@ -56,7 +56,7 @@ Apply to adopt a child
             </span>
             {% endif %}
 
-            <input class="govuk-input {% if (firstNamesError != '') %} govuk-input--error{% endif %}" id="second-applicant-names" name="second-applicant-names" type="text" autocomplete="given-name" value="{{ data['second-applicant-names'] }}"></div>
+            <input class="govuk-input {% if (firstNamesError != '') %} govuk-input--error{% endif %}" id="second-applicant-names" name="second-applicant-names" type="text" autocomplete="given-name" value="Arthur Ignatius"></div>
 
 
           <div class="govuk-form-group {% if (lastNamesError != '') %} govuk-form-group--error{% endif %}">
@@ -71,7 +71,7 @@ Apply to adopt a child
               <span class="govuk-visually-hidden">Error:</span> {{ lastNamesError }}
             </span>
             {% endif %}
-            <input class="govuk-input {% if (lastNamesError != '') %} govuk-input--error{% endif %}" id="second-applicant-last-names" name="second-applicant-last-names" type="text" autocomplete="family-name" value="{{ data['second-applicant-last-names'] }}"></div>
+            <input class="govuk-input {% if (lastNamesError != '') %} govuk-input--error{% endif %}" id="second-applicant-last-names" name="second-applicant-last-names" type="text" autocomplete="family-name" value="Conan Doyle"></div>
 
 
         </fieldset>

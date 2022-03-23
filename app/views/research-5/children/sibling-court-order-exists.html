@@ -57,24 +57,24 @@ Sibing details
 
             <div class="govuk-radios govuk-radios--conditional" data-module="govuk-radios">
               <div class="govuk-radios__item">
-                <input class="govuk-radios__input" id="Yes" name="sibling-court-order-exists" type="radio" value="Yes" {% if (data['sibling-court-order-exists'] === "Yes") %} checked {% endif %}>
-                <label class="govuk-label govuk-radios__label" for="Yes">
+                <input class="govuk-radios__input" id="yes" name="sibling-court-order-exists" type="radio" value="yes" {% if (data['sibling-court-order-exists'] === "yes") %} checked {% endif %}>
+                <label class="govuk-label govuk-radios__label" for="yes">
                   Yes
                 </label>
               </div>
 
               <div class="govuk-radios govuk-radios--conditional" data-module="govuk-radios">
                 <div class="govuk-radios__item">
-                  <input class="govuk-radios__input" id="No" name="sibling-court-order-exists" type="radio" value="No" {% if (data['sibling-court-order-exists'] === "No") %} checked {% endif %}>
-                  <label class="govuk-label govuk-radios__label" for="No">
+                  <input class="govuk-radios__input" id="no" name="sibling-court-order-exists" type="radio" value="no" {% if (data['sibling-court-order-exists'] === "no") %} checked {% endif %}>
+                  <label class="govuk-label govuk-radios__label" for="no">
                     No
                   </label>
                 </div>
   
                 <div class="govuk-radios govuk-radios--conditional " data-module="govuk-radios">
                 <div class="govuk-radios__item">
-                  <input class="govuk-radios__input" id="Not sure" name="sibling-court-order-exists" type="radio" value="Not sure" data-aria-controls="conditional-contact" {% if (data['sibling-court-order-exists'] === "Not sure") %} checked {% endif %}>
-                  <label class="govuk-label govuk-radios__label" for="Not sure">
+                  <input class="govuk-radios__input" id="unsure" name="sibling-court-order-exists" type="radio" value="unsure" data-aria-controls="conditional-contact" {% if (data['sibling-court-order-exists'] === "unsure") %} checked {% endif %}>
+                  <label class="govuk-label govuk-radios__label" for="unsure">
                     Not sure
                   </label>
                 </div>
