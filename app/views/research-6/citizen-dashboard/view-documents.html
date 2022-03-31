@@ -1,0 +1,67 @@
+{% extends "layout-signed-in.html" %}
+
+{% block pageTitle %}
+View all your adoption applications
+{% endblock %}
+
+{% block beforeContent %}
+<a class="govuk-back-link" href="javascript:history.back()">Back</a>
+{% endblock %}
+
+{% block content %}
+
+<div class="govuk-width-container">
+  <div class="govuk-grid-row">
+    <h1 class="govuk-heading-l">Uploaded documents</h1>
+    <p>Select a document in order to view it</p>
+
+
+    <dl class="govuk-summary-list">
+        <div class="govuk-summary-list__row">
+            <dt class="govuk-summary-list__key">
+                Document
+            </dt>
+            <dt class="govuk-summary-list__key">
+                Document type
+            </dt>
+            <dt class="govuk-summary-list__key">
+                Date uploaded
+            </dt>
+            <dt class="govuk-summary-list__key">
+
+            </dt>
+
+        </div>
+
+        <div class="govuk-summary-list__row">
+            <dd class="govuk-summary-list__value">
+              <a href="">courtorder.pdf</a>
+            </dd>
+            <dd class="govuk-summary-list__value">
+              Court order
+            </dd>
+            <dd class="govuk-summary-list__value">
+              23 March 2022
+            </dd>
+            <dd class="govuk-summary-list__value">
+            </dd>
+          </div>
+          <div class="govuk-summary-list__row">
+            <dt class="govuk-summary-list__value">
+              <a href="">hearing.docx</a>
+            </dt>
+            <dd class="govuk-summary-list__value">
+              Hearing order
+            </dd>
+            <dd class="govuk-summary-list__value">
+                15 March 2022
+            </dd>
+            <dd class="govuk-summary-list__value">
+
+            </dd>
+          </div>
+          </dl>
+
+  </div>
+</div>
+{% endblock %}

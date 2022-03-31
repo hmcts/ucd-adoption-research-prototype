@@ -1,0 +1,39 @@
+{% extends "layout-signed-in.html" %}
+
+{% block pageTitle %}
+Apply to adopt a child
+{% endblock %}
+
+{% block beforeContent %}
+<a class="govuk-back-link" href="javascript:history.back()">Back</a>
+{% endblock %}
+
+{% block content %}
+
+<div class="govuk-width-container">
+  <div class="govuk-grid-row">
+    <div class="govuk-grid-column-two-thirds">
+
+      <form action="/research-6/check-pay-and-submit/confirmation" method="post" class="form">
+
+        <legend class="govuk-fieldset__legend govuk-fieldset__legend--l">
+            <span class="govuk-caption-l">{{ data['reviewApplication'] }}</span>
+        <h1 class="govuk-fieldset__heading">
+          Pay and submit
+        </h1>
+        </legend>
+        <p class="govuk-body">Your joint application has been agreed by you and your husband or wife. You need to pay the application fee of £550 before it can be submitted. The payment system does not allow you to split the payment.</p>
+
+        <p class="govuk-body">This joint application will not be submitted until you pay the fee.</p>
+
+        <div class="govuk-button-group govuk-!-margin-top-6">
+          <button class="govuk-button" data-module="govuk-button" name="submit-button" value="pay-and-submit">
+            Pay and submit
+          </button>
+        </div>
+    </form>
+    </div>
+  </div>
+</div>
+
+{% endblock %}
