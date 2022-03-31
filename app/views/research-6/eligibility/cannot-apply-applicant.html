@@ -1,0 +1,55 @@
+{% extends "layout-signed-out.html" %}
+
+{% block pageTitle %}
+Apply to adopt a child
+{% endblock %}
+
+{% block beforeContent %}
+<a class="govuk-back-link" href="javascript:history.back()">Back</a>
+{% endblock %}
+
+
+{% block content %}
+
+<div class="govuk-width-container">
+
+  <main class="govuk-main-wrapper " id="main-content" role="main">
+    <div class="govuk-grid-row">
+      <div class="govuk-grid-column-two-thirds">
+
+        <form action="step-1-3b-yes" method="post" class="form">
+
+          <legend class="govuk-fieldset__legend govuk-fieldset__legend--l">
+            <span class="govuk-caption-l">Check you're eligible to adopt</span>
+            <h2 class="govuk-fieldset__heading">
+              You cannot apply to adopt
+            </h2>
+          </legend>
+          <p class="govuk-body">Based on your answers, you cannot apply to adopt because you:
+            <ul class="govuk-list govuk-list--bullet">
+              <li>are younger than 21</li>
+              <li>have not lived in the British Isles for at least 12 months</li>
+              <li>do not have a permanent home in the UK
+            </ul>
+
+            <!-- <p>There are <a href="#">different kinds of adoption</a> that you might be eligible for. -->
+
+          </p>
+          </p>
+        </form>
+      </div>
+    </div>
+
+
+    <a href="www.gov.uk" class="govuk-button govuk-button">Back to GOV.UK</a>
+
+
+
+
+    </form>
+</div>
+</div>
+</main>
+</div>
+
+{% endblock %}

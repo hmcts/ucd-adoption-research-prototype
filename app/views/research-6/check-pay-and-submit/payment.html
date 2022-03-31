@@ -1,0 +1,41 @@
+{% extends "layout-signed-in.html" %}
+
+{% block pageTitle %}
+Apply to adopt a child
+{% endblock %}
+
+{% block beforeContent %}
+<a class="govuk-back-link" href="javascript:history.back()">Back</a>
+{% endblock %}
+
+{% block content %}
+
+<div class="govuk-width-container">
+  <div class="govuk-grid-row">
+    <div class="govuk-grid-column-two-thirds">
+
+      <form action="/research-6/check-pay-and-submit/payment" method="post" class="form">
+
+        <legend class="govuk-fieldset__legend govuk-fieldset__legend--l">
+            <span class="govuk-caption-l">{{ data['paySubmit'] }}</span>
+        <h1 class="govuk-fieldset__heading">
+          Payment
+        </h1>
+        </legend>
+<p class="govuk-body">
+  Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nam non turpis scelerisque, volutpat lectus accumsan, ullamcorper mi.
+</p>
+
+        <div class="govuk-button-group govuk-!-margin-top-6">
+            <button class="govuk-button" data-module="govuk-button" name="continue" value="save-and-continue">
+            Make payment
+            </button>
+          </div>
+
+        </form>
+
+    </div>
+  </div>
+</div>
+
+{% endblock %}
