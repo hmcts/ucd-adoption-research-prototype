@@ -1,0 +1,80 @@
+{% extends "layout-signed-in.html" %}
+
+{% block pageTitle %}
+Apply to adopt a child
+{% endblock %}
+
+{% block beforeContent %}
+<a class="govuk-back-link" href="javascript:history.back()">Back</a>
+{% endblock %}
+
+{% block content %}
+
+<div class="govuk-width-container">
+  <div class="govuk-grid-row">
+    <div class="govuk-grid-column-two-thirds">
+
+      {% set solicitorHelpingError = '' %}
+  
+      {% if errors | length > 0 %}
+      {{ govukErrorSummary({
+        titleText: "There is a problem",
+        errorList: errors
+      }) }}
+      {% for error in errors %}
+        {% if error.href == '#solicitor-helping' %}
+          {% set solicitorHelpingError = error.text %}
+        {% endif %}
+      {% endfor %}
+      {% endif %}
+
+
+      <form action="/research-apr2022-proposed-changes/children/solicitor-helping" method="post" class="form">
+        
+        <div class="govuk-form-group {% if (solicitorHelpingError != '')%} govuk-form-group--error {% endif %}">
+        <legend class="govuk-fieldset__legend govuk-fieldset__legend--l">
+          <span class="govuk-caption-l">{{ data['solicitor'] }}</span>
+          <h1 class="govuk-fieldset__heading">
+            Is a solicitor helping you with this application?
+          </h1>
+        </legend>
+
+        {% if (solicitorHelpingError != '')%}
+          <span class="govuk-error-message govuk-form">
+            <span class="govuk-visually-hidden">Error:</span> {{ solicitorHelpingError }}
+          </span>
+        {% endif %}
+
+        <div class="govuk-form-group">
+          <fieldset class="govuk-fieldset" role="group" aria-describedby="how-many-people-are-applying-to-adopt">
+
+            <div class="govuk-radios govuk-radios--conditional" data-module="govuk-radios">
+              <div class="govuk-radios__item">
+                <input class="govuk-radios__input" id="yes" name="solicitor-helping" type="radio" value="Yes" {% if (data['solicitor-helping'] === "Yes") %} checked {% endif %}>
+                <label class="govuk-label govuk-radios__label" for="yes">
+                  Yes
+                </label>
+              </div>
+
+              <div class="govuk-radios__item">
+                <input class="govuk-radios__input" id="no" name="solicitor-helping" type="radio" value="No" {% if (data['solicitor-helping'] === "No") %} checked {% endif %}>
+                <label class="govuk-label govuk-radios__label" for="no">
+                  No
+                </label>
+              </div>
+  
+            </div>
+          </fieldset>
+        </div>
+        </div>
+      
+
+        <!-- Buttons -->
+          {% include "../../includes/buttons.html" %}
+
+
+      </form>   
+  </div>
+</div>
+
+{% endblock %}

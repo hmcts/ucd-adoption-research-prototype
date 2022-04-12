@@ -1,0 +1,124 @@
+{% extends "layout-signed-in.html" %}
+
+{% block pageTitle %}
+Apply to adopt a child
+{% endblock %}
+
+{% block beforeContent %}
+<a class="govuk-back-link" href="javascript:history.back()">Back</a>
+{% endblock %}
+
+{% block content %}
+
+<div class="govuk-width-container">
+  <div class="govuk-grid-row">
+    <div class="govuk-grid-column-two-thirds">
+
+      {% set summaryError = '' %}
+
+      {% if errors | length > 0 %}
+      {{ govukErrorSummary({
+        titleText: "There is a problem",
+        errorList: errors
+      }) }}
+      {% for error in errors %}
+        {% if error.href == '#sibling-add-another' %}
+          {% set summaryError = error.text %}
+        {% endif %}
+      {% endfor %}
+      {% endif %}
+
+      <legend class="govuk-fieldset__legend govuk-fieldset__legend--l">
+        <span class="govuk-caption-l">{{ data['sibling'] }}</span>
+        <h1 class="govuk-fieldset__heading">
+          Orders already in place for siblings and half-siblings
+        </h1>
+      </legend>
+      <!-- <div id="sibling-add-another-hint" class="govuk-hint">
+        We need details of all orders already in place. Your social worker or adoption agency can help provide these details.
+      </div> -->
+
+      {% for sib in data['uniqueSiblingId'] %}
+
+      <!-- <h2 class="govuk-heading-m govuk-!-margin-top-7">Sibling: {{ data['uniqueSiblingFirstNames'][sib] }} {{ data['uniqueSiblingLastNames'][sib] }} </h2> -->
+      <p class="govuk-!-margin-top-7 govuk-!-margin-bottom-0"><span class="govuk-!-font-weight-bold">Sibling: </span>{{ data['uniqueSiblingFirstNames'][sib] }} {{ data['uniqueSiblingLastNames'][sib] }} </p>
+      <p class="govuk-!-margin-top-0"><a class="govuk-link" href="sibling-change-name.html?id={{data['uniqueSiblingId'][sib]}}">
+        Change name</a></p>
+      </p>                 
+      <dl class="govuk-summary-list govuk-!-margin-bottom-9 govuk-!-margin-top-0">
+        {% for id in data['siblingOrderId'] %}
+
+          {% if (data['uniqueSiblingFirstNames'][sib] === data['siblingFirstNames'][id]) %}
+                    
+            <div class="govuk-summary-list__row">
+              <dt class="govuk-summary-list__value">
+                {{ data['siblingOrderType'][id]}}
+              </dt>
+              <dd class="govuk-summary-list__actions">
+                {% if data['siblingOrderCompleted'][id] == "No" %}
+                <strong class="govuk-tag govuk-tag--yellow">
+                  Incomplete
+                </strong>
+                {% endif %}
+              </dd>
+              <dd class="govuk-summary-list__actions">
+                <a class="govuk-link" href="sibling-remove-court-order.html?id={{data['siblingOrderId'][id]}}">
+                  Remove<span class="govuk-visually-hidden"> order</span>
+                </a>
+              </dd>
+              <dd class="govuk-summary-list__actions">
+                <a class="govuk-link" href="sibling-check-your-answers.html?id={{data['siblingOrderId'][id]}}">
+                  Change<span class="govuk-visually-hidden"> order</span>
+                </a>
+              </dd>
+            </div>
+          {% endif %}
+        {% endfor %}
+
+      </dl>
+      {% endfor %}
+
+        <form action="/research-apr2022-proposed-changes/children/sibling-summary" method="post" class="form">
+        
+          <div class="govuk-form-group  {% if (summaryError != '')%} govuk-form-group--error {% endif %}">
+            <fieldset class="govuk-fieldset" aria-describedby="sibling-add-another-hint">
+              <legend class="govuk-fieldset__legend govuk-fieldset__legend govuk-fieldset__legend--m">
+                Do you want to add another order for a sibling or half-sibling?
+              </legend>
+              <div id="sibling-add-another-hint" class="govuk-hint">
+                For example, a care order or supervision order. Your adoption agency or social worker can provide this information for you.
+              </div>
+              {% if (summaryError != '')%}
+              <span class="govuk-error-message govuk-form">
+                <span class="govuk-visually-hidden">Error:</span> {{ summaryError }}
+              </span>
+            {% endif %}
+    
+              <div class="govuk-radios govuk-radios--inline">
+                <div class="govuk-radios__item">
+                  <input class="govuk-radios__input" id="sibling-add-another" name="sibling-add-another" type="radio" value="Yes">
+                  <label class="govuk-label govuk-radios__label" for="sibling-add-another">
+                    Yes
+                  </label>
+                </div>
+                <div class="govuk-radios__item">
+                  <input class="govuk-radios__input" id="sibling-add-another-2" name="sibling-add-another" type="radio" value="No">
+                  <label class="govuk-label govuk-radios__label" for="sibling-add-another-2">
+                    No
+                  </label>
+                </div>
+              </div>
+        
+            </fieldset>
+          </div>
+        
+          <!-- Buttons -->
+          {% include "../../includes/buttons.html" %}
+        </form>
+
+      </div>
+    </div>
+  </main>
+</div>
+
+{% endblock %}
