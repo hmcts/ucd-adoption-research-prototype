@@ -1,0 +1,180 @@
+{% block header %}
+{% include "includes/sw-header.html" %}
+{% endblock %}
+
+
+<html lang="en" class="govuk-template ">  
+  <div style=" max-width:1300px; margin: 0 auto;">
+      <div style=" max-width:1300px;  min-width:1300px;  margin: 20px 0px 0px 0px;  ">
+          <main class="govuk-main-wrapper " id="main-content" role="main" style="padding-top: 25px;">                      
+              <div class="govuk-width-container">
+                <div class="govuk-grid-row" style="width:1300px; margin-left: -90px;">
+                  <h1 class="govuk-heading-xl">Manage documents</h1>
+                  <h2 class="govuk-heading-l">#1234-5678-0921-2722  &nbsp;&nbsp;&nbsp; </h2>
+
+                  <form action="/research-april2022-proposed-changes/x-ui/case-worker/case-worker-upload" method="post" class="form">
+                  <div class="govuk-form-group">
+                    <div class="govuk-inset-text">
+                      <h3 class="govuk-heading-m">{{ data['document-type'] }}</h3>
+                      <div class="govuk-grid-row">
+                        <div class="govuk-grid-column-two-thirds">
+                          <button class="govuk-button" data-module="govuk-button" name="add-new-button" value="add-new-button-top">
+                            Add new
+                          </button>
+                        </div>
+                        <div class="govuk-grid-column-one-third">
+                          <button class="govuk-button govuk-button--secondary" data-module="govuk-button" name="remove-button" value="remove">
+                            Remove
+                          </button>          
+                        </div>
+                      </div>
+                      
+                      <p class="govuk-!-margin-bottom-1">Document name (optional)</p>
+                      <input class="govuk-input" id="event-name" name="document-name" type="text">
+                      
+                      <p class="govuk-!-margin-top-5 govuk-!-margin-bottom-1">Type of document (optional)</p>
+                      <input class="govuk-input" id="event-name" name="document-type" type="text">
+                      
+                      <p class="govuk-!-margin-top-5 govuk-!-margin-bottom-1">Document (optional)</p>
+                      <!-- <p><a href="">document1.pdf</a></p> -->
+                      <input class="govuk-file-upload" id="file-upload-1" name="file-upload-1" type="file">
+                      
+                      <p class="govuk-!-margin-top-2">
+                        <button class="disabled govuk-button govuk-button--secondary" data-module="govuk-button" disabled="disabled" aria-disabled="true" name="cancel-upload-button">
+                          Cancel upload
+                        </button>       
+                      </p>
+
+                      <p class="govuk-!-margin-top-5 govuk-!-margin-bottom-1">Date of document creation (optional)</p>
+                      <div class="govuk-date-input" id="creation-date">
+                        <div class="govuk-date-input__item">
+                          <div class="govuk-form-group">
+                            <label class="govuk-label govuk-date-input__label" for="creation-date-day">
+                              Day
+                            </label>
+                            <input class="govuk-input govuk-date-input__input govuk-input--width-2" id="creation-date-day" name="creation-date-day" type="text" pattern="[0-9]*" inputmode="numeric">
+                          </div>
+                        </div>
+                        <div class="govuk-date-input__item">
+                          <div class="govuk-form-group">
+                            <label class="govuk-label govuk-date-input__label" for="creation-date-month">
+                              Month
+                            </label>
+                            <input class="govuk-input govuk-date-input__input govuk-input--width-2" id="creation-date-month" name="creation-date-month" type="text" pattern="[0-9]*" inputmode="numeric">
+                          </div>
+                        </div>
+                        <div class="govuk-date-input__item">
+                          <div class="govuk-form-group">
+                            <label class="govuk-label govuk-date-input__label" for="creation-date-year">
+                              Year
+                            </label>
+                            <input class="govuk-input govuk-date-input__input govuk-input--width-4" id="creation-date-year" name="creation-date-year" type="text" pattern="[0-9]*" inputmode="numeric">
+                          </div>
+                        </div>
+                        <div class="govuk-date-input__item">
+                          <div class="govuk-form-group">
+                            <label class="govuk-label govuk-date-input__label" for="creation-date-hour">
+                              Hour
+                            </label>
+                            <input class="govuk-input govuk-date-input__input govuk-input--width-2" id="creation-date-hour" name="creation-date-hour" type="text" pattern="[0-9]*" inputmode="numeric">
+                          </div>
+                        </div>
+                        <div class="govuk-date-input__item">
+                          <div class="govuk-form-group">
+                            <label class="govuk-label govuk-date-input__label" for="creation-date-minute">
+                              Minute
+                            </label>
+                            <input class="govuk-input govuk-date-input__input govuk-input--width-2" id="creation-date-minute" name="creation-date-minute" type="text" pattern="[0-9]*" inputmode="numeric">
+                          </div>
+                        </div>
+                        <div class="govuk-date-input__item">
+                          <div class="govuk-form-group">
+                            <label class="govuk-label govuk-date-input__label" for="creation-date-second">
+                              Second
+                            </label>
+                            <input class="govuk-input govuk-date-input__input govuk-input--width-2" id="creation-date-second" name="creation-date-second" type="text" pattern="[0-9]*" inputmode="numeric">
+                          </div>
+                        </div>
+                      </div>  
+
+                      <p class="govuk-!-margin-top-5 govuk-!-margin-bottom-1">Created by (optional)</p>
+                      <input class="govuk-input" id="event-name" name="created-by" type="text">
+                    
+                      <p class="govuk-!-margin-top-5 govuk-!-margin-bottom-1">Date that the document was received (optional)</p>
+                      <div class="govuk-date-input" id="received-date">
+                        <div class="govuk-date-input__item">
+                          <div class="govuk-form-group">
+                            <label class="govuk-label govuk-date-input__label" for="received-date-day">
+                              Day
+                            </label>
+                            <input class="govuk-input govuk-date-input__input govuk-input--width-2" id="received-date-day" name="received-date-day" type="text" pattern="[0-9]*" inputmode="numeric">
+                          </div>
+                        </div>
+                        <div class="govuk-date-input__item">
+                          <div class="govuk-form-group">
+                            <label class="govuk-label govuk-date-input__label" for="received-date-month">
+                              Month
+                            </label>
+                            <input class="govuk-input govuk-date-input__input govuk-input--width-2" id="received-date-month" name="received-date-month" type="text" pattern="[0-9]*" inputmode="numeric">
+                          </div>
+                        </div>
+                        <div class="govuk-date-input__item">
+                          <div class="govuk-form-group">
+                            <label class="govuk-label govuk-date-input__label" for="received-date-year">
+                              Year
+                            </label>
+                            <input class="govuk-input govuk-date-input__input govuk-input--width-4" id="received-date-year" name="received-date-year" type="text" pattern="[0-9]*" inputmode="numeric">
+                          </div>
+                        </div>
+                        <div class="govuk-date-input__item">
+                          <div class="govuk-form-group">
+                            <label class="govuk-label govuk-date-input__label" for="received-date-hour">
+                              Hour
+                            </label>
+                            <input class="govuk-input govuk-date-input__input govuk-input--width-2" id="received-date-hour" name="received-date-hour" type="text" pattern="[0-9]*" inputmode="numeric">
+                          </div>
+                        </div>
+                        <div class="govuk-date-input__item">
+                          <div class="govuk-form-group">
+                            <label class="govuk-label govuk-date-input__label" for="received-date-minute">
+                              Minute
+                            </label>
+                            <input class="govuk-input govuk-date-input__input govuk-input--width-2" id="received-date-minute" name="received-date-minute" type="text" pattern="[0-9]*" inputmode="numeric">
+                          </div>
+                        </div>
+                        <div class="govuk-date-input__item">
+                          <div class="govuk-form-group">
+                            <label class="govuk-label govuk-date-input__label" for="received-date-second">
+                              Second
+                            </label>
+                            <input class="govuk-input govuk-date-input__input govuk-input--width-2" id="received-date-second" name="received-date-second" type="text" pattern="[0-9]*" inputmode="numeric">
+                          </div>
+                        </div>
+                      </div>  
+
+                      <p class="govuk-!-margin-top-5 govuk-!-margin-bottom-1">Case role owning this document (optional)</p>
+                      <input class="govuk-input" id="owning" name="owning" type="text">
+                    
+                      <p class="govuk-!-margin-top-5 govuk-!-margin-bottom-1">Case role document owner Party id (optional)</p>
+                      <input class="govuk-input" id="party-id" name="party-id" type="text">
+
+                      <button class="govuk-button govuk-!-margin-top-9" data-module="govuk-button" name="add-new-button" value="add-new-button-bottom">
+                        Add new
+                      </button>
+
+                    
+                    </div>                 
+                  </div>
+                  <!-- Buttons -->
+                  {% include "../../../includes/buttons-xui.html" %}
+                  </form>
+                </div>
+              </div>
+          </main>
+      </div>
+  </div>
+</html>
+
+{% block footer %}
+{% include "includes/newfooter.html" %}
+{% endblock %}

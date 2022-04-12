@@ -1,0 +1,63 @@
+{% block header %}
+{% include "includes/sw-header.html" %}
+{% endblock %}
+
+
+<html lang="en" class="govuk-template ">  
+  <div style=" max-width:1300px; margin: 0 auto;">
+      <div style=" max-width:1300px;  min-width:1300px;  margin: 20px 0px 0px 0px;  ">
+          <main class="govuk-main-wrapper " id="main-content" role="main" style="padding-top: 25px;">                      
+              <div class="govuk-width-container">
+                <div class="govuk-grid-row" style="width:1300px; margin-left: -90px;">
+                  <h1 class="govuk-heading-xl">Manage documents</h1>
+                  <h2 class="govuk-heading-l">#1234-5678-0921-2722  &nbsp;&nbsp;&nbsp; </h2>
+                  
+
+                  <form action="/research-april2022-proposed-changes/x-ui/case-worker/case-worker-manage-documents" method="post" class="form">
+                  <div class="govuk-form-group">
+          
+                      <div class="govuk-radios govuk-radios--conditional" data-module="govuk-radios">
+                        <div class="govuk-radios__item">
+                          <input class="govuk-radios__input" id="application" name="document-type" type="radio" value="Main application documents (Placement Order, Care Order, previous Orders)">
+                          <label class="govuk-label govuk-radios__label" for="application">
+                            Main application documents (Placement Order, Care Order, previous Orders)
+                          </label>
+                        </div>
+          
+                        <div class="govuk-radios__item">
+                          <input class="govuk-radios__input" id="annex-a" name="document-type" type="radio" value="Annex A">
+                          <label class="govuk-label govuk-radios__label" for="annex-a">
+                            Annex A
+                          </label>
+                        </div>
+          
+                        <div class="govuk-radios__item">
+                          <input class="govuk-radios__input" id="correspondence" name="document-type" type="radio" value="Correspondence">
+                          <label class="govuk-label govuk-radios__label" for="correspondence">
+                            Correspondence
+                          </label>
+                        </div>
+
+                        <div class="govuk-radios__item">
+                          <input class="govuk-radios__input" id="other" name="document-type" type="radio" value="Any other documents">
+                          <label class="govuk-label govuk-radios__label" for="other">
+                            Any other documents
+                          </label>
+                        </div>
+
+                      </div>                  
+                </div>
+                <!-- Buttons -->
+                {% include "../../../includes/buttons-xui.html" %}
+                  </form>
+                </div>
+
+              </div>
+          </main>
+      </div>
+  </div>
+</html>
+
+{% block footer %}
+{% include "includes/newfooter.html" %}
+{% endblock %}

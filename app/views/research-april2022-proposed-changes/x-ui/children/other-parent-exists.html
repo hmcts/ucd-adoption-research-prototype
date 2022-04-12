@@ -1,0 +1,86 @@
+{% extends "layout-signed-in.html" %}
+
+{% block pageTitle %}
+Apply to adopt a child
+{% endblock %}
+
+{% block beforeContent %}
+<a class="govuk-back-link" href="javascript:history.back()">Back</a>
+{% endblock %}
+
+{% block content %}
+
+<div class="govuk-width-container">
+  <div class="govuk-grid-row">
+    <div class="govuk-grid-column-two-thirds">
+
+      {% set existsError = '' %}
+      {% set notSureError = '' %}
+
+      {% if errors | length > 0 %}
+      {{ govukErrorSummary({
+        titleText: "There is a problem",
+        errorList: errors
+      }) }}
+      {% for error in errors %}
+        {% if error.href == '#other-parent' %}
+          {% set existsError = error.text %}
+        {% endif %}
+        {% if error.href == '#other-parent-no-reason' %}
+            {% set notSureError = error.text %}
+        {% endif %}
+        {% endfor %}
+      {% endif %}
+
+
+      <form action="/research-april2022-proposed-changes/x-ui/children/other-parent-exists" method="post" class="form">
+
+        <div class="govuk-form-group {% if (existsError != '')%} govuk-form-group--error {% endif %}">
+        <legend class="govuk-fieldset__legend govuk-fieldset__legend--l">
+          <span class="govuk-caption-l">{{ data['other-parent'] }}</span>
+          <h1 class="govuk-fieldset__heading">
+            Is there another person who has parental responsibility for the child?
+          </h1>
+        </legend>
+        <div id="nationality-hint" class="govuk-hint">
+          Apart from the birth mother and father. For example, a step parent.
+        </div>
+
+        {% if (existsError != '')%}
+          <span class="govuk-error-message govuk-form">
+            <span class="govuk-visually-hidden">Error:</span> {{ existsError }}
+          </span>
+        {% endif %}
+
+        <div class="govuk-form-group">
+          <fieldset class="govuk-fieldset" role="group" aria-describedby="how-many-people-are-applying-to-adopt">
+
+            <div class="govuk-radios govuk-radios--conditional" data-module="govuk-radios">
+              <div class="govuk-radios__item">
+                <input class="govuk-radios__input" id="yes" name="other-parent-exists" type="radio" value="Yes" {% if (data['other-parent-exists'] === "Yes") %} checked {% endif %}>
+                <label class="govuk-label govuk-radios__label" for="yes">
+                  Yes
+                </label>
+              </div>
+
+              <div class="govuk-radios govuk-radios--conditional" data-module="govuk-radios">
+                <div class="govuk-radios__item">
+                  <input class="govuk-radios__input" id="no" name="other-parent-exists" type="radio" value="No" {% if (data['other-parent-exists'] === "No") %} checked {% endif %}>
+                  <label class="govuk-label govuk-radios__label" for="no">
+                    No
+                  </label>
+                </div>
+
+              
+          </fieldset>
+        </div>
+      </div>
+      <!-- Buttons -->
+        {% include "../../includes/buttons.html" %}
+
+
+      </form>
+  </div>
+</div>
+
+{% endblock %}

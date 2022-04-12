@@ -1,0 +1,81 @@
+{% extends "layout-signed-in.html" %}
+
+{% block pageTitle %}
+Apply to adopt a child
+{% endblock %}
+
+{% block beforeContent %}
+<a class="govuk-back-link" href="javascript:history.back()">Back</a>
+{% endblock %}
+
+{% block content %}
+
+<div class="govuk-width-container">
+  <div class="govuk-grid-row">
+    <div class="govuk-grid-column-two-thirds">
+       {% set secondFindAddressError = '' %}
+
+      {% if errors | length > 0 %}
+      {{ govukErrorSummary({
+        titleText: "There is a problem",
+        errorList: errors
+      }) }}
+      {% for error in errors %}
+        {% if error.href == '#second-applicant-find-address' %}
+          {% set secondFindAddressError = error.text %}
+        {% endif %}
+      {% endfor %}
+      {% endif %}
+ 
+      <span class="govuk-caption-l">{{ data['secondApplicant'] }}</span>
+      <h1 class="govuk-heading-l  govuk-!-margin-bottom-2">
+        What's your home address?
+      </h1>
+      <div id="nationality-hint" class="govuk-hint">
+        We'll send all court papers to this address unless you advise us that you are happy to be served court orders by email.
+      </div>
+
+      <form action="/research-april2022-proposed-changes/applicants/second-applicant-find-address" method="post" class="form">
+        <div class="govuk-form-group {% if (secondFindAddressError != '')%} govuk-form-group--error {% endif%}">
+          <fieldset class="govuk-fieldset" role="group" aria-describedby="dob-hint">
+            <label class="govuk-label govuk-label--m" for="passport-number">
+              Postcode
+            </label>
+            <div class="govuk-form-group float-left">
+              <p class="govuk-body-m">SW1A 1AA</p>
+
+              <p><a href="second-applicant-address">Change</a></p>
+            </div>
+
+            <div class="govuk-form-group">
+              <label class="govuk-label govuk-label--m" for="passport-number">
+                Select an address
+              </label>
+                {% if (secondFindAddressError != '')%}
+                <span id="gender-error" class="govuk-error-message">
+                  <span class="govuk-visually-hidden">Error:</span> {{ secondFindAddressError }}
+                </span>
+                {% endif%}
+              <select class="govuk-select" id="sort" name="second-applicant-choose-address">
+                <option value="address-found">1 address found </option>
+                <option value="address-option-1" {% if (data['second-applicant-choose-address'] === 'address-option-1') %} selected {% endif %}>Buckingham Palace, LONDON SW1A 1AA</option>
+              </select>
+            </div>
+
+        </div>
+
+        <div class="govuk-form-group">
+          <p><a href="second-applicant-enter-address-manually.html">Or enter address manually</a></p>
+        </div>
+
+        <!--  Buttons  -->
+        {% include "../../includes/buttons.html" %}
+
+      </div>
+  
+    </form>
+    </div>
+  </main>
+</div>
+
+{% endblock %}

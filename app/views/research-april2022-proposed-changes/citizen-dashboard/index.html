@@ -1,0 +1,348 @@
+{% extends "layout-signed-in.html" %}
+
+{% block pageTitle %}
+Adoption dashboard
+{% endblock %}
+
+{% block content %}
+<style>
+body {
+        font-family: "GDS Transport",arial,sans-serif;
+    }
+/* ========================= COMPONENT 1 ===============================  */
+
+    .govuk-appeal-wrapper {
+        border-top: 8px solid #2a6dbf;
+        /* width: 65vw; */
+        padding: 8px;
+        line-height: 1.25;
+    }
+
+    .govuk-appeal-options ,
+    .govuk-appeal-contact {
+        padding-bottom: 30px;
+        border-bottom: 2px solid darkgrey;
+        position: relative;
+        left: -7px;
+    }
+
+    .govuk-appeal-wrapper,
+    .govuk-appeal-options,
+    .govuk-appeal-options_links,
+    .govuk-appeal-contact-info_email,
+    .govuk-appeal-contact-info_timings {
+        display: flex;
+        flex-direction: column;
+    }
+
+    .govuk-appeal-contact_text, .govuk-appeal-contact-info_tel {
+        margin: 19px 0;
+    }
+
+    .govuk-appeal-contact-info_email {
+        margin-bottom: 10px;
+    }
+
+    /* ========================= ============== ===============================  */
+
+
+     /* ========================= COMPONENT 2 ===============================  */
+
+     .govuk-appeal-summary {
+      display: flex;
+      flex-direction: row;
+    }
+
+    .govuk-appeal-summary_check-wrapper {
+        display: inline-block;
+        background-color: royalblue;
+        border-radius: 20px;
+        width: 27px;
+        height: 26px;
+        margin-right: 30px;
+    }
+
+    .govuk-appeal-summary_check {
+        position: relative;
+        top: 3px;
+        left: 9px;
+        display: inline-block;
+        transform: rotate(45deg);
+        height: 12px;
+        width: 5px;
+        border-bottom: 4px solid white;
+        border-right: 4px solid white;
+    }
+
+    .govuk-appeal-summary-details_link {
+        display: flex;
+        flex-direction: column;
+        margin: 20px;
+    }
+
+    .govuk-appeal-summary-details_link a {
+        margin-top: 8px;
+    }
+
+    @media only screen and (max-width: 768px) {
+        .govuk-appeal-summary_check-wrapper {
+            width: 37px;
+        }
+    }
+
+    /* ========================= ============== ===============================  */
+
+    /* ========================= COMPONENT 3 ===============================  */
+
+    .govuk-appeal-steps__notification {
+        display: flex;
+        flex-direction: row;
+        align-items: center;
+        background-color: #f7f7f7;
+        padding: 8px 4px;
+    }
+
+    .govuk-appeal-steps__notification-text {
+        margin-left: 11px;
+    }
+
+    .govuk-appeal-steps__message {
+        margin-top: 10px;
+        padding: 6px 30px 30px 33px;
+        background-color: rgba(132, 232, 164, 0.1);
+    }
+
+    .govuk-appeal-steps-button {
+        background-color: #00703c;
+        border-radius: 2px;
+        color: white;
+        padding: 9px 25px;
+        border: none;
+        cursor: pointer;
+        font-size: 14px;
+    }
+
+    .rectangle-box {
+        height: 30px;
+        width: 6px;
+        background-color: #00703c;
+    }
+
+    /* ========================= ============== ===============================  */
+
+
+    .hmcts-progress-bar__list {
+    list-style: none;
+    margin: 0;
+    padding: 0;
+    position: relative;
+    text-align: justify;
+    vertical-align: top;
+}
+
+.hmcts-progress-bar__list::before {
+    border-top: 4px solid lightgrey;
+    content: "";
+    left: 0;
+    position: absolute;
+    top: 13px;
+    width: 100%;
+}
+
+.hmcts-progress-bar__list-item {
+    display: inline-block;
+    max-width: 20%;
+    position: relative;
+    text-align: center;
+    vertical-align: top;
+}
+
+.hmcts-progress-bar__list-item:first-child::before,
+.hmcts-progress-bar__list-item:last-child::before {
+    border-top: 6px solid #ffffff;
+    content: "";
+    position: absolute;
+    top: 13px;
+    width: 50%;
+}
+
+.hmcts-progress-bar__list-item:first-child::before {
+    left: 0;
+}
+
+.hmcts-progress-bar__icon {
+    position: relative;
+    background-color: #ffffff;
+    border: 3px solid lightgrey;
+    border-radius: 50%;
+    box-sizing: border-box;
+    display: block;
+    height: 32px;
+    margin-left: auto;
+    margin-right: auto;
+    width: 32px;
+}
+
+.hmcts-progress-bar__icon .govuk-appeal-summary_check {
+    left: 1px;
+}
+
+.complete {
+    background-color: #267abf;
+    border: 3px solid #267abf;
+}
+
+.hmcts-progress-bar__label {
+    font-size: 14px;
+    line-height: 1.14286;
+    display: block;
+    margin-top: 10px;
+    position: relative;
+    word-wrap: break-word;
+}
+
+.hmcts-progress-bar__list::after {
+    content: "";
+    display: inline-block;
+    width: 100%;
+}
+
+
+  </style>
+
+<div class="govuk-width-container">
+  <div class="govuk-grid-row">
+
+    <div class="govuk-grid-column-full">
+      <h1 class="govuk-heading-xl govuk-!-margin-bottom-1">Jane Austen</h1>
+      <h2 class="govuk-heading-m govuk-!-margin-top-0">9344-6223-9535-0099</h2>
+    </div>
+
+  </div>
+
+  <div class="govuk-grid-row">
+
+    <div class="govuk-grid-column-two-thirds">
+
+      <!-- Progress bar -->
+      <div class="hmcts-progress-bar">
+        <ol class="hmcts-progress-bar__list">
+
+
+            <li class="hmcts-progress-bar__list-item">
+                <span class="hmcts-progress-bar__icon complete ">
+                    <div class="govuk-appeal-summary_check"></div>
+                </span>
+                <span class="hmcts-progress-bar__label">Application submitted</span>
+            </li>
+            
+
+            <li class="hmcts-progress-bar__list-item" aria-current="step">
+                <span class="hmcts-progress-bar__icon complete"></span>
+                <span class="hmcts-progress-bar__label">Application processed</span>
+              </li>
+    
+    
+              <!-- <li class="hmcts-progress-bar__list-item">
+                <span class="hmcts-progress-bar__icon"></span>
+                <span class="hmcts-progress-bar__label">Suitability report submitted</span>
+            </li> -->
+
+            <li class="hmcts-progress-bar__list-item">
+                <span class="hmcts-progress-bar__icon"></span>
+                <span class="hmcts-progress-bar__label">Final hearing</span>
+            </li>
+
+            <li class="hmcts-progress-bar__list-item">
+                <span class="hmcts-progress-bar__icon"></span>
+                <span class="hmcts-progress-bar__label">Application decision</span>
+            </li>
+
+          </ol>
+      </div>
+
+      <!-- Do this next -->
+      <div class="govuk-appeal-steps" data-nosnippet role="region" aria-label="govuk-appeal-steps">
+        <div class="govuk-appeal-steps__text">
+            <h2><strong>Next steps</strong></h2>
+        </div>
+        <!-- <div class="govuk-appeal-steps__notification">
+            <div class="rectangle-box"></div>
+            <div class="govuk-appeal-steps__notification-text">RUN.. FUCKING RUN...THEY'RE ALL COMING...OMG THEY'RE HERE...RUN FGS SAKE!</div>
+            <div class="govuk-appeal-steps__notification-text">This is a notification</div>
+        </div> -->
+        <div class="govuk-appeal-steps__message">
+          <p class="govuk-appeal-steps-body govuk-!-font-weight-bold">Application submitted</p>
+          <p class="govuk-appeal-steps-body">Your application to adopt has now been submitted to the family court. Your social worker or adoption agency will provide further documents to the court in support of your application.</p>
+          <p class="govuk-appeal-steps-body">The court will get in touch when a hearing date is set or if they need more information from you. This could take up to 6 weeks.</p>
+
+          <!-- <div class="govuk-button-group">
+            <button value="accept" type="button" class="govuk-button"  data-module="govuk-appeal-steps-button">
+                Continue
+            </button>
+          </div> -->
+      </div>
+
+      <div class="govuk-notification-wrapper">
+        <h2 class="govuk-appeal-notification">Completed</h2>
+        <div class="govuk-appeal-summary-wrapper">
+            <h2>Application submitted</h2>
+            <div class="govuk-appeal-summary">
+                <div class="govuk-appeal-summary_check-wrapper">
+                    <div class="govuk-appeal-summary_check"></div>
+                </div>
+                <div class="govuk-appeal-summary-details">
+                    <strong>01 January 2022</strong> &ndash; application to adopt submitted to the court
+                    <p class="govuk-!-margin-top-2"><a href="A58.pdf" download>Download or print my application</a>
+                    </p>
+                </div>
+            </div>
+        </div>
+    </div>
+    </div>
+
+    </div>
+
+    <div class="govuk-grid-column-one-third">
+      <div class="govuk-appeal-wrapper">
+        <div class="govuk-appeal-options">
+            <h3 class="govuk-appeal-options_title"><strong>I want to...</strong></h3>
+            <div class="govuk-appeal-options_links">
+                <a href="view-application.html">View my application</a>
+                <a href="A58.pdf" download>Download or print my application</a>
+                <!-- <a href="view-documents">View my documents</a> -->
+                <a href="my-applications.html">View my other applications to adopt</a>
+                <a href="../eligibility/start-placement.html">Start a new application to adopt</a>
+            </div>
+        </div>
+
+        <div class="govuk-appeal-contact">
+            <div class="govuk-appeal-contact_title">
+                <h3><strong>Contact us for help</strong></h3>
+            </div>
+            <div class="govuk-appeal-contact_text">
+                Ask a question or get help in your language.
+            </div>
+            <div class="govuk-appeal-contact-info">
+                <div class="govuk-appeal-contact-info_tel">
+                    Telephone:
+                    <br>
+                    03001231711
+                </div>
+                <div class="govuk-appeal-contact-info_email">
+                    Email:
+                    <a href="#">customer.service@justice.gov.uk</a>
+                </div>
+                <div class="govuk-appeal-contact-info_timings">Monday to Friday, 8:30am to 5pm
+                    <a href="#">Find out about call charges</a>
+                    <span>(opens in a new window)</span>
+                </div>
+            </div>
+        </div>
+      </div>
+    </div>
+
+  </div>
+</div>
+
+{% endblock %}
