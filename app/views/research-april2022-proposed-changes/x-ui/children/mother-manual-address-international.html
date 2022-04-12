@@ -1,0 +1,124 @@
+{% extends "layout-signed-in.html" %}
+
+{% block pageTitle %}
+Apply to adopt a child
+{% endblock %}
+
+{% block beforeContent %}
+<a class="govuk-back-link" href="javascript:history.back()">Back</a>
+{% endblock %}
+
+{% block content %}
+
+<div class="govuk-width-container">
+  <div class="govuk-grid-row">
+    <div class="govuk-grid-column-two-thirds">
+
+      {% set firstlineError = '' %}
+      {% set countryError = '' %}
+
+
+      {% if errors | length > 0 %}
+        {{ govukErrorSummary({
+          titleText: "There is a problem",
+          errorList: errors
+        }) }}
+        {% for error in errors %}
+          {% if error.href == '#first-line' %}
+            {% set firstlineError = error.text %}
+          {% endif %}
+          {% if error.href == '#country' %}
+            {% set countryError = error.text %}
+          {% endif %}
+        {% endfor %}
+      {% endif %}
+
+      <form action="/research-april2022-proposed-changes/x-ui/children/mother-manual-address-international" method="post" class="form">
+        <fieldset class="govuk-fieldset">
+          <legend class="govuk-fieldset__legend govuk-fieldset__legend--l">
+            <span class="govuk-caption-l">{{ data['mother'] }}</span>
+            <h1 class="govuk-fieldset__heading">
+              What is the birth mother's last known address?
+            </h1>
+          </legend>
+
+          <div class="govuk-form-group {% if (firstlineError != '') %} govuk-form-group--error{% endif %}">
+            <label class="govuk-label" for="address-line-1">
+              Address line 1 <span class="govuk-visually-hidden">line 1 of 2</span>
+            </label>
+            {% if firstlineError != '' %}
+            <span id="contact-error" class="govuk-error-message">
+              <span class="govuk-visually-hidden">Error:</span> {{ firstlineError }}
+            </span>
+            {% endif %}
+
+            <input class="govuk-input {% if (firstlineError != '') %} govuk-input--error{% endif %}" id="address-line-1" name="address-line-1" type="text" autocomplete="address-line1" value="{{ data['address-line-1'] }}">
+           </div>
+
+
+          <div class="govuk-form-group">
+            <label class="govuk-label" for="address-line-2">
+              Address line 2 (Optional)
+              <span class="govuk-visually-hidden">Building and street line 2 of 3</span>
+            </label>
+            <input class="govuk-input" id="address-line-2" name="address-line-2" type="text" autocomplete="address-line2" value="{{ data['address-line-2'] }}"></div>
+
+            <div class="govuk-form-group">
+              <label class="govuk-label" for="address-line-3">
+                Address line 3 (Optional)
+                <span class="govuk-visually-hidden">Building and street line 3 of 3</span>
+              </label>
+              <input class="govuk-input" id="address-line-3" name="address-line-3" type="text" autocomplete="address-line3" value="{{ data['address-line-3'] }}"></div>
+
+
+
+            <div class="govuk-form-group">
+              <label class="govuk-label" for="town">
+                Town or city (Optional)
+                <span class="govuk-visually-hidden">Town or city</span>
+              </label>
+              <input class="govuk-input govuk-!-width-two-thirds" id="town" name="town" type="text" autocomplete="town" value="{{ data['town'] }}"></div>
+
+
+          <div class="govuk-form-group">
+            <label class="govuk-label" for="address-county">
+              County, district, state or province (Optional)
+            </label>
+            <input class="govuk-input govuk-!-width-two-thirds" id="address-county" name="address-county" type="text" value="{{ data['address-county'] }}"></div>
+
+            <div class="govuk-form-group">
+              <label class="govuk-label" for="address-county">
+                Postcode, zip code or area code (Optional)
+              </label>
+              <input class="govuk-input govuk-input--width-10" id="address-postcode" name="address-postcode" type="text" value="{{ data['address-postcode'] }}"></div>
+
+
+            <div class="govuk-form-group {% if (countryError != '') %} govuk-form-group--error{% endif %}">
+              <label class="govuk-label" for="address-line-1">
+              Country <span class="govuk-visually-hidden">country</span>
+              </label>
+              {% if countryError != '' %}
+              <span id="contact-error" class="govuk-error-message">
+                <span class="govuk-visually-hidden">Error:</span> {{ countryError }}
+              </span>
+              {% endif %}
+
+          <input class="govuk-input {% if (countryError != '') %} govuk-input--error{% endif %}" id="country" name="country" type="text" autocomplete="country" value="{{ data['country'] }}"></div>
+
+
+
+
+
+        </fieldset>
+
+
+
+        <!-- Buttons -->
+        {% include "../../includes/buttons.html" %}
+        </form>
+      </div>
+    </div>
+  </main>
+</div>
+
+{% endblock %}

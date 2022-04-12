@@ -1,0 +1,107 @@
+{% extends "layout-signed-in.html" %}
+
+{% block pageTitle %}
+Sibing details
+{% endblock %}
+
+{% block beforeContent %}
+<a class="govuk-back-link" href="javascript:history.back()">Back</a>
+{% endblock %}
+
+{% block content %}
+
+<div class="govuk-width-container">
+  <div class="govuk-grid-row">
+    <div class="govuk-grid-column-two-thirds">
+
+      {% set existsError = '' %}
+      {% set notSureError = '' %}
+  
+      {% if errors | length > 0 %}
+      {{ govukErrorSummary({
+        titleText: "There is a problem",
+        errorList: errors
+      }) }}
+      {% for error in errors %}
+        {% if error.href == '#court-order-checkbox' %}
+          {% set existsError = error.text %}
+        {% endif %}
+        {% if error.href == '#sibling-court-order-no-reason' %}
+            {% set notSureError = error.text %}
+        {% endif %}
+        {% endfor %}
+      {% endif %}
+
+
+      <form action="/research-april2022-proposed-changes/children/sibling-court-order-exists" method="post" class="form">
+        
+        <div class="govuk-form-group {% if (existsError != '')%} govuk-form-group--error {% endif %}">
+        <legend class="govuk-fieldset__legend govuk-fieldset__legend--l">
+          <span class="govuk-caption-l">{{ data['sibling'] }}</span>
+          <h1 class="govuk-fieldset__heading">
+            Is there a court order in place for any of the child's siblings or half siblings?
+          </h1>
+        </legend>
+        <div id="nationality-hint" class="govuk-hint">
+          For example, a care order or supervision order. Your adoption agency or social worker can help provide these details.
+        </div>
+
+        {% if (existsError != '')%}
+          <span class="govuk-error-message govuk-form">
+            <span class="govuk-visually-hidden">Error:</span> {{ existsError }}
+          </span>
+        {% endif %}
+
+        <div class="govuk-form-group">
+          <fieldset class="govuk-fieldset" role="group" aria-describedby="how-many-people-are-applying-to-adopt">
+
+            <div class="govuk-radios govuk-radios--conditional" data-module="govuk-radios">
+              <div class="govuk-radios__item">
+                <input class="govuk-radios__input" id="yes" name="sibling-court-order-exists" type="radio" value="yes" {% if (data['sibling-court-order-exists'] === "yes") %} checked {% endif %}>
+                <label class="govuk-label govuk-radios__label" for="yes">
+                  Yes
+                </label>
+              </div>
+
+              <div class="govuk-radios govuk-radios--conditional" data-module="govuk-radios">
+                <div class="govuk-radios__item">
+                  <input class="govuk-radios__input" id="no" name="sibling-court-order-exists" type="radio" value="no" {% if (data['sibling-court-order-exists'] === "no") %} checked {% endif %}>
+                  <label class="govuk-label govuk-radios__label" for="no">
+                    No
+                  </label>
+                </div>
+  
+                <div class="govuk-radios govuk-radios--conditional " data-module="govuk-radios">
+                <div class="govuk-radios__item">
+                  <input class="govuk-radios__input" id="unsure" name="sibling-court-order-exists" type="radio" value="unsure" data-aria-controls="conditional-contact" {% if (data['sibling-court-order-exists'] === "unsure") %} checked {% endif %}>
+                  <label class="govuk-label govuk-radios__label" for="unsure">
+                    Not sure
+                  </label>
+                </div>
+                <!-- <div class="govuk-radios__conditional govuk-radios__conditional--hidden " id="conditional-contact">
+                  <div class="govuk-form-group">
+                      <label class="govuk-label" for="contact-by-email">
+                        Provide more details. For example, 'step parent is uncontactable'. Your adoption agency or social worker can help you to complete this section.
+                    </label>
+                    {% if (notSureError != '')%}
+                    <span class="govuk-error-message govuk-form">
+                      <span class="govuk-visually-hidden">Error:</span> {{ notSureError }}
+                    </span>
+                  {% endif %}
+          
+                    <input class="govuk-input{% if (notSureError != '') %} govuk-input--error{% endif %}" id="reason-not-sure" name="reason-not-sure" type="text" spellcheck="false" value="{{data['reason-not-sure']}}">
+                  </div> -->
+                </div>
+            </div>
+          </fieldset>
+        </div>
+      </div>
+      <!-- Buttons -->
+        {% include "../../includes/buttons.html" %}
+
+
+      </form>   
+  </div>
+</div>
+
+{% endblock %}

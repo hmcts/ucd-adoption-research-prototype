@@ -1,0 +1,105 @@
+{% extends "layout-signed-in.html" %}
+
+{% block pageTitle %}
+Apply to adopt a child
+{% endblock %}
+
+{% block beforeContent %}
+<a class="govuk-back-link" href="javascript:history.back()">Back</a>
+{% endblock %}
+
+{% block content %}
+
+<div class="govuk-width-container">
+  <div class="govuk-grid-row">
+    <div class="govuk-grid-column-two-thirds">
+
+      {% set sexError = '' %}
+      {% set noOtherError = '' %}
+
+      {% if errors | length > 0 %}
+      {{ govukErrorSummary({
+        titleText: "There is a problem",
+        errorList: errors
+      }) }}
+      {% for error in errors %}
+        {% if error.href == '#child-sex' %}
+          {% set sexError = error.text %}
+        {% endif %}
+        {% if error.href == '#other-sex' %}
+          {% set noOtherError = error.text %}
+        {% endif %}
+      {% endfor %}
+      {% endif %}
+
+
+      <form action="/research-april2022-proposed-changes/children/child-sex" method="post" class="form">
+        <div class="govuk-form-group {% if (sexError != '')%} govuk-form-group--error {% endif %}">
+
+          <fieldset class="govuk-fieldset" aria-describedby="child-sex-hint child-sex-error">
+            <legend class="govuk-fieldset__legend govuk-fieldset__legend--l">
+                  <span class="govuk-caption-l">{{ data['child'] }}</span>
+              <h1 class="govuk-fieldset__heading">
+                What was the child's sex at birth?
+              </h1>
+            </legend>
+            <!-- <div id="nationality-hint" class="govuk-hint">
+              You should state exactly what is listed on the birth certificate.
+            </div> -->
+
+            {% if (sexError != '')%}
+              <span class="govuk-error-message govuk-form">
+                <span class="govuk-visually-hidden">Error:</span> {{ sexError }}
+              </span>
+            {% endif %}
+            <!-- <div id="child-sex-hint" class="govuk-hint">
+              You should state exactly what is listed on the birth certificate. If the child's sex is listed as 'diverse', which means their biological sex could not be determined, you should choose the 'other' option.
+            </div> -->
+
+            <div class="govuk-radios" data-module="govuk-radios">
+              <div class="govuk-radios__item">
+                <input class="govuk-radios__input" id="male" name="child-sex" type="radio" value="Male" {% if (data['child-sex'] === "Male") %} checked {% endif %}>
+                <label class="govuk-label govuk-radios__label" for="child-sex">
+                  Male
+                </label>
+              </div>
+              <div class="govuk-radios__item">
+                <input class="govuk-radios__input" id="female" name="child-sex" type="radio" value="Female" {% if (data['child-sex'] === "Female") %} checked {% endif %}>
+                <label class="govuk-label govuk-radios__label" for="child-sex">
+                  Female
+                </label>
+              </div>
+              <div class="govuk-radios__item">
+                <input class="govuk-radios__input" id="other" name="child-sex" type="radio" value="Other" data-aria-controls="conditional-contact" {% if (data['child-sex'] === "Other") %} checked {% endif %}>
+                <label class="govuk-label govuk-radios__label" for="child-sex">
+                  Other
+                </label>
+              </div>
+              <div class="govuk-radios__conditional govuk-radios__conditional--hidden " id="conditional-contact">
+                <label class="govuk-label" for="other-sex">
+                  If the child's sex was intersex when they were born, you should enter exactly what is listed on the birth certificate.
+                </label>
+                {% if (noOtherError != '')%}
+                  <span class="govuk-error-message govuk-form">
+                    <span class="govuk-visually-hidden">Error:</span> {{ noOtherError }}
+                  </span>
+                {% endif %}
+                <input class="govuk-input{% if (noOtherError != '') %} govuk-input--error{% endif %}" id="other-sex" name="other-sex" type="text" spellcheck="false" value="{{data['other-sex']}}">
+              </div>
+            </div>
+
+
+          </fieldset>
+        </div>
+
+          <!-- Buttons -->
+          {% include "../../includes/buttons.html" %}
+
+        </form>
+
+      </div>
+    </div>
+  </main>
+</div>
+
+{% endblock %}
