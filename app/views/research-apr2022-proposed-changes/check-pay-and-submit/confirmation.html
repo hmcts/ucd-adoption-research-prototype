@@ -1,0 +1,50 @@
+{% extends "layout-signed-in.html" %}
+
+{% block pageTitle %}
+Apply to adopt a child
+{% endblock %}
+
+{% block beforeContent %}
+<a class="govuk-back-link" href="javascript:history.back()">Back</a>
+{% endblock %}
+
+{% block content %}
+
+<div class="govuk-width-container">
+  <div class="govuk-grid-row">
+    <div class="govuk-grid-column-two-thirds">
+
+      <form action="/version-1/check-pay-and-submit/confirmation" method="post" class="form">
+        
+        <div class="govuk-panel govuk-panel--confirmation">
+          <h1 class="govuk-panel__title">
+            <a href="https://ei5wx6.axshare.com/#id=m2433t&p=research-apr2022-proposed-changes&c=1" class="not-underlined" style="color: white !important;">
+              Application submitted</a>
+          </h1>
+          <div class="govuk-panel__body">
+            Your reference number<br><strong>1234-5678-9012-3456</strong>
+          </div>
+        </div>
+      
+        <p class="govuk-body">Your application has been submitted to the court. We have sent you a confirmation email. This gives you more details about the process and timelines of your application. It will also contain a link for you to sign back into your account. If you have not received this email please check your junk or spam folder.</p>
+
+        <h2 class="govuk-heading-m">What happens next</h2>
+
+        <p class="govuk-body">
+          The court starts to process your application. The birth parents or anyone with parental responsibility for the child, will be told about the application to adopt but your details will be kept strictly confidential.
+        </p>
+
+        <p class="govuk-body">There may be several court hearings related to the adoption before the final court hearing. Once the adoption order is granted, an adoption certificate is created. This replaces the child's birth certificate. It can be ordered from the General Register Office for a small fee.</p>
+        
+        <p class="govuk-body">You can sign back in using the email address and password you used when you created your account. You will be emailed notifications of any updates. You can view full details of the updates in your account. </p>
+        
+        <p class="govuk-body">
+          <a href="../citizen-dashboard/A58.pdf" class="govuk-link" download>Download or print your application</a> 
+        </p>
+        
+      </form>
+    </div>
+  </div>
+</div>
+
+{% endblock %}

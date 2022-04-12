@@ -1,0 +1,121 @@
+{% extends "layout-signed-in.html" %}
+
+{% block pageTitle %}
+Apply to adopt a child
+{% endblock %}
+
+{% block beforeContent %}
+<a class="govuk-back-link" href="javascript:history.back()">Back</a>
+{% endblock %}
+
+{% block content %}
+
+<div class="govuk-width-container">
+  <div class="govuk-grid-row">
+    <div class="govuk-grid-column-two-thirds">
+
+      {% set whatSiblingError = '' %}
+      {% set noFirstNamesError = '' %}
+      {% set noLastNamesError = '' %}
+
+      {% if errors | length > 0 %}
+      {{ govukErrorSummary({
+        titleText: "There is a problem",
+        errorList: errors
+      }) }}
+      {% for error in errors %}
+        {% if error.href == '#what-sibling' %}
+          {% set whatSiblingError = error.text %}
+        {% endif %}
+        {% if error.href == '#sibling-first-name' %}
+            {% set noFirstNamesError = error.text %}
+        {% endif %}
+        {% if error.href == '#sibling-last-name' %}
+            {% set noLastNamesError = error.text %}
+        {% endif %}
+        {% endfor %}
+      {% endif %}
+
+
+      <form action="/research-apr2022-proposed-changes/x-ui/children/sibling-choose-sibling" method="post" class="form">
+
+        <div class="govuk-form-group {% if (whatSiblingError != '')%} govuk-form-group--error {% endif %}">
+        <legend class="govuk-fieldset__legend govuk-fieldset__legend--l">
+          <span class="govuk-caption-l">{{ data['sibling'] }}</span>
+          <h1 class="govuk-fieldset__heading">
+            What sibling or half-sibling do you want to add a court order for?
+          </h1>
+        </legend>
+
+        {% if (whatSiblingError != '')%}
+          <span class="govuk-error-message govuk-form">
+            <span class="govuk-visually-hidden">Error:</span> {{ whatSiblingError }}
+          </span>
+        {% endif %}
+
+        <div class="govuk-form-group">
+          <fieldset class="govuk-fieldset" role="group" aria-describedby="how-many-people-are-applying-to-adopt">
+
+            <div class="govuk-radios govuk-radios--conditional" data-module="govuk-radios">
+              {% for sib in data['uniqueSiblingId'] %}
+                <div class="govuk-radios__item">
+                  <!-- <input class="govuk-radios__input" id="{{data['uniqueSiblingId'][sib]}}" name="what-sibling" type="radio" value="{{ data['uniqueSiblingId'][sib] }}" {% if (data['what-sibling'] === data['uniqueSiblingId'][sib]) %} checked {% endif %}> -->
+                  <input class="govuk-radios__input" id="{{data['uniqueSiblingId'][sib]}}" name="what-sibling" type="radio" value="{{ data['uniqueSiblingId'][sib] }}">
+                  <label class="govuk-label govuk-radios__label" for="first">
+                    {{ data['uniqueSiblingFirstNames'][sib] }} {{ data['uniqueSiblingLastNames'][sib] }}
+                  </label>
+                </div>
+                {% endfor %}
+
+                <div class="govuk-radios__item">
+                  <input class="govuk-radios__input" id="add-new-sibling" name="what-sibling" type="radio" value="add-new-sibling" data-aria-controls="conditional-contact">
+                  <label class="govuk-label govuk-radios__label" for="add-new-sibling">
+                    Add a different sibling or half-sibling
+                  </label>
+                </div>
+                <div class="govuk-radios__conditional govuk-radios__conditional--hidden " id="conditional-contact">
+                  <!-- <div class="govuk-form-group{% if (notSureError != '')%} govuk-form-group--error{% endif %}"> -->
+                    <div class="govuk-form-group {% if (noFirstNamesError != '') %} govuk-form-group--error{% endif %}">
+                      <label class="govuk-label" for="firstNames">
+                        First names<span class="govuk-visually-hidden">First names</span>
+                        <div id="namehint" class="govuk-hint">
+                          (Include any given or middle names)
+                        </div>
+                      </label>
+                      {% if noFirstNamesError != '' %}
+                      <span id="contact-error" class="govuk-error-message">
+                        <span class="govuk-visually-hidden">Error:</span> {{ noFirstNamesError }}
+                      </span>
+                      {% endif %}
+                      <input class="govuk-input {% if (noFirstNamesError != '') %} govuk-input--error{% endif %}" id="sibling-first-names" name="add-sibling-first-names" type="text">
+                    </div>
+
+                    <div class="govuk-form-group {% if (noLastNamesError != '') %} govuk-form-group--error{% endif %}">
+                      <label class="govuk-label" for="lastNames">
+                        Last names<span class="govuk-visually-hidden">Last names</span>
+                        <div id="namehint" class="govuk-hint">
+                          (Include surname or family names)
+                        </div>
+                      </label>
+                      {% if noLastNamesError != '' %}
+                      <span id="contact-error" class="govuk-error-message">
+                        <span class="govuk-visually-hidden">Error:</span> {{ noLastNamesError }}
+                      </span>
+                      {% endif %}
+                      <input class="govuk-input {% if (noLastNamesError != '') %} govuk-input--error{% endif %}" id="add-sibling-last-names" name="add-sibling-last-names" type="text">
+                    </div>
+
+                </div>
+            </div>
+          </fieldset>
+        </div>
+      </div>
+      <!-- Buttons -->
+        {% include "../../includes/buttons.html" %}
+
+
+      </form>
+  </div>
+</div>
+
+{% endblock %}

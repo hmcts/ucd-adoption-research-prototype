@@ -1,0 +1,39 @@
+{% extends "layout-signed-in.html" %}
+
+{% block pageTitle %}
+Apply to adopt a child
+{% endblock %}
+
+{% block beforeContent %}
+<a class="govuk-back-link" href="javascript:history.back()">Back</a>
+{% endblock %}
+
+{% block content %}
+
+<div class="govuk-width-container">
+  <div class="govuk-grid-row">
+    <div class="govuk-grid-column-two-thirds">
+
+      <form action="/research-apr2022-proposed-changes/check-pay-and-submit/confirmation" method="post" class="form">
+
+        <legend class="govuk-fieldset__legend govuk-fieldset__legend--l">
+            <span class="govuk-caption-l">{{ data['reviewApplication'] }}</span>
+        <h1 class="govuk-fieldset__heading">
+          Pay and submit
+        </h1>
+        </legend>
+        <p class="govuk-body">You will now be taken to GOV.UK Notify to pay the £183 adoption fee. Your application will be submitted to the court once the fee is paid.</p>
+
+        <p class="govuk-body">A confirmation email of your payment and submission will be sent to you.</p>
+
+        <div class="govuk-button-group govuk-!-margin-top-6">
+          <button class="govuk-button" data-module="govuk-button" name="submit-button" value="pay-and-submit">
+            Pay and submit application
+          </button>
+        </div>
+    </form>
+    </div>
+  </div>
+</div>
+
+{% endblock %}
