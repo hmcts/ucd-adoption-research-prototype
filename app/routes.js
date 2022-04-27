@@ -15,4 +15,5 @@ require('./views/research-feb2022-proposed-changes/routes.js')(router);
 require('./views/research-5/routes.js')(router);
 require('./views/research-6/routes.js')(router);
 require('./views/research-apr2022-proposed-changes/routes.js')(router);
+require('./views/research-7/routes.js')(router);
 

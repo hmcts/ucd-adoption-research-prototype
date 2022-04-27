@@ -1,0 +1,44 @@
+{% block header %}
+{% include "includes/xui-judge-header.html" %}
+{% endblock %}
+
+
+<html lang="en" class="govuk-template ">  
+  <div style=" max-width:1300px; margin: 0 auto;">
+      <div style=" max-width:1300px;  min-width:1300px;  margin: 20px 0px 0px 0px;  ">
+          <main class="govuk-main-wrapper " id="main-content" role="main" style="padding-top: 25px;">                      
+              <div class="govuk-width-container">
+                <div class="govuk-grid-row" style="width:1300px; margin-left: -90px;">
+                  <div class="govuk-grid-column-two-thirds">                  
+                    <h1 class="govuk-heading-xl">Add a case note</h1>
+                    <h2 class="govuk-heading-l">#1234-5678-0921-2722  &nbsp;&nbsp;&nbsp; </h2>
+                    
+
+                    <form action="/research-7/x-ui/judge/judge-notes" method="post" class="form">
+                    <div class="govuk-form-group">
+                      <div class="govuk-form-group">
+                        <label class="govuk-label govuk-label--s" for="more-detail">
+                            Note
+                          </label>
+                        </h1>
+                        <div id="more-detail-hint" class="govuk-hint">
+                          Add more information including the names of people involved and relevant dates.
+                        </div>
+                        <textarea class="govuk-textarea" id="more-detail" name="more-detail" rows="2" aria-describedby="more-detail-hint"></textarea>
+                      </div>
+                    </div>
+                  <!-- Buttons -->
+                  {% include "../../../includes/buttons-xui.html" %}
+                    </form>
+                  </div>
+                </div>
+
+              </div>
+          </main>
+      </div>
+  </div>
+</html>
+
+{% block footer %}
+{% include "includes/newfooter.html" %}
+{% endblock %}

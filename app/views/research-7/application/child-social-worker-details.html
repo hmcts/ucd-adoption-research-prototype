@@ -1,0 +1,116 @@
+{% extends "layout-signed-in.html" %}
+
+{% block pageTitle %}
+Apply to adopt a child
+{% endblock %}
+
+{% block beforeContent %}
+<a class="govuk-back-link" href="javascript:history.back()">Back</a>
+{% endblock %}
+
+{% block content %}
+
+<div class="govuk-width-container">
+  <div class="govuk-grid-row">
+    <div class="govuk-grid-column-two-thirds">
+
+      {% set nameError = '' %}
+      {% set lanameError = '' %}
+      {% set phoneError = '' %}
+      {% set emailError = '' %}
+
+      {% if errors | length > 0 %}
+        {{ govukErrorSummary({
+          titleText: "There is a problem",
+          errorList: errors
+        }) }}
+        {% for error in errors %}
+          {% if error.href == '#name' %}
+            {% set nameError = error.text %}
+          {% endif %}
+          {% if error.href == '#laname' %}
+            {% set lanameError = error.text %}
+          {% endif %}
+          {% if error.href == '#phone' %}
+            {% set phoneError = error.text %}
+          {% endif %}
+          {% if error.href == '#email' %}
+            {% set emailError = error.text %}
+          {% endif %}
+        {% endfor %}
+      {% endif %}
+
+      <form action="/research-7/application/child-social-worker-details" method="post" class="form">
+        <fieldset class="govuk-fieldset">
+          <legend class="govuk-fieldset__legend govuk-fieldset__legend--l">
+            <span class="govuk-caption-l">{{ data['applicationSection'] }}</span>
+            <h1 class="govuk-fieldset__heading">
+              Child's social worker details
+            </h1>
+          </legend>
+<div id="lahint" class="govuk-hint">
+  You can get these details from your local authority or adoption agency.
+    </div>
+
+          <div class="govuk-form-group {% if (lanameError != '') %} govuk-form-group--error{% endif %}">
+            <label class="govuk-label" for="name">
+              Name of child's social worker
+            {% if lanameError != '' %}
+            <span id="contact-error" class="govuk-error-message">
+              <span class="govuk-visually-hidden">Error:</span> {{ nameError }}
+            </span>
+            {% endif %}
+            <input class="govuk-input govuk-!-width-two-thirds {% if (lanameError != '') %} govuk-input--error{% endif %}" id="child-social-worker-la-name" name="child-social-worker-la-name" type="text" value="{{ data['child-social-worker-la-name'] }}">
+          </div>
+
+          <div class="govuk-form-group {% if (phoneError != '') %} govuk-form-group--error{% endif %}">
+            <label class="govuk-label" for="phone-number">
+            Phone number
+            </label>
+            {% if phoneError != '' %}
+            <span id="contact-error" class="govuk-error-message">
+              <span class="govuk-visually-hidden">Error:</span> {{ phoneError }}
+            </span>
+            {% endif %}
+            <input class="govuk-input govuk-input--width-10 {% if (phoneError != '') %} govuk-input--error{% endif %}" id="child-social-worker-phone-number" name="child-social-worker-phone-number" type="text" autocomplete="tel" value="{{ data['child-social-worker-phone-number'] }}">
+          </div>
+
+          <div class="govuk-form-group {% if (emailError != '') %} govuk-form-group--error{% endif %}">
+            <label class="govuk-label" for="contact">
+            Email address
+            </label>
+            {% if emailError != '' %}
+            <span id="contact-error" class="govuk-error-message">
+              <span class="govuk-visually-hidden">Error:</span> {{ emailError }}
+            </span>
+            {% endif %}
+            <input class="govuk-input govuk-!-width-two-thirds {% if (emailError != '') %} govuk-input--error{% endif %}" id="child-social-worker-email" name="child-social-worker-email" type="text" value="{{ data['child-social-worker-email'] }}">
+          </div>
+
+          <div class="govuk-form-group {% if (nameError != '') %} govuk-form-group--error{% endif %}">
+            <label class="govuk-label" for="name">
+              Child's local authority
+            </label>
+            <div id="lahint" class="govuk-hint">
+               This is the local authority with parental responsibility for the child. It may be different to your own local authority. 
+            </div>
+            {% if nameError != '' %}
+            <span id="contact-error" class="govuk-error-message">
+              <span class="govuk-visually-hidden">Error:</span> {{ nameError }}
+            </span>
+            {% endif %}
+            <input class="govuk-input govuk-!-width-two-thirds {% if (nameError != '') %} govuk-input--error{% endif %}" id="child-social-worker-name" name="child-social-worker-name" type="text" value="{{ data['child-social-worker-name'] }}">
+          </div>
+
+        </fieldset>
+
+        <!-- Buttons -->
+        {% include "../../includes/buttons.html" %}
+        </form>
+         {% include "../../includes/contactforhelp.html" %}
+      </div>
+    </div>
+  </main>
+</div>
+
+{% endblock %}
