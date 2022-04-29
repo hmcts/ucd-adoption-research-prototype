@@ -2070,7 +2070,8 @@ module.exports = (router) => {
       if (errors.length === 0) {
 //        req.session.data.reviewStatus = 'completed'
         res.redirect('https://products.payments.service.gov.uk/pay/02133e4814ea416cb7a1e540b49a8545')
-      }
+        res.redirect('/research-7/check-pay-and-submit/pay-and-submit')
+}
       else {
         res.render('.//research-7/check-pay-and-submit/declaration', { errors: errors })
       }
