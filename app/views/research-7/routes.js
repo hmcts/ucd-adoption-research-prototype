@@ -272,9 +272,11 @@ module.exports = (router) => {
       href: '#email'
       })
     }
+
+    req.session.data.agencyStatus = 'in progress'
+    
     if (req.body['submit-button'] === 'save-and-continue') {
       if (errors.length === 0) {
-        req.session.data.agencyStatus = 'in progress'
         res.redirect('/research-7/application/applicant-other-adoption-agency')
       }
       else {
@@ -628,9 +630,10 @@ module.exports = (router) => {
       })
     }
 
+    req.session.data.firstApplicantPersonalDetailsStatus = 'in progress'
+
     if (req.body['submit-button'] === 'save-and-continue') {
       if (errors.length === 0) {
-        req.session.data.firstApplicantPersonalDetailsStatus = 'in progress'
         res.redirect('/research-7/applicants/first-applicant-other-names')
       }
       else {
@@ -815,9 +818,11 @@ module.exports = (router) => {
       href: '#first-applicant-address'
       })
     }
+
+    req.session.data.firstApplicantContactDetailsStatus = 'in progress'
+
     if (req.body['submit-button'] === 'save-and-continue') {
       if (errors.length === 0) {
-        req.session.data.firstApplicantContactDetailsStatus = 'in progress'
         res.redirect('/research-7/applicants/first-applicant-find-address')
       }
       else {
@@ -943,9 +948,10 @@ module.exports = (router) => {
       })
     }
 
+    req.session.data.secondApplicantPersonalDetailsStatus = 'in progress'
+
     if (req.body['submit-button'] === 'save-and-continue') {
       if (errors.length === 0) {
-        req.session.data.secondApplicantPersonalDetailsStatus = 'in progress'
         res.redirect('/research-7/applicants/second-applicant-other-names')
       }
       else {
@@ -1161,9 +1167,11 @@ module.exports = (router) => {
       href: '#second-applicant-address'
       })
     }
+
+    req.session.data.secondApplicantContactDetailsStatus = 'in progress'
+
     if (req.body['submit-button'] === 'save-and-continue') {
       if (errors.length === 0) {
-        req.session.data.secondApplicantContactDetailsStatus = 'in progress'
         res.redirect('/research-7/applicants/second-applicant-find-address')
       }
       else {
@@ -1320,10 +1328,10 @@ module.exports = (router) => {
       href: '#last-names'
       })
     }
+    req.session.data.childDetailsStatus = 'in progress'
 
     if (req.body['submit-button'] === 'save-and-continue') {
       if (errors.length === 0) {
-        req.session.data.childDetailsStatus = 'in progress'
         res.redirect('/research-7/children/child-post-adoption-name')
       }
       else {
@@ -1354,7 +1362,7 @@ module.exports = (router) => {
 
     if (req.body['submit-button'] === 'save-and-continue') {
       if (errors.length === 0) {
-        req.session.data.adoptionCertificateStatus = 'completed'
+        req.session.data.childDetailsStatus = 'completed'
         res.redirect('/research-7/task-list')
       }
       else {
@@ -1948,7 +1956,7 @@ module.exports = (router) => {
         res.redirect('/research-7/task-list')
       }
       else {
-        req.session.data.placementStatus = 'in progress'
+        req.session.data.familyCourtStatus = 'in progress'
         res.redirect('/research-7/task-list')
       }
     }
