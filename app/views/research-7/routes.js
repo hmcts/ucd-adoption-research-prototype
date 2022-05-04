@@ -305,7 +305,8 @@ module.exports = (router) => {
           res.redirect('/research-7/application/applicant-adoption-agency-details-2')
         }
         else {
-          res.redirect('/research-7/application/child-social-worker-details')
+          req.session.data.agencyStatus = 'completed'
+          res.redirect('/research-7/task-list')
         }
       }
       else {
@@ -366,7 +367,8 @@ module.exports = (router) => {
 
     if (req.body['submit-button'] === 'save-and-continue') {
       if (errors.length === 0) {
-        res.redirect('/research-7/application/child-social-worker-details')
+        req.session.data.agencyStatus = 'completed'
+        res.redirect('/research-7/task-list')
       }
       else {
         res.render('.//research-7/application/applicant-adoption-agency-details-2', { errors: errors })
@@ -406,9 +408,9 @@ module.exports = (router) => {
     }
 
     if (req.body['submit-button'] === 'save-and-continue') {
+      req.session.data.agencyStatus = 'in progress'
       if (errors.length === 0) {
-        req.session.data.agencyStatus = 'completed'
-        res.redirect('/research-7/task-list')
+        res.redirect('/research-7/application/local-authority-details')
       }
       else {
         res.render('.//research-7/application/child-social-worker-details', { errors: errors })
