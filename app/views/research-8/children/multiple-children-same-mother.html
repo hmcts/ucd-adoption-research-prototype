@@ -1,0 +1,90 @@
+{% extends "layout-signed-in.html" %}
+
+{% block pageTitle %}
+Apply to adopt a child
+{% endblock %}
+
+{% block beforeContent %}
+<a class="govuk-back-link" href="javascript:history.back()">Back</a>
+{% endblock %}
+
+{% block content %}
+
+<div class="govuk-width-container">
+  <div class="govuk-grid-row">
+    <div class="govuk-grid-column-two-thirds">
+
+      {% set numberApplicantsError = '' %}
+  
+      {% if errors | length > 0 %}
+      {{ govukErrorSummary({
+        titleText: "There is a problem",
+        errorList: errors
+      }) }}
+      {% for error in errors %}
+        {% if error.href == '#number-of-applicants' %}
+          {% set numberApplicantsError = error.text %}
+        {% endif %}
+      {% endfor %}
+      {% endif %}
+
+
+      <form action="/research-8/applicants/number-of-applicants" method="post" class="form">
+        
+        <div class="govuk-form-group {% if (numberApplicantsError != '')%} govuk-form-group--error {% endif %}">
+        <legend class="govuk-fieldset__legend govuk-fieldset__legend--l">
+          <span class="govuk-caption-l">{{ data['child'] }}</span>
+          <h1 class="govuk-fieldset__heading">
+            Does the child also have one of these mothers?
+          </h1>
+        </legend>
+
+        {% if (numberApplicantsError != '')%}
+          <span class="govuk-error-message govuk-form">
+            <span class="govuk-visually-hidden">Error:</span> {{ numberApplicantsError }}
+          </span>
+        {% endif %}
+
+        <div class="govuk-form-group">
+          <fieldset class="govuk-fieldset" role="group" aria-describedby="how-many-people-are-applying-to-adopt">
+
+            <div class="govuk-radios govuk-radios--conditional" data-module="govuk-radios">
+              <div class="govuk-radios__item">
+                <input class="govuk-radios__input" id="1" name="number-of-applicants" type="radio" value="1" {% if (data['numberApplicants'] === "1") %} checked {% endif %}>
+                <label class="govuk-label govuk-radios__label" for="1">
+                  Jane Austen (John Jones' birth mother)
+                </label>
+              </div>
+
+              <div class="govuk-radios govuk-radios--conditional" data-module="govuk-radios">
+                <div class="govuk-radios__item">
+                  <input class="govuk-radios__input" id="partner" name="number-of-applicants" type="radio" value="partner" {% if (data['numberApplicants'] === "mary") %} checked {% endif %}>
+                  <label class="govuk-label govuk-radios__label" for="partner">
+                    Mary Poppins (Max Poppins' birth mother)
+                  </label>
+                </div>
+  
+                <div class="govuk-radios govuk-radios--conditional" data-module="govuk-radios">
+                <div class="govuk-radios__item">
+                  <input class="govuk-radios__input" id="other" name="number-of-applicants" type="radio" value="other" data-aria-controls="conditional-contact" {% if (data['numberApplicants'] === "other") %} checked {% endif %}>
+                  <label class="govuk-label govuk-radios__label" for="other">
+                    Different mother
+                  </label>
+                </div>
+                           
+            </div>
+          </fieldset>
+        </div>
+        {% if numberApplicantsError != '' %}
+          </div>
+        {% endif %}
+
+        <!-- Buttons -->
+          {% include "../../includes/buttons.html" %}
+
+
+      </form>   
+  </div>
+</div>
+
+{% endblock %}

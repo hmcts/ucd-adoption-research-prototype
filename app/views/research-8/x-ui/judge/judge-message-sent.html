@@ -1,0 +1,33 @@
+{% block header %}
+{% include "includes/xui-judge-header.html" %}
+{% endblock %}
+
+
+<html lang="en" class="govuk-template ">  
+  <div style=" max-width:1300px; margin: 0 auto;">
+      <div style=" max-width:1300px;  min-width:1300px;  margin: 20px 0px 0px 0px;  ">
+          <main class="govuk-main-wrapper " id="main-content" role="main" style="padding-top: 25px;">                      
+              <div class="govuk-width-container">
+                <div class="govuk-grid-row" style="width:1300px; margin-left: -90px;">
+                  <h1 class="govuk-heading-xl">Send a message</h1>
+                  <h2 class="govuk-heading-l">#1234-5678-0921-2722  &nbsp;&nbsp;&nbsp; </h2>
+                  
+
+                  <form action="/research-8/x-ui/judge/judge-message-sent" method="post" class="form">
+                    <div class="govuk-form-group">
+                      <p>Your message has been sent.</p>
+                    </div>
+                <!-- Buttons -->
+                {% include "../../../includes/buttons-xui.html" %}
+                  </form>
+                </div>
+
+              </div>
+          </main>
+      </div>
+  </div>
+</html>
+
+{% block footer %}
+{% include "includes/newfooter.html" %}
+{% endblock %}

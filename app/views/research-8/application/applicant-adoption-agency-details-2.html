@@ -1,0 +1,169 @@
+{% extends "layout-signed-in.html" %}
+
+{% block pageTitle %}
+Apply to adopt a child
+{% endblock %}
+
+{% block beforeContent %}
+<a class="govuk-back-link" href="javascript:history.back()">Back</a>
+{% endblock %}
+
+{% block content %}
+
+<div class="govuk-width-container">
+  <div class="govuk-grid-row">
+    <div class="govuk-grid-column-two-thirds">
+
+      {% set nameError = '' %}
+      {% set phoneError = '' %}
+      {% set contactError = '' %}
+      {% set firstlineError = '' %}
+      {% set townError = '' %}
+      {% set postcodeError = '' %}
+      {% set emailError = '' %}
+
+      {% if errors | length > 0 %}
+        {{ govukErrorSummary({
+          titleText: "There is a problem",
+          errorList: errors
+        }) }}
+        {% for error in errors %}
+          {% if error.href == '#name' %}
+            {% set nameError = error.text %}
+          {% endif %}
+          {% if error.href == '#phone' %}
+            {% set phoneError = error.text %}
+          {% endif %}
+          {% if error.href == '#contact' %}
+            {% set contactError = error.text %}
+          {% endif %}
+          {% if error.href == '#first-line' %}
+            {% set firstlineError = error.text %}
+          {% endif %}
+          {% if error.href == '#town' %}
+            {% set townError = error.text %}
+          {% endif %}
+          {% if error.href == '#postcode' %}
+            {% set postcodeError = error.text %}
+              {% endif %}
+          {% if error.href == '#email' %}
+            {% set emailError = error.text %}
+          {% endif %}
+        {% endfor %}
+      {% endif %}
+
+      <form action="/research-8/application/applicant-adoption-agency-details-2" method="post" class="form">
+        <fieldset class="govuk-fieldset">
+          <legend class="govuk-fieldset__legend govuk-fieldset__legend--l">
+            <span class="govuk-caption-l">{{ data['applicationSection'] }}</span>
+            <h1 class="govuk-fieldset__heading">
+            Adoption agency or local authority details
+            </h1>
+          </legend>
+
+          <div class="govuk-form-group {% if (nameError != '') %} govuk-form-group--error{% endif %}">
+            <label class="govuk-label" for="name">
+              Name of adoption agency or local authority
+            </label>
+            {% if nameError != '' %}
+            <span id="contact-error" class="govuk-error-message">
+              <span class="govuk-visually-hidden">Error:</span> {{ nameError }}
+            </span>
+            {% endif %}
+
+            <input class="govuk-input govuk-!-width-two-thirds {% if (nameError != '') %} govuk-input--error{% endif %}" id="applicant-agency-name-2" name="applicant-agency-name-2" type="text" value="{{ data['applicant-agency-name-2'] }}">
+          </div>
+          <fieldset class="govuk-fieldset">
+
+
+                      <div class="govuk-form-group {% if (contactError != '') %} govuk-form-group--error{% endif %}">
+                        <label class="govuk-label" for="contact">
+                          Name of your contact
+                        </label>
+                        {% if contactError != '' %}
+                        <span id="contact-error" class="govuk-error-message">
+                          <span class="govuk-visually-hidden">Error:</span> {{ contactError }}
+                        </span>
+                        {% endif %}
+                        <input class="govuk-input govuk-!-width-two-thirds {% if (contactError != '') %} govuk-input--error{% endif %}" id="applicant-contact-2" name="applicant-contact-2" type="text" value="{{ data['applicant-contact-2'] }}">
+                      </div>
+
+            <div class="govuk-form-group {% if (phoneError != '') %} govuk-form-group--error{% endif %}">
+              <label class="govuk-label" for="phone-number">
+                Phone number
+              </label>
+              {% if phoneError != '' %}
+              <span id="contact-error" class="govuk-error-message">
+                <span class="govuk-visually-hidden">Error:</span> {{ phoneError }}
+              </span>
+              {% endif %}
+              <input class="govuk-input govuk-input--width-10 {% if (phoneError != '') %} govuk-input--error{% endif %}" id="applicant-phone-number-2" name="applicant-phone-number-2" type="number" autocomplete="tel" value="{{ data['applicant-phone-number-2'] }}">
+            </div>
+
+
+            <div class="govuk-form-group {% if (firstlineError != '') %} govuk-form-group--error{% endif %}">
+            <label class="govuk-label" for="address-line-1">
+              Address line 1 <span class="govuk-visually-hidden">line 1 of 2</span>
+            </label>
+            {% if firstlineError != '' %}
+            <span id="contact-error" class="govuk-error-message">
+              <span class="govuk-visually-hidden">Error:</span> {{ firstlineError }}
+            </span>
+            {% endif %}
+            <input class="govuk-input {% if (firstlineError != '') %} govuk-input--error{% endif %}" id="address-line-1" name="agency-details-address-line-1" type="text" autocomplete="address-line1" value="{{ data['agency-details-address-line-1'] }}"></div>
+
+
+          <div class="govuk-form-group {% if (townError != '') %} govuk-form-group--error{% endif %}">
+            <label class="govuk-label" for="address-town">
+              Town or city
+            </label>
+            {% if townError != '' %}
+            <span id="contact-error" class="govuk-error-message">
+              <span class="govuk-visually-hidden">Error:</span> {{ townError }}
+            </span>
+            {% endif %}
+            <input class="govuk-input govuk-!-width-two-thirds {% if (townError != '') %} govuk-input--error{% endif %}" id="address-town" name="agency-details-address-town" type="text" autocomplete="address-level2" value="{{ data['agency-details-address-town'] }}"></div>
+
+
+          <div class="govuk-form-group {% if (postcodeError != '') %} govuk-form-group--error{% endif %}">
+            <label class="govuk-label" for="address-postcode">
+              Postcode
+            </label>
+            {% if postcodeError != '' %}
+            <span id="contact-error" class="govuk-error-message">
+              <span class="govuk-visually-hidden">Error:</span> {{ postcodeError }}
+            </span>
+            {% endif %}
+            <input class="govuk-input govuk-input--width-10 {% if (postcodeError != '') %} govuk-input--error{% endif %}" id="address-postcode" name="agency-details-address-postcode" type="text" autocomplete="postal-code"  value="{{ data['agency-details-address-postcode'] }}"></div>
+
+
+
+          </fieldset>
+
+
+
+          <div class="govuk-form-group {% if (emailError != '') %} govuk-form-group--error{% endif %}">
+            <label class="govuk-label" for="contact">
+              Email address of your contact
+            </label>
+            {% if emailError != '' %}
+            <span id="contact-error" class="govuk-error-message">
+              <span class="govuk-visually-hidden">Error:</span> {{ emailError }}
+            </span>
+            {% endif %}
+            <input class="govuk-input govuk-!-width-two-thirds {% if (emailError != '') %} govuk-input--error{% endif %}" id="applicant-email-2" name="applicant-email-2" type="email" value="{{ data['applicant-email-2'] }}">
+          </div>
+
+
+        </fieldset>
+
+        <!-- Buttons -->
+        {% include "../../includes/buttons.html" %}
+        </form>
+         {% include "../../includes/contactforhelp.html" %}
+      </div>
+    </div>
+  </main>
+</div>
+
+{% endblock %}

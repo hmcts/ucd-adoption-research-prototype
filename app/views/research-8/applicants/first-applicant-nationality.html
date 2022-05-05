@@ -1,0 +1,138 @@
+{% extends "layout-signed-in.html" %}
+
+{% block pageTitle %}
+Apply to adopt a child
+{% endblock %}
+
+{% block beforeContent %}
+<a class="govuk-back-link" href="javascript:history.back()">Back</a>
+{% endblock %}
+
+{% block content %}
+
+<div class="govuk-width-container">
+  <div class="govuk-grid-row">
+    <div class="govuk-grid-column-two-thirds">
+
+      {% set nationalityError = '' %}
+      {% set noCountryAddedError = '' %}
+
+      {% if errors | length > 0 %}
+      {{ govukErrorSummary({
+        titleText: "There is a problem",
+        errorList: errors
+      }) }}
+      {% for error in errors %}
+        {% if error.href == '#first-applicant-nationality' %}
+          {% set nationalityError = error.text %}
+        {% endif %}
+      {% if error.href == '#first-applicant-no-nationality' %}
+        {% set noCountryAddedError = error.text %}
+      {% endif %}
+      {% endfor %}
+      {% endif %}
+
+
+      <form action="/research-8/applicants/first-applicant-nationality" method="post" class="form">
+
+        <div class="govuk-form-group {% if (nationalityError != '')%} govuk-form-group--error {% endif%}">
+          <fieldset class="govuk-fieldset" aria-describedby="nationality-hint">
+            <legend class="govuk-fieldset__legend govuk-fieldset__legend--l">
+              <span class="govuk-caption-l">{% if data['numberApplicants'] !== '1' %}{{ data['firstApplicantProposal'] }}{% else %} {{ data['oneApplicant'] }}{% endif %}</span>
+              <h1 class="govuk-fieldset__heading">
+                What is your nationality?
+              </h1>
+            </legend>
+
+            {% if (nationalityError != '')%}
+            <span id="national-insurance-number-error" class="govuk-error-message">
+              <span class="govuk-visually-hidden">Error:</span> {{ nationalityError }}
+            </span>
+            {% endif%}
+
+
+            <div id="nationality-hint" class="govuk-hint">
+              Select all options that are relevant to you. This information will only be used for data gathering purposes.
+            </div>
+            <div class="govuk-checkboxes" data-module="govuk-checkboxes">
+              <div class="govuk-checkboxes__item">
+                <input class="govuk-checkboxes__input" id="first-applicant-british" name="first-applicant-british" type="checkbox"  aria-describedby="nationality-item-hint" {% if (data['first-applicant-british'] != undefined) %} checked {% endif %}>
+                <label class="govuk-label govuk-checkboxes__label" for="nationality">
+                  British
+                </label>
+                <div id="nationality-item-hint" class="govuk-hint govuk-checkboxes__hint">
+                  including English, Scottish, Welsh and Northern Irish
+                </div>
+              </div>
+              <div class="govuk-checkboxes__item">
+                <input class="govuk-checkboxes__input" id="first-applicant-nationality-2" name="first-applicant-irish" type="checkbox" {% if (data['first-applicant-irish'] != undefined) %} checked {% endif %}>
+                <label class="govuk-label govuk-checkboxes__label" for="nationality-2">
+                  Irish
+                </label>
+              </div>
+              <div class="govuk-checkboxes__item">
+                <input class="govuk-checkboxes__input" id="other" name="first-applicant-other" type="checkbox"
+                   data-aria-controls="conditional-citizenship-conditional-2" {% if (data['first-applicant-other'] != undefined) %} checked {% endif %}>
+                <label class="govuk-label govuk-checkboxes__label" for="citizenship-conditional-2">
+                  Citizen of a different country
+                </label>
+              </div>
+              <div class="govuk-checkboxes__conditional govuk-checkboxes__conditional--hidden"
+                id="conditional-citizenship-conditional-2">
+                <div class="govuk-form-group {% if (nationalityError != '')%} govuk-form-group--error {% endif%}">
+
+                  {% if (data['firstApplicantNationalityCount'] > 0) %}
+
+                  {% for id in data['firstApplicantNationalityId']|reverse %}
+
+                    <dl class="govuk-summary-list govuk-!-margin-bottom-4 ">
+                      <div class="govuk-summary-list__row">
+                        <dt class="govuk-summary-list__key">
+                          {{data['firstApplicantNationalities'][id]}}
+                        </dt>
+                        <dd class="govuk-summary-list__actions">
+                          <a class="govuk-link" href="#">
+                            Remove<span class="govuk-visually-hidden"> name</span>
+                          </a>
+                        </dd>
+                      </div>
+                    </dl>
+                    {% endfor %}
+
+                    <details class="govuk-details" data-module="govuk-details">
+                      <summary class="govuk-details__summary">
+                        <span class="govuk-details__summary-text">
+                          Add another country
+                        </span>
+                      </summary>
+                      <div class="govuk-details__text">
+
+                      {% endif %}
+
+                      <div class="govuk-form-group">
+                        <label class="govuk-label" for="other">
+                          Country name
+                        </label>
+                        {% if (noCountryAddedError != '')%}
+                        <span id="national-insurance-number-error" class="govuk-error-message">
+                          <span class="govuk-visually-hidden">Error:</span> {{ noCountryAddedError }}
+                        </span>
+                        {% endif%}
+                        <input class="govuk-input govuk-!-width-two-thirds {% if (noCountryAddedError != '') %} govuk-input--error{% endif %}" id="first-applicant-different-country" name="first-applicant-different-country" type="text">
+                      </div>
+                        <button class="govuk-button govuk-button--secondary govuk-!-margin-top-5" data-module="govuk-button" name="submit-button" value="add">Add</button>
+                    </details>
+                </div>
+            </div>
+          </fieldset>
+        </div>
+        <!-- Buttons -->
+        {% include "../../includes/buttons.html" %}
+      </form>
+        {% include "../../includes/contactforhelp.html" %}
+      </div>
+    </div>
+  </main>
+</div>
+
+{% endblock %}
