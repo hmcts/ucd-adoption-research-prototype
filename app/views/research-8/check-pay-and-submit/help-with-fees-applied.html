@@ -1,0 +1,114 @@
+{% extends "layout-signed-in.html" %}
+
+{% block pageTitle %}
+Apply to adopt a child
+{% endblock %}
+
+{% block beforeContent %}
+<a class="govuk-back-link" href="javascript:history.back()">Back</a>
+{% endblock %}
+
+{% block content %}
+
+<div class="govuk-width-container">
+  <div class="govuk-grid-row">
+    <div class="govuk-grid-column-two-thirds">
+
+      {% set helpwithfeesrefError = '' %}
+      {% set nonumberError = '' %}
+
+      {% if errors | length > 0 %}
+      {{ govukErrorSummary({
+        titleText: "There is a problem",
+        errorList: errors
+      }) }}
+      {% for error in errors %}
+        {% if error.href == '#help-with-fees-ref' %}
+          {% set helpwithfeesrefError = error.text %}
+        {% endif %}
+        {% if error.href == '#no-number' %}
+          {% set nonumberError = error.text %}
+        {% endif %}
+      {% endfor %}
+      {% endif %}
+
+      <form action="/research-8/check-pay-and-submit/help-with-fees-applied" method="post" class="form">
+        <div class="govuk-form-group {% if (helpwithfeesrefError != '')%} govuk-form-group--error {% endif %}">
+        <legend class="govuk-fieldset__legend govuk-fieldset__legend--l">
+            <span class="govuk-caption-l">{{ data['paySubmit'] }}</span>
+        <h1 class="govuk-fieldset__heading">
+          Have you applied for help with fees?
+        </h1>
+        </legend>
+          <p class="govuk-body">If you have little or no savings, are on certain benefits or have a low income you may be able to get help with paying the <b>£183</b> fee.</p>
+
+        {% if helpwithfeesrefError != '' %}
+          <span class="govuk-error-message govuk-form">
+            <span class="govuk-visually-hidden">Error:</span> {{ helpwithfeesrefError }}
+          </span>
+        {% endif %}
+
+          <fieldset class="govuk-fieldset" role="group" aria-describedby="help-with-fees-ref">
+            <div class="govuk-radios" data-module="govuk-radios">
+              <div class="govuk-radios__item">
+                <input class="govuk-radios__input" id="yes" name="help-with-fees-ref" type="radio" value="yes" data-aria-controls="conditional-ref" {% if data['help-with-fees-ref'] == 'yes' %} checked {% endif %}>
+                <label class="govuk-label govuk-radios__label" for="ref">
+                  Yes
+                </label>
+              </div>
+
+              <div class="govuk-radios__conditional govuk-radios__conditional--hidden" id="conditional-ref">
+                <div class="govuk-form-group">
+
+                  <label class="govuk-label" for="ref">
+                    Enter your reference number:
+                  </label>
+                  {% if nonumberError != '' %}
+                    <span class="govuk-error-message govuk-form">
+                      <span class="govuk-visually-hidden">Error:</span> {{ nonumberError }}
+                    </span>
+                  {% endif %}
+                  <input class="govuk-input govuk-!-width-one-third {% if (nonumberError != '') %} govuk-form-group--error{% endif %}" id="ref" name="ref" type="text" spellcheck="false" autocomplete="ref">
+                </div>
+
+              </div>
+
+
+
+
+              <div class="govuk-radios__item">
+                <input class="govuk-radios__input" id="no" name="help-with-fees-ref" type="radio" value="no" data-aria-controls="conditional-ref-no" {% if data['help-with-fees-ref'] == 'no' %} checked {% endif %}>
+                <label class="govuk-label govuk-radios__label" for="ref-no">
+                  No, but I want to
+                </label>
+              </div>
+
+
+                  <div class="govuk-radios govuk-radios--conditional" data-module="govuk-radios">
+                    <div class="govuk-radios__item">
+                      <input class="govuk-radios__input" id="pay-in-full" name="help-with-fees-ref" type="radio"
+                                  value="pay-in-full">
+                        <label class="govuk-label govuk-radios__label" for="pay-in-full">
+                                  No, I am paying in full
+                        </label>
+                      </div>
+                    </div>
+
+
+
+              </fieldset>
+
+
+
+
+        <div class="govuk-button-group govuk-!-margin-top-6">
+          <button class="govuk-button" data-module="govuk-button" name="continue" value="save-and-continue">
+            Continue
+          </button>
+        </div>
+    </form>
+    </div>
+  </div>
+</div>
+
+{% endblock %}

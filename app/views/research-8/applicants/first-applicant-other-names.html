@@ -1,0 +1,179 @@
+{% extends "layout-signed-in.html" %}
+
+{% block pageTitle %}
+Apply to adopt a child
+{% endblock %}
+
+{% block beforeContent %}
+<a class="govuk-back-link" href="javascript:history.back()">Back</a>
+{% endblock %}
+
+
+{% block content %}
+
+<div class="govuk-width-container">
+
+    <div class="govuk-grid-row">
+      <div class="govuk-grid-column-two-thirds">
+
+        {% set noRadioSelectedError = '' %}
+        {% set noFirstNamesError = '' %}
+        {% set noLastNamesError = '' %}
+        {% set noAddedFirstNamesError = '' %}
+        {% set noAddedLastNamesError = '' %}
+
+        {% if errors | length > 0 %}
+          {{ govukErrorSummary({
+            titleText: "There is a problem",
+            errorList: errors
+          }) }}
+          {% for error in errors %}
+            {% if error.href == '#first-applicant-other-names' %}
+              {% set noRadioSelectedError = error.text %}
+            {% endif %}
+            <!-- {% if error.href == '#first-applicant-no-names' %}
+              {% set noFirstNamesError = error.text %}
+              {% set noLastNamesError = error.text %}
+            {% endif %} -->
+            {% if error.href == '#first-applicant-no-first-names' %}
+              {% set noFirstNamesError = error.text %}
+            {% endif %}
+            {% if error.href == '#first-applicant-no-last-names' %}
+              {% set noLastNamesError = error.text %}
+            {% endif %}
+            {% if error.href == '#first-applicant-no-additional-first-names' %}
+              {% set noAddedFirstNamesError = error.text %}
+            {% endif %}
+            {% if error.href == '#first-applicant-no-additional-last-names' %}
+              {% set noAddedLastNamesError = error.text %}
+            {% endif %}
+          {% endfor %}
+        {% endif %}
+
+
+        <form action="/research-8/applicants/first-applicant-other-names" method="post" class="form">
+
+          <div class="govuk-form-group {% if (noRadioSelectedError != '')%} govuk-form-group--error {% endif%}">
+            <legend class="govuk-fieldset__legend govuk-fieldset__legend--l">
+            <span class="govuk-caption-l">{{ data['firstApplicantProposal'] }}</span>
+            <h1 class="govuk-fieldset__heading">
+              Have you ever legally been known by any other names?
+            </h1>
+          </legend>
+
+          <div id="sign-in-hint" class="govuk-hint">
+            For example, your name before marriage.
+          </div>
+
+          {% if noRadioSelectedError != '' %}
+            <span class="govuk-error-message govuk-form">
+              <span class="govuk-visually-hidden">Error:</span> {{ noRadioSelectedError }}
+            </span>
+          {% endif %}
+
+          <div class="govuk-form-group">
+            <fieldset class="govuk-fieldset" role="group" aria-describedby="first-applicant-other-names">
+
+              <div class="govuk-radios govuk-radios--conditional" data-module="govuk-radios">
+                <div class="govuk-radios govuk-radios--conditional" data-module="govuk-radios">
+                  <div class="govuk-radios__item">
+                    <input class="govuk-radios__input" id="yes" name="first-applicant-other-names" type="radio" value="Yes" data-aria-controls="conditional-contact"  {% if (data['first-applicant-other-names'] === "Yes") %} checked {% endif %}}>
+                    <label class="govuk-label govuk-radios__label" for="first-applicant-other-names">
+                      Yes
+                    </label>
+                  </div>
+
+                  <div class="govuk-radios__conditional govuk-radios__conditional--hidden" id="conditional-contact">
+
+                    {% if (data['firstApplicantNameCount'] > 0) %}
+
+                    {% for id in data['idFirstApplicant']|reverse %}
+
+                      <dl class="govuk-summary-list govuk-!-margin-bottom-4 ">
+                        <div class="govuk-summary-list__row">
+                          <dt class="govuk-summary-list__key">
+                            {{data['firstApplicantPreviousFirstNames'][id]}} {{data['firstApplicantPreviousLastNames'][id]}}
+                          </dt>
+                          <dd class="govuk-summary-list__actions">
+                            <a class="govuk-link" href="#">
+                              Remove<span class="govuk-visually-hidden"> name</span>
+                            </a>
+                          </dd>
+                        </div>
+                      </dl>
+                      {% endfor %}
+
+                      <details class="govuk-details" data-module="govuk-details" {% if noAddedFirstNamesError != '' or noAddedLastNamesError != '' %}open{% endif %}>
+                        <summary class="govuk-details__summary">
+                          <span class="govuk-details__summary-text">
+                            Add another name
+                          </span>
+                        </summary>
+                        <div class="govuk-details__text">
+
+                        {% endif %}
+
+                        <p>List each previous name separately and select 'Add'.</p>
+                        <div class="govuk-form-group">
+                          <label class="govuk-label" for="other">
+                            Add your previous first names
+                          </label>
+                          {% if noFirstNamesError != '' %}
+                          <span class="govuk-error-message govuk-form">
+                            <span class="govuk-visually-hidden">Error:</span> {{ noFirstNamesError }}
+                          </span>
+                           {% endif %}
+                           {% if noAddedFirstNamesError != '' %}
+                           <span class="govuk-error-message govuk-form">
+                             <span class="govuk-visually-hidden">Error:</span> {{ noAddedFirstNamesError }}
+                           </span>
+                            {% endif %}
+                           <input class="govuk-input govuk-!-width-two-thirds {% if noFirstNamesError != '' or noAddedFirstNamesError != ''  %} govuk-input--error {% endif %}" id="first-applicant-previous-first-names" name="first-applicant-previous-first-names" type="text" autocomplete="given-name">
+                        </div>
+
+                        <div class="govuk-form-group">
+                          <label class="govuk-label" for="other">
+                            Add your previous last names
+                          </label>
+                          {% if noLastNamesError != '' %}
+                          <span class="govuk-error-message govuk-form">
+                            <span class="govuk-visually-hidden">Error:</span> {{ noLastNamesError }}
+                          </span>
+                           {% endif %}
+                           {% if noAddedLastNamesError != '' %}
+                           <span class="govuk-error-message govuk-form">
+                             <span class="govuk-visually-hidden">Error:</span> {{ noAddedLastNamesError }}
+                           </span>
+                            {% endif %}
+                          <input class="govuk-input govuk-!-width-two-thirds {% if noLastNamesError != '' or noAddedLastNamesError != '' %} govuk-input--error {% endif %}" id="first-applicant-previous-last-names" name="first-applicant-previous-last-names" autocomplete="family-name" type="text"">
+                        </div>
+
+                        <button class="govuk-button govuk-button--secondary govuk-!-margin-top-5" data-module="govuk-button" name="submit-button" value="add">Add</button>
+                      </details>
+
+                  </div>
+                </div>
+
+                <div class="govuk-radios__item">
+                  <input class="govuk-radios__input" id="no" name="first-applicant-other-names" type="radio" value="No">
+                  <label class="govuk-label govuk-radios__label" for="yes">
+                    No
+                  </label>
+                </div>
+                </div>
+
+            </fieldset>
+          </div>
+          </div>
+          <!-- Buttons -->
+          {% include "../../includes/buttons.html" %}
+
+
+        </form>
+          {% include "../../includes/contactforhelp.html" %}
+      </div>
+    </div>
+  </main>
+</div>
+
+{% endblock %}

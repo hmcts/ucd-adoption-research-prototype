@@ -1,0 +1,134 @@
+{% extends "layout-signed-in.html" %}
+
+{% block pageTitle %}
+Apply to adopt a child
+{% endblock %}
+
+{% block beforeContent %}
+<a class="govuk-back-link" href="javascript:history.back()">Back</a>
+{% endblock %}
+
+{% block content %}
+
+<div class="govuk-width-container">
+  <div class="govuk-grid-row">
+    <div class="govuk-grid-column-two-thirds">
+
+      <form action="/research-8/check-pay-and-submit/process-payment" method="post" class="form">
+
+        <legend class="govuk-fieldset__legend govuk-fieldset__legend--l">
+
+        <h1 class="govuk-fieldset__heading">
+          Enter card details
+        </h1>
+        </legend>
+
+
+
+ <div class="govuk-form-group">
+  <label class="govuk-heading-s" for="one-half">
+
+  </label>
+  <h1 class="govuk-heading-s">Card number</h1>
+  <input class="govuk-input govuk-!-width-one-half" id="one-half" name="one-half" type="text"></div>
+
+   <label class="govuk-heading-s" for="one-half">
+       Expiry date
+     </label>
+     <div id="more-detail-hint" class="govuk-hint">
+    For example, 07 25
+  </div>
+   <div class="govuk-date-input" id="passport-issued">
+     <div class="govuk-date-input__item">
+       <div class="govuk-form-group">
+         <label class="govuk-label govuk-date-input__label" for="passport-issued-day">
+           Month
+         </label>
+         <input class="govuk-input govuk-date-input__input govuk-input--width-2" id="passport-issued-day" name="passport-issued-day" type="text" pattern="[0-9]*" inputmode="numeric"></div>
+     </div>
+
+      <div class="govuk-date-input__item">
+       <div class="govuk-form-group">
+         <label class="govuk-label govuk-date-input__label" for="passport-issued-month">
+           Year
+         </label>
+         <input class="govuk-input govuk-date-input__input govuk-input--width-2" id="passport-issued-month" name="passport-issued-month" type="text" pattern="[0-9]*" inputmode="numeric"></div>
+     </div>
+
+
+
+    <div class="govuk-form-group">
+      <label class="govuk-heading-s" for="full-name">
+        Name on card
+      </label>
+      <input class="govuk-input govuk-!-width-one-half" id="full-name" name="full-name" type="text" spellcheck="false" autocomplete="name"></div>
+ <div class="govuk-form-group">
+  <label class="govuk-heading-s" for="one-half">
+    Card security code
+  </label>
+  <div id="more-detail-hint" class="govuk-hint">
+ The last 3 digits on the back of the card.
+</div>
+   <input class="govuk-input govuk-date-input__input govuk-input--width-4" id="passport-issued-year" name="passport-issued-year" type="text" pattern="[0-9]*" inputmode="numeric"></div>
+
+   <label class="govuk-heading-s" for="one-half">
+     Billing address
+   </label>
+   <div id="more-detail-hint" class="govuk-hint">
+     This is the address associated with the card
+ </div>
+     <div class="govuk-form-group">
+       <label class="govuk-label" for="address-line-1">
+         Building number or street <span class="govuk-visually-hidden">line 1 of 2</span>
+       </label>
+       <input class="govuk-input" id="address-line-1" name="address-line-1" type="text" autocomplete="address-line1"></div>
+
+     <div class="govuk-form-group">
+       <label class="govuk-label" for="address-line-2">
+         <span class="govuk-visually-hidden">Building and street line 2 of 2</span>
+       </label>
+       <input class="govuk-input" id="address-line-2" name="address-line-2" type="text" autocomplete="address-line2"></div>
+
+     <div class="govuk-form-group">
+       <label class="govuk-label" for="address-town">
+         Town or city
+       </label>
+       <input class="govuk-input govuk-!-width-two-thirds" id="address-town" name="address-town" type="text" autocomplete="address-level2"></div>
+
+     <div class="govuk-form-group">
+       <label class="govuk-label" for="address-postcode">
+         Postcode
+       </label>
+       <input class="govuk-input govuk-input--width-10" id="address-postcode" name="address-postcode" type="text" autocomplete="postal-code"></div>
+
+
+<div class="govuk-form-group">
+  <label class="govuk-label" for="one-third">
+    Expiry date
+  </label>
+  <input class="govuk-input govuk-!-width-one-third" id="one-third" name="one-third" type="text"></div>
+
+<div class="govuk-form-group">
+  <label class="govuk-label" for="one-quarter">
+    CVV
+  </label>
+  <input class="govuk-input govuk-!-width-one-quarter" id="one-quarter" name="one-quarter" type="text"></div>
+        <div class="govuk-button-group govuk-!-margin-top-6">
+            <button class="govuk-button" data-module="govuk-button" name="continue" value="save-and-continue">
+            Pay
+            </button>
+          </div>
+          <label class="govuk-label" for="one-half">
+              Enter amount
+            </label>
+          <div class="govuk-input__wrapper">
+            <div class="govuk-input__prefix" aria-hidden="true">£</div>
+             <input class="govuk-input govuk-input--width-5" id="cost" name="cost" type="text" spellcheck="false">
+           </div>
+        </form>
+
+    </div>
+  </div>
+</div>
+
+{% endblock %}

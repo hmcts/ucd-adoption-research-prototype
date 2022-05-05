@@ -1,0 +1,94 @@
+{% extends "layout-signed-out.html" %}
+
+{% block pageTitle %}
+Apply to adopt a child
+{% endblock %}
+
+{% block beforeContent %}
+<a class="govuk-back-link" href="javascript:history.back()">Back</a>
+{% endblock %}
+
+
+{% block content %}
+
+<div class="govuk-width-container">
+
+    <div class="govuk-grid-row">
+      <div class="govuk-grid-column-two-thirds">
+
+      {% set domicileError = '' %}
+
+      {% if errors | length > 0 %}
+      {{ govukErrorSummary({
+        titleText: "There is a problem",
+        errorList: errors
+      }) }}
+      {% for error in errors %}
+        {% if error.href == '#domicile' %}
+          {% set domicileError = error.text %}
+        {% endif %}
+      {% endfor %}
+      {% endif %}
+
+
+        <form action="/research-8/eligibility/domicile" method="post" class="form">
+
+          <div class="govuk-form-group {% if (domicileError != '')%} govuk-form-group--error {% endif %}">
+            <legend class="govuk-fieldset__legend govuk-fieldset__legend--l">
+            <span class="govuk-caption-l">Eligibility to apply to adopt</span>
+            <h1 class="govuk-fieldset__heading">
+              Is the UK, Channel Islands or Isle of Man the main country of residence (domicile) for you and the other applicant if relevant?
+            </h1>
+            </legend>
+            <!-- <div id="event-name-hint" class="govuk-hint">
+              By 'habitually resident' we mean have you been permanently resident here, as your main home, for the past 12 months.
+            </div> -->
+            
+            {% if domicileError != '' %}
+              <span class="govuk-error-message govuk-form">
+                <span class="govuk-visually-hidden">Error:</span> {{ domicileError }}
+              </span>
+            {% endif %}
+
+            <div class="govuk-form-group">
+              <fieldset class="govuk-fieldset" role="group" aria-describedby="child-lived-uk">
+
+                <div class="govuk-radios govuk-radios--conditional" data-module="govuk-radios">
+                  <div class="govuk-radios__item">
+                    <input class="govuk-radios__input" id="yes" name="domicile" type="radio"
+                      value="Yes">
+                    <label class="govuk-label govuk-radios__label" for="domicile">
+                      Yes
+                    </label>
+                  </div>
+
+                  <div class="govuk-radios govuk-radios--conditional" data-module="govuk-radios">
+                    <div class="govuk-radios__item">
+                      <input class="govuk-radios__input" id="no" name="domicile" type="radio" value="No" data-aria-controls="conditional-contact">
+                      <label class="govuk-label govuk-radios__label" for="domicile">
+                        No
+                      </label>
+                    </div>
+                    <div class="govuk-radios__conditional govuk-radios__conditional--hidden" id="conditional-contact">
+                      <div class="govuk-form-group">
+                        <p>You cannot apply to adopt a child unless this is your main country of residence.</p>         
+                        <p><a href="https://www.gov.uk/child-adoption">More about adoption</a></p>
+                      </div>
+                    </div>
+                  </div>
+              </fieldset>
+            </div>
+          </div>
+
+          <button class="govuk-button" data-module="govuk-button">
+            Continue
+          </button>
+
+
+        </form>
+      </div>
+    </div>
+  </main>
+</div>
+
+{% endblock %}

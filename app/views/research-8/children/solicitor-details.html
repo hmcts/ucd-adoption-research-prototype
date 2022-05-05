@@ -1,0 +1,112 @@
+{% extends "layout-signed-in.html" %}
+
+{% block pageTitle %}
+Apply to adopt a child
+{% endblock %}
+
+{% block beforeContent %}
+<a class="govuk-back-link" href="javascript:history.back()">Back</a>
+{% endblock %}
+
+{% block content %}
+
+<div class="govuk-width-container">
+  <div class="govuk-grid-row">
+    <div class="govuk-grid-column-two-thirds">
+
+      {% set nameError = '' %}
+      {% set solicitorNameError = '' %}
+      {% set phoneError = '' %}
+      {% set emailError = '' %}
+
+      {% if errors | length > 0 %}
+        {{ govukErrorSummary({
+          titleText: "There is a problem",
+          errorList: errors
+        }) }}
+        {% for error in errors %}
+          {% if error.href == '#name' %}
+            {% set nameError = error.text %}
+          {% endif %}
+          {% if error.href == '#solicitorName' %}
+            {% set solicitorNameError = error.text %}
+          {% endif %}
+          {% if error.href == '#phone' %}
+            {% set phoneError = error.text %}
+          {% endif %}
+          {% if error.href == '#email' %}
+            {% set emailError = error.text %}
+          {% endif %}
+        {% endfor %}
+      {% endif %}
+
+      <form action="/research-8/children/solicitor-details" method="post" class="form">
+        <fieldset class="govuk-fieldset">
+          <legend class="govuk-fieldset__legend govuk-fieldset__legend--l">
+            <span class="govuk-caption-l">{{ data['solicitor'] }}</span>
+            <h1 class="govuk-fieldset__heading">
+              Solicitor details
+            </h1>
+          </legend>
+
+          <div class="govuk-form-group {% if (nameError != '') %} govuk-form-group--error{% endif %}">
+            <label class="govuk-label" for="name">
+              Name of firm
+            </label>
+            {% if nameError != '' %}
+            <span id="contact-error" class="govuk-error-message">
+              <span class="govuk-visually-hidden">Error:</span> {{ nameError }}
+            </span>
+            {% endif %}
+
+            <input class="govuk-input govuk-!-width-two-thirds {% if (nameError != '') %} govuk-input--error{% endif %}" id="solicitor-company-name" name="solicitor-company-name" type="text" value="{{ data['solicitor-company-name'] }}">
+          </div>
+
+            <div class="govuk-form-group {% if (solicitorNameError != '') %} govuk-form-group--error{% endif %}">
+            <label class="govuk-label" for="contact">
+              Solicitor's name
+            </label>
+            {% if solicitorNameError != '' %}
+            <span id="contact-error" class="govuk-error-message">
+              <span class="govuk-visually-hidden">Error:</span> {{ solicitorNameError }}
+            </span>
+            {% endif %}
+            <input class="govuk-input govuk-!-width-two-thirds {% if (solicitorNameError != '') %} govuk-input--error{% endif %}" id="solicitor-name" name="solicitor-name" type="text" value="{{ data['solicitor-name'] }}">
+          </div>
+
+        <div class="govuk-form-group {% if (phoneError != '') %} govuk-form-group--error{% endif %}">
+            <label class="govuk-label" for="phone-number">
+              Phone number
+            </label>
+            {% if phoneError != '' %}
+            <span id="contact-error" class="govuk-error-message">
+              <span class="govuk-visually-hidden">Error:</span> {{ phoneError }}
+            </span>
+            {% endif %}
+            <input class="govuk-input govuk-input--width-10 {% if (phoneError != '') %} govuk-input--error{% endif %}" id="solicitor-phone-number" name="solicitor-phone-number" type="number" value="{{ data['solicitor-phone-number'] }}">
+          </div>
+
+          <div class="govuk-form-group {% if (emailError != '') %} govuk-form-group--error{% endif %}">
+            <label class="govuk-label" for="contact">
+              Solicitor's email address
+            </label>
+            {% if emailError != '' %}
+            <span id="contact-error" class="govuk-error-message">
+              <span class="govuk-visually-hidden">Error:</span> {{ emailError }}
+            </span>
+            {% endif %}
+            <input class="govuk-input govuk-input--width-10 {% if (emailError != '') %} govuk-input--error{% endif %}" id="solicitor-email" name="solicitor-email" type="text" value="{{ data['solicitor-email'] }}">
+          </div>
+
+
+        </fieldset>
+
+        <!-- Buttons -->
+        {% include "../../includes/buttons.html" %}
+        </form>
+      </div>
+    </div>
+  </main>
+</div>
+
+{% endblock %}

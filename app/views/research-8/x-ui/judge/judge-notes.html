@@ -1,0 +1,258 @@
+{% block header %}
+{% include "includes/xui-judge-header.html" %}
+{% endblock %}
+
+
+<html lang="en" class="govuk-template ">  
+  <div style=" max-width:1300px; margin: 0 auto;">
+      <div style=" max-width:1300px;  min-width:1300px;  margin: 20px 0px 0px 0px;  ">
+          <main class="govuk-main-wrapper " id="main-content" role="main" style="padding-top: 25px;">                      
+              <div class="govuk-width-container">
+                <div class="govuk-grid-row" style="width:1300px; margin-left: -90px;">
+                    <div class="" style="display: flex; justify-content: space-between; ">
+                        <div>
+                          <h1 class="govuk-heading-xl">#1234-5678-0921-2722  &nbsp;&nbsp;&nbsp; </h1>
+                            <!-- <span class="govuk-caption-l" style="padding-top: 0px">1234-5678-9012-3456</span>
+                            <span style="margin-bottom:50px; padding-top: 25px;"><a href="#">Print</a></span>
+                            <button class="govuk-button govuk-button--secondary" data-module="govuk-button">
+                                Print
+                            </button> -->                           
+                        </div>
+                        <form action="/research-8/x-ui/judge/index" method="post" class="form">
+                          <div style="display: flex; align-items:right; padding-top: 0px;">
+                              <p class="govuk-!-margin-top-2">Next step &nbsp;</p>
+                      
+                              <select class="govuk-select" id="sort" name="next-steps">
+                                  <option value="select-action" selected="">Select action</option>
+                                  <option value="manage-documents">Upload documents</option>
+                                  <option value="send-a-message">Send message</option>
+                                  <option value="case-issue">Case issue</option>
+                                  <option value="notes">Add a case note</option>
+                              </select>
+                      
+                              <div>
+                                  <button class="govuk-button govuk-!-margin-left-1" data-module="govuk-button" name="go-button">Go</button>
+                              </div>
+                          </div>
+                      </form>
+                    </div>
+
+                    <div class="govuk-tabs" data-module="govuk-tabs">
+
+                      <h2 class="govuk-tabs__title">
+                        Contents
+                      </h2>
+
+                      <!-- ****************************** START OF TABS ****************************** -->
+                      <ul class="govuk-tabs__list">
+                        <li class="govuk-tabs__list-item">
+                          <a class="govuk-tabs__tab" href="index.html">
+                            Summary
+                          </a>
+                        </li>
+                        
+                        <li class="govuk-tabs__list-item">
+                            <a class="govuk-tabs__tab" href="judge-prospective-parents.html">
+                                Applicants
+                            </a>
+                        </li>
+    
+                        <li class="govuk-tabs__list-item">
+                            <a class="govuk-tabs__tab" href="judge-other-parties.html">
+                              Other parties
+                            </a>
+                          </li>
+  
+                          <li class="govuk-tabs__list-item">
+                            <a class="govuk-tabs__tab" href="judge-documents.html">
+                                Documents
+                            </a>
+                        </li>
+                        
+                        <li class="govuk-tabs__list-item">
+                            <a class="govuk-tabs__tab" href="judge-messages.html">
+                                Messages
+                            </a>
+                        </li>
+                        
+                        <li class="govuk-tabs__list-item govuk-tabs__list-item--selected">
+                            <a class="govuk-tabs__tab" href="judge-notes.html">
+                                  Notes
+                            </a>
+                          </li>
+
+                        <li class="govuk-tabs__list-item">
+                            <a class="govuk-tabs__tab" href="judge-history.html">
+                                History
+                            </a>
+                        </li>
+
+                        <li class="govuk-tabs__list-item">
+                            <a class="govuk-tabs__tab" href="judge-payments.html">
+                                Payments
+                            </a>
+                        </li>
+
+                        <!-- <li class="govuk-tabs__list-item">
+                            <a class="govuk-tabs__tab" href="judge-payments.html">
+                                Hearings
+                            </a>
+                        </li>
+
+                        <li class="govuk-tabs__list-item">
+                            <a class="govuk-tabs__tab" href="judge-payments.html">
+                                Orders
+                            </a>
+                        </li> -->
+        
+                    </ul>
+
+                      <!-- ****************************** END OF TABS ****************************** -->
+
+                      <div class="govuk-tabs__panel" id="1">
+                        <h2 class="govuk-heading-l">Notes</h2>
+
+                        {% if data['newNote'] == 'yes' %}
+
+                        <dt class="complex-panel">
+                          Note 3
+                        </dt>
+
+                        <dl class="govuk-summary-list">
+                          <div class="govuk-summary-list__row">
+                            <dt class="govuk-summary-list__value">
+                              Created by
+                            </dt>
+                            <dd class="govuk-summary-list__value">
+                              Mary Jones
+                            </dd>
+                            <dd class="govuk-summary-list__value">
+                              &nbsp;
+                            </dd>
+                          </div>
+
+                          <div class="govuk-summary-list__row">
+                            <dt class="govuk-summary-list__value">
+                              Created on
+                            </dt>
+                            <dd class="govuk-summary-list__value">
+                              8 April 2022
+                            </dd>
+                            <dd class="govuk-summary-list__value">
+                              &nbsp;
+                            </dd>
+                          </div>
+
+                          <div class="govuk-summary-list__row">
+                            <dt class="govuk-summary-list__value">
+                              Note 
+                            </dt>
+                            <dd class="govuk-summary-list__value">
+                              Lorem ipsum dolor sit amet.
+                            </dd>
+                            <dd class="govuk-summary-list__value">
+                              &nbsp;
+                            </dd>
+                          </div>
+                          
+                        </dl>
+                        {% endif %}
+
+                        <dt class="complex-panel">
+                          Note 2
+                        </dt>
+
+                        <dl class="govuk-summary-list">
+                          <div class="govuk-summary-list__row">
+                            <dt class="govuk-summary-list__value">
+                              Created by
+                            </dt>
+                            <dd class="govuk-summary-list__value">
+                              Mary Jones
+                            </dd>
+                            <dd class="govuk-summary-list__value">
+                              &nbsp;
+                            </dd>
+                          </div>
+
+                          <div class="govuk-summary-list__row">
+                            <dt class="govuk-summary-list__value">
+                              Created on
+                            </dt>
+                            <dd class="govuk-summary-list__value">
+                              8 February 2022
+                            </dd>
+                            <dd class="govuk-summary-list__value">
+                              &nbsp;
+                            </dd>
+                          </div>
+
+                          <div class="govuk-summary-list__row">
+                            <dt class="govuk-summary-list__value">
+                              Note 
+                            </dt>
+                            <dd class="govuk-summary-list__value">
+                              Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.
+                            </dd>
+                            <dd class="govuk-summary-list__value">
+                              &nbsp;
+                            </dd>
+                          </div>
+                          
+                        </dl>
+
+                        <dt class="complex-panel">
+                          Note 1
+                        </dt>
+
+                        <dl class="govuk-summary-list">
+                          <div class="govuk-summary-list__row">
+                            <dt class="govuk-summary-list__value">
+                              Created by 
+                            </dt>
+                            <dd class="govuk-summary-list__value">
+                              Mary Jones
+                            </dd>
+                            <dd class="govuk-summary-list__value">
+                              &nbsp;
+                            </dd>
+                          </div>
+
+                          <div class="govuk-summary-list__row">
+                            <dt class="govuk-summary-list__value">
+                              Created on
+                            </dt>
+                            <dd class="govuk-summary-list__value">
+                              13 June 2021
+                            </dd>
+                            <dd class="govuk-summary-list__value">
+                              &nbsp;
+                            </dd>
+                          </div>
+
+                          <div class="govuk-summary-list__row">
+                            <dt class="govuk-summary-list__value">
+                              Note 
+                            </dt>
+                            <dd class="govuk-summary-list__value">
+                              Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.
+                            </dd>
+                            <dd class="govuk-summary-list__value">
+                              &nbsp;
+                            </dd>
+                          </div>
+
+                        </dl>
+
+                      </div>
+                  </div>
+                </div>
+              </div>
+          </main>
+      </div>
+  </div>
+</html>
+
+{% block footer %}
+{% include "includes/newfooter.html" %}
+{% endblock %}
