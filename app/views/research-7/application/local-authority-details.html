@@ -45,32 +45,19 @@ Apply to adopt a child
           <legend class="govuk-fieldset__legend govuk-fieldset__legend--l">
             <span class="govuk-caption-l">{{ data['applicationSection'] }}</span>
             <h1 class="govuk-fieldset__heading">
-              Local authority details
+              Your social worker details
             </h1>
           </legend>
           <div id="lahint" class="govuk-hint">
-            We need the details of the local authority that placed the child with you. These should be on the placement order.
-          </div>
-          <div class="govuk-form-group {% if (nameError != '') %} govuk-form-group--error{% endif %}">
-            <label class="govuk-label" for="name">
-              Name of local authority
-
-            </label>
-            {% if nameError != '' %}
-            <span id="contact-error" class="govuk-error-message">
-              <span class="govuk-visually-hidden">Error:</span> {{ nameError }}
-            </span>
-            {% endif %}
-
-            <input class="govuk-input govuk-!-width-two-thirds {% if (nameError != '') %} govuk-input--error{% endif %}" id="applicant-agency-name" name="applicant-agency-name" type="text" value="{{ data['applicant-agency-name'] }}">
+            This is the social worker attached to your local authority.
           </div>
 
           <div class="govuk-form-group {% if (contactError != '') %} govuk-form-group--error{% endif %}">
             <label class="govuk-label" for="contact">
-              Name of your contact
+              Name of your social worker
             </label>
             <div id="lahint" class="govuk-hint">
-            This is usually your social worker. If you do not yet have a social worker, then this is the name of the person you have the most contact with in the local authority.
+              If you do not yet have a social worker, insert the name of your contact.
             </div>
             {% if contactError != '' %}
             <span id="contact-error" class="govuk-error-message">
@@ -84,9 +71,9 @@ Apply to adopt a child
             <label class="govuk-label" for="phone-number">
               Phone number
             </label>
-            <div id="lahint" class="govuk-hint">
-            This should be the number of your contact.
-            </div>
+            <!-- <div id="lahint" class="govuk-hint">
+            This should be the number of your social worker.
+            </div> -->
             {% if phoneError != '' %}
             <span id="contact-error" class="govuk-error-message">
               <span class="govuk-visually-hidden">Error:</span> {{ phoneError }}
@@ -99,7 +86,7 @@ Apply to adopt a child
 
           <div class="govuk-form-group {% if (emailError != '') %} govuk-form-group--error{% endif %}">
             <label class="govuk-label" for="contact">
-              Email address of your contact
+              Email address
             </label>
             {% if emailError != '' %}
             <span id="contact-error" class="govuk-error-message">
@@ -109,6 +96,20 @@ Apply to adopt a child
             <input class="govuk-input govuk-!-width-two-thirds {% if (emailError != '') %} govuk-input--error{% endif %}" id="applicant-email" name="applicant-email" type="email" value="{{ data['applicant-email'] }}">
           </div>
 
+          <div class="govuk-form-group {% if (nameError != '') %} govuk-form-group--error{% endif %}">
+            <label class="govuk-label" for="name">
+              Name of local authority
+            </label>
+            <div id="lahint" class="govuk-hint">
+              This is the local authority that your social worker works for. They will be named on the placement order if you are not sure.
+            </div>  
+            {% if nameError != '' %}
+            <span id="contact-error" class="govuk-error-message">
+              <span class="govuk-visually-hidden">Error:</span> {{ nameError }}
+            </span>
+            {% endif %}
+            <input class="govuk-input govuk-!-width-two-thirds {% if (nameError != '') %} govuk-input--error{% endif %}" id="applicant-agency-name" name="applicant-agency-name" type="text" value="{{ data['applicant-agency-name'] }}">
+          </div>
 
         </fieldset>
 
