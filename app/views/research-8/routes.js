@@ -149,6 +149,19 @@ module.exports = (router) => {
 
 
 
+// ******************************************** SAVE AS DRAFT ********************************************
+// ************************************************************************************************************************************
+  router.post('/research-8/save-as-draft', function(req, res) {
+    if (req.body['submit-button'] === 'continue') {
+        req.session.data.dateMovedIn = 1
+        res.redirect('/research-8/task-list')
+    }
+    else {
+      res.redirect('/research-8/task-list')
+    }
+  })
+ 
+
 
 // ******************************************** SECTION 1. APPLICATION ********************************************
 // ************************************************************************************************************************************
@@ -181,7 +194,7 @@ module.exports = (router) => {
       }
     }
     else {
-        res.redirect('/research-8/task-list')
+        res.redirect('/research-8/save-as-draft')
     }
     console.log("Applicants: ", req.session.data.numberApplicants)
   })
@@ -215,7 +228,7 @@ module.exports = (router) => {
       }
     }
     else {
-        res.redirect('/research-8/task-list')
+        res.redirect('/research-8/save-as-draft')
     }
     console.log("Applicants: ", req.session.data.numberApplicants)
   })
@@ -240,7 +253,7 @@ module.exports = (router) => {
         }
       }
       else {
-        res.redirect('/research-8/task-list')
+        res.redirect('/research-8/save-as-draft')
       }
   })
 
@@ -284,7 +297,7 @@ module.exports = (router) => {
       }
     }
     else {
-      res.redirect('/research-8/task-list')
+      res.redirect('/research-8/save-as-draft')
     }
   })
 
@@ -314,7 +327,7 @@ module.exports = (router) => {
       }
     }
     else {
-        res.redirect('/research-8/task-list')
+        res.redirect('/research-8/save-as-draft')
     }
   })
 
@@ -375,7 +388,7 @@ module.exports = (router) => {
       }
     }
     else {
-      res.redirect('/research-8/task-list')
+      res.redirect('/research-8/save-as-draft')
     }
   })
 
@@ -417,7 +430,7 @@ module.exports = (router) => {
       }
     }
     else {
-      res.redirect('/research-8/task-list')
+      res.redirect('/research-8/save-as-draft')
     }
   })
   // router.post('/research-8/application/applicant-adoption-agency-details', function(req, res) {
@@ -599,11 +612,11 @@ module.exports = (router) => {
     }
     else {
       if (req.body['court-name'] === '') {
-        res.redirect('/research-8/task-list')
+        res.redirect('/research-8/save-as-draft')
       }
       else {
         req.session.data.familyCourtStatus = 'in progress'
-        res.redirect('/research-8/task-list')
+        res.redirect('/research-8/save-as-draft')
       }
     }
   })
@@ -643,7 +656,7 @@ module.exports = (router) => {
       }
     }
     else {
-      res.redirect('/research-8/task-list')
+      res.redirect('/research-8/save-as-draft')
     }
   })
 
@@ -714,7 +727,7 @@ module.exports = (router) => {
       }
     }
     else {
-      res.redirect('/research-8/task-list')
+      res.redirect('/research-8/save-as-draft')
     }
   })
 
@@ -736,7 +749,7 @@ module.exports = (router) => {
         }
       }
       else {
-        res.redirect('/research-8/task-list')
+        res.redirect('/research-8/save-as-draft')
       }
   })
 
@@ -770,7 +783,7 @@ module.exports = (router) => {
       }
     }
     else if (req.body['submit-button'] === 'save-as-draft') {
-      res.redirect('/research-8/task-list')
+      res.redirect('/research-8/save-as-draft')
     }
     else if (req.body['submit-button'] === 'add' && req.body['first-applicant-different-country'] !== '') {
       req.session.data.firstApplicantNationalities[count] = req.body['first-applicant-different-country']
@@ -803,7 +816,7 @@ module.exports = (router) => {
       }
     }
     else {
-      res.redirect('/research-8/task-list')
+      res.redirect('/research-8/save-as-draft')
     }
   })
 
@@ -832,7 +845,7 @@ module.exports = (router) => {
       }
     }
     else {
-      res.redirect('/research-8/task-list')
+      res.redirect('/research-8/save-as-draft')
     }
   })
 
@@ -855,7 +868,7 @@ module.exports = (router) => {
       }
     }
     else {
-      res.redirect('/research-8/task-list')
+      res.redirect('/research-8/save-as-draft')
     }
   })
 
@@ -891,7 +904,7 @@ module.exports = (router) => {
       }
     }
     else {
-      res.redirect('/research-8/task-list')
+      res.redirect('/research-8/save-as-draft')
     }
   })
 
@@ -927,7 +940,7 @@ module.exports = (router) => {
       }
     }
     else {
-      res.redirect('/research-8/task-list')
+      res.redirect('/research-8/save-as-draft')
     }
   })
 
@@ -961,7 +974,7 @@ module.exports = (router) => {
       }
     }
     else {
-      res.redirect('/research-8/task-list')
+      res.redirect('/research-8/save-as-draft')
     }
   })
 
@@ -1032,7 +1045,7 @@ module.exports = (router) => {
       }
     }
     else {
-      res.redirect('/research-8/task-list')
+      res.redirect('/research-8/save-as-draft')
     }
   })
 
@@ -1055,7 +1068,7 @@ module.exports = (router) => {
         }
       }
       else {
-        res.redirect('/research-8/task-list')
+        res.redirect('/research-8/save-as-draft')
       }
   })
 
@@ -1089,7 +1102,7 @@ module.exports = (router) => {
       }
     }
     else if (req.body['submit-button'] === 'save-as-draft') {
-      res.redirect('/research-8/task-list')
+      res.redirect('/research-8/save-as-draft')
     }
     else if (req.body['submit-button'] === 'add' && req.body['second-applicant-different-country'] !== '') {
       req.session.data.secondApplicantNationalities[count] = req.body['second-applicant-different-country']
@@ -1122,7 +1135,7 @@ module.exports = (router) => {
       }
     }
     else {
-      res.redirect('/research-8/task-list')
+      res.redirect('/research-8/save-as-draft')
     }
   })
 
@@ -1151,7 +1164,7 @@ module.exports = (router) => {
         }
       }
       else {
-        res.redirect('/research-8/task-list')
+        res.redirect('/research-8/save-as-draft')
       }
     }
     else {
@@ -1181,7 +1194,7 @@ module.exports = (router) => {
       }
     }
     else {
-      res.redirect('/research-8/task-list')
+      res.redirect('/research-8/save-as-draft')
     }
   })
 
@@ -1204,7 +1217,7 @@ module.exports = (router) => {
       }
     }
     else {
-      res.redirect('/research-8/task-list')
+      res.redirect('/research-8/save-as-draft')
     }
   })
 
@@ -1240,7 +1253,7 @@ module.exports = (router) => {
       }
     }
     else {
-      res.redirect('/research-8/task-list')
+      res.redirect('/research-8/save-as-draft')
     }
   })
 
@@ -1276,7 +1289,7 @@ module.exports = (router) => {
       }
     }
     else {
-      res.redirect('/research-8/task-list')
+      res.redirect('/research-8/save-as-draft')
     }
   })
 
@@ -1305,7 +1318,7 @@ module.exports = (router) => {
       }
     }
     else {
-      res.redirect('/research-8/task-list')
+      res.redirect('/research-8/save-as-draft')
     }
   })
 
@@ -1341,7 +1354,7 @@ module.exports = (router) => {
       }
     }
     else {
-      res.redirect('/research-8/task-list')
+      res.redirect('/research-8/save-as-draft')
     }
   })
 
@@ -1377,7 +1390,7 @@ module.exports = (router) => {
       }
       else {
         req.session.data.adoptionCertificateStatus = 'in progress'
-        res.redirect('/research-8/task-list')
+        res.redirect('/research-8/save-as-draft')
       }
     }
   })
@@ -1422,7 +1435,7 @@ module.exports = (router) => {
       }
     }
     else {
-        res.redirect('/research-8/task-list')
+        res.redirect('/research-8/save-as-draft')
     }
   })
 
@@ -1458,7 +1471,7 @@ module.exports = (router) => {
       }
     }
     else {
-        res.redirect('/research-8/task-list')
+        res.redirect('/research-8/save-as-draft')
     }
   })
 
@@ -1486,7 +1499,7 @@ module.exports = (router) => {
       }
     }
     else {
-      res.redirect('/research-8/task-list')
+      res.redirect('/research-8/save-as-draft')
     }
   })
 
@@ -1532,7 +1545,7 @@ module.exports = (router) => {
       }
     }
     else {
-      res.redirect('/research-8/task-list')
+      res.redirect('/research-8/save-as-draft')
     }
   })
 
@@ -1582,7 +1595,7 @@ module.exports = (router) => {
       }
     }
     else {
-      res.redirect('/research-8/task-list')
+      res.redirect('/research-8/save-as-draft')
     }
   })
 
@@ -1635,7 +1648,7 @@ module.exports = (router) => {
       }
     }
     else {
-      res.redirect('/research-8/task-list')
+      res.redirect('/research-8/save-as-draft')
     }
   })
 
@@ -1694,7 +1707,7 @@ module.exports = (router) => {
       }
     }
     else {
-      res.redirect('/research-8/task-list')
+      res.redirect('/research-8/save-as-draft')
     }
   })
 
@@ -1959,7 +1972,7 @@ module.exports = (router) => {
       }
       else {
         req.session.data.familyCourtStatus = 'in progress'
-        res.redirect('/research-8/task-list')
+        res.redirect('/research-8/save-as-draft')
       }
     }
   })
@@ -1986,7 +1999,7 @@ module.exports = (router) => {
       res.redirect('/research-8/task-list')
     }
     else {
-      res.redirect('/research-8/task-list')
+      res.redirect('/research-8/save-as-draft')
     }
   })
 
@@ -2006,7 +2019,7 @@ module.exports = (router) => {
       res.redirect('/research-8/task-list')
     }
     else {
-      res.redirect('/research-8/task-list')
+      res.redirect('/research-8/save-as-draft')
     }
   })
 
@@ -2026,7 +2039,7 @@ module.exports = (router) => {
       res.redirect('/research-8/check-pay-and-submit/declaration')
     }
     else {
-      res.redirect('/research-8/task-list')
+      res.redirect('/research-8/save-as-draft')
     }
   })
 
@@ -2085,7 +2098,7 @@ module.exports = (router) => {
       }
     }
     else {
-      res.redirect('/research-8/task-list')
+      res.redirect('/research-8/save-as-draft')
     }
   })
 
@@ -2424,7 +2437,7 @@ module.exports = (router) => {
   //     }
   //   }
   //   else {
-  //     res.redirect('/research-8/task-list')
+  //     res.redirect('/research-8/save-as-draft')
   //   }
   //   })
 
