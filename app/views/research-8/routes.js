@@ -153,7 +153,6 @@ module.exports = (router) => {
 // ************************************************************************************************************************************
   router.post('/research-8/save-as-draft', function(req, res) {
     if (req.body['submit-button'] === 'continue') {
-        req.session.data.dateMovedIn = 1
         res.redirect('/research-8/task-list')
     }
     else {
@@ -253,6 +252,7 @@ module.exports = (router) => {
         }
       }
       else {
+        delete req.session.data.dateMovedIn
         res.redirect('/research-8/save-as-draft')
       }
   })
