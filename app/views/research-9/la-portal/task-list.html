@@ -12,7 +12,11 @@ Task list
 
   <div class="govuk-grid-column-two-thirds">
     <h1 class="govuk-heading-xl">
-        Jane Austen's details
+        {% if data['ref-child-full-name'] %}
+            {{ data['ref-child-full-name'] }}'s details
+        {% else %}
+            Jane Austen's details
+        {% endif %}
     </h1>
 
     <ol class="app-task-list">
