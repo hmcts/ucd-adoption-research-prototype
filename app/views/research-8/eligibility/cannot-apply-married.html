@@ -1,0 +1,37 @@
+{% extends "layout-signed-out.html" %}
+
+{% block pageTitle %}
+You cannot apply to adopt
+{% endblock %}
+
+{% block beforeContent %}
+<a class="govuk-back-link" href="javascript:history.back()">Back</a>
+{% endblock %}
+
+{% block content %}
+
+<div class="govuk-width-container">
+  <div class="govuk-grid-row">
+    <div class="govuk-grid-column-two-thirds">
+
+      <!-- <form action="/research-8/eligibility/cannot-apply-over-18" method="post" class="form"> -->
+
+        <legend class="govuk-fieldset__legend govuk-fieldset__legend--l">
+          <span class="govuk-caption-l">Check you're eligible to adopt</span>
+          <h1 class="govuk-fieldset__heading">
+            You cannot apply to adopt
+          </h1>
+          <p class="govuk-body govuk-!-margin-top-4">You cannot apply to adopt the child because they've been married or in a civil partnership.</p>
+          <p><a href="https://www.gov.uk/child-adoption">More about adoption</a></p>
+        </legend>
+
+
+
+        <!-- <button class="govuk-button" data-module="govuk-button">
+          Continue
+        </button>
+    </form>    -->
+  </div>
+</div>
+
+{% endblock %}

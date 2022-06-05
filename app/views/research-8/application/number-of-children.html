@@ -1,0 +1,111 @@
+{% extends "layout-signed-in.html" %}
+
+{% block pageTitle %}
+Apply to adopt a child
+{% endblock %}
+
+{% block beforeContent %}
+<a class="govuk-back-link" href="javascript:history.back()">Back</a>
+{% endblock %}
+
+{% block content %}
+
+<div class="govuk-width-container">
+  <div class="govuk-grid-row">
+    <div class="govuk-grid-column-two-thirds">
+
+      {% set numberChildrenError = '' %}
+      {% set numberChildrenError = '' %}
+
+      {% if errors | length > 0 %}
+      {{ govukErrorSummary({
+        titleText: "There is a problem",
+        errorList: errors
+      }) }}
+      {% for error in errors %}
+      {% if error.href == '#number-of-children' %}
+        {% set numberChildrenError = error.text %}
+      {% endif %}
+      {% if error.href == '#other-explanation' %}
+        {% set numberChildrenError = error.text %}
+       {% endif %}
+      {% endfor %}
+      {% endif %}
+
+
+      <form action="/research-8/application/number-of-children" method="post" class="form">
+
+        <div class="govuk-form-group {% if (numberChildrenError != '')%} govuk-form-group--error {% endif %}">
+        <legend class="govuk-fieldset__legend govuk-fieldset__legend--l">
+          <span class="govuk-caption-l">{{ data['applicationSection'] }}</span>
+          <h1 class="govuk-fieldset__heading">
+            How many children are you applying to adopt?
+          </h1>
+        </legend>
+
+        {% if (numberChildrenError != '')%}
+          <span class="govuk-error-message govuk-form">
+            <span class="govuk-visually-hidden">Error:</span> {{ numberChildrenError }}
+          </span>
+        {% endif %}
+
+        <div class="govuk-form-group">
+          <fieldset class="govuk-fieldset" role="group" aria-describedby="how-many-people-are-applying-to-adopt">
+
+            <div class="govuk-radios govuk-radios--conditional" data-module="govuk-radios">
+              <div class="govuk-radios__item">
+                <input class="govuk-radios__input" id="1" name="number-of-children" type="radio" value="1" {% if (data['number-of-children'] === "1") %} checked {% endif %}>
+                <label class="govuk-label govuk-radios__label" for="1">
+                  1
+                </label>
+              </div>
+
+              <div class="govuk-radios govuk-radios--conditional" data-module="govuk-radios">
+                <div class="govuk-radios__item">
+                  <input class="govuk-radios__input" id="2" name="number-of-children" type="radio" value="2" {% if (data['number-of-children'] === "2") %} checked {% endif %}>
+                  <label class="govuk-label govuk-radios__label" for="partner">
+                    2
+                  </label>
+                  </div>
+
+                  <div class="govuk-radios govuk-radios--conditional" data-module="govuk-radios">
+                    <div class="govuk-radios__item">
+                      <input class="govuk-radios__input" id="3" name="number-of-children" type="radio" value="3" data-aria-controls="conditional-contact">
+                      <label class="govuk-label govuk-radios__label" for="number-of-children">
+                        3 or more
+                      </label>
+                    </div>
+                    <div class="govuk-radios__conditional govuk-radios__conditional--hidden" id="conditional-contact">
+                      <div class="govuk-form-group">
+                        <label class="govuk-label" for="contact-by-email">
+                          How many children are you applying to adopt?
+                        </label>
+                        {% if (numberChildrenError != '')%}
+                        <span class="govuk-error-message govuk-form">
+                          <span class="govuk-visually-hidden">Error:</span> {{ numberChildrenError }}
+                        </span>
+                        {% endif %}
+                      <input class="govuk-input govuk-input--width-2" id="exact-number-children" name="exact-number-children" type="text">
+                    </div>
+                  </div>
+
+                </div>
+              </div>
+
+            </div>
+          </fieldset>
+        </div>
+        {% if numberChildrenError != '' %}
+          </div>
+        {% endif %}
+
+        <!-- Buttons -->
+          {% include "../../includes/buttons.html" %}
+
+
+      </form>
+       {% include "../../includes/contactforhelp.html" %}
+  </div>
+</div>
+
+{% endblock %}

@@ -15,4 +15,10 @@ require('./views/research-feb2022-proposed-changes/routes.js')(router);
 require('./views/research-5/routes.js')(router);
 require('./views/research-6/routes.js')(router);
 require('./views/research-apr2022-proposed-changes/routes.js')(router);
+<<<<<<< HEAD
+=======
+require('./views/research-7/routes.js')(router);
+require('./views/research-8/routes.js')(router);
+require('./views/research-9/routes.js')(router);
+>>>>>>> 206e9a5a8fe1a66f2abaf901a32f29e43869d6c9
 

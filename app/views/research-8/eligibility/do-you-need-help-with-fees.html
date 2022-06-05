@@ -1,0 +1,106 @@
+{% extends "layout-signed-out.html" %}
+
+{% block pageTitle %}
+Apply to adopt a child
+{% endblock %}
+
+{% block beforeContent %}
+<a class="govuk-back-link" href="javascript:history.back()">Back</a>
+{% endblock %}
+
+
+{% block content %}
+
+<div class="govuk-width-container">
+
+    <div class="govuk-grid-row">
+      <div class="govuk-grid-column-two-thirds">
+
+      {% set helpWithFeesError = '' %}
+
+      {% if errors | length > 0 %}
+      {{ govukErrorSummary({
+        titleText: "There is a problem",
+        errorList: errors
+      }) }}
+      {% for error in errors %}
+        {% if error.href == '#need-help-with-fees' %}
+          {% set helpWithFeesError = error.text %}
+        {% endif %}
+      {% endfor %}
+      {% endif %}
+
+
+        <form action="/research-8/eligibility/do-you-need-help-with-fees" method="post" class="form">
+
+          <div class="govuk-form-group {% if (helpWithFeesError != '')%} govuk-form-group--error {% endif %}">
+            <legend class="govuk-fieldset__legend govuk-fieldset__legend--l">
+            <span class="govuk-caption-l">Help with fees</span>
+            <h1 class="govuk-fieldset__heading">
+              Do you need help paying the adoption court fee?
+            </h1>
+            </legend>
+
+            <p class="govuk-body">You might be able to claim some or all of the £183 court fee if you:</p>
+            <ul class="govuk-list govuk-list--bullet">
+              <li>have little or no savings</li>
+              <li>are receiving certain benefits</li>
+              <li>are on a low income</li>
+            </ul>
+
+            <p>If you want to apply for help with fees, you must make a separate application. This will open in a new tab.</p>
+
+            <div class="govuk-warning-text">
+              <span class="govuk-warning-text__icon" aria-hidden="true">!</span>
+              <strong class="govuk-warning-text__text">
+                <span class="govuk-warning-text__assistive">Warning</span>
+                You will be given a reference number which you must keep safe. Once you have your reference number you can submit your application to adopt.
+              </strong>
+            </div>            
+            
+            <p>Your help with fees application needs to be processed before the court can look at your application to adopt. This is so that you know what fees are covered and if you need to make a payment for some of them. You may be asked to provide evidence to the court as part of your help with fees application. This can take several weeks.</p>
+            
+            <p>Do you want to make a help with fees application?</p>
+            {% if helpWithFeesError != '' %}
+              <span class="govuk-error-message govuk-form">
+                <span class="govuk-visually-hidden">Error:</span> {{ helpWithFeesError }}
+              </span>
+            {% endif %}
+
+            <div class="govuk-form-group">
+              <fieldset class="govuk-fieldset" role="group" aria-describedby="do-you-need-help-with-fees">
+
+                <div class="govuk-radios govuk-radios--conditional" data-module="govuk-radios">
+                  <div class="govuk-radios__item">
+                    <input class="govuk-radios__input" id="yes" name="need-help-with-fees" type="radio"
+                      value="Yes">
+                    <label class="govuk-label govuk-radios__label" for="yes">
+                      Yes
+                    </label>
+                  </div>
+
+                  <div class="govuk-radios govuk-radios--conditional" data-module="govuk-radios">
+                    <div class="govuk-radios__item">
+                      <input class="govuk-radios__input" id="no" name="need-help-with-fees" type="radio" value="No" data-aria-controls="conditional-contact">
+                      <label class="govuk-label govuk-radios__label" for="need-help-with-fees">
+                        No
+                      </label>
+                    </div>
+                  </div>
+              </fieldset>
+            </div>
+          </div>
+          <p>If you select no you will be asked to create an account for your application to adopt.</p>
+
+          <button class="govuk-button" data-module="govuk-button">
+            Continue
+          </button>
+
+
+        </form>
+      </div>
+    </div>
+  </main>
+</div>
+
+{% endblock %}

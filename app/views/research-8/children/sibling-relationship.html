@@ -1,0 +1,63 @@
+{% extends "layout-signed-in.html" %}
+
+{% block pageTitle %}
+Sibling name
+{% endblock %}
+
+{% block beforeContent %}
+<a class="govuk-back-link" href="javascript:history.back()">Back</a>
+{% endblock %}
+
+{% block content %}
+
+<div class="govuk-width-container">
+  <div class="govuk-grid-row">
+    <div class="govuk-grid-column-two-thirds">
+
+      {% set relationshipError = '' %}
+
+      {% if errors | length > 0 %}
+        {{ govukErrorSummary({
+          titleText: "There is a problem",
+          errorList: errors
+        }) }}
+        {% for error in errors %}
+          {% if error.href == '#relationship' %}
+            {% set relationshipError = error.text %}
+          {% endif %}
+        {% endfor %}
+      {% endif %}
+
+      <form action="/research-8/children/sibling-relationship" method="post" class="form">
+        <fieldset class="govuk-fieldset">
+          <legend class="govuk-fieldset__legend govuk-fieldset__legend--l">
+            <span class="govuk-caption-l">{{ data['sibling'] }}</span>
+            <h1 class="govuk-fieldset__heading">
+              What is their relationship to the child you want to adopt?
+            </h1>
+          </legend>
+          <div id="namehint" class="govuk-hint">
+            For instance, brother or half sister
+          </div>
+
+          <div class="govuk-form-group {% if (relationshipError != '') %} govuk-form-group--error{% endif %}">
+            {% if relationshipError != '' %}
+            <span id="contact-error" class="govuk-error-message">
+              <span class="govuk-visually-hidden">Error:</span> {{ relationshipError }}
+            </span>
+            {% endif %}
+
+            <input class="govuk-input  govuk-input--width-20 {% if (relationshipError != '') %} govuk-input--error{% endif %}" id="sibling-relationship" name="sibling-relationship" type="text">
+          </div>
+
+        </fieldset>
+
+        <!-- Buttons -->
+        {% include "../../includes/buttons.html" %}
+        </form>
+      </div>
+    </div>
+  </main>
+</div>
+
+{% endblock %}

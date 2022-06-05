@@ -1,0 +1,80 @@
+{% extends "layout-signed-in.html" %}
+
+{% block pageTitle %}
+Sibing details
+{% endblock %}
+
+{% block beforeContent %}
+<a class="govuk-back-link" href="javascript:history.back()">Back</a>
+{% endblock %}
+
+{% block content %}
+
+<div class="govuk-width-container">
+  <div class="govuk-grid-row">
+    <div class="govuk-grid-column-two-thirds">
+
+      {% set noAnswerError = '' %}
+  
+      {% if errors | length > 0 %}
+      {{ govukErrorSummary({
+        titleText: "There is a problem",
+        errorList: errors
+      }) }}
+      {% for error in errors %}
+        {% if error.href == '#no-answer' %}
+          {% set noAnswerError = error.text %}
+        {% endif %}
+        {% endfor %}
+      {% endif %}
+
+
+      <form action="/research-8/children/orders-remove-court-order" method="post" class="form">
+        
+        <div class="govuk-form-group {% if (noAnswerError != '')%} govuk-form-group--error {% endif %}">
+        <legend class="govuk-fieldset__legend govuk-fieldset__legend--l">
+          <span class="govuk-caption-l">{{ data['child'] }}</span>
+          <h1 class="govuk-fieldset__heading">
+            Are you sure you want to remove this {{ data['childOrderType'][data['id']]}}?
+          </h1>
+        </legend>
+
+        {% if (noAnswerError != '')%}
+          <span class="govuk-error-message govuk-form">
+            <span class="govuk-visually-hidden">Error:</span> {{ noAnswerError }}
+          </span>
+        {% endif %}
+
+        <div class="govuk-form-group">
+          <fieldset class="govuk-fieldset" role="group" aria-describedby="how-many-people-are-applying-to-adopt">
+
+            <div class="govuk-radios govuk-radios--conditional" data-module="govuk-radios">
+              <div class="govuk-radios__item">
+                <input class="govuk-radios__input" id="yes" name="child-remove-court-order" type="radio" value="yes">
+                <label class="govuk-label govuk-radios__label" for="yes">
+                  Yes
+                </label>
+              </div>
+
+              <div class="govuk-radios govuk-radios--conditional" data-module="govuk-radios">
+                <div class="govuk-radios__item">
+                  <input class="govuk-radios__input" id="no" name="child-remove-court-order" type="radio" value="no">
+                  <label class="govuk-label govuk-radios__label" for="no">
+                    No
+                  </label>
+                </div>
+  
+            </div>
+            <input type="hidden" name="child-order-id" value="{{ data['id'] }}">
+          </fieldset>
+        </div>
+      </div>
+      <!-- Buttons -->
+        {% include "../../includes/buttons.html" %}
+
+
+      </form>   
+  </div>
+</div>
+
+{% endblock %}

@@ -1,0 +1,51 @@
+{% block header %}
+{% include "includes/xui-header.html" %}
+{% endblock %}
+
+
+<html lang="en" class="govuk-template ">  
+  <div style=" max-width:1300px; margin: 0 auto;">
+      <div style=" max-width:1300px;  min-width:1300px;  margin: 20px 0px 0px 0px;  ">
+          <main class="govuk-main-wrapper " id="main-content" role="main" style="padding-top: 25px;">                      
+              <div class="govuk-width-container">
+                <div class="govuk-grid-row" style="width:1300px; margin-left: -90px;">
+                  <h1 class="govuk-heading-xl">Does the {{data['respondent-role']}} intend to oppose the adoption?</h1>
+                  <h2 class="govuk-heading-l">#1234-5678-0921-2722  &nbsp;&nbsp;&nbsp; </h2>
+                  
+
+                  <form action="/research-8/x-ui/case-worker/case-worker-intention-oppose" method="post" class="form">
+                  <div class="govuk-form-group">
+          
+                      <div class="govuk-radios govuk-radios--conditional" data-module="govuk-radios">
+          
+                        <div class="govuk-radios__item">
+                          <input class="govuk-radios__input" id="yes" name="intend-oppose" type="radio" value="yes">
+                          <label class="govuk-label govuk-radios__label" for="yes">
+                          Yes
+                          </label>
+                        </div>
+          
+                        <div class="govuk-radios__item">
+                          <input class="govuk-radios__input" id="no" name="intend-oppose" type="radio" value="no">
+                          <label class="govuk-label govuk-radios__label" for="no">
+                            No
+                          </label>
+                        </div>
+
+                      </div>                  
+                </div>
+                <input type="hidden" name="document-type" value="{{data['document-type']}}">
+                <!-- Buttons -->
+                {% include "../../../includes/buttons-xui.html" %}
+                  </form>
+                </div>
+
+              </div>
+          </main>
+      </div>
+  </div>
+</html>
+
+{% block footer %}
+{% include "includes/newfooter.html" %}
+{% endblock %}
