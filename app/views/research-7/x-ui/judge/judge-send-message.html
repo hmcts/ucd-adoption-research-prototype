@@ -1,0 +1,52 @@
+{% block header %}
+{% include "includes/xui-judge-header.html" %}
+{% endblock %}
+
+
+<html lang="en" class="govuk-template ">  
+  <div style=" max-width:1300px; margin: 0 auto;">
+      <div style=" max-width:1300px;  min-width:1300px;  margin: 20px 0px 0px 0px;  ">
+          <main class="govuk-main-wrapper " id="main-content" role="main" style="padding-top: 25px;">                      
+              <div class="govuk-width-container">
+                <div class="govuk-grid-row" style="width:1300px; margin-left: -90px;">
+                  <h1 class="govuk-heading-xl">Send a message</h1>
+                  <h2 class="govuk-heading-l">#1234-5678-0921-2722  &nbsp;&nbsp;&nbsp; </h2>
+                  
+
+                  <form action="/research-7/x-ui/judge/judge-send-message" method="post" class="form">
+                    <div class="govuk-form-group">
+                      <label class="govuk-label" for="sender-email-address">
+                        Sender's email address
+                      </label>
+                      <input class="govuk-input govuk-input--width-30" id="sender-email-address" name="sender-email-address" type="text" value="jane.jones@gmail.com">
+
+                      <label class="govuk-label govuk-!-margin-top-5" for="recipient-email-address">
+                        Recipient's email address
+                      </label>
+                      <input class="govuk-input govuk-input--width-30" id="recipient-email-address" name="recipient-email-address" type="text" value="mary.poppins@gmail.com">
+                      
+                      <label class="govuk-label govuk-!-margin-top-5" for="recipient-email-address">
+                        Message subject
+                      </label>
+                      <input class="govuk-input govuk-input--width-30" id="message-subject" name="message-subject" type="text" value="{{data['document-type']}}">
+                      
+                      <label class="govuk-label govuk-!-margin-top-5" for="recipient-email-address">
+                        Message
+                      </label>
+                      <textarea class="govuk-textarea govuk-input--width-30" id="message-content" name="message-content" rows="5" aria-describedby="more-detail-hint">Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate.</textarea>
+                      
+                    </div>
+                <!-- Buttons -->
+                {% include "../../../includes/buttons-xui.html" %}
+                  </form>
+                </div>
+
+              </div>
+          </main>
+      </div>
+  </div>
+</html>
+
+{% block footer %}
+{% include "includes/newfooter.html" %}
+{% endblock %}

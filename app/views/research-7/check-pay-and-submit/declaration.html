@@ -1,0 +1,167 @@
+{% extends "layout-signed-in.html" %}
+
+{% block pageTitle %}
+Apply to adopt a child
+{% endblock %}
+
+{% block beforeContent %}
+<a class="govuk-back-link" href="javascript:history.back()">Back</a>
+{% endblock %}
+
+{% block content %}
+
+<div class="govuk-width-container">
+  <div class="govuk-grid-row">
+    <div class="govuk-grid-column-two-thirds">
+
+      {% set yourNameError = '' %}
+      {% set statementTruthError = '' %}
+      {% set authorisedError = '' %}
+      {% set secondApplicantError = '' %}
+
+      {% if errors | length > 0 %}
+      {{ govukErrorSummary({
+        titleText: "There is a problem",
+        errorList: errors
+      }) }}
+      {% for error in errors %}
+      {% if error.href == '#your-name' %}
+        {% set yourNameError = error.text %}
+      {% endif %}
+      {% if error.href == '#statement-truth' %}
+        {% set statementTruthError = error.text %}
+      {% endif %}
+      {% if error.href == '#authorised' %}
+        {% set authorisedError = error.text %}
+      {% endif %}
+      {% if error.href == '#partner' %}
+        {% set secondApplicantError = error.text %}
+      {% endif %}
+    {% endfor %}
+    {% endif %}
+
+
+      <form action="/research-7/check-pay-and-submit/declaration" method="post" class="form">
+
+        <legend class="govuk-fieldset__legend govuk-fieldset__legend--l">
+            <span class="govuk-caption-l">{{ data['reviewApplication'] }}</span>
+        <h1 class="govuk-fieldset__heading">
+          Statement of truth
+        </h1>
+        </legend>
+        <p class="govuk-body">I understand that proceedings for contempt of court may be brought against anyone who makes, or causes to be made, a false statement in a document verified by a statement of truth without an honest belief in the truth.</p>
+
+
+        <!-- 1 applicant -->
+        {% if data['numberApplicants'] == 1 %}
+        <div class="govuk-form-group {% if (statementTruthError != '') %} govuk-form-group--error{% endif %}">
+          {% if statementTruthError != '' %}
+          <span class="govuk-error-message govuk-form">
+            <span class="govuk-visually-hidden">Error:</span> {{ statementTruthError }}
+          </span>
+          {% endif %}
+
+          <div class="govuk-checkboxes" data-module="govuk-checkboxes">
+            <div class="govuk-checkboxes__item">
+                <input class="govuk-checkboxes__input {% if (statementTruthError != '') %} govuk-input--error{% endif %}" id="app-1" name="statement-truth1" type="checkbox" value="statement-truth" {% if (data['statement-truth1'] != undefined) %} checked {% endif %}>
+              <label class="govuk-label govuk-checkboxes__label" for="app-1">
+                I believe that the facts stated in this form and any additional documents are true.
+              </label>
+            </div>
+          </div>
+        </div>
+
+        <div class="govuk-form-group {% if (yourNameError != '') %} govuk-form-group--error{% endif %}">
+          <label class="govuk-label govuk-!-margin-top-6" for="width-20">
+            Enter your full name
+          </label>
+
+          {% if yourNameError != '' %}
+            <span class="govuk-error-message govuk-form">
+              <span class="govuk-visually-hidden">Error:</span> {{ yourNameError }}
+            </span>
+          {% endif %}
+          <input class="govuk-input govuk-!-width-three-quarters {% if (yourNameError != '') %} govuk-input--error{% endif %}" id="name" name="your-full-name1" type="text" value="{{data['your-full-name1']}}">
+
+
+
+        <!-- 2 applicants -->
+        {% else %}
+        <div class="govuk-form-group {% if (statementTruthError != '') %} govuk-form-group--error{% endif %}">
+          {% if statementTruthError != '' %}
+          <span class="govuk-error-message govuk-form">
+            <span class="govuk-visually-hidden">Error:</span> {{ statementTruthError }}
+          </span>
+          {% endif %}
+
+          <div class="govuk-checkboxes" data-module="govuk-checkboxes">
+            <div class="govuk-checkboxes__item">
+              <input class="govuk-checkboxes__input {% if (statementTruthError != '') %} govuk-input--error{% endif %}" id="app-1" name="statement-truth" type="checkbox" value="statement-truth" {% if (data['statement-truth'] != undefined) %} checked {% endif %}>
+            <label class="govuk-label govuk-checkboxes__label" for="app-1">
+              The first applicant believes that the facts stated in this form and any additional documents are true.
+            </label>
+          </div>
+          </div>
+        </div>
+        <div class="govuk-form-group {% if (authorisedError != '') %} govuk-form-group--error{% endif %}">
+          {% if authorisedError != '' %}
+          <span class="govuk-error-message govuk-form">
+            <span class="govuk-visually-hidden">Error:</span> {{ authorisedError }}
+          </span>
+          {% endif %}
+
+        <div class="govuk-checkboxes__item">
+          <input class="govuk-checkboxes__input {% if (authorisedError != '') %} govuk-input--error{% endif %}" id="authorised" name="authorised" type="checkbox" value="authorised" {% if (data['authorised'] != undefined) %} checked {% endif %}>
+          <label class="govuk-label govuk-checkboxes__label" for="authorised">
+            I am authorised by the second applicant to sign this statement.
+          </label>
+        </div>
+
+
+        <div class="govuk-form-group {% if (yourNameError != '') %} govuk-form-group--error{% endif %}">
+          <label class="govuk-label govuk-!-margin-top-6" for="width-20">
+            Enter your full name
+          </label>
+
+          {% if yourNameError != '' %}
+            <span class="govuk-error-message govuk-form">
+              <span class="govuk-visually-hidden">Error:</span> {{ yourNameError }}
+            </span>
+          {% endif %}
+          <input class="govuk-input govuk-!-width-three-quarters {% if (yourNameError != '') %} govuk-input--error{% endif %}" id="name" name="your-full-name" type="text" value="{{data['your-full-name']}}">
+        </div>
+
+        <div class="govuk-form-group {% if (secondApplicantError != '') %} govuk-form-group--error{% endif %}">
+          <label class="govuk-label govuk-!-margin-top-6" for="width-20">
+            Enter the second applicant's full name (if applicable)
+          </label>
+
+          {% if secondApplicantError != '' %}
+            <span class="govuk-error-message govuk-form">
+              <span class="govuk-visually-hidden">Error:</span> {{ secondApplicantError }}
+            </span>
+          {% endif %}
+          <input class="govuk-input govuk-!-width-three-quarters {% if (secondApplicantError != '') %} govuk-input--error{% endif %}" id="second-applicant-full-name" name="partner-full-name" type="text" value="{{data['partner-full-name']}}">
+        </div>
+
+        {% endif %}
+
+
+      <p class="govuk-body  govuk-!-margin-top-6">Once you submit your application, you cannot make any further changes. You can select 'Save as draft' to review your application before you submit.</p>
+        </div>
+
+      <div class="govuk-button-group govuk-!-margin-top-6">
+          <button class="govuk-button" data-module="govuk-button" name="submit-button" value="save-and-continue">
+            Confirm
+          </button>
+          <button class="govuk-button govuk-button--secondary" data-module="govuk-button" name="submit-button" value="save-as-draft">
+            Save as draft
+          </button>
+        </div>
+    </form>
+      {% include "../../includes/contactforhelp.html" %}
+    </div>
+  </div>
+</div>
+
+{% endblock %}
