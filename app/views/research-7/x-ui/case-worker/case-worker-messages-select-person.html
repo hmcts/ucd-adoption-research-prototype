@@ -1,0 +1,87 @@
+{% block header %}
+{% include "includes/xui-header.html" %}
+{% endblock %}
+
+
+<html lang="en" class="govuk-template ">  
+  <div style=" max-width:1300px; margin: 0 auto;">
+      <div style=" max-width:1300px;  min-width:1300px;  margin: 20px 0px 0px 0px;  ">
+          <main class="govuk-main-wrapper " id="main-content" role="main" style="padding-top: 25px;">                      
+              <div class="govuk-width-container">
+                <div class="govuk-grid-row" style="width:1300px; margin-left: -90px;">
+                  <h1 class="govuk-heading-xl">Who do you want to {{data['document-type'].toLowerCase()}} from?</h1>
+                  <h2 class="govuk-heading-l">#1234-5678-0921-2722  &nbsp;&nbsp;&nbsp; </h2>
+                  
+
+                  <form action="/research-7/x-ui/case-worker/case-worker-messages-select-person" method="post" class="form">
+
+                  <div class="govuk-form-group">
+          
+                      <div class="govuk-checkboxes" data-module="govuk-checkboxes">
+          
+                        <div class="govuk-checkboxes__item">
+                          <input class="govuk-checkboxes__input" id="child social worker" name="send-to-role" type="checkbox" value="child social worker">
+                          <label class="govuk-label govuk-checkboxes__label" for="child social worker">
+                            Child's social worker: Agnes James
+                          </label>
+                        </div>
+
+                        <div class="govuk-checkboxes__item">
+                          <input class="govuk-checkboxes__input" id="applicants-social-worker" name="send-to-role" type="checkbox" value="applicant social worker">
+                          <label class="govuk-label govuk-checkboxes__label" for="applicants-social-worker">
+                            Applicants' social worker: Jane Jones
+                          </label>
+                        </div>
+          
+                        <div class="govuk-checkboxes__item">
+                          <input class="govuk-checkboxes__input" id="applicants local authority" name="send-to-role" type="checkbox" value="applicants local authority">
+                          <label class="govuk-label govuk-checkboxes__label" for="applicants local authority">
+                            Applicant's Local Authority: Brighton and Hove
+                          </label>
+                        </div>
+                    
+                        <div class="govuk-checkboxes__item">
+                          <input class="govuk-checkboxes__input" id="first applicant" name="send-to-role" type="checkbox" value="first applicant">
+                          <label class="govuk-label govuk-checkboxes__label" for="first applicant">
+                            First applicant: Agatha Mary Clarissa Christie
+                          </label>
+                        </div>
+          
+                        <div class="govuk-checkboxes__item">
+                          <input class="govuk-checkboxes__input" id="second applicant" name="send-to-role" type="checkbox" value="second applicant">
+                          <label class="govuk-label govuk-checkboxes__label" for="second applicant">
+                            Second applicant: Arthur Ignatius Conan Doyle
+                          </label>
+                        </div>
+          
+                        <div class="govuk-checkboxes__item">
+                          <input class="govuk-checkboxes__input" id="lorem-ipsum" name="send-to-role" type="checkbox" value="lorem ipsum">
+                          <label class="govuk-label govuk-checkboxes__label" for="lorem-ipsum">
+                            Lorem ipsum: Dolor Sit Amet
+                          </label>
+                        </div>
+          
+                        <div class="govuk-checkboxes__item">
+                          <input class="govuk-checkboxes__input" id="lorem-ipsum" name="send-to-role" type="checkbox" value="lorem ipsum">
+                          <label class="govuk-label govuk-checkboxes__label" for="lorem-ipsum">
+                            Lorem ipsum: Dolor Sit Amet
+                          </label>
+                        </div>
+          
+                      </div>                  
+                </div>
+                <input type="hidden" name="document-type" value="{{data['document-type']}}">
+                <!-- Buttons -->
+                {% include "../../../includes/buttons-xui.html" %}
+                  </form>
+                </div>
+
+              </div>
+          </main>
+      </div>
+  </div>
+</html>
+
+{% block footer %}
+{% include "includes/newfooter.html" %}
+{% endblock %}
