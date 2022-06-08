@@ -29,29 +29,91 @@ Sibling name
       {% endif %}
 
       <form action="/research-9/la-portal/sibling-relationship" method="post" class="form">
-        <fieldset class="govuk-fieldset">
+        <div class="govuk-form-group {% if (relationshipError != '')%} govuk-form-group--error {% endif%}">
           <legend class="govuk-fieldset__legend govuk-fieldset__legend--l">
-            <span class="govuk-caption-l">{{ data['sibling'] }}</span>
-            <h1 class="govuk-fieldset__heading">
-              What is their relationship to the child being adopted?
-            </h1>
+          <span class="govuk-caption-l">{{ data['sibling'] }}</span>
+          <h1 class="govuk-fieldset__heading">
+            What is their relationship to the child being adopted?
+          </h1>
           </legend>
-          <div id="namehint" class="govuk-hint">
-            For instance, brother or half sister
-          </div>
+          <!-- <div id="case-hint" class="govuk-hint">
+            This is on the top right of the order. Ask the adoption agency or social worker if you're not sure.
+          </div> -->
 
-          <div class="govuk-form-group {% if (relationshipError != '') %} govuk-form-group--error{% endif %}">
-            {% if relationshipError != '' %}
-            <span id="contact-error" class="govuk-error-message">
-              <span class="govuk-visually-hidden">Error:</span> {{ relationshipError }}
-            </span>
-            {% endif %}
+          {% if (relationshipError != '')%}
+          <span id="number-error" class="govuk-error-message">
+            <span class="govuk-visually-hidden">Error:</span> {{ relationshipError }}
+          </span>
+          {% endif%}
 
-            <input class="govuk-input  govuk-input--width-20 {% if (relationshipError != '') %} govuk-input--error{% endif %}" id="sibling-relationship" name="sibling-relationship" type="text">
-          </div>
+          <!-- <input class="govuk-input  {% if (relationshipError != '')%} govuk-input--error {% endif%}" id="sibling-relationship" name="sibling-relationship" type="text" spellcheck="false"> -->
+              <div class="govuk-radios" data-module="govuk-radios">
+                <div class="govuk-radios__item">
+                  <input class="govuk-radios__input" id="Sister" name="sibling-relationship" type="radio" value="Sister" {%if data['sibling-relationship'] == 'Sister' %} checked {% endif %}>
+                  <label class="govuk-label govuk-radios__label" for="Sister">
+                    Sister
+                  </label>
+                </div>
 
-        </fieldset>
+                <div class="govuk-radios__item">
+                  <input class="govuk-radios__input" id="Half-sister" name="sibling-relationship" type="radio" value="Half-sister" {%if data['sibling-relationship'] == 'Half-sister' %} checked {% endif %}>
+                  <label class="govuk-label govuk-radios__label" for="Half-sister">
+                    Half-sister
+                  </label>
+                </div>
 
+                <div class="govuk-radios__item">
+                  <input class="govuk-radios__input" id="Step-sister" name="sibling-relationship" type="radio" value="Step-sister" {%if data['sibling-relationship'] == 'Step-sister' %} checked {% endif %}>
+                  <label class="govuk-label govuk-radios__label" for="Step-sister">
+                    Step-sister
+                  </label>
+                </div>
+
+                <div class="govuk-radios__item"> 
+                  <input class="govuk-radios__input" id="Brother" name="sibling-relationship" type="radio" value="Brother" {%if data['sibling-relationship'] == 'Brother' %} checked {% endif %}>
+                  <label class="govuk-label govuk-radios__label" for="Brother">
+                    Brother
+                  </label>
+                </div>
+
+                <div class="govuk-radios__item"> 
+                  <input class="govuk-radios__input" id="Half-brother" name="sibling-relationship" type="radio" value="Half-brother" {%if data['sibling-relationship'] == 'Half-brother' %} checked {% endif %}>
+                  <label class="govuk-label govuk-radios__label" for="Half-brother">
+                    Half-brother
+                  </label>
+                </div>
+
+                <div class="govuk-radios__item"> 
+                  <input class="govuk-radios__input" id="Step-brother" name="sibling-relationship" type="radio" value="Step-brother" {%if data['sibling-relationship'] == 'Step-brother' %} checked {% endif %}>
+                  <label class="govuk-label govuk-radios__label" for="Step-brother">
+                    Step-brother
+                  </label>
+                </div>
+
+                <!-- <div class="govuk-radios__item">
+                  <input class="govuk-radios__input" id="other" name="sibling-relationship" type="radio" value="other" data-aria-controls="conditional-sibling-relationship-3" {%if data['sibling-relationship'] == 'other' %} checked {% endif %}>
+                  <label class="govuk-label govuk-radios__label" for="other">
+                    Other
+                  </label>
+                </div>
+                <div class="govuk-radios__conditional govuk-radios__conditional--hidden" id="conditional-sibling-relationship-3">
+                  <div class="govuk-form-group">
+                    <label class="govuk-label" for="sibling-relationship-by-text">
+                      Add a different type of order
+                    </label>
+                    {% if (noOtherError != '')%}
+                    <span class="govuk-error-message govuk-form">
+                      <span class="govuk-visually-hidden">Error:</span> {{ noOtherError }}
+                    </span>
+                    {% endif %}
+                    <input class="govuk-input govuk-!-width-two-thirds{% if (noOtherError != '') %} govuk-input--error{% endif %}" id="sibling-other-order" name="sibling-other-order" type="text">
+                  </div>          
+                </div> -->
+              </div>
+          
+            </fieldset>
+          </div>          
+  
         <!-- Buttons -->
         {% include "../../includes/buttons-laportal.html" %}
         </form>

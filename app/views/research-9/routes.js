@@ -3748,9 +3748,9 @@ router.post('/research-9/children/orders-placement-court', function(req, res) {
     router.post('/research-9/la-portal/sibling-relationship', function(req, res) {
       console.log("Sibling relationship: ", req.body['sibling-relationship'])
       var errors = []
-      if (req.body['sibling-relationship'] === '') {
+      if (req.body['sibling-relationship'] === undefined) {
         errors.push({
-        text: 'Enter the relationship',
+        text: 'Please answer the question',
         href: '#relationship'
         })
       }
@@ -3779,9 +3779,10 @@ router.post('/research-9/children/orders-placement-court', function(req, res) {
   
     router.post('/research-9/la-portal/sibling-change-relationship', function(req, res) {
       var errors = []
-      if (req.body['sibling-relationship'] === '') {
+      console.log("relationship", req.body['sibling-relationship'])
+      if (req.body['sibling-relationship'] === undefined) {
         errors.push({
-        text: 'Enter the relationship',
+        text: 'Please select an answer',
         href: '#relationship'
         })
       }
