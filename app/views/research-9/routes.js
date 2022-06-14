@@ -3746,7 +3746,6 @@ router.post('/research-9/children/orders-placement-court', function(req, res) {
   
   
     router.post('/research-9/la-portal/sibling-relationship', function(req, res) {
-      console.log("Sibling relationship: ", req.body['sibling-relationship'])
       var errors = []
       if (req.body['sibling-relationship'] === undefined) {
         errors.push({
