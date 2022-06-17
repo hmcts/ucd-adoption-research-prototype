@@ -1,0 +1,79 @@
+{% extends "layout-la-portal.html" %}
+
+{% block pageTitle %}
+Apply to adopt a child
+{% endblock %}
+
+{% block beforeContent %}
+<a class="govuk-back-link" href="javascript:history.back()">Back</a>
+{% endblock %}
+
+{% block content %}
+
+<div class="govuk-width-container">
+  <div class="govuk-grid-row">
+    <div class="govuk-grid-column-two-thirds">
+
+      {% set certificateError = '' %}
+  
+      {% if errors | length > 0 %}
+      {{ govukErrorSummary({
+        titleText: "There is a problem",
+        errorList: errors
+      }) }}
+      {% for error in errors %}
+        {% if error.href == '#father-in-certificate' %}
+          {% set certificateError = error.text %}
+        {% endif %}
+      {% endfor %}
+      {% endif %}
+
+
+      <form action="/research-jun2022-proposed-changes/la-portal/father-in-certificate" method="post" class="form">
+        
+        <div class="govuk-form-group {% if (certificateError != '')%} govuk-form-group--error {% endif %}">
+        <legend class="govuk-fieldset__legend govuk-fieldset__legend--l">
+          <span class="govuk-caption-l">{{ data['father'] }}</span>
+          <h1 class="govuk-fieldset__heading">
+            Is the birth father's name on the birth certificate?
+          </h1>
+        </legend>
+        <!-- <div id="certficatehint" class="govuk-hint">
+          Ask the adoption agency or social worker if you're not sure.
+        </div> -->
+        {% if (certificateError != '')%}
+          <span class="govuk-error-message govuk-form">
+            <span class="govuk-visually-hidden">Error:</span> {{ certificateError }}
+          </span>
+        {% endif %}
+
+        <div class="govuk-form-group">
+          <fieldset class="govuk-fieldset" role="group" aria-describedby="how-many-people-are-applying-to-adopt">
+
+            <div class="govuk-radios govuk-radios--conditional" data-module="govuk-radios">
+              <div class="govuk-radios__item">
+                <input class="govuk-radios__input" id="yes" name="father-in-certificate" type="radio" value="Yes" {% if (data['father-in-certificate'] === "Yes") %} checked {% endif %}>
+                <label class="govuk-label govuk-radios__label" for="yes">
+                  Yes
+                </label>
+              </div>
+
+              <div class="govuk-radios__item">
+                <input class="govuk-radios__input" id="no" name="father-in-certificate" type="radio" value="No" {% if (data['father-in-certificate'] === "No") %} checked {% endif %}>
+                <label class="govuk-label govuk-radios__label" for="no">
+                  No
+                </label>
+              </div>
+            </div>
+          </fieldset>
+        </div>
+
+        <!-- Buttons -->
+          {% include "../../includes/buttons-laportal.html" %}
+
+
+      </form>   
+  </div>
+</div>
+
+{% endblock %}

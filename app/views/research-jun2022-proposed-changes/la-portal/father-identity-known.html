@@ -1,0 +1,79 @@
+{% extends "layout-la-portal.html" %}
+
+{% block pageTitle %}
+Apply to adopt a child
+{% endblock %}
+
+{% block beforeContent %}
+<a class="govuk-back-link" href="javascript:history.back()">Back</a>
+{% endblock %}
+
+{% block content %}
+
+<div class="govuk-width-container">
+  <div class="govuk-grid-row">
+    <div class="govuk-grid-column-two-thirds">
+
+      {% set identityError = '' %}
+  
+      {% if errors | length > 0 %}
+      {{ govukErrorSummary({
+        titleText: "There is a problem",
+        errorList: errors
+      }) }}
+      {% for error in errors %}
+        {% if error.href == '#father-identity-known' %}
+          {% set identityError = error.text %}
+        {% endif %}
+      {% endfor %}
+      {% endif %}
+
+
+      <form action="/research-jun2022-proposed-changes/la-portal/father-identity-known" method="post" class="form">
+        
+        <div class="govuk-form-group {% if (identityError != '')%} govuk-form-group--error {% endif %}">
+        <legend class="govuk-fieldset__legend govuk-fieldset__legend--l">
+          <span class="govuk-caption-l">{{ data['father'] }}</span>
+          <h1 class="govuk-fieldset__heading">
+            Is the birth father's identity known?
+          </h1>
+        </legend>
+        <!-- <div id="certficatehint" class="govuk-hint">
+          Ask the adoption agency or social worker if you're not sure.
+        </div> -->
+        {% if (identityError != '')%}
+          <span class="govuk-error-message govuk-form">
+            <span class="govuk-visually-hidden">Error:</span> {{ identityError }}
+          </span>
+        {% endif %}
+
+        <div class="govuk-form-group">
+          <fieldset class="govuk-fieldset" role="group" aria-describedby="how-many-people-are-applying-to-adopt">
+
+            <div class="govuk-radios govuk-radios--conditional" data-module="govuk-radios">
+              <div class="govuk-radios__item">
+                <input class="govuk-radios__input" id="yes" name="father-identity-known" type="radio" value="Yes" {% if (data['father-identity-known'] === "Yes") %} checked {% endif %}>
+                <label class="govuk-label govuk-radios__label" for="yes">
+                  Yes
+                </label>
+              </div>
+
+              <div class="govuk-radios__item">
+                <input class="govuk-radios__input" id="no" name="father-identity-known" type="radio" value="No" {% if (data['father-identity-known'] === "No") %} checked {% endif %}>
+                <label class="govuk-label govuk-radios__label" for="no">
+                  No
+                </label>
+              </div>
+            </div>
+          </fieldset>
+        </div>
+
+        <!-- Buttons -->
+          {% include "../../includes/buttons-laportal.html" %}
+
+
+      </form>   
+  </div>
+</div>
+
+{% endblock %}

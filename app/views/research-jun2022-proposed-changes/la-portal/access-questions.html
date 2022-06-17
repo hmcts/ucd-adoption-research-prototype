@@ -1,0 +1,127 @@
+{% extends "layout-la-portal.html" %}
+
+{% block pageTitle %}
+Apply to adopt a child
+{% endblock %}
+
+{% block beforeContent %}
+<a class="govuk-back-link" href="javascript:history.back()">Back</a>
+{% endblock %}
+
+{% block content %}
+
+<div class="govuk-width-container">
+  <div class="govuk-grid-row">
+    <div class="govuk-grid-column-two-thirds">
+
+      {% set referenceError = '' %}
+      {% set childNameError = '' %}
+      {% set dobError = '' %}
+
+      {% if errors | length > 0 %}
+        {{ govukErrorSummary({
+          titleText: "There is a problem",
+          errorList: errors
+        }) }}
+        {% for error in errors %}
+          {% if error.href == '#reference' %}
+            {% set referenceError = error.text %}
+          {% endif %}
+          {% if error.href == '#childName' %}
+            {% set childNameError = error.text %}
+          {% endif %}
+          {% if error.href == '#dob' %}
+            {% set dobError = error.text %}
+          {% endif %}
+        {% endfor %}
+      {% endif %}
+
+      <form action="/research-jun2022-proposed-changes/la-portal/access-questions" method="post" class="form">
+        <fieldset class="govuk-fieldset">
+          <legend class="govuk-fieldset__legend govuk-fieldset__legend--l">
+            <h1 class="govuk-fieldset__heading">
+              Application details
+            </h1>
+          </legend>
+          <div id="lahint" class="govuk-hint">
+            You can find this information in the email notification you received.
+          </div>
+
+          <div class="govuk-form-group {% if (referenceError != '') %} govuk-form-group--error{% endif %}">
+            <h2 class="govuk-heading-m govuk-!-margin-bottom-1">Case reference number</h2>
+            <div id="lahint" class="govuk-hint">
+              This number will be 16 digits long.
+            </div>
+              {% if referenceError != '' %}
+            <span id="contact-error" class="govuk-error-message">
+              <span class="govuk-visually-hidden">Error:</span> {{ referenceError }}
+            </span>
+            {% endif %}
+            <input class="govuk-input govuk-input--width-10 {% if (referenceError != '') %} govuk-input--error{% endif %}" id="case-reference" name="case-reference" type="text" value="{{ data['case-reference'] }}">
+          </div>
+
+          <h2 class="govuk-heading-m govuk-!-margin-bottom-1">Child named on the application</h2>
+          <div class="govuk-form-group {% if (childNameError != '') %} govuk-form-group--error{% endif %}">
+            <label class="govuk-label" for="phone-number">
+            Full name
+            </label>  
+            {% if childNameError != '' %}
+            <span id="contact-error" class="govuk-error-message">
+              <span class="govuk-visually-hidden">Error:</span> {{ childNameError }}
+            </span>
+            {% endif %}
+            <input class="govuk-input  {% if (childNameError != '') %} govuk-input--error{% endif %}" id="ref-child-full-name" name="ref-child-full-name" type="text" value="{{ data['ref-child-full-name'] }}">
+          </div>
+
+          <div class="govuk-form-group  {% if (dobError != '')%} govuk-form-group--error {% endif%}">
+            <label class="govuk-label" for="phone-number">
+            Date of birth
+            </label>  
+          <div id="date-of-birth-hint" class="govuk-hint">
+            For example, 31 3 2012.
+          </div>
+  
+  
+            {% if (dobError != '')%}
+            <span id="national-insurance-number-error" class="govuk-error-message">
+              <span class="govuk-visually-hidden">Error:</span> {{ dobError }}
+            </span>
+            {% endif%}
+  
+            <div class="govuk-date-input" id="dob">
+              <div class="govuk-date-input__item">
+                <div class="govuk-form-group">
+                  <label class="govuk-label govuk-date-input__label" for="day">
+                    Day
+                  </label>
+                  <input class="govuk-input govuk-date-input__input govuk-input--width-2 {% if (dobError != '')%} govuk-input--error {% endif%}" id="day" name="ref-child-birth-day" type="text" pattern="[0-9]*" inputmode="numeric" value="{{ data['ref-child-birth-day'] }}"></div>
+              </div>
+              <div class="govuk-date-input__item">
+                <div class="govuk-form-group">
+                  <label class="govuk-label govuk-date-input__label" for="month">
+                    Month
+                  </label>
+                  <input class="govuk-input govuk-date-input__input govuk-input--width-2 {% if (dobError != '')%} govuk-input--error {% endif%}" id="month" name="ref-child-birth-month" type="text" pattern="[0-9]*" inputmode="numeric" value="{{ data['ref-child-birth-month'] }}"></div>
+              </div>
+              <div class="govuk-date-input__item">
+                <div class="govuk-form-group">
+                  <label class="govuk-label govuk-date-input__label" for="year">
+                    Year
+                  </label>
+                  <input class="govuk-input govuk-date-input__input govuk-input--width-4 {% if (dobError != '')%} govuk-input--error {% endif%}" id="year" name="ref-child-birth-year" type="text" pattern="[0-9]*" inputmode="numeric" value="{{ data['ref-child-birth-year'] }}"></div>
+              </div>
+  
+          </div>
+  
+        </fieldset>
+
+        <!-- Buttons -->
+        {% include "../../includes/buttons-laportal.html" %}
+        </form>
+         {% include "../../includes/contactforhelp.html" %}
+      </div>
+    </div>
+  </main>
+</div>
+
+{% endblock %}
