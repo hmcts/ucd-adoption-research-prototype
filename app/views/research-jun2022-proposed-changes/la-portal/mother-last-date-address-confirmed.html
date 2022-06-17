@@ -1,0 +1,85 @@
+{% extends "layout-la-portal.html" %}
+
+{% block pageTitle %}
+Apply to adopt a child
+{% endblock %}
+
+{% block beforeContent %}
+<a class="govuk-back-link" href="javascript:history.back()">Back</a>
+{% endblock %}
+
+{% block content %}
+
+<div class="govuk-width-container">
+  <div class="govuk-grid-row">
+    <div class="govuk-grid-column-two-thirds">
+
+      {% set dateError = '' %}
+
+      {% if errors | length > 0 %}
+      {{ govukErrorSummary({
+        titleText: "There is a problem",
+        errorList: errors
+      }) }}
+      {% for error in errors %}
+        {% if error.href == '#mother-date-confirmed' %}
+          {% set dateError = error.text %}
+        {% endif %}
+      {% endfor %}
+      {% endif %}
+
+
+      <form action="/research-jun2022-proposed-changes/la-portal/mother-last-date-address-confirmed" method="post" class="form">
+
+        <div class="govuk-form-group {% if (dateError != '')%} govuk-form-group--error {% endif%}">
+          <legend class="govuk-fieldset__legend govuk-fieldset__legend--l">
+          <span class="govuk-caption-l">{{ data['mother'] }}</span>
+          <h1 class="govuk-fieldset__heading">
+            When was the last date this address was confirmed?
+          </h1>
+        </legend>
+
+        <div class="govuk-form-group  {% if (dateError != '')%} govuk-form-group--error {% endif%}">
+          {% if (dateError != '')%}
+          <span id="national-insurance-number-error" class="govuk-error-message">
+            <span class="govuk-visually-hidden">Error:</span> {{ dateError }}
+          </span>
+          {% endif%}
+
+          <div class="govuk-date-input" id="dob">
+            <div class="govuk-date-input__item">
+              <div class="govuk-form-group">
+                <label class="govuk-label govuk-date-input__label" for="day">
+                  Day
+                </label>
+                <input class="govuk-input govuk-date-input__input govuk-input--width-2 {% if (dateError != '')%} govuk-input--error {% endif%}" id="day" name="mother-date-day" type="text" pattern="[0-9]*" inputmode="numeric" value="{{ data['mother-date-day'] }}"></div>
+            </div>
+            <div class="govuk-date-input__item">
+              <div class="govuk-form-group">
+                <label class="govuk-label govuk-date-input__label" for="month">
+                  Month
+                </label>
+                <input class="govuk-input govuk-date-input__input govuk-input--width-2 {% if (dateError != '')%} govuk-input--error {% endif%}" id="month" name="mother-date-month" type="text" pattern="[0-9]*" inputmode="numeric" value="{{ data['mother-date-month'] }}"></div>
+            </div>
+            <div class="govuk-date-input__item">
+              <div class="govuk-form-group">
+                <label class="govuk-label govuk-date-input__label" for="year">
+                  Year
+                </label>
+                <input class="govuk-input govuk-date-input__input govuk-input--width-4 {% if (dateError != '')%} govuk-input--error {% endif%}" id="year" name="mother-date-year" type="text" pattern="[0-9]*" inputmode="numeric" value="{{ data['mother-date-year'] }}"></div>
+            </div>
+
+        </div>
+        </div>
+        </div>
+          <!-- Buttons -->
+          {% include "../../includes/buttons-laportal.html" %}
+
+        </form>
+  {% include "../../includes/contactforhelp.html" %}
+      </div>
+    </div>
+  </main>
+</div>
+
+{% endblock %}

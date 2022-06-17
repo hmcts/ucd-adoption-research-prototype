@@ -1,0 +1,132 @@
+{% extends "layout-la-portal.html" %}
+
+{% block pageTitle %}
+Apply to adopt a child
+{% endblock %}
+
+{% block beforeContent %}
+<a class="govuk-back-link" href="javascript:history.back()">Back</a>
+{% endblock %}
+
+{% block content %}
+
+<div class="govuk-width-container">
+  <div class="govuk-grid-row">
+    <div class="govuk-grid-column-two-thirds">
+
+      {% set typeError = '' %}
+      {% set noOtherError = '' %}
+
+      {% if errors | length > 0 %}
+      {{ govukErrorSummary({
+        titleText: "There is a problem",
+        errorList: errors
+      }) }}
+      {% for error in errors %}
+        {% if error.href == '#order-type' %}
+          {% set typeError = error.text %}
+        {% endif %}
+        {% if error.href == '#other-order' %}
+          {% set noOtherError = error.text %}
+        {% endif %}
+      {% endfor %}
+      {% endif %}
+
+
+      <form action="/research-jun2022-proposed-changes/la-portal/orders-order-type" method="post" class="form">
+
+        <div class="govuk-form-group {% if (typeError != '')%} govuk-form-group--error {% endif%}">
+          <legend class="govuk-fieldset__legend govuk-fieldset__legend--l">
+          <span class="govuk-caption-l">{{ data['child'] }}</span>
+          <h1 class="govuk-fieldset__heading">
+            What type of order is it?
+          </h1>
+          </legend>
+          <!-- <div id="case-hint" class="govuk-hint">
+            This is on the top right of the order. Ask the adoption agency or social worker if you're not sure.
+          </div> -->
+
+          {% if (typeError != '')%}
+          <span id="number-error" class="govuk-error-message">
+            <span class="govuk-visually-hidden">Error:</span> {{ typeError }}
+          </span>
+          {% endif%}
+
+          <div class="govuk-radios" data-module="govuk-radios">
+            <div class="govuk-radios__item">
+              <input class="govuk-radios__input" id="Adoption" name="child-order-type" type="radio" value="Adoption order" {%if data['child-order-type'] == 'Adoption order' %} checked {% endif %}>
+              <label class="govuk-label govuk-radios__label" for="Adoption">
+                Adoption order
+              </label>
+            </div>
+
+            <div class="govuk-radios__item">
+              <input class="govuk-radios__input" id="Care" name="child-order-type" type="radio" value="Care order" {%if data['child-order-type'] == 'Care order' %} checked {% endif %}>
+              <label class="govuk-label govuk-radios__label" for="Care">
+                Care order
+              </label>
+            </div>
+
+            <div class="govuk-radios__item">
+              <input class="govuk-radios__input" id="Contact" name="child-order-type" type="radio" value="Contact order" {%if data['child-order-type'] == 'Contact order' %} checked {% endif %}>
+              <label class="govuk-label govuk-radios__label" for="Contact">
+                Contact order
+              </label>
+            </div>
+
+            <div class="govuk-radios__item"> 
+              <input class="govuk-radios__input" id="Freeing" name="child-order-type" type="radio" value="Freeing order" {%if data['child-order-type'] == 'Freeing order' %} checked {% endif %}>
+              <label class="govuk-label govuk-radios__label" for="Freeing">
+                Freeing order
+              </label>
+            </div>
+
+            <div class="govuk-radios__item"> 
+              <input class="govuk-radios__input" id="Placement" name="child-order-type" type="radio" value="Placement order" {%if data['child-order-type'] == 'Placement order' %} checked {% endif %}>
+              <label class="govuk-label govuk-radios__label" for="Placement">
+                Placement order
+              </label>
+            </div>
+
+            <div class="govuk-radios__item"> 
+              <input class="govuk-radios__input" id="Supervision" name="child-order-type" type="radio" value="Supervision order"  {%if data['child-order-type'] == 'Supervision order' %} checked {% endif %}>
+              <label class="govuk-label govuk-radios__label" for="Supervision">
+                Supervision order
+              </label>
+            </div>
+
+            <div class="govuk-radios__item">
+              <input class="govuk-radios__input" id="other" name="child-order-type" type="radio" value="other" data-aria-controls="conditional-child-order-type-3" {%if data['child-order-type'] == 'other' %} checked {% endif %}>
+              <label class="govuk-label govuk-radios__label" for="other">
+                Other
+              </label>
+            </div>
+            <div class="govuk-radios__conditional govuk-radios__conditional--hidden" id="conditional-child-order-type-3">
+              <div class="govuk-form-group">
+                <label class="govuk-label" for="child-order-type-by-text">
+                  Add a different type of order
+                </label>
+                {% if (noOtherError != '')%}
+                <span class="govuk-error-message govuk-form">
+                  <span class="govuk-visually-hidden">Error:</span> {{ noOtherError }}
+                </span>
+                {% endif %}
+                <input class="govuk-input govuk-!-width-two-thirds{% if (noOtherError != '') %} govuk-input--error{% endif %}" id="child-other-order" name="child-other-order" type="text" value="{{data['child-other-order']}}">
+              </div>          
+            </div>
+          </div>
+      
+        </fieldset>
+      </div>          
+
+          <!-- Buttons -->
+          {% include "../../includes/buttons-laportal.html" %}
+
+        </form>
+
+      </div>
+    </div>
+  </main>
+</div>
+
+{% endblock %}
