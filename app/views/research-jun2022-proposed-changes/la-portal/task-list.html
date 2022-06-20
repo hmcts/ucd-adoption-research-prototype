@@ -132,6 +132,24 @@ Task list
 
                 <li class="app-task-list__item">
                     <span class="app-task-list__task-name">
+                    {% if (data['siblingStatus'] === 'in progress' or data['siblingStatus'] === 'completed') %}
+                        <a href="sibling-summary-alternative-1.html" aria-describedby="eligibility-completed">
+                    {% else  %}
+                        <a href="sibling-court-order-exists.html?siblingAlternative=1" aria-describedby="eligibility-completed">
+                    {% endif %}
+                        Sibling court order details</a>
+                    </span>
+                    {% if data['siblingStatus'] === 'completed' %}
+                        <strong class="govuk-tag  app-task-list__tag" id="eligibility-completed">Completed</strong>
+                    {% elseif data['siblingStatus'] === 'in progress' %}
+                        <strong class="govuk-tag govuk-tag--blue app-task-list__tag">in progress</strong>
+                    {% else %}
+                        <strong class="govuk-tag govuk-tag--grey app-task-list__tag">not started</strong>
+                    {% endif %}
+                </li>
+
+                <li class="app-task-list__item">
+                    <span class="app-task-list__task-name">
                         <a href="upload.html">
                             Upload documents
                         </a>

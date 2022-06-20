@@ -825,6 +825,14 @@ router.post('/research-jun2022-proposed-changes/children/orders-placement-court'
           req.session.data.siblingOrderCompleted[count] = "Yes"
           console.log("Relationship: ", req.session.data.siblingRelationship[count])
           console.log("Type: ", req.session.data.siblingOrderType[count])
+          console.log("Numberz: ", req.session.data.siblingOrderNumber[count])
+          console.log("Alternative: ", req.session.data.siblingAlternative)
+          if (req.session.data.siblingAlternative === 1) {
+            res.redirect('/research-jun2022-proposed-changes/children/sibling-summary-alternative-1')
+          }
+          else {
+            res.redirect('/research-jun2022-proposed-changes/children/sibling-summary')
+          }
           console.log("Number: ", req.session.data.siblingOrderNumber[count])
           res.redirect('/research-jun2022-proposed-changes/children/sibling-summary')
         }

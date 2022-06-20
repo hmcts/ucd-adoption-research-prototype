@@ -47,6 +47,7 @@ Apply to adopt a child
 
           <input class="govuk-input govuk-input--width-10 {% if (numberError != '')%} govuk-input--error {% endif%}" id="sibling-order-case-number" name="sibling-order-case-number" type="text" spellcheck="false">
         </div>
+        <input type="hidden" name="siblingAlternative" value="{{ data['siblingAlternative'] }}">
 
           <!-- Buttons -->
           {% include "../../includes/buttons-laportal.html" %}
