@@ -833,6 +833,8 @@ router.post('/research-jun2022-proposed-changes/children/orders-placement-court'
           else {
             res.redirect('/research-jun2022-proposed-changes/children/sibling-summary')
           }
+          console.log("Number: ", req.session.data.siblingOrderNumber[count])
+          res.redirect('/research-jun2022-proposed-changes/children/sibling-summary')
         }
         else {
           res.render('.//research-jun2022-proposed-changes/children/sibling-order-case-number', { errors: errors })
