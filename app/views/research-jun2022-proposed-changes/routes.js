@@ -158,7 +158,7 @@ router.post('/research-jun2022-proposed-changes/save-as-draft', function(req, re
 })
 
 
-router.post('/research-jun2022-proposed-changes/la-portal/save-as-draft', function(req, res) {
+router.post('/research-jun2022-proposed-changes/la-portal/task-list', function(req, res) {
   if (req.body['submit-button'] === 'continue') {
       res.redirect('/research-jun2022-proposed-changes/la-portal/task-list')
   }
@@ -3668,7 +3668,7 @@ router.post('/research-jun2022-proposed-changes/children/orders-placement-court'
       res.redirect('/research-jun2022-proposed-changes/la-portal/task-list')
     }
     else {
-      res.redirect('/research-jun2022-proposed-changes/save-as-draft')
+      res.redirect('/research-jun2022-proposed-changes/la-portal/task-list')
     }
   })
 
@@ -3711,7 +3711,7 @@ router.post('/research-jun2022-proposed-changes/children/orders-placement-court'
         }
       }
       else {
-          res.redirect('/research-jun2022-proposed-changes/la-portal/save-as-draft')
+          res.redirect('/research-jun2022-proposed-changes/la-portal/task-list')
       }
     })
   
@@ -3748,7 +3748,7 @@ router.post('/research-jun2022-proposed-changes/children/orders-placement-court'
         }
       }
       else {
-          res.redirect('/research-jun2022-proposed-changes/la-portal/save-as-draft')
+          res.redirect('/research-jun2022-proposed-changes/la-portal/task-list')
       }
     })
   
@@ -3779,7 +3779,7 @@ router.post('/research-jun2022-proposed-changes/children/orders-placement-court'
         }
       }
       else {
-        res.redirect('/research-jun2022-proposed-changes/la-portal/save-as-draft')
+        res.redirect('/research-jun2022-proposed-changes/la-portal/task-list')
       }
     })
   
@@ -3834,7 +3834,7 @@ router.post('/research-jun2022-proposed-changes/children/orders-placement-court'
         }
       }
       else {
-        res.redirect('/research-jun2022-proposed-changes/la-portal/save-as-draft')
+        res.redirect('/research-jun2022-proposed-changes/la-portal/task-list')
       }
     })
   
@@ -3889,7 +3889,7 @@ router.post('/research-jun2022-proposed-changes/children/orders-placement-court'
         }
       }
       else {
-        res.redirect('/research-jun2022-proposed-changes/la-portal/save-as-draft')
+        res.redirect('/research-jun2022-proposed-changes/la-portal/task-list')
       }
     })
   
@@ -3942,7 +3942,7 @@ router.post('/research-jun2022-proposed-changes/children/orders-placement-court'
         }
       }
       else {
-        res.redirect('/research-jun2022-proposed-changes/la-portal/save-as-draft')
+        res.redirect('/research-jun2022-proposed-changes/la-portal/task-list')
       }
     })
   
@@ -4001,7 +4001,7 @@ router.post('/research-jun2022-proposed-changes/children/orders-placement-court'
         }
       }
       else {
-        res.redirect('/research-jun2022-proposed-changes/la-portal/save-as-draft')
+        res.redirect('/research-jun2022-proposed-changes/la-portal/task-list')
       }
     })
   
@@ -4054,7 +4054,7 @@ router.post('/research-jun2022-proposed-changes/children/orders-placement-court'
         }
       }
       else {
-          res.redirect('/research-jun2022-proposed-changes/la-portal/save-as-draft')
+          res.redirect('/research-jun2022-proposed-changes/la-portal/task-list')
       }
     })
   
@@ -4087,7 +4087,7 @@ router.post('/research-jun2022-proposed-changes/children/orders-placement-court'
         }
       }
       else {
-          res.redirect('/research-jun2022-proposed-changes/la-portal/save-as-draft')
+          res.redirect('/research-jun2022-proposed-changes/la-portal/task-list')
       }
     })
   
@@ -4145,7 +4145,7 @@ router.post('/research-jun2022-proposed-changes/children/orders-placement-court'
         }
       }
       else {
-        res.redirect('/research-jun2022-proposed-changes/la-portal/save-as-draft')
+        res.redirect('/research-jun2022-proposed-changes/la-portal/task-list')
       }
       console.log("Sibling array: ", req.session.data.uniqueSiblingFirstNames)
       console.log("siblingFirstNames array: ", req.session.data.siblingFirstNames)

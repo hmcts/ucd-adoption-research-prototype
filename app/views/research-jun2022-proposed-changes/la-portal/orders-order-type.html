@@ -54,16 +54,16 @@ Apply to adopt a child
 
           <div class="govuk-radios" data-module="govuk-radios">
             <div class="govuk-radios__item">
-              <input class="govuk-radios__input" id="Adoption" name="child-order-type" type="radio" value="Previous adoption order" {%if data['child-order-type'] == 'Previous adoption order' %} checked {% endif %}>
-              <label class="govuk-label govuk-radios__label" for="Adoption">
-                Previous adoption order
-              </label>
-            </div>
-
-            <div class="govuk-radios__item">
               <input class="govuk-radios__input" id="Care" name="child-order-type" type="radio" value="Care order" {%if data['child-order-type'] == 'Care order' %} checked {% endif %}>
               <label class="govuk-label govuk-radios__label" for="Care">
                 Care order
+              </label>
+            </div>
+
+            <div class="govuk-radios__item"> 
+              <input class="govuk-radios__input" id="Freeing" name="child-order-type" type="radio" value="Child arrangements order" {%if data['child-order-type'] == 'Child arrangements order' %} checked {% endif %}>
+              <label class="govuk-label govuk-radios__label" for="Freeing">
+                Child arrangements order
               </label>
             </div>
 
@@ -74,10 +74,10 @@ Apply to adopt a child
               </label>
             </div>
 
-            <div class="govuk-radios__item"> 
-              <input class="govuk-radios__input" id="Freeing" name="child-order-type" type="radio" value="Child arrangements order" {%if data['child-order-type'] == 'Child arrangements order' %} checked {% endif %}>
-              <label class="govuk-label govuk-radios__label" for="Freeing">
-                Child arrangements order
+            <div class="govuk-radios__item">
+              <input class="govuk-radios__input" id="Adoption" name="child-order-type" type="radio" value="Previous adoption order" {%if data['child-order-type'] == 'Previous adoption order' %} checked {% endif %}>
+              <label class="govuk-label govuk-radios__label" for="Adoption">
+                Previous adoption order
               </label>
             </div>
 
@@ -120,7 +120,7 @@ Apply to adopt a child
       </div>          
 
           <!-- Buttons -->
-          {% include "../../includes/buttons-laportal.html" %}
+          {% include "../../includes/buttons.html" %}
 
         </form>
 
