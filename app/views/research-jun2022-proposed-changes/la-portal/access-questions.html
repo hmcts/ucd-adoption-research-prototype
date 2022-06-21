@@ -48,9 +48,9 @@ Apply to adopt a child
           </div>
 
           <div class="govuk-form-group {% if (referenceError != '') %} govuk-form-group--error{% endif %}">
-            <h2 class="govuk-heading-m govuk-!-margin-bottom-1">Case number</h2>
+            <h2 class="govuk-heading-m govuk-!-margin-bottom-1">Court case reference number</h2>
             <div id="lahint" class="govuk-hint">
-              You will find the case reference number in the email.
+              This is the 16 digit reference number that was on the email sent to you.
             </div>
               {% if referenceError != '' %}
             <span id="contact-error" class="govuk-error-message">
@@ -66,7 +66,7 @@ Apply to adopt a child
             Full name
             </label> 
             <div id="lahint" class="govuk-hint">
-              Exactly as it is in the birth certificate.
+              Enter their name exactly as it is on their original birth certificate.
             </div>
             {% if childNameError != '' %}
             <span id="contact-error" class="govuk-error-message">
