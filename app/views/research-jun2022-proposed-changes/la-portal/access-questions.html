@@ -48,9 +48,9 @@ Apply to adopt a child
           </div>
 
           <div class="govuk-form-group {% if (referenceError != '') %} govuk-form-group--error{% endif %}">
-            <h2 class="govuk-heading-m govuk-!-margin-bottom-1">Case reference number</h2>
+            <h2 class="govuk-heading-m govuk-!-margin-bottom-1">Case number</h2>
             <div id="lahint" class="govuk-hint">
-              This number will be 16 digits long.
+              You will find the case reference number in the email.
             </div>
               {% if referenceError != '' %}
             <span id="contact-error" class="govuk-error-message">
@@ -64,7 +64,10 @@ Apply to adopt a child
           <div class="govuk-form-group {% if (childNameError != '') %} govuk-form-group--error{% endif %}">
             <label class="govuk-label" for="phone-number">
             Full name
-            </label>  
+            </label> 
+            <div id="lahint" class="govuk-hint">
+              Exactly as it is in the birth certificate.
+            </div>
             {% if childNameError != '' %}
             <span id="contact-error" class="govuk-error-message">
               <span class="govuk-visually-hidden">Error:</span> {{ childNameError }}
