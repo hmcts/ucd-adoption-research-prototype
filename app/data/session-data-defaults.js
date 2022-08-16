@@ -66,7 +66,6 @@ module.exports = {
   "childOrderCount": 0,
   "childOrderIncomplete": 1,
 
-
   "siblingOrderId": [],
   "siblingFirstNames": [],
   "siblingLastNames": [],
@@ -81,7 +80,6 @@ module.exports = {
   "siblingOrderCount": 0,
   "siblingOrderIncomplete": 1,
 
-
   "uniqueSiblingId": [],
   "uniqueSiblingFirstNames": [],
   "uniqueSiblingLastNames": [],
@@ -89,8 +87,7 @@ module.exports = {
 
   "applicationSection": "Application details",
   "oneApplicant": "Applicant",
-  "firstApplicant": "Primary applicant",
-  "firstApplicantProposal": "First applicant",
+  "firstApplicant": "First applicant",
   "secondApplicant": "Second applicant",
   "child": "The child's details",
   "mother": "Birth mother's details",
@@ -104,18 +101,7 @@ module.exports = {
   "checkpaysubmit": "Review your application, pay and send",
   "paySubmit": "Pay and submit your application",
   "reviewApplication": "Review your application",
-
-
-  "firstApplicantPersonalDetailsStatusR3": "completed",
-  "firstApplicantContactDetailsStatusR3": "completed",
-  "secondApplicantPersonalDetailsStatusR3": "completed",
-  "secondApplicantContactDetailsStatusR3": "completed",
-  
-  
-
-
-
-
+  "familyCourt": "Family court details",
 
   "monthName": [
     "",
@@ -131,7 +117,13 @@ module.exports = {
     "October",
     "November",
     "December"
-]
+],
+
+"newNote": "no",
+"repliedMessage": "",
+"correspondenceStatus": 0,
+"allocatedJudge": 0,
+"correspondence": ""
 
 
 ,}

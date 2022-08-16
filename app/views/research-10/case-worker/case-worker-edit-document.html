@@ -1,0 +1,114 @@
+{% block header %}
+{% include "includes/xui-header.html" %}
+{% endblock %}
+
+
+<html lang="en" class="govuk-template ">  
+  <div style=" max-width:1300px; margin: 0 auto;">
+      <div style=" max-width:1300px;  min-width:1300px;  margin: 20px 0px 0px 0px;  ">
+          <main class="govuk-main-wrapper " id="main-content" role="main" style="padding-top: 25px;">                      
+              <div class="govuk-width-container">
+                <div class="govuk-grid-row" style="width:1300px; margin-left: -90px;">
+                  <h1 class="govuk-heading-xl">Review documents</h1>
+                  <h2 class="govuk-heading-l govuk-!-margin-bottom-3">#1234-5678-0921-2722</h2>
+                  <h2 class="govuk-heading-m govuk-!-margin-top-0 govuk-!-margin-bottom-7">Child's name: Jane Austen</h2>
+                  
+                  <form action="/research-10/case-worker/case-worker-edit-document" method="post" class="form">
+                  <div class="govuk-form-group">
+                    <p><a href="">annexA283776.pdf</a></p>
+                    <div class="govuk-inset-text">                                            
+                      <p class="govuk-!-margin-bottom-1">Document description</p>
+                      <div id="event-name-hint" class="govuk-hint">
+                        Describe what the document is, such as death certificate for the birth father.
+                      </div>
+                      <input class="govuk-input" id="event-name" name="document-name" type="text">
+                    </div>
+                        <!-- <div class="govuk-grid-column-one-third">
+                          <button class="govuk-button govuk-button--secondary" data-module="govuk-button" name="remove-button" value="remove">
+                            Remove
+                          </button>          
+                        </div> -->
+                    <div class="govuk-!-margin-top-7">
+                      <h3 class="govuk-heading-s">Choose a category for this document</h3>
+                      <!-- <div id="sign-in-item-hint" class="govuk-hint govuk-radios__hint">
+                        If you want to upload more than one, you need to go through the steps again from the documents tab.
+                      </div> -->
+                      <div class="govuk-radios govuk-radios--conditional" data-module="govuk-radios">
+                        <div class="govuk-radios__item">
+                          <input class="govuk-radios__input" id="application" name="document-type" type="radio" value="Application documents">
+                          <label class="govuk-label govuk-radios__label" for="application">
+                            Application documents
+                          </label>
+                          <div id="sign-in-item-hint" class="govuk-hint govuk-radios__hint">
+                            For example, birth or death certificates.
+                          </div>
+                        </div>
+          
+                        <div class="govuk-radios__item">
+                          <input class="govuk-radios__input" id="placement-order" name="document-type" type="radio" value="Court orders">
+                          <label class="govuk-label govuk-radios__label" for="placement-order">
+                            Court orders
+                          </label>
+                          <div id="sign-in-item-hint" class="govuk-hint govuk-radios__hint">
+                            For example placement and care orders.
+                          </div>
+                        </div>
+          
+                        <div class="govuk-radios__item">
+                          <input class="govuk-radios__input" id="reports" name="document-type" type="radio" value="Reports">
+                          <label class="govuk-label govuk-radios__label" for="reports">
+                            Reports
+                          </label>
+                          <div id="sign-in-item-hint" class="govuk-hint govuk-radios__hint">
+                            For example Annex A.
+                          </div>
+                        </div>
+          
+                        <div class="govuk-radios__item">
+                          <input class="govuk-radios__input" id="statements" name="document-type" type="radio" value="Statements">
+                          <label class="govuk-label govuk-radios__label" for="statements">
+                            Statements
+                          </label>
+                          <div id="sign-in-item-hint" class="govuk-hint govuk-radios__hint">
+                            For example written evidence, statement of facts or witness statements.
+                          </div>
+                        </div>
+          
+                        <div class="govuk-radios__item">
+                          <input class="govuk-radios__input" id="correspondence" name="document-type" type="radio" value="Correspondence">
+                          <label class="govuk-label govuk-radios__label" for="correspondence">
+                            Correspondence
+                          </label>
+                          <div id="sign-in-item-hint" class="govuk-hint govuk-radios__hint">
+                            Notes and messages.
+                          </div>
+                        </div>
+
+                        <div class="govuk-radios__item">
+                          <input class="govuk-radios__input" id="additional-documents" name="document-type" type="radio" value="Additional documents">
+                          <label class="govuk-label govuk-radios__label" for="additional-documents">
+                            Additional documents
+                          </label>
+                          <div id="sign-in-item-hint" class="govuk-hint govuk-radios__hint">
+                            Any other documents, for instance additional evidence.
+                          </div>
+                        </div>
+    
+                      </div>                  
+                    
+                    </div>   
+                    <div class="govuk-!-margin-bottom-4">&nbsp;</div>              
+                  </div>
+                  <!-- Buttons -->
+                  {% include "../../includes/buttons-xui.html" %}
+                  </form>
+                </div>
+              </div>
+          </main>
+      </div>
+  </div>
+</html>
+
+{% block footer %}
+{% include "includes/newfooter.html" %}
+{% endblock %}

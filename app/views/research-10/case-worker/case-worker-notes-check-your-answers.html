@@ -1,0 +1,46 @@
+{% block header %}
+{% include "layout-xui.html" %}
+{% endblock %}
+
+
+<html lang="en" class="govuk-template ">
+  <div style=" max-width:1300px; margin: 0 auto;">
+      <div style=" max-width:1300px;  min-width:1300px;  margin: 20px 0px 0px 0px;  ">
+          <main class="govuk-main-wrapper " id="main-content" role="main" style="padding-top: 25px;">
+            <div class="govuk-grid-row">
+                <div class="govuk-width-container">
+                  <div class="govuk-grid-row" style="width:1300px; margin-left: -90px;">
+                    <h1 class="govuk-heading-xl">Add a case note</h1>
+                    <h2 class="govuk-heading-l govuk-!-margin-bottom-3">#1234-5678-0921-2722</h2>
+                    <h2 class="govuk-heading-m govuk-!-margin-top-0 govuk-!-margin-bottom-7">Child's name: Jane Austen</h2>
+                    <h3 class="govuk-heading-m">Check your answers</h3>
+
+                    <div class="govuk-grid-column-two-thirds">
+
+                    <form action="/research-10/case-worker/case-worker-notes-check-your-answers" method="post" class="form">
+                      <h3 class="govuk-heading-s govuk-!-margin-bottom-0">Subject</h3>
+                      <p class="govuk-!-margin-top-0">Change of address for birth mother</p>
+                  
+                      <h3 class="govuk-heading-s govuk-!-margin-bottom-0">Case note</h3>
+                      <p class="govuk-!-margin-top-0">Lorem ipsum dolor sit amet.</p>
+                  
+                  
+                  <!-- Buttons -->
+                  {% include "../../includes/buttons-xui.html" %}
+                    </form>
+                    </div>
+                    <div class="govuk-grid-column-one-third">
+                      <p><a href="case-worker-add-note.html">Change</a></p>
+                    </div>
+      
+                  </div>
+                </div>
+
+          </main>
+      </div>
+  </div>
+</html>
+
+{% block footer %}
+{% include "includes/newfooter.html" %}
+{% endblock %}

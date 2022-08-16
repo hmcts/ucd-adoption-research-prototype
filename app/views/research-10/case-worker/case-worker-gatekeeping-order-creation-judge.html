@@ -1,0 +1,151 @@
+{% block header %}
+{% include "includes/xui-header.html" %}
+{% endblock %}
+
+
+<html lang="en" class="govuk-template ">
+  <div style=" max-width:1300px; margin: 0 auto;">
+      <div style=" max-width:1300px;  min-width:1300px;  margin: 20px 0px 0px 0px;  ">
+          <main class="govuk-main-wrapper " id="main-content" role="main" style="padding-top: 25px;">
+              <div class="govuk-width-container">
+                <div class="govuk-grid-row" style="width:1300px; margin-left: -90px;">
+                  <h1 class="govuk-heading-xl">Confirm who is making the order</h1>
+                  <h2 class="govuk-heading-l govuk-!-margin-bottom-3">#1234-5678-0921-2722</h2>
+                  <h2 class="govuk-heading-m govuk-!-margin-top-0 govuk-!-margin-bottom-7">Child's name: Jane Austen</h2>
+                  <!-- <h3 class="govuk-heading-s govuk-!-margin-bottom-1">Confirm who is making the order</h3> -->
+                  <!-- <div id="event-name-hint" class="govuk-hint govuk-!-margin-top-0">
+                    Ideally the judge chosen would be the same judge involved in the placement order.
+                  </div>                     -->
+
+                  <form action="/research-10/case-worker/case-worker-gatekeeping-order-creation-judge" method="post" class="form">
+                  <div class="govuk-form-group">
+                    <div class="govuk-radios govuk-radios--conditional" data-module="govuk-radios">
+                      <label class="govuk-label govuk-!-margin-bottom-4 govuk-!-margin-top-7" for="sender-email-address">
+                        Judge or magistrates' title
+                      </label>
+
+                      <div class="govuk-radios__item">
+                        <input class="govuk-radios__input" id="honourable-mrs-justice" name="xui-allocated-judge-title" type="radio" value="The Honourable Mrs Justice" {% if data['xui-allocated-judge-title'] == "The Honourable Mrs Justice" %} checked {% endif %}>
+                        <label class="govuk-label govuk-radios__label" for="xui-send-message">
+                          The Honourable Mrs Justice
+                        </label>
+                      </div>
+
+                      <div class="govuk-radios__item">
+                        <input class="govuk-radios__input" id="honourable-mr-justice" name="xui-allocated-judge-title" type="radio" value="The Honourable Mr Justice" {% if data['xui-allocated-judge-title'] == "The Honourable Mr Justice" %} checked {% endif %}>
+                        <label class="govuk-label govuk-radios__label" for="xui-send-message">
+                          The Honourable Mr Justice
+                        </label>
+                      </div>
+
+                      <div class="govuk-radios__item">
+                        <input class="govuk-radios__input" id="her-honour-judge" name="xui-allocated-judge-title" type="radio" value="Her Honour Judge" {% if data['xui-allocated-judge-title'] == "Her Honour Judge" %} checked {% endif %}>
+                        <label class="govuk-label govuk-radios__label" for="xui-send-message">
+                          Her Honour Judge
+                        </label>
+                      </div>
+
+                      <div class="govuk-radios__item">
+                        <input class="govuk-radios__input" id="his-honour-judge" name="xui-allocated-judge-title" type="radio" value="His Honour Judge" {% if data['xui-allocated-judge-title'] == "His Honour Judge" %} checked {% endif %}>
+                        <label class="govuk-label govuk-radios__label" for="xui-send-message">
+                          His Honour Judge
+                        </label>
+                      </div>
+
+                      <div class="govuk-radios__item">
+                        <input class="govuk-radios__input" id="deputy-circuit-judge" name="xui-allocated-judge-title" type="radio" value="Deputy Circuit Judge" {% if data['xui-allocated-judge-title'] == "Deputy Circuit Judge" %} checked {% endif %}>
+                        <label class="govuk-label govuk-radios__label" for="xui-send-message">
+                          Deputy Circuit Judge
+                        </label>
+                      </div>
+
+                      <div class="govuk-radios__item">
+                        <input class="govuk-radios__input" id="recorder" name="xui-allocated-judge-title" type="radio" value="Recorder" {% if data['xui-allocated-judge-title'] == "Recorder" %} checked {% endif %}>
+                        <label class="govuk-label govuk-radios__label" for="xui-send-message">
+                          Recorder
+                        </label>
+                      </div>
+
+                      <div class="govuk-radios__item">
+                        <input class="govuk-radios__input" id="district-judge" name="xui-allocated-judge-title" type="radio" value="District Judge" {% if data['xui-allocated-judge-title'] == "District Judge" %} checked {% endif %}>
+                        <label class="govuk-label govuk-radios__label" for="xui-send-message">
+                          District Judge
+                        </label>
+                      </div>
+
+                      <div class="govuk-radios__item">
+                        <input class="govuk-radios__input" id="deputy-district-judge" name="xui-allocated-judge-title" type="radio" value="Deputy District Judge" {% if data['xui-allocated-judge-title'] == "Deputy District Judge" %} checked {% endif %}>
+                        <label class="govuk-label govuk-radios__label" for="xui-send-message">
+                          Deputy District Judge
+                        </label>
+                      </div>
+
+                      <div class="govuk-radios__item">
+                        <input class="govuk-radios__input" id="district-judge-magistrates-court" name="xui-allocated-judge-title" type="radio" value="district-judge-magistrates-court" {% if data['xui-allocated-judge-title'] == "district-judge-magistrates-court" %} checked {% endif %}>
+                        <label class="govuk-label govuk-radios__label" for="xui-send-message">
+                          District Judge Magistrates Court
+                        </label>
+                      </div>
+
+                      <div class="govuk-radios__item">
+                        <input class="govuk-radios__input" id="magistrates" name="xui-allocated-judge-title" type="radio" value="District Judge Magistrates Court" {% if data['xui-allocated-judge-title'] == "District Judge Magistrates Court" %} checked {% endif %}>
+                        <label class="govuk-label govuk-radios__label" for="xui-send-message">
+                          Magistrates (JP)
+                        </label>
+                      </div>
+        
+                      <div class="govuk-radios__item">
+                        <input class="govuk-radios__input" id="deputy-circuit-judge-9" name="xui-allocated-judge-title" type="radio" value="Circuit Judge (Section 9)" {% if data['xui-allocated-judge-title'] == "Circuit Judge (Section 9)" %} checked {% endif %}>
+                        <label class="govuk-label govuk-radios__label" for="xui-send-message">
+                          Circuit Judge (Section 9)
+                        </label>
+                      </div>
+        
+                      <div class="govuk-radios__item">
+                        <input class="govuk-radios__input" id="justice-legal-adviser" name="xui-allocated-judge-title" type="radio" value="Justices' Legal Adviser" {% if data['xui-allocated-judge-title'] == "Justices' Legal Adviser" %} checked {% endif %}>
+                        <label class="govuk-label govuk-radios__label" for="xui-send-message">
+                          Justices' Legal Adviser
+                        </label>
+                      </div>
+
+                      <div class="govuk-radios__item">
+                        <input class="govuk-radios__input" id="justice-clerk" name="xui-allocated-judge-title" type="radio" value="Justices' Clerk" {% if data['xui-allocated-judge-title'] == "Justices' Clerk" %} checked {% endif %}>
+                        <label class="govuk-label govuk-radios__label" for="xui-send-message">
+                          Justices' Clerk
+                        </label>
+                      </div>
+                
+                    </div>
+                
+                    <div class="govuk-form-group govuk-!-margin-top-6">
+                      <label class="govuk-label" for="person-making-order-last-name">
+                        Last name
+                      </label>
+                      <input class="govuk-input govuk-input--width-30" id="person-making-order-last-name" name="person-making-order-last-name" type="text" value="{{ data['person-making-order-last-name'] }}">
+
+                      <label class="govuk-label govuk-!-margin-top-5" for="person-making-order-email">
+                        Email address
+                      </label>
+                      <input class="govuk-input govuk-input--width-30" id="person-making-order-email" name="person-making-order-email" type="text" value="{{ data['person-making-order-email'] }}">
+
+                      <label class="govuk-label govuk-!-margin-top-5" for="person-making-order-email">
+                        Justice's legal adviser's full name (Optional)
+                      </label>
+                      <input class="govuk-input govuk-input--width-30 govuk-!-margin-bottom-5" id="legal-adviser-full-name" name="legal-adviser-full-name" type="text" value="{{ data['legal-adviser-full-name'] }}">
+                    </div>          
+                  </fieldset>
+                </div>
+                <!-- Buttons -->
+                {% include "../../includes/buttons-xui.html" %}
+                  </form>
+                </div>
+
+              </div>
+          </main>
+      </div>
+  </div>
+</html>
+
+{% block footer %}
+{% include "includes/newfooter.html" %}
+{% endblock %}
