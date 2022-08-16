@@ -1,0 +1,82 @@
+{% block header %}
+{% include "includes/xui-header.html" %}
+{% endblock %}
+
+
+<html lang="en" class="govuk-template ">
+  <div style=" max-width:1300px; margin: 0 auto;">
+      <div style=" max-width:1300px;  min-width:1300px;  margin: 20px 0px 0px 0px;  ">
+          <main class="govuk-main-wrapper " id="main-content" role="main" style="padding-top: 25px;">
+              <div class="govuk-width-container">
+                <div class="govuk-grid-row" style="width:1300px; margin-left: -90px;">
+                  <h1 class="govuk-heading-xl">What information do you need?</h1>
+                  <h2 class="govuk-heading-l govuk-!-margin-bottom-3">#1234-5678-0921-2722</h2>
+                  <h2 class="govuk-heading-m govuk-!-margin-top-0 govuk-!-margin-bottom-7">Child's name: Jane Austen</h2>
+
+
+                  <form action="/research-10/case-worker/case-worker-seek-further-information-send-message" method="post" class="form">
+
+
+                    <div class="govuk-form-group">
+                      <fieldset class="govuk-fieldset" aria-describedby="contact-hint">
+                      
+
+                        <div class="govuk-radios" data-module="govuk-radios">
+                          <div class="govuk-radios__item">
+                            <input class="govuk-radios__input" id="contact" name="contact" type="radio" value="email" data-aria-controls="conditional-contact">
+                            <label class="govuk-label govuk-radios__label" for="contact">
+                              Additional documents
+                            </label>
+                          </div>
+                          <div class="govuk-radios__conditional govuk-radios__conditional--hidden" id="conditional-contact">
+                            <div class="govuk-form-group">
+                              <label class="govuk-label" for="contact-by-email">
+                                Email address
+                              </label>
+                              <div id="contact-hint" class="govuk-hint">
+                                List the documents you need
+                              </div>
+                              <div class="govuk-form-group">
+
+                                <textarea class="govuk-textarea" id="more-detail" name="more-detail" rows="5"></textarea>
+                              </div>
+                            </div>
+
+                          </div>
+                          <div class="govuk-radios__item">
+                            <input class="govuk-radios__input" id="contact-2" name="contact" type="radio" value="phone" data-aria-controls="conditional-contact-2">
+                            <label class="govuk-label govuk-radios__label" for="contact-2">
+                              Answer a query
+                            </label>
+                          </div>
+                          <div class="govuk-radios__conditional govuk-radios__conditional--hidden" id="conditional-contact-2">
+                            <div class="govuk-form-group">
+                              <label class="govuk-label" for="contact-by-phone">
+                                Phone number
+                              </label>
+                              <input class="govuk-input govuk-!-width-one-third" id="contact-by-phone" name="contact-by-phone" type="tel" autocomplete="tel">
+                            </div>
+
+                          </div>
+
+
+
+                        </div>
+
+                      </fieldset>
+                    </div>
+
+                <!-- Buttons -->
+                {% include "../../includes/buttons-xui.html" %}
+                  </form>
+                </div>
+
+              </div>
+          </main>
+      </div>
+  </div>
+</html>
+
+{% block footer %}
+{% include "includes/newfooter.html" %}
+{% endblock %}

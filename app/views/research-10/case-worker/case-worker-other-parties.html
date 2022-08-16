@@ -1,0 +1,1394 @@
+{% block header %}
+{% include "includes/xui-header.html" %}
+{% endblock %}
+
+
+<html lang="en" class="govuk-template ">
+  <div style=" max-width:1300px; margin: 0 auto;">
+      <div style=" max-width:1300px;  min-width:1300px;  margin: 20px 0px 0px 0px;  ">
+          <main class="govuk-main-wrapper " id="main-content" role="main" style="padding-top: 25px;">
+              <div class="govuk-width-container">
+                <div class="govuk-grid-row" style="width:1300px; margin-left: -90px;">
+                    <div class="" style="display: flex; justify-content: space-between; ">
+                        <div>
+                          <h1 class="govuk-heading-xl govuk-!-margin-bottom-4">#1234-5678-0921-2722</h1>
+                          <h2 class="govuk-heading-l govuk-!-margin-top-0 govuk-!-margin-bottom-7">Child's name: Jane Austen</h2>
+                            <!-- <span class="govuk-caption-l" style="padding-top: 0px">1234-5678-9012-3456</span>
+                            <span style="margin-bottom:50px; padding-top: 25px;"><a href="#">Print</a></span>
+                            <button class="govuk-button govuk-button--secondary" data-module="govuk-button">
+                                Print
+                            </button> -->
+                        </div>
+                        <form action="/research-10/case-worker/index" method="post" class="form">
+                          <div style="display: flex; align-items:right; padding-top: 0px;">
+                              <p class="govuk-!-margin-top-2">Next step &nbsp;</p>
+
+                              <select class="govuk-select" id="sort" name="next-steps">
+                                  <option value="select-action" selected="">Select action</option>
+                                  <option value="notes">Add a case note</option>
+                                  <option value="allocate-judge">Allocate judge</option>
+                                  <option value="case-issue">Case issue</option>
+                                  <option value="create-order">Create an order</option>
+                                  <option value="manage-documents">Manage documents</option>
+                                  <option value="manage-orders">Manage orders</option>
+                                  <option value="info">Seek further information</option>
+                                  <option value="send-a-message">Send or reply to messages</option>
+                                </select>
+
+                              <div>
+                                  <button class="govuk-button govuk-!-margin-left-1" data-module="govuk-button" name="go-button">Go</button>
+                              </div>
+                          </div>
+                      </form>
+                    </div>
+
+                    <div class="govuk-tabs" data-module="govuk-tabs">
+
+                      <h2 class="govuk-tabs__title">
+                        Contents
+                      </h2>
+
+                      <!-- ****************************** START OF TABS ****************************** -->
+                      <ul class="govuk-tabs__list">
+                        <li class="govuk-tabs__list-item">
+                          <a class="govuk-tabs__tab" href="index.html">
+                            Summary
+                          </a>
+                        </li>
+
+                        <li class="govuk-tabs__list-item">
+                            <a class="govuk-tabs__tab" href="case-worker-prospective-parents.html">
+                                Applicants
+                            </a>
+                        </li>
+
+                        <li class="govuk-tabs__list-item govuk-tabs__list-item--selected">
+                            <a class="govuk-tabs__tab" href="case-worker-other-parties.html">
+                              Other parties
+                            </a>
+                          </li>
+
+                          <li class="govuk-tabs__list-item">
+                            <a class="govuk-tabs__tab" href="case-worker-documents.html">
+                                Documents
+                            </a>
+                        </li>
+
+                        {% if data['correspondenceStatus'] === 1 %}
+                        <li class="govuk-tabs__list-item">
+                            <a class="govuk-tabs__tab" href="case-worker-correspondence.html">
+                                Correspondence
+                            </a>
+                          </li>
+                        {% endif %}
+
+                        <li class="govuk-tabs__list-item">
+                            <a class="govuk-tabs__tab" href="case-worker-messages.html">
+                                Messages
+                            </a>
+                        </li>
+
+                        <li class="govuk-tabs__list-item">
+                            <a class="govuk-tabs__tab" href="case-worker-notes.html">
+                                  Notes
+                            </a>
+                          </li>
+
+                        <li class="govuk-tabs__list-item">
+                            <a class="govuk-tabs__tab" href="case-worker-history.html">
+                                History
+                            </a>
+                        </li>
+
+                        <li class="govuk-tabs__list-item">
+                            <a class="govuk-tabs__tab" href="case-worker-payments.html">
+                                Payments
+                            </a>
+                        </li>
+
+                        <!-- <li class="govuk-tabs__list-item">
+                            <a class="govuk-tabs__tab" href="case-worker-payments.html">
+                                Hearings
+                            </a>
+                        </li>
+
+                        <li class="govuk-tabs__list-item">
+                            <a class="govuk-tabs__tab" href="case-worker-payments.html">
+                                Orders
+                            </a>
+                        </li> -->
+
+                    </ul>
+
+                    <!-- ****************************** END OF TABS ****************************** -->
+
+
+                      <div class="govuk-tabs__panel" id="1">
+                        <h2 class="govuk-heading-l">Other parties</h2>
+
+
+                                                  <h2 class="govuk-heading-m govuk-!-margin-top-7">Child Details</h2>
+
+
+                        <dt class="complex-panel govuk-!-margin-top-7">
+                          Child
+                        </dt>
+
+                        <dl class="govuk-summary-list">
+                          <div class="govuk-summary-list__row">
+                            <dt class="govuk-summary-list__value">
+                              First names
+                            </dt>
+                            <dd class="govuk-summary-list__value">
+                              Jane
+                            </dd>
+                            <dd class="govuk-summary-list__value">
+                              &nbsp;
+                            </dd>
+                          </div>
+
+                          <div class="govuk-summary-list__row">
+                            <dt class="govuk-summary-list__value">
+                              Last names
+                            </dt>
+                            <dd class="govuk-summary-list__value">
+                              Austen
+                            </dd>
+                            <dd class="govuk-summary-list__value">
+                              &nbsp;
+                            </dd>
+                          </div>
+
+                          <div class="govuk-summary-list__row">
+                            <dt class="govuk-summary-list__value">
+                              Date of birth
+                            </dt>
+                            <dd class="govuk-summary-list__value">
+                              12 May 2019
+                            </dd>
+                            <dd class="govuk-summary-list__value">
+                              &nbsp;
+                            </dd>
+                          </div>
+
+                          <div class="govuk-summary-list__row">
+                            <dt class="govuk-summary-list__value">
+                              Sex at birth
+                            </dt>
+                            <dd class="govuk-summary-list__value">
+                              Female
+                            </dd>
+                            <dd class="govuk-summary-list__value">
+                              &nbsp;
+                            </dd>
+                          </div>
+
+                          <div class="govuk-summary-list__row">
+                            <dt class="govuk-summary-list__value">
+                              Nationality
+                            </dt>
+                            <dd class="govuk-summary-list__value">
+                              British
+                            </dd>
+                            <dd class="govuk-summary-list__value">
+                              &nbsp;
+                            </dd>
+                          </div>
+
+                          <div class="govuk-summary-list__row">
+                            <dt class="govuk-summary-list__value">
+                              Full name after adoption
+                            </dt>
+                            <dd class="govuk-summary-list__value">
+                              Jane Christie Doyle
+                            </dd>
+                            <dd class="govuk-summary-list__value">
+                              &nbsp;
+                            </dd>
+                          </div>
+                       </dl>
+
+                       <dt class="complex-panel govuk-!-margin-top-7">
+                         Legal guardian (CAFCASS)
+                       </dt>
+
+                       <dl class="govuk-summary-list">
+                         <div class="govuk-summary-list__row">
+                           <dt class="govuk-summary-list__value">
+                            Full name of contact
+                           </dt>
+                           <dd class="govuk-summary-list__value">
+                             Mark Smith
+                           </dd>
+                           <dd class="govuk-summary-list__value">
+                             &nbsp;
+                           </dd>
+                         </div>
+
+                         <div class="govuk-summary-list__row">
+                           <dt class="govuk-summary-list__value">
+                             Address
+                           </dt>
+                           <dd class="govuk-summary-list__value">
+                             7 Barrow Road
+                           </dd>
+                           <dd class="govuk-summary-list__value">
+                             &nbsp;
+                           </dd>
+                         </div>
+
+
+                         <div class="govuk-summary-list__row">
+                           <dt class="govuk-summary-list__value">
+                             Town or City
+                           </dt>
+                           <dd class="govuk-summary-list__value">
+                             Kent
+                           </dd>
+                           <dd class="govuk-summary-list__value">
+                             &nbsp;
+                           </dd>
+                         </div>
+                         <div class="govuk-summary-list__row">
+                           <dt class="govuk-summary-list__value">
+                             Postcode
+                           </dt>
+                           <dd class="govuk-summary-list__value">
+                             KT6 8HJ
+                           </dd>
+                           <dd class="govuk-summary-list__value">
+                           &nbsp;
+                           </dd>
+                         </div>
+
+                         <div class="govuk-summary-list__row">
+                           <dt class="govuk-summary-list__value">
+                             Phone number
+                           </dt>
+                           <dd class="govuk-summary-list__value">
+                             124758692
+                           </dd>
+                           <dd class="govuk-summary-list__value">
+                             &nbsp;
+                           </dd>
+                         </div>
+
+                         <div class="govuk-summary-list__row">
+                           <dt class="govuk-summary-list__value">
+                             Email
+                           </dt>
+                           <dd class="govuk-summary-list__value">
+                             barrow@hnjuyu.com
+                           </dd>
+                           <dd class="govuk-summary-list__value">
+                             &nbsp;
+                           </dd>
+                         </div>
+
+
+                      </dl>
+
+                      <dt class="complex-panel govuk-!-margin-top-7">
+                        Solicitor
+                      </dt>
+
+                      <dl class="govuk-summary-list">
+                        <div class="govuk-summary-list__row">
+                          <dt class="govuk-summary-list__value">
+                           Full name
+                          </dt>
+                          <dd class="govuk-summary-list__value">
+                            Katy Pecker
+                          </dd>
+                          <dd class="govuk-summary-list__value">
+                            &nbsp;
+                          </dd>
+                        </div>
+
+                        <div class="govuk-summary-list__row">
+                          <dt class="govuk-summary-list__value">
+                            Reference number
+                          </dt>
+                          <dd class="govuk-summary-list__value">
+                            JA678HY
+                          </dd>
+                          <dd class="govuk-summary-list__value">
+                            &nbsp;
+                          </dd>
+                        </div>
+
+                        <div class="govuk-summary-list__row">
+                          <dt class="govuk-summary-list__value">
+                            Address
+                          </dt>
+                          <dd class="govuk-summary-list__value">
+                            6B Long Lane
+                          </dd>
+                          <dd class="govuk-summary-list__value">
+                            &nbsp;
+                          </dd>
+                        </div>
+
+
+                        <div class="govuk-summary-list__row">
+                          <dt class="govuk-summary-list__value">
+                            Town or City
+                          </dt>
+                          <dd class="govuk-summary-list__value">
+                            Long Town
+                          </dd>
+                          <dd class="govuk-summary-list__value">
+                            &nbsp;
+                          </dd>
+                        </div>
+                        <div class="govuk-summary-list__row">
+                          <dt class="govuk-summary-list__value">
+                            Postcode
+                          </dt>
+                          <dd class="govuk-summary-list__value">
+                            LT6 8UK
+                          </dd>
+                          <dd class="govuk-summary-list__value">
+                          &nbsp;
+                          </dd>
+                        </div>
+
+                        <div class="govuk-summary-list__row">
+                          <dt class="govuk-summary-list__value">
+                            Phone number
+                          </dt>
+                          <dd class="govuk-summary-list__value">
+                            8756478596
+                          </dd>
+                          <dd class="govuk-summary-list__value">
+                            &nbsp;
+                          </dd>
+                        </div>
+
+                        <div class="govuk-summary-list__row">
+                          <dt class="govuk-summary-list__value">
+                            Email
+                          </dt>
+                          <dd class="govuk-summary-list__value">
+                            katypecker@smiths.com
+                          </dd>
+                          <dd class="govuk-summary-list__value">
+                            &nbsp;
+                          </dd>
+                        </div>
+
+
+                     </dl>
+  <h2 class="govuk-heading-m govuk-!-margin-top-7">Agencies/Local Authorities Details</h2>
+                       <dt class="complex-panel govuk-!-margin-top-7">
+                         Adoption Agency
+                       </dt>
+                       <dl class="govuk-summary-list">
+                         <div class="govuk-summary-list__row">
+                           <dt class="govuk-summary-list__value">
+                             Name of Agency
+                           </dt>
+                           <dd class="govuk-summary-list__value">
+                             Royal Borough of Greenwich
+                           </dd>
+                           <dd class="govuk-summary-list__value">
+                             &nbsp;
+                           </dd>
+                         </div>
+                         <div class="govuk-summary-list__row">
+                           <dt class="govuk-summary-list__value">
+                             Name of Contact
+                           </dt>
+                           <dd class="govuk-summary-list__value">
+                             Mary Francis
+                           </dd>
+                           <dd class="govuk-summary-list__value">
+                             &nbsp;
+                           </dd>
+                         </div>
+                         <div class="govuk-summary-list__row">
+                           <dt class="govuk-summary-list__value">
+                             Address
+                           </dt>
+                           <dd class="govuk-summary-list__value">
+                             4 Hull Street
+                           </dd>
+                           <dd class="govuk-summary-list__value">
+                             &nbsp;
+                           </dd>
+                         </div>
+
+
+                         <div class="govuk-summary-list__row">
+                           <dt class="govuk-summary-list__value">
+                             Town or City
+                           </dt>
+                           <dd class="govuk-summary-list__value">
+                             London
+                           </dd>
+                           <dd class="govuk-summary-list__value">
+                             &nbsp;
+                           </dd>
+                         </div>
+                         <div class="govuk-summary-list__row">
+                           <dt class="govuk-summary-list__value">
+                             Postcode
+                           </dt>
+                           <dd class="govuk-summary-list__value">
+                             NW6 8JH
+                           </dd>
+                           <dd class="govuk-summary-list__value">
+                           &nbsp;
+                           </dd>
+                         </div>
+
+                         <div class="govuk-summary-list__row">
+                           <dt class="govuk-summary-list__value">
+                             Phone number
+                           </dt>
+                           <dd class="govuk-summary-list__value">
+                             02015528988
+                           </dd>
+                           <dd class="govuk-summary-list__value">
+                             &nbsp;
+                           </dd>
+                         </div>
+
+
+                         <div class="govuk-summary-list__row">
+                           <dt class="govuk-summary-list__value">
+                             Email
+                           </dt>
+                           <dd class="govuk-summary-list__value">
+                             mary.francis@greenwich.gov.uk
+                           </dd>
+                           <dd class="govuk-summary-list__value">
+                             &nbsp;
+                           </dd>
+                         </div>
+
+
+</dl>
+
+
+
+                      <dt class="complex-panel govuk-!-margin-top-7">
+                        Other Adoption Agency
+                      </dt>
+                      <dl class="govuk-summary-list">
+                        <div class="govuk-summary-list__row">
+                          <dt class="govuk-summary-list__value">
+                            Name
+                          </dt>
+                          <dd class="govuk-summary-list__value">
+                            London Borough of Southwark
+                          </dd>
+                          <dd class="govuk-summary-list__value">
+                            &nbsp;
+                          </dd>
+                        </div>
+                        <div class="govuk-summary-list__row">
+                          <dt class="govuk-summary-list__value">
+                            Name of contact
+                          </dt>
+                          <dd class="govuk-summary-list__value">
+                            Phil Jones
+                          </dd>
+                          <dd class="govuk-summary-list__value">
+                            &nbsp;
+                          </dd>
+                        </div>
+                        <div class="govuk-summary-list__row">
+                          <dt class="govuk-summary-list__value">
+                            Address
+                          </dt>
+                          <dd class="govuk-summary-list__value">
+                            4 Hull Street
+                          </dd>
+                          <dd class="govuk-summary-list__value">
+                            &nbsp;
+                          </dd>
+                        </div>
+
+
+                        <div class="govuk-summary-list__row">
+                          <dt class="govuk-summary-list__value">
+                            Town or City
+                          </dt>
+                          <dd class="govuk-summary-list__value">
+                            London
+                          </dd>
+                          <dd class="govuk-summary-list__value">
+                            &nbsp;
+                          </dd>
+                        </div>
+                        <div class="govuk-summary-list__row">
+                          <dt class="govuk-summary-list__value">
+                            Postcode
+                          </dt>
+                          <dd class="govuk-summary-list__value">
+                            NW6 8JH
+                          </dd>
+                          <dd class="govuk-summary-list__value">
+                          &nbsp;
+                          </dd>
+                        </div>
+                        <div class="govuk-summary-list__row">
+                          <dt class="govuk-summary-list__value">
+                            Phone number
+                          </dt>
+                          <dd class="govuk-summary-list__value">
+                            02098676523
+                          </dd>
+                          <dd class="govuk-summary-list__value">
+                            &nbsp;
+                          </dd>
+                        </div>
+                        <div class="govuk-summary-list__row">
+                          <dt class="govuk-summary-list__value">
+                            Email
+                          </dt>
+                          <dd class="govuk-summary-list__value">
+                            phil.jones@southwark.gov.uk
+                          </dd>
+                          <dd class="govuk-summary-list__value">
+                            &nbsp;
+                          </dd>
+                        </div>
+
+                      </dl>
+
+                      <dt class="complex-panel govuk-!-margin-top-7">
+                       Child's local authority
+                      </dt>
+                      <dl class="govuk-summary-list">
+                        <div class="govuk-summary-list__row">
+                          <dt class="govuk-summary-list__value">
+                            Name of local authority
+                          </dt>
+                          <dd class="govuk-summary-list__value">
+                          London Borough of Tower Hamlets
+                          </dd>
+                          <dd class="govuk-summary-list__value">
+                            &nbsp;
+                          </dd>
+                        </div>
+
+                        <div class="govuk-summary-list__row">
+                          <dt class="govuk-summary-list__value">
+                            Name of contact
+                          </dt>
+                          <dd class="govuk-summary-list__value">
+                            Agnes James
+                          </dd>
+                          <dd class="govuk-summary-list__value">
+                            &nbsp;
+                          </dd>
+                        </div>
+                        <div class="govuk-summary-list__row">
+                          <dt class="govuk-summary-list__value">
+                            Address
+                          </dt>
+                          <dd class="govuk-summary-list__value">
+                            4 Hull Street
+                          </dd>
+                          <dd class="govuk-summary-list__value">
+                            &nbsp;
+                          </dd>
+                        </div>
+
+
+                        <div class="govuk-summary-list__row">
+                          <dt class="govuk-summary-list__value">
+                            Town or City
+                          </dt>
+                          <dd class="govuk-summary-list__value">
+                            London
+                          </dd>
+                          <dd class="govuk-summary-list__value">
+                            &nbsp;
+                          </dd>
+                        </div>
+                        <div class="govuk-summary-list__row">
+                          <dt class="govuk-summary-list__value">
+                            Postcode
+                          </dt>
+                          <dd class="govuk-summary-list__value">
+                            NW6 8JH
+                          </dd>
+                          <dd class="govuk-summary-list__value">
+                          &nbsp;
+                          </dd>
+                        </div>
+                        <div class="govuk-summary-list__row">
+                          <dt class="govuk-summary-list__value">
+                            Phone number
+                          </dt>
+                          <dd class="govuk-summary-list__value">
+                            02015123966
+                          </dd>
+                          <dd class="govuk-summary-list__value">
+                            &nbsp;
+                          </dd>
+                        </div>
+                        <div class="govuk-summary-list__row">
+                          <dt class="govuk-summary-list__value">
+                             Email
+                          </dt>
+                          <dd class="govuk-summary-list__value">
+                            general@londonboroughoftowerhamlets.gov.uk
+                          </dd>
+                          <dd class="govuk-summary-list__value">
+                            &nbsp;
+                          </dd>
+                        </div>
+
+
+                        </dl>
+                        <dt class="complex-panel govuk-!-margin-top-7">
+                         Applicant's local authority
+                        </dt>
+                        <dl class="govuk-summary-list">
+                          <div class="govuk-summary-list__row">
+                            <dt class="govuk-summary-list__value">
+                              Name of local authority
+                            </dt>
+                            <dd class="govuk-summary-list__value">
+                            London Borough of Tower Hamlets
+                            </dd>
+                            <dd class="govuk-summary-list__value">
+                              &nbsp;
+                            </dd>
+                          </div>
+
+                          <div class="govuk-summary-list__row">
+                            <dt class="govuk-summary-list__value">
+                              Name of contact
+                            </dt>
+                            <dd class="govuk-summary-list__value">
+                              Agnes James
+                            </dd>
+                            <dd class="govuk-summary-list__value">
+                              &nbsp;
+                            </dd>
+                          </div>
+                          <div class="govuk-summary-list__row">
+                            <dt class="govuk-summary-list__value">
+                              Address
+                            </dt>
+                            <dd class="govuk-summary-list__value">
+                              4 Hull Street
+                            </dd>
+                            <dd class="govuk-summary-list__value">
+                              &nbsp;
+                            </dd>
+                          </div>
+
+
+                          <div class="govuk-summary-list__row">
+                            <dt class="govuk-summary-list__value">
+                              Town or City
+                            </dt>
+                            <dd class="govuk-summary-list__value">
+                              London
+                            </dd>
+                            <dd class="govuk-summary-list__value">
+                              &nbsp;
+                            </dd>
+                          </div>
+                          <div class="govuk-summary-list__row">
+                            <dt class="govuk-summary-list__value">
+                              Postcode
+                            </dt>
+                            <dd class="govuk-summary-list__value">
+                              NW6 8JH
+                            </dd>
+                            <dd class="govuk-summary-list__value">
+                            &nbsp;
+                            </dd>
+                          </div>
+                          <div class="govuk-summary-list__row">
+                            <dt class="govuk-summary-list__value">
+                              Phone number
+                            </dt>
+                            <dd class="govuk-summary-list__value">
+                              02015123966
+                            </dd>
+                            <dd class="govuk-summary-list__value">
+                              &nbsp;
+                            </dd>
+                          </div>
+                          <div class="govuk-summary-list__row">
+                            <dt class="govuk-summary-list__value">
+                               Email
+                            </dt>
+                            <dd class="govuk-summary-list__value">
+                              general@londonboroughoftowerhamlets.gov.uk
+                            </dd>
+                            <dd class="govuk-summary-list__value">
+                              &nbsp;
+                            </dd>
+                          </div>
+
+
+                          </dl>
+
+                          <dt class="complex-panel govuk-!-margin-top-7">
+                           Other local authority
+                          </dt>
+                          <dl class="govuk-summary-list">
+                            <div class="govuk-summary-list__row">
+                              <dt class="govuk-summary-list__value">
+                                Name of local authority
+                              </dt>
+                              <dd class="govuk-summary-list__value">
+                              London Borough of Tower Hamlets
+                              </dd>
+                              <dd class="govuk-summary-list__value">
+                                &nbsp;
+                              </dd>
+                            </div>
+
+                            <div class="govuk-summary-list__row">
+                              <dt class="govuk-summary-list__value">
+                                Name of contact
+                              </dt>
+                              <dd class="govuk-summary-list__value">
+                                Agnes James
+                              </dd>
+                              <dd class="govuk-summary-list__value">
+                                &nbsp;
+                              </dd>
+                            </div>
+                            <div class="govuk-summary-list__row">
+                              <dt class="govuk-summary-list__value">
+                                Address
+                              </dt>
+                              <dd class="govuk-summary-list__value">
+                                4 Hull Street
+                              </dd>
+                              <dd class="govuk-summary-list__value">
+                                &nbsp;
+                              </dd>
+                            </div>
+
+
+                            <div class="govuk-summary-list__row">
+                              <dt class="govuk-summary-list__value">
+                                Town or City
+                              </dt>
+                              <dd class="govuk-summary-list__value">
+                                London
+                              </dd>
+                              <dd class="govuk-summary-list__value">
+                                &nbsp;
+                              </dd>
+                            </div>
+                            <div class="govuk-summary-list__row">
+                              <dt class="govuk-summary-list__value">
+                                Postcode
+                              </dt>
+                              <dd class="govuk-summary-list__value">
+                                NW6 8JH
+                              </dd>
+                              <dd class="govuk-summary-list__value">
+                              &nbsp;
+                              </dd>
+                            </div>
+                            <div class="govuk-summary-list__row">
+                              <dt class="govuk-summary-list__value">
+                                Phone number
+                              </dt>
+                              <dd class="govuk-summary-list__value">
+                                02015123966
+                              </dd>
+                              <dd class="govuk-summary-list__value">
+                                &nbsp;
+                              </dd>
+                            </div>
+                            <div class="govuk-summary-list__row">
+                              <dt class="govuk-summary-list__value">
+                                 Email
+                              </dt>
+                              <dd class="govuk-summary-list__value">
+                                general@londonboroughoftowerhamlets.gov.uk
+                              </dd>
+                              <dd class="govuk-summary-list__value">
+                                &nbsp;
+                              </dd>
+                            </div>
+
+
+                            </dl>
+                            <h2 class="govuk-heading-m govuk-!-margin-top-7">Respondent Details</h2>
+
+                        <dt class="complex-panel">
+                          Birth mother
+                        </dt>
+
+                        <dl class="govuk-summary-list">
+                          <div class="govuk-summary-list__row">
+                            <dt class="govuk-summary-list__value">
+                              First names
+                            </dt>
+                            <dd class="govuk-summary-list__value">
+                              Marianne
+                            </dd>
+                            <dd class="govuk-summary-list__value">
+                              &nbsp;
+                            </dd>
+                          </div>
+
+                          <div class="govuk-summary-list__row">
+                            <dt class="govuk-summary-list__value">
+                              Last names
+                            </dt>
+                            <dd class="govuk-summary-list__value">
+                              Austen
+                            </dd>
+                            <dd class="govuk-summary-list__value">
+                              &nbsp;
+                            </dd>
+                          </div>
+
+                          <div class="govuk-summary-list__row">
+                            <dt class="govuk-summary-list__value">
+                            Deceased?
+                            </dt>
+                            <dd class="govuk-summary-list__value">
+                              Yes
+                            </dd>
+                            <dd class="govuk-summary-list__value">
+                              &nbsp;
+                            </dd>
+                          </div>
+
+                          <div class="govuk-summary-list__row">
+                            <dt class="govuk-summary-list__value">
+                              Last known address
+                            </dt>
+
+                            <dd class="govuk-summary-list__value">
+                              Buckingham Palace
+
+                            </dd>
+                            <dd class="govuk-summary-list__value">
+                              &nbsp;
+                            </dd>
+                          </div>
+
+
+
+                          <div class="govuk-summary-list__row">
+                            <dt class="govuk-summary-list__value">
+                              Town or City
+                            </dt>
+                            <dd class="govuk-summary-list__value">
+                              London
+                            </dd>
+                            <dd class="govuk-summary-list__value">
+                              &nbsp;
+                            </dd>
+                          </div>
+                          <div class="govuk-summary-list__row">
+                            <dt class="govuk-summary-list__value">
+                              Postcode
+                            </dt>
+                            <dd class="govuk-summary-list__value">
+                            SW1A 1AA
+                            </dd>
+                            <dd class="govuk-summary-list__value">
+                            &nbsp;
+                            </dd>
+                          </div>
+                          <div class="govuk-summary-list__row">
+                            <dt class="govuk-summary-list__value">
+                            Date address was confirmed
+                            </dt>
+                            <dd class="govuk-summary-list__value">
+                              --/--/--
+                              <br>
+                            </dd>
+                            <dd class="govuk-summary-list__value">
+                              &nbsp;
+                            </dd>
+                          </div>
+                       </dl>
+
+
+                       <dt class="complex-panel govuk-!-margin-top-7">
+                         Solicitor
+                       </dt>
+
+                       <dl class="govuk-summary-list">
+                         <div class="govuk-summary-list__row">
+                           <dt class="govuk-summary-list__value">
+                            Full name
+                           </dt>
+                           <dd class="govuk-summary-list__value">
+                             ---
+                           </dd>
+                           <dd class="govuk-summary-list__value">
+                             &nbsp;
+                           </dd>
+                         </div>
+
+                         <div class="govuk-summary-list__row">
+                           <dt class="govuk-summary-list__value">
+                             Reference number
+                           </dt>
+                           <dd class="govuk-summary-list__value">
+                             ---
+                           </dd>
+                           <dd class="govuk-summary-list__value">
+                             &nbsp;
+                           </dd>
+                         </div>
+
+                         <div class="govuk-summary-list__row">
+                           <dt class="govuk-summary-list__value">
+                             Address
+                           </dt>
+                           <dd class="govuk-summary-list__value">
+                             ---
+                           </dd>
+                           <dd class="govuk-summary-list__value">
+                             &nbsp;
+                           </dd>
+                         </div>
+
+
+                         <div class="govuk-summary-list__row">
+                           <dt class="govuk-summary-list__value">
+                             Town or City
+                           </dt>
+                           <dd class="govuk-summary-list__value">
+                             ---
+                           </dd>
+                           <dd class="govuk-summary-list__value">
+                             &nbsp;
+                           </dd>
+                         </div>
+                         <div class="govuk-summary-list__row">
+                           <dt class="govuk-summary-list__value">
+                             Postcode
+                           </dt>
+                           <dd class="govuk-summary-list__value">
+                             ---
+                           </dd>
+                           <dd class="govuk-summary-list__value">
+                           &nbsp;
+                           </dd>
+                         </div>
+
+                         <div class="govuk-summary-list__row">
+                           <dt class="govuk-summary-list__value">
+                             Phone number
+                           </dt>
+                           <dd class="govuk-summary-list__value">
+                             ---
+                           </dd>
+                           <dd class="govuk-summary-list__value">
+                             &nbsp;
+                           </dd>
+                         </div>
+
+                         <div class="govuk-summary-list__row">
+                           <dt class="govuk-summary-list__value">
+                             Email
+                           </dt>
+                           <dd class="govuk-summary-list__value">
+                             ---
+                           </dd>
+                           <dd class="govuk-summary-list__value">
+                             &nbsp;
+                           </dd>
+                         </div>
+
+
+                      </dl>
+
+
+                        <dt class="complex-panel govuk-!-margin-top-7">
+                          Birth father
+                        </dt>
+
+                        <dl class="govuk-summary-list">
+                          <div class="govuk-summary-list__row">
+                            <dt class="govuk-summary-list__value">
+                              First names
+                            </dt>
+                            <dd class="govuk-summary-list__value">
+                              John
+                            </dd>
+                            <dd class="govuk-summary-list__value">
+                              &nbsp;
+                            </dd>
+                          </div>
+
+                          <div class="govuk-summary-list__row">
+                            <dt class="govuk-summary-list__value">
+                              Last names
+                            </dt>
+                            <dd class="govuk-summary-list__value">
+                              Austen
+                            </dd>
+                            <dd class="govuk-summary-list__value">
+                              &nbsp;
+                            </dd>
+                          </div>
+
+                          <div class="govuk-summary-list__row">
+                            <dt class="govuk-summary-list__value">
+                              Deceased?
+                            </dt>
+                            <dd class="govuk-summary-list__value">
+                              Yes
+                            </dd>
+                            <dd class="govuk-summary-list__value">
+                              &nbsp;
+                            </dd>
+                          </div>
+
+
+
+
+
+                          <div class="govuk-summary-list__row">
+                            <dt class="govuk-summary-list__value">
+                              Last known address
+                            </dt>
+                            <dd class="govuk-summary-list__value">
+                              Unknown
+                            </dd>
+                            <dd class="govuk-summary-list__value">
+                              &nbsp;
+                            </dd>
+                          </div>
+                          <div class="govuk-summary-list__row">
+                            <dt class="govuk-summary-list__value">
+                              Town or City
+                            </dt>
+                            <dd class="govuk-summary-list__value">
+                              ---
+                            </dd>
+                            <dd class="govuk-summary-list__value">
+                              &nbsp;
+                            </dd>
+                          </div>
+                          <div class="govuk-summary-list__row">
+                            <dt class="govuk-summary-list__value">
+                              Postcode
+                            </dt>
+                            <dd class="govuk-summary-list__value">
+                            ---
+                            </dd>
+                            <dd class="govuk-summary-list__value">
+                            &nbsp;
+                            </dd>
+                          </div>
+                          <div class="govuk-summary-list__row">
+                            <dt class="govuk-summary-list__value">
+                            Date address was confirmed
+                            </dt>
+                            <dd class="govuk-summary-list__value">
+                              --/--/--
+                              <br>
+                            </dd>
+                            <dd class="govuk-summary-list__value">
+                              &nbsp;
+                            </dd>
+                          </div>
+
+                       </dl>
+
+                       <dt class="complex-panel govuk-!-margin-top-7">
+                         Solicitor
+                       </dt>
+
+                       <dl class="govuk-summary-list">
+                         <div class="govuk-summary-list__row">
+                           <dt class="govuk-summary-list__value">
+                            Full name
+                           </dt>
+                           <dd class="govuk-summary-list__value">
+                             ---
+                           </dd>
+                           <dd class="govuk-summary-list__value">
+                             &nbsp;
+                           </dd>
+                         </div>
+
+                         <div class="govuk-summary-list__row">
+                           <dt class="govuk-summary-list__value">
+                             Reference number
+                           </dt>
+                           <dd class="govuk-summary-list__value">
+                             ---
+                           </dd>
+                           <dd class="govuk-summary-list__value">
+                             &nbsp;
+                           </dd>
+                         </div>
+
+                         <div class="govuk-summary-list__row">
+                           <dt class="govuk-summary-list__value">
+                             Address
+                           </dt>
+                           <dd class="govuk-summary-list__value">
+                             ---
+                           </dd>
+                           <dd class="govuk-summary-list__value">
+                             &nbsp;
+                           </dd>
+                         </div>
+
+
+                         <div class="govuk-summary-list__row">
+                           <dt class="govuk-summary-list__value">
+                             Town or City
+                           </dt>
+                           <dd class="govuk-summary-list__value">
+                             ---
+                           </dd>
+                           <dd class="govuk-summary-list__value">
+                             &nbsp;
+                           </dd>
+                         </div>
+                         <div class="govuk-summary-list__row">
+                           <dt class="govuk-summary-list__value">
+                             Postcode
+                           </dt>
+                           <dd class="govuk-summary-list__value">
+                             ---
+                           </dd>
+                           <dd class="govuk-summary-list__value">
+                           &nbsp;
+                           </dd>
+                         </div>
+
+                         <div class="govuk-summary-list__row">
+                           <dt class="govuk-summary-list__value">
+                             Phone number
+                           </dt>
+                           <dd class="govuk-summary-list__value">
+                             ---
+                           </dd>
+                           <dd class="govuk-summary-list__value">
+                             &nbsp;
+                           </dd>
+                         </div>
+
+                         <div class="govuk-summary-list__row">
+                           <dt class="govuk-summary-list__value">
+                             Email
+                           </dt>
+                           <dd class="govuk-summary-list__value">
+                             ---
+                           </dd>
+                           <dd class="govuk-summary-list__value">
+                             &nbsp;
+                           </dd>
+                         </div>
+
+
+                      </dl>
+
+                       <dt class="complex-panel govuk-!-margin-top-7">
+                         Person with parental responsibility
+                       </dt>
+
+                       <dl class="govuk-summary-list">
+                         <div class="govuk-summary-list__row">
+                           <dt class="govuk-summary-list__value">
+                             First names
+                           </dt>
+                           <dd class="govuk-summary-list__value">
+                             Peter
+                           </dd>
+                           <dd class="govuk-summary-list__value">
+                             &nbsp;
+                           </dd>
+                         </div>
+
+                         <div class="govuk-summary-list__row">
+                           <dt class="govuk-summary-list__value">
+                             Last names
+                           </dt>
+                           <dd class="govuk-summary-list__value">
+                             Murphy
+                           </dd>
+                           <dd class="govuk-summary-list__value">
+                             &nbsp;
+                           </dd>
+                         </div>
+
+                         <div class="govuk-summary-list__row">
+                           <dt class="govuk-summary-list__value">
+                             Deceased?
+                           </dt>
+                           <dd class="govuk-summary-list__value">
+                             Yes
+                           </dd>
+                           <dd class="govuk-summary-list__value">
+                             &nbsp;
+                           </dd>
+                         </div>
+
+
+
+
+                         <div class="govuk-summary-list__row">
+                           <dt class="govuk-summary-list__value">
+                             Last known address
+                           </dt>
+                           <dd class="govuk-summary-list__value">
+                             Unknown
+                           </dd>
+                           <dd class="govuk-summary-list__value">
+                             &nbsp;
+                           </dd>
+
+                         </div>
+                         <div class="govuk-summary-list__row">
+                           <dt class="govuk-summary-list__value">
+                             Town or City
+                           </dt>
+                           <dd class="govuk-summary-list__value">
+                             ---
+                           </dd>
+                           <dd class="govuk-summary-list__value">
+                             &nbsp;
+                           </dd>
+                         </div>
+                         <div class="govuk-summary-list__row">
+                           <dt class="govuk-summary-list__value">
+                             Postcode
+                           </dt>
+                           <dd class="govuk-summary-list__value">
+                           ---
+                           </dd>
+                           <dd class="govuk-summary-list__value">
+                           &nbsp;
+                           </dd>
+                           </div>
+                         <div class="govuk-summary-list__row">
+                           <dt class="govuk-summary-list__value">
+                           Date address was confirmed
+                           </dt>
+                           <dd class="govuk-summary-list__value">
+                             --/--/--
+                             <br>
+                           </dd>
+                           <dd class="govuk-summary-list__value">
+                             &nbsp;
+                           </dd>
+                         </div>
+
+                      </dl>
+
+                      <dt class="complex-panel govuk-!-margin-top-7">
+                        Solicitor
+                      </dt>
+
+                      <dl class="govuk-summary-list">
+                        <div class="govuk-summary-list__row">
+                          <dt class="govuk-summary-list__value">
+                           Full name
+                          </dt>
+                          <dd class="govuk-summary-list__value">
+                            ---
+                          </dd>
+                          <dd class="govuk-summary-list__value">
+                            &nbsp;
+                          </dd>
+                        </div>
+
+                        <div class="govuk-summary-list__row">
+                          <dt class="govuk-summary-list__value">
+                            Reference number
+                          </dt>
+                          <dd class="govuk-summary-list__value">
+                            ---
+                          </dd>
+                          <dd class="govuk-summary-list__value">
+                            &nbsp;
+                          </dd>
+                        </div>
+
+                        <div class="govuk-summary-list__row">
+                          <dt class="govuk-summary-list__value">
+                            Address
+                          </dt>
+                          <dd class="govuk-summary-list__value">
+                            ---
+                          </dd>
+                          <dd class="govuk-summary-list__value">
+                            &nbsp;
+                          </dd>
+                        </div>
+
+
+                        <div class="govuk-summary-list__row">
+                          <dt class="govuk-summary-list__value">
+                            Town or City
+                          </dt>
+                          <dd class="govuk-summary-list__value">
+                            ---
+                          </dd>
+                          <dd class="govuk-summary-list__value">
+                            &nbsp;
+                          </dd>
+                        </div>
+                        <div class="govuk-summary-list__row">
+                          <dt class="govuk-summary-list__value">
+                            Postcode
+                          </dt>
+                          <dd class="govuk-summary-list__value">
+                            ---
+                          </dd>
+                          <dd class="govuk-summary-list__value">
+                          &nbsp;
+                          </dd>
+                        </div>
+
+                        <div class="govuk-summary-list__row">
+                          <dt class="govuk-summary-list__value">
+                            Phone number
+                          </dt>
+                          <dd class="govuk-summary-list__value">
+                            ---
+                          </dd>
+                          <dd class="govuk-summary-list__value">
+                            &nbsp;
+                          </dd>
+                        </div>
+
+                        <div class="govuk-summary-list__row">
+                          <dt class="govuk-summary-list__value">
+                            Email
+                          </dt>
+                          <dd class="govuk-summary-list__value">
+                            ---
+                          </dd>
+                          <dd class="govuk-summary-list__value">
+                            &nbsp;
+                          </dd>
+                        </div>
+
+                      </dl>
+
+
+
+                      </div>
+                    </div>
+                </div>
+              </div>
+          </main>
+      </div>
+  </div>
+</html>
+
+{% block footer %}
+{% include "includes/newfooter.html" %}
+{% endblock %}

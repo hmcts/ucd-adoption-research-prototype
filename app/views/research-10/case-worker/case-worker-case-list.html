@@ -1,0 +1,248 @@
+{% block header %}
+{% include "includes/xui-header.html" %}
+{% endblock %}
+
+
+<html lang="en" class="govuk-template ">  
+  <div style=" max-width:1300px; margin: 0 auto;">
+      <div style=" max-width:1300px;  min-width:1300px;  margin: 20px 0px 0px 0px;  ">
+          <main class="govuk-main-wrapper " id="main-content" role="main" style="padding-top: 25px;">                      
+            <div class="govuk-width-container">
+                <div class="govuk-grid-row" style="width:1300px; margin-left: -90px;">
+                    <div class="" style="display: flex; justify-content: space-between; ">                   
+                    </div>
+
+                    <div class="hmcts-page-heading">
+                        <div class="hmcts-page-heading__title">
+                             <h1 class="govuk-heading-xl">Case Lists</h1>
+                        </div>
+                    </div>
+              
+                    <button class="govuk-button govuk-button--secondary govuk-!-margin-top-3 " data-module="govuk-button">
+                            Hide filter
+                    </button>
+                    <div class="govuk-grid-row">
+                        <div class="govuk-grid-column-one-third">
+                        <h2 class="govuk-heading-m">Filters</h2>              
+                        <div class="govuk-form-group">
+                            <label class="govuk-label" for="jurisdiction">
+                                Jurisdiction
+                            </label>
+                            <select class="govuk-select" id="jurisdiction" name="jurisdiction">
+                                <option value="adoption" selected>Adoption</option>
+                                <option value="updated">Private family law</option>
+                                <option value="views">Child arrangements</option>
+                                <option value="comments">Divorce</option>
+                            </select>
+                        </div>                            
+
+                        <div class="govuk-form-group">
+                            <label class="govuk-label" for="case-type">
+                                Case type
+                            </label>
+                            <select class="govuk-select" id="case-type" name="case-type">
+                                <option value="adoption" selected>Post placement</option>
+                                <option value="updated">Step parent</option>
+                                <option value="views">Relinquished</option>
+                                <option value="comments">International</option>
+                            </select>
+                        </div>          
+
+                        <div class="govuk-form-group">
+                            <label class="govuk-label" for="state">
+                                State
+                            </label>
+                            <select class="govuk-select" id="state" name="state">
+                                <option value="any" selected>Any</option>
+                                <option value="draft">Draft</option>
+                                <option value="awaitingLA">Awaiting LA input</option>
+                                <option value="awaitingAdmin">Awaiting admin check</option>
+                                <option value="gatekeeping">Gatekeeping</option>
+                                <option value="withdrawn">Withdrawn</option>
+                                <option value="hearing">Hearing</option>
+                                <option value="closed">Closed</option>
+                                <option value="awaitingApplicant">Awaiting applicant input</option>
+                            </select>
+                        </div>                            
+                        
+                        <div class="govuk-form-group">
+                            <label class="govuk-label" for="ccd-case-number">
+                                Case reference number
+                            </label>
+                            <input class="govuk-input govuk-input--width-20" id="ccd-case-number" name="ccd-case-number" type="text">
+                        </div>                        
+
+                        <div class="govuk-form-group">
+                            <label class="govuk-label" for="case-name">
+                                Child's name
+                            </label>
+                            <input class="govuk-input govuk-input--width-20" id="case-name" name="case-name" type="text">
+                        </div>                        
+                           
+                        <div class="govuk-form-group">
+                            <label class="govuk-label" for="ccd-case-number">
+                                Date submitted
+                            </label>
+                            <div class="govuk-date-input" id="dob">
+                                <div class="govuk-date-input__item">
+                                    <div class="govuk-form-group">
+                                    <label class="govuk-label govuk-date-input__label" for="day">
+                                        Day
+                                    </label>
+                                    <input class="govuk-input govuk-date-input__input govuk-input--width-2" id="day" name="child-birth-day" type="text" pattern="[0-9]*" inputmode="numeric" value=""></div>
+                                </div>
+                                <div class="govuk-date-input__item">
+                                    <div class="govuk-form-group">
+                                    <label class="govuk-label govuk-date-input__label" for="month">
+                                        Month
+                                    </label>
+                                    <input class="govuk-input govuk-date-input__input govuk-input--width-2" id="month" name="child-birth-month" type="text" pattern="[0-9]*" inputmode="numeric" value=""></div>
+                                </div>
+                                <div class="govuk-date-input__item">
+                                    <div class="govuk-form-group">
+                                    <label class="govuk-label govuk-date-input__label" for="year">
+                                        Year
+                                    </label>
+                                    <input class="govuk-input govuk-date-input__input govuk-input--width-4" id="year" name="child-birth-year" type="text" pattern="[0-9]*" inputmode="numeric" value=""></div>
+                                </div>
+                            </div> 
+                        </div>                       
+
+                        <div class="govuk-form-group">
+                            <label class="govuk-label" for="region">
+                                Region
+                            </label>
+                            <select class="govuk-select" id="region" name="region">
+                                <option value="adoption" selected>-- Select a value --</option>
+                                <option value="updated">Lorem ipsum</option>
+                                <option value="views">Dolor sit</option>
+                                <option value="comments">Amet consectetur</option>
+                            </select>
+                        </div>
+
+                        <div class="govuk-form-group">
+                            <label class="govuk-label" for="area">
+                                Area
+                            </label>
+                            <select class="govuk-select" id="area" name="area">
+                                <option value="adoption" selected>-- Select a value --</option>
+                                <option value="updated">Lorem ipsum</option>
+                                <option value="views">Dolor sit</option>
+                                <option value="comments">Amet consectetur</option>
+                            </select>
+                        </div>
+
+                        <div class="govuk-form-group">
+                            <label class="govuk-label" for="state">
+                                Allocated local court
+                            </label>
+                            <select class="govuk-select" id="state" name="state">
+                                <option value="any" selected>Any</option>
+                                <option value="brighton">Brighton Family Court</option>
+                                <option value="bromley">Bromley Court</option>
+                                <option value="updated">Lorem ipsum</option>
+                                <option value="views">Dolor sit</option>
+                                <option value="comments">Amet consectetur</option>
+                            </select>
+                        </div>                            
+                            
+
+                        {% include "../../includes/filter-buttons.html" %}    
+                    </div>
+
+                <div class="govuk-grid-column-two-thirds">
+                
+                    <h2 class="govuk-heading-m">Case list</h2>              
+
+                    <table class="govuk-table ">
+                        <thead class="govuk-table__head">
+                            <tr class="govuk-table__row">
+                                <th scope="col" class="govuk-table__header govuk-body govuk-!-font-size-17">Case reference number</th>
+                                <th scope="col" class="govuk-table__header govuk-body govuk-!-font-size-17 ">Child's name</th>
+                                <th scope="col" class="govuk-table__header govuk-body govuk-!-font-size-17 ">State</th>
+                                <th scope="col" class="govuk-table__header govuk-body govuk-!-font-size-17 ">Date submitted</th>
+                                <!-- <th scope="col" class="govuk-table__header govuk-body govuk-!-font-size-17 ">Allocated local court</th> -->
+                            </tr>
+                        </thead>
+                        
+                        <tbody class="govuk-table__body">
+                            <tr class="govuk-table__row">
+                                <td class="govuk-table__cell govuk-body govuk-!-font-size-16"><a href="index.html">1234-5678-0921-2722</a></td>
+                                <td class="govuk-table__cell govuk-body govuk-!-font-size-16">Jane Austen</td>
+                                <td class="govuk-table__cell govuk-body govuk-!-font-size-16">Awaiting LA input</td>
+                                <td class="govuk-table__cell govuk-body govuk-!-font-size-16">23 Jul 2022, 10:20 AM</td>
+                                <!-- <td class="govuk-table__cell govuk-body govuk-!-font-size-16">Brighton Family Court</td> -->
+                            </tr>
+
+                            <tr class="govuk-table__row">
+                                <td class="govuk-table__cell govuk-body govuk-!-font-size-16"><a href="">3689-2642-5857-7069</a></td>
+                                <td class="govuk-table__cell govuk-body govuk-!-font-size-16">Mary Poppins</td>
+                                <td class="govuk-table__cell govuk-body govuk-!-font-size-16">Gatekeeping</td>
+                                <td class="govuk-table__cell govuk-body govuk-!-font-size-16">10 Jun 2022, 04:03 PM</td>
+                                <!-- <td class="govuk-table__cell govuk-body govuk-!-font-size-16">Bromley Court</td> -->
+                            </tr>
+                            
+                            <tr class="govuk-table__row">
+                                <td class="govuk-table__cell govuk-body govuk-!-font-size-16"><a href="">3827-2010-3565-3933</a></td>
+                                <td class="govuk-table__cell govuk-body govuk-!-font-size-16">Anne Marie Jones</td>
+                                <td class="govuk-table__cell govuk-body govuk-!-font-size-16">Draft</td>
+                                <td class="govuk-table__cell govuk-body govuk-!-font-size-16">12 Feb 2022, 01:55 PM</td>
+                                <!-- <td class="govuk-table__cell govuk-body govuk-!-font-size-16">Lorem Ipsum Court</td> -->
+                            </tr>
+                
+                            <tr class="govuk-table__row">
+                                <td class="govuk-table__cell govuk-body govuk-!-font-size-16"><a href="">3827-2010-3565-3933</a></td>
+                                <td class="govuk-table__cell govuk-body govuk-!-font-size-16">Lorem Ipsum</td>
+                                <td class="govuk-table__cell govuk-body govuk-!-font-size-16">Closed</td>
+                                <td class="govuk-table__cell govuk-body govuk-!-font-size-16">12 Feb 2022, 10:20 AM</td>
+                                <!-- <td class="govuk-table__cell govuk-body govuk-!-font-size-16">Lorem Ipsum Court</td> -->
+                            </tr>
+                
+                            <tr class="govuk-table__row">
+                                <td class="govuk-table__cell govuk-body govuk-!-font-size-16"><a href="">3827-2010-3565-3933</a></td>
+                                <td class="govuk-table__cell govuk-body govuk-!-font-size-16">Lorem Ipsum</td>
+                                <td class="govuk-table__cell govuk-body govuk-!-font-size-16">Closed</td>
+                                <td class="govuk-table__cell govuk-body govuk-!-font-size-16">12 Feb 2022, 10:20 AM</td>
+                                <!-- <td class="govuk-table__cell govuk-body govuk-!-font-size-16">Lorem Ipsum Court</td> -->
+                            </tr>
+                
+                            <tr class="govuk-table__row">
+                                <td class="govuk-table__cell govuk-body govuk-!-font-size-16"><a href="">3827-2010-3565-3933</a></td>
+                                <td class="govuk-table__cell govuk-body govuk-!-font-size-16">Lorem Ipsum</td>
+                                <td class="govuk-table__cell govuk-body govuk-!-font-size-16">Hearing</td>
+                                <td class="govuk-table__cell govuk-body govuk-!-font-size-16">12 Feb 2022, 10:20 AM</td>
+                                <!-- <td class="govuk-table__cell govuk-body govuk-!-font-size-16">Lorem Ipsum Court</td> -->
+                            </tr>
+                
+                            <tr class="govuk-table__row">
+                                <td class="govuk-table__cell govuk-body govuk-!-font-size-16"><a href="">3827-2010-3565-3933</a></td>
+                                <td class="govuk-table__cell govuk-body govuk-!-font-size-16">Lorem Ipsum</td>
+                                <td class="govuk-table__cell govuk-body govuk-!-font-size-16">Withdrawn</td>
+                                <td class="govuk-table__cell govuk-body govuk-!-font-size-16">12 Feb 2022, 10:20 AM</td>
+                                <!-- <td class="govuk-table__cell govuk-body govuk-!-font-size-16">Lorem Ipsum Court</td> -->
+                            </tr>
+                
+                            <tr class="govuk-table__row">
+                                <td class="govuk-table__cell govuk-body govuk-!-font-size-16"><a href="">3827-2010-3565-3933</a></td>
+                                <td class="govuk-table__cell govuk-body govuk-!-font-size-16">Lorem Ipsum</td>
+                                <td class="govuk-table__cell govuk-body govuk-!-font-size-16">Closed</td>
+                                <td class="govuk-table__cell govuk-body govuk-!-font-size-16">12 Feb 2022, 10:20 AM</td>
+                                <!-- <td class="govuk-table__cell govuk-body govuk-!-font-size-16">Lorem Ipsum Court</td> -->
+                            </tr>            
+                        </tbody>
+                    </table>
+              
+            </div>
+                    </div>
+
+
+                </div>
+            </div>
+          </main>
+      </div>
+  </div>
+</html>
+
+{% block footer %}
+{% include "includes/newfooter.html" %}
+{% endblock %}
