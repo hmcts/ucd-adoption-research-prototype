@@ -9,6 +9,22 @@
           <main class="govuk-main-wrapper " id="main-content" role="main" style="padding-top: 25px;">
               <div class="govuk-width-container">
                 <div class="govuk-grid-row" style="width:1300px; margin-left: -90px;">
+
+               {% if (data['correspondence']) %}
+                  <div class="govuk-notification-banner govuk-notification-banner--success" role="alert" aria-labelledby="govuk-notification-banner-title" data-module="govuk-notification-banner">
+                    <div class="govuk-notification-banner__header">
+                      <h2 class="govuk-notification-banner__title" id="govuk-notification-banner-title">
+                        Success
+                      </h2>
+                    </div>
+                    <div class="govuk-notification-banner__content">
+                      <p class="govuk-body">Request for further information sent</p>
+                    </div>
+                  </div>
+                  {% endif %}
+
+
+
                     <div class="" style="display: flex; justify-content: space-between; ">
                         <div>
                           <h1 class="govuk-heading-xl govuk-!-margin-bottom-4">#1234-5678-0921-2722</h1>
@@ -19,7 +35,7 @@
                                 Print
                             </button> -->
                         </div>
-                        <form action="/research-10/case-worker/index" method="post" class="form">
+                        <form action="/r2/x-ui/case-worker/index" method="post" class="form">
                           <div style="display: flex; align-items:right; padding-top: 0px;">
                               <p class="govuk-!-margin-top-2">Next step &nbsp;</p>
 
