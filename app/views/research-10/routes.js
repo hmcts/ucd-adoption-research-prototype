@@ -2061,7 +2061,7 @@ router.post('/research-10/children/orders-placement-court', function(req, res) {
       //   res.redirect('/research-10/case-worker/case-worker-intention-oppose')
       // }
       // else {
-        if (req.session.data.correspondenceStatus === 1) {
+        if (req.body['document-type'] === "Correspondence") {
           res.redirect('/research-10/case-worker/case-worker-correspondence')
         }
         else {
