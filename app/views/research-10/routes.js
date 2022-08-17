@@ -2061,7 +2061,12 @@ router.post('/research-10/children/orders-placement-court', function(req, res) {
       //   res.redirect('/research-10/case-worker/case-worker-intention-oppose')
       // }
       // else {
-      res.redirect('/research-10/case-worker/case-worker-documents')
+        if (req.session.data.correspondenceStatus === 1) {
+          res.redirect('/research-10/case-worker/case-worker-correspondence')
+        }
+        else {
+          res.redirect('/research-10/case-worker/case-worker-documents')
+        }
     }
     // }
     else {
