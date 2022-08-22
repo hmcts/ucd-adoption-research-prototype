@@ -32,7 +32,7 @@
                                     <option value="create-order">Create an order</option>
                                     <option value="manage-documents">Manage documents</option>
                                     <option value="manage-orders">Manage orders</option>
-                                    <option value="info">Seek further information</option>
+                                    <option value="info">Need further info</option>
                                     <option value="send-a-message">Send or reply to messages</option>
                                 </select>
 
@@ -76,13 +76,31 @@
                             </a>
                         </li>
 
-                        {% if data['correspondenceStatus'] === 1 %}
                         <li class="govuk-tabs__list-item">
                             <a class="govuk-tabs__tab" href="case-worker-correspondence.html">
                                 Correspondence
                             </a>
                           </li>
-                        {% endif %}
+
+                        <!-- {% if data['correspondenceStatus'] === 1 %}
+                        <li class="govuk-tabs__list-item">
+                            <a class="govuk-tabs__tab" href="case-worker-correspondence.html">
+                                Correspondence
+                            </a>
+                          </li>
+                        {% endif %} -->
+
+                        <li class="govuk-tabs__list-item">
+                            <a class="govuk-tabs__tab" href="case-worker-payments.html">
+                                Hearings
+                            </a>
+                        </li>
+
+                        <li class="govuk-tabs__list-item">
+                            <a class="govuk-tabs__tab" href="case-worker-payments.html">
+                                Orders
+                            </a>
+                        </li>
 
                         <li class="govuk-tabs__list-item">
                             <a class="govuk-tabs__tab" href="case-worker-messages.html">
@@ -102,21 +120,9 @@
                             </a>
                         </li>
 
-                        <li class="govuk-tabs__list-item">
-                            <a class="govuk-tabs__tab" href="case-worker-payments.html">
-                                Payments
-                            </a>
-                        </li>
-
                         <!-- <li class="govuk-tabs__list-item">
                             <a class="govuk-tabs__tab" href="case-worker-payments.html">
-                                Hearings
-                            </a>
-                        </li>
-
-                        <li class="govuk-tabs__list-item">
-                            <a class="govuk-tabs__tab" href="case-worker-payments.html">
-                                Orders
+                                Payments
                             </a>
                         </li> -->
 

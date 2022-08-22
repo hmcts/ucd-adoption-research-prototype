@@ -1,0 +1,78 @@
+{% block header %}
+{% include "includes/xui-header.html" %}
+{% endblock %}
+
+
+<html lang="en" class="govuk-template ">
+  <div style=" max-width:1300px; margin: 0 auto;">
+      <div style=" max-width:1300px;  min-width:1300px;  margin: 20px 0px 0px 0px;  ">
+          <main class="govuk-main-wrapper " id="main-content" role="main" style="padding-top: 25px;">
+              <div class="govuk-width-container">
+                <div class="govuk-grid-row" style="width:1300px; margin-left: -90px;">
+                  <div class="govuk-grid-column-two-thirds">
+                    <h1 class="govuk-heading-xl">Final adoption order</h1>
+                    <h2 class="govuk-heading-l govuk-!-margin-bottom-3">#1234-5678-0921-2722</h2>
+                    <h2 class="govuk-heading-m govuk-!-margin-top-0 govuk-!-margin-bottom-7">Child's name: Jane Austen</h2>
+
+                    <form action="/research-10/case-worker/case-worker-gatekeeping-order-creation-final-adoption-2" method="post" class="form">
+                      <div class="govuk-form-group">
+                        <h3 class="govuk-heading-m govuk-!-margin-bottom-6">Notification of intention to adopt</h3>
+                        <label class="govuk-label govuk-label--s govuk-!-margin-bottom-2" for="final-adoption-child-name">
+                          Name of local authority
+                        </label>
+                        <input class="govuk-input govuk-input--width-30" id="la-informed" name="la-informed" type="text">                        
+                      </div>                    
+
+                      <div class="govuk-form-group">
+                        <fieldset class="govuk-fieldset" role="group" aria-describedby="date-told-la-hint">
+                          <legend class="govuk-fieldset__legend govuk-fieldset__legend--l">
+                            <label class="govuk-label govuk-!-font-weight-bold" for="LA directions">
+                                On the date
+                            </label>
+                          </legend>
+                          <div class="govuk-date-input" id="date-told-la">
+                            <div class="govuk-date-input__item">
+                              <div class="govuk-form-group">
+                                <label class="govuk-label govuk-date-input__label" for="date-told-la-day">
+                                  Day
+                                </label>
+                                <input class="govuk-input govuk-date-input__input govuk-input--width-2" id="date-told-la-day" name="date-told-la-day" type="text" inputmode="numeric">
+                              </div>
+                            </div>
+                            
+                            <div class="govuk-date-input__item">
+                              <div class="govuk-form-group">
+                                <label class="govuk-label govuk-date-input__label" for="date-told-la-month">
+                                  Month
+                                </label>
+                                <input class="govuk-input govuk-date-input__input govuk-input--width-2" id="date-told-la-month" name="date-told-la-month" type="text" inputmode="numeric">
+                              </div>
+                            </div>
+                            
+                            <div class="govuk-date-input__item">
+                              <div class="govuk-form-group">
+                                <label class="govuk-label govuk-date-input__label" for="date-told-la-year">
+                                  Year
+                                </label>
+                                <input class="govuk-input govuk-date-input__input govuk-input--width-4" id="date-told-la-year" name="date-told-la-year" type="text" inputmode="numeric">
+                              </div>
+                            </div>
+                          </div>
+                        </fieldset>
+                     </div>
+
+
+                      <!-- Buttons -->
+                      {% include "../../includes/buttons-xui.html" %}
+                    </form>
+                  </div>
+                </div>
+              </div>
+          </main>
+      </div>      
+  </div>
+</html>
+
+{% block footer %}
+{% include "includes/newfooter.html" %}
+{% endblock %}
