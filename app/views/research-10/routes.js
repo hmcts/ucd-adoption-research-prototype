@@ -2260,6 +2260,9 @@ router.post('/research-10/children/orders-placement-court', function(req, res) {
       if (req.body['xui-type-order'] === 'gatekeeping') {
         res.redirect('/research-10/case-worker/case-worker-gatekeeping-order-creation-case-management-order')  
       }
+      else if (req.body['xui-type-order'] === 'adoption') {
+        res.redirect('/research-10/case-worker/case-worker-gatekeeping-order-creation-final-adoption-1')
+      }
       else {
         res.redirect('/research-10/case-worker/index')
       }
@@ -2321,6 +2324,98 @@ router.post('/research-10/children/orders-placement-court', function(req, res) {
   })
 
 
+  // ********************************** FINAL ADOPTION ORDER **********************************
+  router.post('/research-10/case-worker/case-worker-gatekeeping-order-creation-final-adoption-1', function(req, res) {
+    if (req.body['submit-button'] === 'continue') {
+      res.redirect('/research-10/case-worker/case-worker-gatekeeping-order-creation-final-adoption-2')
+    }
+    else {
+      res.redirect('/research-10/case-worker/index')
+    }
+  })
+
+
+  router.post('/research-10/case-worker/case-worker-gatekeeping-order-creation-final-adoption-2', function(req, res) {
+    if (req.body['submit-button'] === 'continue') {
+      res.redirect('/research-10/case-worker/case-worker-gatekeeping-order-creation-final-adoption-3')
+    }
+    else {
+      res.redirect('/research-10/case-worker/case-worker-gatekeeping-order-creation-final-adoption-1')
+    }
+  })
+
+
+  router.post('/research-10/case-worker/case-worker-gatekeeping-order-creation-final-adoption-3', function(req, res) {
+    if (req.body['submit-button'] === 'continue') {
+      if (req.body['date-and-place-of-birth'] === 'date-and-time') {
+        res.redirect('/research-10/case-worker/case-worker-gatekeeping-order-creation-final-adoption-4-1')
+      }
+      else if (req.body['date-and-place-of-birth'] === 'place-of-birth-unknown') {
+        res.redirect('/research-10/case-worker/case-worker-gatekeeping-order-creation-final-adoption-4-3')
+      }
+      else {
+        res.redirect('/research-10/case-worker/case-worker-gatekeeping-order-creation-final-adoption-4-2')
+      }      
+    }
+    else {
+      res.redirect('/research-10/case-worker/case-worker-gatekeeping-order-creation-final-adoption-2')
+    }
+  })
+
+
+  router.post('/research-10/case-worker/case-worker-gatekeeping-order-creation-final-adoption-4-1', function(req, res) {
+    if (req.body['submit-button'] === 'continue') {
+      req.session.data.pathFinalOrder = 1
+      res.redirect('/research-10/case-worker/case-worker-gatekeeping-order-creation-final-adoption-5')
+    }
+    else {
+      res.redirect('/research-10/case-worker/case-worker-gatekeeping-order-creation-final-adoption-3')
+    }
+  })
+
+
+  router.post('/research-10/case-worker/case-worker-gatekeeping-order-creation-final-adoption-4-2', function(req, res) {
+    if (req.body['submit-button'] === 'continue') {
+      req.session.data.pathFinalOrder = 2
+      res.redirect('/research-10/case-worker/case-worker-gatekeeping-order-creation-final-adoption-5')
+    }
+    else {
+      res.redirect('/research-10/case-worker/case-worker-gatekeeping-order-creation-final-adoption-3')
+    }
+  })
+
+
+  router.post('/research-10/case-worker/case-worker-gatekeeping-order-creation-final-adoption-4-3', function(req, res) {
+    if (req.body['submit-button'] === 'continue') {
+      req.session.data.pathFinalOrder = 3
+      res.redirect('/research-10/case-worker/case-worker-gatekeeping-order-creation-final-adoption-5')
+    }
+    else {
+      res.redirect('/research-10/case-worker/case-worker-gatekeeping-order-creation-final-adoption-3')
+    }
+  })
+
+
+  router.post('/research-10/case-worker/case-worker-gatekeeping-order-creation-final-adoption-5', function(req, res) {
+    if (req.body['submit-button'] === 'continue') {
+      res.redirect('/research-10/case-worker/')
+    }
+    else {
+      if (req.session.data.pathFinalOrder === 1) {
+        res.redirect('/research-10/case-worker/case-worker-gatekeeping-order-creation-final-adoption-4-1')
+      }
+      else if (req.session.data.pathFinalOrder === 2) {
+        res.redirect('/research-10/case-worker/case-worker-gatekeeping-order-creation-final-adoption-4-2')
+      }
+      else {
+        res.redirect('/research-10/case-worker/case-worker-gatekeeping-order-creation-final-adoption-4-3')
+      }
+    }
+  })
+
+
+
+
 
   router.post('/research-10/case-worker/index', function(req, res) {
     console.log(req.body['next-steps'])
@@ -2338,7 +2433,7 @@ router.post('/research-10/children/orders-placement-court', function(req, res) {
       res.redirect('/research-10/case-worker/case-worker-gatekeeping-order-creation-type-of-order')
     }
     else if (req.body['next-steps'] === 'manage-orders') {
-      res.redirect('/research-10/case-worker/case-worker-gatekeeping-order-creation-manage-orders')
+      res.redirect('/research-10/case-worker/case-worker-gatekeeping-order-creation-type-of-order')
     }
     else if (req.body['next-steps'] === 'allocate-judge') {
       res.redirect('/research-10/case-worker/case-worker-gatekeeping-allocate-judge')

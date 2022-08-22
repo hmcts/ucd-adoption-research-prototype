@@ -1,0 +1,91 @@
+{% block header %}
+{% include "layout-xui.html" %}
+{% endblock %}
+
+
+<html lang="en" class="govuk-template ">
+  <div style=" max-width:1300px; margin: 0 auto;">
+      <div style=" max-width:1300px;  min-width:1300px;  margin: 20px 0px 0px 0px;  ">
+          <main class="govuk-main-wrapper " id="main-content" role="main" style="padding-top: 25px;">
+              <div class="govuk-width-container">
+                <div class="govuk-grid-row" style="width:1300px; margin-left: -90px;">
+                  <div class="govuk-grid-column-two-thirds">
+                    <h1 class="govuk-heading-xl">Final adoption order</h1>
+                    <h2 class="govuk-heading-l govuk-!-margin-bottom-3">#1234-5678-0921-2722</h2>
+                    <h2 class="govuk-heading-m govuk-!-margin-top-0 govuk-!-margin-bottom-7">Child's name: Jane Austen</h2>
+
+                    <form action="/research-10/case-worker/case-worker-gatekeeping-order-creation-final-adoption-4-2" method="post" class="form">
+                      <h3 class="govuk-heading-m govuk-!-margin-bottom-6">Registration details</h3>
+                      <div class="govuk-form-group">
+                        <fieldset class="govuk-fieldset" role="group" aria-describedby="birth-adoption-date-hint">
+                          <legend class="govuk-fieldset__legend govuk-fieldset__legend--l">
+                            <label class="govuk-label govuk-label--s govuk-!-margin-bottom-0" for="LA directions">
+                                Birth adoption date
+                            </label>
+                          </legend>
+                          <div class="govuk-date-input" id="date-told-la">
+                            <div class="govuk-date-input__item">
+                              <div class="govuk-form-group">
+                                <label class="govuk-label govuk-date-input__label" for="birth-adoption-date-day">
+                                  Day
+                                </label>
+                                <input class="govuk-input govuk-date-input__input govuk-input--width-2" id="birth-adoption-date-day" name="birth-adoption-date-day" type="text" inputmode="numeric">
+                              </div>
+                            </div>
+                            
+                            <div class="govuk-date-input__item">
+                              <div class="govuk-form-group">
+                                <label class="govuk-label govuk-date-input__label" for="birth-adoption-date-month">
+                                  Month
+                                </label>
+                                <input class="govuk-input govuk-date-input__input govuk-input--width-2" id="birth-adoption-date-month" name="birth-adoption-date-month" type="text" inputmode="numeric">
+                              </div>
+                            </div>
+                            
+                            <div class="govuk-date-input__item">
+                              <div class="govuk-form-group">
+                                <label class="govuk-label govuk-date-input__label" for="birth-adoption-date-year">
+                                  Year
+                                </label>
+                                <input class="govuk-input govuk-date-input__input govuk-input--width-4 govuk-!-margin-bottom-3" id="birth-adoption-date-year" name="birth-adoption-date-year" type="text" inputmode="numeric">
+                              </div>
+                            </div>
+                          </div>
+                        </fieldset>
+                      </div>
+
+                      <div class="govuk-form-group">
+                        <label class="govuk-label govuk-label--s govuk-!-margin-bottom-0" for="final-adoption-child-name">
+                          Birth adoption registration number
+                        </label>
+                        <div id="name-hint" class="govuk-hint">
+                          If known.
+                        </div>                        
+                        <input class="govuk-input govuk-input--width-20 govuk-!-margin-bottom-3" id="final-adoption-registration-number" name="final-adoption-registration-number" type="text">                        
+                      </div>                    
+
+                      <div class="govuk-form-group">
+                        <label class="govuk-label govuk-label--s govuk-!-margin-bottom-0" for="final-adoption-child-name">
+                          Child's country of birth
+                        </label>
+                        <div id="name-hint" class="govuk-hint">
+                          If known.
+                        </div>                        
+                        <input class="govuk-input govuk-input--width-20 govuk-!-margin-bottom-3" id="final-adoption-child-country" name="final-adoption-child-country" type="text">                        
+                      </div>                    
+
+
+                      <!-- Buttons -->
+                      {% include "../../includes/buttons-xui.html" %}
+                    </form>
+                  </div>
+                </div>
+              </div>
+          </main>
+      </div>      
+  </div>
+</html>
+
+{% block footer %}
+{% include "includes/newfooter.html" %}
+{% endblock %}

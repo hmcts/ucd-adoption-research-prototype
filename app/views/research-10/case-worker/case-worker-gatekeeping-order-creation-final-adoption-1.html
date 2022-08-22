@@ -1,0 +1,112 @@
+{% block header %}
+{% include "includes/xui-header.html" %}
+{% endblock %}
+
+
+<html lang="en" class="govuk-template ">
+  <div style=" max-width:1300px; margin: 0 auto;">
+      <div style=" max-width:1300px;  min-width:1300px;  margin: 20px 0px 0px 0px;  ">
+          <main class="govuk-main-wrapper " id="main-content" role="main" style="padding-top: 25px;">
+              <div class="govuk-width-container">
+                <div class="govuk-grid-row" style="width:1300px; margin-left: -90px;">
+                  <div class="govuk-grid-column-two-thirds">
+                    <h1 class="govuk-heading-xl">Final adoption order</h1>
+                    <h2 class="govuk-heading-l govuk-!-margin-bottom-3">#1234-5678-0921-2722</h2>
+                    <h2 class="govuk-heading-m govuk-!-margin-top-0 govuk-!-margin-bottom-7">Child's name: Jane Austen</h2>
+                    
+                    <form action="/research-10/case-worker/case-worker-gatekeeping-order-creation-final-adoption-1" method="post" class="form">
+                    
+                      <h3 class="govuk-heading-m">Standard directions</h3>
+                      <div class="govuk-form-group">
+                        <fieldset class="govuk-fieldset">
+                          <legend class="govuk-fieldset__legend govuk-label--s">
+                            The court orders that:
+                          </legend>       
+                          <div id="changed-name-hint" class="govuk-hint">
+                            Choose one option
+                          </div>                                           
+                          <div class="govuk-radios" data-module="govuk-radios">
+                            <div class="govuk-radios__item">
+                              <input class="govuk-radios__input" id="first-applicant" name="final-adoption-applicants" type="radio" value="The child is adopted by the first applicant.">
+                              <label class="govuk-label govuk-radios__label" for="first-applicant">
+                                The child is adopted by the first applicant.
+                              </label>
+                            </div>
+                            <div class="govuk-radios__item">
+                              <input class="govuk-radios__input" id="first-and-second-applicants" name="final-adoption-applicants" type="radio" value="The child is adopted by the first applicant and the second applicant.">
+                              <label class="govuk-label govuk-radios__label" for="first-and-second-applicants">
+                                The child is adopted by the first applicant and the second applicant.
+                              </label>
+                            </div>
+                          </div>
+                        </fieldset>
+                      </div>    
+                      
+                      <div class="govuk-form-group">
+                        <h3 class="govuk-heading-m govuk-!-margin-top-8 govuk-!-margin-bottom-1">Child's name after adoption</h3>
+                        <div id="name-hint" class="govuk-hint">
+                          Enter what will be the child's full name after adoption.
+                        </div>                        
+                        <label class="govuk-label govuk-label--s" for="final-adoption-child-name">
+                          First names
+                        </label>
+                        <input class="govuk-input govuk-input--width-20 govuk-!-margin-bottom-5" id="child-first-names" name="final-adoption-child-first-names" type="text">
+                        
+                        <label class="govuk-label govuk-label--s" for="final-adoption-child-name">
+                          Last names
+                        </label>
+                        <input class="govuk-input govuk-input--width-20 govuk-!-margin-bottom-5" id="child-last-names" name="final-adoption-child-last-names" type="text">
+                      </div>                    
+
+                      <div class="govuk-form-group">
+                        <h3 class="govuk-heading-m govuk-!-margin-top-8">Court directions</h3>
+                        <fieldset class="govuk-fieldset" aria-describedby="court-directs-checkboxes-1-hint">
+                          <legend class="govuk-fieldset__legend govuk-label--s">
+                            The court directs that:
+                          </legend>
+                          <div id="changed-name-hint" class="govuk-hint">
+                            Choose one or more options. You will be asked to complete the relevant details in later screens.
+                          </div>                          
+                          <div class="govuk-checkboxes" data-module="govuk-checkboxes">
+                            <div class="govuk-checkboxes__item">
+                              <input class="govuk-checkboxes__input" id="entry-adopted-children-register" name="court-directs-checkboxes-1" type="checkbox" value="entry-adopted-children-register">
+                              <label class="govuk-label govuk-checkboxes__label" for="entry-adopted-children-register">
+                                The Registrar General will make an entry in the Adopted Children Register in the form specified by regulations made by him recording the particulars set out in this order and schedule. 
+                              </label>
+                            </div>
+                            <div class="govuk-checkboxes__item">
+                              <input class="govuk-checkboxes__input" id="marked-adopted" name="court-directs-checkboxes-1" type="checkbox" value="marked-adopted">
+                              <label class="govuk-label govuk-checkboxes__label" for="marked-adopted">
+                                The entry in the Register of Live Births given in the schedule attached to this order be marked with the word 'adopted'.
+                              </label>
+                            </div>
+                            <div class="govuk-checkboxes__item">
+                              <input class="govuk-checkboxes__input" id="marked-readopted" name="court-directs-checkboxes-1" type="checkbox" value="marked-readopted">
+                              <label class="govuk-label govuk-checkboxes__label" for="marked-readopted">
+                                The entry in the Adopted Children Register given in the schedule attached to this order be marked with the word 're-adopted'.
+                              </label>
+                            </div>
+                            <!-- <div class="govuk-checkboxes__item">
+                              <input class="govuk-checkboxes__input" id="no-effect-status" name="court-directs-checkboxes-1" type="checkbox" value="no-effect-status">
+                              <label class="govuk-label govuk-checkboxes__label" for="no-effect-status">
+                                The making of this order has no effect on the status of {Parent whose status is unaffected} as parent of the child. 
+                              </label>
+                            </div> -->
+                          </div>
+                      
+                        </fieldset>
+                      </div>                      
+                      <!-- Buttons -->
+                      {% include "../../includes/buttons-xui.html" %}
+                    </form>
+                  </div>
+                </div>
+              </div>
+          </main>
+      </div>      
+  </div>
+</html>
+
+{% block footer %}
+{% include "includes/newfooter.html" %}
+{% endblock %}
