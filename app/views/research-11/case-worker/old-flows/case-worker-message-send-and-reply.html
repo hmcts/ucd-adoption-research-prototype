@@ -1,0 +1,75 @@
+{% block header %}
+{% include "layout-xui.html" %}
+{% endblock %}
+
+
+<html lang="en" class="govuk-template ">
+  <div style=" max-width:1300px; margin: 0 auto;">
+      <div style=" max-width:1300px;  min-width:1300px;  margin: 20px 0px 0px 0px;  ">
+          <main class="govuk-main-wrapper " id="main-content" role="main" style="padding-top: 25px;">
+              <div class="govuk-width-container">
+                <div class="govuk-grid-row" style="width:1300px; margin-left: -90px;">
+                  <h1 class="govuk-heading-xl">Send and reply to messages</h1>
+                  <h2 class="govuk-heading-l govuk-!-margin-bottom-3">#1234-5678-0921-2722</h2>
+                  <h2 class="govuk-heading-m govuk-!-margin-top-0 govuk-!-margin-bottom-7">Child's name: Jane Austen</h2>
+
+
+                  <form action="/research-11/case-worker/case-worker-message-send-and-reply" method="post" class="form">
+                  <div class="govuk-form-group">
+                    <div class="govuk-radios govuk-radios--conditional" data-module="govuk-radios">
+                      <label class="govuk-label govuk-!-margin-bottom-4" for="sender-email-address">
+                        Do you want to send or reply to a message?
+                      </label>
+
+                        <div class="govuk-radios__item">
+                          <input class="govuk-radios__input" id="xui-send-message" name="xui-send-reply-radio" type="radio" value="send" {% if data['xui-send-reply-radio'] == "xui-send-message" %} checked {% endif %}>
+                          <label class="govuk-label govuk-radios__label" for="xui-send-message">
+                            Send a message
+                          </label>
+                        </div>
+
+
+                        <div class="govuk-radios__item">
+                          <input class="govuk-radios__input" id="xui-reply-message" name="xui-send-reply-radio" type="radio" value="reply" data-aria-controls="conditional-contact" {% if data['xui-send-reply-radio'] == "xui-reply-message" %} checked {% endif %}>
+                          <label class="govuk-label govuk-radios__label" for="xui-reply-message">
+                            Reply to a message
+                          </label>
+                        </div>
+                        <div class="govuk-radios__conditional govuk-radios__conditional--hidden " id="conditional-contact">
+                          <div class="govuk-form-group">
+                            <label class="govuk-label" for="contact-by-email">
+                              Your messages
+                            </label>
+                            <div id="sign-in-item-hint" class="govuk-hint">
+                               Message subject comprises application type and urgency, if relevant, and date requested.
+                            </div>
+                            <div class="govuk-form-group">
+                              <select class="govuk-select" id="messages-list" name="messages-list">
+                                <option value="select">Select a message</option>
+                                <option value="message1">My message subject, 12 July 2022 at 4:32 pm, two days</option>
+                                <option value="message2">Another message subject, 11 July 2022 at 9:03 am, two days</option>
+                                <option value="message3">Lorem ipsum</option>
+                                <option value="message4">Lorem ipsum</option>
+                              </select>
+                            </div>            
+                        </div>
+        
+                      </div>
+                    </div>
+                
+                  </fieldset>
+                </div>
+                <!-- Buttons -->
+                {% include "../../includes/buttons-xui.html" %}
+                  </form>
+                </div>
+
+              </div>
+          </main>
+      </div>
+  </div>
+</html>
+
+{% block footer %}
+{% include "includes/newfooter.html" %}
+{% endblock %}

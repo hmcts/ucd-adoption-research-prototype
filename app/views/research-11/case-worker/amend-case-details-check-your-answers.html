@@ -1,0 +1,181 @@
+{% block header %}
+{% include "includes/xui-header.html" %}
+{% endblock %}
+
+
+
+
+
+<div class="govuk-width-container">
+  <div class="govuk-grid-row">
+    <div class="govuk-grid-column-two-thirds">
+
+      <form action="/research-11/case-worker/amend-case-details-check-your-answers" method="post" class="form">
+<br>
+        <legend class="govuk-fieldset__legend govuk-fieldset__legend--l">
+          <!-- <span class="govuk-caption-l">{{ data['reviewApplication'] }}</span> -->
+          <h1 class="govuk-fieldset__heading">
+            Check your answers
+          </h1>
+        </legend>
+
+<br>
+
+         <!-- **************** First applicant **************** -->
+        <h2 class="govuk-heading-m">Case details</h2>
+        <dl class="govuk-summary-list govuk-!-margin-bottom-9">
+
+          <div class="govuk-summary-list__row">
+            <dt class="govuk-summary-list__key">
+              Adoption Type
+            </dt>
+            <dd class="govuk-summary-list__value">
+              {%if data['adop-type']%}
+                {{data['adop-type']}}
+              {% else %}
+                	Placement
+              {% endif %}
+            </dd>
+            <dd class="govuk-summary-list__actions">
+              <a href="case-worker-amend-case-details.html">
+                Change
+                <span class="govuk-visually-hidden"> adoption type</span>
+              </a>
+            </dd>
+
+          </div>
+
+
+
+
+
+          <div class="govuk-summary-list__row">
+            <dt class="govuk-summary-list__key">
+              Date submitted
+            </dt>
+            <dd class="govuk-summary-list__value">
+              {% if data['sub-date-day'] and data['sub-date-month'] and data['sub-date-year'] %}
+                {{ data['sub-date-day'] }} {{ data['monthName'][data['sub-date-month']] }} {{ data['sub-date-year'] }}
+              {% else %}
+                11 August 2022
+              {% endif %}
+            </dd>
+            <dd class="govuk-summary-list__actions">
+              <a href="case-worker-amend-case-details.html">
+                Change
+                <span class="govuk-visually-hidden"> submitted date</span>
+              </a>
+            </dd>
+          </div>
+
+
+                  <div class="govuk-summary-list__row">
+                      <dt class="govuk-summary-list__key">
+                        Date child moved in
+                      </dt>
+                      <dd class="govuk-summary-list__value">
+                        {% if data['child-moved-in-day'] and data['child-moved-in-month'] and data['child-moved-in-year'] %}
+                          {{ data['child-moved-in-day'] }} {{ data['monthName'][data['child-moved-in-month']] }}  {{ data['child-moved-in-year'] }}
+                        {% else %}
+                          12 July 2021
+                        {% endif %}
+                      </dd>
+                      <dd class="govuk-summary-list__actions">
+                        <a href="case-worker-amend-case-details.html">
+                          Change
+                          <span class="govuk-visually-hidden"> child moved in date</span>
+                        </a>
+                      </dd>
+                    </div>
+                      <br>
+
+
+                    <h3 class="govuk-heading-s govuk-!-margin-top-4">Placement order details</h3>
+
+                    <div class="govuk-summary-list__row">
+                      <dt class="govuk-summary-list__key">
+                        Name of court
+                      </dt>
+                      <dd class="govuk-summary-list__value">
+                        {%if data['place-order-court']%}
+                          {{data['place-order-court']}}
+                        {% else %}
+                            Brighton Family Court
+                        {% endif %}
+                      </dd>
+                      <dd class="govuk-summary-list__actions">
+                        <a href="case-worker-amend-case-details.html">
+                          Change
+                          <span class="govuk-visually-hidden"> placement order court</span>
+
+                        </a>
+                      </dd>
+
+                    </div>
+
+
+                                      <div class="govuk-summary-list__row">
+                                          <dt class="govuk-summary-list__key">
+                                            Date of order
+                                          </dt>
+                                          <dd class="govuk-summary-list__value">                                        
+                                            {% if data['place-date-day'] and data['place-date-month'] and data['place-date-year'] %}
+                                              {{ data['place-date-day'] }} {{ data['monthName'][data['place-date-month']] }} 2021 
+                                            {% else %}
+                                              12 July 2021
+                                            {% endif %}
+                                          </dd>
+                                          <dd class="govuk-summary-list__actions">
+                                            <a href="case-worker-amend-case-details.html">
+                                              Change
+                                              <span class="govuk-visually-hidden"> child of placement order</span>
+                                            </a>
+                                          </dd>
+                                        </div>
+
+
+                    <div class="govuk-summary-list__row">
+                      <dt class="govuk-summary-list__key">
+                        Order number
+                      </dt>
+                      <dd class="govuk-summary-list__value">
+                        {%if data['place-order-detail']%}
+                          {{data['place-order-detail']}}
+                        {% else %}
+                            ANC13637884
+                        {% endif %}
+                      </dd>
+                      <dd class="govuk-summary-list__actions">
+                        <a href="case-worker-amend-case-details.html">
+                          Change
+                          <span class="govuk-visually-hidden"> placement order details</span>
+                        </a>
+                      </dd>
+
+                    </div>
+
+
+
+
+
+      </dl>
+
+
+        <h2 class="govuk-heading-m">Check your answers</h2>
+
+        <p>Check all the information you have provided. If you need to edit any of the answers, select the change link at the end of the relevant answer.</p>
+
+
+
+
+
+        <!-- Buttons -->
+          {% include "../../includes/buttons-xui.html" %}
+
+      </form>
+    </div>
+  </div>
+</div>
+{% block footer %}
+{% include "includes/newfooter.html" %}
+{% endblock %}

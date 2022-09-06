@@ -1,0 +1,200 @@
+{% block header %}
+{% include "includes/xui-header.html" %}
+{% endblock %}
+
+
+<html lang="en" class="govuk-template ">
+  <div style=" max-width:1300px; margin: 0 auto;">
+      <div style=" max-width:1300px;  min-width:1300px;  margin: 20px 0px 0px 0px;  ">
+          <main class="govuk-main-wrapper " id="main-content" role="main" style="padding-top: 25px;">
+              <div class="govuk-width-container">
+                <div class="govuk-grid-row" style="width:1300px; margin-left: -90px;">
+                  <div class="govuk-grid-column-two-thirds">
+                    <h1 class="govuk-heading-xl">Case management order (gatekeeping order)</h1>
+                    <h2 class="govuk-heading-l govuk-!-margin-bottom-3">#1234-5678-0921-2722</h2>
+                    <h2 class="govuk-heading-m govuk-!-margin-top-0 govuk-!-margin-bottom-7">Child's name: Jane Austen</h2>
+
+                    <form action="/research-11/case-worker/case-worker-gatekeeping-order-1" method="post" class="form">
+                      <div class="govuk-form-group">
+                        <label class="govuk-label govuk-label--s govuk-!-margin-top-4" for="contact-by-email">
+                          1. Preamble
+                        </label>
+                        <div id="changed-name-hint" class="govuk-hint">
+                          Copy and paste or type directly into the text box
+                        </div>                          
+                        <textarea class="govuk-textarea" id="gatekeeping-preamble" name="gatekeeping-preamble" rows="5">{{ data['gatekeeping-preamble'] }}</textarea>
+                      </div>
+
+                      <div class="govuk-form-group">
+                        <fieldset class="govuk-fieldset">
+                          <div class="govuk-radios" data-module="govuk-radios">
+                            <label class="govuk-label govuk-label--s govuk-!-margin-top-4" for="contact-by-email">
+                              2. Allocation
+                            </label>
+                            <div id="changed-name-hint" class="govuk-hint">
+                              Choose which judge to allocate to
+                            </div>                          
+                            <div class="govuk-radios__item">
+                              <input class="govuk-radios__input" id="previous-judge" name="gatekeeping-order-allocate-judge" type="radio" value="previous-judge" {% if data['gatekeeping-order-allocate-judge'] === 'previous-judge' %} checked {% endif %}>
+                              <label class="govuk-label govuk-radios__label" for="previous-judge">
+                                Allocate previous placement judge
+                              </label>
+                            </div>
+                            <div class="govuk-radios__item">
+                              <input class="govuk-radios__input" id="different-judge" name="gatekeeping-order-allocate-judge" type="radio" value="different-judge" {% if data['gatekeeping-order-allocate-judge'] === 'different-judge' %} checked {% endif %}>
+                              <label class="govuk-label govuk-radios__label" for="different-judge">
+                                Allocate different judge
+                              </label>
+                            </div>
+                          </div>                        
+                        </fieldset>
+                      </div>
+
+                      <div class="govuk-form-group">
+                        <fieldset class="govuk-fieldset" aria-describedby="gatekeeping-hearing-checkboxes-hint">
+                          <legend class="govuk-fieldset__legend govuk-fieldset__legend--l">
+                            <label class="govuk-label govuk-label--s govuk-!-margin-top-4" for="contact-by-email">
+                              3. Hearing dates
+                            </label>
+                            <!-- <div id="changed-name-hint" class="govuk-hint">
+                              Hint text from hearing dates
+                            </div>                           -->
+                          </legend>
+                          <div class="govuk-checkboxes" data-module="govuk-checkboxes">
+                            <div class="govuk-checkboxes__item">
+                              <input class="govuk-checkboxes__input" id="gatekeeping-first-hearing" name="gatekeeping-first-hearing-checkbox" type="checkbox" value="gatekeeping-first-hearing" {% if (data['gatekeeping-first-hearing-checkbox'] != undefined) %} checked {% endif %}>
+                              <label class="govuk-label govuk-checkboxes__label" for="gatekeeping-first-hearing">
+                                List for first hearing
+                              </label>
+                            </div>
+                            <div class="govuk-checkboxes__item">
+                              <input class="govuk-checkboxes__input" id="gatekeeping-further-hearings" name="gatekeeping-further-hearings-checkbox" type="checkbox" value="gatekeeping-further-hearings" {% if (data['gatekeeping-further-hearings-checkbox'] != undefined) %} checked {% endif %}>
+                              <label class="govuk-label govuk-checkboxes__label" for="gatekeeping-further-hearings">
+                                List for further hearings
+                              </label>
+                            </div>
+                            <div class="govuk-checkboxes__divider">or</div>
+                            <div class="govuk-checkboxes__item">
+                              <input class="govuk-checkboxes__input" id="gatekeeping-hearing-date-future" name="gatekeeping-hearing-date-future-checkbox" type="checkbox" value="gatekeeping-hearing-date-future" {% if (data['gatekeeping-hearing-date-future-checkbox'] != undefined) %} checked {% endif %}>
+                              <label class="govuk-label govuk-checkboxes__label" for="gatekeeping-hearing-date-future">
+                                Hearing date to be specified in the future
+                              </label>
+                            </div>
+                          </div>                        
+                        </fieldset>
+                      </div>    
+                                              
+                      <div class="govuk-form-group">
+                        <legend class="govuk-fieldset__legend govuk-fieldset__legend--l">
+                          <label class="govuk-label govuk-label--s govuk-!-margin-top-4" for="contact-by-email">
+                            4. Local authority
+                          </label>
+                        </legend>
+                        <div class="govuk-checkboxes" data-module="govuk-checkboxes">
+                          <div class="govuk-checkboxes__item">
+                            <input class="govuk-checkboxes__input" id="gatekeeping-submit-annex-a" name="gatekeeping-local-authority-checkboxes" type="checkbox" value="gatekeeping-submit-annex-a" {% if (data['gatekeeping-submit-annex-a'] != undefined) %} checked {% endif %}>
+                            <label class="govuk-label govuk-checkboxes__label" for="gatekeeping-submit-annex-a">
+                              Submit Annex A
+                            </label>
+                          </div>
+                        </div>
+                      </div>
+
+                      <div class="govuk-form-group">
+                        <fieldset class="govuk-fieldset" aria-describedby="gatekeeping-attendance-checkboxes-hint">
+                          <legend class="govuk-fieldset__legend govuk-fieldset__legend--l">
+                            <label class="govuk-label govuk-label--s govuk-!-margin-top-4" for="contact-by-email">
+                              5. Attendance
+                            </label>
+                            <div id="changed-name-hint" class="govuk-hint">
+                              You can choose more than one option
+                            </div>                          
+                          </legend>
+                          <div class="govuk-checkboxes" data-module="govuk-checkboxes">
+                            <div class="govuk-checkboxes__item">
+                              <input class="govuk-checkboxes__input" id="gatekeeping-applicants" name="gatekeeping-attendance-applicants" type="checkbox" value="gatekeeping-applicants" {% if (data['gatekeeping-attendance-applicants'] != undefined) %} checked {% endif %}>
+                              <label class="govuk-label govuk-checkboxes__label" for="gatekeeping-applicants">
+                                Applicants
+                              </label>
+                            </div>
+
+                            <div class="govuk-checkboxes__item">
+                              <input class="govuk-checkboxes__input" id="gatekeeping-child" name="gatekeeping-attendance-child" type="checkbox" value="gatekeeping-child" {% if (data['gatekeeping-attendance-child'] != undefined) %} checked {% endif %}>
+                              <label class="govuk-label govuk-checkboxes__label" for="gatekeeping-child">
+                                Child
+                              </label>
+                            </div>
+
+                            <div class="govuk-checkboxes__item">
+                              <input class="govuk-checkboxes__input" id="gatekeeping-local-authority" name="gatekeeping-attendance-local-authority" type="checkbox" value="gatekeeping-local-authority" {% if (data['gatekeeping-attendance-local-authority'] != undefined) %} checked {% endif %}>
+                              <label class="govuk-label govuk-checkboxes__label" for="gatekeeping-local-authority">
+                                Local authority
+                              </label>
+                            </div>
+
+                            <div class="govuk-checkboxes__item">
+                              <input class="govuk-checkboxes__input" id="gatekeeping-birth-parents" name="gatekeeping-attendance-birth-parents" type="checkbox" value="gatekeeping-birth-parents" {% if (data['gatekeeping-attendance-birth-parents'] != undefined) %} checked {% endif %}>
+                              <label class="govuk-label govuk-checkboxes__label" for="gatekeeping-birth-parents">
+                                Birth parents
+                              </label>
+                            </div>
+                          </div>                        
+                        </fieldset>
+                      </div>    
+                      
+                      <div class="govuk-form-group">
+                        <legend class="govuk-fieldset__legend govuk-fieldset__legend--l">
+                          <label class="govuk-label govuk-label--s govuk-!-margin-top-4" for="contact-by-email">
+                            6. Leave to oppose
+                          </label>
+                        </legend>
+                        <div class="govuk-checkboxes" data-module="govuk-checkboxes">
+                          <div class="govuk-checkboxes__item">
+                            <input class="govuk-checkboxes__input" id="gatekeeping-leave-oppose" name="gatekeeping-leave-oppose-checkbox" type="checkbox" value="gatekeeping-leave-oppose">
+                            <label class="govuk-label govuk-checkboxes__label" for="gatekeeping-leave-oppose">
+                              File leave to oppose
+                            </label>
+                          </div>
+                        </div>
+                      </div>
+
+                      <div class="govuk-form-group">
+                        <label class="govuk-label govuk-label--s govuk-!-margin-top-8" for="contact-by-email">
+                          7. Additional orders
+                        </label>
+                        <div id="changed-name-hint" class="govuk-hint">
+                          Copy and paste or type directly into the text box
+                        </div>                          
+                        <textarea class="govuk-textarea" id="gatekeeping-additional-orders" name="gatekeeping-additional-orders" rows="5" value="{{ data['gatekeeping-additional-orders'] }}">{{ data['gatekeeping-additional-orders'] }}</textarea>
+                      </div>
+
+                      <div class="govuk-form-group">
+                        <legend class="govuk-fieldset__legend govuk-fieldset__legend--l">
+                          <label class="govuk-label govuk-label--s govuk-!-margin-top-4" for="contact-by-email">
+                            8. Cost orders
+                          </label>
+                        </legend>
+                        <div class="govuk-checkboxes" data-module="govuk-checkboxes">
+                          <div class="govuk-checkboxes__item">
+                            <input class="govuk-checkboxes__input" id="gatekeeping-cost-orders" name="gatekeeping-cost-orders-checkboxes" type="checkbox" value="gatekeeping-cost-orders">
+                            <label class="govuk-label govuk-checkboxes__label" for="gatekeeping-cost-orders">
+                              No order for costs
+                            </label>
+                          </div>
+                        </div>
+                      </div>
+                        
+                      <!-- Buttons -->
+                      {% include "../../includes/buttons-xui.html" %}
+                    </form>
+                  </div>
+                </div>
+              </div>
+          </main>
+      </div>      
+  </div>
+</html>
+
+{% block footer %}
+{% include "includes/newfooter.html" %}
+{% endblock %}

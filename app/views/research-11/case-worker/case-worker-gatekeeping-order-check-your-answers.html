@@ -1,0 +1,450 @@
+{% block header %}
+{% include "includes/xui-header.html" %}
+{% endblock %}
+
+
+<html lang="en" class="govuk-template ">
+  <div style=" max-width:1300px; margin: 0 auto;">
+      <div style=" max-width:1300px;  min-width:1300px;  margin: 20px 0px 0px 0px;  ">
+          <main class="govuk-main-wrapper " id="main-content" role="main" style="padding-top: 25px;">
+              <div class="govuk-width-container">
+                <div class="govuk-grid-row" style="width:1300px; margin-left: -90px;">
+                  <div class="govuk-grid-column-two-thirds">
+                    <h1 class="govuk-heading-xl">Check your answers</h1>
+                    <h2 class="govuk-heading-l govuk-!-margin-bottom-3">#1234-5678-0921-2722</h2>
+                    <h2 class="govuk-heading-m govuk-!-margin-top-0 govuk-!-margin-bottom-2">Child's name: Jane Austen</h2>
+
+                    <form action="/research-11/case-worker/case-worker-gatekeeping-order-check-your-answers" method="post" class="form">
+                      <div class="govuk-width-container">
+                      
+                        <main class="govuk-main-wrapper " id="main-content" role="main">
+                          <div class="govuk-grid-row">
+                      
+                      
+                              <!-- <h3 class="govuk-heading-s">Preamble</h3> -->
+                              <h2 class="govuk-heading-m">Gatekeeping order</h2>
+                      
+                              <dl class="govuk-summary-list">
+                                <div class="govuk-summary-list__row">
+                                  <dt class="govuk-summary-list__key">
+                                    Preamble
+                                  </dt>
+                                  <dd class="govuk-summary-list__value">
+                                    {% if data['gatekeepingPreamble'] %}
+                                      {{ data['gatekeepingPreamble'] }}
+                                    {% else %}
+                                      Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. 
+                                    {% endif %}
+                                  </dd>
+                                  <dd class="govuk-summary-list__actions">
+                                    <a class="govuk-link" href="case-worker-gatekeeping-order-1.html">
+                                      Change<span class="govuk-visually-hidden"> preamble</span>
+                                    </a>
+                                  </dd>
+                                </div>
+                              </dl>
+
+                              <!-- <h2 class="govuk-heading-m govuk-!-margin-top-7">The court orders that:</h2> -->
+                              <h3 class="govuk-heading-s govuk-!-margin-top-9">2. Allocation</h3>
+                      
+                              <dl class="govuk-summary-list">
+                                <div class="govuk-summary-list__row">
+                                  <dt class="govuk-summary-list__key">
+                                    Allocation
+                                  </dt>
+                                  <dd class="govuk-summary-list__value">
+                                  {% if data['gatekeeping-order-allocate-judge'] === "previous-judge" %}
+                                    {{ data['sameJudge'] }}
+                                  {% else %}
+                                    {{ data['differentJudge'] }} [Name of Judge].
+                                    <!-- <br><br><span class="govuk-!-font-weight-bold">Name of judge: </span>{{ data['gatekeeping-judge-name'] }} -->
+                                  {% endif %}
+                                </dd>
+                                  <dd class="govuk-summary-list__actions">
+                                    <a class="govuk-link" href="case-worker-gatekeeping-order-1.html">
+                                      Change<span class="govuk-visually-hidden"> allocation</span>
+                                    </a>
+                                  </dd>
+                                </div>
+
+                                {% if data['gatekeeping-order-allocate-judge'] === "different-judge" %}
+                                <div class="govuk-summary-list__row">
+                                  <dt class="govuk-summary-list__key">
+                                    Name of Judge
+                                  </dt>
+                                  <dd class="govuk-summary-list__value">
+                                    {{ data['gatekeeping-judge-name'] }}
+                                  </dd>
+                                  <dd class="govuk-summary-list__actions">
+                                    <a class="govuk-link" href="case-worker-gatekeeping-order-2.html">
+                                      Change<span class="govuk-visually-hidden"> name of judge</span>
+                                    </a>
+                                  </dd>
+                                </div>
+                                {% endif %}
+                                </dl>
+
+                                <h3 class="govuk-heading-s govuk-!-margin-top-9">3. Hearing dates</h3>
+                      
+                                <dl class="govuk-summary-list">
+                                  <div class="govuk-summary-list__row">
+                                  <dt class="govuk-summary-list__key">
+                                    Details
+                                  </dt>
+                                  <dd class="govuk-summary-list__value">
+                                    {% if data['gatekeeping-hearing-date-future-checkbox'] !== undefined %}
+                                      The application is to be listed at a future date.
+                                    {% else %}
+                                      {% if data['gatekeeping-first-hearing-checkbox'] !== undefined %}
+                                        <label class="govuk-label" for="event-name">
+                                          The application is listed for a First Hearing on ….. at ……. (with a time estimate of 30 minutes) at …….                      
+                                        </label>       
+                                        {% endif %}
+                                        {% if data['gatekeeping-further-hearings-checkbox'] !== undefined %}
+                                        <label class="govuk-label" for="event-name">
+                                          The application is listed for a (issues resolution / case management /further directions / final hearing) on (date) at (time) with a time estimate of (length) at (location)                      
+                                        </label>       
+                                      {% endif %}
+                                    {% endif %}                                                
+                                  </dd>
+                                  <dd class="govuk-summary-list__actions">
+                                    <a class="govuk-link" href="case-worker-gatekeeping-order-1.html">
+                                      Change<span class="govuk-visually-hidden"> hearing date</span>
+                                    </a>
+                                  </dd>
+                                </div>
+
+                                {% if data['gatekeeping-first-hearing-checkbox'] !== undefined or data['gatekeeping-further-hearings-checkbox'] !== undefined %}
+                                <div class="govuk-summary-list__row">
+                                  <dt class="govuk-summary-list__key">
+                                    Hearing date
+                                  </dt>
+                                  <dd class="govuk-summary-list__value">
+                                    {{ data['gatekeeping-first-hearing-day'] }} {{ data['monthName'][data['gatekeeping-first-hearing-month']] }} {{ data['gatekeeping-first-hearing-year'] }} at {{ data['gatekeeping-first-hearing-hour'] }}:{{ data['gatekeeping-first-hearing-minute'] }}:{{ data['gatekeeping-first-hearing-second'] }}
+                                  </dd>
+                                  <dd class="govuk-summary-list__actions">
+                                    <a class="govuk-link" href="case-worker-gatekeeping-order-2.html">
+                                      Change<span class="govuk-visually-hidden"> hearing date</span>
+                                    </a>
+                                  </dd>
+                                </div>
+                                
+                                <div class="govuk-summary-list__row">
+                                  <dt class="govuk-summary-list__key">
+                                    Name of court
+                                  </dt>
+                                  <dd class="govuk-summary-list__value">
+                                    {{ data['gatekeeping-court-name'] }}                                    
+                                  </dd>
+                                  <dd class="govuk-summary-list__actions">
+                                    <a class="govuk-link" href="case-worker-gatekeeping-order-2.html">
+                                      Change<span class="govuk-visually-hidden"> hearing date</span>
+                                    </a>
+                                  </dd>
+                                </div>
+                                
+                                {% endif %}
+                              </dl>
+
+                              <h3 class="govuk-heading-s govuk-!-margin-top-9">4. Local authority</h3>
+                      
+                              <dl class="govuk-summary-list">
+                                <div class="govuk-summary-list__row">
+                                  <dt class="govuk-summary-list__key">
+                                    Annex A to be submitted
+                                  </dt>
+                                  {% if data['gatekeeping-local-authority-checkboxes'] != undefined %}
+                                  <dd class="govuk-summary-list__value">
+                                    Yes
+                                  </dd>
+                                  {% else %}
+                                  <dd class="govuk-summary-list__value">
+                                    No
+                                  </dd>
+                                  {% endif %}
+                                  <dd class="govuk-summary-list__actions">
+                                    <a class="govuk-link" href="case-worker-gatekeeping-order-1.html">
+                                      Change<span class="govuk-visually-hidden"> submit annex a</span>
+                                    </a>
+                                  </dd>
+                                </div>
+                                {% if data['gatekeeping-local-authority-checkboxes'] != undefined %}
+                                <div class="govuk-summary-list__row">
+                                  <dt class="govuk-summary-list__key">
+                                    Annex A filed by
+                                  </dt>
+                                  <dd class="govuk-summary-list__value">
+                                    {{ data['gatekeeping-la-1-day'] }} {{ data['monthName'][data['gatekeeping-la-1-month']] }} {{ data['gatekeeping-la-1-year'] }} at {{ data['gatekeeping-la-1-hour'] }}:{{ data['gatekeeping-la-1-minute'] }}:{{ data['gatekeeping-la-1-second'] }}
+                                  </dd>
+                                  <dd class="govuk-summary-list__actions">
+                                    <a class="govuk-link" href="case-worker-gatekeeping-order-1.html">
+                                      Change<span class="govuk-visually-hidden"> LA annex A date</span>
+                                    </a>
+                                  </dd>
+                                </div>
+                                
+                                <div class="govuk-summary-list__row">
+                                  <dt class="govuk-summary-list__key">
+                                    Additional details filed by
+                                  </dt>
+                                  <dd class="govuk-summary-list__value">
+                                    {{ data['gatekeeping-la-2-day'] }} {{ data['monthName'][data['gatekeeping-la-2-month']] }} {{ data['gatekeeping-la-2-year'] }} at {{ data['gatekeeping-la-2-hour'] }}:{{ data['gatekeeping-la-2-minute'] }}:{{ data['gatekeeping-la-2-second'] }}
+                                  </dd>
+                                  <dd class="govuk-summary-list__actions">
+                                    <a class="govuk-link" href="case-worker-gatekeeping-order-1.html">
+                                      Change<span class="govuk-visually-hidden"> additional details</span>
+                                    </a>
+                                  </dd>
+                                </div>
+                                {% endif %}
+                              </dl>
+
+                              <h3 class="govuk-heading-s govuk-!-margin-top-9">5. Attendance</h3>
+                      
+                              <dl class="govuk-summary-list">
+                                
+                                {% if data['gatekeeping-attendance-applicants'] !== undefined %}
+                                <div class="govuk-summary-list__row">
+                                  <dt class="govuk-summary-list__key">
+                                    Applicants
+                                  </dt>
+                                  <dd class="govuk-summary-list__value">
+                                    {% if data['gatekeeping-attendance-applicant-radios'] === "applicants-may-not-attend" %}
+                                      The applicants may but need not attend the hearing but if they wish to do so, they are requested to advise the court giving not less than 7 days' notice so that arrangements can be made to protect the confidentiality of the placement.
+                                    {% else %}
+                                      The applicant(s) is/are <span class="govuk-!-font-weight-bold">NOT</span> to attend the next hearing.
+                                    {% endif %}
+                                  </dd>
+                                  <dd class="govuk-summary-list__actions">
+                                    <a class="govuk-link" href="case-worker-gatekeeping-order-1.html">
+                                      Change<span class="govuk-visually-hidden"> applicants attendance</span>
+                                    </a>
+                                  </dd>
+                                </div>
+                                {% endif %}
+                              
+                                {% if data['gatekeeping-attendance-child'] !== undefined %}
+                                <div class="govuk-summary-list__row">
+                                  <dt class="govuk-summary-list__key">
+                                    Child
+                                  </dt>
+                                  <dd class="govuk-summary-list__value">
+                                    {% if data['gatekeeping-attendance-child-radios'] === "child-excused" %}
+                                      The attendance of the child is excused for all hearings.
+                                    {% else %}
+                                      The child shall not be brought to the hearing.
+                                    {% endif %}
+                                  </dd>
+                                  <dd class="govuk-summary-list__actions">
+                                    <a class="govuk-link" href="case-worker-gatekeeping-order-1.html">
+                                      Change<span class="govuk-visually-hidden"> child attendance</span>
+                                    </a>
+                                  </dd>
+                                </div>
+                                {% endif %}
+                              
+                                {% if data['gatekeeping-attendance-child'] !== undefined %}
+                                <div class="govuk-summary-list__row">
+                                  <dt class="govuk-summary-list__key">
+                                    Local authority
+                                  </dt>
+                                  <dd class="govuk-summary-list__value">
+                                    {% if data['gatekeeping-attendance-local-authority-radios'] === "local-authority-excused" %}
+                                      The local authority shall attend the next hearing.
+                                    {% else %}
+                                      The local authority and the Annex A reporter must attend the hearing. 
+                                    {% endif %}
+                                  </dd>
+                                  <dd class="govuk-summary-list__actions">
+                                    <a class="govuk-link" href="case-worker-gatekeeping-order-1.html">
+                                      Change<span class="govuk-visually-hidden"> child attendance</span>
+                                    </a>
+                                  </dd>
+                                </div>
+                                {% endif %}
+                              
+                                {% if data['gatekeeping-attendance-birth-parents'] !== undefined %}
+                                <div class="govuk-summary-list__row">
+                                  <dt class="govuk-summary-list__key">
+                                    Birth parents
+                                  </dt>
+                                  <dd class="govuk-summary-list__value">
+                                    {% if data['gatekeeping-attendance-birth-parents-required'] !== undefined %}
+                                      <p>1. The birth parents are required to attend the next hearing if they wish to make any representations as to why the court should not make an adoption order in respect of the child.</p>
+                                    {% endif %}
+                                    {% if data['gatekeeping-attendance-birth-parents-address'] !== undefined %}
+                                      <p>2. The court will serve notice of the hearing listed above on the birth mother and birth father at their last known address(es) specified in the application/covering letter.</p>
+                                    {% endif %}
+                                    {% if data['gatekeeping-attendance-birth-parents-acknowledgement'] !== undefined %}
+                                      <p>3. Upon receipt of this order the birth mother and father must complete the acknowledgement, or email the court quoting the case number to (PO BOX ADDRESS)  or speak to the social worker <span class="govuk-!-font-weight-bold">to confirm receipt of this order</span>. Failing that the court may order that they are personally served with this order.</p>
+                                      <p><span class="govuk-!-font-weight-bold">Court email address: </span>{{ data['gatekeeping-attendance-court-email-address'] }}</p>
+                                    {% endif %}
+                                    {% if data['gatekeeping-attendance-birth-parents-directions'] !== undefined %}
+                                      <p>4. The purpose of the first hearing listed above is to consider any representations made by or on behalf of the birth parents and to give any consequential directions or orders. </p>
+                                    {% endif %}
+                                    {% if data['gatekeeping-attendance-birth-parents-copy'] !== undefined %}
+                                    <p>5. In the event that the birth parents do not attend or otherwise make representations as to why an order should not be made the court shall:</p>
+                                    <p>&nbsp;&nbsp;a. determine whether it is satisfied that the birth parents were each served with a copy of this order; and, if so</p>
+                                    <p>&nbsp;&nbsp;b. consider whether a final order should be made at that hearing</p>
+                                    {% endif %}
+                                    {% if data['gatekeeping-attendance-birth-parents-final-hearing'] !== undefined %}
+                                      <p>6. If having considered the matters set out in paragraph (4) above the court considers that a final order should be made the first hearing shall be treated as a final hearing and an adoption order shall be made.</p>
+                                    {% endif %}
+                                  </dd>
+                                  <dd class="govuk-summary-list__actions">
+                                    <a class="govuk-link" href="case-worker-gatekeeping-order-1.html">
+                                      Change<span class="govuk-visually-hidden"> child attendance</span>
+                                    </a>
+                                  </dd>
+                                </div>
+                                {% endif %}
+                              
+                              </dl>
+
+                              <h3 class="govuk-heading-s govuk-!-margin-top-9">6. Leave to oppose</h3>
+                      
+                              <dl class="govuk-summary-list">
+                                <div class="govuk-summary-list__row">
+                                  <dt class="govuk-summary-list__key">
+                                    Filed leave to oppose
+                                  </dt>
+                                  {% if data['gatekeeping-leave-oppose-checkbox'] != undefined %}
+                                  <dd class="govuk-summary-list__value">
+                                    Yes
+                                  </dd>
+                                  {% else %}
+                                  <dd class="govuk-summary-list__value">
+                                    No
+                                  </dd>
+                                  {% endif %}
+                                  <dd class="govuk-summary-list__actions">
+                                    <a class="govuk-link" href="case-worker-gatekeeping-order-1.html">
+                                      Change<span class="govuk-visually-hidden"> leave to oppose</span>
+                                    </a>
+                                  </dd>
+                                </div>
+                              </dl>
+
+                              <h3 class="govuk-heading-s govuk-!-margin-top-9">7. Additional orders</h3>
+                              <dl class="govuk-summary-list">
+                                <div class="govuk-summary-list__row">
+                                  <dt class="govuk-summary-list__key">
+                                    Additional orders
+                                  </dt>
+                                  <dd class="govuk-summary-list__value">
+                                    {% if data['gatekeeping-additional-orders'] %}
+                                      {{ data['gatekeeping-additional-orders'] }}
+                                    {% else %}
+                                      Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. 
+                                    {% endif %}
+                                  </dd>
+                                  <dd class="govuk-summary-list__actions">
+                                    <a class="govuk-link" href="case-worker-gatekeeping-order-1.html">
+                                      Change<span class="govuk-visually-hidden"> preamble</span>
+                                    </a>
+                                  </dd>
+                                </div>
+                              </dl>
+
+
+                              <h3 class="govuk-heading-s govuk-!-margin-top-9">8. Cost orders</h3>
+                      
+                              <dl class="govuk-summary-list">
+                                <div class="govuk-summary-list__row">
+                                  <dt class="govuk-summary-list__key">
+                                    Order for costs
+                                  </dt>
+                                  {% if data['gatekeeping-cost-orders-checkboxes'] != undefined %}
+                                  <dd class="govuk-summary-list__value">
+                                    Yes
+                                  </dd>
+                                  {% else %}
+                                  <dd class="govuk-summary-list__value">
+                                    No
+                                  </dd>
+                                  {% endif %}
+                                  <dd class="govuk-summary-list__actions">
+                                    <a class="govuk-link" href="case-worker-gatekeeping-order-1.html">
+                                      Change<span class="govuk-visually-hidden"> order for costs</span>
+                                    </a>
+                                  </dd>
+                                </div>
+                              </dl>
+
+
+                              <h3 class="govuk-heading-s govuk-!-margin-top-9">Parties</h3>
+                      
+                              <dl class="govuk-summary-list">
+                                <div class="govuk-summary-list__row">
+                                  <dt class="govuk-summary-list__key">
+                                    Ordered by
+                                  </dt>
+                                  <dd class="govuk-summary-list__value">
+                                    {% if data['gatekeeping-judge-name'] %}
+                                      {{ data['gatekeeping-judge-name']}}
+                                    {% else %}
+                                      His Honour Judge Sherlock Holmes
+                                    {% endif %}
+                                  </dd>
+                                  <dd class="govuk-summary-list__actions">
+                                    <a class="govuk-link" href="case-worker-gatekeeping-order-1.html">
+                                      Change<span class="govuk-visually-hidden"> judge</span>
+                                    </a>
+                                  </dd>
+                                </div>
+                                <div class="govuk-summary-list__row">
+                                  <dt class="govuk-summary-list__key">
+                                    To be served to
+                                  </dt>
+                                  <dd class="govuk-summary-list__value">
+                                    {% if data['gatekeeping-recipient-birth-mother'] %}
+                                      <p>{{ data['gatekeeping-recipient-birth-mother'] }}</p>
+                                    {% endif %}
+                                    {% if data['gatekeeping-recipient-birth-father'] %}
+                                      <p>{{ data['gatekeeping-recipient-birth-father'] }}</p>
+                                    {% endif %}
+                                    {% if data['gatekeeping-recipient-applicants'] %}
+                                      <p>{{ data['gatekeeping-recipient-applicants'] }}</p>
+                                    {% endif %}
+                                    {% if data['gatekeeping-recipient-child-la'] %}
+                                      <p>{{ data['gatekeeping-recipient-child-la'] }}</p>
+                                    {% endif %}
+                                    {% if data['gatekeeping-recipient-applicants-la'] %}
+                                      <p>{{ data['gatekeeping-recipient-applicants-la'] }}</p>
+                                    {% endif %}
+                                    {% if data['gatekeeping-recipient-other-adoption-agency'] %}
+                                      <p>{{ data['gatekeeping-recipient-other-adoption-agency'] }}</p>
+                                    {% endif %}
+                                    {% if data['gatekeeping-recipient-other-party-pr'] %}
+                                      <p>{{ data['gatekeeping-recipient-other-party-pr'] }}</p>
+                                    {% endif %}
+                                    {% if data['gatekeeping-recipient-cafcass'] %}
+                                      <p>{{ data['gatekeeping-recipient-cafcass'] }}</p>
+                                    {% endif %}
+                                  </dd>
+                                  <dd class="govuk-summary-list__actions">
+                                    <a class="govuk-link" href="case-worker-gatekeeping-order-4-select-recipient.html">
+                                      Change<span class="govuk-visually-hidden"> served to recipient</span>
+                                    </a>
+                                  </dd>
+                                </div>
+                              </dl>
+
+                          </div>
+                        </main>
+                      </div>
+                        
+                      <!-- Buttons -->
+                      {% include "../../includes/buttons-xui.html" %}
+                    </form>
+                  </div>
+                </div>
+              </div>
+          </main>
+      </div>      
+  </div>
+</html>
+
+{% block footer %}
+{% include "includes/newfooter.html" %}
+{% endblock %}

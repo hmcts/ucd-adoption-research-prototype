@@ -1,0 +1,130 @@
+{% block header %}
+{% include "includes/xui-header.html" %}
+{% endblock %}
+
+
+<html lang="en" class="govuk-template ">
+  <div style=" max-width:1300px; margin: 0 auto;">
+      <div style=" max-width:1300px;  min-width:1300px;  margin: 20px 0px 0px 0px;  ">
+          <main class="govuk-main-wrapper " id="main-content" role="main" style="padding-top: 25px;">
+              <div class="govuk-width-container">
+                <div class="govuk-grid-row" style="width:1300px; margin-left: -90px;">
+                  <div class="govuk-grid-column-two-thirds">
+                    <h1 class="govuk-heading-xl">Check your answers for gatekeeping order</h1>
+                    <h2 class="govuk-heading-l govuk-!-margin-bottom-3">#1234-5678-0921-2722</h2>
+                    <h2 class="govuk-heading-m govuk-!-margin-top-0 govuk-!-margin-bottom-2">Child's name: Jane Austen</h2>
+
+                    <form action="/research-11/case-worker/case-worker-gatekeeping-order-check-your-answers" method="post" class="form">
+                      <div class="govuk-width-container">
+                      
+                        <main class="govuk-main-wrapper " id="main-content" role="main">
+                          <div class="govuk-grid-row">
+                      
+                      
+                              <h2 class="govuk-heading-m">Preamble</h2>
+                      
+                              <dl class="govuk-summary-list">
+                                <div class="govuk-summary-list__row">
+                                  <dt class="govuk-summary-list__key">
+                                    Preamble
+                                  </dt>
+                                  <dd class="govuk-summary-list__value">
+                                    {% if data['gatekeepingPreamble'] %}
+                                      {{ data['gatekeepingPreamble'] }}
+                                    {% else %}
+                                      Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. 
+                                    {% endif %}
+                                  </dd>
+                                  <dd class="govuk-summary-list__actions">
+                                    <a class="govuk-link" href="case-worker-gatekeeping-order-1.html">
+                                      Change<span class="govuk-visually-hidden"> preamble</span>
+                                    </a>
+                                  </dd>
+                                </div>
+                              </dl>
+
+                              <h2 class="govuk-heading-m">The court orders that:</h2>
+                      
+                              <dl class="govuk-summary-list">
+                                <div class="govuk-summary-list__row">
+                                  <dt class="govuk-summary-list__key">
+                                    2. Allocation
+                                  </dt>
+                                  <dd class="govuk-summary-list__value">
+                                  {% if data['gatekeeping-order-allocate-judge'] === "previous-judge" %}
+                                    {{ data['sameJudge'] }}
+                                  {% else %}
+                                    {{ data['differentJudge'] }} {{ data['gatekeeping-judge-name'] }}.
+                                    <!-- <br><br><span class="govuk-!-font-weight-bold">Name of judge: </span>{{ data['gatekeeping-judge-name'] }} -->
+                                  {% endif %}
+                                </dd>
+                                  <dd class="govuk-summary-list__actions">
+                                    <a class="govuk-link" href="case-worker-gatekeeping-order-1.html">
+                                      Change<span class="govuk-visually-hidden"> allocation</span>
+                                    </a>
+                                  </dd>
+                                </div>
+
+                                <div class="govuk-summary-list__row">
+                                  <dt class="govuk-summary-list__key">
+                                    3. Hearing date
+                                  </dt>
+                                  <dd class="govuk-summary-list__value">
+                                    {% if data['gatekeeping-hearing-date-future-checkbox'] !== undefined %}
+                                      The application is to be listed at a future date.
+                                      {% else %}
+                                        {% if data['gatekeeping-first-hearing-checkbox'] !== undefined %}
+                                        <label class="govuk-label" for="event-name">
+                                          The application is listed for a First Hearing on ….. at ……. (with a time estimate of 30 minutes) at …….                      
+                                        </label>       
+                                        {% endif %}
+                                        {% if data['gatekeeping-further-hearings-checkbox'] !== undefined %}
+                                        <label class="govuk-label" for="event-name">
+                                          The application is listed for a (issues resolution / case management /further directions / final hearing) on (date) at (time) with a time estimate of (length) at (location)                      
+                                        </label>       
+                                        <br><span class="govuk-!-font-weight-bold">Hearing date: </span>
+                                        {{ data['gatekeeping-first-hearing-day'] }} {{ data['monthName'][data['gatekeeping-first-hearing-month']] }} {{ data['gatekeeping-first-hearing-year'] }} at {{ data['gatekeeping-first-hearing-hour'] }}:{{ data['gatekeeping-first-hearing-minute'] }}:{{ data['gatekeeping-first-hearing-second'] }}
+                                        <br><span class="govuk-!-font-weight-bold">Name of court: </span>
+                                        {{ data['gatekeeping-court-name'] }}                                      
+                                      {% endif %}
+                                    {% endif %}                                                
+                                  </dd>
+                                  <dd class="govuk-summary-list__actions">
+                                    <a class="govuk-link" href="case-worker-gatekeeping-order-1.html">
+                                      Change<span class="govuk-visually-hidden"> hearing date</span>
+                                    </a>
+                                  </dd>
+                                </div>
+                                <div class="govuk-summary-list__row">
+                                  <dt class="govuk-summary-list__key">
+                                    Contact details
+                                  </dt>
+                                  <dd class="govuk-summary-list__value">
+                                    <p class="govuk-body">07700 900457</p>
+                                    <p class="govuk-body">sarah.phillips@example.com</p>
+                                  </dd>
+                                  <dd class="govuk-summary-list__actions">
+                                    <a class="govuk-link" href="#">
+                                      Change<span class="govuk-visually-hidden"> contact details</span>
+                                    </a>
+                                  </dd>
+                                </div>
+                              </dl>
+                          </div>
+                        </main>
+                      </div>
+                        
+                      <!-- Buttons -->
+                      {% include "../../includes/buttons-xui.html" %}
+                    </form>
+                  </div>
+                </div>
+              </div>
+          </main>
+      </div>      
+  </div>
+</html>
+
+{% block footer %}
+{% include "includes/newfooter.html" %}
+{% endblock %}

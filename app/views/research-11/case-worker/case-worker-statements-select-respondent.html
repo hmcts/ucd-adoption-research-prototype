@@ -1,0 +1,117 @@
+{% block header %}
+{% include "layout-xui.html" %}
+{% endblock %}
+
+
+<html lang="en" class="govuk-template ">  
+  <div style=" max-width:1300px; margin: 0 auto;">
+      <div style=" max-width:1300px;  min-width:1300px;  margin: 20px 0px 0px 0px;  ">
+          <main class="govuk-main-wrapper " id="main-content" role="main" style="padding-top: 25px;">                      
+              <div class="govuk-width-container">
+                <div class="govuk-grid-row" style="width:1300px; margin-left: -90px;">
+                  <h1 class="govuk-heading-xl">Who submitted the document?</h1>
+                  <h2 class="govuk-heading-l govuk-!-margin-bottom-3">#1234-5678-0921-2722</h2>
+                  <h2 class="govuk-heading-m govuk-!-margin-top-0 govuk-!-margin-bottom-7">Child's name: Jane Austen</h2>                  
+                  
+
+                  <form action="/research-11/case-worker/case-worker-statements-select-respondent" method="post" class="form">
+                  <div class="govuk-form-group">
+          
+                      <div class="govuk-radios govuk-radios--conditional" data-module="govuk-radios">
+          
+                        <div class="govuk-radios__item">
+                          <input class="govuk-radios__input" id="child social worker" name="upload-respondent-role" type="radio" value="child social worker">
+                          <label class="govuk-label govuk-radios__label" for="child social worker">
+                            Child's social worker: Agnes James, London Borough of Tower Hamlets
+                          </label>
+                        </div>
+
+                        <div class="govuk-radios__item">
+                          <input class="govuk-radios__input" id="adoption agency" name="upload-respondent-role" type="radio" value="adoption agency">
+                          <label class="govuk-label govuk-radios__label" for="adoption agency">
+                            Adoption agency or local authority: Mary Francis, Royal Borough of Greenwich
+                          </label>
+                        </div>
+          
+                        <div class="govuk-radios__item">
+                          <input class="govuk-radios__input" id="other adoption agency" name="upload-respondent-role" type="radio" value="other adoption agency">
+                          <label class="govuk-label govuk-radios__label" for="other adoption agency">
+                            Other adoption agency or local authority: Phil Jones, London Borough of Southwark
+                          </label>
+                        </div>
+          
+                        <div class="govuk-checkboxes__item">
+                          <input class="govuk-radios__input" id="child social worker" name="upload-respondent-role" type="radio" value="child social worker">
+                          <label class="govuk-label govuk-radios__label" for="child social worker">
+                            First applicant: Agatha Mary Clarissa Christie
+                          </label>
+                        </div>
+          
+                        <div class="govuk-checkboxes__item">
+                          <input class="govuk-radios__input" id="child social worker" name="upload-respondent-role" type="radio" value="child social worker">
+                          <label class="govuk-label govuk-radios__label" for="child social worker">
+                            Second applicant: Arthur Ignatius Conan Doyle
+                          </label>
+                        </div>
+          
+                        <div class="govuk-radios__item">
+                          <input class="govuk-radios__input" id="birth-mother" name="upload-respondent-role" type="radio" value="birth mother">
+                          <label class="govuk-label govuk-radios__label" for="birth-mother">
+                            Birth mother: Marianne Austen
+                          </label>
+                        </div>
+          
+                        <div class="govuk-radios__item">
+                          <input class="govuk-radios__input" id="birth-father" name="upload-respondent-role" type="radio" value="birth father">
+                          <label class="govuk-label govuk-radios__label" for="birth-father">
+                            Birth father: John Austen
+                          </label>
+                        </div>
+          
+                        <div class="govuk-radios__item">
+                          <input class="govuk-radios__input" id="person-with-pr" name="upload-respondent-role" type="radio" value="person with parental responsibility">
+                          <label class="govuk-label govuk-radios__label" for="person-with-pr">
+                            Person with parental responsibility: Peter Murphy
+                          </label>
+                        </div>
+          
+                        <div class="govuk-radios__item">
+                          <input class="govuk-radios__input" id="other" name="upload-respondent-role" type="radio" value="other" data-aria-controls="conditional-contact" {% if data['upload-respondent-role'] == "other" %} checked {% endif %}>
+                          <label class="govuk-label govuk-radios__label" for="xui-reply-message">
+                            Other party
+                          </label>
+                        </div>
+
+                        <div class="govuk-radios__conditional govuk-radios__conditional--hidden " id="conditional-contact">
+                          <div class="govuk-form-group">
+                            <label class="govuk-label" for="role">
+                              Role
+                            </label>
+                            <input class="govuk-input govuk-input--width-30" id="upload-party-role" name="upload-party-role" type="text" value="{{ data['upload-party-role'] }}">
+                                            
+                            <label class="govuk-label govuk-!-margin-top-5" for="role">
+                              Name
+                            </label>
+                            <input class="govuk-input govuk-input--width-30" id="upload-party-name" name="upload-party-name" type="text" value="{{ data['upload-party-name'] }}">
+                          </div>                                            
+                        </div>
+                      </div>                  
+                </div>
+              
+                <input type="hidden" name="document-type" value="{{data['document-type']}}">
+                <!-- Buttons -->
+                {% include "../../includes/buttons-xui.html" %}
+                  </form>
+                </div>
+  </div>
+  
+
+              </div>
+          </main>
+      </div>
+  </div>
+</html>
+
+{% block footer %}
+{% include "includes/newfooter.html" %}
+{% endblock %}

@@ -1,0 +1,165 @@
+{% block header %}
+{% include "includes/xui-header.html" %}
+{% endblock %}
+
+
+<html lang="en" class="govuk-template ">
+  <div style=" max-width:1300px; margin: 0 auto;">
+      <div style=" max-width:1300px;  min-width:1300px;  margin: 20px 0px 0px 0px;  ">
+          <main class="govuk-main-wrapper " id="main-content" role="main" style="padding-top: 25px;">
+            <div class="govuk-grid-row">
+                <div class="govuk-width-container">
+                  <div class="govuk-grid-row" style="width:1300px; margin-left: -90px;">
+                    <h1 class="govuk-heading-xl">&nbsp;&nbsp;Amend case details</h1>
+
+                    <div class="govuk-grid-column-two-thirds">
+
+                      <form action="/research-11/case-worker/case-worker-amend-case-details" method="post" class="form">
+
+                        <h2 class="govuk-heading-m govuk-!-margin-bottom-4">Case details</h2>
+
+                        <div class="govuk-form-group">
+                          <label class="govuk-label" for="adop-type">
+                            Adoption Type
+                          </label>
+                          <input class="govuk-input" id="adop-type" name="adop-type" type="text" value="{{ data['adoptionType'] }}">
+                        </div>
+
+                        <div class="govuk-form-group">
+                          <fieldset class="govuk-fieldset" role="group" aria-describedby="passport-issued-hint">
+                            <legend class="govuk-fieldset__legend">
+                              Date submitted
+                            </legend>
+
+                            <div class="govuk-date-input" id="first-dob">
+                              <div class="govuk-date-input__item">
+                                <div class="govuk-form-group">
+                                  <label class="govuk-label govuk-date-input__label" for="sub-date-day">
+                                    Day
+                                  </label>
+                                  <input class="govuk-input govuk-date-input__input govuk-input--width-2" id="sub-date-day" name="sub-date-day" type="text" inputmode="numeric" value="{{ data['dateSubmittedDay'] }}">
+                                </div>
+                              </div>
+                              <div class="govuk-date-input__item">
+                                <div class="govuk-form-group">
+                                  <label class="govuk-label govuk-date-input__label" for="sub-date-month">
+                                    Month
+                                  </label>
+                                  <input class="govuk-input govuk-date-input__input govuk-input--width-2" id="sub-date-month" name="sub-date-month" type="text" inputmode="numeric" value="{{ data['dateSubmittedMonth'] }}">
+                                </div>
+                              </div>
+                              <div class="govuk-date-input__item">
+                                <div class="govuk-form-group">
+                                  <label class="govuk-label govuk-date-input__label" for="sub-date-year">
+                                    Year
+                                  </label>
+                                  <input class="govuk-input govuk-date-input__input govuk-input--width-4" id="sub-date-year" name="sub-date-year" type="text" inputmode="numeric" value="{{ data['dateSubmittedYear'] }}">
+                                </div>
+                              </div>
+                            </div>
+                          </fieldset>
+                        </div>
+
+                        <div class="govuk-form-group">
+                          <fieldset class="govuk-fieldset" role="group" aria-describedby="passport-issued-hint">
+                            <legend class="govuk-fieldset__legend">
+                              Date child moved in
+                            </legend>
+
+                            <div class="govuk-date-input" id="child-moved-in-day">
+                              <div class="govuk-date-input__item">
+                                <div class="govuk-form-group">
+                                  <label class="govuk-label govuk-date-input__label" for="child-moved-in-day">
+                                    Day
+                                  </label>
+                                  <input class="govuk-input govuk-date-input__input govuk-input--width-2" id="child-moved-in-day" name="child-moved-in-day" type="text" inputmode="numeric" value="{{ data['dateChildMovedInDay'] }}">
+                                </div>
+                              </div>
+                              <div class="govuk-date-input__item">
+                                <div class="govuk-form-group">
+                                  <label class="govuk-label govuk-date-input__label" for="child-moved-in-month">
+                                    Month
+                                  </label>
+                                  <input class="govuk-input govuk-date-input__input govuk-input--width-2" id="child-moved-in-month" name="child-moved-in-month" type="text" inputmode="numeric" value="{{ data['dateChildMovedInMonth'] }}">
+                                </div>
+                              </div>
+                              <div class="govuk-date-input__item">
+                                <div class="govuk-form-group">
+                                  <label class="govuk-label govuk-date-input__label" for="child-moved-in-year">
+                                    Year
+                                  </label>
+                                  <input class="govuk-input govuk-date-input__input govuk-input--width-4" id="child-moved-in-year" name="child-moved-in-year" type="text" inputmode="numeric" value="{{ data['dateChildMovedInYear'] }}">
+                                </div>
+                              </div>
+                            </div>
+                          </fieldset>
+                        </div>
+
+                        <h3 class="govuk-heading-s govuk-!-margin-bottom-4 govuk-!-margin-top-8">Placement order details</h3>
+
+                        <div class="govuk-form-group">
+                          <label class="govuk-label" for="adop-type">
+                              Name of court
+                          </label>
+                          <input class="govuk-input" id="place-order-court" name="place-order-court" type="text" value="{{ data['adoptionPlacementCourt'] }}">
+                        </div>
+
+                        <div class="govuk-form-group">
+                          <fieldset class="govuk-fieldset" role="group" aria-describedby="passport-issued-hint">
+                          <legend class="govuk-fieldset__legend">
+                            Date of order
+                          </legend>
+
+                          <div class="govuk-date-input" id="first-dob">
+                            <div class="govuk-date-input__item">
+                              <div class="govuk-form-group">
+                                <label class="govuk-label govuk-date-input__label" for="place-date-day">
+                                  Day
+                                </label>
+                                <input class="govuk-input govuk-date-input__input govuk-input--width-2" id="place-date-day" name="place-date-day" type="text" inputmode="numeric" value="{{ data['placeSubmittedDay'] }}">
+                              </div>
+                            </div>
+                            <div class="govuk-date-input__item">
+                              <div class="govuk-form-group">
+                                <label class="govuk-label govuk-date-input__label" for="place-date-month">
+                                  Month
+                                </label>
+                                <input class="govuk-input govuk-date-input__input govuk-input--width-2" id="place-date-month" name="place-date-month" type="text" inputmode="numeric" value="{{ data['placeSubmittedMonth'] }}">
+                              </div>
+                            </div>
+                            <div class="govuk-date-input__item">
+                              <div class="govuk-form-group">
+                                <label class="govuk-label govuk-date-input__label" for="place-date-year">
+                                  Year
+                                </label>
+                                <input class="govuk-input govuk-date-input__input govuk-input--width-4" id="place-date-year" name="place-date-year" type="text" inputmode="numeric" value="{{ data['placeSubmittedYear'] }}">
+                              </div>
+                            </div>
+                          </div>
+
+                          </fieldset>
+                        </div>
+
+                        <div class="govuk-form-group">
+                          <label class="govuk-label" for="place-order-detail">
+                            Order number
+                          </label>
+                          <input class="govuk-input govuk-!-width-one-third" id="place-date-year" name="place-date-year" type="text" inputmode="numeric" value="{{ data['placementOrderDetails'] }}">
+                        </div>
+
+                        <!-- Buttons -->
+                        {% include "../../includes/buttons-xui.html" %}
+
+                      </form>
+                    </div>
+                  </div>
+                </div>
+              </div>
+          </main>
+      </div>
+  </div>
+</html>
+
+{% block footer %}
+{% include "includes/newfooter.html" %}
+{% endblock %}

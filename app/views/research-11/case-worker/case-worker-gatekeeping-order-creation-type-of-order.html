@@ -1,0 +1,90 @@
+{% block header %}
+{% include "includes/xui-header.html" %}
+{% endblock %}
+
+
+<html lang="en" class="govuk-template ">
+  <div style=" max-width:1300px; margin: 0 auto;">
+      <div style=" max-width:1300px;  min-width:1300px;  margin: 20px 0px 0px 0px;  ">
+          <main class="govuk-main-wrapper " id="main-content" role="main" style="padding-top: 25px;">
+              <div class="govuk-width-container">
+                <div class="govuk-grid-row" style="width:1300px; margin-left: -90px;">
+                  <h1 class="govuk-heading-xl">Manage orders and directions</h1>
+                  <h2 class="govuk-heading-l govuk-!-margin-bottom-3">#1234-5678-0921-2722</h2>
+                  <h2 class="govuk-heading-m govuk-!-margin-top-0 govuk-!-margin-bottom-7">Child's name: Jane Austen</h2>
+
+
+                  <form action="/research-11/case-worker/case-worker-gatekeeping-order-creation-type-of-order" method="post" class="form">
+                  <div class="govuk-form-group">
+                    <div class="govuk-radios govuk-radios--conditional" data-module="govuk-radios">
+                      <label class="govuk-label govuk-!-margin-bottom-4 govuk-!-font-weight-bold" for="sender-email-address">
+                        Select type of order
+                      </label>
+
+                      <div class="govuk-radios__item">
+                        <input class="govuk-radios__input" id="gatekeeping" name="xui-type-order" type="radio" value="gatekeeping" {% if data['xui-type-order'] == "gatekeeping" %} checked {% endif %}>
+                        <label class="govuk-label govuk-radios__label" for="xui-send-message">
+                          Case management order (gatekeeping order)
+                        </label>
+                      </div>
+
+                      <div class="govuk-radios__item">
+                        <input class="govuk-radios__input" id="general" name="xui-type-order" type="radio" value="general" {% if data['xui-type-order'] == "general" %} checked {% endif %}>
+                        <label class="govuk-label govuk-radios__label" for="xui-send-message">
+                          General directions order
+                        </label>
+                      </div>
+        
+                      <div class="govuk-radios__item">
+                        <input class="govuk-radios__input" id="adoption" name="xui-type-order" type="radio" value="adoption" {% if data['xui-type-order'] == "adoption" %} checked {% endif %}>
+                        <label class="govuk-label govuk-radios__label" for="xui-send-message">
+                          Final adoption order
+                        </label>
+                      </div>
+
+                      <!-- <div class="govuk-radios__item">
+                        <input class="govuk-radios__input" id="lot" name="xui-type-order" type="radio" value="lot" {% if data['xui-type-order'] == "lot" %} checked {% endif %}>
+                        <label class="govuk-label govuk-radios__label" for="xui-send-message">
+                          Leave to oppose order
+                        </label>
+                      </div>
+        
+                      <div class="govuk-radios__item">
+                        <input class="govuk-radios__input" id="dwp" name="xui-type-order" type="radio" value="dwp" {% if data['xui-type-order'] == "dwp" %} checked {% endif %}>
+                        <label class="govuk-label govuk-radios__label" for="xui-send-message">
+                          DWP / HMRC order
+                        </label>
+                      </div>
+
+                      <div class="govuk-radios__item">
+                        <input class="govuk-radios__input" id="ceremony" name="xui-type-order" type="radio" value="ceremony" {% if data['xui-type-order'] == "ceremony" %} checked {% endif %}>
+                        <label class="govuk-label govuk-radios__label" for="xui-send-message">
+                          Ceremony order
+                        </label>
+                      </div>
+        
+                      <div class="govuk-radios__item">
+                        <input class="govuk-radios__input" id="production" name="xui-type-order" type="radio" value="production" {% if data['xui-type-order'] == "production" %} checked {% endif %}>
+                        <label class="govuk-label govuk-radios__label" for="xui-send-message">
+                          Production order
+                        </label>
+                      </div>
+         -->
+                    </div>
+                
+                  </fieldset>
+                </div>
+                <!-- Buttons -->
+                {% include "../../includes/buttons-xui.html" %}
+                  </form>
+                </div>
+
+              </div>
+          </main>
+      </div>
+  </div>
+</html>
+
+{% block footer %}
+{% include "includes/newfooter.html" %}
+{% endblock %}

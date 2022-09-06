@@ -123,71 +123,7 @@ module.exports = {
 "repliedMessage": "",
 "correspondenceStatus": 0,
 "allocatedJudge": 0,
-"correspondence": "",
-
-"firstApplicantFirstNames": "Agatha Mary Clarissa",
-"firstApplicantLastNames": "Christie",
-"firstApplicantPreviousNames": "Agatha Mary Clarissa Miller",
-"firstApplicantDateOfBirthDay" : "25",
-"firstApplicantDateOfBirthMonth" : 1,
-"firstApplicantDateOfBirthYear" : "1987",
-"firstApplicantOccupation" : "Physiotherapist",
-"firstApplicantFirstLine" : "Buckingham Palace",
-"firstApplicantSecondLine" : "",
-"firstApplicantTown" : "London",
-"firstApplicantCounty" : "",
-"firstApplicantPostcode" : "SW1A 1AA",
-"firstApplicantEmail" : "agatha@christie.com",
-"firstApplicantPhone" : "07865432323",
-
-"secondApplicantFirstNames": "Arthur Ignatius",
-"secondApplicantLastNames": "Conan Doyle",
-"secondApplicantPreviousNames": "",
-"secondApplicantDateOfBirthDay" : "3",
-"secondApplicantDateOfBirthMonth" : 12,
-"secondApplicantDateOfBirthYear" : "1977",
-"secondApplicantOccupation" : "Self-employed hairdresser",
-"secondApplicantFirstLine" : "Buckingham Palace",
-"secondApplicantSecondLine" : "",
-"secondApplicantTown" : "London",
-"secondApplicantCounty" : "",
-"secondApplicantPostcode" : "SW1A 1AA",
-"secondApplicantEmail" : "arthur.doyle@gmail.com",
-"secondApplicantPhone" : "07766779709",
-
-"solicitorApplicantFirstNames": "Do Do & Sons",
-"solicitorApplicantRef": "JA13786",
-"solicitorApplicantFirstLine" : "4D Market Street",
-"solicitorApplicantSecondLine" : "",
-"solicitorApplicantTown": "West Wolsley",
-"solicitorApplicantCounty" : "",
-"solicitorApplicantPostcode" : "W34 H67",
-"solicitorApplicantEmail" : "dodoinfo@law.com",
-"solicitorApplicantPhone" : "07766554433",
-
-"adoptionType" : "Post-placement",
-"dateSubmittedDay" : "11",
-"dateSubmittedMonth" : 8,
-"dateSubmittedYear" : "2022",
-"dateChildMovedInDay" : "12",
-"dateChildMovedInMonth" : 7,
-"dateChildMovedInYear" : "2021",
-"placementOrderDetails" : "ANC13637883",
-"adoptionPlacementCourt" : "Brighton Family Court",
-"placeSubmittedDay" : "12",
-"placeSubmittedMonth" : 7,
-"placeSubmittedYear" : "2021",
-
-
-"pathFinalOrder": 0,
-
-"gatekeeping-court-name": "Brighton Court",
-
-"sameJudge": "Pursuant to the Family Court (Composition and Distribution of Business) Rules 2014, given the original care proceedings were concluded by His Honour Judge Sherlock Holmes, the case is allocated to His Honour Judge Sherlock Holmes.",
-"differentJudge": "Upon consideration of the papers and in order to make the most effective and efficient use of local judicial resources, the proceedings are reallocated to ",
-
-"newOrder": 0
-
+"correspondence": ""
 
 
 ,}

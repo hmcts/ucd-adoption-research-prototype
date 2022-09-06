@@ -1,0 +1,389 @@
+{% block header %}
+{% include "layout-xui.html" %}
+{% endblock %}
+
+
+<html lang="en" class="govuk-template ">
+  <div style=" max-width:1300px; margin: 0 auto;">
+      <div style=" max-width:1300px;  min-width:1300px;  margin: 20px 0px 0px 0px;  ">
+          <main class="govuk-main-wrapper " id="main-content" role="main" style="padding-top: 25px;">
+            <div class="govuk-grid-row">
+                <div class="govuk-width-container">
+                  <div class="govuk-grid-row" style="width:1300px; margin-left: -90px;">
+                  <h1 class="govuk-heading-xl">&nbsp;&nbsp;Amend applicant details</h1>
+
+
+
+                    <div class="govuk-grid-column-two-thirds">
+
+                    <form action="/research-11/case-worker/case-worker-amend-applicant-details" method="post" class="form">
+
+                      <h2 class="govuk-heading-m govuk-!-margin-bottom-0">First applicant</h2>
+                      <br>
+
+                      <div class="govuk-form-group">
+                        <label class="govuk-label" for="first-first-name">
+                          First names
+                        </label>
+                        <input class="govuk-input" id="first-first-names" name="first-first-names" type="text" value="{{ data['firstApplicantFirstNames'] }}">
+                      </div>
+
+                      <div class="govuk-form-group">
+                        <label class="govuk-label" for="first-last-name">
+                          Last names
+                        </label>
+                        <input class="govuk-input" id="first-last-names" name="first-last-names" type="text" value="{{ data['firstApplicantLastNames'] }}">
+                      </div>
+
+                      <div class="govuk-form-group">
+                        <label class="govuk-label" for="first-previous-name">
+                          Previous names
+                        </label>
+                        <input class="govuk-input" id="first-previous-names" name="first-previous-names" type="text" value="{{ data['firstApplicantPreviousNames'] }}">
+                      </div>
+
+                      <div class="govuk-form-group">
+                <fieldset class="govuk-fieldset" role="group" aria-describedby="passport-issued-hint">
+                  <legend class="govuk-fieldset__legend">
+                    Date of birth
+                  </legend>
+
+                  <div class="govuk-date-input" id="first-dob">
+                    <div class="govuk-date-input__item">
+                      <div class="govuk-form-group">
+                        <label class="govuk-label govuk-date-input__label" for="first-dob-day">
+                          Day
+                        </label>
+                        <input class="govuk-input govuk-date-input__input govuk-input--width-2" id="first-dob--day" name="first-dob-day" type="text" inputmode="numeric" value="{{ data['firstApplicantDateOfBirthDay'] }}">
+                      </div>
+                    </div>
+                    <div class="govuk-date-input__item">
+                      <div class="govuk-form-group">
+                        <label class="govuk-label govuk-date-input__label" for="first-dob-month">
+                          Month
+                        </label>
+                        <input class="govuk-input govuk-date-input__input govuk-input--width-2" id="first-dob-month" name="first-dob-month" type="text" inputmode="numeric" value="{{ data['firstApplicantDateOfBirthMonth'] }}">
+                      </div>
+                    </div>
+                    <div class="govuk-date-input__item">
+                      <div class="govuk-form-group">
+                        <label class="govuk-label govuk-date-input__label" for="first-dob-year">
+                          Year
+                        </label>
+                        <input class="govuk-input govuk-date-input__input govuk-input--width-4" id="first-dob-year" name="first-dob-year" type="text" inputmode="numeric" value="{{ data['firstApplicantDateOfBirthYear'] }}">
+                      </div>
+                    </div>
+                  </div>
+
+                </fieldset>
+              </div>
+                        <div class="govuk-form-group">
+                            <label class="govuk-label" for="occupation">
+                              Occupation
+                            </label>
+                            <input class="govuk-input" id="first-occupation" name="first-occupation" type="text" value="{{ data['firstApplicantOccupation'] }}">
+                          </div>
+
+                                    <fieldset class="govuk-fieldset">
+
+
+                        <div class="govuk-form-group">
+                        <label class="govuk-label" for="first-address-line-1">
+                          Address line 1
+                        </label>
+                        <input class="govuk-input" id="first-address-line-1" name="first-address-line-1" type="text" autocomplete="first-address-line1" value="{{ data['firstApplicantFirstLine'] }}">
+                        </div>
+
+                        <div class="govuk-form-group">
+                        <label class="govuk-label" for="first-address-line-2">
+                          Address line 2 (optional)
+                        </label>
+                        <input class="govuk-input" id="first-address-line-2" name="first-address-line-2" type="text" autocomplete="first-address-line2" value="{{ data['firstApplicantSecondLine'] }}">
+                        </div>
+
+                        <div class="govuk-form-group">
+                        <label class="govuk-label" for="first-address-town">
+                          Town or city
+                        </label>
+                        <input class="govuk-input govuk-!-width-two-thirds" id="first-address-town" name="first-address-town" type="text" autocomplete="address-level2" value="{{ data['firstApplicantTown'] }}">
+                        </div>
+
+                        <div class="govuk-form-group">
+                        <label class="govuk-label" for="first-address-county">
+                          County (optional)
+                        </label>
+                        <input class="govuk-input govuk-!-width-two-thirds" id="first-address-county" name="first-address-county" type="text" value="{{ data['firstApplicantCounty'] }}">
+                        </div>
+
+                        <div class="govuk-form-group">
+                        <label class="govuk-label" for="first-address-postcode">
+                          Postcode
+                        </label>
+                        <input class="govuk-input govuk-input--width-10" id="first-address-postcode" name="first-address-postcode" type="text" autocomplete="postal-code" value="{{ data['firstApplicantPostcode'] }}">
+                        </div>
+
+                        </fieldset>
+
+                        <div class="govuk-form-group">
+                            <label class="govuk-label" for="email">
+                              Email address
+                            </label>
+                            <input class="govuk-input" id="first-email" name="first-email" type="text" value="{{ data['firstApplicantEmail'] }}">
+                          </div>
+
+                    <div class="govuk-form-group">
+                      <label class="govuk-label" for="first-telephone-number">
+                        Phone number
+                      </label>
+                      <input class="govuk-input govuk-input--width-20" id="first-telephone-number" name="first-telephone-number" type="tel" autocomplete="tel" value="{{ data['firstApplicantPhone'] }}">
+                    </div>
+
+
+                    <br>
+                    <br>
+                    <br>
+
+                    <h2 class="govuk-heading-m govuk-!-margin-bottom-0">Second applicant</h2>
+                    <br>
+
+                    <div class="govuk-form-group">
+                      <label class="govuk-label" for="second-first-name">
+                        First names
+                      </label>
+                      <input class="govuk-input" id="second-first-names" name="second-first-names" type="text" value="{{ data['secondApplicantFirstNames'] }}">
+                    </div>
+
+                    <div class="govuk-form-group">
+                      <label class="govuk-label" for="second-last-name">
+                        Last names
+                      </label>
+                      <input class="govuk-input" id="second-last-names" name="second-last-names" type="text" value="{{ data['secondApplicantLastNames'] }}">
+                    </div>
+
+                    <div class="govuk-form-group">
+                      <label class="govuk-label" for="second-previous-name">
+                        Previous names
+                      </label>
+                      <input class="govuk-input" id="second-previous-names" name="second-previous-names" type="text" value="{{ data['secondApplicantPreviousNames'] }}">
+                    </div>
+
+                    <div class="govuk-form-group">
+              <fieldset class="govuk-fieldset" role="group" aria-describedby="passport-issued-hint">
+                <legend class="govuk-fieldset__legend">
+                  Date of birth
+                </legend>
+
+                <div class="govuk-date-input" id="second-dob">
+                  <div class="govuk-date-input__item">
+                    <div class="govuk-form-group">
+                      <label class="govuk-label govuk-date-input__label" for="second-dob-day">
+                        Day
+                      </label>
+                      <input class="govuk-input govuk-date-input__input govuk-input--width-2" id="second-dob--day" name="second-dob-day" type="text" inputmode="numeric" value="{{ data['secondApplicantDateOfBirthDay'] }}">
+                    </div>
+                  </div>
+                  <div class="govuk-date-input__item">
+                    <div class="govuk-form-group">
+                      <label class="govuk-label govuk-date-input__label" for="second-dob-month">
+                        Month
+                      </label>
+                      <input class="govuk-input govuk-date-input__input govuk-input--width-2" id="second-dob-month" name="second-dob-month" type="text" inputmode="numeric" value="{{ data['secondApplicantDateOfBirthMonth'] }}">
+                    </div>
+                  </div>
+                  <div class="govuk-date-input__item">
+                    <div class="govuk-form-group">
+                      <label class="govuk-label govuk-date-input__label" for="second-dob-year">
+                        Year
+                      </label>
+                      <input class="govuk-input govuk-date-input__input govuk-input--width-4" id="second-dob-year" name="second-dob-year" type="text" inputmode="numeric" value="{{ data['secondApplicantDateOfBirthYear'] }}">
+                    </div>
+                  </div>
+                </div>
+
+              </fieldset>
+            </div>
+                      <div class="govuk-form-group">
+                          <label class="govuk-label" for="occupation">
+                            Occupation
+                          </label>
+                          <input class="govuk-input" id="second-occupation" name="second-occupation" type="text" value="{{ data['secondApplicantOccupation'] }}">
+                        </div>
+
+                                  <fieldset class="govuk-fieldset">
+
+
+                      <div class="govuk-form-group">
+                      <label class="govuk-label" for="second-address-line-1">
+                        Address line 1
+                      </label>
+                      <input class="govuk-input" id="second-address-line-1" name="second-address-line-1" type="text" autocomplete="second-address-line1" value="{{ data['secondApplicantFirstLine'] }}">
+                      </div>
+
+                      <div class="govuk-form-group">
+                      <label class="govuk-label" for="second-address-line-2">
+                        Address line 2 (optional)
+                      </label>
+                      <input class="govuk-input" id="second-address-line-2" name="second-address-line-2" type="text" autocomplete="second-address-line2" value="{{ data['secondApplicantSecondLine'] }}">
+                      </div>
+
+                      <div class="govuk-form-group">
+                      <label class="govuk-label" for="second-address-town">
+                        Town or city
+                      </label>
+                      <input class="govuk-input govuk-!-width-two-thirds" id="second-address-town" name="second-address-town" type="text" autocomplete="address-level2" value="{{ data['secondApplicantTown'] }}">
+                      </div>
+
+                      <div class="govuk-form-group">
+                      <label class="govuk-label" for="second-address-county">
+                        County (optional)
+                      </label>
+                      <input class="govuk-input govuk-!-width-two-thirds" id="second-address-county" name="second-address-county" type="text" value="{{ data['secondApplicantCounty'] }}">
+                      </div>
+
+                      <div class="govuk-form-group">
+                      <label class="govuk-label" for="second-address-postcode">
+                        Postcode
+                      </label>
+                      <input class="govuk-input govuk-input--width-10" id="second-address-postcode" name="second-address-postcode" type="text" autocomplete="postal-code" value="{{ data['secondApplicantPostcode'] }}">
+                      </div>
+
+                      </fieldset>
+
+                      <div class="govuk-form-group">
+                          <label class="govuk-label" for="email">
+                            Email address
+                          </label>
+                          <input class="govuk-input" id="second-email" name="second-email" type="text" value="{{ data['secondApplicantEmail'] }}">
+                        </div>
+
+                  <div class="govuk-form-group">
+                    <label class="govuk-label" for="second-telephone-number">
+                      Phone number
+                    </label>
+                    <input class="govuk-input govuk-input--width-20" id="second-telephone-number" name="second-telephone-number" type="tel" autocomplete="tel" value="{{ data['secondApplicantPhone'] }}">
+                  </div>
+
+                  <div class="govuk-form-group">
+                    <fieldset class="govuk-fieldset" aria-describedby="contact-hint">
+                      <legend class="govuk-fieldset__legend govuk-fieldset__legend--m">
+                        <h1 class="govuk-fieldset__heading">
+                          Applicants solicitor
+                        </h1>
+                      </legend>
+                      <label class="govuk-label" for="telephone-number">
+                        Are the applicants represented by a solicitor?
+                      </label>
+                      <br>
+                      <div class="govuk-radios" data-module="govuk-radios">
+                        <div class="govuk-radios__item">
+                          <input class="govuk-radios__input" id="contact" name="contact" type="radio" value="email" checked data-aria-controls="conditional-contact">
+                          <label class="govuk-label govuk-radios__label" for="contact">
+                            Yes
+                          </label>
+                        </div>
+
+                        <div class="govuk-radios__item">
+                          <input class="govuk-radios__input" id="contact-2" name="contact" type="radio" value="phone" data-aria-controls="conditional-contact-2">
+                          <label class="govuk-label govuk-radios__label" for="contact-2">
+                            No
+                          </label>
+                        </div>
+                        <br>
+                        <div class="govuk-form-group">
+                          <label class="govuk-label" for="solicitor-name">
+                            Solicitor
+                          </label>
+                          <input class="govuk-input" id="Solicitor-name" name="Solicitor-name" type="text" value="{{ data['solicitorApplicantFirstNames'] }}">
+                        </div>
+                        <div class="govuk-form-group">
+                          <label class="govuk-label" for="solicitor-reference number">
+                            Solicitor reference number
+                          </label>
+                          <input class="govuk-input" id="Solicitor-reference number" name="Solicitor-reference number" type="text" value="{{ data['solicitorApplicantRef'] }}">
+                        </div>
+
+                        <br>
+                        <fieldset class="govuk-fieldset">
+
+
+                        <div class="govuk-form-group">
+                        <label class="govuk-label" for="solicitor-address-line-1">
+                        Address line 1
+                        </label>
+                        <input class="govuk-input" id="solicitor-address-line-1" name="solicitor-address-line-1" type="text" autocomplete="solicitor-address-line1" value="{{ data['solicitorApplicantFirstLine'] }}">
+                        </div>
+
+                        <div class="govuk-form-group">
+                        <label class="govuk-label" for="solicitor-address-line-2">
+                        Address line 2 (optional)
+                        </label>
+                        <input class="govuk-input" id="solicitor-address-line-2" name="solicitor-address-line-2" type="text" autocomplete="solicitor-address-line2" value="{{ data['solicitorApplicantSecondLine'] }}">
+                        </div>
+
+                        <div class="govuk-form-group">
+                        <label class="govuk-label" for="solicitor-address-town">
+                        Town or city
+                        </label>
+                        <input class="govuk-input govuk-!-width-two-thirds" id="solicitor-address-town" name="solicitoraddress-town" type="text" autocomplete="address-level2" value="{{ data['solicitorApplicantTown'] }}">
+                        </div>
+
+                        <div class="govuk-form-group">
+                        <label class="govuk-label" for="solicitor-address-county">
+                        County (optional)
+                        </label>
+                        <input class="govuk-input govuk-!-width-two-thirds" id="solicitor-address-county" name="solicitor-address-county" type="text" value="{{ data['solicitorApplicantCounty'] }}">
+                        </div>
+
+                        <div class="govuk-form-group">
+                        <label class="govuk-label" for="solicitor-address-postcode">
+                        Postcode
+                        </label>
+                        <input class="govuk-input govuk-input--width-10" id="solicitor-address-postcode" name="solicitor-address-postcode" type="text" autocomplete="postal-code" value="{{ data['solicitorApplicantPostcode'] }}">
+                        </div>
+
+                        </fieldset>
+
+                        <br>
+                                              <div class="govuk-form-group">
+                                                  <label class="govuk-label" for="solicitor-email">
+                                                    Email address
+                                                  </label>
+                                                  <input class="govuk-input" id="solicitor-email" name="solicitor-email" type="text" value="{{ data['solicitorApplicantEmail'] }}">
+                                                </div>
+
+                                          <div class="govuk-form-group">
+                                            <label class="govuk-label" for="solicitor-telephone-number">
+                                              Phone number
+                                            </label>
+                                            <input class="govuk-input govuk-input--width-20" id="solicitor-telephone-number" name="solicitor-telephone-number" type="tel" autocomplete="tel" value="{{ data['solicitorApplicantPhone'] }}">
+                                          </div>
+
+
+                        <div class="govuk-radios__conditional govuk-radios__conditional--hidden" id="conditional-contact-3">
+
+
+                        </div>
+                      </div>
+
+                    </fieldset>
+                  </div>
+                  <!-- Buttons -->
+                  {% include "../../includes/buttons-xui.html" %}
+                    </form>
+
+                    </div>
+
+
+
+
+                  </div>
+                </div>
+
+          </main>
+      </div>
+  </div>
+</html>
+
+{% block footer %}
+{% include "includes/newfooter.html" %}
+{% endblock %}

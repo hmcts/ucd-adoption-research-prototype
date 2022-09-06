@@ -1,0 +1,60 @@
+{% block header %}
+{% include "includes/xui-header.html" %}
+{% endblock %}
+
+
+<html lang="en" class="govuk-template ">
+  <div style=" max-width:1300px; margin: 0 auto;">
+      <div style=" max-width:1300px;  min-width:1300px;  margin: 20px 0px 0px 0px;  ">
+          <main class="govuk-main-wrapper " id="main-content" role="main" style="padding-top: 25px;">
+              <div class="govuk-width-container">
+                <div class="govuk-grid-row" style="width:1300px; margin-left: -90px;">
+                  <h1 class="govuk-heading-xl">Send a message</h1>
+                  <h2 class="govuk-heading-l govuk-!-margin-bottom-3">#1234-5678-0921-2722</h2>
+                  <h2 class="govuk-heading-m govuk-!-margin-top-0 govuk-!-margin-bottom-7">Child's name: Jane Austen</h2>                  
+
+
+                  <form action="/research-11/case-worker/case-worker-messages-send-message" method="post" class="form">
+                    <div class="govuk-form-group">
+                      <label class="govuk-label" for="sender-email-address">
+                        Sender's email address
+                      </label>
+                      <p class="govuk-body govuk-!-font-weight-bold">sarah.hawk@hmcts.gov.uk</p>
+
+                      <label class="govuk-label govuk-!-margin-top-5" for="recipient-email-address">
+                        Recipient's email address
+                      </label>
+                      <!-- <div id="lahint" class="govuk-hint"> Your email will be sent to each recipient separately.</div> -->
+
+                      <input class="govuk-input govuk-input--width-30" id="recipient-email-address" name="recipient-email-address" type="text" value="">
+
+                      <label class="govuk-label govuk-!-margin-top-5" for="recipient-email-address">
+                        Message subject
+                      </label>
+                      <input class="govuk-input govuk-input--width-30" id="message-subject" name="message-subject" type="text" value="">
+
+                      <label class="govuk-label govuk-!-margin-top-5" for="recipient-email-address">
+                        Urgency (optional)
+                      </label>
+                      <input class="govuk-input govuk-input--width-30" id="message-urgency" name="message-urgency" type="text" value="">
+
+                      <label class="govuk-label govuk-!-margin-top-5" for="recipient-email-address">
+                        Message
+                      </label>
+                      <textarea class="govuk-textarea govuk-input--width-30" id="message-content" name="message-content" rows="5" aria-describedby="more-detail-hint"></textarea>
+
+                    </div>
+                <!-- Buttons -->
+                {% include "../../includes/buttons-xui-messages.html" %}
+                  </form>
+                </div>
+
+              </div>
+          </main>
+      </div>
+  </div>
+</html>
+
+{% block footer %}
+{% include "includes/newfooter.html" %}
+{% endblock %}

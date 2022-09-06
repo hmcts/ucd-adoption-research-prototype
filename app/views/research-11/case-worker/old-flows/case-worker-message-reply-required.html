@@ -1,0 +1,90 @@
+{% block header %}
+{% include "layout-xui.html" %}
+{% endblock %}
+
+
+<html lang="en" class="govuk-template ">
+  <div style=" max-width:1300px; margin: 0 auto;">
+      <div style=" max-width:1300px;  min-width:1300px;  margin: 20px 0px 0px 0px;  ">
+          <main class="govuk-main-wrapper " id="main-content" role="main" style="padding-top: 25px;">
+            <div class="govuk-grid-row">
+              <div class="govuk-grid-column-two-thirds">
+              <div class="govuk-width-container">
+                <div class="govuk-grid-row" style="width:1300px; margin-left: -90px;">
+                  <h1 class="govuk-heading-xl">Send and reply to messages</h1>
+                  <h2 class="govuk-heading-l govuk-!-margin-bottom-3">#1234-5678-0921-2722</h2>
+                  <h2 class="govuk-heading-m govuk-!-margin-top-0 govuk-!-margin-bottom-7">Child's name: Jane Austen</h2>
+
+                  <form action="/research-11/case-worker/case-worker-message-reply-required" method="post" class="form">
+                    <h3 class="govuk-heading-s govuk-!-margin-bottom-0">Message from</h3>
+                    <p class="govuk-!-margin-top-0"><a href="">janemanson@gmail.com</a></p>
+                
+                    <h3 class="govuk-heading-s govuk-!-margin-bottom-0">Message subject</h3>
+                    <p class="govuk-!-margin-top-0">My message subject</p>
+                
+                    <h3 class="govuk-heading-s govuk-!-margin-bottom-0">Urgency</h3>
+                    <p class="govuk-!-margin-top-0">two days</p>
+                
+                    <h3 class="govuk-heading-s govuk-!-margin-bottom-0">Message history</h3>
+                    <p class="govuk-!-margin-top-0">janemanson@gmail.com - Can you look at this case, please? Thanks.</p>
+
+                        <legend class="govuk-fieldset__legend govuk-fieldset__legend--l">
+                          <h3 class="govuk-heading-s govuk-!-margin-bottom-0 govuk-!-margin-top-3">
+                            Do you need to reply?
+                          </h1>
+                        </legend>
+                        <div class="govuk-radios" data-module="govuk-radios">
+                          <div class="govuk-radios__item">
+                            <input class="govuk-radios__input" id="reply-needed" name="reply-needed" type="radio" value="yes" data-aria-controls="conditional-contact">
+                            <label class="govuk-label govuk-radios__label" for="reply-needed">
+                              Yes
+                            </label>
+                          </div>
+                          <div class="govuk-grid-row">
+                            <div class="govuk-grid-column-two-thirds">
+              
+                            <div class="govuk-radios__conditional govuk-radios__conditional--hidden " id="conditional-contact">
+                              <div class="govuk-form-group">
+                                <label class="govuk-label" for="contact-by-email">
+                                  Sender's email address
+                                </label>
+                                <input class="govuk-input" id="xui-sender-email-address" name="xui-sender-email-address" type="text" value="janemanson@gmail.com">
+                                
+                                <label class="govuk-label govuk-!-margin-top-4" for="contact-by-email">
+                                  Recipient's email address
+                                </label>
+                                <input class="govuk-input" id="xui-recipient-email-address" name="xui-recipient-email-address" type="text" value="recipientemail@gmail.com">
+                                
+                                <label class="govuk-label govuk-!-margin-top-4" for="contact-by-email">
+                                  Reply
+                                </label>
+                                <textarea class="govuk-textarea" id="reply" name="message-reply" rows="3"></textarea>
+                              </div>
+                              </div>
+                            </div>
+                          </div>
+                                    
+
+                          <div class="govuk-radios__item">
+                            <input class="govuk-radios__input" id="reply-needed-2" name="reply-needed" type="radio" value="no">
+                            <label class="govuk-label govuk-radios__label" for="reply-needed-2">
+                              No
+                            </label>
+                          </div>
+                    
+                    </div>                    
+                
+                <!-- Buttons -->
+                {% include "../../includes/buttons-xui.html" %}
+                  </form>
+                </div>
+
+              </div>
+          </main>
+      </div>
+  </div>
+</html>
+
+{% block footer %}
+{% include "includes/newfooter.html" %}
+{% endblock %}
