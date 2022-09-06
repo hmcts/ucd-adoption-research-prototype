@@ -1,0 +1,72 @@
+{% block header %}
+{% include "layout-xui.html" %}
+{% endblock %}
+
+
+<html lang="en" class="govuk-template ">
+  <div style=" max-width:1300px; margin: 0 auto;">
+      <div style=" max-width:1300px;  min-width:1300px;  margin: 20px 0px 0px 0px;  ">
+          <main class="govuk-main-wrapper " id="main-content" role="main" style="padding-top: 25px;">
+              <div class="govuk-width-container">
+                <div class="govuk-grid-row" style="width:1300px; margin-left: -90px;">
+                  <div class="govuk-grid-column-two-thirds">
+                    <h1 class="govuk-heading-xl">Final adoption order</h1>
+                    <h2 class="govuk-heading-l govuk-!-margin-bottom-3">#1234-5678-0921-2722</h2>
+                    <h2 class="govuk-heading-m govuk-!-margin-top-0 govuk-!-margin-bottom-7">Child's name: Jane Austen</h2>
+                    <h3 class="govuk-heading-m govuk-!-margin-bottom-6">Conditions for adoption</h3>
+
+                    <form action="/research-11/case-worker/case-worker-gatekeeping-order-creation-final-adoption-5" method="post" class="form">
+                      <div class="govuk-form-group">
+                        <fieldset class="govuk-fieldset" aria-describedby="contact-hint">
+                          <legend class="govuk-fieldset__legend govuk-label--s govuk-!-margin-bottom-3">
+                            Placement of the child
+                          </legend>
+                          <div class="govuk-checkboxes" data-module="govuk-checkboxes">
+                            <div class="govuk-checkboxes__item">
+                              <input class="govuk-checkboxes__input" id="final-adoption-child-placed" name="final-adoption-conditions-adoption" type="checkbox" value="final-adoption-child-placed" data-aria-controls="conditional-contact">
+                              <label class="govuk-label govuk-checkboxes__label" for="contact">
+                                The child was placed for adoption by and adoption agency (to be specified).
+                              </label>
+                            </div>
+                            <div class="govuk-checkboxes__conditional govuk-checkboxes__conditional--hidden" id="conditional-contact">
+                              <div class="govuk-form-group">
+                                <label class="govuk-label" for="contact-by-email">
+                                  Name of agency
+                                </label>
+                                <input class="govuk-input govuk-input--width-20" id="final-adoption-agency-name" name="final-adoption-agency-name" type="text" spellcheck="false">
+                                
+                                <label class="govuk-label govuk-!-margin-top-4" for="contact-by-email">
+                                  Address of agency
+                                </label>
+                                <textarea class="govuk-textarea" id="final-adoption-agency-address" name="final-adoption-agency-address" rows="5"></textarea>
+                                </div>                                
+                              </div>                      
+                            </div>
+                          </div>
+                          <legend class="govuk-fieldset__legend govuk-label--s govuk-!-margin-bottom-3">
+                            Conditions for adoption
+                          </legend>
+                          <div class="govuk-checkboxes" data-module="govuk-checkboxes">
+                            <div class="govuk-checkboxes__item">
+                              <input class="govuk-checkboxes__input" id="final-adoption-conditions-adoption" name="final-adoption-conditions-adoption" type="checkbox" value="final-adoption-conditions-adoption">
+                              <label class="govuk-label govuk-checkboxes__label" for="contact">
+                                The court confirms that the one of the conditions (appropriate to this case), as set out at section 47(2), (4), and (6) of the Adoption and Children Act 2002, has been met and an adoption order may therefore be made in respect to the child.
+                              </label>
+                            </div>
+                      
+                        </fieldset>
+                      </div>
+                      <!-- Buttons -->
+                      {% include "../../includes/buttons-xui.html" %}
+                    </form>
+                  </div>
+                </div>
+              </div>
+          </main>
+      </div>      
+  </div>
+</html>
+
+{% block footer %}
+{% include "includes/newfooter.html" %}
+{% endblock %}

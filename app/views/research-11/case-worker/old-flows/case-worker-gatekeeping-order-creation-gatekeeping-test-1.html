@@ -1,0 +1,69 @@
+{% block header %}
+{% include "layout-xui.html" %}
+{% endblock %}
+
+
+<html lang="en" class="govuk-template ">
+  <div style=" max-width:1300px; margin: 0 auto;">
+      <div style=" max-width:1300px;  min-width:1300px;  margin: 20px 0px 0px 0px;  ">
+          <main class="govuk-main-wrapper " id="main-content" role="main" style="padding-top: 25px;">
+              <div class="govuk-width-container">
+                <div class="govuk-grid-row" style="width:1300px; margin-left: -90px;">
+                  <div class="govuk-grid-column-two-thirds">
+                    <h1 class="govuk-heading-xl">Case management order (gatekeeping order)</h1>
+                    <h2 class="govuk-heading-l govuk-!-margin-bottom-3">#1234-5678-0921-2722</h2>
+                    <h2 class="govuk-heading-m govuk-!-margin-top-0 govuk-!-margin-bottom-7">Child's name: Jane Austen</h2>
+
+                    <form action="/research-11/case-worker/case-worker-gatekeeping-gatekeeping-test-1" method="post" class="form">
+                      <div class="govuk-form-group">
+                        <h3 class="govuk-heading-m govuk-!-margin-bottom-1">Allocation</h3>
+                        <p>Pursuant to the Family Court (Composition and Distribution of Business) Rules 2014, given the original care proceedings were concluded by (Name of Judge), the case is allocated to (Name of Judge)</p>
+
+                        <h3 class="govuk-heading-s">Choose which judge to allocate to</h3>
+
+                        <!-- <div id="changed-name-hint" class="govuk-hint">
+                          Select one option
+                        </div>                           -->
+
+                        <div class="govuk-form-group">
+                          <fieldset class="govuk-fieldset">
+                            <div class="govuk-radios" data-module="govuk-radios">
+                              <div class="govuk-radios__item">
+                                <input class="govuk-radios__input" id="previous-judge" name="gatekeeping-order-allocate-judge" type="radio" value="previous-judge">
+                                <label class="govuk-label govuk-radios__label" for="previous-judge">
+                                  Allocate previous placement judge
+                                </label>
+                              </div>
+                              <div class="govuk-radios__item  govuk-radios--conditional">
+                                <input class="govuk-radios__input" id="different-judge" name="gatekeeping-order-allocate-judge" type="radio" value="different-judge" data-aria-controls="conditional-contact">
+                                <label class="govuk-label govuk-radios__label" for="different-judge">
+                                  Allocate different judge
+                                </label>
+                              </div>
+                              <div class="govuk-radios__conditional govuk-radios__conditional--hidden " id="conditional-contact">
+                                <!-- <div class="govuk-form-group{% if (notSureError != '')%} govuk-form-group--error{% endif %}"> -->
+                                <div class="govuk-form-group">
+                                  <label class="govuk-label" for="contact-by-email">
+                                    Name of judge
+                                  </label>
+                        
+                                  <input class="govuk-input govuk-input--width-30" id="gatekeeping-judge-name" name="gatekeeping-judge-name" type="text" spellcheck="false" value="{{data['gatekeeping-judge-name']}}">
+                                </div>
+                            </div>
+                        
+                          </fieldset>
+                        </div>
+                      <!-- Buttons -->
+                      {% include "../../includes/buttons-xui.html" %}
+                    </form>
+                  </div>
+                </div>
+              </div>
+          </main>
+      </div>      
+  </div>
+</html>
+
+{% block footer %}
+{% include "includes/newfooter.html" %}
+{% endblock %}

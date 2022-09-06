@@ -1,0 +1,213 @@
+{% block header %}
+{% include "layout-xui.html" %}
+{% endblock %}
+
+
+<html lang="en" class="govuk-template ">
+  <div style=" max-width:1300px; margin: 0 auto;">
+      <div style=" max-width:1300px;  min-width:1300px;  margin: 20px 0px 0px 0px;  ">
+          <main class="govuk-main-wrapper " id="main-content" role="main" style="padding-top: 25px;">
+              <div class="govuk-width-container">
+                <div class="govuk-grid-row" style="width:1300px; margin-left: -90px;">
+                  <div class="govuk-grid-column-two-thirds">
+                    <h1 class="govuk-heading-xl">Case management order (gatekeeping order)</h1>
+                    <h2 class="govuk-heading-l govuk-!-margin-bottom-3">#1234-5678-0921-2722</h2>
+                    <h2 class="govuk-heading-m govuk-!-margin-top-0 govuk-!-margin-bottom-7">Child's name: Jane Austen</h2>
+
+                    <form action="/research-11/case-worker/case-worker-gatekeeping-order-3" method="post" class="form">
+                      <div class="govuk-form-group">
+                        <label class="govuk-label govuk-label--s govuk-!-margin-top-3" for="contact-by-email">
+                          5. Attendance
+                        </label>
+
+                        <label class="govuk-label" for="event-name">
+                          Choose the direction for the attendees
+                        </label>  
+                        {% if data['gatekeeping-attendance-applicants'] != undefined %}
+                        <div class="govuk-form-group">
+                          <fieldset class="govuk-fieldset">
+                            <div class="govuk-radios" data-module="govuk-radios">
+                              <label class="govuk-label govuk-label--s govuk-!-margin-top-4 govuk-!-margin-bottom-4" for="contact-by-email">
+                                Applicants
+                              </label>
+                              <div class="govuk-radios__item">
+                                <input class="govuk-radios__input" id="applicants-may-not-attend" name="gatekeeping-attendance-applicant-radios" type="radio" value="applicants-may-not-attend" {% if data['gatekeeping-attendance-applicant-radios'] === 'applicants-may-not-attend' %} checked {% endif %}>
+                                <label class="govuk-label govuk-radios__label" for="applicants-may-not-attend">
+                                  The applicants may but need not attend the hearing but if they wish to do so, they are requested to advise the court giving not less than 7 days' notice so that arrangements can be made to protect the confidentiality of the placement.
+                                </label>
+                              </div>
+                              <div class="govuk-radios__item">
+                                <input class="govuk-radios__input" id="applicants-cannot-attend" name="gatekeeping-attendance-applicant-radios" type="radio" value="applicants-cannot-attend" {% if data['gatekeeping-attendance-applicant-radios'] === 'applicants-cannot-attend' %} checked {% endif %}>
+                                <label class="govuk-label govuk-radios__label" for="applicants-cannot-attend">
+                                  The applicant(s) is/are <span class="govuk-!-font-weight-bold">NOT</span> to attend the next hearing.
+                                </label>
+                              </div>
+                            </div>                        
+                          </fieldset>
+                        </div>
+                        {% endif %}
+  
+                        {% if data['gatekeeping-attendance-child'] != undefined %}
+                        <div class="govuk-form-group">
+                          <fieldset class="govuk-fieldset">
+                            <div class="govuk-radios" data-module="govuk-radios">
+                              <label class="govuk-label govuk-label--s govuk-!-margin-top-4 govuk-!-margin-bottom-4" for="contact-by-email">
+                                Child
+                              </label>
+                              <div class="govuk-radios__item">
+                                <input class="govuk-radios__input" id="child-excused" name="gatekeeping-attendance-child-radios" type="radio" value="child-excused" {% if data['gatekeeping-attendance-child-radios'] === 'child-excused' %} checked {% endif %}>
+                                <label class="govuk-label govuk-radios__label" for="applicants-may-not-attend">
+                                  The attendance of the child is excused for all hearings.
+                                </label>
+                              </div>
+                              <div class="govuk-radios__item">
+                                <input class="govuk-radios__input" id="child-cannot-attend" name="gatekeeping-attendance-child-radios" type="radio" value="child-cannot-attend" {% if data['gatekeeping-attendance-child-radios'] === 'child-cannot-attend' %} checked {% endif %}>
+                                <label class="govuk-label govuk-radios__label" for="applicants-cannot-attend">
+                                  The child shall not be brought to the hearing.
+                                </label>
+                              </div>
+                            </div>                        
+                          </fieldset>
+                        </div>
+                        {% endif %}     
+                        
+                        {% if data['gatekeeping-attendance-local-authority'] != undefined %}
+                        <div class="govuk-form-group">
+                          <fieldset class="govuk-fieldset">
+                            <div class="govuk-radios" data-module="govuk-radios">
+                              <label class="govuk-label govuk-label--s govuk-!-margin-top-4 govuk-!-margin-bottom-4" for="contact-by-email">
+                                Local authority
+                              </label>
+                              <div class="govuk-radios__item">
+                                <input class="govuk-radios__input" id="local-authority-excused" name="gatekeeping-attendance-local-authority-radios" type="radio" value="local-authority-excused" {% if data['gatekeeping-attendance-local-authority-radios'] === 'local-authority-excused' %} checked {% endif %}>
+                                <label class="govuk-label govuk-radios__label" for="local-authority-excused">
+                                  The local authority shall attend the next hearing.
+                                </label>
+                              </div>
+                              <div class="govuk-radios__item">
+                                <input class="govuk-radios__input" id="local-authority-must-attend" name="gatekeeping-attendance-local-authority-radios" type="radio" value="local-authority-must-attend" {% if data['gatekeeping-attendance-local-authority-radios'] === 'local-authority-must-attend' %} checked {% endif %}>
+                                <label class="govuk-label govuk-radios__label" for="local-authority-must">
+                                  The local authority and the Annex A reporter must attend the hearing. 
+                                </label>
+                              </div>
+                            </div>                        
+                          </fieldset>
+                        </div>
+                        {% endif %}     
+                        
+                        {% if data['gatekeeping-attendance-birth-parents'] != undefined %}
+                        <div class="govuk-form-group">
+                          <fieldset class="govuk-fieldset">
+                            <div class="govuk-radios" data-module="govuk-radios">
+                              <label class="govuk-label govuk-label--s govuk-!-margin-top-4 govuk-!-margin-bottom-4" for="contact-by-email">
+                                Birth parents
+                              </label>
+                                <div id="gatekeeping-attendance-birth-parents-hint" class="govuk-hint">
+                                  Choose all that are relevant.
+                                </div>
+                                <div class="govuk-checkboxes" data-module="govuk-checkboxes">
+                                  <div class="govuk-checkboxes__item">
+                                    <input class="govuk-checkboxes__input" id="gatekeeping-attendance-birth-parents" name="gatekeeping-attendance-birth-parents-required" type="checkbox" value="required">
+                                    <label class="govuk-label govuk-checkboxes__label" for="gatekeeping-attendance-birth-parents">
+                                      1. The birth parents are required to attend the next hearing if they wish to make any representations as to why the court should not make an adoption order in respect of the child.
+                                    </label>
+                                  </div>
+                                  <div class="govuk-checkboxes__item">
+                                    <input class="govuk-checkboxes__input" id="gatekeeping-attendance-birth-parents-2" name="gatekeeping-attendance-birth-parents-address" type="checkbox" value="address">
+                                    <label class="govuk-label govuk-checkboxes__label" for="gatekeeping-attendance-birth-parents-2">
+                                      2. The court will serve notice of the hearing listed above on the birth mother and birth father at their last known address(es) specified in the application/covering letter.
+                                    </label>
+                                  </div>
+                                  <div class="govuk-checkboxes__item">
+                                    <input class="govuk-checkboxes__input" id="gatekeeping-attendance-birth-parents-3" name="gatekeeping-attendance-birth-parents-acknowledgement" type="checkbox" value="acknowledgement" data-aria-controls="conditional-contact">
+                                    <label class="govuk-label govuk-checkboxes__label" for="gatekeeping-attendance-birth-parents-3">
+                                      3. Upon receipt of this order the birth mother and father must complete the acknowledgement, or email the court quoting the case number to (PO BOX ADDRESS)  or speak to the social worker <span class="govuk-!-font-weight-bold">to confirm receipt of this order</span>. Failing that the court may order that they are personally served with this order.
+                                    </label>
+                                  </div>
+                                  <div class="govuk-checkboxes__conditional govuk-checkboxes__conditional--hidden" id="conditional-contact">
+                                    <div class="govuk-form-group">
+                                      <label class="govuk-label" for="contact-by-email">
+                                        Provide the court email address
+                                      </label>
+                                      <input class="govuk-input govuk-!-width-two-thirds" id="gatekeeping-attendance-court-email-address" name="gatekeeping-attendance-court-email-address" type="email" spellcheck="false">
+                                    </div>                            
+                                  </div>
+                                  <div class="govuk-checkboxes__item">
+                                    <input class="govuk-checkboxes__input" id="gatekeeping-attendance-birth-parents-4" name="gatekeeping-attendance-birth-parents-directions" type="checkbox" value="directions">
+                                    <label class="govuk-label govuk-checkboxes__label" for="gatekeeping-attendance-birth-parents-4">
+                                      4. The purpose of the first hearing listed above is to consider any representations made by or on behalf of the birth parents and to give any consequential directions or orders. 
+                                    </label>
+                                  </div>
+                                  <div class="govuk-checkboxes__item">
+                                    <input class="govuk-checkboxes__input" id="gatekeeping-attendance-birth-parents-5" name="gatekeeping-attendance-birth-parents-copy" type="checkbox">
+                                    <label class="govuk-label govuk-checkboxes__label" for="gatekeeping-attendance-birth-parents-5">
+                                      5. In the event that the birth parents do not attend or otherwise make representations as to why an order should not be made the court shall:
+                                      <br>&nbsp;&nbsp;&nbsp;a. determine whether it is satisfied that the birth parents were each served with a copy of this order; and, if so
+                                      <br>&nbsp;&nbsp;&nbsp;b. consider whether a final order should be made at that hearing
+                                    </label>
+                                  </div>
+                                  <div class="govuk-checkboxes__item">
+                                    <input class="govuk-checkboxes__input" id="gatekeeping-attendance-birth-parents-6" name="gatekeeping-attendance-birth-parents-final-hearing" type="checkbox" value="final-hearing">
+                                    <label class="govuk-label govuk-checkboxes__label" for="gatekeeping-attendance-birth-parents-6">
+                                      6. If having considered the matters set out in paragraph (4) above the court considers that a final order should be made the first hearing shall be treated as a final hearing and an adoption order shall be made.
+                                    </label>
+                                  </div>
+
+                                </div>   
+                            </div>                           
+                          </fieldset>
+                        </div>
+                        {% endif %}     
+                        
+                      </div>                      
+
+                      {% if data['gatekeeping-leave-oppose-checkbox'] != undefined %}
+                      <div class="govuk-form-group">
+                        <label class="govuk-label govuk-label--s govuk-!-margin-top-3" for="contact-by-email">
+                          6. Leave to oppose
+                        </label>
+                        <p class="govuk-body govuk-!-margin-top-3">A birth parent wishing to seek permission to oppose the making of an adoption order or seek contact with the child is invited to notify the court in writing by (14 days from the date of this order). [if no such application is made the case may proceed to a final hearing which may be dealt with without attendance of the parties unless such an attendance is requested by any of the parties. If such a request is made, the hearing may be conducted remotely unless this cannot be fairly undertaken.]</p>
+                      </div>
+                      {% endif %}
+
+                      <div class="govuk-form-group">
+                        <label class="govuk-label govuk-label--s govuk-!-margin-top-3" for="contact-by-email">
+                          7. Additional orders
+                        </label>
+                        <div id="changed-name-hint" class="govuk-hint">
+                          Copy and paste or type directly into the text box
+                        </div>                          
+                        <textarea class="govuk-textarea" id="gatekeeping-additional-orders" name="gatekeeping-additional-orders" rows="5">{{ data['gatekeepingAdditionalOrders'] }}</textarea>
+                      </div>
+
+                      <div class="govuk-form-group">
+                        <label class="govuk-label govuk-label--s govuk-!-margin-top-3" for="contact-by-email">
+                          8. Cost orders
+                        </label>
+                        <label class="govuk-label" for="event-name">
+                          No order for costs.
+                        </label>       
+
+                        <!-- <div class="govuk-checkboxes" data-module="govuk-checkboxes">
+                          <div class="govuk-checkboxes__item">
+                            <input class="govuk-checkboxes__input" id="gatekeeping-no-order-for-costs" name="gatekeeping-no-order-for-costs-checkbox" type="checkbox" value="gatekeeping-submit-annex-a" {% if (data['gatekeeping-no-order-for-costs'] != undefined) %} checked {% endif %}>
+                            <label class="govuk-label govuk-checkboxes__label" for="gatekeeping-submit-annex-a">
+                              No order for costs
+                            </label>
+                          </div> -->
+                      </div>
+  
+                      <!-- Buttons -->
+                      {% include "../../includes/buttons-xui.html" %}
+                    </form>
+                  </div>
+                </div>
+              </div>
+          </main>
+      </div>      
+  </div>
+</html>
+
+{% block footer %}
+{% include "includes/newfooter.html" %}
+{% endblock %}

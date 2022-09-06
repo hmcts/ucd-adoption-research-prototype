@@ -1,0 +1,512 @@
+{% block header %}
+{% include "includes/xui-header.html" %}
+{% endblock %}
+
+
+<html lang="en" class="govuk-template ">
+  <div style=" max-width:1300px; margin: 0 auto;">
+      <div style=" max-width:1300px;  min-width:1300px;  margin: 20px 0px 0px 0px;  ">
+          <main class="govuk-main-wrapper " id="main-content" role="main" style="padding-top: 25px;">
+              <div class="govuk-width-container">
+                <div class="govuk-grid-row" style="width:1300px; margin-left: -90px;">
+                    <div class="" style="display: flex; justify-content: space-between; ">
+                        <div>
+                          <h1 class="govuk-heading-xl govuk-!-margin-bottom-4">#1234-5678-0921-2722</h1>
+                          <h2 class="govuk-heading-l govuk-!-margin-top-0 govuk-!-margin-bottom-7">Child's name: Jane Austen</h2>
+                            <!-- <span class="govuk-caption-l" style="padding-top: 0px">1234-5678-9012-3456</span>
+                            <span style="margin-bottom:50px; padding-top: 25px;"><a href="#">Print</a></span>
+                            <button class="govuk-button govuk-button--secondary" data-module="govuk-button">
+                                Print
+                            </button> -->
+                        </div>
+                        <form action="/research-11/case-worker/index" method="post" class="form">
+                          <div style="display: flex; align-items:right; padding-top: 0px;">
+                              <p class="govuk-!-margin-top-2">Next step &nbsp;</p>
+
+                              <select class="govuk-select" id="sort" name="next-steps">
+                                  <option value="select-action" selected="">Select action</option>
+                                  <option value="notes">Add a case note</option>
+                                  <option value="allocate-judge">Allocate judge</option>
+                                  <option value="amend-applicant">Amend applicant details</option>
+                                  <option value="amend-case">Amend case details</option>
+                                  <option value="manage-documents">Manage documents</option>
+                                  <option value="manage-orders">Manage orders</option>
+                                  <option value="info">Seek further information</option>
+                                  <option value="send-a-message">Send or reply to messages</option>
+                                </select>
+
+                              <div>
+                                  <button class="govuk-button govuk-!-margin-left-1" data-module="govuk-button" name="go-button">Go</button>
+                              </div>
+                          </div>
+                      </form>
+                  </div>
+
+                    <div class="govuk-tabs" data-module="govuk-tabs">
+
+                      <h2 class="govuk-tabs__title">
+                        Contents
+                      </h2>
+
+                      <!-- ****************************** START OF TABS ****************************** -->
+                      <ul class="govuk-tabs__list">
+                        <li class="govuk-tabs__list-item">
+                          <a class="govuk-tabs__tab" href="index.html">
+                            Summary
+                          </a>
+                        </li>
+
+                        <li class="govuk-tabs__list-item govuk-tabs__list-item--selected">
+                            <a class="govuk-tabs__tab" href="case-worker-prospective-parents.html">
+                                Applicants
+                            </a>
+                        </li>
+
+                        <li class="govuk-tabs__list-item">
+                            <a class="govuk-tabs__tab" href="case-worker-other-parties.html">
+                              Other parties
+                            </a>
+                          </li>
+
+                          <li class="govuk-tabs__list-item">
+                            <a class="govuk-tabs__tab" href="case-worker-documents.html">
+                                Documents
+                            </a>
+                        </li>
+
+                        {% if data['correspondenceStatus'] === 1 %}
+                        <li class="govuk-tabs__list-item">
+                            <a class="govuk-tabs__tab" href="case-worker-correspondence.html">
+                                Correspondence
+                            </a>
+                          </li>
+                        {% endif %}
+
+                        <li class="govuk-tabs__list-item">
+                            <a class="govuk-tabs__tab" href="case-worker-messages.html">
+                                Messages
+                            </a>
+                        </li>
+
+                        <li class="govuk-tabs__list-item">
+                            <a class="govuk-tabs__tab" href="case-worker-notes.html">
+                                  Notes
+                            </a>
+                          </li>
+
+                        <li class="govuk-tabs__list-item">
+                            <a class="govuk-tabs__tab" href="case-worker-history.html">
+                                History
+                            </a>
+                        </li>
+
+                        <li class="govuk-tabs__list-item">
+                            <a class="govuk-tabs__tab" href="case-worker-payments.html">
+                                Payments
+                            </a>
+                        </li>
+
+                        <!-- <li class="govuk-tabs__list-item">
+                            <a class="govuk-tabs__tab" href="case-worker-payments.html">
+                                Hearings
+                            </a>
+                        </li>
+
+                        <li class="govuk-tabs__list-item">
+                            <a class="govuk-tabs__tab" href="case-worker-payments.html">
+                                Orders
+                            </a>
+                        </li> -->
+
+                    </ul>
+
+                      <!-- ****************************** END OF TABS ****************************** -->
+
+
+                      <div class="govuk-tabs__panel" id="1">
+                        <h2 class="govuk-heading-l">Applicants</h2>
+
+
+                        <dt class="complex-panel">
+                          First applicant
+                        </dt>
+
+                        <dl class="govuk-summary-list">
+                          <div class="govuk-summary-list__row">
+                            <dt class="govuk-summary-list__value">
+                              First names
+                            </dt>
+                            <dd class="govuk-summary-list__value">
+                              {{ data['firstApplicantFirstNames'] }}
+                            </dd>
+                            <dd class="govuk-summary-list__value">
+                              &nbsp;
+                            </dd>
+                          </div>
+
+                          <div class="govuk-summary-list__row">
+                            <dt class="govuk-summary-list__value">
+                              Last names
+                            </dt>
+                            <dd class="govuk-summary-list__value">
+                              {{ data['firstApplicantLastNames'] }}
+                            </dd>
+                            <dd class="govuk-summary-list__value">
+                              &nbsp;
+                            </dd>
+                          </div>
+
+                          <div class="govuk-summary-list__row">
+                            <dt class="govuk-summary-list__value">
+                              Previous names
+                            </dt>
+                            <dd class="govuk-summary-list__value">
+                              {{ data['firstApplicantPreviousNames'] }}
+
+                            </dd>
+                            <dd class="govuk-summary-list__value">
+                              &nbsp;
+                            </dd>
+                          </div>
+
+                          <div class="govuk-summary-list__row">
+                            <dt class="govuk-summary-list__value">
+                              Date of birth
+                            </dt>
+                            <dd class="govuk-summary-list__value">
+                              {{ data['firstApplicantDateOfBirthDay'] }}
+                              {{ data['monthName'][data['firstApplicantDateOfBirthMonth']] }}
+                                  {{ data['firstApplicantDateOfBirthYear'] }}
+
+                            </dd>
+                            <dd class="govuk-summary-list__value">
+                              &nbsp;
+                            </dd>
+                          </div>
+
+                          <div class="govuk-summary-list__row">
+                            <dt class="govuk-summary-list__value">
+                              Occupation
+                            </dt>
+                            <dd class="govuk-summary-list__value">
+                                {{ data['firstApplicantOccupation'] }}
+                            </dd>
+                            <dd class="govuk-summary-list__value">
+                              &nbsp;
+                            </dd>
+                          </div>
+
+
+                          <div class="govuk-summary-list__row">
+                            <dt class="govuk-summary-list__value">
+                            Address
+                            </dt>
+
+                            <dd class="govuk-summary-list__value">
+                             {{ data['firstApplicantFirstLine'] }}
+
+                            </dd>
+                            <dd class="govuk-summary-list__value">
+                              &nbsp;
+                            </dd>
+                          </div>
+
+
+
+                          <div class="govuk-summary-list__row">
+                            <dt class="govuk-summary-list__value">
+                              Town or City
+                            </dt>
+                            <dd class="govuk-summary-list__value">
+                              {{ data['firstApplicantTown'] }}
+                            </dd>
+                            <dd class="govuk-summary-list__value">
+                              &nbsp;
+                            </dd>
+                          </div>
+                          <div class="govuk-summary-list__row">
+                            <dt class="govuk-summary-list__value">
+                              Postcode
+                            </dt>
+                            <dd class="govuk-summary-list__value">
+                            {{ data['firstApplicantPostcode'] }}
+                            </dd>
+                            <dd class="govuk-summary-list__value">
+                            &nbsp;
+                            </dd>
+                          </div>
+                          <div class="govuk-summary-list__row">
+                            <dt class="govuk-summary-list__value">
+                              Email address
+                            </dt>
+                            <dd class="govuk-summary-list__value">
+                              {{ data['firstApplicantEmail'] }}
+                            </dd>
+                            <dd class="govuk-summary-list__value">
+                              &nbsp;
+                            </dd>
+                          </div>
+
+
+                          <div class="govuk-summary-list__row">
+                            <dt class="govuk-summary-list__value">
+                              Phone number
+                            </dt>
+                            <dd class="govuk-summary-list__value">
+                              {{ data['firstApplicantPhone'] }}
+                            </dd>
+                            <dd class="govuk-summary-list__value">
+                              &nbsp;
+                            </dd>
+                          </div>
+                       </dl>
+
+                        <dt class="complex-panel govuk-!-margin-top-7">
+                          Second applicant
+                        </dt>
+
+                        <dl class="govuk-summary-list">
+                          <div class="govuk-summary-list__row">
+                            <dt class="govuk-summary-list__value">
+                              First names
+                            </dt>
+                            <dd class="govuk-summary-list__value">
+                              {{ data['secondApplicantFirstNames'] }}
+                            </dd>
+                            <dd class="govuk-summary-list__value">
+                              &nbsp;
+                            </dd>
+                         </div>
+
+                          <div class="govuk-summary-list__row">
+                            <dt class="govuk-summary-list__value">
+                              Last names
+                            </dt>
+                            <dd class="govuk-summary-list__value">
+                                {{ data['secondApplicantLastNames'] }}
+                            </dd>
+                            <dd class="govuk-summary-list__value">
+                              &nbsp;
+                            </dd>
+                         </div>
+
+                         <div class="govuk-summary-list__row">
+                          <dt class="govuk-summary-list__value">
+                            Previous names
+                          </dt>
+                          <dd class="govuk-summary-list__value">
+                              {{ data['secondApplicantPreviousNames'] }}
+                          </dd>
+                          <dd class="govuk-summary-list__value">
+                            &nbsp;
+                          </dd>
+                        </div>
+
+                        <div class="govuk-summary-list__row">
+                          <dt class="govuk-summary-list__value">
+                            Date of birth
+                          </dt>
+                          <dd class="govuk-summary-list__value">
+                            {{ data['secondApplicantDateOfBirthDay'] }}
+                            {{ data['monthName'][data['secondApplicantDateOfBirthMonth']] }}
+                                {{ data['secondApplicantDateOfBirthYear'] }}
+                          </dd>
+                          <dd class="govuk-summary-list__value">
+                            &nbsp;
+                          </dd>
+                        </div>
+
+                        <div class="govuk-summary-list__row">
+                          <dt class="govuk-summary-list__value">
+                            Occupation
+                          </dt>
+                          <dd class="govuk-summary-list__value">
+                            {{ data['secondApplicantOccupation'] }}
+                          </dd>
+                          <dd class="govuk-summary-list__value">
+                            &nbsp;
+                          </dd>
+                        </div>
+                        <div class="govuk-summary-list__row">
+                          <dt class="govuk-summary-list__value">
+                          Address
+                          </dt>
+
+                          <dd class="govuk-summary-list__value">
+                          {{ data['secondApplicantFirstLine'] }}
+
+                          </dd>
+                          <dd class="govuk-summary-list__value">
+                            &nbsp;
+                          </dd>
+                        </div>
+
+
+
+                        <div class="govuk-summary-list__row">
+                          <dt class="govuk-summary-list__value">
+                            Town or City
+                          </dt>
+                          <dd class="govuk-summary-list__value">
+                              {{ data['secondApplicantTown'] }}
+                          </dd>
+                          <dd class="govuk-summary-list__value">
+                            &nbsp;
+                          </dd>
+                        </div>
+                        <div class="govuk-summary-list__row">
+                          <dt class="govuk-summary-list__value">
+                            Postcode
+                          </dt>
+                          <dd class="govuk-summary-list__value">
+                          {{ data['secondApplicantPostcode'] }}
+                          </dd>
+                          <dd class="govuk-summary-list__value">
+                          &nbsp;
+                          </dd>
+                        </div>
+
+
+                        <div class="govuk-summary-list__row">
+                          <dt class="govuk-summary-list__value">
+                            Email address
+                          </dt>
+                          <dd class="govuk-summary-list__value">
+                              {{ data['secondApplicantEmail'] }}
+                          </dd>
+                          <dd class="govuk-summary-list__value">
+                            &nbsp;
+                          </dd>
+                        </div>
+
+
+
+                        <div class="govuk-summary-list__row">
+                          <dt class="govuk-summary-list__value">
+                            Phone number
+                          </dt>
+                          <dd class="govuk-summary-list__value">
+                            {{ data['secondApplicantPhone'] }}
+                          </dd>
+                          <dd class="govuk-summary-list__value">
+                            &nbsp;
+                          </dd>
+                        </div>
+                      </dl>
+                      <dt class="complex-panel govuk-!-margin-top-7">
+                        Solicitor
+                      </dt>
+
+                      <dl class="govuk-summary-list">
+                        <div class="govuk-summary-list__row">
+                          <dt class="govuk-summary-list__value">
+                            Are the applicants represented by a solicitor?
+                          </dt>
+                          <dd class="govuk-summary-list__value">
+                              Yes
+                          </dd>
+                          <dd class="govuk-summary-list__value">
+                            &nbsp;
+                          </dd>
+                       </div>
+
+                        <div class="govuk-summary-list__row">
+                          <dt class="govuk-summary-list__value">
+                            Solicitor
+                          </dt>
+                          <dd class="govuk-summary-list__value">
+                              {{ data['solicitorApplicantFirstNames'] }}
+                          </dd>
+                          <dd class="govuk-summary-list__value">
+                            &nbsp;
+                          </dd>
+                       </div>
+
+                        <div class="govuk-summary-list__row">
+                          <dt class="govuk-summary-list__value">
+                            Solicitor reference number
+                          </dt>
+                          <dd class="govuk-summary-list__value">
+                              {{ data['solicitorApplicantRef'] }}
+                          </dd>
+                          <dd class="govuk-summary-list__value">
+                            &nbsp;
+                          </dd>
+                       </div>
+
+
+                      <div class="govuk-summary-list__row">
+                        <dt class="govuk-summary-list__value">
+                          Address
+                        </dt>
+                        <dd class="govuk-summary-list__value">
+                          {{ data['solicitorApplicantFirstLine'] }}
+                        </dd>
+                        <dd class="govuk-summary-list__value">
+                          &nbsp;
+                        </dd>
+                      </div>
+
+
+                      <div class="govuk-summary-list__row">
+                        <dt class="govuk-summary-list__value">
+                          Town or City
+                        </dt>
+                        <dd class="govuk-summary-list__value">
+                              {{ data['solicitorApplicantTown'] }}
+                        </dd>
+                        <dd class="govuk-summary-list__value">
+                          &nbsp;
+                        </dd>
+                      </div>
+                      <div class="govuk-summary-list__row">
+                        <dt class="govuk-summary-list__value">
+                          Postcode
+                        </dt>
+                        <dd class="govuk-summary-list__value">
+                              {{ data['solicitorApplicantPostcode'] }}
+                        </dd>
+                        <dd class="govuk-summary-list__value">
+                        &nbsp;
+                        </dd>
+                      </div>
+
+
+                      <div class="govuk-summary-list__row">
+                        <dt class="govuk-summary-list__value">
+                        Email
+                        </dt>
+                        <dd class="govuk-summary-list__value">
+                          {{ data['solicitorApplicantEmail'] }}
+                        </dd>
+                        <dd class="govuk-summary-list__value">
+                          &nbsp;
+                        </dd>
+                      </div>
+                      <div class="govuk-summary-list__row">
+                        <dt class="govuk-summary-list__value">
+                          Phone Number
+                        </dt>
+                        <dd class="govuk-summary-list__value">
+                            {{ data['solicitorApplicantPhone'] }}
+                        </dd>
+                        <dd class="govuk-summary-list__value">
+                          &nbsp;
+                        </dd>
+                      </div>
+
+
+                    </dl>
+
+                      </div>
+                    </div>
+                </div>
+              </div>
+          </main>
+      </div>
+  </div>
+</html>
+
+{% block footer %}
+{% include "includes/newfooter.html" %}
+{% endblock %}

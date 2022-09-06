@@ -1,0 +1,110 @@
+{% block header %}
+{% include "includes/xui-header.html" %}
+{% endblock %}
+
+
+<html lang="en" class="govuk-template ">
+  <div style=" max-width:1300px; margin: 0 auto;">
+      <div style=" max-width:1300px;  min-width:1300px;  margin: 20px 0px 0px 0px;  ">
+          <main class="govuk-main-wrapper " id="main-content" role="main" style="padding-top: 25px;">
+              <div class="govuk-width-container">
+                <div class="govuk-grid-row" style="width:1300px; margin-left: -90px;">
+                  <div class="govuk-grid-column-two-thirds">
+                    <h1 class="govuk-heading-xl">Case management order (gatekeeping order)</h1>
+                    <h2 class="govuk-heading-l govuk-!-margin-bottom-3">#1234-5678-0921-2722</h2>
+                    <h2 class="govuk-heading-m govuk-!-margin-top-0 govuk-!-margin-bottom-7">Child's name: Jane Austen</h2>
+
+                    <form action="/research-11/case-worker/case-worker-gatekeeping-gatekeeping-test-2" method="post" class="form">
+                      <div class="govuk-form-group">
+                        <h3 class="govuk-heading-m govuk-!-margin-bottom-1">Hearing date</h3>
+                        <p>The application is listed for a First Hearing on (date) and (time) with a time estimate of 30 minutes at (court name)</p>
+
+                      <div class="govuk-form-group">
+                        <fieldset class="govuk-fieldset" role="group" aria-describedby="date-told-la-hint">
+                          <legend class="govuk-fieldset__legend govuk-fieldset__legend--l govuk-!-margin-bottom-1">
+                            <label class="govuk-label govuk-label--s" for="LA directions">
+                                On the date and time
+                            </label>
+                          </legend>
+                          <div class="govuk-form-group">
+                            <div class="govuk-date-input" id="report-date">
+                              <div class="govuk-date-input__item">
+                                <div class="govuk-form-group">
+                                  <label class="govuk-label govuk-date-input__label" for="gatekeeping-first-hearing-day">
+                                    Day
+                                  </label>
+                                  <input class="govuk-input govuk-date-input__input govuk-input--width-2" id="gatekeeping-first-hearing-day" name="gatekeeping-first-hearing-day" type="text" inputmode="numeric">
+                                </div>
+                              </div>
+                              
+                              <div class="govuk-date-input__item">
+                                <div class="govuk-form-group">
+                                  <label class="govuk-label govuk-date-input__label" for="gatekeeping-first-hearing-month">
+                                    Month
+                                  </label>
+                                  <input class="govuk-input govuk-date-input__input govuk-input--width-2" id="gatekeeping-first-hearing-month" name="gatekeeping-first-hearing-month" type="text" inputmode="numeric">
+                                </div>
+                              </div>
+                              
+                              <div class="govuk-date-input__item">
+                                <div class="govuk-form-group">
+                                  <label class="govuk-label govuk-date-input__label" for="gatekeeping-first-hearing-year">
+                                    Year
+                                  </label>
+                                  <input class="govuk-input govuk-date-input__input govuk-input--width-4" id="gatekeeping-first-hearing-year" name="gatekeeping-first-hearing-year" type="text" inputmode="numeric">
+                                </div>
+                              </div>
+                              
+                                <div class="govuk-date-input__item">
+                                  <div class="govuk-form-group">
+                                    <label class="govuk-label govuk-date-input__label" for="gatekeeping-first-hearing-hour">
+                                      Hour
+                                    </label>
+                                    <input class="govuk-input govuk-date-input__input govuk-input--width-2" id="gatekeeping-first-hearing-hour" name="gatekeeping-first-hearing-hour" type="text" inputmode="numeric">
+                                  </div>
+                                </div>
+                                
+                                <div class="govuk-date-input__item">
+                                  <div class="govuk-form-group">
+                                    <label class="govuk-label govuk-date-input__label" for="gatekeeping-first-hearing-minute">
+                                      Minute
+                                    </label>
+                                    <input class="govuk-input govuk-date-input__input govuk-input--width-2" id="gatekeeping-first-hearing-minute" name="gatekeeping-first-hearing-minute" type="text" inputmode="numeric">
+                                  </div>
+                                </div>
+                                
+                                <div class="govuk-date-input__item">
+                                  <div class="govuk-form-group">
+                                    <label class="govuk-label govuk-date-input__label" for="gatekeeping-first-hearing-second">
+                                      Second
+                                    </label>
+                                    <input class="govuk-input govuk-date-input__input govuk-input--width-2" id="gatekeeping-first-hearing-second" name="gatekeeping-first-hearing-second" type="text" inputmode="numeric">
+                                  </div>
+                                </div>
+                            </div>     
+                          </div>
+                        </fieldset>
+                      </div>                          
+
+                      <div class="govuk-form-group">
+                        <label class="govuk-label govuk-label--s" for="contact-by-email">
+                          Name of court
+                        </label>
+              
+                        <input class="govuk-input govuk-input--width-30" id="gatekeeping-court-name" name="gatekeeping-court-name" type="text" spellcheck="false" value="{{data['gatekeeping-court-name']}}">
+                      </div>
+
+                      <!-- Buttons -->
+                      {% include "../../includes/buttons-xui.html" %}
+                    </form>
+                  </div>
+                </div>
+              </div>
+          </main>
+      </div>      
+  </div>
+</html>
+
+{% block footer %}
+{% include "includes/newfooter.html" %}
+{% endblock %}

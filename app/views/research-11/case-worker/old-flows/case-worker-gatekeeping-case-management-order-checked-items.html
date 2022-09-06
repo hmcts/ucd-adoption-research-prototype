@@ -1,0 +1,198 @@
+{% block header %}
+{% include "includes/xui-header.html" %}
+{% endblock %}
+
+
+<html lang="en" class="govuk-template ">
+  <div style=" max-width:1300px; margin: 0 auto;">
+      <div style=" max-width:1300px;  min-width:1300px;  margin: 20px 0px 0px 0px;  ">
+          <main class="govuk-main-wrapper " id="main-content" role="main" style="padding-top: 25px;">
+              <div class="govuk-width-container">
+                <div class="govuk-grid-row" style="width:1300px; margin-left: -90px;">
+                  <h1 class="govuk-heading-xl">Case management order (gatekeeping order)</h1>
+                  <h2 class="govuk-heading-l govuk-!-margin-bottom-3">#1234-5678-0921-2722</h2>
+                  <h2 class="govuk-heading-m govuk-!-margin-top-0 govuk-!-margin-bottom-7">Child's name: Jane Austen</h2>
+                  <h3 class="govuk-heading-m govuk-!-margin-bottom-6">Choose standard directions</h3>
+
+
+                  <form action="/research-11/case-worker/case-worker-gatekeeping-case-management-order" method="post" class="form">
+                    <div class="govuk-form-group">
+                      <fieldset class="govuk-fieldset" aria-describedby="xui-la-directions-checkbox-hint">
+                        <legend class="govuk-fieldset__legend govuk-fieldset__legend--l">
+                          <label class="govuk-label govuk-!-font-weight-bold" for="LA directions">
+                            Local Authority directions
+                          </label>
+                        </legend>
+
+                        <div class="govuk-checkboxes" data-module="govuk-checkboxes">
+                          <div class="govuk-checkboxes__item">
+                            <input class="govuk-checkboxes__input" id="supply-annex-a" name="xui-la-directions-checkbox" type="checkbox" value="supply-annex-a" checked>
+                            <label class="govuk-label govuk-checkboxes__label" for="supply-annex-a">
+                              Local Authority shall supply the annex A within X days of this order / by date.
+                            </label>
+                          </div>
+
+                          <div class="govuk-checkboxes__item">
+                            <input class="govuk-checkboxes__input" id="notify-clerk" name="xui-la-directions-checkbox" type="checkbox" value="notify-clerk">
+                            <label class="govuk-label govuk-checkboxes__label" for="notify-clerk">
+                              Local Authority shall notify the adoption clerk &ndash; are the birth parents addresses correct?
+                            </label>
+                          </div>
+
+                          <div class="govuk-checkboxes__item">
+                            <input class="govuk-checkboxes__input" id="no-consent-needed" name="xui-la-directions-checkbox" type="checkbox" value="no-consent-needed">
+                            <label class="govuk-label govuk-checkboxes__label" for="no-consent-needed">
+                              Local Authority shall send a report within X days of this order to the court, to satisfy the court that &ndash; (i) the parent or guardian cannot be found or is incapable of giving consent or (ii) the welfare of the child requires the consent to be dispensed with.
+                            </label>
+                          </div>
+
+                        </div>                    
+                      </fieldset>
+                    </div>       
+                    
+                    <div class="govuk-form-group">
+                      <fieldset class="govuk-fieldset" aria-describedby="xui-attendance-directions-checkbox-hint">
+                        <legend class="govuk-fieldset__legend govuk-fieldset__legend--l">
+                          <label class="govuk-label govuk-!-font-weight-bold" for="attendance directions">
+                            Attendance directions
+                          </label>
+                        </legend>
+
+                        <div class="govuk-checkboxes" data-module="govuk-checkboxes">
+                          <div class="govuk-checkboxes__item">
+                            <input class="govuk-checkboxes__input" id="applicant-not-required" name="xui-attendance-directions-checkbox" type="checkbox" value="applicant-not-required" checked>
+                            <label class="govuk-label govuk-checkboxes__label" for="applicant-not-required">
+                              The applicant is NOT required to attend the hearing.
+                            </label>
+                          </div>
+                        
+                          <div class="govuk-checkboxes__item">
+                            <input class="govuk-checkboxes__input" id="applicant-required" name="xui-attendance-directions-checkbox" type="checkbox" value="applicant-required">
+                            <label class="govuk-label govuk-checkboxes__label" for="applicant-required">
+                              The applicant is required to attend the hearing
+                            </label>
+                          </div>
+                        
+                          <div class="govuk-checkboxes__item">
+                            <input class="govuk-checkboxes__input" id="child-not-required" name="xui-attendance-directions-checkbox" type="checkbox" value="child-not-required" checked>
+                            <label class="govuk-label govuk-checkboxes__label" for="child-not-required">
+                              The child is NOT required to attend the hearing.
+                            </label>
+                          </div>
+                        
+                          <div class="govuk-checkboxes__item">
+                            <input class="govuk-checkboxes__input" id="la-required" name="xui-attendance-directions-checkbox" type="checkbox" value="la-required" checked>
+                            <label class="govuk-label govuk-checkboxes__label" for="la-required">
+                              The Local Authority shall attend the hearing.
+                            </label>
+                          </div>
+                        
+                          <div class="govuk-checkboxes__item">
+                            <input class="govuk-checkboxes__input" id="adoption-agency-required" name="xui-attendance-directions-checkbox" type="checkbox" value="adoption-agency-required" checked>
+                            <label class="govuk-label govuk-checkboxes__label" for="adoption-agency-required">
+                              The adoption agency shall attend the hearing.
+                            </label>
+                          </div>
+                        
+                          <div class="govuk-checkboxes__item">
+                            <input class="govuk-checkboxes__input" id="birth-parents-required" name="xui-attendance-directions-checkbox" type="checkbox" value="birth-parents-required" checked>
+                            <label class="govuk-label govuk-checkboxes__label" for="birth-parents-required">
+                              Any birth parent should attend the hearing.
+                            </label>
+                          </div>
+                        
+                        </div>     
+                      </fieldset>
+                    </div>               
+
+                    <div class="govuk-form-group">
+                      <fieldset class="govuk-fieldset" aria-describedby="xui-lto-directions-checkbox-hint">
+                        <legend class="govuk-fieldset__legend govuk-fieldset__legend--l">
+                          <label class="govuk-label govuk-!-font-weight-bold" for="LA directions">
+                            Leave to oppose directions
+                          </label>
+                        </legend>
+
+                        <div class="govuk-checkboxes" data-module="govuk-checkboxes">
+                          <div class="govuk-checkboxes__item">
+                            <input class="govuk-checkboxes__input" id="parents-must-attend" name="xui-lto-directions-checkbox" type="checkbox" value="parents-must-attend">
+                            <label class="govuk-label govuk-checkboxes__label" for="parents-must-attend">
+                              Any birth parents wishing to oppose must attend the hearing.
+                            </label>
+                          </div>
+
+                          <div class="govuk-checkboxes__item">
+                            <input class="govuk-checkboxes__input" id="parents-application" name="xui-lto-directions-checkbox" type="checkbox" value="parents-application">
+                            <label class="govuk-label govuk-checkboxes__label" for="parents-application">
+                              Any birth parents wishing to oppose must file a leave to oppose application.
+                            </label>
+                          </div>
+
+                          <div class="govuk-checkboxes__item">
+                            <input class="govuk-checkboxes__input" id="no-consent-needed" name="xui-lto-directions-checkbox" type="checkbox" value="no-consent-needed">
+                            <label class="govuk-label govuk-checkboxes__label" for="no-consent-needed">
+                              At the hearing the court may make an adoption order or give further directions if not leave to oppose application is filed and no birth parent is present at the hearing.
+                            </label>
+                          </div>
+
+                        </div>                    
+                      </fieldset>
+                    </div>       
+
+                    <div class="govuk-form-group">
+                      <fieldset class="govuk-fieldset" aria-describedby="xui-additional-directions-checkbox-hint">
+                        <legend class="govuk-fieldset__legend govuk-fieldset__legend--l">
+                          <label class="govuk-label govuk-!-font-weight-bold" for="LA directions">
+                            Additional directions
+                          </label>
+                        </legend>
+
+                        <div class="govuk-checkboxes" data-module="govuk-checkboxes">
+                          <div class="govuk-checkboxes__item">
+                            <input class="govuk-checkboxes__input" id="remote-hearing" name="xui-additional-directions-checkbox" type="checkbox" value="remote-hearing">
+                            <label class="govuk-label govuk-checkboxes__label" for="remote-hearing">
+                              A remote hearing may be requested by the parties on the first available date after X date.
+                            </label>
+                          </div>
+
+                          <div class="govuk-checkboxes__item">
+                            <input class="govuk-checkboxes__input" id="further-directions" name="xui-additional-directions-checkbox" type="checkbox" value="further-directions">
+                            <label class="govuk-label govuk-checkboxes__label" for="further-directions">
+                              At the hearing the court may make an adoption order or give further directions.
+                            </label>
+                          </div>
+
+                          <div class="govuk-checkboxes__item">
+                            <input class="govuk-checkboxes__input" id="interpreters" name="xui-additional-directions-checkbox" type="checkbox" value="interpreters">
+                            <label class="govuk-label govuk-checkboxes__label" for="interpreters">
+                              The court should arrange interpreters.
+                            </label>
+                          </div>
+
+                          <div class="govuk-checkboxes__item">
+                            <input class="govuk-checkboxes__input" id="personally" name="xui-additional-directions-checkbox" type="checkbox" value="personally">
+                            <label class="govuk-label govuk-checkboxes__label" for="personally">
+                              The Local Authority should personally serve the birth parents.
+                            </label>
+                          </div>
+
+                        </div>                    
+                      </fieldset>
+                    </div>       
+                    
+                    
+                    <!-- Buttons -->
+                    {% include "../../includes/buttons-xui.html" %}
+                  </form>
+              </div>
+              </div>
+
+          </main>
+      </div>
+      
+  </div>
+</html>
+
+{% block footer %}
+{% include "includes/newfooter.html" %}
+{% endblock %}

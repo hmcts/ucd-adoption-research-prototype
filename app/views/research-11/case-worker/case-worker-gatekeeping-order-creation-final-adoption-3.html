@@ -1,0 +1,74 @@
+{% block header %}
+{% include "includes/xui-header.html" %}
+{% endblock %}
+
+
+<html lang="en" class="govuk-template ">
+  <div style=" max-width:1300px; margin: 0 auto;">
+      <div style=" max-width:1300px;  min-width:1300px;  margin: 20px 0px 0px 0px;  ">
+          <main class="govuk-main-wrapper " id="main-content" role="main" style="padding-top: 25px;">
+              <div class="govuk-width-container">
+                <div class="govuk-grid-row" style="width:1300px; margin-left: -90px;">
+                  <div class="govuk-grid-column-two-thirds">
+                    <h1 class="govuk-heading-xl">Final adoption order</h1>
+                    <h2 class="govuk-heading-l govuk-!-margin-bottom-3">#1234-5678-0921-2722</h2>
+                    <h2 class="govuk-heading-m govuk-!-margin-top-0 govuk-!-margin-bottom-7">Child's name: Jane Austen</h2>
+
+                    <form action="/research-11/case-worker/case-worker-gatekeeping-order-creation-final-adoption-3" method="post" class="form">
+                      <div class="govuk-form-group">
+                        <h3 class="govuk-heading-m govuk-!-margin-bottom-1">Date and place of birth</h3>
+                        <div id="changed-name-hint" class="govuk-hint">
+                          Select one option
+                        </div>                          
+
+                        <div class="govuk-form-group">
+                          <fieldset class="govuk-fieldset">
+                            <div class="govuk-radios" data-module="govuk-radios">
+                              <div class="govuk-radios__item">
+                                <input class="govuk-radios__input" id="date-and-time" name="date-and-place-of-birth" type="radio" value="date-and-time">
+                                <label class="govuk-label govuk-radios__label" for="date-and-time">
+                                  The court is satisfied that the child was born on (child's date of birth) at (time of birth) and is identical with (child's name).
+                                </label>
+                              </div>
+                              <div class="govuk-radios__item">
+                                <input class="govuk-radios__input" id="date-of-birth-alone" name="date-and-place-of-birth" type="radio" value="date-of-birth-alone">
+                                <label class="govuk-label govuk-radios__label" for="date-of-birth-alone">
+                                  The court is satisfied that the child was born on (child's date of birth).
+                                </label>
+                              </div>
+                              <div class="govuk-radios__item">
+                                <input class="govuk-radios__input" id="precise-date-not-proven" name="date-and-place-of-birth" type="radio" value="precise-date-not-proven">
+                                <label class="govuk-label govuk-radios__label" for="precise-date-not-proven">
+                                  The precise date of the child's birth has not been proved to the satisfaction of the court but the court has determined the probable date of (his/her) birth to be (child's date of birth).
+                                </label>
+                              </div>
+                              <div class="govuk-radios__item">
+                                <input class="govuk-radios__input" id="country" name="date-and-place-of-birth" type="radio" value="country">
+                                <label class="govuk-label govuk-radios__label" for="country">
+                                  The court is satisfied that the child was born in (country of birth, if not UK).
+                                </label>
+                              </div>
+                              <div class="govuk-radios__item">
+                                <input class="govuk-radios__input" id="place-of-birth-unknown" name="date-and-place-of-birth" type="radio" value="place-of-birth-unknown">
+                                <label class="govuk-label govuk-radios__label" for="place-of-birth-unknown">
+                                  The place of birth of the child has not been proved to the satisfaction of the court.
+                                </label>
+                              </div>
+                            </div>
+                        
+                          </fieldset>
+                        </div>
+                      <!-- Buttons -->
+                      {% include "../../includes/buttons-xui.html" %}
+                    </form>
+                  </div>
+                </div>
+              </div>
+          </main>
+      </div>      
+  </div>
+</html>
+
+{% block footer %}
+{% include "includes/newfooter.html" %}
+{% endblock %}

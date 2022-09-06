@@ -1,0 +1,103 @@
+{% block header %}
+{% include "includes/xui-header.html" %}
+{% endblock %}
+
+
+<html lang="en" class="govuk-template ">
+  <div style=" max-width:1300px; margin: 0 auto;">
+      <div style=" max-width:1300px;  min-width:1300px;  margin: 20px 0px 0px 0px;  ">
+          <main class="govuk-main-wrapper " id="main-content" role="main" style="padding-top: 25px;">
+              <div class="govuk-width-container">
+                <div class="govuk-grid-row" style="width:1300px; margin-left: -90px;">
+                  <h1 class="govuk-heading-xl">Direction details</h1>
+                  <h2 class="govuk-heading-l govuk-!-margin-bottom-3">#1234-5678-0921-2722</h2>
+                  <h2 class="govuk-heading-m govuk-!-margin-top-0 govuk-!-margin-bottom-7">Child's name: Jane Austen</h2>
+                  <h3 class="govuk-heading-m govuk-!-margin-bottom-6">The Local Authority shall supply report on birth parents details</h3>
+
+
+                  <form action="/research-11/case-worker/case-worker-gatekeeping-birth-parents-details-required-by" method="post" class="form">
+
+                    <div class="govuk-form-group">
+                      <fieldset class="govuk-fieldset" role="group" aria-describedby="birth-parent-details-required-by-hint">
+                        <legend class="govuk-fieldset__legend govuk-fieldset__legend--l">
+                          <label class="govuk-label govuk-!-font-weight-bold" for="LA directions">
+                              When is the report on birth parents details required by?
+                          </label>
+                        </legend>
+
+                        <div class="govuk-date-input" id="passport-issued">
+
+                          <div class="govuk-date-input__item">
+                            <div class="govuk-form-group">
+                              <label class="govuk-label govuk-date-input__label" for="birth-parent-details-required-by-day">
+                                Day
+                              </label>
+                              <input class="govuk-input govuk-date-input__input govuk-input--width-2" id="birth-parent-details-required-by-day" name="birth-parent-details-required-by-day" type="text" inputmode="numeric">
+                            </div>
+                          </div>
+                          
+                          <div class="govuk-date-input__item">
+                            <div class="govuk-form-group">
+                              <label class="govuk-label govuk-date-input__label" for="birth-parent-details-required-by-month">
+                                Month
+                              </label>
+                              <input class="govuk-input govuk-date-input__input govuk-input--width-2" id="birth-parent-details-required-by-month" name="birth-parent-details-required-by-month" type="text" inputmode="numeric">
+                            </div>
+                          </div>
+                          
+                          <div class="govuk-date-input__item">
+                            <div class="govuk-form-group">
+                              <label class="govuk-label govuk-date-input__label" for="birth-parent-details-required-by-year">
+                                Year
+                              </label>
+                              <input class="govuk-input govuk-date-input__input govuk-input--width-4" id="birth-parent-details-required-by-year" name="birth-parent-details-required-by-year" type="text" inputmode="numeric">
+                            </div>
+                          </div>
+                          
+                            <div class="govuk-date-input__item">
+                              <div class="govuk-form-group">
+                                <label class="govuk-label govuk-date-input__label" for="birth-parent-details-required-by-hour">
+                                  Hour
+                                </label>
+                                <input class="govuk-input govuk-date-input__input govuk-input--width-2" id="birth-parent-details-required-by-hour" name="birth-parent-details-required-by-hour" type="text" inputmode="numeric">
+                              </div>
+                            </div>
+                            
+                            <div class="govuk-date-input__item">
+                              <div class="govuk-form-group">
+                                <label class="govuk-label govuk-date-input__label" for="birth-parent-details-required-by-minute">
+                                  Minute
+                                </label>
+                                <input class="govuk-input govuk-date-input__input govuk-input--width-2" id="birth-parent-details-required-by-minute" name="birth-parent-details-required-by-minute" type="text" inputmode="numeric">
+                              </div>
+                            </div>
+                            
+                            <div class="govuk-date-input__item">
+                              <div class="govuk-form-group">
+                                <label class="govuk-label govuk-date-input__label" for="birth-parent-details-required-by-second">
+                                  Second
+                                </label>
+                                <input class="govuk-input govuk-date-input__input govuk-input--width-2" id="birth-parent-details-required-by-second" name="birth-parent-details-required-by-second" type="text" inputmode="numeric">
+                              </div>
+                            </div>
+                            
+                            
+                        </div>
+                      </fieldset>
+                    </div>
+                    
+                
+                <!-- Buttons -->
+                {% include "../../includes/buttons-xui.html" %}
+                  </form>
+                </div>
+
+              </div>
+          </main>
+      </div>
+  </div>
+</html>
+
+{% block footer %}
+{% include "includes/newfooter.html" %}
+{% endblock %}

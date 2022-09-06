@@ -1,0 +1,115 @@
+{% block header %}
+{% include "includes/xui-header.html" %}
+{% endblock %}
+
+
+<html lang="en" class="govuk-template ">
+  <div style=" max-width:1300px; margin: 0 auto;">
+      <div style=" max-width:1300px;  min-width:1300px;  margin: 20px 0px 0px 0px;  ">
+          <main class="govuk-main-wrapper " id="main-content" role="main" style="padding-top: 25px;">
+              <div class="govuk-width-container">
+                <div class="govuk-grid-row" style="width:1300px; margin-left: -90px;">
+                  <h1 class="govuk-heading-xl">Case management order (gatekeeping order)</h1>
+                  <h2 class="govuk-heading-l govuk-!-margin-bottom-3">#1234-5678-0921-2722</h2>
+                  <h2 class="govuk-heading-m govuk-!-margin-top-0 govuk-!-margin-bottom-7">Child's name: Jane Austen</h2>
+
+
+                  <form action="/research-11/case-worker/case-worker-gatekeeping-order-4-select-recipient" method="post" class="form">
+
+                    <div class="govuk-form-group">
+                      <fieldset class="govuk-fieldset" aria-describedby="waste-hint">
+                        <legend class="govuk-fieldset__legend govuk-fieldset__legend--l">
+                          <label class="govuk-label govuk-!-font-weight-bold" for="sender-email-address">
+                            Select who to serve the order to
+                          </label>
+                          <div id="changed-name-hint" class="govuk-hint">
+                            You can select more than one person. It is important that recipients are checked carefully to make sure this order is not served to the wrong person.
+                          </div>                          
+                        </legend>
+                        <div class="govuk-checkboxes" data-module="govuk-checkboxes">
+                          <div class="govuk-checkboxes__item">
+                            <input class="govuk-checkboxes__input" id="gatekeeping-recipient-birth-mother" name="gatekeeping-recipient-birth-mother" type="checkbox" value="Respondent (birth mother)">
+                            <label class="govuk-label govuk-checkboxes__label" for="gatekeeping-recipient-birth-mother">
+                              Respondent (birth mother)
+                            </label>
+                          </div>
+
+                          <div class="govuk-checkboxes__item">
+                            <input class="govuk-checkboxes__input" id="gatekeeping-recipient-birth-father" name="gatekeeping-recipient-birth-father" type="checkbox" value="Respondent (birth father)">
+                            <label class="govuk-label govuk-checkboxes__label" for="gatekeeping-recipient-birth-father">
+                              Respondent (birth father)
+                            </label>
+                          </div>
+
+                          <div class="govuk-checkboxes__item">
+                            <input class="govuk-checkboxes__input" id="gatekeeping-recipient-applicants" name="gatekeeping-recipient-applicants" type="checkbox" value="Applicants">
+                            <label class="govuk-label govuk-checkboxes__label" for="gatekeeping-recipient-applicants">
+                              Applicants
+                            </label>
+                          </div>
+
+                          <div class="govuk-checkboxes__item">
+                            <input class="govuk-checkboxes__input" id="gatekeeping-recipient-child-la" name="gatekeeping-recipient-child-la" type="checkbox" value="Child's local authority">
+                            <label class="govuk-label govuk-checkboxes__label" for="gatekeeping-recipient-child-la">
+                              Child's local authority
+                            </label>
+                          </div>
+
+                          <div class="govuk-checkboxes__item">
+                            <input class="govuk-checkboxes__input" id="gatekeeping-recipient-applicants-la" name="gatekeeping-recipient-applicants-la" type="checkbox" value="Applicants' local authority">
+                            <label class="govuk-label govuk-checkboxes__label" for="gatekeeping-recipient-applicants-la">
+                              Applicants' local authority
+                            </label>
+                          </div>
+
+                          <div class="govuk-checkboxes__item">
+                            <input class="govuk-checkboxes__input" id="gatekeeping-recipient-other-adoption-agency" name="gatekeeping-recipient-other-adoption-agency" type="checkbox" value="Other adoption agency">
+                            <label class="govuk-label govuk-checkboxes__label" for="gatekeeping-recipient-other-adoption-agency">
+                              Other adoption agency
+                            </label>
+                          </div>
+
+                          <div class="govuk-checkboxes__item">
+                            <input class="govuk-checkboxes__input" id="gatekeeping-recipient-other-party-pr" name="gatekeeping-recipient-other-party-pr" type="checkbox" value="Other party with parental responsibility">
+                            <label class="govuk-label govuk-checkboxes__label" for="gatekeeping-recipient-other-party-pr">
+                              Other party with parental responsibility
+                            </label>
+                          </div>
+
+                          <div class="govuk-checkboxes__item">
+                            <input class="govuk-checkboxes__input" id="gatekeeping-recipient-cafcass" name="gatekeeping-recipient-cafcass" type="checkbox" value="CAFCASS">
+                            <label class="govuk-label govuk-checkboxes__label" for="gatekeeping-recipient-cafcass">
+                              CAFCASS
+                            </label>
+                          </div>
+
+                        </div>
+                    
+                      </fieldset>
+                    </div>
+
+
+
+                    <div class="govuk-form-group">
+                    <div class="govuk-radios govuk-radios--conditional" data-module="govuk-radios">
+
+                      
+        
+                    </div>
+                
+                  </fieldset>
+                </div>
+                <!-- Buttons -->
+                {% include "../../includes/buttons-xui.html" %}
+                  </form>
+                </div>
+
+              </div>
+          </main>
+      </div>
+  </div>
+</html>
+
+{% block footer %}
+{% include "includes/newfooter.html" %}
+{% endblock %}
