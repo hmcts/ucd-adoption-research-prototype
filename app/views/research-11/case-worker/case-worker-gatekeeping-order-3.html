@@ -23,7 +23,7 @@
                         <label class="govuk-label" for="event-name">
                           Choose the direction for the attendees
                         </label>  
-                        {% if data['gatekeeping-attendance-applicants'] != undefined %}
+                        {% if data['gatekeepingAttendanceApplicants'] != 0 %}
                         <div class="govuk-form-group">
                           <fieldset class="govuk-fieldset">
                             <div class="govuk-radios" data-module="govuk-radios">
@@ -47,7 +47,7 @@
                         </div>
                         {% endif %}
   
-                        {% if data['gatekeeping-attendance-child'] != undefined %}
+                        {% if data['gatekeepingAttendanceChild'] != 0 %}
                         <div class="govuk-form-group">
                           <fieldset class="govuk-fieldset">
                             <div class="govuk-radios" data-module="govuk-radios">
@@ -71,7 +71,7 @@
                         </div>
                         {% endif %}     
                         
-                        {% if data['gatekeeping-attendance-local-authority'] != undefined %}
+                        {% if data['gatekeepingAttendanceLA'] != 0 %}
                         <div class="govuk-form-group">
                           <fieldset class="govuk-fieldset">
                             <div class="govuk-radios" data-module="govuk-radios">
@@ -95,7 +95,7 @@
                         </div>
                         {% endif %}     
                         
-                        {% if data['gatekeeping-attendance-birth-parents'] != undefined %}
+                        {% if data['gatekeepingAttendanceBirthParents'] != 0 %}
                         <div class="govuk-form-group">
                           <fieldset class="govuk-fieldset">
                             <div class="govuk-radios" data-module="govuk-radios">

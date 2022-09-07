@@ -1,4 +1,4 @@
-const { uniqueSiblingFirstNames } = require("../../data/session-data-defaults");
+const { uniqueSiblingFirstNames, gatekeepingLocalAuthority } = require("../../data/session-data-defaults");
 
 module.exports = (router) => {
 
@@ -2406,6 +2406,66 @@ router.post('/research-11/children/orders-placement-court', function(req, res) {
     if (req.body['submit-button'] === 'continue') {
       req.session.data.gatekeepingPreamble = req.body['gatekeeping-preamble']
       req.session.data.gatekeepingAdditionalOrders = req.body['gatekeeping-additional-orders']
+
+      // Hearing date checkboxes 
+      if (req.body['gatekeeping-first-hearing-checkbox'] !== undefined) {
+        req.session.data.gatekeepingHearingFirst = 1
+      }
+      else {
+        req.session.data.gatekeepingHearingFirst = 0
+      }
+
+      if (req.body['gatekeeping-further-hearings-checkbox'] !== undefined) {
+        req.session.data.gatekeepingHearingFurther = 1
+      }
+      else {
+        req.session.data.gatekeepingHearingFurther = 0
+      }
+
+      if (req.body['gatekeeping-hearing-date-future-checkbox'] !== undefined) {
+        req.session.data.gatekeepingHearingFuture = 1
+      }
+      else {
+        req.session.data.gatekeepingHearingFuture = 0
+      }
+
+      // Local authority Annex A
+      if (req.body['gatekeeping-local-authority-checkboxes'] !== undefined) {
+        req.session.data.gatekeepingLocalAuthority = 1
+      }
+      else {
+        req.session.data.gatekeepingLocalAuthority = 0
+      }      
+
+      // Attendance checkboxes
+      if (req.body['gatekeeping-attendance-applicants'] !== undefined) {
+        req.session.data.gatekeepingAttendanceApplicants = 1
+      }
+      else {
+        req.session.data.gatekeepingAttendanceApplicants = 0
+      }
+
+      if (req.body['gatekeeping-attendance-child'] !== undefined) {
+        req.session.data.gatekeepingAttendanceChild = 1
+      }
+      else {
+        req.session.data.gatekeepingAttendanceChild = 0
+      }
+
+      if (req.body['gatekeeping-attendance-local-authority'] !== undefined) {
+        req.session.data.gatekeepingAttendanceLA = 1
+      }
+      else {
+        req.session.data.gatekeepingAttendanceLA = 0
+      }
+
+      if (req.body['gatekeeping-attendance-birth-parents'] !== undefined) {
+        req.session.data.gatekeepingAttendanceBirthParents = 1
+      }
+      else {
+        req.session.data.gatekeepingAttendanceBirthParents = 0
+      }
+
       res.redirect('/research-11/case-worker/case-worker-gatekeeping-order-2')
     }
     else {

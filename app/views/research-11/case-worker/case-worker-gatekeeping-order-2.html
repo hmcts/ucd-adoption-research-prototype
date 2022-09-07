@@ -40,18 +40,18 @@
                           3. Hearing details
                         </label>
 
-                        {% if data['gatekeeping-hearing-date-future-checkbox'] !== undefined %}
+                        {% if data['gatekeepingHearingFuture'] !== 0 %}
                         <label class="govuk-label" for="event-name">
                           The application is to be listed at a future date.
                         </label>       
 
                         {% else %}
-                          {% if data['gatekeeping-first-hearing-checkbox'] !== undefined %}
+                          {% if data['gatekeepingHearingFirst'] !== 0 %}
                           <label class="govuk-label" for="event-name">
                             The application is listed for a First Hearing on ….. at ……. (with a time estimate of 30 minutes) at …….                      
                           </label>       
                           {% endif %}
-                          {% if data['gatekeeping-further-hearings-checkbox'] !== undefined %}
+                          {% if data['gatekeepingHearingFurther'] !== 0 %}
                           <label class="govuk-label" for="event-name">
                             The application is listed for a (issues resolution / case management /further directions / final hearing) on (date) at (time) with a time estimate of (length) at (location)                      
                           </label>       
@@ -128,6 +128,7 @@
                         </div>                          
                       {% endif %}
 
+                      {% if data['gatekeepingLocalAuthority'] !== 0 %}
                       <div class="govuk-form-group">
                         <label class="govuk-label govuk-label--s govuk-!-margin-top-8" for="LA directions">
                           4. Local authority
@@ -277,7 +278,8 @@
                             </div>     
                           </div>
                         </fieldset>
-                      </div>                          
+                      </div>    
+                      {% endif %}                      
 
 
                                               
