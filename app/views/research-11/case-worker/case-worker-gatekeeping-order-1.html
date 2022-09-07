@@ -62,20 +62,20 @@
                           </legend>
                           <div class="govuk-checkboxes" data-module="govuk-checkboxes">
                             <div class="govuk-checkboxes__item">
-                              <input class="govuk-checkboxes__input" id="gatekeeping-first-hearing" name="gatekeeping-first-hearing-checkbox" type="checkbox" value="gatekeeping-first-hearing" {% if (data['gatekeeping-first-hearing-checkbox'] != undefined) %} checked {% endif %}>
+                              <input class="govuk-checkboxes__input" id="gatekeeping-first-hearing" name="gatekeeping-first-hearing-checkbox" type="checkbox" value="gatekeeping-first-hearing" {% if (data['gatekeepingHearingFirst'] != 0) %} checked {% endif %}>
                               <label class="govuk-label govuk-checkboxes__label" for="gatekeeping-first-hearing">
                                 List for first hearing
                               </label>
                             </div>
                             <div class="govuk-checkboxes__item">
-                              <input class="govuk-checkboxes__input" id="gatekeeping-further-hearings" name="gatekeeping-further-hearings-checkbox" type="checkbox" value="gatekeeping-further-hearings" {% if (data['gatekeeping-further-hearings-checkbox'] != undefined) %} checked {% endif %}>
+                              <input class="govuk-checkboxes__input" id="gatekeeping-further-hearings" name="gatekeeping-further-hearings-checkbox" type="checkbox" value="gatekeeping-further-hearings" {% if (data['gatekeepingHearingFurther'] != 0) %} checked {% endif %}>
                               <label class="govuk-label govuk-checkboxes__label" for="gatekeeping-further-hearings">
                                 List for further hearings
                               </label>
                             </div>
                             <div class="govuk-checkboxes__divider">or</div>
                             <div class="govuk-checkboxes__item">
-                              <input class="govuk-checkboxes__input" id="gatekeeping-hearing-date-future" name="gatekeeping-hearing-date-future-checkbox" type="checkbox" value="gatekeeping-hearing-date-future" {% if (data['gatekeeping-hearing-date-future-checkbox'] != undefined) %} checked {% endif %}>
+                              <input class="govuk-checkboxes__input" id="gatekeeping-hearing-date-future" name="gatekeeping-hearing-date-future-checkbox" type="checkbox" value="gatekeeping-hearing-date-future" {% if (data['gatekeepingHearingFuture'] != 0) %} checked {% endif %}>
                               <label class="govuk-label govuk-checkboxes__label" for="gatekeeping-hearing-date-future">
                                 Hearing date to be specified in the future
                               </label>
@@ -92,7 +92,7 @@
                         </legend>
                         <div class="govuk-checkboxes" data-module="govuk-checkboxes">
                           <div class="govuk-checkboxes__item">
-                            <input class="govuk-checkboxes__input" id="gatekeeping-submit-annex-a" name="gatekeeping-local-authority-checkboxes" type="checkbox" value="gatekeeping-submit-annex-a" {% if (data['gatekeeping-submit-annex-a'] != undefined) %} checked {% endif %}>
+                            <input class="govuk-checkboxes__input" id="gatekeeping-submit-annex-a" name="gatekeeping-local-authority-checkboxes" type="checkbox" value="gatekeeping-submit-annex-a" {% if (data['gatekeepingLocalAuthority'] != 0) %} checked {% endif %}>
                             <label class="govuk-label govuk-checkboxes__label" for="gatekeeping-submit-annex-a">
                               Submit Annex A
                             </label>
@@ -150,7 +150,7 @@
                         </legend>
                         <div class="govuk-checkboxes" data-module="govuk-checkboxes">
                           <div class="govuk-checkboxes__item">
-                            <input class="govuk-checkboxes__input" id="gatekeeping-leave-oppose" name="gatekeeping-leave-oppose-checkbox" type="checkbox" value="gatekeeping-leave-oppose">
+                            <input class="govuk-checkboxes__input" id="gatekeeping-leave-oppose" name="gatekeeping-leave-oppose-checkbox" type="checkbox" value="gatekeeping-leave-oppose" {% if data['gatekeeping-leave-oppose-checkbox'] === 'gatekeeping-leave-oppose' %} checked {% endif %}>
                             <label class="govuk-label govuk-checkboxes__label" for="gatekeeping-leave-oppose">
                               File leave to oppose
                             </label>
@@ -176,7 +176,7 @@
                         </legend>
                         <div class="govuk-checkboxes" data-module="govuk-checkboxes">
                           <div class="govuk-checkboxes__item">
-                            <input class="govuk-checkboxes__input" id="gatekeeping-cost-orders" name="gatekeeping-cost-orders-checkboxes" type="checkbox" value="gatekeeping-cost-orders">
+                            <input class="govuk-checkboxes__input" id="gatekeeping-cost-orders" name="gatekeeping-cost-orders-checkboxes" type="checkbox" value="gatekeeping-cost-orders" {% if data['gatekeeping-cost-orders-checkboxes'] === 'gatekeeping-cost-orders' %} checked {% endif %}>
                             <label class="govuk-label govuk-checkboxes__label" for="gatekeeping-cost-orders">
                               No order for costs
                             </label>
