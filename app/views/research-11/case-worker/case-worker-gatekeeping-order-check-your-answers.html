@@ -86,64 +86,165 @@
 
                                 <h3 class="govuk-heading-s govuk-!-margin-top-9">3. Hearing dates</h3>
                       
+                                {% if data['gatekeeping-hearing-date-future-checkbox'] !== undefined %}
                                 <dl class="govuk-summary-list">
                                   <div class="govuk-summary-list__row">
-                                  <dt class="govuk-summary-list__key">
-                                    Details
-                                  </dt>
-                                  <dd class="govuk-summary-list__value">
-                                    {% if data['gatekeeping-hearing-date-future-checkbox'] !== undefined %}
-                                      The application is to be listed at a future date.
-                                    {% else %}
-                                      {% if data['gatekeeping-first-hearing-checkbox'] !== undefined %}
-                                        <label class="govuk-label" for="event-name">
-                                          The application is listed for a First Hearing on ….. at ……. (with a time estimate of 30 minutes) at …….                      
-                                        </label>       
-                                        {% endif %}
-                                        {% if data['gatekeeping-further-hearings-checkbox'] !== undefined %}
-                                        <label class="govuk-label" for="event-name">
-                                          The application is listed for a (issues resolution / case management /further directions / final hearing) on (date) at (time) with a time estimate of (length) at (location)                      
-                                        </label>       
-                                      {% endif %}
-                                    {% endif %}                                                
-                                  </dd>
-                                  <dd class="govuk-summary-list__actions">
-                                    <a class="govuk-link" href="case-worker-gatekeeping-order-1.html">
-                                      Change<span class="govuk-visually-hidden"> hearing date</span>
-                                    </a>
-                                  </dd>
-                                </div>
+                                    <dt class="govuk-summary-list__key">
+                                      Details
+                                    </dt>
+                                    <dd class="govuk-summary-list__value">
+                                        The application is to be listed at a future date.
+                                    </dd>
+                                    <dd class="govuk-summary-list__actions">
+                                      <a class="govuk-link" href="case-worker-gatekeeping-order-1.html">
+                                        Change<span class="govuk-visually-hidden"> hearing date</span>
+                                      </a>
+                                    </dd>
+                                  </div>
+                                </dl>
 
-                                {% if data['gatekeeping-first-hearing-checkbox'] !== undefined or data['gatekeeping-further-hearings-checkbox'] !== undefined %}
-                                <div class="govuk-summary-list__row">
-                                  <dt class="govuk-summary-list__key">
-                                    Hearing date
-                                  </dt>
-                                  <dd class="govuk-summary-list__value">
-                                    {{ data['gatekeeping-first-hearing-day'] }} {{ data['monthName'][data['gatekeeping-first-hearing-month']] }} {{ data['gatekeeping-first-hearing-year'] }} at {{ data['gatekeeping-first-hearing-hour'] }}:{{ data['gatekeeping-first-hearing-minute'] }}:{{ data['gatekeeping-first-hearing-second'] }}
-                                  </dd>
-                                  <dd class="govuk-summary-list__actions">
-                                    <a class="govuk-link" href="case-worker-gatekeeping-order-2.html">
-                                      Change<span class="govuk-visually-hidden"> hearing date</span>
-                                    </a>
-                                  </dd>
-                                </div>
-                                
-                                <div class="govuk-summary-list__row">
-                                  <dt class="govuk-summary-list__key">
-                                    Name of court
-                                  </dt>
-                                  <dd class="govuk-summary-list__value">
-                                    {{ data['gatekeeping-court-name'] }}                                    
-                                  </dd>
-                                  <dd class="govuk-summary-list__actions">
-                                    <a class="govuk-link" href="case-worker-gatekeeping-order-2.html">
-                                      Change<span class="govuk-visually-hidden"> hearing date</span>
-                                    </a>
-                                  </dd>
-                                </div>
-                                
+                                {% else %}
+                                <dl class="govuk-summary-list">
+                                  {% if data['gatekeeping-first-hearing-checkbox'] !== undefined %}
+                                    <div class="govuk-summary-list__row">
+                                      <dt class="govuk-summary-list__key">
+                                        First hearing
+                                      </dt>
+                                      <dd class="govuk-summary-list__value">
+                                        The application is listed for a First Hearing on [date] at [time] with a time estimate of [length of hearing] at [name of court]
+                                      </dd>
+                                      <!-- <dd class="govuk-summary-list__value">
+                                        The application is listed for a First Hearing on ….. at ……. (with a time estimate of 30 minutes) at …….
+                                      </dd> -->
+                                      <dd class="govuk-summary-list__actions">
+                                        <a class="govuk-link" href="case-worker-gatekeeping-order-1.html">
+                                          Change<span class="govuk-visually-hidden"> hearing date</span>
+                                        </a>
+                                      </dd>
+                                    </div>
+
+                                    <div class="govuk-summary-list__row">
+                                      <dt class="govuk-summary-list__key">
+                                        First hearing date
+                                      </dt>
+                                      <dd class="govuk-summary-list__value">
+                                        {{ data['gatekeeping-first-hearing-day'] }} {{ data['monthName'][data['gatekeeping-first-hearing-month']] }} {{ data['gatekeeping-first-hearing-year'] }} at {{ data['gatekeeping-first-hearing-hour'] }}:{{ data['gatekeeping-first-hearing-minute'] }}:{{ data['gatekeeping-first-hearing-second'] }}
+                                      </dd>
+                                      <dd class="govuk-summary-list__actions">
+                                        <a class="govuk-link" href="case-worker-gatekeeping-order-2.html">
+                                          Change<span class="govuk-visually-hidden"> hearing date</span>
+                                        </a>
+                                      </dd>
+                                    </div>
+                                    
+                                    <div class="govuk-summary-list__row">
+                                      <dt class="govuk-summary-list__key">
+                                        Length of first hearing
+                                      </dt>
+                                      <dd class="govuk-summary-list__value">
+                                        {{ data['gatekeeping-first-hearing-length'] }} minutes                                   
+                                      </dd>
+                                      <dd class="govuk-summary-list__actions">
+                                        <a class="govuk-link" href="case-worker-gatekeeping-order-2.html">
+                                          Change<span class="govuk-visually-hidden"> hearing length</span>
+                                        </a>
+                                      </dd>
+                                    </div>
+    
+                                    <div class="govuk-summary-list__row">
+                                      <dt class="govuk-summary-list__key">
+                                        Name of court for first hearing
+                                      </dt>
+                                      <dd class="govuk-summary-list__value">
+                                        {{ data['gatekeeping-court-name'] }}                                    
+                                      </dd>
+                                      <dd class="govuk-summary-list__actions">
+                                        <a class="govuk-link" href="case-worker-gatekeeping-order-2.html">
+                                          Change<span class="govuk-visually-hidden"> hearing date</span>
+                                        </a>
+                                      </dd>
+                                    </div>
+    
+                                  {% endif %}
+                                  
+                                  {% if data['gatekeeping-further-hearings-checkbox'] !== undefined %}
+                                    <div class="govuk-summary-list__row">
+                                      <dt class="govuk-summary-list__key">
+                                        Further hearings
+                                      </dt>
+                                      <dd class="govuk-summary-list__value">
+                                        The application is listed for a [listing type] on [date] at [time] with a time estimate of [length of hearing] at [name of court]
+                                      </dd>
+                                      <!-- <dd class="govuk-summary-list__value">
+                                        The application is listed for a (issues resolution / case management /further directions / final hearing) on (date) at (time) with a time estimate of (length) at (location)
+                                      </dd> -->
+                                      <dd class="govuk-summary-list__actions">
+                                        <a class="govuk-link" href="case-worker-gatekeeping-order-1.html">
+                                          Change<span class="govuk-visually-hidden"> hearing date</span>
+                                        </a>
+                                      </dd>
+                                    </div>
+
+                                    <div class="govuk-summary-list__row">
+                                      <dt class="govuk-summary-list__key">
+                                        Further hearings date
+                                      </dt>
+                                      <dd class="govuk-summary-list__value">
+                                        {{ data['gatekeeping-further-hearings-day'] }} {{ data['monthName'][data['gatekeeping-further-hearings-month']] }} {{ data['gatekeeping-further-hearings-year'] }} at {{ data['gatekeeping-further-hearings-hour'] }}:{{ data['gatekeeping-further-hearings-minute'] }}:{{ data['gatekeeping-further-hearings-second'] }}
+                                      </dd>
+                                      <dd class="govuk-summary-list__actions">
+                                        <a class="govuk-link" href="case-worker-gatekeeping-order-2.html">
+                                          Change<span class="govuk-visually-hidden"> hearing date</span>
+                                        </a>
+                                      </dd>
+                                    </div>
+                                    
+                                    <div class="govuk-summary-list__row">
+                                      <dt class="govuk-summary-list__key">
+                                        Listing type
+                                      </dt>
+                                      <dd class="govuk-summary-list__value">
+                                        {{ data['estimated-duration-further-radios'] }}                                    
+                                      </dd>
+                                      <dd class="govuk-summary-list__actions">
+                                        <a class="govuk-link" href="case-worker-gatekeeping-order-2.html">
+                                          Change<span class="govuk-visually-hidden"> listing type</span>
+                                        </a>
+                                      </dd>
+                                    </div>
+    
+                                    <div class="govuk-summary-list__row">
+                                      <dt class="govuk-summary-list__key">
+                                        Length of further hearings
+                                      </dt>
+                                      <dd class="govuk-summary-list__value">
+                                        {{ data['gatekeeping-further-hearings-length'] }} minutes                                   
+                                      </dd>
+                                      <dd class="govuk-summary-list__actions">
+                                        <a class="govuk-link" href="case-worker-gatekeeping-order-2.html">
+                                          Change<span class="govuk-visually-hidden"> hearing length</span>
+                                        </a>
+                                      </dd>
+                                    </div>
+    
+                                    <div class="govuk-summary-list__row">
+                                      <dt class="govuk-summary-list__key">
+                                        Name of court for further hearings
+                                      </dt>
+                                      <dd class="govuk-summary-list__value">
+                                        {{ data['gatekeeping-court-name'] }}                                    
+                                      </dd>
+                                      <dd class="govuk-summary-list__actions">
+                                        <a class="govuk-link" href="case-worker-gatekeeping-order-2.html">
+                                          Change<span class="govuk-visually-hidden"> hearing date</span>
+                                        </a>
+                                      </dd>
+                                    </div>
+                                    
+                                  {% endif %}
                                 {% endif %}
+                                
+
                               </dl>
 
                               <h3 class="govuk-heading-s govuk-!-margin-top-9">4. Local authority</h3>
