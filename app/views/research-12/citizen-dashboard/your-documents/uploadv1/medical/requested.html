@@ -1,0 +1,136 @@
+{% extends "layout.html" %}
+
+{% block pageTitle %}
+  Upload documents
+{% endblock %}
+
+{% block header %}
+  <!-- Blank header with no service name for the start page -->
+
+{{ govukHeader({
+    homepageUrl: "/",
+    serviceName: serviceName,
+    serviceUrl: "/",
+    containerClasses: "govuk-width-container"
+}) }}
+
+{% endblock %}
+
+{% block content %}
+
+
+<div class="govuk-grid-row">
+
+  <div class="govuk-grid-column-two-thirds">
+    <div class="govuk-width-container">
+
+      <a href="#" onclick="history.back(-1)"  class="govuk-back-link">Back</a>
+
+
+
+      <h1 class="govuk-heading-xl">
+        <span class="govuk-caption-l">Expert reports</span>
+        Medical reports
+      </h1>
+
+
+
+              <div class="govuk-form-group govuk-!-margin-bottom-9">
+                <p class="govuk-body">The court order will tell you which documents you need to submit. If you upload a document that has not been requested by the court, the court may decide not to consider it.</p>
+
+
+                <fieldset class="govuk-fieldset">
+
+                  <legend class="govuk-fieldset__legend govuk-fieldset__legend--m">
+                    <h2 class="govuk-fieldset__heading govuk-!-margin-bottom-4">
+                      Has the court asked for this document?
+                    </h2>
+                  </legend>
+
+                  <div class="govuk-radios" data-module="govuk-radios">
+                    <div class="govuk-radios__item">
+                      <input class="govuk-radios__input" id="yes-redirect" name="where-do-you-live" type="radio" value="yes">
+                      <label class="govuk-label govuk-radios__label" for="yes-redirect">
+                        Yes
+                      </label>
+                    </div>
+                    <div class="govuk-radios__item">
+                      <input class="govuk-radios__input" id="no-redirect" name="where-do-you-live" type="radio" value="no">
+                      <label class="govuk-label govuk-radios__label" for="no-redirect">
+                        No
+                      </label>
+                    </div>
+                  </div>
+            </div>
+
+
+
+
+
+
+          <!-- end components here -->
+
+
+
+
+          <div class="govuk-button-group">
+
+            <form action="howdocumentshared" method="post" novalidate>
+
+              <input type="hidden" name="answers-checked" value="true">
+
+              <button class="govuk-button" data-module="govuk-button" >Save and continue</button>
+
+            </form>
+
+          </div>
+
+
+
+    </div>
+    </div>
+
+    <div class="govuk-grid-column-one-third">
+
+      <details class="govuk-details" data-module="govuk-details">
+
+          <summary class="govuk-details__summary">
+
+           <span class="govuk-details__summary-text">
+            Contacts for help
+            </span>
+
+          </summary>
+
+          <div class="govuk-details__text">
+           Ask a question or get any help in any language
+           <p class="govuk-body govuk-!-font-weight-bold">Telephone</p>
+
+           <p class="govuk-body govuk-!-font-weight-regular">0300 303 0742</p>
+           <p class="govuk-body govuk-!-font-weight-regular">Monday to Friday, 8am to 8pm</p>
+           <a href="#" class="govuk-link">Find out about call charges</a>
+           <p class="govuk-body govuk-!-font-weight-regular">(opens in a new window)</p>
+
+          </div>
+
+      </details>
+
+    </div>
+
+   </div>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+{% endblock %}

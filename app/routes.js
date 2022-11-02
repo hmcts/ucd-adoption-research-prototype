@@ -21,4 +21,5 @@ require('./views/research-9/routes.js')(router);
 require('./views/research-jun2022-proposed-changes/routes.js')(router);
 require('./views/research-10/routes.js')(router);
 require('./views/research-11/routes.js')(router);
+require('./views/research-12/routes.js')(router);
 

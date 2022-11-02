@@ -1,0 +1,125 @@
+{% extends "layout.html" %}
+
+{% block pageTitle %}
+  Tasklist
+{% endblock %}
+
+{% block header %}
+  <!-- Blank header with no service name for the start page -->
+
+{{ govukHeader({
+    homepageUrl: "/",
+    serviceName: serviceName,
+    serviceUrl: "/",
+    containerClasses: "govuk-width-container"
+}) }}
+
+{% endblock %}
+
+{% block content %}
+
+<div class="govuk-grid-row">
+   <div class="govuk-grid-column-two-thirds">
+
+    <div class="govuk-width-container">
+       <a href="/respondenttasklist/your-documents/alldocuments/alldocuments" class="govuk-back-link">Back</a>
+
+       <main class="govuk-main-wrapper " id="main-content" role="main">
+
+
+
+     <h1 class="govuk-heading-xl">
+       <span class="govuk-caption-l">All documents</span>
+       Other people's witness statements
+     </h1>
+
+      <p class="govuk-body">Case number #1636575673018538</p>
+        <hr class="govuk-section-break govuk-section-break--m govuk-section-break--visible">
+
+
+
+      <ol class="app-task-list">
+        <li>
+
+          <dl class="govuk-summary-list govuk-summary-list--no-border">
+            <div class="govuk-summary-list__row">
+              <dt class="govuk-summary-list__key">
+                21 June 2021
+              </dt>
+              <dd class="govuk-summary-list__value">
+                <a href="#">Other_people_witness_statements__first_statement__21062021.pdf</a>
+              </dd>
+            </div>
+
+            <div class="govuk-summary-list__row">
+              <dt class="govuk-summary-list__key">
+                27 May 2021
+              </dt>
+              <dd class="govuk-summary-list__value">
+                <a href="#">Other_people_witness_statements__second_statement__27052021.pdf</a>
+              </dd>
+            </div>
+
+            <div class="govuk-summary-list__row">
+              <dt class="govuk-summary-list__key">
+                18 May 2021
+              </dt>
+              <dd class="govuk-summary-list__value">
+                <a href="#">Other_people_witness_statements__third_statement__18052021.pdf</a>
+              </dd>
+            </div>
+
+          </dl>
+        </li>
+      </ol>
+
+
+
+
+
+
+
+
+
+
+      <button class="govuk-button govuk-button--secondary" href="#" onclick="history.back(-1)"  data-module="govuk-button">
+        Go back
+      </button>
+
+
+
+
+
+
+          </main>
+
+        </div>
+    </div>
+
+    <div class="govuk-grid-column-one-third">
+
+    		<details class="govuk-details" data-module="govuk-details">
+ 			 <summary class="govuk-details__summary">
+   			 <span class="govuk-details__summary-text">
+    		  Contacts for help
+  			  </span>
+  			</summary>
+  			<div class="govuk-details__text">
+   			 Ask a question or get any help in any language
+   			 <p class="govuk-body govuk-!-font-weight-bold">Telephone</p>
+
+   			 <p class="govuk-body govuk-!-font-weight-regular">0300 303 0742</p>
+   			 <p class="govuk-body govuk-!-font-weight-regular">Monday to Friday, 8am to 8pm</p>
+   			 <a href="#" class="govuk-link">Find out about call charges</a>
+   			 <p class="govuk-body govuk-!-font-weight-regular">(opens in a new window)</p>
+
+			  </div>
+			</details>
+
+    </div>
+ </div>
+
+
+
+
+{% endblock %}

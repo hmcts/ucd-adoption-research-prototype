@@ -1,0 +1,212 @@
+{% extends "layout.html" %}
+
+{% block pageTitle %}
+  Upload documents
+{% endblock %}
+
+{% block header %}
+  <!-- Blank header with no service name for the start page -->
+
+{{ govukHeader({
+    homepageUrl: "/",
+    serviceName: serviceName,
+    serviceUrl: "/",
+    containerClasses: "govuk-width-container"
+}) }}
+
+{% endblock %}
+
+{% block content %}
+
+
+
+
+<a href="/respondenttasklist/your-documents/uploadv2/uploaddocumentsv2" class="govuk-back-link">Back</a>
+
+  <div class="govuk-grid-row">
+
+    <div class="govuk-grid-column-two-thirds">
+
+
+
+      <h1 class="govuk-heading-xl">
+        <span class="govuk-caption-l">Upload documents</span>
+        Witness statements and evidence
+      </h1>
+
+      <div class="govuk-error-summary" aria-labelledby="error-summary-title" role="alert" data-module="govuk-error-summary">
+  <h2 class="govuk-error-summary__title" id="error-summary-title">
+    Your document could not be uploaded
+  </h2>
+  <div class="govuk-error-summary__body">
+    <ul class="govuk-list govuk-error-summary__list">
+      <li>
+        <a href="#passport-issued-day">The file must be in a JPG, BMP, PNG, TIF, Word or PDF format</a>
+      </li>
+    </ul>
+  </div>
+</div>
+
+<p class="govuk-body">If you are uploading documents from a computer, name the files clearly. For example, letter-from-school.doc.</p>
+
+<p class="govuk-body">Files must end with JPG, BMP, PNG,TIF, PDF, DOC or DOCX.</p>
+
+
+      <details class="govuk-details" data-module="govuk-details">
+              <summary class="govuk-details__summary">
+                <span class="govuk-details__summary-text">
+                  How to take a picture of a document on your phone and upload it
+                </span>
+              </summary>
+              <div class="govuk-details__text">
+                <ol class="govuk-list govuk-list--number">
+                  <li>Place your document on a flat service in a well-lit room. Use a flash if you need to.</li>
+                  <li>Take a picture of the whole document. You should be able to see its edges.</li>
+                  <li>Check you can read all the writing, including the handwriting.</li>
+                  <li>Email or send the photo or scan to the device you are using now.</li>
+                  <li>Upload it using the method below.</li>
+                </ol>
+              </div>
+        </details>
+
+
+        <!-- start components here -->
+
+
+
+        <div class="uploadcomponent">
+
+          <div class=" govuk-!-margin-bottom-3">
+
+            <div class="govuk-warning-text govuk-!-margin-bottom-4">
+              <span class="govuk-warning-text__icon" aria-hidden="true">!</span>
+              <strong class="govuk-warning-text__text govuk-!-font-size-16">
+                <span class="govuk-warning-text__assistive">Warning</span>
+                If there is information you do not want to share with the other people in the case,
+                make sure it is not included in any documents you upload. If this is not possible and you have to upload private information, you can ask the court to restrict who can see the document
+              </strong>
+            </div>
+
+            <details class="govuk-details" data-module="govuk-details">
+                    <summary class="govuk-details__summary">
+                      <span class="govuk-details__summary-text">
+                        Rules about sharing emails, letters and documents:
+                      </span>
+                    </summary>
+                    <div class="govuk-details__text">
+
+                      <p class="govuk-body">When you upload documents, including emails and letters, these are automatically shared with the other people in the case. The only exceptions are if:</p>
+                      <ol class="govuk-list govuk-list--bullet">
+                        <li>there is a very good reason not to share the document, for example safety concerns.</li>
+                        <li>the document is not something the judge needs to see</li>
+                        <li>one of the people in the case has an address that needs to be kept private</li>
+                      </ol>
+
+                      <p class="govuk-body">If you believe a document you are uploading must not be shared with the other people in the case, you can ask the court to keep it private.</p>
+
+                    </div>
+              </details>
+
+            <div class="govuk-form-group govuk-form-group--error">
+              <fieldset class="govuk-fieldset" role="group" aria-describedby="passport-issued-hint passport-issued-error">
+                <legend class="govuk-fieldset__legend govuk-fieldset__legend--l">
+              <label class="govuk-label govuk-!-font-weight-bold" for="file-upload-1">
+                Upload a file
+              </label>
+              <p id="passport-issued-error" class="govuk-error-message">
+                <span class="govuk-visually-hidden">Error:</span> The file must be in a JPG, BMP, PNG, TIF, Word or PDF format
+              </p>
+              <input class="govuk-file-upload govuk-!-margin-bottom-4" id="file-upload-1" name="file-upload-1" type="file">
+
+              <div class="govuk-checkboxes" data-module="govuk-checkboxes">
+
+
+                  <div class="govuk-checkboxes__item govuk-!-margin-bottom-4">
+                     <input class="govuk-checkboxes__input" id="reasonable-adjustments-3" name="reasonable-adjustments" type="checkbox" value="I need to bring support with me to a hearing" aria-controls="certain-interpreter-conditional" aria-expanded="true">
+
+                     <label class="govuk-label govuk-checkboxes__label govuk-!-margin-bottom-4" for="reasonable-adjustments">
+                      <P>Tick this box if you want to restrict who can see this document.</p>  <p>A document marked as private will only be shared
+                      with the court staff and the Children and Family Court Advisory and Support Service (Cafcass or Cafcass Cymru), unless the court
+                      decides it needs to be shared with the other people in the case.</p>
+                     </label>
+
+                     <div class="govuk-checkboxes__conditional" id="certain-interpreter-conditional">
+
+                       <div class="govuk-form-group">
+
+                         <label for="steps-attending-court-language-form-language-interpreter-details-field" class="govuk-label">
+                           Reason to mark these documents as confidential</label>
+                         <textarea id="steps-attending-court-language-form-language-interpreter-details-field"
+                         class="govuk-textarea" rows="2"
+                         name="steps_attending_court_language_form[language_interpreter_details]">                           </textarea>
+
+                       </div>
+
+                      </div>
+
+                  </div>
+
+                </div>
+
+                <button class="govuk-button upload-addnew govuk-button--secondary" data-module="govuk-button">
+                  Upload file
+                </button>
+
+
+              </div>
+
+            </div>
+
+
+          </div>
+
+        </div>
+
+
+        <div class="govuk-grid-column-full">
+
+          <br><br><br><br>
+
+
+          <div class="govuk-button-group">
+
+          <form action="/respondenttasklist/startreply" method="post" novalidate>
+
+            <button class="govuk-button" data-module="govuk-button">
+              Save and continue
+            </button>
+
+
+          </form>
+
+          </div>
+
+          <br>
+
+        </div>
+
+
+
+
+
+        <!-- end components here -->
+
+        </div>
+
+
+        <div class="govuk-grid-column-one-third">
+
+        </div>
+
+
+
+</div>
+
+
+
+
+
+
+
+
+{% endblock %}

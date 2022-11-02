@@ -1,0 +1,198 @@
+{% extends "layout.html" %}
+
+{% block pageTitle %}
+  Upload documents
+{% endblock %}
+
+{% block header %}
+  <!-- Blank header with no service name for the start page -->
+
+{{ govukHeader({
+    homepageUrl: "/",
+    serviceName: serviceName,
+    serviceUrl: "/",
+    containerClasses: "govuk-width-container"
+}) }}
+
+{% endblock %}
+
+{% block content %}
+
+
+
+
+<a href="/respondenttasklist/startreply" class="govuk-back-link">Back</a>
+
+  <div class="govuk-grid-row">
+
+    <div class="govuk-grid-column-two-thirds">
+
+
+
+    <!-- start components here -->
+
+    <h1 class="govuk-heading-xl">
+      <span class="govuk-caption-l">Upload documents</span>
+      Select the type of document you want to upload
+    </h1>
+
+    <div class="upload-component govuk-!-margin-top-9">
+
+      <form action="uploaddocuments" method="post" novalidate>
+
+        <h2 class="app-task-list__section">
+           Witness statements and evidence
+        </h2>
+
+        <p class="govuk-body">Includes medical records, letters from school and witness statements.</p>
+
+        <select class="govuk-select govuk-!-width-one-half govuk-!-margin-right-9" id="sort" name="sort">
+          <option value="published"selected>Witness statements</option>
+          <option value="updated">Statements of supporting evidence</option>
+          <option value="updated">Digital downloads</option>
+          <option value="views">Photographic evidence</option>
+          <option value="views">Mobile phone screenshots</option>
+          <option value="views">Medical records</option>
+          <option value="comments">Letters from school</option>
+        </select>
+
+        <button class="govuk-button upload-addnew govuk-button--secondary" data-module="govuk-button">
+          Upload this document
+        </button>
+
+      </form>
+
+    </div>
+
+      <div class="upload-component govuk-!-margin-bottom-6">
+
+        <form action="uploaddocuments" method="post" novalidate>
+
+          <h2 class="app-task-list__section">
+             Applications
+          </h2>
+
+          <p class="govuk-body">Includes an application related to your case (C2 form)</p>
+
+          <select class="govuk-select govuk-!-width-one-half govuk-!-margin-right-9" id="sort" name="sort">
+            <option value="updated">Previous orders submitted with application</option>
+            <option value="views">Permission to start proceedings (C2)</option>
+            <option value="comments">Compensation for financial loss (C79)</option>
+          </select>
+
+          <button class="govuk-button upload-addnew govuk-button--secondary" data-module="govuk-button">
+            Upload this document
+          </button>
+
+        </form>
+
+      </div>
+
+      <div class="upload-component">
+
+        <form action="uploaddocuments" method="post" novalidate>
+
+          <h2 class="app-task-list__section">
+             Expert reports
+          </h2>
+
+          <p class="govuk-body">Includes medical reports, drug test results and police reports.</p>
+
+          <select class="govuk-select govuk-!-width-one-half govuk-!-margin-right-9" id="sort" name="sort">
+            <option value="published"selected>Medical reports</option>
+            <option value="updated">DNA reports</option>
+            <option value="views">Paternity test reports</option>
+            <option value="comments">Results of hair strand or blood tests</option>
+            <option value="comments">Police disclosures</option>
+          </select>
+
+          <button class="govuk-button upload-addnew govuk-button--secondary" data-module="govuk-button">
+            Upload this document
+          </button>
+
+        </form>
+
+      </div>
+
+      <div class="upload-component">
+
+        <form action="uploaddocuments" method="post" novalidate>
+
+          <h2 class="app-task-list__section">
+             Correspondence to the court
+          </h2>
+
+          <p class="govuk-body">Includes emails and letters.</p>
+
+          <select class="govuk-select govuk-!-width-one-half govuk-!-margin-right-9" id="sort" name="sort">
+            <option value="published"selected>Emails to ask to change a hearing date</option>
+            <option value="updated">Witness availability</option>
+            <option value="views">Letter of complaint</option>
+          </select>
+
+          <button class="govuk-button upload-addnew govuk-button--secondary" data-module="govuk-button">
+            Upload this document
+          </button>
+
+        </form>
+
+
+         <div class="govuk-!-padding-bottom-4"></div>
+        <form action="../startreply" method="post" novalidate>
+          <button class="govuk-button" data-module="govuk-button">
+            Continue
+          </button>
+        </form>
+      </div>
+
+<!-- end components here -->
+
+
+
+
+
+
+
+        <!-- end components here -->
+
+    </div>
+
+
+    <div class="govuk-grid-column-one-third">
+
+      <details class="govuk-details" data-module="govuk-details">
+
+          <summary class="govuk-details__summary">
+
+           <span class="govuk-details__summary-text">
+            Contacts for help
+            </span>
+
+          </summary>
+
+          <div class="govuk-details__text">
+           Ask a question or get any help in any language
+           <p class="govuk-body govuk-!-font-weight-bold">Telephone</p>
+
+           <p class="govuk-body govuk-!-font-weight-regular">0300 303 0742</p>
+           <p class="govuk-body govuk-!-font-weight-regular">Monday to Friday, 8am to 8pm</p>
+           <a href="#" class="govuk-link">Find out about call charges</a>
+           <p class="govuk-body govuk-!-font-weight-regular">(opens in a new window)</p>
+
+          </div>
+
+      </details>
+
+    </div>
+
+
+  </div>
+
+
+
+
+
+
+
+
+{% endblock %}

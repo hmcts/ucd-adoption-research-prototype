@@ -1,0 +1,88 @@
+{% extends "layout.html" %}
+
+{% block pageTitle %}
+  Child arrangement respondent
+{% endblock %}
+
+{% block header %}
+  <!-- Blank header with no service name for the start page -->
+
+{{ govukHeader({
+    homepageUrl: "/",
+    serviceName: serviceName,
+    serviceUrl: "/",
+    containerClasses: "govuk-width-container"
+}) }}
+
+{% endblock %}
+
+{% block content %}
+ <div class="govuk-grid-row">
+    <div class="govuk-grid-column-two-thirds">
+
+      <div class="govuk-width-container">
+
+        <a href="#" onclick="history.back(-1)" class="govuk-back-link">Back</a>
+
+        <main class="govuk-main-wrapper app-main-class" id="main-content" role="main">
+            <form action="intermediary" method="post" novalidate>
+
+
+            <h1 class="govuk-heading-xl">
+              <span class="govuk-caption-l govuk-!-padding-bottom-2">Requirements to attend court</span>
+              Factors affecting ability to participate</h1>
+
+
+              <div class="govuk-form-group">
+                <label for="steps-application-litigation-capacity-details-form-participation-capacity-details-field" class="govuk-label">Details of any adult in this application who lacks the mental capacity to conduct these court proceedings (if applicable)</label>
+                <span class="govuk-hint" id="steps-application-litigation-capacity-details-form-participation-capacity-details-hint">This means they are unable to make a decision for themselves because of an impairment or disturbance of their mind or brain (within the meaning of the Mental Capacity Act 2005)</span>
+                <textarea id="steps-application-litigation-capacity-details-form-participation-capacity-details-field" class="govuk-textarea" rows="5" aria-describedby="steps-application-litigation-capacity-details-form-participation-capacity-details-hint" name="steps_application_litigation_capacity_details_form[participation_capacity_details]">
+                </textarea>
+              </div>
+              <div class="govuk-form-group">
+                <label for="steps-application-litigation-capacity-details-form-participation-other-factors-details-field" class="govuk-label">Details of anything else that could affect any adult in this application taking part in these court proceedings (if applicable)</label>
+                <span class="govuk-hint" id="steps-application-litigation-capacity-details-form-participation-other-factors-details-hint">For example, a learning disability or other mental or physical health problem</span>
+                <textarea id="steps-application-litigation-capacity-details-form-participation-other-factors-details-field" class="govuk-textarea" rows="5" aria-describedby="steps-application-litigation-capacity-details-form-participation-other-factors-details-hint" name="steps_application_litigation_capacity_details_form[participation_other_factors_details]">
+                </textarea>
+              </div>
+              <div class="govuk-form-group">
+                <label for="steps-application-litigation-capacity-details-form-participation-referral-or-assessment-details-field" class="govuk-label">Details of anyone in this application who has been referred to or assessed by an Adult Learning Disability team or any adult health service and what the outcome was (if you know)</label>
+                <textarea id="steps-application-litigation-capacity-details-form-participation-referral-or-assessment-details-field" class="govuk-textarea" rows="5" name="steps_application_litigation_capacity_details_form[participation_referral_or_assessment_details]">
+                </textarea>
+              </div>
+
+              <button type="submit" formnovalidate="formnovalidate" class="govuk-button" data-module="govuk-button" data-prevent-double-click="true">Continue</button>
+
+            </form>
+
+
+        </main>
+      </div>
+    </div>
+
+    <div class="govuk-grid-column-one-third">
+
+    		<details class="govuk-details" data-module="govuk-details">
+ 			      <summary class="govuk-details__summary">
+       			 <span class="govuk-details__summary-text">
+        		  Contacts for help
+      			  </span>
+  			    </summary>
+  			<div class="govuk-details__text">
+   			 Ask a question or get any help in any language
+   			 <p class="govuk-body govuk-!-font-weight-bold">Telephone</p>
+
+   			 <p class="govuk-body govuk-!-font-weight-regular">0300 303 0742</p>
+   			 <p class="govuk-body govuk-!-font-weight-regular">Monday to Friday, 8am to 8pm</p>
+   			 <a href="#" class="govuk-link">Find out about call charges</a>
+   			 <p class="govuk-body govuk-!-font-weight-regular">(opens in a new window)</p>
+
+			  </div>
+			</details>
+    </div>
+
+</div>
+
+
+
+{% endblock %}

@@ -1,0 +1,131 @@
+{% extends "layout.html" %}
+
+{% block pageTitle %}
+  Child arrangement respondent
+{% endblock %}
+
+{% block beforeContent %}
+<a class="govuk-back-link" href="javascript:history.back()">Back</a>
+{% endblock %}
+
+{% block header %}
+  <!-- Blank header with no service name for the start page -->
+
+{{ govukHeader({
+    homepageUrl: "/",
+    serviceName: serviceName,
+    serviceUrl: "/",
+    containerClasses: "govuk-width-container"
+}) }}
+
+{% endblock %}
+
+{% block content %}
+<div class="govuk-grid-row">
+    <div class="govuk-grid-column-two-thirds">
+      <div class="govuk-width-container">
+
+        <main class="govuk-main-wrapper " id="main-content" role="main">
+
+          <form action="check-your-answers" method="post" novalidate>
+
+              <h1 class="govuk-heading-xl">Your name and date of birth</h1>
+
+<!--If provided by the applicant, it will be prepopulated as a placeholder. Once user start typing, placeholder will disappear. If they delete whatever they wrote before saving then placeholder will return -->
+            <div class="govuk-form-group">
+              <label class="govuk-label" for="first-name">
+                Your first name
+              </label>
+              <input class="govuk-input" id="first-name" name="first-name" type="text" spellcheck="false" autocomplete="name" value="Sam">
+            </div>
+
+            <div class="govuk-form-group">
+              <label class="govuk-label" for="last-name">
+                Your last name
+              </label>
+              <input class="govuk-input" id="last-name" name="last-name" type="text" spellcheck="false" autocomplete="name" value="Richards">
+            </div>
+
+            <div class="govuk-form-group">
+              <label class="govuk-label" for="previous-name">
+                Previous names, if any (optional)
+              </label>
+              <input class="govuk-input" id="previous-name" name="previous-name" type="text" spellcheck="false" autocomplete="name">
+            </div>
+
+            <div class="govuk-form-group">
+              <fieldset class="govuk-fieldset" role="group" aria-describedby="dob-hint">
+                <legend class="govuk-fieldset__legend">
+                    Your date of birth
+                </legend>
+                <div id="dob-hint" class="govuk-hint">
+                  For example, 31 3 1980
+                </div>
+                <div class="govuk-date-input" id="dob">
+                  <div class="govuk-date-input__item">
+                    <div class="govuk-form-group">
+                      <label class="govuk-label govuk-date-input__label" for="dob-day">
+                        Day
+                      </label>
+                      <input class="govuk-input govuk-date-input__input govuk-input--width-2" id="dob-day" name="dob-day" type="text" autocomplete="bday-day" pattern="[0-9]*" inputmode="numeric" value="12">
+                    </div>
+                  </div>
+                  <div class="govuk-date-input__item">
+                    <div class="govuk-form-group">
+                      <label class="govuk-label govuk-date-input__label" for="dob-month">
+                        Month
+                      </label>
+                      <input class="govuk-input govuk-date-input__input govuk-input--width-2" id="dob-month" name="dob-month" type="text" autocomplete="bday-month" pattern="[0-9]*" inputmode="numeric" value="4">
+                    </div>
+                  </div>
+                  <div class="govuk-date-input__item">
+                    <div class="govuk-form-group">
+                      <label class="govuk-label govuk-date-input__label" for="dob-year">
+                        Year
+                      </label>
+                      <input class="govuk-input govuk-date-input__input govuk-input--width-4" id="dob-year" name="dob-year" type="text" autocomplete="bday-year" pattern="[0-9]*" inputmode="numeric" value="1980">
+                    </div>
+                  </div>
+                </div>
+              </fieldset>
+            </div>
+
+            <div class="govuk-form-group">
+              <label class="govuk-label" for="pob">
+                Place of birth
+              </label>
+              <input class="govuk-input" id="pob" name="pob" type="text" spellcheck="false" autocomplete="name">
+            </div>
+
+            <button class="govuk-button" data-module="govuk-button">
+              Save and continue
+            </button>
+          </form>
+        </main>
+      </div>
+    </div>
+
+    <div class="govuk-grid-column-one-third">
+    		<details class="govuk-details" data-module="govuk-details">
+     			 <summary class="govuk-details__summary">
+       			 <span class="govuk-details__summary-text">
+        		  Contacts for help
+      			  </span>
+      			</summary>
+    			<div class="govuk-details__text">
+     			 Ask a question or get any help in any language
+     			 <p class="govuk-body govuk-!-font-weight-bold">Telephone</p>
+
+     			 <p class="govuk-body govuk-!-font-weight-regular">0300 303 0742</p>
+     			 <p class="govuk-body govuk-!-font-weight-regular">Monday to Friday, 8am to 8pm</p>
+     			 <a href="#" class="govuk-link">Find out about call charges</a>
+     			 <p class="govuk-body govuk-!-font-weight-regular">(opens in a new window)</p>
+  			  </div>
+			  </details>
+    </div>
+
+</div>
+
+
+
+{% endblock %}

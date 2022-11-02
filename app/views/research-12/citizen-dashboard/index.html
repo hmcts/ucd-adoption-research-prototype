@@ -1,0 +1,490 @@
+{% extends "layout-signed-in.html" %}
+
+{% block pageTitle %}
+Apply to adopt a child
+{% endblock %}
+
+{% block beforeContent %}
+<a class="govuk-back-link" href="javascript:history.back()">Back</a>
+{% endblock %}
+
+{% block content %}
+
+<style>
+.hmcts-progress-bar-vertical .hmcts-progress-bar__icon {
+    height: 45px;
+    width: 45px
+    ;
+}
+.hmcts-progress-bar-vertical  {
+  width: 107%;
+  margin-left:-21px;
+}
+.hmcts-progress-bar-vertical .hmcts-progress-bar__list::before {
+    margin-top: 7px;
+}
+.hmcts-progress-bar__list-item:first-child::before, .hmcts-progress-bar__list-item:last-child::before  { border-top: 4px solid #fff; margin-top: 7px }
+
+.govuk-tag { text-transform:none }
+
+body {
+        font-family: "GDS Transport",arial,sans-serif;
+    }
+/* ========================= COMPONENT 1 ===============================  */
+
+    .govuk-appeal-wrapper {
+        border-top: 8px solid #2a6dbf;
+        /* width: 65vw; */
+        padding: 8px;
+        line-height: 1.25;
+    }
+
+    .govuk-appeal-options ,
+    .govuk-appeal-contact {
+        padding-bottom: 30px;
+        border-bottom: 2px solid darkgrey;
+        position: relative;
+        left: -7px;
+    }
+
+    .govuk-appeal-wrapper,
+    .govuk-appeal-options,
+    .govuk-appeal-options_links,
+    .govuk-appeal-contact-info_email,
+    .govuk-appeal-contact-info_timings {
+        display: flex;
+        flex-direction: column;
+    }
+
+    .govuk-appeal-contact_text, .govuk-appeal-contact-info_tel {
+        margin: 19px 0;
+    }
+
+    .govuk-appeal-contact-info_email {
+        margin-bottom: 10px;
+    }
+
+    /* ========================= ============== ===============================  */
+
+
+     /* ========================= COMPONENT 2 ===============================  */
+
+     .govuk-appeal-summary {
+      display: flex;
+      flex-direction: row;
+    }
+
+    .govuk-appeal-summary_check-wrapper {
+        display: inline-block;
+        background-color: royalblue;
+        border-radius: 20px;
+        width: 27px;
+        height: 26px;
+        margin-right: 30px;
+    }
+
+    .govuk-appeal-summary_check {
+        position: relative;
+        top: 3px;
+        left: 9px;
+        display: inline-block;
+        transform: rotate(45deg);
+        height: 12px;
+        width: 5px;
+        border-bottom: 4px solid white;
+        border-right: 4px solid white;
+    }
+
+    .govuk-appeal-summary-details_link {
+        display: flex;
+        flex-direction: column;
+        margin: 20px;
+    }
+
+    .govuk-appeal-summary-details_link a {
+        margin-top: 8px;
+    }
+
+    @media only screen and (max-width: 768px) {
+        .govuk-appeal-summary_check-wrapper {
+            width: 37px;
+        }
+    }
+
+    /* ========================= ============== ===============================  */
+
+    /* ========================= COMPONENT 3 ===============================  */
+
+    .govuk-appeal-steps__notification {
+        display: flex;
+        flex-direction: row;
+        align-items: center;
+        background-color: #f7f7f7;
+        padding: 8px 4px;
+    }
+
+    .govuk-appeal-steps__notification-text {
+        margin-left: 11px;
+    }
+
+    .govuk-appeal-steps__message {
+        margin-top: 10px;
+        padding: 6px 30px 30px 33px;
+        background-color: rgba(132, 232, 164, 0.1);
+    }
+
+    .govuk-appeal-steps-button {
+        background-color: #00703c;
+        border-radius: 2px;
+        color: white;
+        padding: 9px 25px;
+        border: none;
+        cursor: pointer;
+        font-size: 14px;
+    }
+
+    .rectangle-box {
+        height: 30px;
+        width: 6px;
+        background-color: #00703c;
+    }
+
+    /* ========================= ============== ===============================  */
+
+
+    .hmcts-progress-bar__list {
+    list-style: none;
+    margin: 0;
+    padding: 0;
+    position: relative;
+    text-align: justify;
+    vertical-align: top;
+}
+
+.hmcts-progress-bar__list::before {
+    border-top: 4px solid lightgrey;
+    content: "";
+    left: 0;
+    position: absolute;
+    top: 13px;
+    width: 100%;
+}
+
+.hmcts-progress-bar__list-item {
+    display: inline-block;
+    max-width: 20%;
+    position: relative;
+    text-align: center;
+    vertical-align: top;
+}
+
+.hmcts-progress-bar__list-item:first-child::before,
+.hmcts-progress-bar__list-item:last-child::before {
+    border-top: 6px solid #ffffff;
+    content: "";
+    position: absolute;
+    top: 13px;
+    width: 50%;
+}
+
+.hmcts-progress-bar__list-item:first-child::before {
+    left: 0;
+}
+
+.hmcts-progress-bar__icon {
+    position: relative;
+    background-color: #ffffff;
+    border: 3px solid lightgrey;
+    border-radius: 50%;
+    box-sizing: border-box;
+    display: block;
+    height: 32px;
+    margin-left: auto;
+    margin-right: auto;
+    width: 32px;
+}
+
+.hmcts-progress-bar__icon .govuk-appeal-summary_check {
+    left: 1px;
+}
+
+.complete {
+    background-color: #267abf;
+    border: 3px solid #267abf;
+}
+
+.hmcts-progress-bar__label {
+    font-size: 14px;
+    line-height: 1.14286;
+    display: block;
+    margin-top: 10px;
+    position: relative;
+    word-wrap: break-word;
+}
+
+.hmcts-progress-bar__list::after {
+    content: "";
+    display: inline-block;
+    width: 100%;
+}
+</style>
+
+<div class="govuk-grid-row">
+
+  <div class="govuk-grid-column-full">
+
+      <h1 class="govuk-heading-xl govuk-!-margin-bottom-4">
+        Jane Austen
+      </h1>
+      <p class="govuk-body">Case number #9344-6223-9535-0099</p>
+  </div>
+  
+  <div class="govuk-grid-column-two-thirds">
+
+      <hr class="govuk-section-break govuk-section-break--m govuk-section-break--visible">
+      <div class="hmcts-progress-bar-vertical" role="progressbar">
+        <ol class="hmcts-progress-bar__list">
+          <li class="hmcts-progress-bar__list-item">
+            <span class="hmcts-progress-bar__icon hmcts-progress-bar__icon--complete"></span>
+            <span class="hmcts-progress-bar__label"><span class="govuk-visually-hidden"> Step 1: </span>Processing application</span>
+          </li>
+          <li class="hmcts-progress-bar__list-item">
+            <span class="hmcts-progress-bar__icon hmcts-progress-bar__icon--in-progress"></span>
+            <span class="hmcts-progress-bar__label"><span class="govuk-visually-hidden">Step 2: </span>Awaiting local authority input</span>
+          </li>
+          <li class="hmcts-progress-bar__list-item">
+            <span class="hmcts-progress-bar__icon"></span>
+            <span class="hmcts-progress-bar__label"><span class="govuk-visually-hidden">Step 3: </span>Hearings happening</span>
+          </li>
+          <li class="hmcts-progress-bar__list-item">
+            <span class="hmcts-progress-bar__icon"></span>
+            <span class="hmcts-progress-bar__label"><span class="govuk-visually-hidden">Step 4: </span>Application outcome</span>
+          </li>
+        </ol>
+      </div>
+
+      <!--<img src="../public/images/banners/postapplicationissued.png" width="100%" alt="Progress stage: Response submitted">!-->
+      <div class="govuk-!-padding-bottom-4"></div>
+
+      <div class="govuk-notification-banner" role="region" aria-labelledby="govuk-notification-banner-title" data-module="govuk-notification-banner">
+        <div class="govuk-notification-banner__header">
+          <h2 class="govuk-notification-banner__title" id="govuk-notification-banner-title">
+            Important
+          </h2>
+        </div>
+        <div class="govuk-notification-banner__content">
+          <p class="govuk-notification-banner__heading">
+            Respond to a query from the court NOTIFICATION
+          </p>
+          <p class="govuk-body">Blah blah respond to a query to answer a question or upload documents blah blah blah</p>            
+
+          <p class="govuk-notification-banner__heading">
+            <a class="govuk-notification-banner__link" href="respond-to-query/query.html">Respond to a query from the court</a>
+          </p>
+        </div>
+
+      </div>
+
+      <ol class="app-task-list">
+        <li>
+          <h2 class="app-task-list__section">
+             Applicants details
+          </h2>
+          <ul class="app-task-list__items">
+            <h3 class="govuk-heading-s govuk-!-margin-bottom-1">{{ data['firstApplicant'] }}</h3>
+            <li class="app-task-list__item">
+              <span class="app-task-list__task-name">
+                <a href="about-you/confirm-contact-details/check-your-answers" aria-describedby="read-declaration-status">
+                  Manage your contact details
+                </a>
+              </span>
+              <strong class="govuk-tag app-task-list__tag govuk-tag govuk-tag--blue" id="eligibility-status">Optional</strong>
+            </li>
+            <li class="app-task-list__item">
+              <span class="app-task-list__task-name">
+                <a href="about-you/tell-us-your-hearing-needs/remote-hearing" aria-describedby="read-declaration-status">
+                Provide or review your support needs
+                </a>
+              </span>
+              <strong class="govuk-tag app-task-list__tag govuk-tag govuk-tag--blue" id="eligibility-status">Optional</strong>
+            </li>
+          </ul>
+          <ul class="app-task-list__items">
+            <!-- <p class="govuk-!-font-weight-bold govuk-!-margin-bottom-2">{{ data['secondApplicant'] }}</p> -->
+            <h3 class="govuk-heading-s govuk-!-margin-bottom-1">{{ data['secondApplicant'] }}</h3>
+            <li class="app-task-list__item">
+              <span class="app-task-list__task-name">
+                <a href="about-you/confirm-contact-details/check-your-answers" aria-describedby="read-declaration-status">
+                  Manage your contact details
+                </a>
+              </span>
+              <strong class="govuk-tag app-task-list__tag govuk-tag govuk-tag--blue" id="eligibility-status">Optional</strong>
+            </li>
+            <li class="app-task-list__item">
+              <span class="app-task-list__task-name">
+                <a href="about-you/tell-us-your-hearing-needs/remote-hearing" aria-describedby="read-declaration-status">
+                Provide or review your support needs
+                </a>
+              </span>
+              <strong class="govuk-tag app-task-list__tag govuk-tag govuk-tag--blue" id="eligibility-status">Optional</strong>
+            </li>
+          </ul>
+        </li>
+
+        <li>
+          <h2 class="app-task-list__section">
+             The application
+          </h2>
+          <ul class="app-task-list__items">
+            <li class="app-task-list__item">
+              <span class="app-task-list__task-name">
+                <a href="../../public/pdf/A58.pdf" target="_blank" aria-describedby="company-information-status">
+                  View your application (PDF)
+                </a>
+              </span>
+              <strong class="govuk-tag app-task-list__tag govuk-tag--blue" id="company-information-status">Optional</strong>
+            </li>
+          </ul>
+        </li>
+        
+        <li>
+          <h2 class="app-task-list__section">
+            Your court hearings
+          </h2>
+          <ul class="app-task-list__items">
+            <li class="app-task-list__item">
+              <span class="app-task-list__task-name">
+                <a href="yourhearings/hearings" aria-describedby="application-detail-about-you">
+                  Check details of your court hearings
+                </a>
+              </span>
+              <strong class="govuk-tag govuk-tag--grey app-task-list__tag" id="submit-pay-status">Not available yet</strong>
+            </li>
+
+
+          </ul>
+        </li>
+
+        <li>
+          <h2 class="app-task-list__section">
+             Your documents
+          </h2>
+          <ul class="app-task-list__items">
+
+            <li class="app-task-list__item">
+              <span class="app-task-list__task-name">
+                <a href="your-documents/uploadv1/uploaddocumentsv1" aria-describedby="upload-document">
+                  Upload documents
+                </a>
+              </span>
+              <strong class="govuk-tag govuk-tag--blue app-task-list__tag" id="submit-pay-status">Optional</strong>
+            </li>
+
+            <li class="app-task-list__item">
+              <span class="app-task-list__task-name">
+                <a href="your-documents/alldocuments/alldocuments" aria-describedby="risk-of-harm-or-violence">
+                  View all documents
+                </a>
+              </span>
+              <strong class="govuk-tag govuk-tag--blue app-task-list__tag " id="submit-pay-status">Ready to view</strong>
+            </li>
+
+         </ul>
+        </li>
+
+        <li>
+          <h2 class="app-task-list__section">
+             Orders from the court
+          </h2>
+          <ul class="app-task-list__items">
+            <li class="app-task-list__item">
+              <span class="app-task-list__task-name">
+                <a href="your-documents/alldocuments/orders" aria-describedby="risk-of-harm-or-violence">
+                  View all orders from the court
+                </a>
+              </span>
+              <strong class="govuk-tag govuk-tag--grey app-task-list__tag" id="submit-pay-status">Not available yet</strong>
+            </li>
+
+          </ul>
+        </li>
+
+        <li>
+          <h2 class="app-task-list__section">
+             Temporary section
+          </h2>
+          <ul class="app-task-list__items">
+            <li class="app-task-list__item">
+              <span class="app-task-list__task-name">
+                <a href="respond-to-query/are-you-responding-to-query-from-court.html" aria-describedby="risk-of-harm-or-violence">
+                  Ask the court a query or something like this
+                </a>
+              </span>
+              <strong class="govuk-tag govuk-tag--grey app-task-list__tag" id="submit-pay-status">Not available yet</strong>
+            </li>
+          </ul>
+        </li>
+
+
+      </ol>
+
+  </div>
+  <div class="govuk-grid-column-one-third">
+
+    <hr class="govuk-section-break govuk-section-break--m govuk-section-break--visible govuk-!">
+
+
+      <h2 class="govuk-heading-m">
+        I want to...
+      </h2>
+
+      <ul class="govuk-list">
+
+        <li>
+          <a class="govuk-link" href="https://www.gov.uk/find-court-tribunal" target="_blank">Find my local court</a>
+          <div class="govuk-!-padding-bottom-2"></div>
+        </li>
+        <li>
+          <a class="govuk-link" href="https://helpwithchildarrangements.service.justice.gov.uk/going-to-court" target="_blank">Know more about attending court</a>
+          <div class="govuk-!-padding-bottom-2"></div>
+        </li>
+
+        <li>
+          <a class="govuk-link" href="https://www.gov.uk/find-legal-advice/find-legal-adviser" target="_blank">Find legal advice</a>
+          <div class="govuk-!-padding-bottom-2"></div>
+        </li>
+        <li>
+          <a class="govuk-link" href="" target="_blank">Lorem ipsum sic dolor</a>
+          <div class="govuk-!-padding-bottom-2"></div>
+        </li>
+        <li>
+          <a class="govuk-link" href="" target="_blank">Withdraw your application</a>
+          <div class="govuk-!-padding-bottom-2"></div>
+        </li>
+      </ul>
+
+
+
+      		<details class="govuk-details" data-module="govuk-details">
+   			 <summary class="govuk-details__summary">
+     			 <span class="govuk-details__summary-text">
+      		  Contacts for help
+    			  </span>
+    			</summary>
+    			<div class="govuk-details__text">
+     			 Ask a question or get any help in any language
+     			 <p class="govuk-body govuk-!-font-weight-bold">Telephone</p>
+
+     			 <p class="govuk-body govuk-!-font-weight-regular">0300 303 0742</p>
+     			 <p class="govuk-body govuk-!-font-weight-regular">Monday to Friday, 8am to 8pm</p>
+     			 <a href="#" class="govuk-link">Find out about call charges</a>
+     			 <p class="govuk-body govuk-!-font-weight-regular">(opens in a new window)</p>
+
+  			  </div>
+  			</details>
+
+      </div>
+
+  </div>
+
+{% endblock %}

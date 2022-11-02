@@ -1,0 +1,111 @@
+{% extends "layout.html" %}
+
+{% block pageTitle %}
+  Child arrangement respondent
+{% endblock %}
+
+{% block beforeContent %}
+<a class="govuk-back-link" href="javascript:history.back()">Back</a>
+{% endblock %}
+
+{% block header %}
+  <!-- Blank header with no service name for the start page -->
+
+{{ govukHeader({
+    homepageUrl: "/",
+    serviceName: serviceName,
+    serviceUrl: "/",
+    containerClasses: "govuk-width-container"
+}) }}
+
+{% endblock %}
+
+{% block content %}
+ <div class="govuk-grid-row">
+    <div class="govuk-grid-column-two-thirds">
+      <div class="govuk-width-container">
+        <main class="govuk-main-wrapper " id="main-content" role="main">
+          <form action="addresshistory" method="post" novalidate>
+
+            <fieldset class="govuk-fieldset">
+              <legend class="govuk-fieldset__legend govuk-fieldset__legend--xl">
+                <h1 class="govuk-fieldset__heading">
+                  Your address
+                </h1>
+              </legend>
+
+              <div class="govuk-!-padding-bottom-4"></div>
+
+                <div class="govuk-form-group">
+                  <label for="steps-applicant-address-details-form-address-line-1-field" class="govuk-label">Building and street
+                  </label>
+                  <input id="steps-applicant-address-details-form-address-line-1-field" class="govuk-input" type="text" value="" name="steps_applicant_address_details_form[address_line_1]">
+                </div>
+                <div class="govuk-form-group">
+                  <label for="steps-applicant-address-details-form-address-line-2-field" class="govuk-label">
+                    <span class="govuk-visually-hidden">Building and street line 2
+                    </span>
+                  </label>
+                  <input id="steps-applicant-address-details-form-address-line-2-field" class="govuk-input" type="text" value="" name="steps_applicant_address_details_form[address_line_2]">
+                </div>
+                <div class="govuk-form-group">
+                  <label for="steps-applicant-address-details-form-address-line-3-field" class="govuk-label">
+                    <span class="govuk-visually-hidden">Building and street line 3
+                    </span>
+                  </label>
+                  <input id="steps-applicant-address-details-form-address-line-3-field" class="govuk-input" type="text" value="" name="steps_applicant_address_details_form[address_line_3]">
+                </div>
+                <div class="govuk-form-group">
+                  <label for="steps-applicant-address-details-form-town-field" class="govuk-label">Town or city
+                  </label>
+                  <input id="steps-applicant-address-details-form-town-field" class="govuk-input govuk-!-width-one-half" type="text" value="" name="steps_applicant_address_details_form[town]">
+                </div>
+                <div class="govuk-form-group">
+                  <label for="steps-applicant-address-details-form-country-field" class="govuk-label">Country
+                  </label>
+                  <input id="steps-applicant-address-details-form-country-field" class="govuk-input govuk-!-width-one-half" type="text" value="" name="steps_applicant_address_details_form[country]">
+                </div>
+                <div class="govuk-form-group">
+                  <label for="steps-applicant-address-details-form-postcode-field" class="govuk-label">Postcode
+                  </label>
+                  <input id="steps-applicant-address-details-form-postcode-field" class="govuk-input govuk-!-width-one-third" type="text" value="" name="steps_applicant_address_details_form[postcode]">
+                </div>
+
+
+            <button class="govuk-button" data-module="govuk-button">
+              Save and continue
+            </button>
+
+
+          </form>
+
+        </main>
+      </div>
+    </div>
+
+    <div class="govuk-grid-column-one-third">
+
+    		<details class="govuk-details" data-module="govuk-details">
+   			 <summary class="govuk-details__summary">
+     			 <span class="govuk-details__summary-text">
+      		  Contacts for help
+    			  </span>
+    			</summary>
+    			<div class="govuk-details__text">
+     			 Ask a question or get any help in any language
+     			 <p class="govuk-body govuk-!-font-weight-bold">Telephone</p>
+
+     			 <p class="govuk-body govuk-!-font-weight-regular">0300 303 0742</p>
+     			 <p class="govuk-body govuk-!-font-weight-regular">Monday to Friday, 8am to 8pm</p>
+     			 <a href="#" class="govuk-link">Find out about call charges</a>
+     			 <p class="govuk-body govuk-!-font-weight-regular">(opens in a new window)</p>
+
+  			  </div>
+			</details>
+    </div>
+
+</div>
+
+
+
+{% endblock %}

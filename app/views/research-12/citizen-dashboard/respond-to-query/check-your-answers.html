@@ -1,0 +1,87 @@
+{% extends "layout-signed-in.html" %}
+
+{% block pageTitle %}
+Apply to adopt a child
+{% endblock %}
+
+{% block beforeContent %}
+<a class="govuk-back-link" href="javascript:history.back()">Back</a>
+{% endblock %}
+
+{% block content %}
+
+ <div class="govuk-grid-row">
+    <div class="govuk-grid-column-two-thirds">
+      <div class="govuk-width-container">
+
+        <h1 class="govuk-heading-xl">Check your answers</h1>
+
+        <dl class="govuk-summary-list govuk-!-margin-bottom-9">
+          <div class="govuk-summary-list__row">
+            <dt class="govuk-summary-list__key">
+              Uploaded documents
+            </dt>
+            <dd class="govuk-summary-list__value">
+              <a href="">Passport.pdf</a>
+              <br><a href="">DrivingLicence.pdf</a>
+            </dd>
+            <dd class="govuk-summary-list__actions">
+              <a class="govuk-link" href="upload.html">Edit<span class="govuk-visually-hidden">uploaded documents</span>
+              </a>
+            </dd>
+          </div>
+
+          {% if data['answer-question'] != '' %}
+          <div class="govuk-summary-list__row">
+            <dt class="govuk-summary-list__key">
+              Answer to question asked by the court
+            </dt>
+            <dd class="govuk-summary-list__value">
+              {{ data['answer-question'] }}
+            </dd>
+            <dd class="govuk-summary-list__actions">
+              <a class="govuk-link" href="question.html">Edit<span class="govuk-visually-hidden">answer to question</span>
+              </a>
+            </dd>
+          </div>
+          {% endif %}
+        </dl>
+      <div>
+
+      <form action="research-12/citizen-dashboard/respond-to-query/question" method="post" novalidate>
+        <input type="hidden" name="answers-checked" value="true">
+        <div class="govuk-button-group">
+          <button class="govuk-button" data-module="govuk-button">
+            Save and continue
+          </button>
+        </div>
+      </form>
+
+      </div>
+      </div>
+    </div>
+    <div class="govuk-grid-column-one-third">
+
+    		<details class="govuk-details" data-module="govuk-details">
+ 			      <summary class="govuk-details__summary">
+       			 <span class="govuk-details__summary-text">
+        		  Contacts for help
+      			  </span>
+  			    </summary>
+  			<div class="govuk-details__text">
+   			 Ask a question or get any help in any language
+   			 <p class="govuk-body govuk-!-font-weight-bold">Telephone</p>
+
+   			 <p class="govuk-body govuk-!-font-weight-regular">0300 303 0742</p>
+   			 <p class="govuk-body govuk-!-font-weight-regular">Monday to Friday, 8am to 8pm</p>
+   			 <a href="#" class="govuk-link">Find out about call charges</a>
+   			 <p class="govuk-body govuk-!-font-weight-regular">(opens in a new window)</p>
+
+			  </div>
+			</details>
+    </div>
+</div>
+
+
+
+{% endblock %}

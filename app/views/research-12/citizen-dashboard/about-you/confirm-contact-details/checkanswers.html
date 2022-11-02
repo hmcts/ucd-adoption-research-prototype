@@ -1,0 +1,191 @@
+{% extends "layout.html" %}
+
+{% block pageTitle %}
+  Child arrangement respondent
+{% endblock %}
+
+{% block beforeContent %}
+<a class="govuk-back-link" href="javascript:history.back()">Back</a>
+{% endblock %}
+
+
+{% block header %}
+  <!-- Blank header with no service name for the start page -->
+
+{{ govukHeader({
+    homepageUrl: "/",
+    serviceName: serviceName,
+    serviceUrl: "/",
+    containerClasses: "govuk-width-container"
+}) }}
+
+{% endblock %}
+
+{% block content %}
+ <div class="govuk-grid-row">
+    <div class="govuk-grid-column-two-thirds">
+      <div class="govuk-width-container">
+
+        <main class="govuk-main-wrapper " id="main-content" role="main">
+
+          <h1 class="govuk-heading-xl">Check your details</h1>
+
+
+          <dl class="govuk-summary-list govuk-!-margin-bottom-9">
+            <div class="govuk-summary-list__row">
+              <dt class="govuk-summary-list__key govuk-!-width-one-half">
+                Name
+              </dt>
+              <dd class="govuk-summary-list__value">
+  <!--this will be prepopulated from the C100 but overwritten by user's input. If no input from C100, it will highlight that it needs to be filled-->
+                <!--{{ data['first-name'] }} {{ data['last-name'] }} {{ data['previous-name'] }}-->
+                Sam Richards
+              </dd>
+              <dd class="govuk-summary-list__actions">
+                <a class="govuk-link" href="personal-details">Edit<span class="govuk-visually-hidden">name</span>
+                </a>
+              </dd>
+            </div>
+            <div class="govuk-summary-list__row">
+              <dt class="govuk-summary-list__key">
+                Date of birth
+              </dt>
+              <dd class="govuk-summary-list__value">
+  <!--this will be prepopulated from the C100 but overwritten by user's input. If no input from C100, it will highlight that it needs to be filled-->
+                <!--{{ data['dob-day'] }} {{ data['dob-month'] }} {{ data['dob-year'] }}-->
+                12 April 1980
+              </dd>
+              <dd class="govuk-summary-list__actions">
+                <a class="govuk-link" href="personal-details">Edit<span class="govuk-visually-hidden">date of birth</span>
+                </a>
+              </dd>
+            </div>
+            <div class="govuk-summary-list__row">
+              <dt class="govuk-summary-list__key">
+                Place of birth
+              </dt>
+              <dd class="govuk-summary-list__value">
+  <!--this will be prepopulated from the C100 but overwritten by user's input. If no input from C100, it will highlight that it needs to be filled-->
+                <!--{{ data['pob'] }}-->
+                <p id="event-name-error" class="govuk-error-message">
+                  <span class="govuk-visually-hidden">Error:</span>Complete this section
+                </p>
+              </dd>
+              <dd class="govuk-summary-list__actions">
+                <a class="govuk-link" href="personal-details">Edit<span class="govuk-visually-hidden">place of birth</span>
+                </a>
+              </dd>
+            </div>
+            <div class="govuk-summary-list__row">
+              <dt class="govuk-summary-list__key">
+                Address
+              </dt>
+              <dd class="govuk-summary-list__value">
+  <!--this will be prepopulated from the C100 but overwritten by user's input. If no input from C100, it will highlight that it needs to be filled-->
+                <!--{{ data['address-line-1'] }} {{ data['address-line-2'] }} {{ data['address-town'] }} {{ data['address-postcode'] }}-->
+                24 Happy Hill
+                <br>Happy End
+                <br>H24 HE
+              </dd>
+              <dd class="govuk-summary-list__actions">
+                <a class="govuk-link" href="address-details">Edit<span class="govuk-visually-hidden">address</span>
+                </a>
+              </dd>
+            </div>
+            <div class="govuk-summary-list__row">
+              <dt class="govuk-summary-list__key">
+                Address history
+              </dt>
+              <dd class="govuk-summary-list__value">
+  <!--this will be prepopulated from the C100 but overwritten by user's input. If no input from C100, it will highlight that it needs to be filled-->
+                <!--{{ data['more-detail'] }}-->
+                <p id="event-name-error" class="govuk-error-message">
+                  <span class="govuk-visually-hidden">Error:</span>Complete this section
+                </p>
+              </dd>
+              <dd class="govuk-summary-list__actions">
+                <a class="govuk-link" href="addresshistory">Edit<span class="govuk-visually-hidden">address</span>
+                </a>
+              </dd>
+            </div>
+            <div class="govuk-summary-list__row">
+              <dt class="govuk-summary-list__key">
+                Telephone number
+              </dt>
+              <dd class="govuk-summary-list__value">
+  <!--this will be prepopulated from the C100 but overwritten by their input. If no input from C100, it will highlight that it needs to be filled-->
+                <!--{{ data['telephone-number'] }}-->
+                123456789
+                <div id="prepopulated-hint" class="govuk-hint">The applicant provided this information so it cannot be kept private</div>
+              </dd>
+              <dd class="govuk-summary-list__actions">
+                <a class="govuk-link" href="contact-details">Edit<span class="govuk-visually-hidden">number</span>
+                </a>
+              </dd>
+            </div>
+            <div class="govuk-summary-list__row">
+              <dt class="govuk-summary-list__key">
+                Email
+              </dt>
+              <dd class="govuk-summary-list__value">
+  <!--this will be prepopulated from the C100 but overwritten by user's input. If no input from C100, it will highlight that it needs to be filled-->
+                <!--{{ data['email'] }}-->
+                <p id="event-name-error" class="govuk-error-message">
+                  <span class="govuk-visually-hidden">Error:</span>Complete this section
+                </p>
+
+                <div id="prepopulated-hint" class="govuk-hint">This information will be kept private</div>
+              </dd>
+              <dd class="govuk-summary-list__actions">
+                <a class="govuk-link" href="contact-details">Edit<span class="govuk-visually-hidden">email</span>
+                </a>
+              </dd>
+            </div>
+
+          </dl>
+
+          <div id="prepopulated-hint" class="govuk-hint govuk-!-margin-top-1 govuk-!-margin-bottom-6">If you do not want to share your contact details with the other person in the case, update the section <a href="../confidentiality/detailsknown">Keeping your contact details private</a></div>
+      <div>
+
+        <form action="../../" method="post" novalidate>
+
+          <input type="hidden" name="answers-checked" value="true">
+
+          <div class="govuk-button-group">
+            <button class="govuk-button" data-module="govuk-button">
+              Save and continue
+            </button>
+
+          </div>
+
+        </form>
+
+      </div>
+        </main>
+      </div>
+    </div>
+    <div class="govuk-grid-column-one-third">
+
+    		<details class="govuk-details" data-module="govuk-details">
+ 			      <summary class="govuk-details__summary">
+       			 <span class="govuk-details__summary-text">
+        		  Contacts for help
+      			  </span>
+  			    </summary>
+  			<div class="govuk-details__text">
+   			 Ask a question or get any help in any language
+   			 <p class="govuk-body govuk-!-font-weight-bold">Telephone</p>
+
+   			 <p class="govuk-body govuk-!-font-weight-regular">0300 303 0742</p>
+   			 <p class="govuk-body govuk-!-font-weight-regular">Monday to Friday, 8am to 8pm</p>
+   			 <a href="#" class="govuk-link">Find out about call charges</a>
+   			 <p class="govuk-body govuk-!-font-weight-regular">(opens in a new window)</p>
+
+			  </div>
+			</details>
+    </div>
+</div>
+
+
+
+{% endblock %}

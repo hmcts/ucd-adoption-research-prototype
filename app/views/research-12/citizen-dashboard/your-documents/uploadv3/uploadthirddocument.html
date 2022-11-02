@@ -1,0 +1,200 @@
+{% extends "layout.html" %}
+
+{% block pageTitle %}
+  Upload documents
+{% endblock %}
+
+{% block header %}
+  <!-- Blank header with no service name for the start page -->
+
+{{ govukHeader({
+    homepageUrl: "/",
+    serviceName: serviceName,
+    serviceUrl: "/",
+    containerClasses: "govuk-width-container"
+}) }}
+
+{% endblock %}
+
+{% block content %}
+
+
+
+
+<a href="/respondenttasklist/your-documents/uploadv3/uploadmoredocument" class="govuk-back-link">Back</a>
+
+<div class="govuk-grid-row">
+
+    <div class="govuk-grid-column-two-thirds">
+
+      <h1 class="govuk-heading-xl">
+        <span class="govuk-caption-l">Upload documents</span>
+        Witness statements and evidence
+      </h1>
+
+      <p class="govuk-body">If you are uploading documents from a computer, name the files clearly. For example, letter-from-school.doc.</p>
+
+
+      <p class="govuk-body govuk-!-margin-bottom-6">Files must end with JPG, BMP, PNG,TIF, PDF, DOC or DOCX.</p>
+
+
+      <details class="govuk-details govuk-!-margin-bottom-9" data-module="govuk-details">
+              <summary class="govuk-details__summary">
+                <span class="govuk-details__summary-text">
+                  How to take a picture of a document on your phone and upload it
+                </span>
+              </summary>
+              <div class="govuk-details__text">
+                <ol class="govuk-list govuk-list--number">
+                  <li>Place your document on a flat service in a well-lit room. Use a flash if you need to.</li>
+                  <li>Take a picture of the whole document. You should be able to see its edges.</li>
+                  <li>Check you can read all the writing, including the handwriting.</li>
+                  <li>Email or send the photo or scan to the device you are using now.</li>
+                  <li>Upload it here.</li>
+                </ol>
+              </div>
+        </details>
+
+
+
+        <!-- start components here -->
+
+
+
+        <div class="uploadcomponent">
+
+          <div class=" govuk-!-margin-bottom-3">
+
+            <div class="govuk-form-group govuk-inset-text govuk-!-margin-bottom-9">
+
+              <label class="govuk-label govuk-!-font-weight-bold" for="file-upload-1">
+                Upload a file
+              </label>
+
+              <input class="govuk-file-upload govuk-!-margin-bottom-4" id="file-upload-1" name="file-upload-1" type="file">
+
+                <form action="" method="post" novalidate>
+
+                <button class="govuk-button upload-addnew govuk-button--secondary" data-module="govuk-button">
+                  Upload file
+                </button>
+
+              </form>
+            </div>
+
+
+              <div class = uploadedfilessummary>
+
+                    <h2 class="app-task-list__section">
+                       Uploaded files
+                    </h2>
+
+                      <dl class="govuk-summary-list">
+
+                          <div class="govuk-summary-list__row">
+                            <dt class="govuk-summary-list__value">
+                              witness_statement.pdf
+                            </dt>
+                            <dd class="govuk-summary-list__value">
+                              <strong>Marked as private</strong>
+                            </dd>
+                            <dd class="govuk-summary-list__actions">
+                              <a class="govuk-link" href="#">
+                                Remove<span class="govuk-visually-hidden"> name</span>
+                              </a>
+                            </dd>
+                          </div>
+
+                          <div class="govuk-summary-list__row">
+                            <dt class="govuk-summary-list__value">
+                              witness_statement2.pdf
+                            </dt>
+                            <dd class="govuk-summary-list__value">
+                              <strong>Marked as private</strong>
+                            </dd>
+                            <dd class="govuk-summary-list__actions">
+                              <a class="govuk-link" href="#">
+                                Remove<span class="govuk-visually-hidden"> name</span>
+                              </a>
+                            </dd>
+                          </div>
+
+                        </dl>
+
+                </div>
+
+            </div>
+
+
+          </div>
+
+        <!-- end components here -->
+
+          <br><br><br><br>
+
+
+          <div class="govuk-button-group">
+
+          <form action="uploadsuccessv3" method="post" novalidate>
+
+            <button class="govuk-button" data-module="govuk-button">
+              Save and continue
+            </button>
+
+
+          </form>
+
+          </div>
+
+          <br>
+
+    </div>
+
+
+
+    <div class="govuk-grid-column-one-third">
+
+    		<details class="govuk-details" data-module="govuk-details">
+
+ 			      <summary class="govuk-details__summary">
+
+       			 <span class="govuk-details__summary-text">
+        		  Contacts for help
+      			  </span>
+
+  			    </summary>
+
+      			<div class="govuk-details__text">
+       			 Ask a question or get any help in any language
+       			 <p class="govuk-body govuk-!-font-weight-bold">Telephone</p>
+
+       			 <p class="govuk-body govuk-!-font-weight-regular">0300 303 0742</p>
+       			 <p class="govuk-body govuk-!-font-weight-regular">Monday to Friday, 8am to 8pm</p>
+       			 <a href="#" class="govuk-link">Find out about call charges</a>
+       			 <p class="govuk-body govuk-!-font-weight-regular">(opens in a new window)</p>
+
+    			  </div>
+
+			  </details>
+
+    </div>
+
+
+
+
+  </div>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+{% endblock %}
