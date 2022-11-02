@@ -1,0 +1,170 @@
+{% extends "layout.html" %}
+
+{% block pageTitle %}
+  Upload documents
+{% endblock %}
+
+{% block header %}
+  <!-- Blank header with no service name for the start page -->
+
+{{ govukHeader({
+    homepageUrl: "/",
+    serviceName: serviceName,
+    serviceUrl: "/",
+    containerClasses: "govuk-width-container"
+}) }}
+
+{% endblock %}
+
+{% block content %}
+
+
+
+
+<a href="/respondenttasklist/your-documents/uploadv3/uploadthirddocument" class="govuk-back-link">Back</a>
+
+  <div class="govuk-grid-row">
+
+    <div class="govuk-grid-column-two-thirds">
+
+    <!-- start components here -->
+
+
+    <h1 class="govuk-heading-xl">
+      <span class="govuk-caption-l">Upload documents</span>
+      Select the type of document you want to upload
+    </h1>
+
+      <div class="govuk-notification-banner govuk-notification-banner--success govuk-!-margin-bottom-29" role="alert" aria-labelledby="govuk-notification-banner-title" data-module="govuk-notification-banner">
+        <div class="govuk-notification-banner__header">
+          <h2 class="govuk-notification-banner__title" id="govuk-notification-banner-title">
+            Success
+          </h2>
+        </div>
+        <div class="govuk-notification-banner__content">
+          <h2 class="govuk-notification-banner__heading">
+            Your documents have been uploaded
+          </h2>
+        </div>
+      </div>
+
+
+      <div class="uploadedfiles govuk-!-margin-bottom-3" style=" display: inline-block">
+
+
+
+          <h2 class="app-task-list__section govuk-!-margin-bottom-4">Uploaded files for witness statement and evidence</h2>
+
+
+            <dl class="govuk-summary-list">
+
+                <div class="govuk-summary-list__row">
+                  <dt class="govuk-summary-list__value">
+                    witness_statement.pdf
+                  </dt>
+                  <dd class="govuk-summary-list__value">
+                    <strong>Marked as private</strong>
+                  </dd>
+                  <dd class="govuk-summary-list__actions">
+                    <a class="govuk-link" href="#">
+                      Remove<span class="govuk-visually-hidden"> name</span>
+                    </a>
+                  </dd>
+                </div>
+
+                <div class="govuk-summary-list__row">
+
+                  <dt class="govuk-summary-list__value">
+                    witness_statement2.pdf
+                  </dt>
+                  <dd class="govuk-summary-list__value">
+                    <strong>Marked as private</strong>
+                  </dd>
+                  <dd class="govuk-summary-list__actions">
+                    <a class="govuk-link" href="#">
+                      Remove<span class="govuk-visually-hidden"> name</span>
+                    </a>
+                  </dd>
+
+                </div>
+
+              </dl>
+      </div>
+
+
+<!-- end components here -->
+
+        <div class="govuk-grid-column-full">
+
+
+          <br><br><br><br>
+
+          <div class="govuk-button-group">
+
+          <form action="/respondenttasklist/startreply" method="post" novalidate>
+
+              <button class="govuk-button" data-module="govuk-button">
+                Continue
+              </button>
+
+            </form>
+
+            <form action="/respondenttasklist/your-documents/uploadv3/uploaddocumentsv3" method="post" novalidate>
+
+              <input type="hidden" name="answers-checked" value="true">
+
+              <button class="govuk-button govuk-button--secondary" data-module="govuk-button"  value="Save and come back later">Upload another dcoument</button>
+
+            </form>
+
+            </div>
+
+
+        </div>
+
+
+        <!-- end components here -->
+
+    </div>
+
+
+
+    <div class="govuk-grid-column-one-third">
+
+    		<details class="govuk-details" data-module="govuk-details">
+
+ 			      <summary class="govuk-details__summary">
+
+       			 <span class="govuk-details__summary-text">
+        		  Contacts for help
+      			  </span>
+
+  			    </summary>
+
+      			<div class="govuk-details__text">
+       			 Ask a question or get any help in any language
+       			 <p class="govuk-body govuk-!-font-weight-bold">Telephone</p>
+
+       			 <p class="govuk-body govuk-!-font-weight-regular">0300 303 0742</p>
+       			 <p class="govuk-body govuk-!-font-weight-regular">Monday to Friday, 8am to 8pm</p>
+       			 <a href="#" class="govuk-link">Find out about call charges</a>
+       			 <p class="govuk-body govuk-!-font-weight-regular">(opens in a new window)</p>
+
+    			  </div>
+
+			  </details>
+
+    </div>
+
+   </div>
+
+
+
+
+
+
+
+
+
+
+{% endblock %}

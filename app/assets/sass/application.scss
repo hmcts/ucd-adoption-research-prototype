@@ -565,3 +565,107 @@ h2.govuk-heading-s {
 .test {
   overflow-x: scroll;
 }
+
+
+.govuk-list--bullet:after {
+  border-left: unset !important;
+    li:before {
+      border: unset !important;
+    }
+    li:after {
+      border: unset !important;
+      top: 0px !important;
+    }
+}
+
+.govuk-list--bullet li {
+  list-style-type: disc;
+  border-bottom: none !important;
+}
+
+.govuk-list--none li {
+  list-style-type: none;
+  border-bottom: none !important;
+}
+
+.govuk-list--bullet li:before {
+  border: none !important;
+  background-color: black !important;
+  border-bottom: none !important;
+  margin-left: inherit;
+  margin-top: 8px;
+  padding-left: 0px !important;
+}
+.govuk-list--bullet.none{
+  list-style-type: none;
+  width: calc(2 * 2px);
+  height: calc(2 * 2px);
+}
+
+.govuk-list--bullet li:before {
+  // all: unset !important;
+  list-style-type: circle;
+}
+
+
+
+// CA-DA prototype
+.app-inverted-text, .app-inset-text--inverted {
+  color: #ffffff;
+  background-color: #1d70b8;
+}
+
+
+.app-inverted--card {
+  margin-top: -15px;
+  margin-left: 0;
+  margin-right: 0;
+  padding: 10px;
+}
+
+@media screen and (min-width:40.0625em)
+{
+  .app-inverted--card { padding: 40px; }
+
+}
+
+.app-button--inverted, .app-button--inverted:link, .app-button--inverted:visited {
+  color: #1d70b8;
+  background-color: #ffffff;
+  box-shadow: 0 2px 0 #144e81;
+}
+
+.app-button--l {
+  font-weight: 700;
+  font-size: 18px;
+  font-size: 1.125rem;
+  line-height: 1;
+  min-height: auto;
+  justify-content: center;
+  padding-left: 3rem;
+  padding-right: 3rem;
+}
+
+
+@media screen and (min-width: 40.0625em) {
+  .app-button--l {
+      font-size: 24px;
+      font-size: 1.5rem;
+      line-height: 1;
+  }
+
+}
+
+.app-link--inverted:hover {
+  color: #e8f1f8;
+}
+
+.app-link--inverted, .app-link--inverted:link, .app-link--inverted:active, .app-link--inverted:visited {
+  color: #ffffff;
+  font-weight: 700;
+}
+
+.app-inset-text--inverted {
+  font-weight: 700;
+  border-left: 10px solid #ffffff;
+}

@@ -1,0 +1,75 @@
+{% extends "layout-signed-in.html" %}
+
+{% block pageTitle %}
+Apply to adopt a child
+{% endblock %}
+
+{% block beforeContent %}
+<a class="govuk-back-link" href="javascript:history.back()">Back</a>
+{% endblock %}
+
+{% block content %}
+
+<div class="govuk-grid-row">
+    <div class="govuk-grid-column-two-thirds">
+      <div class="govuk-width-container">
+
+        <form action="/research-12/citizen-dashboard/respond-to-query/what-has-court-requested" method="post" class="form">
+
+          <div class="govuk-form-group">
+            <fieldset class="govuk-fieldset" aria-describedby="checkbox-hint">
+              <legend class="govuk-fieldset__legend govuk-fieldset__legend--l">
+                <h1 class="govuk-fieldset__heading">
+                  What has the court asked you to do?
+                </h1>
+              </legend>
+              <div id="checkbox-hint" class="govuk-hint">
+                Select all that apply.
+              </div>
+              <div class="govuk-checkboxes" data-module="govuk-checkboxes">
+                <div class="govuk-checkboxes__item">
+                  <input class="govuk-checkboxes__input" id="dashboard-upload-document" name="dashboard-upload-document-checkbox" type="checkbox" value="Upload a document">
+                  <label class="govuk-label govuk-checkboxes__label" for="dashboard-upload-document">
+                    Upload a document
+                  </label>
+                </div>
+                <div class="govuk-checkboxes__item">
+                  <input class="govuk-checkboxes__input" id="dashboard-respond-question" name="dashboard-respond-question-checkbox" type="checkbox" value="Respond to a question">
+                  <label class="govuk-label govuk-checkboxes__label" for="dashboard-respond-question">
+                    Respond to a question
+                  </label>
+                </div>
+              </div>
+          
+            </fieldset>
+          </div>
+          <button class="govuk-button" data-module="govuk-button">
+            Continue
+          </button>
+        </form>
+      </div>
+    </div>
+
+    <div class="govuk-grid-column-one-third">
+      <details class="govuk-details" data-module="govuk-details">
+        <summary class="govuk-details__summary">
+          <span class="govuk-details__summary-text">
+          Contacts for help
+          </span>
+        </summary>
+        <div class="govuk-details__text">
+          Ask a question or get any help in any language
+          <p class="govuk-body govuk-!-font-weight-bold">Telephone</p>
+
+          <p class="govuk-body govuk-!-font-weight-regular">0300 303 0742</p>
+          <p class="govuk-body govuk-!-font-weight-regular">Monday to Friday, 8am to 8pm</p>
+          <a href="#" class="govuk-link">Find out about call charges</a>
+          <p class="govuk-body govuk-!-font-weight-regular">(opens in a new window)</p>
+        </div>
+      </details>
+    </div>
+</div>
+
+
+
+{% endblock %}

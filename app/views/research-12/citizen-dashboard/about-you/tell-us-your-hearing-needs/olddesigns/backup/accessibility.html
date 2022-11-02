@@ -1,0 +1,126 @@
+{% extends "layout.html" %}
+
+{% block pageTitle %}
+  Child arrangement respondent
+{% endblock %}
+
+{% block header %}
+  <!-- Blank header with no service name for the start page -->
+
+{{ govukHeader({
+    homepageUrl: "/",
+    serviceName: serviceName,
+    serviceUrl: "/",
+    containerClasses: "govuk-width-container"
+}) }}
+
+{% endblock %}
+
+{% block content %}
+ <div class="govuk-grid-row">
+    <div class="govuk-grid-column-two-thirds">
+
+      <div class="govuk-width-container">
+
+        <a href="#" onclick="history.back(-1)" class="govuk-back-link">Back</a>
+
+        <main class="govuk-main-wrapper " id="main-content" role="main">
+
+              <form action="specialarrengements" method="post" novalidate>
+                <div class="govuk-form-group">
+                  <fieldset class="govuk-fieldset">
+                    <legend class="govuk-fieldset__legend govuk-fieldset__legend--l">
+                      <h1 class="govuk-heading-l">
+                        Attending the hearing
+                      </h1>
+                    </legend>
+
+                    <div class="govuk-form-group">
+                      <fieldset class="govuk-fieldset">
+                        <legend class="govuk-fieldset__legend">
+                            <strong>Accessibility</strong>
+                        </legend>
+
+                        <p>Does the applicant, or anyone else attending court have a disability?</p>
+
+                        <div class="govuk-radios" data-module="govuk-radios">
+                          <div class="govuk-radios__item">
+                            <input class="govuk-radios__input" id="confidential-yes" name="confidential" type="radio" value="yes" data-aria-controls="conditional-confidential">
+                            <label class="govuk-label govuk-radios__label" for="confidential-yes">
+                              Yes
+                            </label>
+                          </div>
+                          <div class="govuk-radios__conditional govuk-radios__conditional--hidden" id="conditional-confidential">
+
+                                  <fieldset class="govuk-fieldset">
+                                    <legend class="govuk-fieldset__legend govuk-fieldset__legend--l">
+                                    <div class="govuk-checkboxes" data-module="govuk-checkboxes">
+                                      <div class="govuk-form-group">
+                                      </div>
+                                      <label class="govuk-label govuk-!-margin-bottom-4" for="event-name">
+                                        Describe the adjustments that the court needs to make.
+                                      </label>
+
+                                      <label class="govuk-label govuk-!-margin-bottom-4" for="event-name">
+                                        For example - someone with a hearing impairment may need an induction loop to be fitted in the courtroom.
+                                      </label>
+                                      <div class="govuk-form-group">
+                                        <textarea class="govuk-textarea" id="more-detail" name="more-detail" rows="5" aria-describedby="more-detail-hint"></textarea>
+                                      </div>
+
+                                    </div>
+                                  </fieldset>
+                              </div>
+                            </div>
+
+                          <div class="govuk-radios__item">
+                            <input class="govuk-radios__input" id="confidential-no" name="confidential" type="radio" value="no">
+                            <label class="govuk-label govuk-radios__label" for="confidential-no">
+                              No
+                            </label>
+                          </div>
+                    </div>
+
+                  </fieldset>
+                </div>
+                <button class="govuk-button govuk-button--secondary" data-module="govuk-button">
+                  Previous
+                </button>
+                <button class="govuk-button" data-module="govuk-button" >
+                  Continue
+                </button>
+              </form>
+
+        </main>
+      </div>
+
+
+
+
+    </div>
+    <div class="govuk-grid-column-one-third">
+
+    		<details class="govuk-details" data-module="govuk-details">
+ 			      <summary class="govuk-details__summary">
+       			 <span class="govuk-details__summary-text">
+        		  Contacts for help
+      			  </span>
+  			    </summary>
+  			<div class="govuk-details__text">
+   			 Ask a question or get any help in any language
+   			 <p class="govuk-body govuk-!-font-weight-bold">Telephone</p>
+
+   			 <p class="govuk-body govuk-!-font-weight-regular">0300 303 0742</p>
+   			 <p class="govuk-body govuk-!-font-weight-regular">Monday to Friday, 8am to 8pm</p>
+   			 <a href="#" class="govuk-link">Find out about call charges</a>
+   			 <p class="govuk-body govuk-!-font-weight-regular">(opens in a new window)</p>
+
+			  </div>
+			</details>
+    </div>
+
+</div>
+
+
+
+{% endblock %}

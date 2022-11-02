@@ -1,0 +1,85 @@
+{% extends "layout.html" %}
+
+{% block pageTitle %}
+  Child arrangement respondent
+{% endblock %}
+
+{% block beforeContent %}
+  <a class="govuk-back-link" href="javascript:history.back()">Back</a>
+{% endblock %}
+
+
+{% block header %}
+  <!-- Blank header with no service name for the start page -->
+
+{{ govukHeader({
+    homepageUrl: "/",
+    serviceName: serviceName,
+    serviceUrl: "/",
+    containerClasses: "govuk-width-container"
+}) }}
+
+{% endblock %}
+
+{% block content %}
+ <div class="govuk-grid-row">
+    <div class="govuk-grid-column-two-thirds">
+      <div class="govuk-width-container">
+
+        <!-- <main class="govuk-main-wrapper " id="main-content" role="main"> -->
+
+          <form action="check-your-answers" method="post" novalidate>
+
+            <h1 class="govuk-heading-xl">Your contact details</h1>
+
+            <p class="govuk-body">The court will generally contact you by email because you have opted to manage your case online.</p>
+            <div class="govuk-form-group">
+              <label class="govuk-label" for="telephone-number">
+                UK telephone number
+              </label>
+              <input class="govuk-input govuk-input--width-20" id="telephone-number" name="telephone-number" type="tel" autocomplete="tel" value="12345679">
+            </div>
+
+            <div class="govuk-form-group">
+              <label class="govuk-label" for="email">
+                Email address
+              </label>
+              <input class="govuk-input govuk-input--width-20" id="email" name="email" type="email" spellcheck="false" aria-describedby="email-hint" autocomplete="email">
+            </div>
+
+            <button class="govuk-button" data-module="govuk-button">
+              Save and continue
+            </button>
+          </form>
+
+
+        <!-- </main> -->
+      </div>
+    </div>
+
+     <div class="govuk-grid-column-one-third">
+
+    		<details class="govuk-details" data-module="govuk-details">
+   			 <summary class="govuk-details__summary">
+     			 <span class="govuk-details__summary-text">
+      		  Contacts for help
+    			  </span>
+    			</summary>
+    			<div class="govuk-details__text">
+     			 Ask a question or get any help in any language
+     			 <p class="govuk-body govuk-!-font-weight-bold">Telephone</p>
+
+     			 <p class="govuk-body govuk-!-font-weight-regular">0300 303 0742</p>
+     			 <p class="govuk-body govuk-!-font-weight-regular">Monday to Friday, 8am to 8pm</p>
+     			 <a href="#" class="govuk-link">Find out about call charges</a>
+     			 <p class="govuk-body govuk-!-font-weight-regular">(opens in a new window)</p>
+
+  			  </div>
+			</details>
+    </div>
+
+</div>
+
+
+
+{% endblock %}

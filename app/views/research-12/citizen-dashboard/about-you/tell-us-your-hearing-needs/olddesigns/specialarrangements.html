@@ -1,0 +1,110 @@
+{% extends "layout.html" %}
+
+{% block pageTitle %}
+  Child arrangement respondent
+{% endblock %}
+
+{% block header %}
+  <!-- Blank header with no service name for the start page -->
+
+{{ govukHeader({
+    homepageUrl: "/",
+    serviceName: serviceName,
+    serviceUrl: "/",
+    containerClasses: "govuk-width-container"
+}) }}
+
+{% endblock %}
+
+{% block content %}
+ <div class="govuk-grid-row">
+    <div class="govuk-grid-column-two-thirds">
+
+      <div class="govuk-width-container">
+
+        <a href="#" onclick="history.back(-1)" class="govuk-back-link">Back</a>
+
+        <main class="govuk-main-wrapper app-main-class" id="main-content" role="main">
+          <form action="courtorder" method="post" novalidate>
+                  <div class="govuk-form-group">
+                    <fieldset class="govuk-fieldset" aria-describedby="steps-attending-court-intermediary-form-intermediary-help-hint">
+                      <legend class="govuk-fieldset__legend govuk-fieldset__legend--l">
+                        <h1 class="govuk-fieldset__heading">
+                          <span class="govuk-caption-l govuk-!-padding-bottom-2">Requirements to attend court</span>Do you or the children need special safety arrangements at court?</h1>
+                        </legend>
+                        <p class="govuk-body-l" id="steps-attending-court-intermediary-form-intermediary-help-hint">Not every court has the facilities listed here, and some need to be agreed by a judge, for example the use of protective screens.</p>
+
+                        <p class="govuk-hint" id="steps-attending-court-intermediary-form-intermediary-help-hint">The court will contact you to discuss safety arrangements before your hearing.</p>
+
+                  <div class="govuk-!-padding-bottom-4"></div>
+
+                  <div class="govuk-checkboxes" data-module="govuk-checkboxes">
+                    <input type="hidden" name="steps_attending_court_special_arrangements_form[special_arrangements][]" value="">
+                    <div class="govuk-checkboxes__item">
+                      <input id="steps-attending-court-special-arrangements-form-special-arrangements-separate-waiting-rooms-field" class="govuk-checkboxes__input" type="checkbox" value="separate_waiting_rooms" name="steps_attending_court_special_arrangements_form[special_arrangements][]">
+                      <label for="steps-attending-court-special-arrangements-form-special-arrangements-separate-waiting-rooms-field" class="govuk-label govuk-checkboxes__label">Separate waiting rooms
+                      </label>
+                    </div>
+                    <div class="govuk-checkboxes__item">
+                      <input id="steps-attending-court-special-arrangements-form-special-arrangements-separate-entrance-exit-field" class="govuk-checkboxes__input" type="checkbox" value="separate_entrance_exit" name="steps_attending_court_special_arrangements_form[special_arrangements][]">
+                      <label for="steps-attending-court-special-arrangements-form-special-arrangements-separate-entrance-exit-field" class="govuk-label govuk-checkboxes__label">Separate exits and entrances
+                      </label>
+                    </div>
+                    <div class="govuk-checkboxes__item">
+                      <input id="steps-attending-court-special-arrangements-form-special-arrangements-protective-screens-field" class="govuk-checkboxes__input" type="checkbox" value="protective_screens" name="steps_attending_court_special_arrangements_form[special_arrangements][]">
+                      <label for="steps-attending-court-special-arrangements-form-special-arrangements-protective-screens-field" class="govuk-label govuk-checkboxes__label">Protective screens - this needs to be approved by a judge
+                      </label>
+                    </div>
+                    <div class="govuk-checkboxes__item">
+                      <input id="steps-attending-court-special-arrangements-form-special-arrangements-video-link-field" class="govuk-checkboxes__input" type="checkbox" value="video_link" name="steps_attending_court_special_arrangements_form[special_arrangements][]">
+                      <label for="steps-attending-court-special-arrangements-form-special-arrangements-video-link-field" class="govuk-label govuk-checkboxes__label">Video links - this needs to be approved by a judge
+                      </label>
+                    </div>
+                  </div>
+                  <div class="govuk-!-padding-bottom-4"></div>
+
+                  <div class="govuk-form-group">
+                    <label for="steps-attending-court-special-arrangements-form-special-arrangements-details-field" class="govuk-label">You can add more detail if neccessary
+                    </label>
+                    <textarea id="steps-attending-court-special-arrangements-form-special-arrangements-details-field" class="govuk-textarea" rows="5" name="steps_attending_court_special_arrangements_form[special_arrangements_details]">
+                    </textarea>
+                  </div>
+
+                  </fieldset>
+                  </div>
+
+                    <button type="submit" formnovalidate="formnovalidate" class="govuk-button" data-module="govuk-button" data-prevent-double-click="true">Continue</button>
+
+
+          </form>
+        </main>
+      </div>
+
+
+    </div>
+    <div class="govuk-grid-column-one-third">
+
+    		<details class="govuk-details" data-module="govuk-details">
+ 			      <summary class="govuk-details__summary">
+       			 <span class="govuk-details__summary-text">
+        		  Contacts for help
+      			  </span>
+  			    </summary>
+  			<div class="govuk-details__text">
+   			 Ask a question or get any help in any language
+   			 <p class="govuk-body govuk-!-font-weight-bold">Telephone</p>
+
+   			 <p class="govuk-body govuk-!-font-weight-regular">0300 303 0742</p>
+   			 <p class="govuk-body govuk-!-font-weight-regular">Monday to Friday, 8am to 8pm</p>
+   			 <a href="#" class="govuk-link">Find out about call charges</a>
+   			 <p class="govuk-body govuk-!-font-weight-regular">(opens in a new window)</p>
+
+			  </div>
+			</details>
+    </div>
+
+</div>
+
+
+
+{% endblock %}

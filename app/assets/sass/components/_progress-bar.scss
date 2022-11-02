@@ -1,0 +1,50 @@
+body { overflow: hidden;}
+
+.hmcts-progress-bar__icon--complete {
+  background-image: url(../images/icon-progress-tick.png);
+  background-repeat: no-repeat;
+  background-position: center;
+}
+
+.hmcts-progress-bar-vertical .hmcts-progress-bar__list-item  { width:150px; display:inline-block }
+.hmcts-progress-bar-active .hmcts-progress-bar__list-item { width:90px; display:inline-block }
+.hmcts-progress-bar-vertical .hmcts-progress-bar__icon, .hmcts-progress-bar-active .hmcts-progress-bar__icon { background-color: #fff;border: 4px solid #CECECE}
+.hmcts-progress-bar-vertical .hmcts-progress-bar__icon--complete, .hmcts-progress-bar-active .hmcts-progress-bar__icon--complete {  background-color: #1D70B8; border: 4px solid #1D70B8}
+.hmcts-progress-bar-vertical .hmcts-progress-bar__icon--in-progress, .hmcts-progress-bar-active .hmcts-progress-bar__icon--in-progress {  background-color: #1D70B8; border: 4px solid #1D70B8}
+.hmcts-progress-bar-vertical .hmcts-progress-bar__list::before, .hmcts-progress-bar-active .hmcts-progress-bar__list::before { border-top: 4px solid #CECECE; }
+
+  @media screen and (max-width:1200px) {
+
+    .hmcts-progress-bar-vertical .hmcts-progress-bar__list-item { max-width:45px; display:block; margin-top: 10px; }
+    .hmcts-progress-bar-vertical .hmcts-progress-bar__list::before {
+      border-top: none;
+      position: absolute;
+      top: 0px;
+      border-left: 6px solid #CECECE;
+      height: 100%;
+      position: absolute;
+      left:20px;
+      top: 0;
+
+  }
+
+  .hmcts-progress-bar-vertical .hmcts-progress-bar__label { margin-top:-25px; margin-left:50px; width:350px; text-align:left }
+
+
+    .hmcts-progress-bar-active .hmcts-progress-bar__list-item { max-width:45px; display:block; margin-top: 10px; }
+    .hmcts-progress-bar-active .hmcts-progress-bar__list::before {
+      border-top: none;
+      position: absolute;
+      top: 0px;
+      border-left: 6px solid #CECECE;
+      height: 100%;
+      position: absolute;
+      left:20px;
+      top: 0;
+  }
+
+  .hmcts-progress-bar-active .hmcts-progress-bar__label { margin-top:-25px; margin-left:50px; width:350px; text-align:left }
+  .hmcts-progress-bar-active .hmcts-progress-bar__list-item { display:none }
+  .hmcts-progress-bar-active .hmcts-progress-bar__list-item[aria-current=step] { display:block }
+
+  }

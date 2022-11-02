@@ -1,0 +1,178 @@
+{% extends "layout.html" %}
+
+{% block pageTitle %}
+  Child arrangement respondent
+{% endblock %}
+
+{% block beforeContent %}
+<a class="govuk-back-link" href="javascript:history.back()">Back</a>
+{% endblock %}
+
+{% block header %}
+  <!-- Blank header with no service name for the start page -->
+
+{{ govukHeader({
+    homepageUrl: "/",
+    serviceName: serviceName,
+    serviceUrl: "/",
+    containerClasses: "govuk-width-container"
+}) }}
+
+{% endblock %}
+
+{% block content %}
+ <div class="govuk-grid-row">
+    <div class="govuk-grid-column-two-thirds">
+
+      <div class="govuk-width-container">
+
+        <main class="govuk-main-wrapper govuk-main-wrapper--auto-spacing" id="main-content" role="main">
+
+               <form action="check-your-answers-reqs" method="post" novalidate>
+                 <span class="govuk-caption-l">{{ data['firstApplicant'] }}<br>Reasonable adjustments</span>
+                 <h1 class="govuk-heading-xl">I need help travelling to, or moving around court buildings</h1>
+
+
+
+               <div class="govuk-form-group">
+                 <fieldset class="govuk-fieldset" aria-describedby="reasonable-adjustments-hint">
+                   <div id="reasonable-adjustments-hint" class="govuk-hint">
+                     Select all that apply to you
+                   </div>
+                   <div class="govuk-checkboxes" data-module="govuk-checkboxes">
+                     <div class="govuk-checkboxes__item">
+                       <input class="govuk-checkboxes__input" id="reasonable-adjustments" name="reasonable-adjustments" type="checkbox" value="I need documents in an alternative format" aria-controls="reasonable-adjustments-conditional">
+                       <label class="govuk-label govuk-checkboxes__label" for="reasonable-adjustments">
+                         Parking space close to the venue
+
+                       </label>
+                       <div class="govuk-checkboxes__conditional govuk-checkboxes__conditional--hidden" id="reasonable-adjustments-conditional">
+                         <div class="govuk-form-group">
+                           <label for="reasonable-adjustment-details" class="govuk-label">Describe why you need this</label>
+                           <textarea id="reasonable-adjustment-details" class="govuk-textarea" rows="1" name="reasonable-adjustment-details">
+                           </textarea>
+                         </div>
+                         </div>
+                     </div>
+                     <div class="govuk-checkboxes__item">
+                       <input class="govuk-checkboxes__input" id="reasonable-adjustments-2" name="reasonable-adjustments" type="checkbox" value="I need help communicating and understanding">
+                       <label class="govuk-label govuk-checkboxes__label" for="reasonable-adjustments">
+                         Step free / wheelchair access
+
+                       </label>
+                     </div>
+                     <div class="govuk-checkboxes__item">
+                       <input class="govuk-checkboxes__input" id="reasonable-adjustments-3" name="reasonable-adjustments" type="checkbox" value="I need to bring support with me to a hearing">
+                       <label class="govuk-label govuk-checkboxes__label" for="reasonable-adjustments">
+                         Use of venue wheelchair
+
+                       </label>
+                     </div>
+                     <div class="govuk-checkboxes__item">
+                       <input class="govuk-checkboxes__input" id="reasonable-adjustments-4" name="reasonable-adjustments" type="checkbox" value="I need something to feel comfortable during a hearing">
+                       <label class="govuk-label govuk-checkboxes__label" for="reasonable-adjustments">
+                         Accessible toilet
+
+                       </label>
+                     </div>
+                     <div class="govuk-checkboxes__item">
+                       <input class="govuk-checkboxes__input" id="reasonable-adjustments-5" name="reasonable-adjustments" type="checkbox" value="I need help travelling to, or moving around court building">
+                       <label class="govuk-label govuk-checkboxes__label" for="reasonable-adjustments">
+                         Help using a lift
+
+                       </label>
+                     </div>
+                     <div class="govuk-checkboxes__item">
+                       <input class="govuk-checkboxes__input" id="reasonable-adjustments-3" name="reasonable-adjustments" type="checkbox" value="I need to bring support with me to a hearing" aria-controls="reasonable-adjustments-3-conditional">
+                       <label class="govuk-label govuk-checkboxes__label" for="reasonable-adjustments">
+                         A different type of chair
+
+                       </label>
+                       <div class="govuk-checkboxes__conditional govuk-checkboxes__conditional--hidden" id="reasonable-adjustments-3-conditional">
+                         <div class="govuk-form-group">
+                           <label for="reasonable-adjustment-details" class="govuk-label">Describe what you need</label>
+                           <div id="waste-hint" class="govuk-hint">
+                            For example, a chair with back support
+                          </div>
+                           <textarea id="reasonable-adjustment-details-3" class="govuk-textarea" rows="1" name="reasonable-adjustment-details-3">
+                           </textarea>
+                         </div>
+                         </div>
+                     </div>
+                     <div class="govuk-checkboxes__item">
+                       <input class="govuk-checkboxes__input" id="reasonable-adjustments-4" name="reasonable-adjustments" type="checkbox" value="I need something to feel comfortable during a hearing">
+                       <label class="govuk-label govuk-checkboxes__label" for="reasonable-adjustments">
+                         Guiding in the building
+
+                       </label>
+                     </div>
+                     <div class="govuk-checkboxes__item">
+                       <input class="govuk-checkboxes__input" id="reasonable-adjustments-3" name="reasonable-adjustments" type="checkbox" value="I need to bring support with me to a hearing" aria-controls="certain-interpreter-conditional">
+                       <label class="govuk-label govuk-checkboxes__label" for="reasonable-adjustments">
+                         Other
+                       </label>
+                       <div class="govuk-checkboxes__conditional govuk-checkboxes__conditional--hidden" id="certain-interpreter-conditional">
+                         <div class="govuk-form-group">
+                           <label for="steps-attending-court-language-form-language-interpreter-details-field" class="govuk-label">Describe what you need</label>
+                           <textarea id="steps-attending-court-language-form-language-interpreter-details-field" class="govuk-textarea" rows="2" name="steps_attending_court_language_form[language_interpreter_details]">
+                           </textarea>
+                         </div>
+                         </div>
+                         </div>
+
+
+                     <div class="govuk-checkboxes__divider">or</div>
+                     <div class="govuk-checkboxes__item">
+                       <input class="govuk-checkboxes__input" id="reasonable-adjustments-none" name="reasonable-adjustments" type="checkbox" value="No, I do not need any extra support at this time" data-behaviour="exclusive">
+                       <label class="govuk-label govuk-checkboxes__label" for="reasonable-adjustments-none">
+                         No, I do not need any support at this time
+                       </label>
+                     </div>
+                   </div>
+
+                 </fieldset>
+               </div>
+
+
+               <button class="govuk-button" data-module="govuk-button" type="submit">
+                 Save and continue
+               </button>
+
+
+
+
+
+              </form>
+        </main>
+      </div>
+
+
+
+
+    </div>
+    <div class="govuk-grid-column-one-third">
+
+    		<details class="govuk-details" data-module="govuk-details">
+ 			      <summary class="govuk-details__summary">
+       			 <span class="govuk-details__summary-text">
+        		  Contacts for help
+      			  </span>
+  			    </summary>
+  			<div class="govuk-details__text">
+   			 Ask a question or get any help in any language
+   			 <p class="govuk-body govuk-!-font-weight-bold">Telephone</p>
+
+   			 <p class="govuk-body govuk-!-font-weight-regular">0300 303 0742</p>
+   			 <p class="govuk-body govuk-!-font-weight-regular">Monday to Friday, 8am to 8pm</p>
+   			 <a href="#" class="govuk-link">Find out about call charges</a>
+   			 <p class="govuk-body govuk-!-font-weight-regular">(opens in a new window)</p>
+
+			  </div>
+			</details>
+    </div>
+
+</div>
+
+
+
+{% endblock %}

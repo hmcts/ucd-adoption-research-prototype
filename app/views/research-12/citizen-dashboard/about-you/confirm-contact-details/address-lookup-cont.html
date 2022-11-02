@@ -1,0 +1,104 @@
+{% extends "layout.html" %}
+
+{% block pageTitle %}
+  Child arrangement respondent
+{% endblock %}
+
+{% block beforeContent %}
+<a class="govuk-back-link" href="javascript:history.back()">Back</a>
+{% endblock %}
+
+{% block header %}
+  <!-- Blank header with no service name for the start page -->
+
+{{ govukHeader({
+    homepageUrl: "/",
+    serviceName: serviceName,
+    serviceUrl: "/",
+    containerClasses: "govuk-width-container"
+}) }}
+
+{% endblock %}
+
+{% block content %}
+ <div class="govuk-grid-row">
+    <div class="govuk-grid-column-two-thirds">
+      <div class="govuk-width-container">
+
+        <main class="govuk-main-wrapper " id="main-content" role="main">
+
+          <form action="address-confirmation" method="post" novalidate>
+
+            <fieldset class="govuk-fieldset">
+              <legend class="govuk-fieldset__legend govuk-fieldset__legend--xl">
+                <span class="govuk-caption-l">{{ data['firstApplicant'] }}</span>
+                <h1 class="govuk-fieldset__heading">
+                  Your address
+                </h1>
+              </legend>
+              <div class="govuk-!-padding-bottom-4"></div>
+
+
+              <h2 class="govuk-heading-m govuk-!-margin-bottom-1">
+                Current postcode
+              </h2>
+              <div class="govuk-!-padding-bottom-2"></div>
+              <p class="govuk-body">
+                <strong>MK9 3DX</strong>
+                <a class="govuk-link govuk-!-margin-left-6" href="address-lookup">Change postcode</a>
+              </p>
+
+
+
+          <div class="govuk-form-group">
+            <label for="steps-address-results-form-selected-address-field" class="govuk-label">Select an address
+            </label>
+            <select id="steps-address-results-form-selected-address-field" class="govuk-select" name="steps_address_results_form[selected_address]">
+              <option value="">1 address found</option>
+              <option value="417, M K F M STUDIOS|SAXON GATE EAST||MILTON KEYNES|UNITED KINGDOM|MK9 3DX">417, M K F M STUDIOS, SAXON GATE EAST</option>
+            </select>
+          </div>
+
+          <p class="govuk-body govuk-!-margin-bottom-8">
+            <a class="govuk-link ga-pageLink" data-ga-category="address lookup" data-ga-label="address not listed" href="addressblank">I can’t find the address in the list</a>
+          </p>
+
+
+
+            <button class="govuk-button" data-module="govuk-button">
+              Continue
+            </button>
+
+
+          </form>
+
+        </main>
+      </div>
+    </div>
+
+    <div class="govuk-grid-column-one-third">
+
+    		<details class="govuk-details" data-module="govuk-details">
+   			 <summary class="govuk-details__summary">
+     			 <span class="govuk-details__summary-text">
+      		  Contacts for help
+    			  </span>
+    			</summary>
+    			<div class="govuk-details__text">
+     			 Ask a question or get any help in any language
+     			 <p class="govuk-body govuk-!-font-weight-bold">Telephone</p>
+
+     			 <p class="govuk-body govuk-!-font-weight-regular">0300 303 0742</p>
+     			 <p class="govuk-body govuk-!-font-weight-regular">Monday to Friday, 8am to 8pm</p>
+     			 <a href="#" class="govuk-link">Find out about call charges</a>
+     			 <p class="govuk-body govuk-!-font-weight-regular">(opens in a new window)</p>
+
+  			  </div>
+			</details>
+    </div>
+
+</div>
+
+
+
+{% endblock %}

@@ -1,0 +1,92 @@
+{% extends "layout.html" %}
+
+{% block pageTitle %}
+  Child arrangement respondent
+{% endblock %}
+
+{% block beforeContent %}
+<a class="govuk-back-link" href="javascript:history.back()">Back</a>
+{% endblock %}
+
+{% block header %}
+  <!-- Blank header with no service name for the start page -->
+
+{{ govukHeader({
+    homepageUrl: "/",
+    serviceName: serviceName,
+    serviceUrl: "/",
+    containerClasses: "govuk-width-container"
+}) }}
+
+{% endblock %}
+
+{% block content %}
+ <div class="govuk-grid-row">
+    <div class="govuk-grid-column-two-thirds">
+<div class="govuk-width-container">
+
+  <main class="govuk-main-wrapper " id="main-content" role="main">
+
+    <form action="contact-details" method="post" novalidate>
+
+      <h1 class="govuk-heading-l">Have you lived at this address for the past 5 years?</h1>
+
+      <div class="govuk-form-group">
+          <fieldset class="govuk-fieldset" aria-describedby="proposal-hint">
+            
+            <div class="govuk-radios" data-module="govuk-radios">
+              <div class="govuk-radios__item">
+                <input class="govuk-radios__input" id="history-yes" name="addresshistory" type="radio" value="yes">
+                <label class="govuk-label govuk-radios__label" for="history-yes">Yes</label>
+              </div>
+              <div class="govuk-radios__item">
+                <input class="govuk-radios__input" id="history-no" name="addresshistory" type="radio" data-aria-controls="conditional-address">
+                <label class="govuk-label govuk-radios__label" for="history-no">No</label>
+              </div>
+              <div class="govuk-radios__conditional govuk-radios__conditional--hidden" id="conditional-address">
+                <div class="govuk-form-group">
+                  <label class="govuk-label" for="proposal-howmany">Provide details of previous addresses you have lived at in the last 5 years, starting with your most recent address</label>
+                  <textarea class="govuk-textarea" id="more-detail" name="more-detail" rows="5" aria-describedby="more-detail-hint"></textarea>
+                </div>
+              </div>
+
+            </div>
+
+          </fieldset>
+        </div>
+
+      <button class="govuk-button" data-module="govuk-button">
+        Continue
+      </button>
+    </form>
+
+
+  </main>
+</div>
+    </div>
+    <div class="govuk-grid-column-one-third">
+
+    		<details class="govuk-details" data-module="govuk-details">
+ 			 <summary class="govuk-details__summary">
+   			 <span class="govuk-details__summary-text">
+    		  Contacts for help
+  			  </span>
+  			</summary>
+  			<div class="govuk-details__text">
+   			 Ask a question or get any help in any language
+   			 <p class="govuk-body govuk-!-font-weight-bold">Telephone</p>
+
+   			 <p class="govuk-body govuk-!-font-weight-regular">0300 303 0742</p>
+   			 <p class="govuk-body govuk-!-font-weight-regular">Monday to Friday, 8am to 8pm</p>
+   			 <a href="#" class="govuk-link">Find out about call charges</a>
+   			 <p class="govuk-body govuk-!-font-weight-regular">(opens in a new window)</p>
+
+			  </div>
+			</details>
+
+    </div>
+  </div>
+
+
+
+{% endblock %}

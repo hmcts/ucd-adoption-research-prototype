@@ -1,0 +1,373 @@
+{% extends "layout.html" %}
+
+{% block pageTitle %}
+  Child arrangement respondent
+{% endblock %}
+
+{% block beforeContent %}
+<a class="govuk-back-link" href="javascript:history.back()">Back</a>
+{% endblock %}
+
+{% block header %}
+  <!-- Blank header with no service name for the start page -->
+
+{{ govukHeader({
+    homepageUrl: "/",
+    serviceName: serviceName,
+    serviceUrl: "/",
+    containerClasses: "govuk-width-container"
+}) }}
+
+{% endblock %}
+
+{% block content %}
+ <div class="govuk-grid-row">
+    <div class="govuk-grid-column-full">
+      <div class="govuk-width-container">
+        <main class="govuk-main-wrapper " id="main-content" role="main">
+
+          <form action="/respondenttasklist/startreply" method="post" novalidate>
+
+            <h1 class="govuk-heading-xl">Check your answers
+            </h1>
+
+              <h2 class="govuk-heading-m">
+                Your hearing needs to attend court
+              </h2>
+
+              <dl class="govuk-summary-list" id="attending_court">
+                <div class="govuk-summary-list__row app-cya--answers-group" id="intermediary">
+                <dt class="govuk-summary-list__key govuk-!-width-one-third app-cya--answers-group__key">
+                  Are there any factors that may affect any adult in this application taking part in the court proceedings
+                </dt>
+                <dd class="govuk-summary-list__value">
+                  <dl class="govuk-summary-list">
+                    <div class="govuk-summary-list__row" id="intermediary_help">
+                <dt class="govuk-summary-list__key govuk-!-width-one-third">
+
+                </dt>
+                <dd class="govuk-summary-list__value">
+                  Yes
+                </dd>
+                <dd class="govuk-summary-list__actions">
+
+                </dd>
+              </div>
+              <div class="govuk-summary-list__row" id="intermediary_help_details">
+                <dt class="govuk-summary-list__key govuk-!-width-one-third">
+
+                </dt>
+                <dd class="govuk-summary-list__value">
+                  <p class="govuk-body">Details of impairment</p>
+                </dd>
+                <dd class="govuk-summary-list__actions">
+
+                </dd>
+              </div>
+
+                  </dl>
+                </dd>
+                <dd class="govuk-summary-list__actions">
+
+                <a class="govuk-link govuk-link--no-visited-state ga-pageLink" data-ga-category="check your answers" data-ga-label="change link: intermediary" href="/respondenttasklist/about-you/tell-us-your-hearing-needs/start">
+                  Edit <span class="govuk-visually-hidden">your answer to, Are there any factors that may affect any adult in this application taking part in the court proceedings</span>
+              </a>
+                </dd>
+              </div>
+
+                <div class="govuk-summary-list__row app-cya--answers-group" id="intermediary">
+
+                <dt class="govuk-summary-list__key govuk-!-width-one-third app-cya--answers-group__key">
+                  Does anyone in this application need an intermediary to help them in court?
+                </dt>
+                <dd class="govuk-summary-list__value">
+                  <dl class="govuk-summary-list">
+                    <div class="govuk-summary-list__row" id="intermediary_help">
+                <dt class="govuk-summary-list__key govuk-!-width-one-third">
+
+                </dt>
+                <dd class="govuk-summary-list__value">
+                  Yes
+                </dd>
+                <dd class="govuk-summary-list__actions">
+
+                </dd>
+              </div>
+              <div class="govuk-summary-list__row" id="intermediary_help_details">
+                <dt class="govuk-summary-list__key govuk-!-width-one-third">
+
+                </dt>
+                <dd class="govuk-summary-list__value">
+                  <p class="govuk-body">details of intermediary</p>
+                </dd>
+                <dd class="govuk-summary-list__actions">
+
+                </dd>
+              </div>
+
+                  </dl>
+                </dd>
+                <dd class="govuk-summary-list__actions">
+
+                <a class="govuk-link govuk-link--no-visited-state ga-pageLink" data-ga-category="check your answers" data-ga-label="change link: intermediary" href="/respondenttasklist/about-you/tell-us-your-hearing-needs/intermediary">
+                  Edit <span class="govuk-visually-hidden">your answer to, Does anyone in this application need an intermediary to help them in court?</span>
+              </a>
+                </dd>
+              </div>
+              <div class="govuk-summary-list__row app-cya--answers-group" id="language_interpreter">
+                <dt class="govuk-summary-list__key govuk-!-width-one-third app-cya--answers-group__key">
+                  Do you need to use an interpreter during court hearings?
+                </dt>
+                <dd class="govuk-summary-list__value">
+                  <dl class="govuk-summary-list">
+                    <div class="govuk-summary-list__row" id="language_interpreter">
+                <dt class="govuk-summary-list__key govuk-!-width-one-third">
+                  Interpreter
+                </dt>
+                <dd class="govuk-summary-list__value">
+                  Yes
+                </dd>
+                <dd class="govuk-summary-list__actions">
+
+                </dd>
+              </div>
+
+              <div class="govuk-summary-list__row" id="language_interpreter_details">
+                <dt class="govuk-summary-list__key govuk-!-width-one-third">
+
+                </dt>
+                <dd class="govuk-summary-list__value">
+                  <p class="govuk-body">Language details</p>
+
+              <p class="govuk-body">Dialect details</p>
+                </dd>
+                <dd class="govuk-summary-list__actions">
+
+                </dd>
+              </div>
+              <div class="govuk-summary-list__row" id="sign_language_interpreter">
+                <dt class="govuk-summary-list__key govuk-!-width-one-third">
+                  Sign language interpreter
+                </dt>
+                <dd class="govuk-summary-list__value">
+                  Not needed
+                </dd>
+                <dd class="govuk-summary-list__actions">
+
+                </dd>
+              </div>
+
+                  </dl>
+                </dd>
+
+                <dd class="govuk-summary-list__actions">
+
+                <a class="govuk-link govuk-link--no-visited-state ga-pageLink" data-ga-category="check your answers" data-ga-label="change link: special_arrangements" href="/respondenttasklist/about-you/tell-us-your-hearing-needs/courthearings">
+                  Edit <span class="govuk-visually-hidden">your answer to, Do you need to use an interpreter during court hearings?</span>
+              </a>
+                </dd>
+              </div>
+
+              <div class="govuk-summary-list__row app-cya--answers-group" id="special_assistance">
+
+                <dt class="govuk-summary-list__key govuk-!-width-one-third app-cya--answers-group__key">
+                  Does you need special arrangements because of a disability?
+                </dt>
+                <dd class="govuk-summary-list__value">
+                  <dl class="govuk-summary-list">
+                    <div class="govuk-summary-list__row" id="special_assistance">
+                <dt class="govuk-summary-list__key govuk-!-width-one-third">
+
+                </dt>
+                <dd class="govuk-summary-list__value">
+                    <ul class="govuk-list govuk-list--bullet">
+                        <li>
+                          A hearing loop
+                        </li>
+                        <li>
+                          Documents in Braille
+                        </li>
+                        <li>
+                          Advance viewing of the court
+                        </li>
+                        <li>
+                          Other assistance or facilities
+                        </li>
+                    </ul>
+                </dd>
+                <dd class="govuk-summary-list__actions">
+
+                </dd>
+              </div>
+              <div class="govuk-summary-list__row" id="special_assistance_details">
+                <dt class="govuk-summary-list__key govuk-!-width-one-third">
+                  Additional details
+                </dt>
+                <dd class="govuk-summary-list__value">
+                  <p class="govuk-body">walking stick</p>
+                </dd>
+                <dd class="govuk-summary-list__actions">
+
+                </dd>
+              </div>
+
+                  </dl>
+                </dd>
+
+                <dd class="govuk-summary-list__actions">
+
+                <a class="govuk-link govuk-link--no-visited-state ga-pageLink" data-ga-category="check your answers" data-ga-label="change link: language_interpreter" href="/respondenttasklist/about-you/tell-us-your-hearing-needs/specialassistance">
+                  Edit <span class="govuk-visually-hidden">your answer to, Does you need special arrangements because of a disability?</span>
+              </a>
+                </dd>
+              </div>
+              <div class="govuk-summary-list__row app-cya--answers-group" id="special_arrangements">
+                <dt class="govuk-summary-list__key govuk-!-width-one-third app-cya--answers-group__key">
+                  Do you want to any special arrangements at court to keep you safe?
+                </dt>
+                <dd class="govuk-summary-list__value">
+                  <dl class="govuk-summary-list">
+                    <div class="govuk-summary-list__row" id="special_arrangements">
+                <dt class="govuk-summary-list__key govuk-!-width-one-third">
+
+                </dt>
+                <dd class="govuk-summary-list__value">
+                    <ul class="govuk-list govuk-list--bullet">
+                        <li>
+                          Separate waiting rooms
+                        </li>
+                        <li>
+                          Separate exits and entrances
+                        </li>
+                        <li>
+                          Protective screens
+                        </li>
+                        <li>
+                          Video links
+                        </li>
+                    </ul>
+                </dd>
+                <dd class="govuk-summary-list__actions">
+
+                </dd>
+              </div>
+              <div class="govuk-summary-list__row" id="special_arrangements_details">
+                <dt class="govuk-summary-list__key govuk-!-width-one-third">
+                  Additional details
+                </dt>
+                <dd class="govuk-summary-list__value">
+                  <p class="govuk-body">covering</p>
+                </dd>
+                <dd class="govuk-summary-list__actions">
+
+                </dd>
+              </div>
+
+                  </dl>
+                </dd>
+
+                <dd class="govuk-summary-list__actions">
+
+                <a class="govuk-link govuk-link--no-visited-state ga-pageLink" data-ga-category="check your answers" data-ga-label="change link: special_arrangements" href="/respondenttasklist/about-you/tell-us-your-hearing-needs/specialarrengements">
+                  Edit <span class="govuk-visually-hidden">your answer to, Do you want to any special arrangements at court to keep you safe?</span>
+              </a>
+                </dd>
+              </div>
+
+            <div class="govuk-summary-list__row app-cya--answers-group" id="language_interpreter">
+              <dt class="govuk-summary-list__key govuk-!-width-one-third app-cya--answers-group__key">
+                Do you or any other party need to use spoken Welsh in the course of the proceedings or require written documentation in Welsh?
+              </dt>
+              <dd class="govuk-summary-list__value">
+                <dl class="govuk-summary-list">
+                  <div class="govuk-summary-list__row" id="language_interpreter">
+              <dt class="govuk-summary-list__key govuk-!-width-one-third">
+                Name
+              </dt>
+              <dd class="govuk-summary-list__value">
+                James smith
+              </dd>
+              <dd class="govuk-summary-list__actions">
+
+              </dd>
+            </div>
+
+            <div class="govuk-summary-list__row" id="language_interpreter_details">
+              <dt class="govuk-summary-list__key govuk-!-width-one-third">
+
+              </dt>
+              <dd class="govuk-summary-list__value">
+                <p class="govuk-body">Will need to speak Welsh</p>
+
+              </dd>
+              <dd class="govuk-summary-list__actions">
+
+              </dd>
+            </div>
+
+
+                </dl>
+              </dd>
+
+              <dd class="govuk-summary-list__actions">
+
+              <a class="govuk-link govuk-link--no-visited-state ga-pageLink" data-ga-category="check your answers" data-ga-label="change link: special_arrangements" href="/respondenttasklist/about-you/tell-us-your-hearing-needs/welshelanguage">
+                Edit <span class="govuk-visually-hidden">your answer to, Do you or any other party need to use spoken Welsh in the course of the proceedings or require written documentation in Welsh?</span>
+            </a>
+              </dd>
+            </div>
+
+            <div class="govuk-summary-list__row app-cya--answers-group" id="intermediary">
+            <dt class="govuk-summary-list__key govuk-!-width-one-third app-cya--answers-group__key">
+              Is there a court order in force preventing the applicant from making applications to the court without first applying for permission?
+            </dt>
+            <dd class="govuk-summary-list__value">
+              <dl class="govuk-summary-list">
+                <div class="govuk-summary-list__row" id="intermediary_help">
+            <dt class="govuk-summary-list__key govuk-!-width-one-third">
+
+            </dt>
+            <dd class="govuk-summary-list__value">
+              Yes
+            </dd>
+            <dd class="govuk-summary-list__actions">
+
+            </dd>
+          </div>
+          <div class="govuk-summary-list__row" id="intermediary_help_details">
+            <dt class="govuk-summary-list__key govuk-!-width-one-third">
+
+            </dt>
+            <dd class="govuk-summary-list__value">
+              <p class="govuk-body">Details of court order</p>
+            </dd>
+            <dd class="govuk-summary-list__actions">
+
+            </dd>
+          </div>
+
+              </dl>
+            </dd>
+            <dd class="govuk-summary-list__actions">
+
+            <a class="govuk-link govuk-link--no-visited-state ga-pageLink" data-ga-category="check your answers" data-ga-label="change link: intermediary" href="/respondenttasklist/about-you/tell-us-your-hearing-needs/courtorder">
+              Edit <span class="govuk-visually-hidden">your answer to, Is there a court order in force preventing the applicant from making applications to the court without first applying for permission?</span>
+          </a>
+            </dd>
+          </div>
+
+              </dl>
+
+
+        <button type="submit" formnovalidate="formnovalidate" class="govuk-button" data-module="govuk-button" data-prevent-double-click="true">Save and continue</button>
+
+
+          </form>
+        </main>
+      </div>
+    </div>
+</div>
+
+
+
+{% endblock %}

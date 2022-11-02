@@ -1,0 +1,144 @@
+{% extends "layout.html" %}
+
+{% block pageTitle %}
+  Upload documents
+{% endblock %}
+
+{% block header %}
+  <!-- Blank header with no service name for the start page -->
+
+{{ govukHeader({
+    homepageUrl: "/",
+    serviceName: serviceName,
+    serviceUrl: "/",
+    containerClasses: "govuk-width-container"
+}) }}
+
+{% endblock %}
+
+{% block content %}
+
+
+
+
+<a href="/respondenttasklist/your-documents/uploadv1/howdocumentshared" class="govuk-back-link">Back</a>
+
+  <div class="govuk-grid-row">
+
+    <div class="govuk-grid-column-two-thirds">
+
+      <h1 class="govuk-heading-xl">
+        <span class="govuk-caption-l">Upload documents</span>
+        Witness statements and evidence
+      </h1>
+
+        <!-- start components here -->
+
+
+
+
+
+                  <div class="govuk-form-group govuk-!-margin-bottom-9">
+                    <fieldset class="govuk-fieldset">
+                      <legend class="govuk-fieldset__legend govuk-fieldset__legend--l">
+                        <h1 class="govuk-fieldset__heading govuk-!-margin-bottom-4">
+                          Can these documents be shared with the other people in the case?
+                        </h1>
+                      </legend>
+                      <div class="govuk-radios" data-module="govuk-radios">
+                        <div class="govuk-radios__item">
+                          <input class="govuk-radios__input" id="yes-redirect" name="where-do-you-live" type="radio" value="yes">
+                          <label class="govuk-label govuk-radios__label" for="yes-redirect">
+                            Yes, the documents can be shared
+                          </label>
+                        </div>
+                        <div class="govuk-radios__item">
+                          <input class="govuk-radios__input" id="no-redirect" name="where-do-you-live" type="radio" value="no">
+                          <label class="govuk-label govuk-radios__label" for="no-redirect">
+                            No, I would like the court to restrict who can see the documents
+                          </label>
+                        </div>
+                      </div>
+
+                    </fieldset>
+                  </div>
+
+
+
+
+          <!-- end components here -->
+
+
+
+
+          <div class="govuk-button-group">
+
+
+
+              <input type="hidden" name="answers-checked" value="true">
+
+              <button class="govuk-button" data-module="govuk-button" >Save and continue</button>
+
+
+
+          </div>
+
+          <br>
+
+    </div>
+
+    <div class="govuk-grid-column-one-third">
+
+      <details class="govuk-details" data-module="govuk-details">
+
+          <summary class="govuk-details__summary">
+
+           <span class="govuk-details__summary-text">
+            Contacts for help
+            </span>
+
+          </summary>
+
+          <div class="govuk-details__text">
+           Ask a question or get any help in any language
+           <p class="govuk-body govuk-!-font-weight-bold">Telephone</p>
+
+           <p class="govuk-body govuk-!-font-weight-regular">0300 303 0742</p>
+           <p class="govuk-body govuk-!-font-weight-regular">Monday to Friday, 8am to 8pm</p>
+           <a href="#" class="govuk-link">Find out about call charges</a>
+           <p class="govuk-body govuk-!-font-weight-regular">(opens in a new window)</p>
+
+          </div>
+
+      </details>
+
+    </div>
+
+   </div>
+
+
+   <script src="https://code.jquery.com/jquery-3.6.0.js"  crossorigin="anonymous"></script>
+
+   <script type="text/javascript">
+   
+     $( document ).ready(function() {
+   
+       $('.govuk-button').click(function (e) {
+   
+                     if ($('#yes-redirect').is(':checked')) {
+                       window.location.href = 'yessharedocument.html';
+                     }
+                     else if ($('#no-redirect').is(':checked')) {
+                       window.location.href = 'norestrictdocument.html';
+                     }
+   
+                 });
+   
+               });
+   </script>
+
+
+{% endblock %}
+
+
+

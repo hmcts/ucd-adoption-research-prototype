@@ -1,0 +1,136 @@
+{% extends "layout.html" %}
+
+{% block pageTitle %}
+  Upload documents
+{% endblock %}
+
+{% block header %}
+  <!-- Blank header with no service name for the start page -->
+
+{{ govukHeader({
+    homepageUrl: "/",
+    serviceName: serviceName,
+    serviceUrl: "/",
+    containerClasses: "govuk-width-container"
+}) }}
+
+{% endblock %}
+
+{% block content %}
+
+
+
+
+<a href="/respondenttasklist/your-documents/uploadv3/uploaddocumentsv3" class="govuk-back-link">Back</a>
+
+  <div class="govuk-grid-row">
+
+    <div class="govuk-grid-column-two-thirds">
+
+      <h1 class="govuk-heading-xl">
+        <span class="govuk-caption-l">Upload documents</span>
+        Witness statements and evidence
+      </h1>
+
+      <legend class="govuk-fieldset__legend govuk-fieldset__legend--l govuk-!-margin-bottom-">
+        <h1 class="govuk-fieldset__heading">
+          How your  documents will be shared
+        </h1>
+      </legend>
+
+        <!-- start components here -->
+
+        <div class="uploadcomponent">
+
+          <div class=" govuk-!-margin-bottom-3">
+
+            <div class="govuk-warning-text govuk-!-margin-bottom-4">
+              <span class="govuk-warning-text__icon" aria-hidden="true">!</span>
+              <strong class="govuk-warning-text__text govuk-!-margin-bottom-4">
+                <span class="govuk-warning-text__assistive">Warning</span>
+                When you upload a document, it will  be shared with the other people in the case.
+              </strong>
+
+              <p class="govuk-body govuk-!-margin-left-7">If there is information you do not want to share, remove it from the document.
+                If this is not possible, you can ask the court to restrict who can see the document.</p>
+
+              <p class="govuk-body govuk-!-margin-left-7">The court will only agree to restrict who can see the document if:</p>
+
+              <ul class="govuk-list govuk-list--bullet govuk-!-margin-left-7 govuk-!-margin-bottom-6">
+                <li>there is a good reason not to share the document, for example safety concerns</li>
+                <li>the document is not something the judge needs to see</li>
+                <li>an address that needs to be kept private is included in the document</li>
+              </ul>
+
+            </div>
+
+            </div>
+
+
+          </div>
+
+          <!-- end components here -->
+
+
+
+
+          <div class="govuk-button-group">
+
+            <form action="restrictdocuments" method="post" novalidate>
+
+              <input type="hidden" name="answers-checked" value="true">
+
+              <button class="govuk-button" data-module="govuk-button" >Continue</button>
+
+            </form>
+
+          </div>
+
+          <br>
+
+    </div>
+
+    <div class="govuk-grid-column-one-third">
+
+      <details class="govuk-details" data-module="govuk-details">
+
+          <summary class="govuk-details__summary">
+
+           <span class="govuk-details__summary-text">
+            Contacts for help
+            </span>
+
+          </summary>
+
+          <div class="govuk-details__text">
+           Ask a question or get any help in any language
+           <p class="govuk-body govuk-!-font-weight-bold">Telephone</p>
+
+           <p class="govuk-body govuk-!-font-weight-regular">0300 303 0742</p>
+           <p class="govuk-body govuk-!-font-weight-regular">Monday to Friday, 8am to 8pm</p>
+           <a href="#" class="govuk-link">Find out about call charges</a>
+           <p class="govuk-body govuk-!-font-weight-regular">(opens in a new window)</p>
+
+          </div>
+
+      </details>
+
+    </div>
+
+   </div>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+{% endblock %}

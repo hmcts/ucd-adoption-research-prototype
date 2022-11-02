@@ -1,0 +1,227 @@
+{% extends "layout.html" %}
+
+{% block pageTitle %}
+  Upload documents
+{% endblock %}
+
+{% block header %}
+  <!-- Blank header with no service name for the start page -->
+
+{{ govukHeader({
+    homepageUrl: "/",
+    serviceName: serviceName,
+    serviceUrl: "/",
+    containerClasses: "govuk-width-container"
+}) }}
+
+{% endblock %}
+
+{% block content %}
+
+
+<div class="govuk-grid-row">
+   <div class="govuk-grid-column-two-thirds">
+
+    <div class="govuk-width-container">
+       <a href="/respondenttasklist/startreply"class="govuk-back-link">Back</a>
+
+       <main class="govuk-main-wrapper " id="main-content" role="main">
+         <form action="/respondenttasklist/startreply" method="post" novalidate>
+
+
+
+      <h1 class="govuk-heading-xl govuk-!-margin-bottom-6">
+        Upload documents
+      </h1>
+
+      <p class="govuk-body">Case number #1636575673018538</p>
+      <hr class="govuk-section-break govuk-section-break--m govuk-section-break--visible govuk-!-margin-bottom-5">
+
+      <p class="govuk-body">If the court has asked you to submit further evidence, you can upload documents here.</p>
+      <h2 class="govuk-heading-l">Select the type of document</h2>
+      <ol class="app-task-list">
+        <li>
+          <h3 class="app-task-list__section">
+             Witness statements and evidence
+          </h3>
+          <ul class="app-task-list__items">
+            <li class="app-task-list__item">
+              <span class="app-task-list__task-name">
+                <a href="position/requested" class="govuk-link govuk-link--no-visited-state" aria-describedby="eligibility-status">
+                  Your position statements
+                </a>
+              </span>
+
+            </li>
+            <li class="app-task-list__item">
+              <span class="app-task-list__task-name">
+                <a href="requested" class="govuk-link govuk-link--no-visited-state" aria-describedby="eligibility-status">
+                  Your witness statements
+                </a>
+              </span>
+
+            </li>
+            <li class="app-task-list__item">
+              <span class="app-task-list__task-name">
+                <a href="" class="govuk-link govuk-link--no-visited-state" aria-describedby="eligibility-status">
+                  Other people's witness statements
+                </a>
+              </span>
+
+            </li>
+            <li class="app-task-list__item">
+              <span class="app-task-list__task-name">
+                <a href="" class="govuk-link govuk-link--no-visited-state" aria-describedby="eligibility-status">
+                  Emails, screenshots, images and other media files
+                </a>
+              </span>
+
+            </li>
+
+            <li class="app-task-list__item">
+              <span class="app-task-list__task-name">
+                <a href="" class="govuk-link govuk-link--no-visited-state" aria-describedby="eligibility-status">
+                  Medical records
+                </a>
+              </span>
+
+            </li>
+            <li class="app-task-list__item">
+              <span class="app-task-list__task-name">
+                <a href="" class="govuk-link govuk-link--no-visited-state" aria-describedby="eligibility-status">
+                  Letters from school
+                </a>
+              </span>
+
+            </li>
+            <li class="app-task-list__item">
+              <span class="app-task-list__task-name">
+                <a href="" class="govuk-link govuk-link--no-visited-state" aria-describedby="eligibility-status">
+                  Tenancy and mortgage agreements
+                </a>
+              </span>
+
+            </li>
+          </ul>
+        </li>
+
+        <li>
+          <h2 class="app-task-list__section">
+             Applications
+          </h2>
+          <ul class="app-task-list__items">
+            <li class="app-task-list__item">
+              <span class="app-task-list__task-name">
+                <a href="" class="govuk-link govuk-link--no-visited-state" aria-describedby="eligibility-status">
+                  Previous orders submitted with application
+                </a>
+              </span>
+
+            </li>
+
+
+          </ul>
+        </li>
+
+        <li>
+          <h2 class="app-task-list__section">
+             Expert reports
+          </h2>
+          <ul class="app-task-list__items">
+            <li class="app-task-list__item">
+              <span class="app-task-list__task-name">
+                <a href="medical/requested" class="govuk-link govuk-link--no-visited-state" aria-describedby="eligibility-status">
+                  Medical reports
+                </a>
+              </span>
+
+            </li>
+
+            <li class="app-task-list__item">
+              <span class="app-task-list__task-name">
+                <a href="" class="govuk-link govuk-link--no-visited-state" aria-describedby="eligibility-status">
+                  Paternity test reports
+                </a>
+              </span>
+
+            </li>
+            <li class="app-task-list__item">
+              <span class="app-task-list__task-name">
+                <a href="" class="govuk-link govuk-link--no-visited-state" aria-describedby="eligibility-status">
+                  Drug and alcohol tests (toxicology)
+                </a>
+              </span>
+
+            </li>
+            <li class="app-task-list__item">
+              <span class="app-task-list__task-name">
+                <a href="" class="govuk-link govuk-link--no-visited-state" aria-describedby="eligibility-status">
+                  Police reports
+                </a>
+              </span>
+
+            </li>
+         </ul>
+        </li>
+
+        <li>
+          <h2 class="app-task-list__section">
+             Other documents
+          </h2>
+          <ul class="app-task-list__items">
+            <li class="app-task-list__item">
+              <span class="app-task-list__task-name">
+                <a href="" class="govuk-link govuk-link--no-visited-state" aria-describedby="eligibility-status">
+                  Other documents
+                </a>
+              </span>
+
+            </li>
+           </ul>
+        </li>
+
+
+      </ol>
+
+
+  <button class="govuk-button govuk-button--secondary"  data-module="govuk-button">
+    Go back
+  </button>
+
+        </form>
+      </main>
+    </div>
+  </div>
+
+    <div class="govuk-grid-column-one-third">
+
+    		<details class="govuk-details" data-module="govuk-details">
+ 			 <summary class="govuk-details__summary">
+   			 <span class="govuk-details__summary-text">
+    		  Contacts for help
+  			  </span>
+  			</summary>
+  			<div class="govuk-details__text">
+   			 Ask a question or get any help in any language
+   			 <p class="govuk-body govuk-!-font-weight-bold">Telephone</p>
+
+   			 <p class="govuk-body govuk-!-font-weight-regular">0300 303 0742</p>
+   			 <p class="govuk-body govuk-!-font-weight-regular">Monday to Friday, 8am to 8pm</p>
+   			 <a href="#" class="govuk-link">Find out about call charges</a>
+   			 <p class="govuk-body govuk-!-font-weight-regular">(opens in a new window)</p>
+
+			  </div>
+			</details>
+
+    </div>
+ </div>
+
+
+
+
+
+
+
+
+
+{% endblock %}

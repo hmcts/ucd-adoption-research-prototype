@@ -1,0 +1,135 @@
+{% extends "layout.html" %}
+
+{% block pageTitle %}
+  Upload documents
+{% endblock %}
+
+{% block header %}
+  <!-- Blank header with no service name for the start page -->
+
+{{ govukHeader({
+    homepageUrl: "/",
+    serviceName: serviceName,
+    serviceUrl: "/",
+    containerClasses: "govuk-width-container"
+}) }}
+
+{% endblock %}
+
+{% block content %}
+
+
+
+
+<a href="/respondenttasklist/your-documents/uploadv1/restrictdocuments" class="govuk-back-link">Back</a>
+
+  <div class="govuk-grid-row">
+
+    <div class="govuk-grid-column-two-thirds">
+
+      <h1 class="govuk-heading-xl">
+        <span class="govuk-caption-l">Upload documents</span>
+        Witness statements and evidence
+      </h1>
+
+        <!-- start components here -->
+
+
+          <div class="govuk-warning-text ">
+            <span class="govuk-warning-text__icon" aria-hidden="true">!</span>
+            <strong class="govuk-warning-text__text govuk-!-margin-bottom-6">
+              <span class="govuk-warning-text__assistive">Warning</span>
+              You have said these documents can be shared with the other people in the case.
+            </strong>
+
+              <div class="govuk-checkboxes__item  govuk-!-margin-left-7">
+                     <input class="govuk-checkboxes__input" id="reasonable-adjustments-3" name="reasonable-adjustments" type="checkbox" value="I need to bring support with me to a hearing" aria-controls="certain-interpreter-conditional" aria-expanded="false">
+
+                     <label class="govuk-label govuk-checkboxes__label " for="reasonable-adjustments">
+                      <p>Tick this box to confirm the documents can be shared with the other people in the case.
+                     </label>
+
+                     <div class="govuk-checkboxes__conditional govuk-checkboxes__conditional--hidden" id="certain-interpreter-conditional">
+
+                       <div class="govuk-form-group">
+
+                         <label for="steps-attending-court-language-form-language-interpreter-details-field" class="govuk-label">
+                           Explain why you want the document to only be seen by court staff and Cafcass</label>
+                         <textarea id="steps-attending-court-language-form-language-interpreter-details-field" class="govuk-textarea" rows="2" name="steps_attending_court_language_form[language_interpreter_details]">                           </textarea>
+
+                       </div>
+
+                      </div>
+
+                  </div>
+
+          </div>
+
+
+
+
+          <!-- end components here -->
+
+
+
+
+          <div class="govuk-button-group">
+
+            <form action="uploaddocuments" method="post" novalidate>
+
+              <input type="hidden" name="answers-checked" value="true">
+
+              <button class="govuk-button" data-module="govuk-button" >Save and continue</button>
+
+            </form>
+
+          </div>
+
+          <br>
+
+    </div>
+
+    <div class="govuk-grid-column-one-third">
+
+      <details class="govuk-details" data-module="govuk-details">
+
+          <summary class="govuk-details__summary">
+
+           <span class="govuk-details__summary-text">
+            Contacts for help
+            </span>
+
+          </summary>
+
+          <div class="govuk-details__text">
+           Ask a question or get any help in any language
+           <p class="govuk-body govuk-!-font-weight-bold">Telephone</p>
+
+           <p class="govuk-body govuk-!-font-weight-regular">0300 303 0742</p>
+           <p class="govuk-body govuk-!-font-weight-regular">Monday to Friday, 8am to 8pm</p>
+           <a href="#" class="govuk-link">Find out about call charges</a>
+           <p class="govuk-body govuk-!-font-weight-regular">(opens in a new window)</p>
+
+          </div>
+
+      </details>
+
+    </div>
+
+   </div>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+{% endblock %}
