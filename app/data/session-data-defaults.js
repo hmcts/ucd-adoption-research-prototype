@@ -196,7 +196,9 @@ module.exports = {
 "gatekeepingFurtherHearingLengthMinutes": 0,
 
 "dashboardUpload": undefined,
-"dashboardQuestion": undefined
+"dashboardQuestion": undefined,
+
+"emailStatus": 1
 
 
 

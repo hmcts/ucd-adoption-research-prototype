@@ -4993,12 +4993,12 @@ router.post('/research-12/children/orders-placement-court', function(req, res) {
         res.redirect('/research-12/citizen-dashboard/respond-to-query/question')
       }
       else {
-        res.redirect('/research-12/citizen-dashboard/respond-to-query/check-your-answers')
+        res.redirect('/research-12/citizen-dashboard/respond-to-query/confirmation')
       }
     })
   
     router.post('/research-12/citizen-dashboard/respond-to-query/question', function(req, res) {
-        res.redirect('/research-12/citizen-dashboard/respond-to-query/check-your-answers')
+        res.redirect('/research-12/citizen-dashboard/respond-to-query/confirmation')
     })
   
     router.post('/research-12/citizen-dashboard/respond-to-query/are-you-responding-to-query-from-court', function(req, res) {
