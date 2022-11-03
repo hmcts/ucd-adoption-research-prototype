@@ -1,0 +1,109 @@
+{% extends "layout-signed-in.html" %}
+
+{% block pageTitle %}
+Apply to adopt a child
+{% endblock %}
+
+{% block beforeContent %}
+<a class="govuk-back-link" href="javascript:history.back()">Back</a>
+{% endblock %}
+
+{% block content %}
+
+<div class="govuk-grid-row">
+    <div class="govuk-grid-column-two-thirds">
+      <div class="govuk-width-container">
+
+
+          <form action="/research-12/citizen-dashboard/respond-to-query/are-you-responding-to-query-from-court" method="post" class="form">
+
+            <div class="govuk-form-group">
+              <legend class="govuk-fieldset__legend govuk-fieldset__legend--l">
+              <!-- <span class="govuk-caption-l">Eligibility to apply to adopt</span> -->
+              <h1 class="govuk-fieldset__heading">
+                What do you need help with?
+              </h1>
+            </legend>
+  
+              <fieldset class="govuk-fieldset" role="group" aria-describedby="what-need-help-radios">
+  
+                <div class="govuk-radios govuk-radios--conditional" data-module="govuk-radios">
+                  <div class="govuk-radios__item">
+                    <input class="govuk-radios__input" id="respond-court" name="what-need-help-radios" type="radio"
+                      value="Respond to a query from the court">
+                    <label class="govuk-label govuk-radios__label" for="respond-court">
+                      Respond to a query from the court
+                    </label>
+                  </div>
+  
+                  <div class="govuk-radios govuk-radios--conditional" data-module="govuk-radios">
+                    <div class="govuk-radios__item">
+                      <input class="govuk-radios__input" id="next-hearing" name="what-need-help-radios" type="radio" value="When is my next hearing?">
+                      <label class="govuk-label govuk-radios__label" for="nex-hearing">
+                        When is my next hearing?
+                      </label>
+                    </div>
+                  </div>
+  
+                  <div class="govuk-radios govuk-radios--conditional" data-module="govuk-radios">
+                    <div class="govuk-radios__item">
+                      <input class="govuk-radios__input" id="lorem1" name="what-need-help-radios" type="radio" value="Lorem ipsum">
+                      <label class="govuk-label govuk-radios__label" for="lorem">
+                        Lorem ipsum
+                      </label>
+                    </div>
+                  </div>
+  
+                  <div class="govuk-radios govuk-radios--conditional" data-module="govuk-radios">
+                    <div class="govuk-radios__item">
+                      <input class="govuk-radios__input" id="lorem2" name="what-need-help-radios" type="radio" value="Lorem ipsum2">
+                      <label class="govuk-label govuk-radios__label" for="lorem2">
+                        Lorem ipsum2
+                      </label>
+                    </div>
+                  </div>
+  
+                  <div class="govuk-radios govuk-radios--conditional" data-module="govuk-radios">
+                    <div class="govuk-radios__item">
+                      <input class="govuk-radios__input" id="none" name="what-need-help-radios" type="radio" value="none of the above">
+                      <label class="govuk-label govuk-radios__label" for="none">
+                        None of the above
+                      </label>
+                    </div>
+                  </div>
+  
+
+              </fieldset>
+            </div>
+  
+            <button class="govuk-button" data-module="govuk-button">
+              Continue
+            </button>
+          </form>
+      </div>
+    </div>
+    <div class="govuk-grid-column-one-third">
+
+    		<details class="govuk-details" data-module="govuk-details">
+ 			      <summary class="govuk-details__summary">
+       			 <span class="govuk-details__summary-text">
+        		  Contacts for help
+      			  </span>
+  			    </summary>
+  			<div class="govuk-details__text">
+   			 Ask a question or get any help in any language
+   			 <p class="govuk-body govuk-!-font-weight-bold">Telephone</p>
+
+   			 <p class="govuk-body govuk-!-font-weight-regular">0300 303 0742</p>
+   			 <p class="govuk-body govuk-!-font-weight-regular">Monday to Friday, 8am to 8pm</p>
+   			 <a href="#" class="govuk-link">Find out about call charges</a>
+   			 <p class="govuk-body govuk-!-font-weight-regular">(opens in a new window)</p>
+
+			  </div>
+			</details>
+    </div>
+</div>
+
+
+
+{% endblock %}
