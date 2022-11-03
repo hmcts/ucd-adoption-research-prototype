@@ -5006,7 +5006,7 @@ router.post('/research-12/children/orders-placement-court', function(req, res) {
         res.redirect('/research-12/citizen-dashboard/respond-to-query/what-has-court-requested')
       }
       else {
-        res.redirect('/research-12/citizen-dashboard/')
+        res.redirect('/research-12/citizen-dashboard/respond-to-query/what-do-you-need-help-with')
       }
     })
     
