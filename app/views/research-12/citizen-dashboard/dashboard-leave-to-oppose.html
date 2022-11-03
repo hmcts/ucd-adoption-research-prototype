@@ -249,11 +249,11 @@ body {
             <span class="hmcts-progress-bar__label"><span class="govuk-visually-hidden"> Step 1: </span>Processing application</span>
           </li>
           <li class="hmcts-progress-bar__list-item">
-            <span class="hmcts-progress-bar__icon hmcts-progress-bar__icon--in-progress"></span>
+            <span class="hmcts-progress-bar__icon hmcts-progress-bar__icon--complete"></span>
             <span class="hmcts-progress-bar__label"><span class="govuk-visually-hidden">Step 2: </span>Awaiting local authority input</span>
           </li>
           <li class="hmcts-progress-bar__list-item">
-            <span class="hmcts-progress-bar__icon"></span>
+            <span class="hmcts-progress-bar__icon hmcts-progress-bar__icon--in-progress"></span>
             <span class="hmcts-progress-bar__label"><span class="govuk-visually-hidden">Step 3: </span>Hearings happening</span>
           </li>
           <li class="hmcts-progress-bar__list-item">
@@ -274,28 +274,64 @@ body {
         </div>
         <div class="govuk-notification-banner__content">
           <p class="govuk-notification-banner__heading">
-            The court has set a date for the first hearing
+            Leave to oppose blah
           </p>
-          <!-- <p class="govuk-body govuk-!-margin-bottom-1">Date: 30 November 2022</p>
-          <p class="govuk-body govuk-!-margin-bottom-1">Time: 10:00 AM</p>            
-          <p class="govuk-body">Court name: South London Family Court</p>             -->
+          <p class="govuk-body">Blah blah leave to oppose blah blah blah.</p>  
 
-          <p class="govuk-body govuk-!-margin-bottom-1"><span class="govuk-!-font-weight-bold">Date:</span> 30 November 2022</p>
-          <p class="govuk-body govuk-!-margin-bottom-1"><span class="govuk-!-font-weight-bold">Time:</span> 10:00 AM</p>            
-          <p class="govuk-body"><span class="govuk-!-font-weight-bold">Court name:</span> South London Family Court</p>            
-
-          <!-- <p class="govuk-body govuk-!-margin-bottom-1"><span class="govuk-!-font-weight-bold">When?</span></p>
-          <p class="govuk-body">30 November 2022 at 10:00 AM</p>            
-          <p class="govuk-body  govuk-!-margin-bottom-1"><span class="govuk-!-font-weight-bold">Where?</span></p>            
-          <p class="govuk-body">South London Family Court</p> -->
-          <p class="govuk-notification-banner__heading">
-            <a class="govuk-notification-banner__link" href="yourhearings/first-hearing.html">View all details of the hearing</a>
-          </p>
+          <!-- <p class="govuk-notification-banner__heading">
+            <a class="govuk-notification-banner__link" href="respond-to-query/query.html">Respond to the query</a>
+          </p> -->
         </div>
 
       </div>
 
       <ol class="app-task-list">
+        <!-- <li>
+          <h2 class="app-task-list__section">
+             Applicants details
+          </h2>
+          <ul class="app-task-list__items">
+            <h3 class="govuk-heading-s govuk-!-margin-bottom-1">{{ data['firstApplicant'] }}</h3>
+            <li class="app-task-list__item">
+              <span class="app-task-list__task-name">
+                <a href="about-you/confirm-contact-details/check-your-answers" aria-describedby="read-declaration-status">
+                  Manage your contact details
+                </a>
+              </span>
+              <strong class="govuk-tag app-task-list__tag govuk-tag govuk-tag--blue" id="eligibility-status">Optional</strong>
+            </li>
+            <li class="app-task-list__item">
+              <span class="app-task-list__task-name">
+                <a href="about-you/tell-us-your-hearing-needs/remote-hearing" aria-describedby="read-declaration-status">
+                Provide or review your support needs
+                </a>
+              </span>
+              <strong class="govuk-tag app-task-list__tag govuk-tag govuk-tag--blue" id="eligibility-status">Optional</strong>
+            </li>
+          </ul>
+          <ul class="app-task-list__items"> -->
+            <!-- <p class="govuk-!-font-weight-bold govuk-!-margin-bottom-2">{{ data['secondApplicant'] }}</p> -->
+            <!-- <h3 class="govuk-heading-s govuk-!-margin-bottom-1">{{ data['secondApplicant'] }}</h3>
+            <li class="app-task-list__item">
+              <span class="app-task-list__task-name">
+                <a href="about-you/confirm-contact-details/check-your-answers" aria-describedby="read-declaration-status">
+                  Manage your contact details
+                </a>
+              </span>
+              <strong class="govuk-tag app-task-list__tag govuk-tag govuk-tag--blue" id="eligibility-status">Optional</strong>
+            </li>
+            <li class="app-task-list__item">
+              <span class="app-task-list__task-name">
+                <a href="about-you/tell-us-your-hearing-needs/remote-hearing" aria-describedby="read-declaration-status">
+                Provide or review your support needs
+                </a>
+              </span>
+              <strong class="govuk-tag app-task-list__tag govuk-tag govuk-tag--blue" id="eligibility-status">Optional</strong>
+            </li>
+ 
+          </ul>
+        </li> -->
+
         <li>
           <h2 class="app-task-list__section">
              Your details
@@ -361,7 +397,7 @@ body {
           <ul class="app-task-list__items">
             <li class="app-task-list__item">
               <span class="app-task-list__task-name">
-                <a href="yourhearings/first-hearing.html" aria-describedby="application-detail-about-you">
+                <a href="yourhearings/hearings.html" aria-describedby="application-detail-about-you">
                   Check details of your court hearings
                 </a>
               </span>

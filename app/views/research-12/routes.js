@@ -5001,9 +5001,18 @@ router.post('/research-12/children/orders-placement-court', function(req, res) {
         res.redirect('/research-12/citizen-dashboard/respond-to-query/check-your-answers')
     })
   
+    router.post('/research-12/citizen-dashboard/respond-to-query/are-you-responding-to-query-from-court', function(req, res) {
+      if (req.body['responding-query-court-radios'] === 'Yes') {
+        res.redirect('/research-12/citizen-dashboard/respond-to-query/what-has-court-requested')
+      }
+      else {
+        res.redirect('/research-12/citizen-dashboard/')
+      }
+    })
+    
 
   
-
+    
 
 
 
