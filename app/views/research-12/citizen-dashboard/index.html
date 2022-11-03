@@ -274,19 +274,23 @@ body {
         </div>
         <div class="govuk-notification-banner__content">
           <p class="govuk-notification-banner__heading">
-            Respond to a query from the court NOTIFICATION
+            Respond to a query from the court
           </p>
-          <p class="govuk-body">Blah blah respond to a query to answer a question or upload documents blah blah blah</p>            
+          <p class="govuk-body">Blah blah respond to a query to answer a question or upload documents blah blah blah.</p>  
+          <p class="govuk-body">Please read the query from the court first, and then respond to the query.</p>                      
 
           <p class="govuk-notification-banner__heading">
-            <a class="govuk-notification-banner__link" href="respond-to-query/query.html">Respond to a query from the court</a>
+            <a class="govuk-notification-banner__link" href="../../public/pdf/A58.pdf">Query from the court (PDF)</a>
+          </p>
+          <p class="govuk-notification-banner__heading">
+            <a class="govuk-notification-banner__link" href="respond-to-query/query.html">Respond to the query</a>
           </p>
         </div>
 
       </div>
 
       <ol class="app-task-list">
-        <li>
+        <!-- <li>
           <h2 class="app-task-list__section">
              Applicants details
           </h2>
@@ -309,9 +313,9 @@ body {
               <strong class="govuk-tag app-task-list__tag govuk-tag govuk-tag--blue" id="eligibility-status">Optional</strong>
             </li>
           </ul>
-          <ul class="app-task-list__items">
+          <ul class="app-task-list__items"> -->
             <!-- <p class="govuk-!-font-weight-bold govuk-!-margin-bottom-2">{{ data['secondApplicant'] }}</p> -->
-            <h3 class="govuk-heading-s govuk-!-margin-bottom-1">{{ data['secondApplicant'] }}</h3>
+            <!-- <h3 class="govuk-heading-s govuk-!-margin-bottom-1">{{ data['secondApplicant'] }}</h3>
             <li class="app-task-list__item">
               <span class="app-task-list__task-name">
                 <a href="about-you/confirm-contact-details/check-your-answers" aria-describedby="read-declaration-status">
@@ -328,6 +332,49 @@ body {
               </span>
               <strong class="govuk-tag app-task-list__tag govuk-tag govuk-tag--blue" id="eligibility-status">Optional</strong>
             </li>
+ 
+          </ul>
+        </li> -->
+
+        <li>
+          <h2 class="app-task-list__section">
+             Your details
+          </h2>
+          <ul class="app-task-list__items">
+            <!-- <h3 class="govuk-heading-s govuk-!-margin-bottom-1">{{ data['firstApplicant'] }}</h3> -->
+            <li class="app-task-list__item">
+              <span class="app-task-list__task-name">
+                <a href="about-you/confirm-contact-details/check-your-answers" aria-describedby="read-declaration-status">
+                  Manage first applicant's contact details
+                </a>
+              </span>
+              <strong class="govuk-tag app-task-list__tag govuk-tag govuk-tag--blue" id="eligibility-status">Optional</strong>
+            </li>
+            <li class="app-task-list__item">
+              <span class="app-task-list__task-name">
+                <a href="about-you/confirm-contact-details/check-your-answers" aria-describedby="read-declaration-status">
+                  Manage second applicant's contact details
+                </a>
+              </span>
+              <strong class="govuk-tag app-task-list__tag govuk-tag govuk-tag--blue" id="eligibility-status">Optional</strong>
+            </li>
+            <li class="app-task-list__item">
+              <span class="app-task-list__task-name">
+                <a href="about-you/tell-us-your-hearing-needs/remote-hearing" aria-describedby="read-declaration-status">
+                Child's name after adoption
+                </a>
+              </span>
+              <strong class="govuk-tag app-task-list__tag govuk-tag govuk-tag--blue" id="eligibility-status">Optional</strong>
+            </li>
+            <li class="app-task-list__item">
+              <span class="app-task-list__task-name">
+                <a href="about-you/tell-us-your-hearing-needs/remote-hearing" aria-describedby="read-declaration-status">
+                Provide or review your support needs
+                </a>
+              </span>
+              <strong class="govuk-tag app-task-list__tag govuk-tag govuk-tag--blue" id="eligibility-status">Optional</strong>
+            </li>
+
           </ul>
         </li>
 
@@ -354,13 +401,10 @@ body {
           <ul class="app-task-list__items">
             <li class="app-task-list__item">
               <span class="app-task-list__task-name">
-                <a href="yourhearings/hearings" aria-describedby="application-detail-about-you">
                   Check details of your court hearings
-                </a>
               </span>
               <strong class="govuk-tag govuk-tag--grey app-task-list__tag" id="submit-pay-status">Not available yet</strong>
             </li>
-
 
           </ul>
         </li>
@@ -399,9 +443,7 @@ body {
           <ul class="app-task-list__items">
             <li class="app-task-list__item">
               <span class="app-task-list__task-name">
-                <a href="your-documents/alldocuments/orders" aria-describedby="risk-of-harm-or-violence">
                   View all orders from the court
-                </a>
               </span>
               <strong class="govuk-tag govuk-tag--grey app-task-list__tag" id="submit-pay-status">Not available yet</strong>
             </li>
