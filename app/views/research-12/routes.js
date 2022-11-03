@@ -4966,11 +4966,6 @@ router.post('/research-12/children/orders-placement-court', function(req, res) {
 
 
 
-    router.post('/research-12/citizen-dashboard/respond-to-query/query', function(req, res) {
-      res.redirect('/research-12/citizen-dashboard/respond-to-query/what-has-court-requested')
-    })
-  
-
     router.post('/research-12/citizen-dashboard/respond-to-query/what-has-court-requested', function(req, res) {
       req.session.data.dashboardUpload = req.body['dashboard-upload-document-checkbox']
       req.session.data.dashboardQuestion = req.body['dashboard-respond-question-checkbox']
@@ -5012,7 +5007,25 @@ router.post('/research-12/children/orders-placement-court', function(req, res) {
     
 
   
-    
+    router.post('/research-12/citizen-dashboard/respond-to-query/what-do-you-need-help-with', function(req, res) {
+      res.redirect('/research-12/citizen-dashboard/respond-to-query/response-question-1')
+    })
+  
+    router.post('/research-12/citizen-dashboard/respond-to-query/response-question-1', function(req, res) {
+      if (req.body['submit-button'] === 'save-and-continue') {
+        res.redirect('/research-12/citizen-dashboard/')
+      }
+      else {
+        res.redirect('/research-12/citizen-dashboard/respond-to-query/ask-question')
+      }
+    })
+  
+    router.post('/research-12/citizen-dashboard/respond-to-query/ask-question', function(req, res) {
+      res.redirect('/research-12/citizen-dashboard/respond-to-query/confirmation')
+    })
+  
+
+
 
 
 
