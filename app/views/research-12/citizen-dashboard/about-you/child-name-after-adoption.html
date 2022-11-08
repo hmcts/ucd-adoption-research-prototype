@@ -20,9 +20,12 @@ Apply to adopt a child
               <legend class="govuk-fieldset__legend govuk-fieldset__legend--l">
                 <!-- <span class="govuk-caption-l">Eligibility to apply to adopt</span> -->
                 <h1 class="govuk-fieldset__heading">
-                  What will the child's full name be after adoption?
+                  Confirm child's name after adoption
                 </h1>
               </legend>
+              <div id="namehint" class="govuk-hint">
+                You provided this information in your application. It will replace the name on the child's birth certificate. If you are happy that this information is correct you can continue.
+              </div>
 
               <input class="govuk-input" id="dashboard-child-name-after-adoption" name="dashboard-child-name-after-adoption" type="text" value="{% if data['dashboard-child-name-after-adoption'] %}{{ data['dashboard-child-name-after-adoption'] }} {% else %}Jane Christie Doyle{% endif %}">
             </div>
