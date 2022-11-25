@@ -1,0 +1,84 @@
+{% extends "layout-dss.html" %}
+
+{% block pageTitle %}
+Apply to adopt a child
+{% endblock %}
+
+{% block beforeContent %}
+<a class="govuk-back-link" href="javascript:history.back()">Back</a>
+{% endblock %}
+
+{% block content %}
+
+<div class="govuk-grid-row">
+      <div class="govuk-grid-column-two-thirds">
+        <h1 class="govuk-heading-l">
+          Add evidence to support the case
+        </h1>
+        <form action="/research-13/dss/add-information" method="post" class="form">
+          <h2 class="govuk-heading-m">Add information to an application</h2>
+          <div class="govuk-form-group">
+            <label class="govuk-label" for="firstNames">
+              Provide any additional information relevant to the application. (Optional)
+            </label>
+            <textarea class="govuk-textarea" id="additional-information" name="additional-information" rows="5" aria-describedby="additional-information-hint">{{ data['additional-information'] }}</textarea>
+          </div>
+
+          
+          <h2 class="govuk-heading-m">Additional documents</h2>
+          <div class="govuk-form-group">
+            <label class="govuk-label" for="firstNames">
+              You can upload additional documents such as Annex A and other reports. You should make sure the file name reflects what the document is, such as WilliamsAnnexA.doc
+            </label>
+
+
+            <details class="govuk-details" data-module="govuk-details">
+              <summary class="govuk-details__summary govuk-!-margin-top-4">
+                <span class="govuk-details__summary-text">
+                  File upload requirements
+                </span>
+              </summary>
+              <div class="govuk-details__text">
+                <ol class="govuk-list govuk-list--number">
+                  <li>File formats: MS Word, MS Excel, PDF, JPG, GIF, PNG, TXT, RTF, MP4</li>
+                  <li>File size: up to 20 megabytes (MB)</li>
+                  <li>File size per multimedia file: up to 500 megabytes (MB)</li>
+                  <li>Files cannot be password protected</li>
+                </ol>
+                <p>You cannot upload executable (.exe), zip or other archive files due to virus risks.</p>
+              </div>
+            </details>
+          </div>
+
+          <div class="govuk-form-group">
+            <label class="govuk-label" for="file-upload-1">
+              Upload a file
+            </label>
+            <input class="govuk-file-upload" id="file-upload-1" name="file-upload-1" type="file">
+          </div>
+
+          <div class="govuk-form-group">
+            <label class="govuk-label" for="description">
+              Give a brief description of what the document is.
+            </label>
+
+            <input class="govuk-input govuk-input--width-30" id="document-description" name="document-description" type="text" value="{{ data['document-description'] }}">
+          </div>
+
+
+          <div>
+            <button disabled="disabled" aria-disabled="true" class="govuk-button govuk-button--secondary govuk-button--disabled" data-module="govuk-button">
+              Upload another file
+            </button>
+          </div>
+          <button class="govuk-button" data-module="govuk-button" name="submit-button" value="continue">
+            Continue
+          </button>
+        
+        </form>
+      </div>
+    </div>
+
+
+
+{% endblock %}

@@ -1,0 +1,32 @@
+{% extends "layout-dss.html" %}
+
+{% block pageTitle %}
+Apply to adopt a child
+{% endblock %}
+
+{% block beforeContent %}
+<a class="govuk-back-link" href="javascript:history.back()">Back</a>
+{% endblock %}
+
+{% block content %}
+
+<div class="govuk-width-container">
+  <div class="govuk-grid-row">
+    <div class="govuk-grid-column-two-thirds">
+
+      <form action="/research-13/dss/confirmation" method="post" class="form">
+
+        <div class="govuk-panel govuk-panel--confirmation">
+          <h1 class="govuk-panel__title">
+            Application updated
+          </h1>
+        </div>
+
+        <p class="govuk-body">Thank you for updating the application. <a href="email-gatekeeping-order.html" class="not-underlined">This information</a> will now be sent to the court.</p>
+        
+      </form>
+    </div>
+  </div>
+</div>
+
+{% endblock %}

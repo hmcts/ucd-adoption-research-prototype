@@ -1,0 +1,110 @@
+{% extends "layout-dss.html" %}
+
+{% block pageTitle %}
+Apply to adopt a child
+{% endblock %}
+
+{% block beforeContent %}
+<a class="govuk-back-link" href="javascript:history.back()">Back</a>
+{% endblock %}
+
+{% block content %}
+
+<div class="govuk-width-container">
+  <div class="govuk-grid-row">
+    <div class="govuk-grid-column-two-thirds">
+
+      {% set nameError = '' %}
+      {% set dobError = '' %}
+
+      {% if errors | length > 0 %}
+        {{ govukErrorSummary({
+          titleText: "There is a problem",
+          errorList: errors
+        }) }}
+        {% for error in errors %}
+          {% if error.href == '#child-name' %}
+            {% set nameError = error.text %}
+          {% endif %}
+          {% if error.href == '#dss-child-date-birth' %}
+            {% set dobError = error.text %}
+          {% endif %}
+        {% endfor %}
+      {% endif %}
+
+
+      <form action="/research-13/dss/child-details" method="post" class="form">
+
+        <fieldset class="govuk-fieldset">
+          <legend class="govuk-fieldset__legend govuk-fieldset__legend--l">
+            <h1 class="govuk-fieldset__heading">
+              Child's details
+            </h1>
+          </legend>
+
+          <div class="govuk-form-group {% if (nameError != '') %} govuk-form-group--error{% endif %}">
+            <label class="govuk-label govuk-label--s" for="firstNames">
+              Enter the child's full name
+            </label>
+            {% if nameError != '' %}
+            <span id="contact-error" class="govuk-error-message">
+              <span class="govuk-visually-hidden">Error:</span> {{ nameError }}
+            </span>
+            {% endif %}
+
+            <input class="govuk-input govuk-input--width-30 {% if (nameError != '') %} govuk-input--error{% endif %}" id="child-name" name="child-name" type="text" autocomplete="given-name" value="{{ data['child-name'] }}">
+          </div>
+
+          <div class="govuk-form-group">
+            <label class="govuk-label govuk-label--s" for="firstNames">
+              Date of birth
+            </label>
+  
+            <div id="date-of-birth-hint" class="govuk-hint">
+              For example, 31 3 2012.
+            </div>
+
+            <div class="govuk-form-group  {% if (dobError != '')%} govuk-form-group--error {% endif%}">
+              {% if (dobError != '')%}
+              <span id="national-insurance-number-error" class="govuk-error-message">
+                <span class="govuk-visually-hidden">Error:</span> {{ dobError }}
+              </span>
+              {% endif%}
+
+              <div class="govuk-date-input" id="dob">
+                <div class="govuk-date-input__item">
+                  <div class="govuk-form-group">
+                    <label class="govuk-label govuk-date-input__label" for="day">
+                      Day
+                    </label>
+                    <input class="govuk-input govuk-date-input__input govuk-input--width-2 {% if (dobError != '')%} govuk-input--error {% endif%}" id="day" name="dss-child-birth-day" type="text" pattern="[0-9]*" inputmode="numeric" value="{{ data['dss-child-birth-day'] }}"></div>
+                </div>
+                <div class="govuk-date-input__item">
+                  <div class="govuk-form-group">
+                    <label class="govuk-label govuk-date-input__label" for="month">
+                      Month
+                    </label>
+                    <input class="govuk-input govuk-date-input__input govuk-input--width-2 {% if (dobError != '')%} govuk-input--error {% endif%}" id="month" name="dss-child-birth-month" type="text" pattern="[0-9]*" inputmode="numeric" value="{{ data['dss-child-birth-month'] }}"></div>
+                </div>
+                <div class="govuk-date-input__item">
+                  <div class="govuk-form-group">
+                    <label class="govuk-label govuk-date-input__label" for="year">
+                      Year
+                    </label>
+                    <input class="govuk-input govuk-date-input__input govuk-input--width-4 {% if (dobError != '')%} govuk-input--error {% endif%}" id="year" name="dss-child-birth-year" type="text" pattern="[0-9]*" inputmode="numeric" value="{{ data['dss-child-birth-year'] }}"></div>
+                </div>
+
+            </div>
+          </div>
+        </div>
+        <button class="govuk-button" data-module="govuk-button" name="submit-button" value="continue">
+          Continue
+        </button>
+
+        </form>
+      </div>
+    </div>
+  </main>
+</div>
+
+{% endblock %}
