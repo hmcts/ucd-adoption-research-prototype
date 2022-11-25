@@ -1,0 +1,128 @@
+{% extends "layout-dss.html" %}
+
+{% block pageTitle %}
+Apply to adopt a child
+{% endblock %}
+
+{% block beforeContent %}
+<a class="govuk-back-link" href="javascript:history.back()">Back</a>
+{% endblock %}
+
+{% block content %}
+
+<div class="govuk-width-container">
+  <div class="govuk-grid-row">
+    <div class="govuk-grid-column-two-thirds">
+
+      <form action="/research-13/dss/check-your-answers" method="post" class="form">
+
+        <legend class="govuk-fieldset__legend govuk-fieldset__legend--l">
+          <h1 class="govuk-fieldset__heading">
+            Add information to an application
+          </h1>
+        </legend>
+
+        <dl class="govuk-summary-list govuk-!-margin-bottom-9 govuk-!-margin-top-6">
+
+          <div class="govuk-summary-list__row">
+            <dt class="govuk-summary-list__key">
+              Additional information
+            </dt>
+            <dd class="govuk-summary-list__value">
+              {% if data['additional-information'] %}
+                {{ data['additional-information'] }}
+              {% else %}
+                &nbsp;
+              {% endif %}
+            </dd>
+            <dd class="govuk-summary-list__actions">
+              <a href="add-information.html">
+                Change
+                <span class="govuk-visually-hidden"> additional information</span>
+              </a>
+            </dd>
+          </div>
+
+          <div class="govuk-summary-list__row">
+            <dt class="govuk-summary-list__key">
+              Additional document
+            </dt>
+            <dd class="govuk-summary-list__value">
+              AnnexA.docx
+            </dd>
+            <dd class="govuk-summary-list__actions">
+              <a href="add-information.html">
+                Change
+                <span class="govuk-visually-hidden"> additional documents</span>
+              </a>
+            </dd>
+          </div>
+
+          <div class="govuk-summary-list__row">
+            <dt class="govuk-summary-list__key">
+              Document description
+            </dt>
+            <dd class="govuk-summary-list__value">
+              {% if data['document-description'] %}
+                {{ data['document-description'] }}
+              {% else %}
+                &nbsp;
+              {% endif %}
+            </dd>
+            <dd class="govuk-summary-list__actions">
+              <a href="add-information.html">
+                Change
+                <span class="govuk-visually-hidden"> additional document description</span>
+              </a>
+            </dd>
+          </div>
+
+          <div class="govuk-summary-list__row">
+            <dt class="govuk-summary-list__key">
+              Additional document
+            </dt>
+            <dd class="govuk-summary-list__value">
+              Supporting-document.pdf
+            </dd>
+            <dd class="govuk-summary-list__actions">
+              <a href="add-information.html">
+                Change
+                <span class="govuk-visually-hidden"> additional documents</span>
+              </a>
+            </dd>
+          </div>
+
+          <div class="govuk-summary-list__row">
+            <dt class="govuk-summary-list__key">
+              Document description
+            </dt>
+            <dd class="govuk-summary-list__value">
+              {% if data['document-description'] %}
+                {{ data['document-description'] }}
+              {% else %}
+                &nbsp;
+              {% endif %}
+            </dd>
+            <dd class="govuk-summary-list__actions">
+              <a href="add-information.html">
+                Change
+                <span class="govuk-visually-hidden"> additional document description</span>
+              </a>
+            </dd>
+          </div>
+        </dl>
+
+        <h2 class="govuk-heading-m">Send your update</h2>
+
+        <p>By sending your update you are confirming that, to the best of your knowledge, the details you are providing are correct.</p>
+
+        <button class="govuk-button" data-module="govuk-button" name="submit-button" value="continue">
+          Accept and send
+        </button>
+
+      </form>
+    </div>
+  </div>
+</div>
+
+{% endblock %}
