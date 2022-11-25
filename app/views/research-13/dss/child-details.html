@@ -38,7 +38,7 @@ Apply to adopt a child
         <fieldset class="govuk-fieldset">
           <legend class="govuk-fieldset__legend govuk-fieldset__legend--l">
             <h1 class="govuk-fieldset__heading">
-              Child's details
+              <a href="email-reminder.html" class="not-underlined">Child's details</a>
             </h1>
           </legend>
 
@@ -52,7 +52,7 @@ Apply to adopt a child
             </span>
             {% endif %}
 
-            <input class="govuk-input govuk-input--width-30 {% if (nameError != '') %} govuk-input--error{% endif %}" id="child-name" name="child-name" type="text" autocomplete="given-name" value="{{ data['child-name'] }}">
+            <input class="govuk-input govuk-input--width-30 {% if (nameError != '') %} govuk-input--error{% endif %}" id="child-name" name="child-name" type="text" autocomplete="given-name">
           </div>
 
           <div class="govuk-form-group">
@@ -77,21 +77,21 @@ Apply to adopt a child
                     <label class="govuk-label govuk-date-input__label" for="day">
                       Day
                     </label>
-                    <input class="govuk-input govuk-date-input__input govuk-input--width-2 {% if (dobError != '')%} govuk-input--error {% endif%}" id="day" name="dss-child-birth-day" type="text" pattern="[0-9]*" inputmode="numeric" value="{{ data['dss-child-birth-day'] }}"></div>
+                    <input class="govuk-input govuk-date-input__input govuk-input--width-2 {% if (dobError != '')%} govuk-input--error {% endif%}" id="day" name="dss-child-birth-day" type="text" pattern="[0-9]*" inputmode="numeric"></div>
                 </div>
                 <div class="govuk-date-input__item">
                   <div class="govuk-form-group">
                     <label class="govuk-label govuk-date-input__label" for="month">
                       Month
                     </label>
-                    <input class="govuk-input govuk-date-input__input govuk-input--width-2 {% if (dobError != '')%} govuk-input--error {% endif%}" id="month" name="dss-child-birth-month" type="text" pattern="[0-9]*" inputmode="numeric" value="{{ data['dss-child-birth-month'] }}"></div>
+                    <input class="govuk-input govuk-date-input__input govuk-input--width-2 {% if (dobError != '')%} govuk-input--error {% endif%}" id="month" name="dss-child-birth-month" type="text" pattern="[0-9]*" inputmode="numeric"></div>
                 </div>
                 <div class="govuk-date-input__item">
                   <div class="govuk-form-group">
                     <label class="govuk-label govuk-date-input__label" for="year">
                       Year
                     </label>
-                    <input class="govuk-input govuk-date-input__input govuk-input--width-4 {% if (dobError != '')%} govuk-input--error {% endif%}" id="year" name="dss-child-birth-year" type="text" pattern="[0-9]*" inputmode="numeric" value="{{ data['dss-child-birth-year'] }}"></div>
+                    <input class="govuk-input govuk-date-input__input govuk-input--width-4 {% if (dobError != '')%} govuk-input--error {% endif%}" id="year" name="dss-child-birth-year" type="text" pattern="[0-9]*" inputmode="numeric"></div>
                 </div>
 
             </div>
